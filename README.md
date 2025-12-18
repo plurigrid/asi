@@ -1,20 +1,26 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/skills-20-blue?style=for-the-badge" alt="Skills" />
-  <img src="https://img.shields.io/badge/agents-9+-green?style=for-the-badge" alt="Compatible Agents" />
-  <img src="https://img.shields.io/badge/license-MIT-brightgreen?style=for-the-badge" alt="License" />
-</p>
-
-<h1 align="center">Ai Agent Skills</h1>
+<h1 align="center">
+  <br>
+  🔧 AI Agent Skills
+  <br>
+</h1>
 
 <p align="center">
-  <strong>The first universal skill repository for AI agents.</strong><br/>
+  <strong>The universal skill repository for AI agents.</strong><br>
   One command. Works everywhere.
 </p>
 
 <p align="center">
-  <a href="https://skillcreator.ai/discover">Browse Skills</a> ·
-  <a href="https://skillcreator.ai/build">Create Skills</a> ·
-  <a href="https://agentskills.io">Specification</a>
+  <img src="https://img.shields.io/badge/skills-21-blue?style=flat-square" alt="Skills" />
+  <img src="https://img.shields.io/badge/agents-9+-green?style=flat-square" alt="Compatible Agents" />
+  <img src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square" alt="License" />
+  <img src="https://img.shields.io/npm/v/ai-agent-skills?style=flat-square&color=red" alt="npm" />
+</p>
+
+<p align="center">
+  <a href="https://skillcreator.ai/discover"><strong>Browse Skills</strong></a> ·
+  <a href="https://skillcreator.ai/build"><strong>Create Skills</strong></a> ·
+  <a href="https://agentskills.io"><strong>Specification</strong></a> ·
+  <a href="https://x.com/skillcreatorai"><strong>Follow Updates</strong></a>
 </p>
 
 ---
@@ -29,23 +35,13 @@ That's it. The skill is now available in Claude Code, Cursor, Amp, VS Code, and 
 
 ## Why This Exists
 
-Every AI coding agent now supports skills. But there's no central place to find them.
+Every major AI coding agent now supports skills. But they're scattered everywhere.
 
-This repo curates the best skills in one place. Quality over quantity. Each skill is tested and follows the [official spec](https://agentskills.io).
+This repo curates the best in one place. Quality over quantity. All skills follow the [Agent Skills spec](https://agentskills.io).
 
 ## Compatible Agents
 
-| Agent | Status |
-|-------|--------|
-| Claude Code | Supported |
-| Cursor | Supported |
-| Amp | Supported |
-| VS Code | Supported |
-| GitHub Copilot | Supported |
-| Goose | Supported |
-| Letta | Supported |
-| OpenCode | Supported |
-| Claude.ai | Supported |
+Works with **Claude Code**, **Cursor**, **Amp**, **VS Code**, **GitHub Copilot**, **Goose**, **Letta**, **OpenCode**, and **Claude.ai**.
 
 ## Available Skills
 
@@ -76,9 +72,10 @@ This repo curates the best skills in one place. Quality over quantity. Each skil
 | `algorithmic-art` | Generative art with p5.js |
 | `brand-guidelines` | Apply brand colors and typography |
 
-### More
+### Productivity
 | Skill | Description |
 |-------|-------------|
+| `jira-issues` | Create, update, search Jira issues from natural language |
 | `llm-application-dev` | Build LLM-powered applications |
 | `webapp-testing` | Browser automation and testing |
 | `database-design` | Schema design and optimization |
@@ -113,26 +110,23 @@ cp -r Ai-Agent-Skills/skills/pdf ~/.claude/skills/
 
 ## Create Your Own
 
-Generate a production-ready skill from plain English:
+Two options:
 
-```
-skillcreator.ai/build
-```
-
-Or follow the [Agent Skills specification](https://agentskills.io/specification) to create one manually.
+1. **Generate in 30 seconds**: [skillcreator.ai/build](https://skillcreator.ai/build)
+2. **Build manually**: Follow the [Agent Skills spec](https://agentskills.io/specification)
 
 ## What Are Agent Skills?
 
-[Agent Skills](https://agentskills.io) are an open format from Anthropic for extending AI agent capabilities. Skills are folders containing a `SKILL.md` file with instructions that agents load on demand.
+An [open standard from Anthropic](https://agentskills.io) for extending AI agents. A skill is just a folder:
 
 ```
 my-skill/
-├── SKILL.md          # Instructions + metadata
-├── scripts/          # Optional: code
-└── references/       # Optional: docs
+├── SKILL.md       # Instructions + metadata
+├── scripts/       # Optional code
+└── references/    # Optional docs
 ```
 
-The format is supported by all major AI coding tools and enables true agent interoperability.
+All major AI coding tools support this format.
 
 ## Contributing
 
@@ -147,12 +141,18 @@ We review all contributions for quality and spec compliance.
 ## Links
 
 - [Agent Skills Spec](https://agentskills.io) - Official format documentation
-- [SkillCreator](https://skillcreator.ai) - Generate skills from plain English
+- [Browse Skills](https://skillcreator.ai/discover) - Visual skill gallery with one-click install
+- [Create Skills](https://skillcreator.ai/build) - Generate skills from plain English
 - [Anthropic Skills](https://github.com/anthropics/skills) - Official example skills
-- [agentskills/agentskills](https://github.com/agentskills/agentskills) - Spec repository
+
+## Community
+
+- Follow [@skillcreatorai](https://x.com/skillcreatorai) for updates
+- [Open an issue](https://github.com/skillcreatorai/Ai-Agent-Skills/issues) for bugs or requests
+- [Read CONTRIBUTING.md](./CONTRIBUTING.md) to add skills
 
 ---
 
 <p align="center">
-  <sub>Built by <a href="https://skillcreator.ai">SkillCreator.ai</a></sub>
+  <sub>Built with care by <a href="https://skillcreator.ai">SkillCreator.ai</a></sub>
 </p>
