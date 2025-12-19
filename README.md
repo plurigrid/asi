@@ -63,6 +63,11 @@ Works with **Claude Code**, **Cursor**, **Amp**, **VS Code**, **GitHub Copilot**
 | `backend-development` | APIs, databases, server architecture |
 | `python-development` | Modern Python 3.12+ patterns |
 | `javascript-typescript` | ES6+, Node, React, TypeScript |
+| `webapp-testing` | Browser automation and testing with Playwright |
+| `database-design` | Schema design and optimization |
+| `llm-application-dev` | Build LLM-powered applications |
+| `artifacts-builder` | Interactive React/Tailwind web components |
+| `changelog-generator` | Generate changelogs from git commits |
 
 ### Documents
 | Skill | Description |
@@ -77,19 +82,33 @@ Works with **Claude Code**, **Cursor**, **Amp**, **VS Code**, **GitHub Copilot**
 |-------|-------------|
 | `canvas-design` | Visual art and poster creation |
 | `algorithmic-art` | Generative art with p5.js |
+| `image-enhancer` | Improve image quality and resolution |
+| `slack-gif-creator` | Create animated GIFs for Slack |
+| `theme-factory` | Professional font and color themes |
+| `video-downloader` | Download videos from various platforms |
+
+### Business
+| Skill | Description |
+|-------|-------------|
 | `brand-guidelines` | Apply brand colors and typography |
+| `internal-comms` | Status updates and team communication |
+| `competitive-ads-extractor` | Analyze competitor ad strategies |
+| `domain-name-brainstormer` | Generate and check domain availability |
+| `lead-research-assistant` | Identify and qualify leads |
 
 ### Productivity
 | Skill | Description |
 |-------|-------------|
 | `job-application` | Cover letters and applications using your CV |
 | `qa-regression` | Automated regression testing with Playwright |
-| `jira-issues` | Create, update, search Jira issues from natural language |
-| `llm-application-dev` | Build LLM-powered applications |
-| `webapp-testing` | Browser automation and testing |
-| `database-design` | Schema design and optimization |
-| `internal-comms` | Status updates and team communication |
+| `jira-issues` | Create, update, search Jira issues |
 | `code-documentation` | Generate docs from code |
+| `content-research-writer` | Research and write content with citations |
+| `developer-growth-analysis` | Track developer growth metrics |
+| `file-organizer` | Organize files and find duplicates |
+| `invoice-organizer` | Organize invoices for tax prep |
+| `meeting-insights-analyzer` | Analyze meeting transcripts |
+| `raffle-winner-picker` | Randomly select contest winners |
 
 ## Commands
 
