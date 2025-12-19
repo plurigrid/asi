@@ -33,6 +33,7 @@ npx ai-agent-skills install frontend-design
 
 # Install for other agents
 npx ai-agent-skills install frontend-design --agent cursor
+npx ai-agent-skills install frontend-design --agent codex (ps this currently only works if you run codex and --enable skills flag)
 npx ai-agent-skills install frontend-design --agent amp
 ```
 
