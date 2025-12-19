@@ -170,6 +170,15 @@ We review all contributions for quality and spec compliance.
 - [Create Skills](https://skillcreator.ai/build) - Generate skills from plain English
 - [Anthropic Skills](https://github.com/anthropics/skills) - Official example skills
 
+## Credits & Attribution
+
+This repository builds upon and curates skills from the open-source community:
+
+- **[Anthropic Skills](https://github.com/anthropics/skills)** - Official example skills from Anthropic that established the Agent Skills specification
+- **[ComposioHQ](https://github.com/ComposioHQ/composio)** - High-quality skills adapted from the Composio ecosystem
+
+We believe in open source and giving credit where it's due. If you see your work here and want additional attribution, [open an issue](https://github.com/skillcreatorai/Ai-Agent-Skills/issues).
+
 ## Community
 
 - Follow [@skillcreatorai](https://x.com/skillcreatorai) for updates
