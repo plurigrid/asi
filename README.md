@@ -215,7 +215,7 @@ We review all contributions for quality and spec compliance.
 
 ## See Also
 
-**[openskills](https://github.com/numman-ali/openskills)** - Requires global install, AGENTS.md sync, and Bash calls. Great for flexibility.
+**[openskills](https://github.com/numman-ali/openskills)** -Universal skills loader + that inspired parts of this project but Requires global install, AGENTS.md sync, and Bash calls. Great for flexibility.
 
 **ai-agent-skills** - Just `npx`, installs to native agent folders. Homebrew for skills.
 
