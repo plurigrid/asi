@@ -179,10 +179,8 @@ cp -r Ai-Agent-Skills/skills/pdf ~/.claude/skills/
 
 ## Create Your Own
 
-Two options:
 
-1. **Generate in 30 seconds**: [skillcreator.ai/build](https://skillcreator.ai/build)
-2. **Build manually**: Follow the [Agent Skills spec](https://agentskills.io/specification)
+1. **Build manually**: Follow the [Agent Skills spec](https://agentskills.io/specification)
 
 ## What Are Agent Skills?
 
