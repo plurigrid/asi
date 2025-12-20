@@ -1,0 +1,210 @@
+[project]
+name = "music-topos"
+description = "Mazzola Topos of Music - Ontologically grounded mathematical music system"
+
+[environments]
+
+# ============================================================================
+# DEVELOPMENT ENVIRONMENT
+# ============================================================================
+[environments.dev]
+description = "Music Topos Development Environment"
+
+packages = [
+  "ruby_3_2",              # Ruby 3.2 (music-topos implementation)
+  "bundler",               # Ruby package manager
+  "git",                   # Version control
+  "jq",                    # JSON processing (for OSC testing)
+]
+
+# Audio synthesis and testing
+[environments.dev.features.audio]
+packages = [
+  "sonic-pi",              # Live coding music synthesizer
+  "jack2",                 # Audio connection kit (dependency)
+  "pulseaudio",            # Audio server (macOS fallback)
+  "sox",                   # Audio utilities for testing
+]
+
+# Development tools
+[environments.dev.features.dev-tools]
+packages = [
+  "ripgrep",               # Fast grep (for code search)
+  "tree",                  # Directory visualization
+  "less",                  # Pager
+]
+
+# Hook on activation
+[environments.dev.hook.on-activate]
+raw = '''
+  echo "════════════════════════════════════════════════════════════════"
+  echo "🎵 MUSIC TOPOS DEVELOPMENT ENVIRONMENT"
+  echo "════════════════════════════════════════════════════════════════"
+  echo ""
+  echo "✓ Environment ready!"
+  echo ""
+  echo "Quick Start:"
+  echo "  1. Listen to the system:"
+  echo "     ruby bin/just_play.rb"
+  echo ""
+  echo "  2. Verify mathematics:"
+  echo "     ruby bin/ontological_verification.rb"
+  echo ""
+  echo "  3. Compose interactively:"
+  echo "     ruby bin/interactive_repl.rb"
+  echo ""
+  echo "  4. Run tests (requires Sonic Pi running):"
+  echo "     ruby test_osc_audio.rb"
+  echo ""
+  echo "Available tools:"
+  echo "  • Ruby 3.2 (music-topos code)"
+  echo "  • Sonic Pi (audio synthesis via OSC)"
+  echo "  • Git (version control)"
+  echo "  • jq (JSON tools for OSC debugging)"
+  echo ""
+  echo "Documentation:"
+  echo "  • HEAR_THE_MATH.md - Quick audio setup"
+  echo "  • OSC_AUDIO_SETUP.md - Detailed OSC explanation"
+  echo "  • SYMBOL_ANALYSIS.md - Complete code reference"
+  echo ""
+  echo "════════════════════════════════════════════════════════════════"
+  echo ""
+'''
+
+# ============================================================================
+# TESTING ENVIRONMENT
+# ============================================================================
+[environments.test]
+description = "Music Topos Testing Environment - Automated Audio Tests"
+
+packages = [
+  "ruby_3_2",
+  "bundler",
+  "git",
+  "sonic-pi",              # Sonic Pi server for audio testing
+  "jq",
+  "sox",                   # For audio file analysis
+]
+
+# Hook on activation - Run tests automatically
+[environments.test.hook.on-activate]
+raw = '''
+  echo "════════════════════════════════════════════════════════════════"
+  echo "🧪 MUSIC TOPOS TEST ENVIRONMENT"
+  echo "════════════════════════════════════════════════════════════════"
+  echo ""
+  echo "Running automated tests..."
+  echo ""
+
+  # Check if Sonic Pi is running
+  if lsof -i :4557 > /dev/null 2>&1; then
+    echo "✓ Sonic Pi is running on localhost:4557"
+    echo ""
+    echo "Running OSC audio tests..."
+    ruby test_osc_audio.rb
+
+    if [ $? -eq 0 ]; then
+      echo ""
+      echo "✓ All tests passed!"
+    else
+      echo ""
+      echo "✗ Tests failed - check output above"
+    fi
+  else
+    echo "⚠ Sonic Pi not running on port 4557"
+    echo ""
+    echo "To run audio tests:"
+    echo "  1. Start Sonic Pi application"
+    echo "  2. Return to this terminal"
+    echo "  3. Run: ruby test_osc_audio.rb"
+    echo ""
+  fi
+
+  echo ""
+  echo "════════════════════════════════════════════════════════════════"
+'''
+
+# ============================================================================
+# AUDIO TESTING ENVIRONMENT
+# ============================================================================
+[environments.audio-test]
+description = "Music Topos Audio Testing - Complete OSC Validation"
+
+packages = [
+  "ruby_3_2",
+  "bundler",
+  "sonic-pi",
+  "jack2",
+  "sox",
+  "jq",
+  "git",
+]
+
+[environments.audio-test.hook.on-activate]
+raw = '''
+  echo "🔊 MUSIC TOPOS AUDIO TESTING"
+  echo ""
+  echo "This environment is configured for comprehensive audio testing."
+  echo ""
+  echo "Available test commands:"
+  echo ""
+  echo "1. Test OSC Connection:"
+  echo "   ruby test_osc_connection.rb"
+  echo ""
+  echo "2. Test Audio Synthesis:"
+  echo "   ruby test_audio_synthesis.rb"
+  echo ""
+  echo "3. Test Full System:"
+  echo "   ruby test_complete_system.rb"
+  echo ""
+  echo "4. Interactive REPL (hear the system):"
+  echo "   ruby bin/interactive_repl.rb"
+  echo ""
+  echo "5. Verification Suite:"
+  echo "   ruby bin/ontological_verification.rb"
+  echo ""
+  echo "Status: Ready for testing"
+  echo ""
+'''
+
+# ============================================================================
+# PRODUCTION ENVIRONMENT
+# ============================================================================
+[environments.production]
+description = "Music Topos Production - Audio Rendering"
+
+packages = [
+  "ruby_3_2",
+  "bundler",
+  "sonic-pi",              # Production audio synthesis
+  "git",
+]
+
+# ============================================================================
+# DOCUMENTATION
+# ============================================================================
+# To use these environments:
+#
+#   flox activate -e dev       # Development with all tools
+#   flox activate -e test      # Testing environment
+#   flox activate -e audio-test # Full audio testing suite
+#   flox activate -e prod      # Production (audio only)
+#
+# Example workflow:
+#
+#   1. flox activate -e dev
+#   2. Start Sonic Pi
+#   3. ruby bin/interactive_repl.rb
+#   4. Type: play C E G C
+#   5. Hear actual audio (via OSC)
+#
+# Testing:
+#
+#   flox activate -e test
+#   # Automatically runs tests and shows results
+#
+# Or manually:
+#
+#   ruby test_osc_connection.rb      # Verify OSC works
+#   ruby test_audio_synthesis.rb     # Test audio generation
+#   ruby test_complete_system.rb     # Full system test
