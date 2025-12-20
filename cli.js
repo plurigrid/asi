@@ -17,6 +17,7 @@ const AGENT_PATHS = {
   goose: path.join(os.homedir(), '.config', 'goose', 'skills'),
   opencode: path.join(os.homedir(), '.opencode', 'skills'),
   codex: path.join(os.homedir(), '.codex', 'skills'),
+  letta: path.join(os.homedir(), '.letta', 'skills'),
 };
 
 const colors = {
@@ -54,7 +55,7 @@ function getAvailableSkills() {
 }
 
 function parseArgs(args) {
-  const result = { command: null, param: null, agent: 'claude' };
+  const result = { command: null, param: null, agent: 'claude', installed: false, all: false };
 
   // List of valid agents for shorthand flags
   const validAgents = Object.keys(AGENT_PATHS);
@@ -69,6 +70,14 @@ function parseArgs(args) {
       agentValue = agentValue.replace(/^-+/, '');
       result.agent = validAgents.includes(agentValue) ? agentValue : 'claude';
       i++;
+    }
+    // Handle --installed flag
+    else if (arg === '--installed' || arg === '-i') {
+      result.installed = true;
+    }
+    // Handle --all flag for uninstall
+    else if (arg === '--all') {
+      result.all = true;
     }
     // Handle shorthand flags like --cursor, --amp, --vscode, etc.
     else if (arg.startsWith('--')) {
@@ -169,6 +178,82 @@ function copyDir(src, dest) {
   }
 }
 
+function uninstallSkill(skillName, agent = 'claude') {
+  const destDir = AGENT_PATHS[agent] || AGENT_PATHS.claude;
+  const skillPath = path.join(destDir, skillName);
+
+  if (!fs.existsSync(skillPath)) {
+    error(`Skill "${skillName}" is not installed for ${agent}.`);
+    log(`\nInstalled skills for ${agent}:`);
+    listInstalledSkills(agent);
+    return false;
+  }
+
+  fs.rmSync(skillPath, { recursive: true });
+  success(`\nUninstalled: ${skillName}`);
+  info(`Agent: ${agent}`);
+  info(`Removed from: ${skillPath}`);
+  return true;
+}
+
+function getInstalledSkills(agent = 'claude') {
+  const destDir = AGENT_PATHS[agent] || AGENT_PATHS.claude;
+
+  if (!fs.existsSync(destDir)) return [];
+
+  return fs.readdirSync(destDir).filter(name => {
+    const skillPath = path.join(destDir, name);
+    return fs.statSync(skillPath).isDirectory() &&
+           fs.existsSync(path.join(skillPath, 'SKILL.md'));
+  });
+}
+
+function listInstalledSkills(agent = 'claude') {
+  const installed = getInstalledSkills(agent);
+  const destDir = AGENT_PATHS[agent] || AGENT_PATHS.claude;
+
+  if (installed.length === 0) {
+    warn(`No skills installed for ${agent}`);
+    info(`Location: ${destDir}`);
+    return;
+  }
+
+  log(`\n${colors.bold}Installed Skills${colors.reset} (${installed.length} for ${agent})\n`);
+  log(`${colors.dim}Location: ${destDir}${colors.reset}\n`);
+
+  installed.forEach(name => {
+    log(`  ${colors.green}${name}${colors.reset}`);
+  });
+
+  log(`\n${colors.dim}Uninstall: npx ai-agent-skills uninstall <name> --agent ${agent}${colors.reset}`);
+}
+
+function updateSkill(skillName, agent = 'claude') {
+  const sourcePath = path.join(SKILLS_DIR, skillName);
+  const destDir = AGENT_PATHS[agent] || AGENT_PATHS.claude;
+  const destPath = path.join(destDir, skillName);
+
+  if (!fs.existsSync(sourcePath)) {
+    error(`Skill "${skillName}" not found in repository.`);
+    return false;
+  }
+
+  if (!fs.existsSync(destPath)) {
+    error(`Skill "${skillName}" is not installed for ${agent}.`);
+    log(`\nUse 'install' to add it first.`);
+    return false;
+  }
+
+  // Remove old and copy new
+  fs.rmSync(destPath, { recursive: true });
+  copyDir(sourcePath, destPath);
+
+  success(`\nUpdated: ${skillName}`);
+  info(`Agent: ${agent}`);
+  info(`Location: ${destPath}`);
+  return true;
+}
+
 function listSkills() {
   const data = loadSkillsJson();
   const skills = data.skills || [];
@@ -193,7 +278,10 @@ function listSkills() {
     byCategory[category].forEach(skill => {
       const featured = skill.featured ? ` ${colors.yellow}*${colors.reset}` : '';
       log(`  ${colors.green}${skill.name}${colors.reset}${featured}`);
-      log(`    ${colors.dim}${skill.description.slice(0, 70)}...${colors.reset}`);
+      const desc = skill.description.length > 70
+        ? skill.description.slice(0, 70) + '...'
+        : skill.description;
+      log(`    ${colors.dim}${desc}${colors.reset}`);
     });
     log('');
   });
@@ -235,11 +323,18 @@ ${colors.bold}Usage:${colors.reset}
   npx ai-agent-skills <command> [options]
 
 ${colors.bold}Commands:${colors.reset}
-  ${colors.green}list${colors.reset}                          List all available skills
-  ${colors.green}install <name> [--agent <agent>]${colors.reset}  Install a skill
-  ${colors.green}search <query>${colors.reset}                 Search skills
-  ${colors.green}info <name>${colors.reset}                    Show skill details
-  ${colors.green}help${colors.reset}                           Show this help
+  ${colors.green}list${colors.reset}                             List all available skills
+  ${colors.green}list --installed${colors.reset}                 List installed skills for an agent
+  ${colors.green}install <name>${colors.reset}                   Install a skill
+  ${colors.green}uninstall <name>${colors.reset}                 Remove an installed skill
+  ${colors.green}update <name>${colors.reset}                    Update an installed skill to latest
+  ${colors.green}search <query>${colors.reset}                   Search skills by name or description
+  ${colors.green}info <name>${colors.reset}                      Show skill details
+  ${colors.green}help${colors.reset}                             Show this help
+
+${colors.bold}Options:${colors.reset}
+  ${colors.cyan}--agent <name>${colors.reset}  Target agent (default: claude)
+  ${colors.cyan}--installed${colors.reset}     Show only installed skills (with list)
 
 ${colors.bold}Agents:${colors.reset}
   ${colors.cyan}claude${colors.reset}   (default) ~/.claude/skills/
@@ -250,13 +345,15 @@ ${colors.bold}Agents:${colors.reset}
   ${colors.cyan}goose${colors.reset}    ~/.config/goose/skills/
   ${colors.cyan}opencode${colors.reset} ~/.opencode/skills/
   ${colors.cyan}codex${colors.reset}    ~/.codex/skills/
+  ${colors.cyan}letta${colors.reset}    ~/.letta/skills/
   ${colors.cyan}project${colors.reset}  .skills/ in current directory (portable)
 
 ${colors.bold}Examples:${colors.reset}
   npx ai-agent-skills install frontend-design
-  npx ai-agent-skills install frontend-design --agent cursor
-  npx ai-agent-skills install frontend-design --cursor          ${colors.dim}(shorthand)${colors.reset}
-  npx ai-agent-skills install pdf --project
+  npx ai-agent-skills install frontend-design --cursor
+  npx ai-agent-skills list --installed --agent cursor
+  npx ai-agent-skills uninstall pdf --claude
+  npx ai-agent-skills update frontend-design
   npx ai-agent-skills search excel
 
 ${colors.bold}More info:${colors.reset}
@@ -294,15 +391,20 @@ ${colors.bold}Install:${colors.reset}
 
 // Main CLI
 const args = process.argv.slice(2);
-const { command, param, agent } = parseArgs(args);
+const { command, param, agent, installed } = parseArgs(args);
 
 switch (command || 'help') {
   case 'list':
   case 'ls':
-    listSkills();
+    if (installed) {
+      listInstalledSkills(agent);
+    } else {
+      listSkills();
+    }
     break;
   case 'install':
   case 'i':
+  case 'add':
     if (!param) {
       error('Please specify a skill name.');
       log('Usage: npx ai-agent-skills install <skill-name> [--agent <agent>]');
@@ -310,8 +412,28 @@ switch (command || 'help') {
     }
     installSkill(param, agent);
     break;
+  case 'uninstall':
+  case 'remove':
+  case 'rm':
+    if (!param) {
+      error('Please specify a skill name.');
+      log('Usage: npx ai-agent-skills uninstall <skill-name> [--agent <agent>]');
+      process.exit(1);
+    }
+    uninstallSkill(param, agent);
+    break;
+  case 'update':
+  case 'upgrade':
+    if (!param) {
+      error('Please specify a skill name.');
+      log('Usage: npx ai-agent-skills update <skill-name> [--agent <agent>]');
+      process.exit(1);
+    }
+    updateSkill(param, agent);
+    break;
   case 'search':
   case 's':
+  case 'find':
     if (!param) {
       error('Please specify a search query.');
       log('Usage: npx ai-agent-skills search <query>');
@@ -320,6 +442,7 @@ switch (command || 'help') {
     searchSkills(param);
     break;
   case 'info':
+  case 'show':
     if (!param) {
       error('Please specify a skill name.');
       log('Usage: npx ai-agent-skills info <skill-name>');

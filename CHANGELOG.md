@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.8] - 2024-12-20
+
+### Added
+- `uninstall` command to remove installed skills
+- `update` command to update skills to latest version
+- `list --installed` flag to show installed skills per agent
+- Letta agent support (`--agent letta`)
+- Command aliases: `add`, `remove`, `rm`, `find`, `show`, `upgrade`
+
+### Fixed
+- Description truncation now only adds "..." when actually truncated
+
 ## [1.0.7] - 2024-12-19
 
 ### Added

@@ -11,7 +11,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/skills-38-blue?style=flat-square" alt="Skills" />
-  <img src="https://img.shields.io/badge/agents-9+-green?style=flat-square" alt="Compatible Agents" />
+  <img src="https://img.shields.io/badge/agents-10+-green?style=flat-square" alt="Compatible Agents" />
   <img src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square" alt="License" />
   <img src="https://img.shields.io/npm/v/ai-agent-skills?style=flat-square&color=red" alt="npm" />
   <img src="https://img.shields.io/npm/dt/ai-agent-skills?style=flat-square&color=orange" alt="Downloads" />
@@ -113,14 +113,25 @@ Works with **Claude Code**, **Cursor**, **Amp**, **VS Code**, **GitHub Copilot**
 ## Commands
 
 ```bash
-# List all skills
+# List all available skills
 npx ai-agent-skills list
+
+# List installed skills for an agent
+npx ai-agent-skills list --installed
+npx ai-agent-skills list --installed --agent cursor
 
 # Install a skill (defaults to Claude Code)
 npx ai-agent-skills install <name>
 
 # Install for a specific agent
 npx ai-agent-skills install <name> --agent <agent>
+
+# Uninstall a skill
+npx ai-agent-skills uninstall <name>
+npx ai-agent-skills uninstall <name> --agent cursor
+
+# Update an installed skill to latest version
+npx ai-agent-skills update <name>
 
 # Search skills
 npx ai-agent-skills search <query>
@@ -139,6 +150,8 @@ npx ai-agent-skills info <name>
 | VS Code / Copilot | `--agent vscode` | `.github/skills/` |
 | Goose | `--agent goose` | `~/.config/goose/skills/` |
 | OpenCode | `--agent opencode` | `~/.opencode/skills/` |
+| Codex | `--agent codex` | `~/.codex/skills/` |
+| Letta | `--agent letta` | `~/.letta/skills/` |
 | Portable | `--agent project` | `.skills/` (works with any agent) |
 
 ## Manual Install
