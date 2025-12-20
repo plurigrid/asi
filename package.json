@@ -1,14 +1,18 @@
 {
   "name": "ai-agent-skills",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Install curated AI agent skills with one command. Works with Claude Code, Cursor, Amp, VS Code, and all Agent Skills compatible tools.",
   "main": "cli.js",
   "bin": {
     "ai-agent-skills": "./cli.js",
     "skills": "./cli.js"
   },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
-    "test": "node cli.js list"
+    "test": "node test.js",
+    "validate": "node cli.js list"
   },
   "repository": {
     "type": "git",

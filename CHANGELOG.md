@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2024-12-20
+
+### Added
+- **Dry-run mode**: Preview installations with `--dry-run` flag
+- **Config file support**: `~/.agent-skills.json` for default settings
+- **Update notifications**: See available updates when listing installed skills
+- **Update all**: `update --all` to update all installed skills at once
+- **Category filter**: `list --category development` to filter skills
+- **Tag support**: Search now includes tags
+- **"Did you mean" suggestions**: Typo-tolerant skill name matching
+- **Config command**: `config --default-agent cursor` to set defaults
+- **Security validation**: Block path traversal attacks in skill names
+- **Size limit**: 50MB max skill size to prevent abuse
+- **Proper error handling**: Graceful failures with helpful messages
+- **Test suite**: `npm test` runs validation tests
+- **Enhanced CI**: Schema validation, duplicate detection, frontmatter checks
+
+### Changed
+- Bump to version 1.1.0 (semver: new features)
+- Node.js 14+ now required (was implicit, now explicit)
+- CLI shows skill size on install
+- Better help output with categories section
+
+### Fixed
+- JSON parsing errors now show helpful messages instead of crashing
+- File operation errors properly caught and reported
+- Partial installs cleaned up on failure
+
+### Security
+- Skill names validated against path traversal patterns (`../`, `\`)
+- Max file size enforced during copy operations
+
 ## [1.0.8] - 2024-12-20
 
 ### Added

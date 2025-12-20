@@ -116,12 +116,18 @@ Works with **Claude Code**, **Cursor**, **Amp**, **VS Code**, **GitHub Copilot**
 # List all available skills
 npx ai-agent-skills list
 
+# Filter by category
+npx ai-agent-skills list --category development
+
 # List installed skills for an agent
 npx ai-agent-skills list --installed
 npx ai-agent-skills list --installed --agent cursor
 
 # Install a skill (defaults to Claude Code)
 npx ai-agent-skills install <name>
+
+# Preview what will be installed (dry run)
+npx ai-agent-skills install <name> --dry-run
 
 # Install for a specific agent
 npx ai-agent-skills install <name> --agent <agent>
@@ -130,14 +136,21 @@ npx ai-agent-skills install <name> --agent <agent>
 npx ai-agent-skills uninstall <name>
 npx ai-agent-skills uninstall <name> --agent cursor
 
-# Update an installed skill to latest version
+# Update a skill to latest version
 npx ai-agent-skills update <name>
 
-# Search skills
+# Update all installed skills
+npx ai-agent-skills update --all
+
+# Search skills by name, description, or tags
 npx ai-agent-skills search <query>
 
 # Get skill details
 npx ai-agent-skills info <name>
+
+# Configure default settings
+npx ai-agent-skills config
+npx ai-agent-skills config --default-agent cursor
 ```
 
 ### Supported Agents
