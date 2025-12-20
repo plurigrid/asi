@@ -207,7 +207,7 @@ We review all contributions for quality and spec compliance.
 
 ## Links
 
-- [Awesome Agent Skills](https://github.com/skillcreatorai/Awesome-Agent-Skills) - Curated list of 50+ skills
+
 - [Agent Skills Spec](https://agentskills.io) - Official format documentation
 - [Browse Skills](https://skillcreator.ai/discover) - Visual skill gallery with one-click install
 - [Create Skills](https://skillcreator.ai/build) - Generate skills from plain English
