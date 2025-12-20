@@ -768,11 +768,18 @@ async function browseSkills(agent = 'claude') {
 // ============ EXTERNAL INSTALL (GitHub/Local) ============
 
 function isGitHubUrl(source) {
-  return source.includes('/') && !source.startsWith('.') && !source.startsWith('/') && !source.startsWith('~');
+  // Must have owner/repo format, not start with path indicators
+  return source.includes('/') &&
+         !source.startsWith('./') &&
+         !source.startsWith('../') &&
+         !source.startsWith('/') &&
+         !source.startsWith('~');
 }
 
 function isLocalPath(source) {
-  return source.startsWith('.') || source.startsWith('/') || source.startsWith('~');
+  // Only explicit local paths: ./ or / or ~/
+  // NOT ../ (that's path traversal, should be rejected)
+  return source.startsWith('./') || source.startsWith('/') || source.startsWith('~/');
 }
 
 function expandPath(p) {
