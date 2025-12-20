@@ -209,8 +209,8 @@ We review all contributions for quality and spec compliance.
 
 
 - [Agent Skills Spec](https://agentskills.io) - Official format documentation
-- [Browse Skills](https://skillcreator.ai/discover) - Visual skill gallery with one-click install
-- [Create Skills](https://skillcreator.ai/build) - Generate skills from plain English
+- [Browse Skills](https://skillcreator.ai/explore) - Visual skill gallery with one-click install
+- [Create Skills](https://skillcreator.ai/build) - Generate skills (waitlist) 
 - [Anthropic Skills](https://github.com/anthropics/skills) - Official example skills
 
 ## See Also
