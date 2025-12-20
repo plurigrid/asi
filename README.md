@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Homebrew for AI agent skills.</strong><br>
-  One command. Ten agents. Skills that follow you.
+  Universal Skills installer for any agent that follows the open standard spec 
 </p>
 
 <p align="center">
