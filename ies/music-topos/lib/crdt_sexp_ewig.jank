@@ -1,0 +1,480 @@
+; crdt_sexp_ewig.jank
+;
+; CRDT S-Expression Materialization with Ersatz Emacs (Ewig) Semantics
+; Targets jank-lang (Clojure → native via LLVM/C++)
+;
+; Core concepts from gay-crdt.el and gay-ewig.el:
+; 1. Every buffer state is immutable - edits create new states
+; 2. States form a colored tree (SPI colors from content hash)
+; 3. CRDT ops (insert/delete) are captured and synced
+; 4. Balanced ternary TAP control (-1/0/+1) for fork/continue
+;
+; Integration:
+; - gay-crdt.el: Diamond-types CRDT, operation capture, sync
+; - gay-ewig.el: Immutable states, colored timeline, Lager actions
+; - colored_sexp_acset.jl: TAP control, Girard polarities
+
+(ns crdt-sexp-ewig
+  (:require [jank.native :as native]))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; SplitMix64 PRNG (matches Gay.jl exactly)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defn splitmix64-next
+  "Advance SplitMix64 state and return next u64"
+  [state]
+  (let [state' (+ state 0x9E3779B97F4A7C15)
+        z state'
+        z (-> z (bit-xor (bit-shift-right z 30)) (* 0xBF58476D1CE4E5B9))
+        z (-> z (bit-xor (bit-shift-right z 27)) (* 0x94D049BB133111EB))
+        z (bit-xor z (bit-shift-right z 31))]
+    [state' z]))
+
+(defn color-at
+  "Get deterministic color at index from seed"
+  [seed index]
+  (loop [state seed
+         i 0]
+    (if (>= i index)
+      (let [[state' z] (splitmix64-next state)
+            max-u64 0xFFFFFFFFFFFFFFFF
+            L (+ 10.0 (* (/ (float z) max-u64) 85.0))
+            [state'' z2] (splitmix64-next state')
+            C (* (/ (float z2) max-u64) 100.0)
+            [state''' z3] (splitmix64-next state'')
+            H (* (/ (float z3) max-u64) 360.0)]
+        {:L L :C C :H H :index index :seed seed})
+      (recur (first (splitmix64-next state)) (inc i)))))
+
+(defn fnv1a-hash
+  "FNV-1a hash for content fingerprinting"
+  [s]
+  (reduce
+    (fn [hash byte]
+      (-> hash
+          (bit-xor (int byte))
+          (* 0x100000001b3)
+          (bit-and 0xFFFFFFFFFFFFFFFF)))
+    0xcbf29ce484222325
+    (map int s)))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Girard Polarities (from colored_sexp_acset.jl)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defn hue->polarity
+  "Map hue to Girard polarity"
+  [hue]
+  (cond
+    (or (< hue 60) (>= hue 300)) :positive   ; Red-orange-magenta: forward
+    (and (>= hue 180) (< hue 300)) :negative ; Cyan-blue-purple: backward
+    :else :neutral))                          ; Yellow-green: balanced
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; TAP Control States (Balanced Ternary)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(def TAP-BACKFILL -1)  ; Historical sync, antiferromagnetic
+(def TAP-VERIFY 0)     ; Self-check, BEAVER state, vacancy
+(def TAP-LIVE 1)       ; Forward sync, ferromagnetic
+
+(defn tap->prime
+  "Map TAP state to prime (multiplicative structure)"
+  [tap-state]
+  (case tap-state
+    -1 2   ; Antiferromagnetic
+    0  3   ; Vacancy (BEAVER)
+    1  5)) ; Ferromagnetic
+
+(defn tap->girard
+  "Map TAP state to Girard polarity"
+  [tap-state]
+  (case tap-state
+    -1 :negative
+    0  :neutral
+    1  :positive))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Colored S-Expression (from colored_sexp_acset.jl)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defrecord ColoredSexp [head args color polarity tap-state fingerprint])
+
+(defn make-colored-sexp
+  "Create a colored S-expression with SPI color and TAP state"
+  [head args seed index tap-state]
+  (let [color (color-at seed index)
+        polarity (hue->polarity (:H color))
+        fingerprint (fnv1a-hash (str head args))]
+    (->ColoredSexp head args color polarity tap-state fingerprint)))
+
+(defn sexp->string
+  "Pretty-print colored S-expression"
+  [sexp]
+  (let [emoji (case (:polarity sexp)
+                :positive "+"
+                :negative "-"
+                :neutral  "o")
+        tap-sym (case (:tap-state sexp)
+                  -1 "<-"
+                  0  "<>"
+                  1  "->")]
+    (str emoji tap-sym " (" (:head sexp)
+         (apply str (map #(str " " (if (instance? ColoredSexp %)
+                                      (sexp->string %)
+                                      %))
+                         (:args sexp)))
+         ")")))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; CRDT Operations (from gay-crdt.el)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defrecord CRDTOp [op-type agent position content timestamp version])
+
+(defn make-insert-op
+  "Create an insert operation"
+  [agent position content timestamp version]
+  (->CRDTOp :insert agent position content timestamp version))
+
+(defn make-delete-op
+  "Create a delete operation"
+  [agent position length timestamp version]
+  (->CRDTOp :delete agent position length timestamp version))
+
+(defn op->sexp
+  "Convert CRDT operation to colored S-expression"
+  [op seed index]
+  (let [tap-state (case (:op-type op)
+                    :insert TAP-LIVE
+                    :delete TAP-BACKFILL)]
+    (make-colored-sexp
+      (:op-type op)
+      [(:agent op) (:position op) (:content op)]
+      seed
+      index
+      tap-state)))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Immutable State (from gay-ewig.el)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defrecord EwigState [id timestamp content-hash line-count char-count
+                      cursor-pos color parent-id children description])
+
+(defn make-ewig-state
+  "Create immutable editor state with SPI color"
+  [id content parent-id description]
+  (let [content-hash (fnv1a-hash content)
+        color (color-at content-hash 1)
+        lines (count (filter #(= % \newline) content))
+        chars (count content)]
+    (->EwigState
+      id
+      (System/currentTimeMillis)
+      content-hash
+      lines
+      chars
+      [0 0]  ; cursor at start
+      color
+      parent-id
+      []     ; no children yet
+      description)))
+
+(defn state->sexp
+  "Convert ewig state to colored S-expression"
+  [state seed index]
+  (make-colored-sexp
+    :state
+    [(:id state) (:description state)]
+    seed
+    index
+    TAP-VERIFY))  ; States are verification points
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Lager-style Actions (Redux pattern from gay-ewig.el)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(def action-hues
+  {:insert  120   ; Green - growth
+   :delete  0     ; Red - removal
+   :replace 60    ; Yellow - modification
+   :undo    240   ; Blue - going back
+   :redo    180   ; Cyan - going forward
+   :save    300   ; Magenta - persistence
+   :load    270   ; Purple - restoration
+   :fork    90    ; Yellow-green - branching
+   :verify  150}) ; Cyan-green - self-check
+
+(defrecord LagerAction [action-type payload timestamp color
+                        state-before state-after])
+
+(defn make-action
+  "Create a Lager-style action with SPI color"
+  [action-type payload state-before]
+  (let [hue (get action-hues action-type 0)
+        seed (fnv1a-hash (str action-type payload))
+        color (color-at seed 1)]
+    (->LagerAction
+      action-type
+      payload
+      (System/currentTimeMillis)
+      color
+      state-before
+      nil)))  ; state-after filled when action completes
+
+(defn complete-action
+  "Complete action by recording state-after"
+  [action state-after]
+  (assoc action :state-after state-after))
+
+(defn action->sexp
+  "Convert action to colored S-expression"
+  [action seed index]
+  (let [tap-state (case (:action-type action)
+                    :insert TAP-LIVE
+                    :delete TAP-BACKFILL
+                    :undo TAP-BACKFILL
+                    :redo TAP-LIVE
+                    :verify TAP-VERIFY
+                    :fork TAP-VERIFY
+                    TAP-LIVE)]
+    (make-colored-sexp
+      (:action-type action)
+      [(:payload action) (:state-before action) (:state-after action)]
+      seed
+      index
+      tap-state)))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Fork/Continue Events (from colored_sexp_acset.jl)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defrecord ForkEvent [source branches verification-seed verified?])
+
+(defrecord ContinueEvent [selected-branch result verification-proof instruction])
+
+(defn fork-sexp
+  "Create fork event from S-expression (balanced ternary split)"
+  [sexp seed]
+  (let [base-index (:index (:color sexp))
+        branches (into {}
+                       (map-indexed
+                         (fn [i tap-state]
+                           [tap-state
+                            (make-colored-sexp
+                              (:head sexp)
+                              (:args sexp)
+                              seed
+                              (+ base-index (* i 100))
+                              tap-state)])
+                         [TAP-BACKFILL TAP-VERIFY TAP-LIVE]))]
+    (->ForkEvent sexp branches seed false)))
+
+(defn continue-fork
+  "Resolve fork with selected branch and generate verification proof"
+  [fork-event decision]
+  (let [selected (get (:branches fork-event) decision)
+        proof [(:fingerprint (:source fork-event))
+               (:fingerprint selected)]
+        instruction (cond
+                      (= decision TAP-VERIFY) :self-verify
+                      (= (:fingerprint selected)
+                         (:fingerprint (:source fork-event))) :identity-ok
+                      :else :check-transform)]
+    (->ContinueEvent decision selected proof instruction)))
+
+(defn execute-instruction
+  "Execute self-verification instruction"
+  [continue-event]
+  (case (:instruction continue-event)
+    :identity-ok true
+    :self-verify (and (>= (count (:verification-proof continue-event)) 2)
+                      (= (last (:verification-proof continue-event))
+                         (:fingerprint (:result continue-event))))
+    :check-transform (contains? #{:positive :negative :neutral}
+                                (:polarity (:result continue-event)))))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Document State (CRDT + Ewig combined)
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defrecord Document [id agent-id content states actions
+                     pending-ops local-version current-state-id])
+
+(defn make-document
+  "Create a new CRDT document with initial state"
+  [id agent-id initial-content]
+  (let [initial-state (make-ewig-state 0 initial-content nil "initial")]
+    (->Document
+      id
+      agent-id
+      initial-content
+      {0 initial-state}  ; states map
+      []                  ; actions log
+      []                  ; pending ops
+      0                   ; local version
+      0)))                ; current state id
+
+(defn apply-insert
+  "Apply insert operation to document"
+  [doc position content]
+  (let [old-content (:content doc)
+        new-content (str (subs old-content 0 position)
+                         content
+                         (subs old-content position))
+        new-version (inc (:local-version doc))
+        op (make-insert-op (:agent-id doc) position content
+                          (System/currentTimeMillis) new-version)
+        action (make-action :insert {:position position :content content}
+                           (:current-state-id doc))
+        new-state-id (inc (:current-state-id doc))
+        new-state (make-ewig-state new-state-id new-content
+                                   (:current-state-id doc) "insert")]
+    (-> doc
+        (assoc :content new-content)
+        (assoc :local-version new-version)
+        (update :pending-ops conj op)
+        (update :actions conj (complete-action action new-state-id))
+        (update :states assoc new-state-id new-state)
+        (assoc :current-state-id new-state-id))))
+
+(defn apply-delete
+  "Apply delete operation to document"
+  [doc position length]
+  (let [old-content (:content doc)
+        new-content (str (subs old-content 0 position)
+                         (subs old-content (+ position length)))
+        new-version (inc (:local-version doc))
+        op (make-delete-op (:agent-id doc) position length
+                          (System/currentTimeMillis) new-version)
+        action (make-action :delete {:position position :length length}
+                           (:current-state-id doc))
+        new-state-id (inc (:current-state-id doc))
+        new-state (make-ewig-state new-state-id new-content
+                                   (:current-state-id doc) "delete")]
+    (-> doc
+        (assoc :content new-content)
+        (assoc :local-version new-version)
+        (update :pending-ops conj op)
+        (update :actions conj (complete-action action new-state-id))
+        (update :states assoc new-state-id new-state)
+        (assoc :current-state-id new-state-id))))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Materialization: S-Expression Tree
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defn materialize-document
+  "Materialize document as colored S-expression tree"
+  [doc seed]
+  (let [states-sexp (make-colored-sexp
+                      :states
+                      (vec (map-indexed
+                             (fn [i [id state]]
+                               (state->sexp state seed (+ 1000 i)))
+                             (:states doc)))
+                      seed
+                      0
+                      TAP-VERIFY)
+        actions-sexp (make-colored-sexp
+                       :actions
+                       (vec (map-indexed
+                              (fn [i action]
+                                (action->sexp action seed (+ 2000 i)))
+                              (:actions doc)))
+                       seed
+                       1
+                       TAP-LIVE)
+        pending-sexp (make-colored-sexp
+                       :pending
+                       (vec (map-indexed
+                              (fn [i op]
+                                (op->sexp op seed (+ 3000 i)))
+                              (:pending-ops doc)))
+                       seed
+                       2
+                       TAP-BACKFILL)]
+    (make-colored-sexp
+      :document
+      [(:id doc) states-sexp actions-sexp pending-sexp]
+      seed
+      0
+      TAP-LIVE)))
+
+(defn materialize-with-fork
+  "Materialize document with fork/continue event"
+  [doc seed decision]
+  (let [doc-sexp (materialize-document doc seed)
+        fork-event (fork-sexp doc-sexp seed)
+        continue-event (continue-fork fork-event decision)
+        verified? (execute-instruction continue-event)]
+    {:document doc-sexp
+     :fork fork-event
+     :continue continue-event
+     :verified? verified?
+     :instruction (:instruction continue-event)}))
+
+; ═══════════════════════════════════════════════════════════════════════════════
+; Demo
+; ═══════════════════════════════════════════════════════════════════════════════
+
+(defn demo []
+  (println "")
+  (println "================================================================")
+  (println "  CRDT S-Expression Ewig Materialization (jank-lang)")
+  (println "  TAP Control: Backfill(-1) | Verify(0) | Live(+1)")
+  (println "================================================================")
+  (println "")
+
+  (let [seed 0x42D  ; 1069
+        agent-id "jank-demo-agent"
+
+        ; Create document
+        doc (make-document "doc-001" agent-id "Hello")
+        _ (println "1. Created document:" (:id doc))
+        _ (println "   Content:" (:content doc))
+
+        ; Apply some edits
+        doc (apply-insert doc 5 ", World!")
+        _ (println "")
+        _ (println "2. After insert:")
+        _ (println "   Content:" (:content doc))
+        _ (println "   Version:" (:local-version doc))
+
+        doc (apply-delete doc 5 2)
+        _ (println "")
+        _ (println "3. After delete:")
+        _ (println "   Content:" (:content doc))
+
+        ; Materialize as S-expression
+        doc-sexp (materialize-document doc seed)
+        _ (println "")
+        _ (println "4. Materialized S-expression:")
+        _ (println "  " (sexp->string doc-sexp))
+
+        ; Fork/Continue with verification
+        result (materialize-with-fork doc seed TAP-VERIFY)
+        _ (println "")
+        _ (println "5. Fork/Continue Event:")
+        _ (println "   Decision: VERIFY (0)")
+        _ (println "   Instruction:" (:instruction result))
+        _ (println "   Verified?:" (:verified? result))
+
+        ; Show state colors
+        _ (println "")
+        _ (println "6. State Colors (SPI):")
+        _ (doseq [[id state] (:states doc)]
+            (let [color (:color state)
+                  polarity (hue->polarity (:H color))]
+              (println (str "   State " id ": H=" (int (:H color))
+                           " -> " (name polarity)))))]
+
+    (println "")
+    (println "================================================================")
+    (println "  Ersatz Emacs + Ewig semantics materialized in jank-lang")
+    (println "================================================================")))
+
+(defn -main [& args]
+  (demo))
