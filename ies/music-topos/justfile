@@ -604,13 +604,52 @@ parallel-fork-plurigrid:
     @echo "  All states preserved in /tmp/plurigrid-forks.duckdb"
     @echo "  Enables time-travel: recover state at any moment"
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# WORLD BROADCAST: Word Models ↔ World Models
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Start world broadcast (default: Ramanujan ⊗ Grothendieck ⊗ Euler)
+world-broadcast:
+    ruby -I lib -r world_broadcast -e "WorldBroadcast.world"
+
+# World with custom mathematicians (ramanujan, grothendieck, euler, noether, conway, scholze)
+world-mathematicians m1 m2 m3:
+    ruby -I lib -r world_broadcast -e "WorldBroadcast.world(mathematicians: [:{{m1}}, :{{m2}}, :{{m3}}])"
+
+# World with extended steps
+world-extended steps="24":
+    ruby -I lib -r world_broadcast -e "WorldBroadcast.world(steps: {{steps}})"
+
+# World with Scholze (condensed perspective)
+world-condensed:
+    ruby -I lib -r world_broadcast -e "WorldBroadcast.world(mathematicians: [:scholze, :grothendieck, :noether])"
+
+# World quiet mode (returns sexps for piping)
+world-sexps:
+    ruby -I lib -r world_broadcast -e "puts WorldBroadcast.world(verbose: false).broadcast_sexps.join('\n')"
+
 # Help text
 help:
     #!/bin/bash
     echo "Music Topos Justfile - Quick Start Guide"
     echo ""
     echo "Single command to do everything:"
-    echo "  just world"
+    echo "  just world              (audio + SuperCollider setup)"
+    echo "  just world-broadcast    (math broadcasting only)"
+    echo ""
+    echo "WORLD BROADCAST (Word ↔ World Models):"
+    echo "  just world-broadcast    - Ramanujan ⊗ Grothendieck ⊗ Euler"
+    echo "  just world-condensed    - Scholze ⊗ Grothendieck ⊗ Noether"
+    echo "  just world-mathematicians ramanujan conway scholze"
+    echo "  just world-extended 24  - More epochs"
+    echo "  just world-sexps        - Output s-expressions only"
+    echo ""
+    echo "TRITWISE LETTER SPIRIT (3-Agent Color Matching):"
+    echo "  just tritwise           - Run tritwise demo"
+    echo ""
+    echo "LEAN4 FORMAL VERIFICATION:"
+    echo "  just lean4-build        - Build Lean4 proofs"
+    echo "  just lean4-run          - Run verified executable"
     echo ""
     echo "Individual commands:"
     echo "  just check-deps         - Verify all dependencies"
