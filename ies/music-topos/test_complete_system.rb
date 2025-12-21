@@ -215,8 +215,8 @@ begin
   renderer = SonicPiRenderer.new(use_osc: true)
 
   # Check if socket was successfully created
-  if renderer.instance_variable_get(:@socket)
-    puts "  ✓ OSC connection established (localhost:4557)"
+  if renderer.instance_variable_get(:@client)
+    puts "  ✓ OSC connection established (localhost:4559)"
     puts "    Ready to send commands to Sonic Pi"
     tests_passed += 1
   else
