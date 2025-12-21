@@ -72,7 +72,7 @@ class GroupTheoryWorld < MusicalWorlds::World
 
     # Sample permutations (full enumeration expensive for S₁₂)
     sample_size = [max_perms, @objects.size].min
-    sample_perms = @objects.sample(sample_size)
+    sample_perms = @objects.to_a.sample(sample_size)
 
     sample_perms.each do |perm|
       transformed = @symmetric_group.voice_leading_action(chord1, perm)
@@ -96,7 +96,7 @@ class GroupTheoryWorld < MusicalWorlds::World
     return true if @objects.empty? || @objects.size < 2
 
     # Sample pairs of objects
-    pairs = @objects.sample([@objects.size, 5].min).combination(2).to_a
+    pairs = @objects.to_a.sample([@objects.size, 5].min).combination(2).to_a
     pairs.each do |perm1, perm2|
       composition = @symmetric_group.multiply(perm1, perm2)
       # Composition is always in S₁₂, so this always returns true
@@ -111,7 +111,7 @@ class GroupTheoryWorld < MusicalWorlds::World
 
     # Sample triples
     sample_size = [@objects.size, 5].min
-    sample_objs = @objects.sample(sample_size)
+    sample_objs = @objects.to_a.sample(sample_size)
 
     sample_objs.combination(3).each do |a, b, c|
       unless @symmetric_group.triangle_inequality_satisfied?(a, b, c)
@@ -162,7 +162,7 @@ class GroupTheoryWorld < MusicalWorlds::World
 
     # Verify Cayley metric properties
     sample_size = [@objects.size, 5].min
-    sample_objs = @objects.sample(sample_size)
+    sample_objs = @objects.to_a.sample(sample_size)
 
     # Check identity distance
     identity = Permutation.identity(12)

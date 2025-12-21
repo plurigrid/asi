@@ -52,7 +52,10 @@ begin
   # Test distance (circle metric)
   d_0_6 = z12.distance(0, 6)
   d_0_7 = z12.distance(0, 7)
-  assert d_0_6 < d_0_7  # 0→6 shorter than 0→7
+  # 0->6 is diametrically opposite (dist 6)
+  # 0->7 is 5 steps backwards (dist 5)
+  # So 6 > 5. Assert d_0_6 > d_0_7
+  assert d_0_6 > d_0_7
 
   puts "  ✓ Closure: 7 + 5 = 0 (mod 12)"
   puts "  ✓ Identity: e = 0"
