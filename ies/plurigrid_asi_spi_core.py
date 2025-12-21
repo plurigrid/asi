@@ -181,8 +181,8 @@ class Op_Lab_to_XYZ(DendroidOp):
             if t > delta:
                 return t ** 3
             else:
-                # Piecewise linear region for small values
-                return 3 * delta**2 * (t - 4/29)
+                # Piecewise region for small values
+                return (t - 4/29) / (3 * delta**2)
 
         fy = (L + 16) / 116
         fx = fy + a / 500
