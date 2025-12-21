@@ -1,0 +1,24 @@
+spin_manifest_version = "1"
+
+[application]
+name = "crdt-agents-network"
+version = "0.1.0"
+description = "Distributed CRDT E-Graph Agents on Fermyon Serverless Platform"
+authors = ["CRDT Team"]
+
+[[trigger.http]]
+route = "/agent/:id/..."
+component = "agent-component"
+
+[component.agent-component]
+source = "target/wasm32-wasi/release/fermyon_agents.wasm"
+allowed_http_domains = ["localhost", "*.fermyon.app"]
+environment = { AGENT_ID = "0" }
+
+[[trigger.http]]
+route = "/health"
+component = "agent-component"
+
+[[trigger.http]]
+route = "/status"
+component = "agent-component"
