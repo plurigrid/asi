@@ -533,6 +533,20 @@ continue-narrative:
     @echo "➡️ Continuing journey..."
     curl -X POST http://localhost:8080/narrative/continue
 
+# ============================================================================
+# ABDUCTIVE REPOSITORY ANALYSIS
+# GitHub + DuckDB + Matteo Capucci-style Abductive Reasoning
+# ============================================================================
+
+# Analyze repositories with abductive reasoning and color assignment
+github-analyze:
+    @echo "🔍 ABDUCTIVE REPOSITORY ANALYSIS"
+    @echo "   GitHub CLI + DuckDB + Abductive Reasoning"
+    @echo "   Cataloguing 'ducks' (repository entities)"
+    @echo "   Assigning world colors via abduction"
+    @echo ""
+    flox activate -- lein run -m music-topos.github-duckdb-analyzer 2>&1
+
 # Help text
 help:
     #!/bin/bash
