@@ -217,3 +217,16 @@ impl From<&ServerlessAgent> for AgentStateResponse {
 }
 
 pub use self::{AgentMessage, Color, CRDTEGraph, ENode, MessageType, ServerlessAgent, AgentStateResponse};
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// P0: Core Infrastructure Components
+// ═══════════════════════════════════════════════════════════════════════════════
+
+pub mod stream_red;
+pub mod stream_blue;
+pub mod stream_green;
+
+pub use stream_red::StreamRed;
+pub use stream_blue::StreamBlue;
+pub use stream_green::StreamGreen;
