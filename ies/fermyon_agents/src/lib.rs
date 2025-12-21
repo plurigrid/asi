@@ -230,3 +230,13 @@ pub mod stream_green;
 pub use stream_red::StreamRed;
 pub use stream_blue::StreamBlue;
 pub use stream_green::StreamGreen;
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// P1: Coordination Layer Components
+// ═══════════════════════════════════════════════════════════════════════════════
+
+pub mod agent_orchestrator;
+pub mod duck_colors;
+
+pub use agent_orchestrator::{OrchestrationState, AgentMetadata, RoundStatistics};
+pub use duck_colors::{ColorAssigner, Polarity};
