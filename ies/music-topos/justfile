@@ -1,0 +1,537 @@
+# Music Topos Justfile
+# Single command to setup and run: `just world`
+
+set shell := ["bash", "-c"]
+set dotenv-load := false
+
+# Default recipe
+default:
+    @just --list
+
+# Setup SuperCollider startup configuration
+setup-supercollider:
+    #!/bin/bash
+    set -e
+
+    SC_DIR="$HOME/Library/Application Support/SuperCollider"
+    SC_STARTUP="$SC_DIR/startup.scd"
+
+    echo "📁 Ensuring SuperCollider config directory exists..."
+    mkdir -p "$SC_DIR"
+
+    echo "📝 Installing startup.scd..."
+    cp startup.scd "$SC_STARTUP"
+    chmod 644 "$SC_STARTUP"
+
+    echo "✓ SuperCollider startup configuration installed"
+    echo "  Location: $SC_STARTUP"
+    ls -lh "$SC_STARTUP"
+
+# Check if SuperCollider server is running
+check-sc-server:
+    #!/bin/bash
+    if lsof -i :57110 > /dev/null 2>&1; then
+        echo "✓ SuperCollider server is running on port 57110"
+        return 0
+    else
+        echo "✗ SuperCollider server is NOT running on port 57110"
+        return 1
+    fi
+
+# Boot SuperCollider server (requires SuperCollider.app to be installed)
+boot-sc-server:
+    #!/bin/bash
+    set -e
+
+    echo "🎵 Booting SuperCollider server..."
+
+    SC_APP="/Applications/SuperCollider.app"
+    SCLANG="$SC_APP/Contents/MacOS/sclang"
+    SCSYNTH="$SC_APP/Contents/Resources/scsynth"
+
+    # Check if SuperCollider is installed
+    if [ ! -f "$SCSYNTH" ]; then
+        echo "✗ SuperCollider not found at $SCSYNTH"
+        echo ""
+        echo "Please install SuperCollider:"
+        echo "  1. Download from https://supercollider.github.io/downloads.html"
+        echo "  2. Install to /Applications/SuperCollider.app"
+        echo "  3. Run this justfile again"
+        exit 1
+    fi
+
+    # Boot using sclang with boot script (more reliable than direct scsynth)
+    # The boot script will define the sine synth and keep the server running
+    if [ -f "$SCLANG" ]; then
+        echo "Starting SuperCollider server via sclang (will load/define synths)..."
+
+        # Run the boot script with sclang
+        # Use nohup and redirect output to prevent sclang from hanging
+        nohup "$SCLANG" boot-server.scd > /tmp/sc_boot.log 2>&1 &
+        SC_PID=$!
+
+        echo "SuperCollider booting (PID: $SC_PID)..."
+        sleep 6  # Give sclang time to boot server and define synths
+    else
+        echo "Error: sclang not found at $SCLANG"
+        exit 1
+    fi
+
+    # Verify it's running
+    if lsof -i :57110 > /dev/null 2>&1; then
+        echo "✓ SuperCollider server booted successfully"
+        echo "  Server PID: $SC_PID"
+        echo "  To stop: killall sclang; killall scsynth"
+    else
+        echo "✗ Failed to boot SuperCollider server"
+        exit 1
+    fi
+
+# Verify dependencies are installed
+check-deps:
+    #!/bin/bash
+    set -e
+
+    echo "🔍 Checking dependencies..."
+
+    # Check Clojure/Leiningen via Flox
+    if ! which flox > /dev/null 2>&1; then
+        echo "✗ flox not found. Install from: https://flox.dev"
+        exit 1
+    fi
+    echo "✓ flox available"
+
+    # Check if leiningen works via flox
+    if ! flox activate -- lein --version > /dev/null 2>&1; then
+        echo "✗ leiningen not available in flox environment"
+        exit 1
+    fi
+    echo "✓ leiningen available"
+
+    # Check SuperCollider
+    SC_SYNTH="/Applications/SuperCollider.app/Contents/Resources/scsynth"
+    if [ ! -f "$SC_SYNTH" ]; then
+        echo "✗ scsynth not found at $SC_SYNTH"
+        echo "Install SuperCollider from: https://supercollider.github.io/downloads.html"
+        exit 1
+    fi
+    echo "✓ scsynth available at $SC_SYNTH"
+
+    echo ""
+    echo "✓ All dependencies present"
+
+# Build the Clojure project
+build:
+    #!/bin/bash
+    set -e
+
+    echo "🔨 Building Music Topos..."
+    flox activate -- lein uberjar 2>&1 | tail -20
+
+    if [ -f "target/music-topos-0.1.0-standalone.jar" ]; then
+        echo "✓ Build successful"
+        ls -lh target/music-topos-0.1.0-standalone.jar
+    else
+        echo "✗ Build failed"
+        exit 1
+    fi
+
+# Run InitialObjectWorld
+run-initial:
+    #!/bin/bash
+    set -e
+
+    echo ""
+    echo "🎵 Running InitialObjectWorld..."
+    echo "═══════════════════════════════════════════"
+    echo ""
+
+    flox activate -- lein run initial
+
+# Run TerminalObjectWorld
+run-terminal:
+    #!/bin/bash
+    set -e
+
+    echo ""
+    echo "🎼 Running TerminalObjectWorld..."
+    echo "═══════════════════════════════════════════"
+    echo ""
+
+    flox activate -- lein run terminal
+
+# Show system audio configuration (macOS)
+check-audio:
+    #!/bin/bash
+
+    echo "🔊 Checking system audio configuration..."
+    echo ""
+
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "📱 Output Devices:"
+        audiodevicelist 2>/dev/null | grep -i "Built-in Output" || \
+            system_profiler SPAudioDataType 2>/dev/null | head -20 || \
+            echo "  (Use System Preferences → Sound to configure)"
+
+        echo ""
+        echo "🔉 Current Volume:"
+        osascript -e 'output volume of (get volume settings)' 2>/dev/null || echo "  (Use System Preferences to adjust)"
+    else
+        echo "⚠️  Audio checking only implemented for macOS"
+        echo "Please verify audio output in your system settings"
+    fi
+
+# Kill any running SuperCollider processes
+stop-sc:
+    #!/bin/bash
+
+    echo "Stopping SuperCollider servers..."
+    killall scsynth 2>/dev/null || echo "No scsynth processes running"
+    killall sclang 2>/dev/null || echo "No sclang processes running"
+
+    sleep 1
+    echo "✓ SuperCollider stopped"
+
+# Show logs from last run
+logs:
+    #!/bin/bash
+
+    if [ -f ".music-topos-run.log" ]; then
+        cat .music-topos-run.log
+    else
+        echo "No log file found. Run 'just world' first."
+    fi
+
+# Complete setup and execution pipeline
+world:
+    #!/bin/bash
+    set -e
+
+    clear
+
+    echo "🌍 Music Topos - Complete World Setup"
+    echo "════════════════════════════════════════════════════════════════"
+    echo ""
+
+    # Step 1: Check dependencies
+    echo "Step 1/7: Checking dependencies..."
+    echo "─────────────────────────────────────────────────────────────────"
+    just check-deps
+    echo ""
+
+    # Step 2: Setup SuperCollider configuration (BEFORE booting!)
+    echo "Step 2/7: Setting up SuperCollider..."
+    echo "─────────────────────────────────────────────────────────────────"
+    just setup-supercollider
+    echo ""
+
+    # Stop any existing SuperCollider server to ensure clean boot with startup.scd
+    echo "Stopping any existing SuperCollider servers..."
+    killall scsynth 2>/dev/null || true
+    sleep 2
+
+    # Step 3: Check if SC is running, boot if needed
+    echo "Step 3/7: Booting SuperCollider server..."
+    echo "─────────────────────────────────────────────────────────────────"
+    just boot-sc-server
+    echo ""
+
+    # Step 4: Build project
+    echo "Step 4/7: Building Clojure project..."
+    echo "─────────────────────────────────────────────────────────────────"
+    just build
+    echo ""
+
+    # Step 5: Check audio
+    echo "Step 5/7: Checking audio configuration..."
+    echo "─────────────────────────────────────────────────────────────────"
+    just check-audio
+    echo ""
+
+    # Step 6: Run InitialObjectWorld
+    echo "Step 6/7: Playing InitialObjectWorld..."
+    echo "─────────────────────────────────────────────────────────────────"
+    just run-initial 2>&1 | tee -a .music-topos-run.log
+    echo ""
+
+    # Step 7: Run TerminalObjectWorld
+    echo "Step 7/7: Playing TerminalObjectWorld..."
+    echo "─────────────────────────────────────────────────────────────────"
+    just run-terminal 2>&1 | tee -a .music-topos-run.log
+    echo ""
+
+    # Final summary
+    echo "════════════════════════════════════════════════════════════════"
+    echo "✓ Music Topos World Complete!"
+    echo ""
+    echo "What you should have heard:"
+    echo "  • InitialObjectWorld: Initial pitch → all pitches → harmonic functions → modulation"
+    echo "  • TerminalObjectWorld: Exposition → development → recapitulation → coda"
+    echo ""
+    echo "If no sound was heard:"
+    echo "  1. Check system audio output is enabled"
+    echo "  2. Check speakers/headphones are connected"
+    echo "  3. Run: just check-audio"
+    echo "  4. Check SuperCollider startup.scd loaded:"
+    echo "       ls ~/Library/Application\ Support/SuperCollider/startup.scd"
+    echo ""
+    echo "To run individual worlds later:"
+    echo "  just run-initial    # Play InitialObjectWorld"
+    echo "  just run-terminal   # Play TerminalObjectWorld"
+    echo ""
+    echo "To stop SuperCollider:"
+    echo "  just stop-sc"
+    echo ""
+
+# Play curriculum in realtime via SuperCollider
+curriculum-realtime world="initial":
+    ruby bin/play_curriculum.rb --mode realtime --world {{world}}
+
+# Render curriculum to WAV file  
+curriculum-wav world="initial":
+    ruby bin/play_curriculum.rb --mode batch --world {{world}}
+    afplay /tmp/curriculum.wav
+
+# Pattern Runs On Matter (Free Monad / Cofree Comonad architecture)
+# Based on Libkind & Spivak "Pattern Runs on Matter" (ACT 2024)
+pattern-realtime world="initial" tempo="90":
+    ruby bin/pattern_runs_on_matter.rb --mode realtime --world {{world}} --tempo {{tempo}} --verbose
+
+pattern-wav world="initial" tempo="90":
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world {{world}} --tempo {{tempo}} --output /tmp/pattern.wav
+
+# Full curriculum walkthrough using categorical semantics
+topos-walkthrough:
+    @echo "🎵 Walking through the Topos of Music"
+    @echo "   Pattern (Free Monad) runs on Matter (Cofree Comonad)"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world full --tempo 100
+
+# Virtuoso showcase: Daniel Avery, Loraine James, Machine Girl, Mica Levi, Quantum Guitar, CJ Carr
+virtuoso:
+    @echo "🎵 VIRTUOSO SHOWCASE"
+    @echo "   Daniel Avery × Loraine James × Machine Girl × Mica Levi × Quantum Guitar × CJ Carr"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world virtuoso --tempo 85 --output /tmp/virtuoso.wav
+
+# Individual artist styles
+avery:
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world virtuoso --tempo 75 --output /tmp/avery.wav
+
+# Dark industrial (Mica Levi / Xenakis mode)  
+dark:
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world full --tempo 60 --output /tmp/dark.wav
+
+# ============================================================================
+# QUANTUM APHEX TWIN & AUTECHRE
+# Free Monad patterns: polyrhythm, Markov chains, cellular automata
+# ============================================================================
+
+# Aphex Twin showcase: drill 'n' bass, ambient drift, prepared piano, equation melody
+aphex:
+    @echo "🎵 QUANTUM APHEX TWIN"
+    @echo "   Drill 'n' Bass × Ambient Drift × Prepared Piano × Equation Melody"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world aphex --tempo 140 --output /tmp/aphex.wav
+
+# Autechre showcase: generative rhythm, cellular automata, spectral morph, anti-groove
+autechre:
+    @echo "🎵 QUANTUM AUTECHRE"
+    @echo "   Generative Rhythm × Cellular Automata × Spectral Morph × Anti-Groove"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world autechre --tempo 100 --output /tmp/autechre.wav
+
+# Full quantum electronic showcase (Aphex + Autechre + collision)
+quantum-electronic:
+    @echo "🎵 QUANTUM ELECTRONIC SHOWCASE"
+    @echo "   Aphex Twin × Autechre × Category Theory"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world quantum-electronic --tempo 120 --output /tmp/quantum-electronic.wav
+
+# Individual Aphex patterns
+aphex-drill:
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world aphex --tempo 160 --output /tmp/aphex-drill.wav
+
+aphex-ambient:
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world aphex --tempo 60 --output /tmp/aphex-ambient.wav
+
+# Individual Autechre patterns  
+autechre-generative:
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world autechre --tempo 90 --output /tmp/autechre-gen.wav
+
+autechre-cellular:
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world autechre --tempo 80 --output /tmp/autechre-ca.wav
+
+# ============================================================================
+# MAXIMUM DYNAMISM
+# Every degree of freedom derangeable with entropy
+# ============================================================================
+
+# Maximum dynamism demo (subtle → moderate → chaotic → maximum)
+max-dynamism:
+    @echo "🎲 MAXIMUM DYNAMISM"
+    @echo "   Every DOF derangeable with entropy"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world max-dynamism --tempo 120 --output /tmp/max-dynamism.wav
+
+# Maximum dynamism Aphex Twin (drill 'n' bass with full chaos)
+max-aphex:
+    @echo "🎲 MAXIMUM APHEX TWIN"
+    @echo "   Levy flights × Chaotic durations × Structural derangement"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world max-aphex --tempo 150 --output /tmp/max-aphex.wav
+
+# Maximum dynamism Autechre (generative with brownian pitch, irrational time)
+max-autechre:
+    @echo "🎲 MAXIMUM AUTECHRE"
+    @echo "   Brownian pitch × Chaotic duration × Self-modifying meta"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world max-autechre --tempo 95 --output /tmp/max-autechre.wav
+
+# Chaos comparison: same pattern with increasing entropy
+chaos-spectrum:
+    @echo "🎲 CHAOS SPECTRUM: Subtle → Moderate → Chaotic → Maximum"
+    @echo ""
+    @for level in subtle moderate chaotic maximum; do \
+        echo "=== $$level ===" ; \
+        ruby -Ilib -e "require 'maximum_dynamism'; require 'free_monad'; puts MaximumDynamism::DerangementConfig.$$level.pitch.intensity" ; \
+    done
+
+# ============================================================================
+# INDUSTRIAL JUNGLE SELF-INVOLUTION
+# ι: UIState → UIState | ι∘ι → id (fixed point)
+# Non-standard tempo, breakbeat chaos, half-time bass
+# ============================================================================
+
+# Full jungle involution showcase (3 phases of evolution)
+jungle:
+    @echo "🥁 INDUSTRIAL JUNGLE SELF-INVOLUTION"
+    @echo "   ι: UIState → UIState | Trifurcate → Evaluate → Argmax"
+    @echo "   Tempo: 172 BPM with drift | Breakbeat + Reese Bass"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world jungle --tempo 172 --output /tmp/jungle.wav
+
+# Quick jungle (single evolution pass)
+jungle-quick:
+    @echo "🥁 QUICK JUNGLE"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world jungle-quick --tempo 172 --output /tmp/jungle-quick.wav
+
+# Jungle at different tempos
+jungle-slow:
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world jungle-quick --tempo 140 --output /tmp/jungle-slow.wav
+
+jungle-fast:
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world jungle-quick --tempo 185 --output /tmp/jungle-fast.wav
+
+# ============================================================================
+# GAY.JL NEVERENDING PRODUCTIONS
+# Color transitions guide infinite music
+# φ: γ=2⁶⁴/φ → hue+=137.508° → spiral forever → never repeat → always return
+# ============================================================================
+
+# Full neverending showcase (all styles)
+neverending:
+    @echo "🌈 NEVERENDING PRODUCTIONS"
+    @echo "   Gay.jl Color Transitions → Infinite Music"
+    @echo "   φ: hue += 137.508° per step"
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world neverending --tempo 90 --output /tmp/neverending.wav
+
+# Individual color-guided styles
+gay-drone:
+    @echo "🌈 GAY DRONE (64 beats)"
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world gay-drone --tempo 40 --output /tmp/gay-drone.wav
+
+gay-ambient:
+    @echo "🌈 GAY AMBIENT (48 beats)"
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world gay-ambient --tempo 60 --output /tmp/gay-ambient.wav
+
+gay-idm:
+    @echo "🌈 GAY IDM (32 beats)"
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world gay-idm --tempo 145 --output /tmp/gay-idm.wav
+
+gay-jungle:
+    @echo "🌈 GAY JUNGLE (24 beats)"
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world gay-jungle --tempo 172 --output /tmp/gay-jungle.wav
+
+gay-industrial:
+    @echo "🌈 GAY INDUSTRIAL (32 beats)"
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world gay-industrial --tempo 130 --output /tmp/gay-industrial.wav
+
+# Print color guide (no audio, just show mappings)
+color-guide:
+    @ruby -Ilib -e "require 'gay_neverending'; GayNeverending::Showcase.print_color_guide(n: 30, seed: 42)"
+
+# ============================================================================
+# ONEOHTRIX POINT NEVER TRANSCENDENTAL PATTERNS
+# 17-component parallel architecture for hyperreal electronic music
+# ============================================================================
+
+# Full transcendental piece (all 17 components layered)
+opn-transcendental:
+    @echo "🌌 OPN TRANSCENDENTAL"
+    @echo "   17 parallel components: Granular + Drone + Harmony + Glitch + Spectral..."
+    @echo ""
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world opn-transcendental --tempo 72 --output /tmp/opn-transcendental.wav
+
+# Garden of Delete style (uncanny MIDI orchestra + vocoder + glitch)
+opn-garden:
+    @echo "🌌 OPN: GARDEN OF DELETE"
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world opn-garden --tempo 85 --output /tmp/opn-garden.wav
+
+# R Plus Seven style (granular + MIDI orchestration + collage)
+opn-rplus7:
+    @echo "🌌 OPN: R PLUS SEVEN"
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world opn-rplus7 --tempo 60 --output /tmp/opn-rplus7.wav
+
+# Age Of style (vocal + polyrhythm + eccojam)
+opn-ageof:
+    @echo "🌌 OPN: AGE OF"
+    ruby bin/pattern_runs_on_matter.rb --mode batch --world opn-ageof --tempo 90 --output /tmp/opn-ageof.wav
+
+# List all OPN components
+opn-components:
+    @echo "OPN Transcendental Components (17):"
+    @ls -1 lib/opn/*.rb | xargs -I{} basename {} .rb | sort
+
+# ============================================================================
+# FREE MONAD / COFREE COMONAD PATTERN TEST (Initial Push)
+# ============================================================================
+
+# Test Free Monad (Pattern) and Cofree Comonad (Matter) architecture
+monad:
+    @echo "🔄 FREE MONAD / COFREE COMONAD ARCHITECTURE TEST"
+    @echo "   Pattern Runs on Matter (Libkind & Spivak, ACT 2024)"
+    @echo ""
+    ruby -Ilib bin/pattern_runs_on_matter.rb --mode batch --world initial --tempo 90 --output /tmp/monad-test.wav
+    @echo ""
+    @echo "✓ Monad pattern test complete: /tmp/monad-test.wav"
+
+# Help text
+help:
+    #!/bin/bash
+    echo "Music Topos Justfile - Quick Start Guide"
+    echo ""
+    echo "Single command to do everything:"
+    echo "  just world"
+    echo ""
+    echo "Individual commands:"
+    echo "  just check-deps         - Verify all dependencies"
+    echo "  just setup-supercollider - Install startup.scd configuration"
+    echo "  just boot-sc-server     - Start SuperCollider server"
+    echo "  just check-sc-server    - Verify SuperCollider is running"
+    echo "  just build              - Build Clojure project"
+    echo "  just check-audio        - Check system audio setup"
+    echo "  just run-initial        - Play InitialObjectWorld"
+    echo "  just run-terminal       - Play TerminalObjectWorld"
+    echo "  just stop-sc            - Stop SuperCollider"
+    echo "  just logs               - Show run logs"
+    echo ""
+    echo "Recommended workflow:"
+    echo "  1. just world           (does everything)"
+    echo "  2. Listen for sound"
+    echo "  3. If no sound: just check-audio"
+    echo "  4. Adjust system audio settings"
+    echo "  5. Re-run: just run-initial"
+    echo ""
