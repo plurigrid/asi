@@ -139,13 +139,16 @@ Options:
   [files]
   (println "\n🔍 DRY RUN: Would apply following changes:\n")
   (doseq [file files
-          :let [original (fs/read-all-lines file)
+          :let [content (fs/read-all-bytes file)
+                original-str (String. content "UTF-8")
                 refactored (refactor-file file)]]
-    (when (not= original refactored)
+    (when (not= original-str refactored)
       (println (format "📝 %s" file))
       (println "   Diff (sample):")
-      (println "   - " (first (str/split-lines original)))
-      (println "   + " (first (str/split-lines refactored)))
+      (let [orig-lines (str/split-lines original-str)
+            refac-lines (str/split-lines refactored)]
+        (println "   - " (first orig-lines))
+        (println "   + " (first refac-lines)))
       (println))))
 
 ;; ============================================================================
