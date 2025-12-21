@@ -508,6 +508,31 @@ monad:
     @echo ""
     @echo "✓ Monad pattern test complete: /tmp/monad-test.wav"
 
+# ============================================================================
+# NARRATIVE FORK ENGINE
+# Biff + HTMX + Gay.jl Color Palette with Maximum Entropy Interaction
+# ============================================================================
+
+# Run the interactive narrative fork engine (Biff + HTMX)
+fork-engine:
+    @echo "🌈 NARRATIVE FORK ENGINE"
+    @echo "   Biff + HTMX + Gay.jl Color Palette"
+    @echo "   Two actions: Fork Reality & Continue"
+    @echo "   Maximum interaction entropy with Therm & Hyjax"
+    @echo ""
+    @echo "Starting server on http://localhost:8080"
+    flox activate -- lein run -m music-topos.biff-app 2>&1
+
+# Fork reality (single action)
+fork:
+    @echo "🌀 Forking reality..."
+    curl -X POST http://localhost:8080/narrative/fork
+
+# Continue (single action)
+continue-narrative:
+    @echo "➡️ Continuing journey..."
+    curl -X POST http://localhost:8080/narrative/continue
+
 # Help text
 help:
     #!/bin/bash
