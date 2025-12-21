@@ -5,7 +5,6 @@
    Replaces gay_colo hardcoding with maximally parallel fork capability."
   (:require [clojure.core.async :as async]
             [clojure.java.shell :as shell]
-            [jsonista.core :as json]
             [clojure.string :as str]))
 
 ;; ============================================================================
@@ -101,8 +100,9 @@ CREATE TABLE IF NOT EXISTS ternary_negotiations (
   "Freeze color fork state at current moment in DuckDB"
   [db-path fork-id fork-state]
   (let [timeline-id (str "TL-" (System/currentTimeMillis) "-" fork-id)
+        state-str (pr-str fork-state)
         query (str "INSERT INTO fork_timeline (timeline_id, fork_id, state, frozen_at)
-                   VALUES ('" timeline-id "', '" fork-id "', '" (json/write-str fork-state) "', NOW());")]
+                   VALUES ('" timeline-id "', '" fork-id "', '" state-str "', NOW());")]
     (shell/sh "duckdb" db-path query)
     {:timeline-id timeline-id :fork-id fork-id}))
 
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS ternary_negotiations (
     (-> (shell/sh "duckdb" db-path query)
         :out
         (str/trim)
-        (json/read-str))))
+        (read-string))))
 
 ;; ============================================================================
 ;; PART 3: Parallel Color Generation (SPI-Compliant)
