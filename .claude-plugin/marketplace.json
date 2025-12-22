@@ -1,0 +1,59 @@
+{
+  "name": "asi-skills",
+  "owner": {
+    "name": "Plurigrid",
+    "email": "barton@topos.institute"
+  },
+  "metadata": {
+    "description": "ASI Skills: Arena Protocol, GF(3) Color Generation, Compositional Game Theory",
+    "version": "1.4.0",
+    "repository": "https://github.com/plurigrid/asi"
+  },
+  "plugins": [
+    {
+      "name": "asi-skills",
+      "description": "Tripartite agent skills with GF(3) conservation for parallel execution",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/unwiring-arena",
+        "./skills/gay-mcp",
+        "./skills/triad-interleave",
+        "./skills/bisimulation-game",
+        "./skills/acsets",
+        "./skills/world-hopping",
+        "./skills/spi-parallel-verify",
+        "./skills/skill-dispatch",
+        "./skills/cognitive-surrogate",
+        "./skills/agent-o-rama",
+        "./skills/atproto-ingest",
+        "./skills/entropy-sequencer",
+        "./skills/influence-propagation",
+        "./skills/duckdb-timetravel",
+        "./skills/polyglot-spi",
+        "./skills/pulse-mcp-stream",
+        "./skills/abductive-repl",
+        "./skills/duckdb-ies",
+        "./skills/uv-oneliners",
+        "./skills/og"
+      ]
+    }
+  ],
+  "tripartite_agents": {
+    "minus": {
+      "trit": -1,
+      "hue": 270,
+      "skills": ["bisimulation-game", "spi-parallel-verify", "polyglot-spi"]
+    },
+    "ergodic": {
+      "trit": 0,
+      "hue": 180,
+      "skills": ["unwiring-arena", "acsets", "skill-dispatch", "entropy-sequencer"]
+    },
+    "plus": {
+      "trit": 1,
+      "hue": 30,
+      "skills": ["gay-mcp", "triad-interleave", "world-hopping", "agent-o-rama"]
+    }
+  }
+}
