@@ -210,11 +210,176 @@ measure q[1] -> c[1];
         code
     }
 
-    /// Generate LLVM IR code for rewrite rule (future)
-    fn codegen_rule_llvm(&mut self, _rule: &RewriteRule) -> String {
-        let code = "; LLVM IR generation not yet implemented".to_string();
+    /// Generate LLVM IR code for rewrite rule
+    fn codegen_rule_llvm(&mut self, rule: &RewriteRule) -> String {
+        let source_expr = self.expr_to_llvm(&rule.source);
+        let target_expr = self.expr_to_llvm(&rule.target);
+        let conditions = self.conditions_to_llvm(&rule.conditions);
+        let constraint_check = self.constraint_check_llvm(&rule.conditions);
+
+        let code = format!(
+            r#"; LLVM IR for pattern rewrite rule
+; Defines function to match and apply transformation
+
+; Type definitions
+%Pattern = type {{ i32, i8*, i8* }}
+%Result = type {{ i32, %Pattern* }}
+
+; Constraint checking function
+define internal i1 @check_constraints(%Pattern* %source) {{
+entry:
+  ; Check all constraints on source pattern
+{}
+  ret i1 1
+}}
+
+; Pattern transformation function
+define internal %Pattern* @transform_pattern(%Pattern* %source, %Pattern* %target) {{
+entry:
+  ; Load source fields
+  %source_tag = getelementptr inbounds %Pattern, %Pattern* %source, i32 0, i32 0
+  %tag = load i32, i32* %source_tag
+
+  ; Allocate target pattern
+  %result = call i8* @malloc(i64 32)
+  %result_pattern = bitcast i8* %result to %Pattern*
+
+  ; Store transformation result
+  %target_tag = getelementptr inbounds %Pattern, %Pattern* %target, i32 0, i32 0
+  %target_value = load i32, i32* %target_tag
+  %result_tag = getelementptr inbounds %Pattern, %Pattern* %result_pattern, i32 0, i32 0
+  store i32 %target_value, i32* %result_tag
+
+  ret %Pattern* %result_pattern
+}}
+
+; Main rewrite rule application function
+define i32 @apply_rewrite(%Pattern* %source, %Pattern* %target) {{
+entry:
+  ; Check constraints
+  %cond = call i1 @check_constraints(%Pattern* %source)
+  br i1 %cond, label %match, label %nomatch
+
+match:
+  ; Apply transformation
+  %transformed = call %Pattern* @transform_pattern(%Pattern* %source, %Pattern* %target)
+  ret i32 1
+
+nomatch:
+  ; Pattern did not match
+  ret i32 0
+}}
+
+; Pattern expression: {}
+; Transformation rules:
+;   Source: {}
+;   Target: {}
+;   Constraints: {}
+"#,
+            constraint_check, source_expr, target_expr, conditions
+        );
+
         self.generated_code.push(code.clone());
         code
+    }
+
+    /// Convert pattern expression to LLVM IR code
+    fn expr_to_llvm(&self, expr: &PatternExpr) -> String {
+        match expr {
+            PatternExpr::Var(name) => format!("  ; Variable: {}", name),
+            PatternExpr::Op { name, args } => {
+                let arg_count = args.len();
+                format!(
+                    "  ; Operator: {} with {} arguments",
+                    name, arg_count
+                )
+            }
+            PatternExpr::Compose(f, g) => {
+                let f_code = self.expr_to_llvm(f);
+                let g_code = self.expr_to_llvm(g);
+                format!(
+                    "  ; Composition:\n{}\n{}",
+                    f_code, g_code
+                )
+            }
+            PatternExpr::Identity => "  ; Identity pattern".to_string(),
+        }
+    }
+
+    /// Convert constraints to LLVM IR code
+    fn conditions_to_llvm(&self, constraints: &[Constraint]) -> String {
+        if constraints.is_empty() {
+            "No constraints".to_string()
+        } else {
+            constraints
+                .iter()
+                .enumerate()
+                .map(|(i, c)| {
+                    match c {
+                        Constraint::ColorMustBe(var, color) => {
+                            format!("  ; Constraint {}: {} must be {:?}", i, var, color)
+                        }
+                        Constraint::ColorNot(var, color) => {
+                            format!("  ; Constraint {}: {} must not be {:?}", i, var, color)
+                        }
+                        Constraint::NotEqual(v1, v2) => {
+                            format!("  ; Constraint {}: {} ≠ {}", i, v1, v2)
+                        }
+                        Constraint::ParentOf(parent, child) => {
+                            format!("  ; Constraint {}: {} is parent of {}", i, parent, child)
+                        }
+                    }
+                })
+                .collect::<Vec<_>>()
+                .join("\n")
+        }
+    }
+
+    /// Generate LLVM IR constraint checking code
+    fn constraint_check_llvm(&self, constraints: &[Constraint]) -> String {
+        if constraints.is_empty() {
+            "  ; No constraints to check\n  br label %end\n\nend:".to_string()
+        } else {
+            let checks = constraints
+                .iter()
+                .enumerate()
+                .map(|(i, c)| {
+                    match c {
+                        Constraint::ColorMustBe(var, _color) => {
+                            format!(
+                                "  ; Check {}: color equality\n  %check{} = icmp eq i32 %color_{}, 1\n  br i1 %check{}, label %check{}, label %fail",
+                                i, i, var, i, i + 1
+                            )
+                        }
+                        Constraint::NotEqual(v1, v2) => {
+                            format!(
+                                "  ; Check {}: inequality of {} and {}\n  %check{} = icmp ne i32 %var_{}, %var_{}\n  br i1 %check{}, label %check{}, label %fail",
+                                i, v1, v2, i, v1, v2, i, i + 1
+                            )
+                        }
+                        Constraint::ColorNot(var, _color) => {
+                            format!(
+                                "  ; Check {}: color inequality\n  %check{} = icmp ne i32 %color_{}, 1\n  br i1 %check{}, label %check{}, label %fail",
+                                i, i, var, i, i + 1
+                            )
+                        }
+                        Constraint::ParentOf(parent, child) => {
+                            format!(
+                                "  ; Check {}: {} contains {}\n  %check{} = icmp sgt i32 %children_{}, 0\n  br i1 %check{}, label %check{}, label %fail",
+                                i, parent, child, i, parent, i, i + 1
+                            )
+                        }
+                    }
+                })
+                .collect::<Vec<_>>()
+                .join("\n\n");
+
+            format!(
+                "{}\n\ncheck{}:\n  ret i1 1\n\nfail:\n  ret i1 0",
+                checks,
+                constraints.len()
+            )
+        }
     }
 
     /// Convert pattern expression to Rust code
@@ -606,7 +771,63 @@ mod tests {
         );
 
         let code = transducer.codegen_rule(&rule, CodegenTarget::LLVM);
-        assert!(code.contains("LLVM"));
+
+        // Verify LLVM IR syntax elements
+        assert!(code.contains("; LLVM IR for pattern rewrite rule"));
+        assert!(code.contains("%Pattern = type { i32, i8*, i8* }"));
+        assert!(code.contains("define internal i1 @check_constraints"));
+        assert!(code.contains("define internal %Pattern* @transform_pattern"));
+        assert!(code.contains("define i32 @apply_rewrite"));
+        assert!(code.contains("entry:"));
+        assert!(code.contains("br i1 %cond"));
+        assert!(code.contains("label %match"));
+        assert!(code.contains("label %nomatch"));
+        assert!(code.contains("call i8* @malloc"));
+        assert!(code.contains("getelementptr"));
+        assert!(code.contains("load i32"));
+        assert!(code.contains("store i32"));
+        assert!(code.contains("ret i32"));
+    }
+
+    #[test]
+    fn test_codegen_rule_llvm_with_constraints() {
+        let mut transducer = Transducer::new();
+
+        let rule = RewriteRule::new(
+            PatternExpr::Var("source".to_string()),
+            PatternExpr::Var("target".to_string()),
+        )
+        .with_color_constraint("source".to_string(), Color::Red);
+
+        let code = transducer.codegen_rule(&rule, CodegenTarget::LLVM);
+
+        // Verify constraint checking is present
+        assert!(code.contains("icmp eq i32"));
+        assert!(code.contains("check_constraints"));
+        assert!(code.contains("Constraint: source must be"));
+    }
+
+    #[test]
+    fn test_llvm_expr_conversion() {
+        let transducer = Transducer::new();
+
+        // Test variable conversion
+        let var = PatternExpr::Var("x".to_string());
+        let var_code = transducer.expr_to_llvm(&var);
+        assert!(var_code.contains("Variable: x"));
+
+        // Test operator conversion
+        let op = PatternExpr::Op {
+            name: "compose".to_string(),
+            args: vec![],
+        };
+        let op_code = transducer.expr_to_llvm(&op);
+        assert!(op_code.contains("Operator: compose"));
+
+        // Test identity conversion
+        let id = PatternExpr::Identity;
+        let id_code = transducer.expr_to_llvm(&id);
+        assert!(id_code.contains("Identity pattern"));
     }
 
     #[test]
