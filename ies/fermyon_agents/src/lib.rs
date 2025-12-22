@@ -246,3 +246,11 @@ pub use duck_colors::{ColorAssigner, Polarity as ColorPolarity};
 pub use transduction_2tdx::{Transducer, RewriteRule, TopologicalPattern, PatternExpr, Polarity as RewritePolarity};
 pub use interaction_timeline::{InteractionTimeline, TimelineEvent, EventType, MessageFlow, PerformanceMetrics};
 pub use dashboard::{Dashboard, AgentDashboardData, NetworkDashboardData, PerformanceDashboardData};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// P1+: Quantum Integration (QASM)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+pub mod qasm_integration;
+
+pub use qasm_integration::{QuantumGate, HybridCircuit, QasmTransducer, CircuitInstruction};
