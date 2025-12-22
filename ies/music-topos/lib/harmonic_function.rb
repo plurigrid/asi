@@ -149,6 +149,85 @@ class HarmonicFunction
     }
   end
 
+  # =========================================================================
+  # Color-Based Harmonic Function Analysis
+  # Maps LCH color hue zones to harmonic functions
+  # =========================================================================
+
+  # Analyze harmonic function from color (primarily hue)
+  # Hue zones map to T/S/D functional harmony:
+  # T (Tonic):      330-90°  (reds, warm, stable)
+  # S (Subdominant): 90-210° (greens, cool, motion)
+  # D (Dominant):   210-330° (blues, active, tension)
+  def self.color_to_function(color)
+    # Extract hue from color (Hash or object with .H accessor)
+    hue = case color
+           when Hash
+             color[:H] || color['H'] || 0
+           else
+             color.H || 0
+           end
+
+    # Map hue to functional zone
+    case hue
+    when 330...360, 0...90     # Red-orange: Tonic (home)
+      TONIC
+    when 90...210              # Green-cyan: Subdominant (motion)
+      SUBDOMINANT
+    when 210...330             # Blue-purple: Dominant (tension)
+      DOMINANT
+    else
+      TONIC  # Default fallback
+    end
+  end
+
+  # Analyze a sequence of colors and return functional progression
+  def self.color_sequence_analysis(colors)
+    functions = colors.map { |color| color_to_function(color) }
+    closure = functional_closure_from_functions(functions)
+
+    {
+      functions: functions,
+      closure: closure,
+      has_authentic_cadence: functions.length >= 2 && functions[-2] == DOMINANT && functions[-1] == TONIC,
+      has_plagal_cadence: functions.length >= 2 && functions[-2] == SUBDOMINANT && functions[-1] == TONIC,
+      progression_type: classify_progression(functions)
+    }
+  end
+
+  private
+
+  def self.functional_closure_from_functions(functions)
+    has_tonic = functions.include?(TONIC)
+    has_subdominant = functions.include?(SUBDOMINANT)
+    has_dominant = functions.include?(DOMINANT)
+
+    {
+      complete: has_tonic && has_subdominant && has_dominant,
+      tonic: has_tonic,
+      subdominant: has_subdominant,
+      dominant: has_dominant,
+      function_count: functions.uniq.length
+    }
+  end
+
+  def self.classify_progression(functions)
+    # Classify based on function pattern
+    if functions.length < 2
+      :single
+    elsif functions[-2] == DOMINANT && functions[-1] == TONIC
+      :authentic_cadence
+    elsif functions[-2] == SUBDOMINANT && functions[-1] == TONIC
+      :plagal_cadence
+    elsif functions[-2] == DOMINANT && functions[-1] == SUBDOMINANT
+      :deceptive_cadence
+    elsif functions.uniq.length == 1
+      :static
+    else
+      :dynamic
+    end
+  end
+
   def to_s
     "#{chord}(#{@function.to_s.upcase[0]})"
   end
