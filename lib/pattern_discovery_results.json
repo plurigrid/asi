@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "seed": "0x42D",
+    "trit_agent": "+1 (PLUS)",
+    "framework": "Ramanujan Walk Pattern Discovery"
+  },
+  "pattern_types": {
+    "CONVERGENT": {
+      "category": "CONVERGENT",
+      "color_css": "oklch(0.55 0.120 180.0)",
+      "color_hex": "#66b2b2",
+      "dominant_character": 0,
+      "character_omega": "\u03c9^0",
+      "entropy_range": [
+        0.0,
+        1.5
+      ],
+      "trit_constraint": "any",
+      "description": "Walks stabilizing in small vertex cluster",
+      "energy": "Low energy attractor basin"
+    },
+    "OSCILLATING": {
+      "category": "OSCILLATING",
+      "color_css": "oklch(0.60 0.180 270.0)",
+      "color_hex": "#995fd2",
+      "dominant_character": 1,
+      "character_omega": "\u03c9^1",
+      "entropy_range": [
+        0.5,
+        2.0
+      ],
+      "trit_constraint": "nonzero",
+      "description": "Periodic returns to visited vertices",
+      "energy": "Limit cycle behavior"
+    },
+    "EXPLORATORY": {
+      "category": "EXPLORATORY",
+      "color_css": "oklch(0.65 0.200 30.0)",
+      "color_hex": "#e5a566",
+      "dominant_character": 2,
+      "character_omega": "\u03c9^2",
+      "entropy_range": [
+        2.5,
+        5.0
+      ],
+      "trit_constraint": "any",
+      "description": "High entropy diffusive exploration",
+      "energy": "Brownian mixing regime"
+    },
+    "SURPRISING": {
+      "category": "SURPRISING",
+      "color_css": "oklch(0.70 0.250 120.0)",
+      "color_hex": "#62ff62",
+      "dominant_character": 0,
+      "character_omega": "\u03c9^0",
+      "entropy_range": [
+        1.0,
+        2.5
+      ],
+      "trit_constraint": "zero",
+      "description": "Low probability paths with GF(3) conservation",
+      "energy": "Rare fluctuation \u2192 emergent structure"
+    }
+  },
+  "discovery_results": {
+    "graph": {
+      "n_vertices": 32,
+      "degree": 4,
+      "spectral_gap": 0.7985271464140626,
+      "ramanujan_bound": 3.4641016151377544,
+      "is_ramanujan": false
+    },
+    "patterns": {
+      "convergent": {
+        "count": 1,
+        "avg_entropy": 2.506750787442108,
+        "avg_trit_sum": 1.0,
+        "color": "oklch(0.62 0.199 186.2)"
+      },
+      "oscillating": {
+        "count": 0,
+        "avg_entropy": 0,
+        "avg_trit_sum": 0,
+        "color": "oklch(0.67 0.175 283.7)"
+      },
+      "exploratory": {
+        "count": 69,
+        "avg_entropy": 3.0457745432336054,
+        "avg_trit_sum": 0.07246376811594203,
+        "color": "oklch(0.51 0.196 22.8)"
+      },
+      "surprising": {
+        "count": 30,
+        "avg_entropy": 3.0790025777330094,
+        "avg_trit_sum": 0.0,
+        "color": "oklch(0.62 0.199 186.2)"
+      }
+    },
+    "pontryagin": {
+      "convergent": {
+        "dominant": 0,
+        "spectrum": [
+          41.0,
+          7.21110255092798,
+          7.211102550927981
+        ],
+        "interpretation": "Trivial (uniform distribution)"
+      },
+      "oscillating": {
+        "dominant": -1,
+        "spectrum": [
+          0,
+          0,
+          0
+        ]
+      },
+      "exploratory": {
+        "dominant": 0,
+        "spectrum": [
+          41.0,
+          4.865588362890724,
+          4.865588362890726
+        ],
+        "interpretation": "Trivial (uniform distribution)"
+      },
+      "surprising": {
+        "dominant": 0,
+        "spectrum": [
+          41.0,
+          4.614939080187889,
+          4.614939080187892
+        ],
+        "interpretation": "Trivial (uniform distribution)"
+      }
+    },
+    "gf3_conservation": {
+      "total_walks": 100,
+      "zero_sum_walks": 30,
+      "conservation_rate": 0.3
+    }
+  },
+  "color_palette": {
+    "trit_minus": "oklch(0.67 0.175 283.7)",
+    "trit_zero": "oklch(0.62 0.199 186.2)",
+    "trit_plus": "oklch(0.51 0.196 22.8)"
+  },
+  "gf3_algebra": {
+    "elements": [
+      -1,
+      0,
+      1
+    ],
+    "addition_table": [
+      [
+        1,
+        -1,
+        0
+      ],
+      [
+        -1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        -1
+      ]
+    ],
+    "characters": [
+      {
+        "index": 0,
+        "value": "\u03c9^0",
+        "omega": "e^(2\u03c0i\u00b70/3)"
+      },
+      {
+        "index": 1,
+        "value": "\u03c9^1",
+        "omega": "e^(2\u03c0i\u00b71/3)"
+      },
+      {
+        "index": 2,
+        "value": "\u03c9^2",
+        "omega": "e^(2\u03c0i\u00b72/3)"
+      }
+    ]
+  }
+}
