@@ -1,26 +1,20 @@
-# AI Skills Registry
-# Your own source of skills for AI agents
+# AI Skills Registry - Updated with Universal Propagation
+# All skills now propagate to all agents
+# Updated: 2025-12-21
 #
 # This registry defines:
-# 1. Skills available for propagation
+# 1. Skills available for propagation (all to all agents)
 # 2. MCP servers that provide tool capabilities
 # 3. Agent configurations for skill distribution
-#
-# Based on: intellectronica/ruler + skillcreatorai/ai-agent-skills
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# REGISTRY METADATA
-# ═══════════════════════════════════════════════════════════════════════════════
 
 [registry]
 name = "music-topos-skills"
-version = "0.69.1"
-description = "AI Skills for categorical music composition and color dynamics"
+version = "0.70.0"
+description = "AI Skills for categorical music composition and color dynamics - Universal Propagation Edition"
 author = "barton"
 seed = 1069
 license = "MIT"
 
-# Source URLs for skill discovery
 sources = [
   "https://github.com/barton/music-topos-skills",
   "https://github.com/skillcreatorai/ai-agent-skills",
@@ -28,62 +22,212 @@ sources = [
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SKILL DEFINITIONS
+# ALL AGENTS - Universal Skill List
 # ═══════════════════════════════════════════════════════════════════════════════
 
-[skills.unworld]
-name = "unworld"
+all_agents = ["codex", "claude", "amp", "cursor", "copilot"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SKILL DEFINITIONS - All to All Propagation
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[skills.acsets]
+name = "acsets"
 version = "1.0.0"
-description = "Replace time with color chain derivations"
-trit = 0  # ERGODIC
-path = ".ruler/skills/unworld"
-propagate_to = ["codex", "claude", "amp", "cursor"]
+description = "Abstract Chemical Sets"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
-[skills.unworld.capabilities]
-seed_chaining = true
-color_derivation = true
-involution = true
-nash_equilibrium = true
-gf3_conservation = true
-
-[skills.three-match]
-name = "three-match"
+[skills.bdd-mathematical-verification]
+name = "bdd-mathematical-verification"
 version = "1.0.0"
-description = "3-SAT via colored subgraph isomorphism"
-trit = -1  # MINUS
-path = ".ruler/skills/three-match"
-propagate_to = ["codex", "claude"]
+description = "BDD Mathematical Verification"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
-[skills.three-match.capabilities]
-geodesic = true
-moebius_filter = true
-subgraph_isomorphism = true
+[skills.bisimulation-game]
+name = "bisimulation-game"
+version = "1.0.0"
+description = "Bisimulation Game"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.bmorphism-stars]
+name = "bmorphism-stars"
+version = "1.0.0"
+description = "B-Morphism Stars"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
 [skills.borkdude]
 name = "borkdude"
 version = "1.0.0"
-description = "ClojureScript runtime selection (Cherry, Squint, SCI, Babashka)"
-trit = 0  # ERGODIC
-path = ".ruler/skills/borkdude"
-propagate_to = ["codex", "claude", "amp"]
+description = "ClojureScript Runtime Selection"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
-[skills.borkdude.runtimes]
-browser = ["cherry", "squint", "scittle"]
-local = ["babashka", "sci", "nbb"]
+[skills.cider-clojure]
+name = "cider-clojure"
+version = "1.0.0"
+description = "CIDER Clojure Development"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.cider-embedding]
+name = "cider-embedding"
+version = "1.0.0"
+description = "CIDER Embedding"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.clj-kondo-3color]
+name = "clj-kondo-3color"
+version = "1.0.0"
+description = "clj-kondo 3-Color"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.codex-self-rewriting]
+name = "codex-self-rewriting"
+version = "1.0.0"
+description = "Codex Self-Rewriting"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.crdt]
+name = "crdt"
+version = "1.0.0"
+description = "CRDT Memoization System"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.duckdb-temporal-versioning]
+name = "duckdb-temporal-versioning"
+version = "1.0.0"
+description = "DuckDB Temporal Versioning"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.epistemic-arbitrage]
+name = "epistemic-arbitrage"
+version = "1.0.0"
+description = "Epistemic Arbitrage"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.frontend-design]
+name = "frontend-design"
+version = "1.0.0"
+description = "Frontend Design"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
 [skills.gay-mcp]
 name = "gay-mcp"
 version = "1.0.0"
-description = "Deterministic color generation via Gay.jl"
-trit = 1  # PLUS
-path = ".ruler/skills/gay-mcp"
+description = "GAY.jl Deterministic Colors (MCP Server)"
 propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
-[skills.gay-mcp.capabilities]
-splitmix64 = true
-golden_angle = true
-gf3_trits = true
-palette_generation = true
+[skills.geiser-chicken]
+name = "geiser-chicken"
+version = "1.0.0"
+description = "Geiser Chicken Scheme"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.glass-bead-game]
+name = "glass-bead-game"
+version = "1.0.0"
+description = "Glass Bead Game (Hesse)"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.hatchery-papers]
+name = "hatchery-papers"
+version = "1.0.0"
+description = "Hatchery Papers"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.mathpix-ocr]
+name = "mathpix-ocr"
+version = "1.0.0"
+description = "Mathpix OCR"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.proofgeneral-narya]
+name = "proofgeneral-narya"
+version = "1.0.0"
+description = "ProofGeneral Narya"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.rama-gay-clojure]
+name = "rama-gay-clojure"
+version = "1.0.0"
+description = "Rama GAY Clojure"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.reafference-corollary-discharge]
+name = "reafference-corollary-discharge"
+version = "1.0.0"
+description = "Reafference & Corollary Discharge (von Holst Neuroscience)"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.rubato-composer]
+name = "rubato-composer"
+version = "1.0.0"
+description = "Rubato Composer"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.self-validation-loop]
+name = "self-validation-loop"
+version = "1.0.0"
+description = "Self-Validation Loop"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.slime-lisp]
+name = "slime-lisp"
+version = "1.0.0"
+description = "SLIME Lisp"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.spi-parallel-verify]
+name = "spi-parallel-verify"
+version = "1.0.0"
+description = "SPI Parallel Verification"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.squint-runtime]
+name = "squint-runtime"
+version = "1.0.0"
+description = "Squint Runtime"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.tailscale-file-transfer]
+name = "tailscale-file-transfer"
+version = "1.0.0"
+description = "Tailscale File Transfer"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.three-match]
+name = "three-match"
+version = "1.0.0"
+description = "3-Match (3-SAT via Subgraph Isomorphism)"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.triad-interleave]
+name = "triad-interleave"
+version = "1.0.0"
+description = "Triad Interleave"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.unworld]
+name = "unworld"
+version = "1.0.0"
+description = "Unworld (Replace Time with Color Chains)"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.unworlding-involution]
+name = "unworlding-involution"
+version = "1.0.0"
+description = "Unworlding Involution"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.world-hopping]
+name = "world-hopping"
+version = "1.0.0"
+description = "World Hopping"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.xenodium-elisp]
+name = "xenodium-elisp"
+version = "1.0.0"
+description = "Xenodium Elisp"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # MCP SERVER REGISTRY
@@ -93,10 +237,7 @@ palette_generation = true
 name = "music-topos-mcp"
 description = "MCP servers for music-topos ecosystem"
 
-# ───────────────────────────────────────────────────────────────────────────────
-# LOCAL MCP SERVERS (built in this repo)
-# ───────────────────────────────────────────────────────────────────────────────
-
+# Local MCP Servers
 [mcp_registry.servers.gay]
 type = "local"
 command = "julia"
@@ -104,45 +245,14 @@ args = ["--project=@gay", "-e", "using Gay; Gay.serve_mcp()"]
 description = "Deterministic color generation"
 capabilities = ["color_at", "palette", "golden_thread", "reafference", "loopy_strange"]
 
-[mcp_registry.servers.unworld]
-type = "local"
-command = "ruby"
-args = ["-I", "lib", "-r", "unworld", "-e", "Unworld.serve_mcp"]
-description = "Seed-chaining derivation system"
-capabilities = ["chain_seed", "derive_color", "color_chain", "involution_chain"]
-
-[mcp_registry.servers.synadia]
-type = "local"
-command = "ruby"
-args = ["-I", "lib", "-r", "synadia_broadcast", "-e", "SynadiaBroadcast.serve_mcp"]
-description = "NATS distributed messaging"
-capabilities = ["publish", "subscribe", "request", "jetstream"]
-
-[mcp_registry.servers.world]
-type = "local"
-command = "ruby"
-args = ["-I", "lib", "-r", "world_broadcast", "-e", "WorldBroadcast.serve_mcp"]
-description = "World broadcast (mathematician triplets)"
-capabilities = ["broadcast", "mathematician", "tripartite"]
-
-[mcp_registry.servers.propagator]
-type = "local"
-command = "lein"
-args = ["run", "-m", "music-topos.propagator-mcp"]
-description = "Epistemic arbitrage propagators"
-capabilities = ["cell", "propagator", "merge", "epistemic"]
-
-[mcp_registry.servers.glass_bead]
+[mcp_registry.servers.glass-bead-game]
 type = "local"
 command = "ruby"
 args = ["-I", "lib", "-r", "glass_bead_game", "-e", "GlassBeadGame.serve_mcp"]
 description = "Glass Bead Game (Hesse)"
 capabilities = ["move", "synthesis", "connection"]
 
-# ───────────────────────────────────────────────────────────────────────────────
-# EXTERNAL MCP SERVERS (from npm/uvx)
-# ───────────────────────────────────────────────────────────────────────────────
-
+# External MCP Servers
 [mcp_registry.servers.firecrawl]
 type = "npm"
 package = "firecrawl-mcp"
@@ -155,101 +265,67 @@ package = "@anthropic/exa-mcp-server"
 description = "AI-powered web search"
 capabilities = ["web_search", "crawl", "deep_search"]
 
-[mcp_registry.servers.huggingface]
-type = "npm"
-package = "@anthropic/huggingface-mcp-server"
-description = "Hugging Face hub"
-capabilities = ["model_search", "dataset_search", "space_search", "paper_search"]
-
-[mcp_registry.servers.tree_sitter]
+[mcp_registry.servers.tree-sitter]
 type = "uvx"
 package = "mcp-tree-sitter"
 description = "AST-based code analysis"
 capabilities = ["get_ast", "run_query", "find_usage", "get_symbols"]
 
-[mcp_registry.servers.radare2]
-type = "npm"
-package = "@anthropic/radare2-mcp-server"
-description = "Binary analysis"
-capabilities = ["analyze", "disassemble", "decompile"]
-
-[mcp_registry.servers.marginalia]
-type = "npm"
-package = "@anthropic/marginalia-mcp-server"
-description = "Web search via Marginalia"
-capabilities = ["search"]
-
-# ───────────────────────────────────────────────────────────────────────────────
-# SKILLZ MCP SERVER (for agent skill loading)
-# ───────────────────────────────────────────────────────────────────────────────
-
 [mcp_registry.servers.skillz]
 type = "uvx"
 package = "mcp-skillz"
-description = "Skill loading for AI agents"
+description = "Skill loading and management"
 capabilities = ["list_skills", "load_skill", "apply_skill"]
 config = { skills_dir = ".ruler/skills" }
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# AGENT CONFIGURATIONS
+# AGENT CONFIGURATIONS - All Agents Get All Skills
 # ═══════════════════════════════════════════════════════════════════════════════
-
-[agents]
-# GF(3) trit assignments for balanced distribution
-# Sum of any triplet should be ≡ 0 (mod 3)
 
 [agents.codex]
 trit = 0  # ERGODIC - verification
 skills_path = ".codex/skills"
 mcp_path = ".codex/mcp.json"
 instructions_path = ".codex/AGENTS.md"
-skills = ["unworld", "three-match", "borkdude", "gay-mcp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 [agents.claude]
 trit = -1  # MINUS - conservative
 skills_path = ".claude/skills"
 mcp_path = ".claude/mcp.json"
 instructions_path = "CLAUDE.md"
-skills = ["unworld", "three-match", "borkdude", "gay-mcp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 [agents.amp]
 trit = 0  # ERGODIC - neutral
 skills_path = ".ruler/skills"
 mcp_path = ".mcp.json"
 instructions_path = "AGENTS.md"
-skills = ["unworld", "three-match", "borkdude", "gay-mcp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 [agents.cursor]
 trit = -1  # MINUS - conservative
 skills_path = ".cursor/skills"
 mcp_path = ".cursor/mcp.json"
 instructions_path = ".cursor/rules/AGENTS.md"
-skills = ["unworld", "gay-mcp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 [agents.copilot]
 trit = 1  # PLUS - optimistic
 skills_path = ".vscode/skills"
 mcp_path = ".vscode/mcp.json"
 instructions_path = ".github/copilot-instructions.md"
-skills = ["gay-mcp"]
-
-[agents.aider]
-trit = 1  # PLUS - optimistic
-skills_path = ".skillz"
-mcp_path = ".aider/mcp.json"
-instructions_path = ".aider/AGENTS.md"
-skills = ["unworld", "borkdude"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # GF(3) VERIFICATION
 # ═══════════════════════════════════════════════════════════════════════════════
 
 [gf3]
-# Verify triplets sum to 0 mod 3
 triplets = [
   ["codex", "claude", "copilot"],     # 0 + (-1) + 1 = 0 ✓
-  ["amp", "cursor", "aider"],         # 0 + (-1) + 1 = 0 ✓
-  ["codex", "amp", "cursor"]          # 0 + 0 + (-1) = -1 (needs copilot +1)
+  ["amp", "cursor", "copilot"],       # 0 + (-1) + 1 = 0 ✓
+  ["codex", "claude", "amp"]          # 0 + (-1) + 0 = -1 (balanced by copilot +1)
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -261,3 +337,4 @@ propagate = "bb .ruler/propagate.clj"
 verify = "bb .ruler/verify.clj"
 list_skills = "ls -la .ruler/skills/"
 list_servers = "cat .ruler/ai-skills-registry.toml | grep '\\[mcp_registry.servers'"
+list_agents = "echo 'Agents: codex, claude, amp, cursor, copilot'"

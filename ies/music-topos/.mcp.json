@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "gay": {
+      "command": "julia",
+      "args": ["--project=@gay", "-e", "using Gay; Gay.serve_mcp()"],
+      "env": {
+        "GAY_SEED": "1069"
+      }
+    },
+    "glass-bead-game": {
+      "command": "ruby",
+      "args": ["-I", "lib", "-r", "glass_bead_game", "-e", "GlassBeadGame.serve_mcp"]
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      }
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/exa-mcp-server"],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      }
+    },
+    "tree-sitter": {
+      "command": "uvx",
+      "args": ["mcp-tree-sitter"]
+    },
+    "skillz": {
+      "command": "uvx",
+      "args": ["mcp-skillz"]
+    }
+  }
+}
