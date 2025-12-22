@@ -178,8 +178,73 @@ Geodesic(PRIME, μ=1): #D8267F → #2CD826 → #4FD826 → ...
 
 ---
 
+## Correct-by-Construction Inline Caching (NEW 2025-12-22)
+
+The 3-MATCH principle applies to **Specter-style path caching**:
+
+### The Insight
+
+```
+Local constraint satisfaction → Global cache correctness
+```
+
+When path types are correct at compile time (local), cached paths are guaranteed correct (global).
+
+### Specter Path as 3-MATCH Gadget
+
+```julia
+# Each path element is a "color" in the gadget
+path = (ALL, pred(iseven), FIRST)
+#       -1       0          +1     → GF(3) = 0 ✓
+
+# The TupleNav wrapper is the "gadget envelope"
+compiled = TupleNav(path)  # Type-stable, 0 allocs
+
+# Execution is "correct by construction"
+result = nav_select(compiled, data, IDENTITY)
+```
+
+### Mapping to 3-MATCH Components
+
+| Specter | 3-MATCH | Property |
+|---------|---------|----------|
+| `Navigator` | Color | Individual constraint |
+| `TupleNav` | Gadget | Envelope preserving GF(3) |
+| Type inference | Möbius filtering | Eliminates invalid paths |
+| Inline caching | Non-backtracking | No revisiting (cached once) |
+
+### Event Stream
+
+Correct-by-construction events flow through the gadget:
+
+```julia
+# Event: Path compilation (happens once)
+PathCompiled(types::Tuple{...}) where all types stable
+
+# Event: Cache hit (no recompilation)
+CacheHit(compiled::TupleNav) where same types
+
+# Event: Traversal (GF(3) conserved)
+Traversal(input, output) where GF(3) sum = 0
+```
+
+### Benchmark Evidence
+
+The 93-113x speedup validates correct-by-construction:
+- **Original CPS**: Dynamic dispatch = "backtracking" in type space
+- **Optimized Tuple**: Static types = "prime path" through type space
+- **Result**: Functor structs achieve 1.0x overhead (zero cost!)
+
+### Files
+
+- `lib/specter_optimized.jl` - Correct-by-construction implementation
+- `lib/specter_chairmarks_world.jl` - Validation benchmarks
+
+---
+
 **Skill Name**: three-match
-**Type**: 3-SAT Reduction / Colored Subgraph Isomorphism
+**Type**: 3-SAT Reduction / Colored Subgraph Isomorphism / Inline Caching
 **Trit**: -1 (MINUS)
 **GF(3)**: Conserved by construction
 **Geodesics**: Non-backtracking (prime paths only)
+**Caching**: Type-stable paths as non-backtracking geodesics
