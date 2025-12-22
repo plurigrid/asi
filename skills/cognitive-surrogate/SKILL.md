@@ -13,6 +13,8 @@ The Cognitive Surrogate skill enables construction of high-fidelity psychologica
 
 **Core Principle**: A surrogate is not an imitation but a *derivational continuation* - the model learns the generative grammar of cognition, not surface patterns.
 
+**NEW (Langevin/Gibbs Integration)**: Predictions now use Gibbs distribution from Langevin analysis. Confidence scores reflect mixing time and temperature parameters.
+
 ## Key Capabilities
 
 ### 1. build-psychological-profile
@@ -123,7 +125,34 @@ print(f"Confidence: {reply.confidence}")
 print(f"Style divergence: {reply.style_delta}")
 ```
 
-### 5. project-trajectory
+### 5. predict-via-gibbs-distribution (NEW)
+
+Use Gibbs distribution from Langevin dynamics for predictions:
+
+```python
+# Instead of generic pattern matching
+# Use p(pattern | θ) ∝ exp(-L(θ)/T) from Langevin
+prediction = gibbs_based_prediction(
+    state=current_state,
+    temperature=0.01,  # From Langevin analysis
+    loss_fn=pattern_energy,
+    mixing_time=500    # Estimated convergence time
+)
+
+# Adaptive confidence based on equilibration
+confidence = estimate_equilibrium(
+    steps_so_far=n,
+    mixing_time=tau_mix,
+    temperature=T
+)
+
+# Returns:
+# - prediction: Most likely next state
+# - confidence: P(equilibrium reached)
+# - temperature_influence: How much T affected prediction
+```
+
+### 6. project-trajectory
 
 Predict intellectual/professional trajectory:
 

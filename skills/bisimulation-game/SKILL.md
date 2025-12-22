@@ -319,6 +319,33 @@ class BisimulationDispersalProtocol:
         return conserved
 ```
 
+## Temporal vs Derivational Learning Comparison (NEW)
+
+### NEW: Compare Agent-o-rama vs Unworld Patterns
+
+```python
+game = BisimulationGame(
+    player1_type="temporal_learning",      # agent-o-rama
+    player2_type="derivational_learning",  # unworld
+    domain="pattern_extraction"
+)
+
+# Adversary tries to distinguish them
+distinguishable = game.play()
+
+if not distinguishable:
+    print("✓ Patterns are behaviorally equivalent")
+    print("✓ Can safely switch from temporal to derivational")
+
+    # Migration report
+    migration_report = {
+        "original_cost": benchmark(agent_o_rama),
+        "migrated_cost": benchmark(unworld),
+        "speedup": original_cost / migrated_cost,
+        "equivalence_verified": game.play()
+    }
+```
+
 ## Concrete Attacker/Defender Example
 
 ```

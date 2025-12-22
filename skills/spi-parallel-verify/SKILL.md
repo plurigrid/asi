@@ -291,7 +291,40 @@ julia -e "using Gay; Gay.verify_spi(0x42D, 12)"
 python spi_verify.py 0x42D 12 --precision=128
 ```
 
-## Integration with Other Skills
+## Integration with Other Skills: Multi-System Verification (NEW)
+
+### Verify Langevin SDE Conservation
+
+```python
+# Test that SPI holds across different solvers (EM, SOSRI, RKMil)
+for solver in [EM(), SOSRI(), RKMil()]:
+    trajectory = solve_langevin(..., solver)
+    assert verify_spi(trajectory.colors, trajectory.trits)
+    print(f"{solver.__class__.__name__}: SPI verified ✓")
+```
+
+### Verify Unworld Chain Conservation
+
+```python
+# Test that derivational chains preserve GF(3)
+chain = Unworld::ThreeMatchChain.new(genesis_seed: seed)
+for step in chain.unworld[:matches]
+    assert step[:gf3] == 0  # Always balanced
+end
+```
+
+### Compare Conservation Across Approaches
+
+```python
+conservation_matrix = {
+    "temporal_training": spi_check(agent_patterns),
+    "derivational_generation": spi_check(unworld_patterns),
+    "langevin_dynamics": spi_check(langevin_solution)
+}
+
+# All three should conserve GF(3)
+assert all(v["conserved"] for v in conservation_matrix.values())
+```
 
 ### gay-mcp
 ```python
