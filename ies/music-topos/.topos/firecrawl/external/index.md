@@ -1,6 +1,6 @@
 # Firecrawl Index (External URLs)
 
-Requested: 62 | Found: 53 | Empty: 3 | Missing: 6
+Requested: 63 | Found: 54 | Empty: 3 | Missing: 6
 
 | Status | URL | Title | Summary |
 | --- | --- | --- | --- |
@@ -66,3 +66,4 @@ Requested: 62 | Found: 53 | Empty: 3 | Missing: 6
 | ok | https://www.firecrawl.dev | Firecrawl - The Web Data API for AI | Firecrawl is a web crawling, scraping, and search API designed for AI applications. It provides clean, structured data from the web, enabling developers to build powerful AI solutions. |
 | ok | https://www.firecrawl.dev/dashboard | Firecrawl Dashboard | The Firecrawl dashboard offers users a comprehensive interface to manage their web scraping tasks, monitor performance, and access data insights in real-time. |
 | ok | https://www.springer.com/gp/book/9783764357313 | Book on Web Data Extraction | This book provides in-depth knowledge on techniques and methodologies for extracting data from the web, covering various tools and frameworks available for developers. |
+| ok | https://www.firecrawl.dev/blog/os-watch-github-monitoring-tool | Building an Open-Source Project Monitoring Tool with Firecrawl and Streamlit | This article explores the OS-watch application, a tool that helps users monitor trending open-source projects on GitHub and sends notifications via Slack. It utilizes Firecrawl for web scraping and Streamlit for the user interface. |

@@ -1,3 +1,8 @@
+---
+name: rubato-composer
+description: Rubato Composer integration for Mazzola's mathematical music theory
+---
+
 # rubato-composer - Mazzola's Mathematical Music Theory in Code
 
 ## Overview

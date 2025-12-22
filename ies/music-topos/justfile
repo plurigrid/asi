@@ -392,10 +392,7 @@ max-autechre:
 chaos-spectrum:
     @echo "🎲 CHAOS SPECTRUM: Subtle → Moderate → Chaotic → Maximum"
     @echo ""
-    @for level in subtle moderate chaotic maximum; do \
-        echo "=== $$level ===" ; \
-        ruby -Ilib -e "require 'maximum_dynamism'; require 'free_monad'; puts MaximumDynamism::DerangementConfig.$$level.pitch.intensity" ; \
-    done
+    ruby -Ilib -e "require 'maximum_dynamism'; [:subtle, :moderate, :chaotic, :maximum].each { |l| puts \"=== #{l} ===\"; puts MaximumDynamism::DerangementConfig.send(l).pitch.intensity }"
 
 # ============================================================================
 # INDUSTRIAL JUNGLE SELF-INVOLUTION
@@ -494,6 +491,176 @@ opn-ageof:
 opn-components:
     @echo "OPN Transcendental Components (17):"
     @ls -1 lib/opn/*.rb | xargs -I{} basename {} .rb | sort
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SYNERGISTIC 3-TUPLES: Skill Loading with GF(3) Conservation
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Synergistic triads demo
+synergistic-triads:
+    ruby -I lib lib/synergistic_triads.rb
+
+# List all valid GF(3) triads
+triads-list:
+    ruby -I lib -e "require 'synergistic_triads'; SynergisticTriads.find_all_valid_triads.first(20).each { |t| puts t }"
+
+# Find triads containing a specific skill
+triads-for skill:
+    ruby -I lib -e "require 'synergistic_triads'; SynergisticTriads.triads_for_skill('{{skill}}').each { |t| puts t }"
+
+# Subagent determination for a task domain
+subagent-for domain:
+    ruby -I lib -e "require 'synergistic_triads'; d = SynergisticTriads::SubagentDeterminer.new; pp d.execute_with_triad(:{{domain}})"
+
+# Find replacement skills (same trit, can substitute in triads)
+replacements-for skill:
+    ruby -I lib -e "require 'synergistic_triads'; SynergisticTriads.replacements_for('{{skill}}').each { |r| puts \"  #{r[:skill]} (#{r[:domain]})\" }"
+
+# Immediate skill loading with colored output
+load-triad domain:
+    ruby -I lib -e "require 'synergistic_triads'; SynergisticTriads.load_triad_for_task(:{{domain}})"
+
+# Show colored triad
+colored-triad s1 s2 s3:
+    ruby -I lib -e "require 'synergistic_triads'; pp SynergisticTriads.colored_triad(%w[{{s1}} {{s2}} {{s3}}])"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ACSET HISTORY: DuckDB queries on Claude history with GF(3) trits
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Query acset history from Claude history.jsonl
+acset-history:
+    duckdb -c ".read db/acset_history_view.sql" -c "SELECT id, SUBSTRING(display, 1, 100) as display, trit, gf3_sum FROM acset_history ORDER BY id DESC LIMIT 20"
+
+# Query GeoACSet entries specifically
+acset-geo:
+    duckdb -c ".read db/acset_history_view.sql" -c "SELECT id, SUBSTRING(display, 1, 80), trit FROM acset_history WHERE LOWER(display) LIKE '%geoacset%'"
+
+# Show trit distribution summary
+acset-trit-summary:
+    duckdb -c ".read db/acset_history_view.sql" -c "SELECT * FROM acset_trit_summary"
+
+# Query acset history with custom pattern
+acset-query pattern:
+    duckdb -c ".read db/acset_history_view.sql" -c "SELECT id, SUBSTRING(display, 1, 100), trit FROM acset_history WHERE LOWER(display) LIKE '%{{pattern}}%' LIMIT 20"
+
+# Show GeoACSet pattern entries
+acset-patterns:
+    duckdb -c ".read db/acset_history_view.sql" -c "SELECT id, acset_type, trit, SUBSTRING(display, 1, 80) FROM geoacset_patterns ORDER BY id"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DISCOHY THREAD OPERAD: Thread trees as rooted color operads
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Run DiscoHy thread operad demo
+discohy-operad:
+    hy lib/discohy_thread_operad.hy
+
+# Initialize thread operad database
+discohy-init-db:
+    duckdb thread_operad.duckdb -c ".read db/thread_operad_schema.sql"
+    @echo "✓ Thread operad database initialized"
+
+# Query thread tree structure
+discohy-tree:
+    duckdb thread_operad.duckdb -c "SELECT * FROM thread_tree ORDER BY depth, path"
+
+# Check GF(3) conservation across thread triplets
+discohy-gf3:
+    duckdb thread_operad.duckdb -c "SELECT * FROM gf3_sibling_triplets"
+
+# Show GF(3) conservation summary
+discohy-gf3-summary:
+    duckdb thread_operad.duckdb -c "SELECT * FROM gf3_conservation_summary"
+
+# Query operad variants
+discohy-variants:
+    duckdb thread_operad.duckdb -c "SELECT name, description, is_active, trit FROM operad_variants"
+
+# Set active operad variant
+discohy-set-variant variant:
+    duckdb thread_operad.duckdb -c "UPDATE operad_variants SET is_active = FALSE; UPDATE operad_variants SET is_active = TRUE WHERE name = '{{variant}}';"
+    @echo "✓ Active variant set to: {{variant}}"
+
+# Show DisCoPy box representation
+discohy-boxes:
+    duckdb thread_operad.duckdb -c "SELECT box_id, box_name, domain, codomain_count, color_hex, color_trit FROM discopy_boxes"
+
+# Show DisCoPy wire representation
+discohy-wires:
+    duckdb thread_operad.duckdb -c "SELECT source, target, wire_label, wire_trit FROM discopy_wires"
+
+# Query thread colors (all 3 streams)
+discohy-colors thread_id:
+    duckdb thread_operad.duckdb -c "SELECT thread_id, live_h as 'LIVE H°', verify_h as 'VERIFY H°', backfill_h as 'BACKFILL H°', trit FROM thread_nodes WHERE thread_id LIKE '%{{thread_id}}%'"
+
+# Trit distribution by depth
+discohy-trit-depth:
+    duckdb thread_operad.duckdb -c "SELECT * FROM trit_by_depth"
+
+# Operad arity distribution
+discohy-arity:
+    duckdb thread_operad.duckdb -c "SELECT * FROM operad_arity_distribution"
+
+# Show color stream history for a thread (operad view)
+discohy-stream-history thread_id:
+    duckdb thread_operad.duckdb -c "SELECT stream, index_position, h as hue, trit, timestamp FROM color_stream_history WHERE thread_id LIKE '%{{thread_id}}%' ORDER BY stream, index_position"
+
+# Generate Mermaid diagram from thread operad (requires hy)
+discohy-mermaid:
+    hy -c "(import [discohy_thread_operad [*]]) (setv op (build-operad-from-threads [{\"id\" \"T-root\" \"title\" \"Root\"}])) (print (operad-to-mermaid op))"
+
+# Show triadic groupings with GF(3) conservation
+acset-triads:
+    duckdb -c ".read db/acset_history_view.sql" -c "SELECT * FROM acset_triads"
+
+# GF(3) conservation summary for triads
+acset-gf3-check:
+    duckdb -c ".read db/acset_history_view.sql" -c "SELECT COUNT(*) as total_triads, SUM(CASE WHEN gf3_conserved THEN 1 ELSE 0 END) as conserved, ROUND(SUM(CASE WHEN gf3_conserved THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as conservation_pct FROM acset_triads"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NEIGHBOR-AWARE ACSET: DiscoHy integration with pushout composition
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Query discohy history from Claude history.jsonl
+discohy-history:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT id, SUBSTRING(display, 1, 80) as display, trit, discohy_type FROM discohy_history ORDER BY id DESC LIMIT 20"
+
+# Show discohy trit distribution
+discohy-trit-summary:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT * FROM discohy_trit_summary"
+
+# Query neighbor graph (acset ↔ discohy relationships)
+neighbor-graph:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT src, tgt, src_trit, tgt_trit, edge_gf3, ROUND(morphism_strength, 2) as strength, synergistic_edge FROM neighbor_graph LIMIT 30"
+
+# Neighbor graph summary statistics
+neighbor-summary:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT * FROM neighbor_summary"
+
+# Show open ACSet ports (vertices available for composition)
+acset-ports:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT vertex_id, domain, trit, port_type, degree FROM acset_ports WHERE degree > 0 ORDER BY degree DESC LIMIT 20"
+
+# Show all neighbor triads (mixed acset + discohy)
+neighbor-triads:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT triad_id, vertices, domains, trits, trit_sum, gf3_conserved, is_mixed_triad FROM neighbor_triads LIMIT 20"
+
+# Show only mixed triads (both acset and discohy)
+mixed-triads:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT * FROM mixed_triads"
+
+# GF(3) conservation check across neighbor domains
+neighbor-gf3-check:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT * FROM neighbor_gf3_check"
+
+# Find strongest morphisms between acset and discohy
+neighbor-morphisms:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT src, tgt, ROUND(morphism_strength, 2) as strength, ROUND(time_delta_seconds, 0) as delta_sec, synergistic_edge FROM neighbor_graph WHERE morphism_strength >= 0.7 ORDER BY strength DESC LIMIT 15"
+
+# Query discohy entries with custom pattern
+discohy-query pattern:
+    duckdb -c ".read db/acset_history_view.sql" -c ".read db/neighbor_aware_acset.sql" -c "SELECT id, SUBSTRING(display, 1, 80), trit, discohy_type FROM discohy_history WHERE LOWER(display) LIKE '%{{pattern}}%' LIMIT 20"
 
 # ============================================================================
 # FREE MONAD / COFREE COMONAD PATTERN TEST (Initial Push)
@@ -670,3 +837,99 @@ help:
     echo "  4. Adjust system audio settings"
     echo "  5. Re-run: just run-initial"
     echo ""
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GLASS BEAD GAME (Hesse) - Galois Connections between domains
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Start Glass Bead Game demo
+glass-bead:
+    ruby -I lib -r glass_bead_game -e "GlassBeadGame.demo"
+
+# Glass Bead Game with custom step count
+glass-bead-seed steps="20":
+    ruby -I lib -e "require 'glass_bead_game'; GlassBeadGame.demo(steps: {{steps}})"
+
+# Glass Bead Game from World Broadcast mathematicians  
+glass-bead-broadcast:
+    ruby -I lib -e "require 'glass_bead_game'; require 'world_broadcast'; GlassBeadGame.demo(mathematicians: WorldBroadcast.default_mathematicians)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SYNADIA/NATS DISTRIBUTED MESSAGING
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Synadia broadcast demo (requires NATS server)
+synadia-broadcast:
+    ruby -I lib -e "require 'synadia_broadcast'; SynadiaBroadcast.demo"
+
+# Synadia demo with extended steps
+synadia-demo:
+    ruby -I lib -e "require 'synadia_broadcast'; SynadiaBroadcast.demo(steps: 12)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SKILLS SYSTEM - Ruler propagation + verification
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# List available skills
+skills-list:
+    @echo "Available skills in .ruler/skills/:"
+    @ls -la .ruler/skills/ 2>/dev/null || echo "No skills directory found"
+
+# Verify GF(3) conservation across skill propagation
+skills-verify-gf3:
+    ruby -I lib -e "require 'skill_1069_generator'; puts Skill1069Generator.verify_gf3"
+
+# Propagate skills to all agents (via ruler)
+skills-propagate:
+    bb .ruler/propagate.clj
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UNWORLD: Replace Time with Color Chain Derivations
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Full unworld demo (all derivation types)
+unworld:
+    ruby -I lib lib/unworld.rb
+
+# Basic color chain derivation
+unworld-color:
+    ruby -I lib -e "require 'unworld'; puts Unworld::ColorChain.new(genesis_seed: 0x42D).unworld.to_s"
+
+# Triadic chain (three interleaved streams)
+unworld-triadic:
+    ruby -I lib -e "require 'unworld'; puts Unworld::TriadicChain.new(genesis_seed: 0x42D).unworld.to_s"
+
+# 3-MATCH chain
+unworld-match:
+    ruby -I lib -e "require 'unworld'; puts Unworld::ThreeMatchChain.new(genesis_seed: 0x42D).unworld.to_s"
+
+# Involution chain (ι∘ι = id)
+unworld-involution:
+    ruby -I lib -e "require 'unworld'; puts Unworld::InvolutionChain.new(genesis_seed: 0x42D).unworld.to_s"
+
+# Nash equilibrium via best response
+unworld-nash:
+    ruby -I lib -e "require 'unworld'; chain = Unworld::BestResponseChain.new(genesis_seed: 0x42D); puts chain.unworld.to_s"
+
+# Test all unworld invariants
+test-unworld:
+    ruby test/test_unworld.rb
+
+# 3-MATCH geodesic gadget demo
+three-match:
+    ruby -I lib lib/three_match_geodesic_gadget.rb
+
+# Non-backtracking geodesic test
+geodesic length="12":
+    ruby -I lib -e "require 'three_match_geodesic_gadget'; g = ThreeMatchGeodesicGadget::NonBacktrackingGeodesic.new(seed: 0x42D, length: {{length}}).generate!; puts g.to_s"
+
+# Back-and-forth Möbius filter demo
+moebius-filter:
+    ruby -I lib -e "require 'three_match_geodesic_gadget'; f = ThreeMatchGeodesicGadget::BackAndForthFilter.new; puts f.full_cycle((1..12).to_a)"
+
+# Zeta function connections (documentation)
+zeta-functions:
+    @echo "Zeta Function Connections: Ihara, Möbius, Chromatic"
+    @head -80 docs/ZETA_FUNCTION_CONNECTIONS.md 2>/dev/null || cat ZETA_FUNCTION_CONNECTIONS.md | head -80
+

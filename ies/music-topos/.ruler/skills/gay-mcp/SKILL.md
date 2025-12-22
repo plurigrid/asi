@@ -1,3 +1,8 @@
+---
+name: gay-mcp
+description: Gay.jl MCP server integration for deterministic color generation via SplitMix64
+---
+
 <!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/gay-mcp -->
 
 # Gay-MCP Skill: Deterministic Color Generation

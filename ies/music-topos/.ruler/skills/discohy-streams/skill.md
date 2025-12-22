@@ -1,3 +1,8 @@
+---
+name: discohy-streams
+description: DisCoPy categorical color streams via Hy with 3 parallel TAP streams
+---
+
 # discohy-streams - Discopy Color Streams via Hy
 
 ## Overview

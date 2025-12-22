@@ -1,3 +1,8 @@
+---
+name: frontend-design
+description: AI-guided UI/UX design patterns with Gay.jl deterministic colors
+---
+
 # frontend-design - AI-Guided UI/UX Design Skill
 
 ## Overview
