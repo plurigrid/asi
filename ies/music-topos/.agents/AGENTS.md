@@ -125,6 +125,14 @@ schema-validation (-1) ⊗ compositional-acset-comparison (0) ⊗ gay-mcp (+1) =
 three-match (-1) ⊗ compositional-acset-comparison (0) ⊗ koopman-generator (+1) = 0 ✓  [Dynamic Traversal]
 temporal-coalgebra (-1) ⊗ compositional-acset-comparison (0) ⊗ oapply-colimit (+1) = 0 ✓  [Versioning]
 polyglot-spi (-1) ⊗ compositional-acset-comparison (0) ⊗ gay-mcp (+1) = 0 ✓  [Homoiconic Interop]
+
+# IES Environment Bundle (NEW 2025-12-22, FloxHub bmorphism/ies)
+# Flox environment composition with DuckDB social analysis
+# Gay.jl/Gay.bb deterministic coloring integration
+polyglot-spi (-1) ⊗ ies (0) ⊗ gay-mcp (+1) = 0 ✓  [Environment]
+three-match (-1) ⊗ ies (0) ⊗ pulse-mcp-stream (+1) = 0 ✓  [Social Analysis]
+influence-propagation (-1) ⊗ ies (0) ⊗ agent-o-rama (+1) = 0 ✓  [Cognitive Surrogate]
+temporal-coalgebra (-1) ⊗ ies (0) ⊗ cider-clojure (+1) = 0 ✓  [Clojure/Julia Bridge]
 ```
 
 ## Skill Loading Commands
@@ -168,7 +176,7 @@ Example for `:derivation` domain:
 Skills with the same trit can substitute for each other in triads:
 
 - **MINUS (-1)**: three-match, slime-lisp, clj-kondo-3color, hatchery-papers, proofgeneral-narya, sheaf-cohomology, temporal-coalgebra, persistent-homology, cubes, cactus, gravity, cohomology-obstruction, spined-categories, bumpus-width, influence-propagation, polyglot-spi, dmd-spectral, interval-presheaf, schema-validation, **ramanujan-expander**
-- **ERGODIC (0)**: unworld, world-hopping, acsets, glass-bead-game, epistemic-arbitrage, kan-extensions, dialectica, open-games, discohy-streams, thread, lhott-cohesive-linear, asi-polynomial-operads, condensed-analytic-stacks, abductive-repl, entropy-sequencer, cognitive-surrogate, lispsyntax-acset, structured-decomp, algebraic-dynamics, deepwiki-mcp, ihara-zeta, **compositional-acset-comparison**
+- **ERGODIC (0)**: unworld, world-hopping, acsets, glass-bead-game, epistemic-arbitrage, kan-extensions, dialectica, open-games, discohy-streams, thread, lhott-cohesive-linear, asi-polynomial-operads, condensed-analytic-stacks, abductive-repl, entropy-sequencer, cognitive-surrogate, lispsyntax-acset, structured-decomp, algebraic-dynamics, deepwiki-mcp, ihara-zeta, compositional-acset-comparison, **ies**
 - **PLUS (+1)**: gay-mcp, cider-clojure, geiser-chicken, rubato-composer, free-monad-gen, operad-compose, topos-generate, little-disks, modular, swiss-cheese, libkind-directed, pattern-runs-on-matter, open-games-arena, free-monad-trees, agent-o-rama, pulse-mcp-stream, koopman-generator, oapply-colimit, colimit-reconstruct, **moebius-inversion**
 
 ## Integration with Music Topos
