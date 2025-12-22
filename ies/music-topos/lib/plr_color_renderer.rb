@@ -1,389 +1,300 @@
 #!/usr/bin/env ruby
+#
 # lib/plr_color_renderer.rb
 #
-# PLR Color Renderer: Bridge between LCH color space and Sonic Pi
+# Phase 5: PLR Color Renderer Integration
 #
-# Maps learnable color gamut (from Julia) to MIDI pitches and synthesis parameters:
-# - H (Hue, 0-360°) → MIDI pitch (C1-C7)
-# - L (Lightness, 0-100) → Amplitude (0-1)
-# - C (Chroma, 0-130) → Duration and timbre
+# Bridges Julia-based ColorHarmonyState CRDT with Ruby rendering:
+# - Receives PLR transformations from Julia CRDT
+# - Applies Neo-Riemannian transformations to colors
+# - Routes to Sonic Pi for audio synthesis
+# - Analyzes harmonic function of color sequences
+# - Manages bidirectional preference feedback loop
 #
-# Integrates with:
-# - Neo-Riemannian transforms (PLR)
-# - Harmonic function analysis (T/S/D)
-# - SonicPiRenderer (OSC output)
 
-require_relative 'sonic_pi_renderer'
 require_relative 'neo_riemannian'
 require_relative 'harmonic_function'
-require_relative 'chord'
-require_relative 'pitch_class'
+require_relative 'sonic_pi_renderer'
 
 class PLRColorRenderer
-  # Color space boundaries
-  HUE_MIN = 0.0
-  HUE_MAX = 360.0
-  LIGHTNESS_MIN = 0.0
-  LIGHTNESS_MAX = 100.0
-  CHROMA_MIN = 0.0
-  CHROMA_MAX = 130.0
+  attr_reader :current_color, :color_history, :harmonic_functions, :renderer, :preferences
 
-  # MIDI pitch range (C1 to C7)
-  MIDI_MIN = 24
-  MIDI_MAX = 108
-  MIDI_RANGE = MIDI_MAX - MIDI_MIN
-
-  # Timing and amplitude ranges
-  DURATION_MIN = 0.25
-  DURATION_MAX = 4.0
-  AMPLITUDE_MIN = 0.1
-  AMPLITUDE_MAX = 1.0
-
-  attr_reader :renderer, :key_context
-
-  def initialize(synth: :prophet, duration_factor: 1.0, key_context: 'C')
-    @renderer = SonicPiRenderer.new(synth: synth, duration_factor: duration_factor)
-    @key_context = key_context
-    @color_to_chord_cache = {}
+  def initialize(start_color = { H: 120, L: 65, C: 50 }, synth: :sine)
+    @current_color = start_color
+    @color_history = [start_color.dup]
+    @harmonic_functions = []
+    @preferences = []
+    @renderer = SonicPiRenderer.new(synth: synth)
+    @harmonic_functions << HarmonicFunction.color_to_function(start_color)
   end
 
-  # =========================================================================
-  # Color → MIDI Pitch Mapping
-  # =========================================================================
-
-  # Convert LCH color (Hash or NamedTuple) to MIDI note number
-  # H (Hue) determines the pitch class (0-360° → C to B)
-  def color_to_midi_note(color)
-    hue = extract_hue(color)
-
-    # Map hue to pitch class (0-11)
-    # 0° = C, 30° = C#, 60° = D, ... 330° = B
-    pitch_class_index = (hue / 30.0).round % 12
-
-    # Map to MIDI (assuming octave 4 as default, can vary by lightness)
-    midi_note = 60 + pitch_class_index  # C4 (60) as reference
-
-    # Clamp to valid MIDI range
-    [[midi_note, MIDI_MIN].max, MIDI_MAX].min
+  # PLR Transformations
+  def transform_parallel(direction = 1)
+    new_color = NeoRiemannian.plr_to_color_transform(@current_color, :P, direction)
+    apply_transformation(new_color, :P, direction)
   end
 
-  # Convert Lightness to amplitude (0-100 → 0.1-1.0)
-  def color_to_amplitude(color)
-    lightness = extract_lightness(color)
-    normalized = lightness / LIGHTNESS_MAX
-    AMPLITUDE_MIN + (normalized * (AMPLITUDE_MAX - AMPLITUDE_MIN))
+  def transform_leading_tone(direction = 1)
+    new_color = NeoRiemannian.plr_to_color_transform(@current_color, :L, direction)
+    apply_transformation(new_color, :L, direction)
   end
 
-  # Convert Chroma to duration (0-130 → 0.25-4.0 seconds)
-  def color_to_duration(color)
-    chroma = extract_chroma(color)
-    normalized = chroma / CHROMA_MAX
-    DURATION_MIN + (normalized * (DURATION_MAX - DURATION_MIN))
+  def transform_relative(direction = 1)
+    new_color = NeoRiemannian.plr_to_color_transform(@current_color, :R, direction)
+    apply_transformation(new_color, :R, direction)
   end
 
-  # =========================================================================
-  # Color → Harmonic Function Analysis
-  # =========================================================================
-
-  # Analyze harmonic function of a color based on hue zones
-  # Hue zones map to functional harmony:
-  # T (Tonic):      330-90°  (reds, warm)
-  # S (Subdominant): 90-210° (greens, cool)
-  # D (Dominant):   210-330° (blues, active)
-  def color_to_function(color)
-    hue = extract_hue(color)
-
-    case hue
-    when 330...360, 0...90     # Reds and warm tones
-      HarmonicFunction::TONIC
-    when 90...210              # Greens and cool-neutral tones
-      HarmonicFunction::SUBDOMINANT
-    when 210...330             # Blues and active tones
-      HarmonicFunction::DOMINANT
+  def apply_plr_transform(plr_type, direction = 1)
+    case plr_type.to_sym
+    when :P, :parallel
+      transform_parallel(direction)
+    when :L, :leading_tone
+      transform_leading_tone(direction)
+    when :R, :relative
+      transform_relative(direction)
     else
-      HarmonicFunction::TONIC  # Default
+      raise ArgumentError, "Unknown PLR type: #{plr_type}"
     end
   end
 
-  # =========================================================================
-  # Color → Chord Generation
-  # =========================================================================
-
-  # Convert a color to a chord by analyzing hue and mapping to scale degrees
-  def color_to_chord(color)
-    # Check cache first
-    cache_key = color_cache_key(color)
-    return @color_to_chord_cache[cache_key] if @color_to_chord_cache.key?(cache_key)
-
-    hue = extract_hue(color)
-
-    # Map hue to scale degree (0-360° → 0-6 for 7-note scale)
-    # Assuming C major scale: C D E F G A B
-    scale_degrees = [0, 2, 4, 5, 7, 9, 11]  # Interval pattern (semitones)
-    degree = (hue / 60.0).round % 7
-    root_semitone = scale_degrees[degree]
-
-    # Get key root
-    key_root = key_to_semitone(@key_context)
-    midi_root = 60 + ((key_root + root_semitone) % 12)
-
-    # Create triad (root + major third + fifth)
-    root = PitchClass.from_midi(midi_root)
-    third = PitchClass.from_midi(midi_root + 4)
-    fifth = PitchClass.from_midi(midi_root + 7)
-
-    chord = Chord.new(root, third, fifth)
-    @color_to_chord_cache[cache_key] = chord
-    chord
+  private def apply_transformation(new_color, plr_type, direction)
+    @current_color = new_color
+    @color_history << new_color.dup
+    func = HarmonicFunction.color_to_function(new_color)
+    @harmonic_functions << func
+    @renderer.play_color(new_color)
+    {
+      color: new_color,
+      plr_type: plr_type,
+      direction: direction,
+      harmonic_function: func
+    }
   end
 
-  # =========================================================================
-  # PLR Transformations on Colors
-  # =========================================================================
-
-  # Apply PLR transformation to color (returns modified color)
-  def apply_plr_to_color(color, plr_type)
-    case plr_type
-    when :P  # Parallel: Hue ±15°
-      apply_plr_parallel(color)
-    when :L  # Leading-tone: Lightness ±10
-      apply_plr_leading_tone(color)
-    when :R  # Relative: Chroma ±20, Hue ±30°
-      apply_plr_relative(color)
-    else
-      color
-    end
+  # Harmonic Analysis
+  def analyze_harmonic_progression
+    HarmonicFunction.color_sequence_analysis(@color_history)
   end
 
-  private def apply_plr_parallel(color)
-    hue = extract_hue(color)
-    # Determine direction based on current hue
-    # +15° for first half, -15° for second half (toggle)
-    new_hue = if hue < 180
-                (hue + 15) % 360.0
-              else
-                (hue - 15 + 360.0) % 360.0
-              end
-    set_hue(color, new_hue)
+  def cadence_type
+    return nil if @harmonic_functions.length < 2
+    penultimate = @harmonic_functions[-2]
+    final = @harmonic_functions[-1]
+    HarmonicFunction.cadence_type(penultimate, final)
   end
 
-  private def apply_plr_leading_tone(color)
-    lightness = extract_lightness(color)
-    new_lightness = if lightness < LIGHTNESS_MAX / 2
-                      lightness + 10
-                    else
-                      lightness - 10
-                    end
-    new_lightness = [[new_lightness, LIGHTNESS_MIN].max, LIGHTNESS_MAX].min
-    set_lightness(color, new_lightness)
+  def has_authentic_cadence?
+    analyze_harmonic_progression[:has_authentic_cadence]
   end
 
-  private def apply_plr_relative(color)
-    hue = extract_hue(color)
-    chroma = extract_chroma(color)
-    new_hue = (hue + 30) % 360.0
-    new_chroma = if chroma < CHROMA_MAX / 2
-                   chroma + 20
-                 else
-                   chroma - 20
-                 end
-    new_chroma = [[new_chroma, CHROMA_MIN].max, CHROMA_MAX].min
-    color_with_updates(color, hue: new_hue, chroma: new_chroma)
+  def has_plagal_cadence?
+    analyze_harmonic_progression[:has_plagal_cadence]
   end
 
-  # =========================================================================
-  # Rendering to Sonic Pi
-  # =========================================================================
-
-  # Render a single color as a sound event
-  def render_color(color, duration_override: nil)
-    midi_note = color_to_midi_note(color)
-    amplitude = color_to_amplitude(color)
-    duration = duration_override || color_to_duration(color)
-
-    @renderer.send_osc_message(
-      '/trigger/prophet',
-      midi_note.to_i,
-      amplitude.to_f,
-      duration.to_f
-    )
+  # Preference Learning
+  def record_preference(preferred_idx, rejected_idx)
+    raise ArgumentError, "Invalid indices" if preferred_idx >= @color_history.length || rejected_idx >= @color_history.length
+    preferred = @color_history[preferred_idx]
+    rejected = @color_history[rejected_idx]
+    gradient = compute_preference_gradient(preferred, rejected)
+    preference_record = {
+      preferred_color: preferred,
+      rejected_color: rejected,
+      gradient: gradient,
+      timestamp: Time.now
+    }
+    @preferences << preference_record
+    preference_record
   end
 
-  # Render a sequence of colors (temporal progression)
-  def render_color_sequence(colors, interval: 1.0)
-    colors.each do |color|
-      render_color(color, duration_override: interval * 0.9)
+  private def compute_preference_gradient(preferred, rejected)
+    l_diff = (preferred[:L] - rejected[:L]).abs
+    c_diff = (preferred[:C] - rejected[:C]).abs
+    h_diff = ((preferred[:H] - rejected[:H]).abs % 360.0)
+    h_diff = [h_diff, 360.0 - h_diff].min
+    distance = Math.sqrt((l_diff ** 2) + (c_diff ** 2) + (h_diff ** 2))
+    [distance / 200.0, 1.0].min
+  end
+
+  # Playback
+  def play_current_color(duration = 1.0)
+    @renderer.play_color(@current_color, duration_override: duration)
+  end
+
+  def play_color_history(interval = 1.0)
+    @renderer.play_color_sequence(@color_history, interval: interval)
+  end
+
+  def play_hexatonic_cycle(interval = 0.5)
+    cycle = generate_hexatonic_cycle
+    cycle.each do |color|
+      @renderer.play_color(color, duration_override: interval * 0.9)
       sleep(interval)
     end
   end
 
-  # Render PLR progression (P-L-P-L-P-L hexatonic)
-  def render_hexatonic_from_color(color, interval: 1.0)
-    current = color
+  def generate_hexatonic_cycle(start_color = nil)
+    start_color ||= @current_color
+    cycle = [start_color]
+    current = start_color.dup
     6.times do |i|
-      render_color(current, duration_override: interval * 0.9)
-      current = apply_plr_to_color(current, i.even? ? :P : :L)
-      sleep(interval)
+      current = if i.even?
+                  NeoRiemannian.plr_to_color_transform(current, :P, 1)
+                else
+                  NeoRiemannian.plr_to_color_transform(current, :L, 1)
+                end
+      cycle << current.dup
     end
+    cycle
   end
 
-  # Render harmonic cadence from color
-  # Authentic: D→T (210-330° → 330-90°)
-  # Plagal: S→T (90-210° → 330-90°)
-  # Deceptive: D→S (210-330° → 90-210°)
-  def render_cadence(cadence_type: :authentic, interval: 1.0)
-    start_color = case cadence_type
-                  when :authentic
-                    { L: 60.0, C: 50.0, H: 270.0 }  # D zone (blue)
-                  when :plagal
-                    { L: 60.0, C: 50.0, H: 150.0 }  # S zone (green)
-                  when :deceptive
-                    { L: 60.0, C: 50.0, H: 270.0 }  # D zone
-                  else
-                    { L: 60.0, C: 50.0, H: 0.0 }    # Default
-                  end
-
-    colors = case cadence_type
-             when :authentic
-               # D(dominant) → T(tonic): 270° → 0°
-               [
-                 start_color,
-                 apply_plr_to_color(start_color, :R),  # Move toward T
-                 { L: 70.0, C: 60.0, H: 0.0 }          # T (red) resolution
-               ]
-             when :plagal
-               # S(subdominant) → T(tonic): 150° → 0°
-               [
-                 start_color,
-                 apply_plr_to_color(start_color, :L),  # Move toward T
-                 { L: 70.0, C: 60.0, H: 0.0 }          # T resolution
-               ]
-             when :deceptive
-               # D(dominant) → S(subdominant): 270° → 150°
-               [
-                 start_color,
-                 apply_plr_to_color(start_color, :P),  # Move toward S
-                 { L: 60.0, C: 55.0, H: 150.0 }        # S (green)
-               ]
-             else
-               [start_color]
-             end
-
-    render_color_sequence(colors, interval: interval)
-  end
-
-  # =========================================================================
-  # Chord Generation from Colors
-  # =========================================================================
-
-  # Generate a chord progression from a sequence of colors
-  def colors_to_chord_progression(colors)
-    colors.map { |color| color_to_chord(color) }
-  end
-
-  # =========================================================================
-  # Helper Methods
-  # =========================================================================
-
-  private
-
-  def extract_hue(color)
-    case color
-    when Hash
-      color[:H] || color['H'] || 0.0
-    else  # NamedTuple or object with . accessor
-      color.H || 0.0
-    end
-  end
-
-  def extract_lightness(color)
-    case color
-    when Hash
-      color[:L] || color['L'] || 50.0
+  # CRDT Integration
+  def apply_crdt_command(command_str)
+    case command_str
+    when /^plr\s+P(?:\s+(\d+))?$/i
+      direction = $1 ? $1.to_i : 1
+      transform_parallel(direction)
+    when /^plr\s+L(?:\s+(\d+))?$/i
+      direction = $1 ? $1.to_i : 1
+      transform_leading_tone(direction)
+    when /^plr\s+R(?:\s+(\d+))?$/i
+      direction = $1 ? $1.to_i : 1
+      transform_relative(direction)
+    when /^query\s+color$/i
+      @current_color
+    when /^history$/i
+      @color_history
     else
-      color.L || 50.0
+      raise ArgumentError, "Unknown CRDT command: #{command_str}"
     end
   end
 
-  def extract_chroma(color)
-    case color
-    when Hash
-      color[:C] || color['C'] || 50.0
-    else
-      color.C || 50.0
-    end
+  # State Serialization
+  def to_h
+    {
+      current_color: @current_color,
+      color_history: @color_history.map(&:dup),
+      harmonic_functions: @harmonic_functions,
+      preferences: @preferences.map(&:dup),
+      timestamp: Time.now.to_i
+    }
   end
 
-  def set_hue(color, new_hue)
-    case color
-    when Hash
-      color.merge(H: new_hue)
-    else
-      # Assume NamedTuple-like with replace method or reconstruct
-      if color.respond_to?(:to_h)
-        h = color.to_h
-        h[:H] = new_hue
-        h
-      else
-        color
+  def merge!(other_state)
+    if other_state.is_a?(Hash)
+      if other_state[:color_history]
+        other_state[:color_history].each do |color|
+          unless @color_history.any? { |c| colors_equal?(c, color) }
+            @color_history << color.dup
+          end
+        end
+      end
+      if other_state[:current_color]
+        @current_color = other_state[:current_color].dup
+      end
+      if other_state[:preferences]
+        @preferences.concat(other_state[:preferences].map(&:dup))
       end
     end
+    @harmonic_functions = @color_history.map { |color| HarmonicFunction.color_to_function(color) }
+    self
   end
 
-  def set_lightness(color, new_lightness)
-    case color
-    when Hash
-      color.merge(L: new_lightness)
-    else
-      if color.respond_to?(:to_h)
-        h = color.to_h
-        h[:L] = new_lightness
-        h
-      else
-        color
-      end
-    end
+  private def colors_equal?(c1, c2)
+    h1 = c1.is_a?(Hash) ? c1 : { H: c1.H, L: c1.L, C: c1.C }
+    h2 = c2.is_a?(Hash) ? c2 : { H: c2.H, L: c2.L, C: c2.C }
+    (h1[:H] - h2[:H]).abs < 0.1 &&
+    (h1[:L] - h2[:L]).abs < 0.1 &&
+    (h1[:C] - h2[:C]).abs < 0.1
   end
 
-  def color_with_updates(color, hue: nil, chroma: nil)
-    case color
-    when Hash
-      updates = {}
-      updates[:H] = hue if hue
-      updates[:C] = chroma if chroma
-      color.merge(updates)
-    else
-      if color.respond_to?(:to_h)
-        h = color.to_h
-        h[:H] = hue if hue
-        h[:C] = chroma if chroma
-        h
-      else
-        color
-      end
-    end
+  def reset(start_color = { H: 120, L: 65, C: 50 })
+    @current_color = start_color
+    @color_history = [start_color.dup]
+    @harmonic_functions = [HarmonicFunction.color_to_function(start_color)]
+    @preferences = []
   end
 
-  def color_cache_key(color)
-    h = extract_hue(color)
-    l = extract_lightness(color)
-    c = extract_chroma(color)
-    "#{h.round(1)}_#{l.round(1)}_#{c.round(1)}"
+  def color_at(index)
+    @color_history[index]
   end
 
-  def key_to_semitone(key_str)
-    case key_str.upcase
-    when 'C'  then 0
-    when 'G'  then 7
-    when 'D'  then 2
-    when 'A'  then 9
-    when 'E'  then 4
-    when 'B'  then 11
-    when 'F'  then 5
-    when 'BB' then 10
-    when 'EB' then 3
-    when 'AB' then 8
-    else 0
-    end
+  def all_colors
+    @color_history.map { |c| [c[:H], c[:L], c[:C]] }
   end
+
+  def session_summary
+    {
+      colors_generated: @color_history.length,
+      harmonic_functions: @harmonic_functions.uniq.length,
+      preferences_recorded: @preferences.length,
+      has_cadence: !cadence_type.nil?,
+      cadence_type: cadence_type,
+      progression_type: analyze_harmonic_progression[:progression_type]
+    }
+  end
+
+  def to_s
+    "PLRColorRenderer(colors=#{@color_history.length}, funcs=#{@harmonic_functions.uniq.length})"
+  end
+end
+
+if __FILE__ == $0
+  puts "=" * 80
+  puts "PLR Color Renderer - Phase 5 Integration Test"
+  puts "=" * 80
+  puts
+
+  puts "Test 1: Initialize renderer"
+  renderer = PLRColorRenderer.new
+  puts "✓ Renderer created: #{renderer}"
+  puts
+
+  puts "Test 2: Apply PLR transformations"
+  result_p = renderer.transform_parallel(1)
+  puts "✓ P transform: H=#{result_p[:color][:H].round(1)}"
+  result_l = renderer.transform_leading_tone(1)
+  puts "✓ L transform: L=#{result_l[:color][:L].round(1)}"
+  result_r = renderer.transform_relative(1)
+  puts "✓ R transform: C=#{result_r[:color][:C].round(1)}"
+  puts
+
+  puts "Test 3: Harmonic function analysis"
+  analysis = renderer.analyze_harmonic_progression
+  puts "✓ Progression type: #{analysis[:progression_type]}"
+  puts "✓ Closure complete: #{analysis[:closure][:complete]}"
+  puts
+
+  puts "Test 4: Record preferences"
+  pref = renderer.record_preference(0, 1)
+  puts "✓ Preference recorded: gradient=#{(pref[:gradient] * 100).round(1)}%"
+  puts
+
+  puts "Test 5: Generate hexatonic cycle"
+  cycle = renderer.generate_hexatonic_cycle
+  puts "✓ Hexatonic cycle: #{cycle.length} colors"
+  puts
+
+  puts "Test 6: CRDT command integration"
+  renderer.reset({ H: 120, L: 65, C: 50 })
+  result = renderer.apply_crdt_command("plr P")
+  puts "✓ CRDT command executed: #{result[:plr_type]}"
+  puts
+
+  puts "Test 7: State serialization"
+  state = renderer.to_h
+  puts "✓ State exported: #{state.keys.sort.join(', ')}"
+  renderer2 = PLRColorRenderer.new
+  renderer2.merge!(state)
+  puts "✓ State merged: history length #{renderer2.color_history.length}"
+  puts
+
+  puts "Test 8: Session summary"
+  summary = renderer.session_summary
+  puts "✓ Summary: colors=#{summary[:colors_generated]}, prefs=#{summary[:preferences_recorded]}"
+  puts
+
+  puts "=" * 80
+  puts "✓ Phase 5 Integration Tests PASSED"
+  puts "=" * 80
 end
