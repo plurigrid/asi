@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GMRA Skill Space: IsUMAP Projection</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        svg { border: 1px solid #ccc; }
+        .skill-node { cursor: pointer; }
+        .skill-node:hover { stroke-width: 2px; }
+        .tooltip { position: absolute; background: rgba(0,0,0,0.8); color: white;
+                   padding: 8px; border-radius: 4px; font-size: 12px; pointer-events: none; }
+        .info-panel { position: fixed; right: 10px; top: 10px; width: 300px;
+                      border: 1px solid #ccc; padding: 10px; background: #f9f9f9; }
+        .stat { margin: 5px 0; font-size: 12px; }
+        .legend { margin-top: 20px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>GMRA Skill Space Visualization</h1>
+    <p>IsUMAP projection of 166 skills based on Wasserstein distances from GOKO morphisms</p>
+
+    <svg width="1000" height="700" id="visualization"></svg>
+
+    <div class="info-panel">
+        <h3>Skill Information</h3>
+        <div id="skill-info">Hover over a skill to see details</div>
+        <div class="legend">
+            <h4>World Colors</h4>
+            <div id="legend-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // Prepare data
+        const skills = [
+            {
+                id: 1,
+                name: "A-F-X-M_skill_1",
+                project: "A-F-X-M",
+                world: "A",
+                trit: -1,
+                color: "#2f53ed",
+                x: 2.5831189158648202,
+                y: 9.660615632915034
+            },
+            {
+                id: 2,
+                name: "A-F-X-M_skill_2",
+                project: "A-F-X-M",
+                world: "A",
+                trit: -1,
+                color: "#b2e2dd",
+                x: -8.22807081683501,
+                y: 5.683207540767161
+            },
+            {
+                id: 3,
+                name: "A-F-X-M_skill_3",
+                project: "A-F-X-M",
+                world: "A",
+                trit: -1,
+                color: "#0dd19b",
+                x: 2.989671349670755,
+                y: 9.542633963547278
+            },
+            {
+                id: 4,
+                name: "ACSets.jl_skill_1",
+                project: "ACSets.jl",
+                world: "A",
+                trit: -1,
+                color: "#0f3851",
+                x: 1.3327546349509949,
+                y: 9.91079022154219
+            },
+            {
+                id: 5,
+                name: "ACSets.jl_skill_2",
+                project: "ACSets.jl",
+                world: "A",
+                trit: -1,
+                color: "#a970a7",
+                x: 1.1201612795260474,
+                y: 9.937063773472362
+            },
+            {
+                id: 6,
+                name: "ACSets.jl_skill_3",
+                project: "ACSets.jl",
+                world: "A",
+                trit: -1,
+                color: "#bd6a9e",
+                x: 3.588877496411032,
+                y: 9.333807157681072
+            },
+            {
+                id: 7,
+                name: "ACSets.jl_skill_4",
+                project: "ACSets.jl",
+                world: "A",
+                trit: -1,
+                color: "#f0694d",
+                x: 0.9064071152156638,
+                y: 9.958836471658442
+            },
+            {
+                id: 8,
+                name: "AlgebraicDynamics.jl_skill_1",
+                project: "AlgebraicDynamics.jl",
+                world: "A",
+                trit: -1,
+                color: "#687faa",
+                x: 3.1908667990493242,
+                y: 9.477255236202621
+            },
+            {
+                id: 9,
+                name: "AlgebraicDynamics.jl_skill_2",
+                project: "AlgebraicDynamics.jl",
+                world: "A",
+                trit: -1,
+                color: "#72e8d4",
+                x: -8.9630224412379,
+                y: 4.434436379294688
+            },
+            {
+                id: 10,
+                name: "AlgebraicDynamics.jl_skill_3",
+                project: "AlgebraicDynamics.jl",
+                world: "A",
+                trit: -1,
+                color: "#9ad650",
+                x: -0.18000468685165108,
+                y: 9.998379669921745
+            },
+            {
+                id: 11,
+                name: ".flox_skill_1",
+                project: ".flox",
+                world: "B",
+                trit: 1,
+                color: "#8422ad",
+                x: 3.7855988395064317,
+                y: 9.255767886397024
+            },
+            {
+                id: 12,
+                name: ".flox_skill_2",
+                project: ".flox",
+                world: "B",
+                trit: 1,
+                color: "#8d2d51",
+                x: 7.609675263043173,
+                y: 6.487899511308884
+            },
+            {
+                id: 13,
+                name: ".flox_skill_3",
+                project: ".flox",
+                world: "B",
+                trit: 1,
+                color: "#0e833a",
+                x: 2.7870749430886437,
+                y: 9.603760253284587
+            },
+            {
+                id: 14,
+                name: ".flox_skill_4",
+                project: ".flox",
+                world: "B",
+                trit: 1,
+                color: "#e62cdb",
+                x: 0.2581539835803232,
+                y: 9.996667156580827
+            },
+            {
+                id: 15,
+                name: ".topos_skill_1",
+                project: ".topos",
+                world: "B",
+                trit: 1,
+                color: "#15a429",
+                x: 0.039691817752734324,
+                y: 9.999921113423975
+            },
+            {
+                id: 16,
+                name: ".topos_skill_2",
+                project: ".topos",
+                world: "B",
+                trit: 1,
+                color: "#9fb4cb",
+                x: 7.000241598231676,
+                y: 7.141191445661649
+            },
+            {
+                id: 17,
+                name: ".topos_skill_3",
+                project: ".topos",
+                world: "B",
+                trit: 1,
+                color: "#188988",
+                x: -8.082926271091338,
+                y: 5.887809458417555
+            },
+            {
+                id: 18,
+                name: "ACSets.jl_skill_1",
+                project: "ACSets.jl",
+                world: "B",
+                trit: 1,
+                color: "#0f3851",
+                x: -8.366372014259216,
+                y: 5.477573973285005
+            },
+            {
+                id: 19,
+                name: "ACSets.jl_skill_2",
+                project: "ACSets.jl",
+                world: "B",
+                trit: 1,
+                color: "#a970a7",
+                x: 1.7544220191847226,
+                y: 9.844897211988744
+            },
+            {
+                id: 20,
+                name: "ACSets.jl_skill_3",
+                project: "ACSets.jl",
+                world: "B",
+                trit: 1,
+                color: "#bd6a9e",
+                x: 7.754680148318899,
+                y: 6.3138683443292445
+            },
+            {
+                id: 21,
+                name: "BENCH-case-hasheq_skill_1",
+                project: "BENCH-case-hasheq",
+                world: "F",
+                trit: 1,
+                color: "#014539",
+                x: 5.297698046900484,
+                y: 8.481414571482789
+            },
+            {
+                id: 22,
+                name: "BENCH-case-hasheq_skill_2",
+                project: "BENCH-case-hasheq",
+                world: "F",
+                trit: 1,
+                color: "#0a1fe0",
+                x: 6.679117269279217,
+                y: 7.442404867291662
+            },
+            {
+                id: 23,
+                name: "BENCH-case-hasheq_skill_3",
+                project: "BENCH-case-hasheq",
+                world: "F",
+                trit: 1,
+                color: "#d6d2f2",
+                x: -8.623335517954825,
+                y: 5.063406150845168
+            },
+            {
+                id: 24,
+                name: "BENCH-case-hasheq_skill_4",
+                project: "BENCH-case-hasheq",
+                world: "F",
+                trit: 1,
+                color: "#c7f05a",
+                x: 4.556078664567068,
+                y: 8.901805712261941
+            },
+            {
+                id: 25,
+                name: "BENCH-update-kvs_skill_1",
+                project: "BENCH-update-kvs",
+                world: "F",
+                trit: 1,
+                color: "#318721",
+                x: 4.930722418322129,
+                y: 8.699883572030593
+            },
+            {
+                id: 26,
+                name: "BENCH-update-kvs_skill_2",
+                project: "BENCH-update-kvs",
+                world: "F",
+                trit: 1,
+                color: "#bf119d",
+                x: 1.9634632636122595,
+                y: 9.805345978083327
+            },
+            {
+                id: 27,
+                name: "BENCH-update-kvs_skill_3",
+                project: "BENCH-update-kvs",
+                world: "F",
+                trit: 1,
+                color: "#1e6fd0",
+                x: 6.5146774675542,
+                y: 7.586763157169227
+            },
+            {
+                id: 28,
+                name: "BENCH-update-kvs_skill_4",
+                project: "BENCH-update-kvs",
+                world: "F",
+                trit: 1,
+                color: "#cd3ba4",
+                x: 5.832743256345342,
+                y: 8.122752232318783
+            },
+            {
+                id: 29,
+                name: "RESEARCH-bench-destructure_skill_1",
+                project: "RESEARCH-bench-destructure",
+                world: "F",
+                trit: 1,
+                color: "#65b26b",
+                x: 4.174224856395764,
+                y: 9.087125210274008
+            },
+            {
+                id: 30,
+                name: "RESEARCH-bench-destructure_skill_2",
+                project: "RESEARCH-bench-destructure",
+                world: "F",
+                trit: 1,
+                color: "#b0bade",
+                x: 6.347778575716579,
+                y: 7.726946671646227
+            },
+            {
+                id: 31,
+                name: "RESEARCH-bench-destructure_skill_3",
+                project: "RESEARCH-bench-destructure",
+                world: "F",
+                trit: 1,
+                color: "#a90fd2",
+                x: 5.656534152020869,
+                y: 8.246430689199922
+            },
+            {
+                id: 32,
+                name: "RESEARCH-bench-destructure_skill_4",
+                project: "RESEARCH-bench-destructure",
+                world: "F",
+                trit: 1,
+                color: "#4c504a",
+                x: 1.5441794497274213,
+                y: 9.880056050517924
+            },
+            {
+                id: 33,
+                name: "archive-text-urls_skill_1",
+                project: "archive-text-urls",
+                world: "G",
+                trit: -1,
+                color: "#1e2686",
+                x: 7.8964791102570135,
+                y: 6.135602279106051
+            },
+            {
+                id: 34,
+                name: "archive-text-urls_skill_2",
+                project: "archive-text-urls",
+                world: "G",
+                trit: -1,
+                color: "#b27947",
+                x: 4.744330003561867,
+                y: 8.80291602552291
+            },
+            {
+                id: 35,
+                name: "archive-text-urls_skill_3",
+                project: "archive-text-urls",
+                world: "G",
+                trit: -1,
+                color: "#0edefe",
+                x: 5.115198121403573,
+                y: 8.59271469969482
+            },
+            {
+                id: 36,
+                name: "archive-text-urls_skill_4",
+                project: "archive-text-urls",
+                world: "G",
+                trit: -1,
+                color: "#b66e64",
+                x: 2.3778418566058668,
+                y: 9.713180006807015
+            },
+            {
+                id: 37,
+                name: "archiver-bot_skill_1",
+                project: "archiver-bot",
+                world: "G",
+                trit: -1,
+                color: "#97633e",
+                x: 6.1784316546857765,
+                y: 7.863013417544231
+            },
+            {
+                id: 38,
+                name: "archiver-bot_skill_2",
+                project: "archiver-bot",
+                world: "G",
+                trit: -1,
+                color: "#be7b78",
+                x: 3.9807317348854814,
+                y: 9.17353653694771
+            },
+            {
+                id: 39,
+                name: "archiver-bot_skill_3",
+                project: "archiver-bot",
+                world: "G",
+                trit: -1,
+                color: "#726a0b",
+                x: 6.840999012811202,
+                y: 7.293883067898813
+            },
+            {
+                id: 40,
+                name: "funnel_skill_1",
+                project: "funnel",
+                world: "G",
+                trit: -1,
+                color: "#534cb4",
+                x: 7.310593580087153,
+                y: 6.823138514989323
+            },
+            {
+                id: 41,
+                name: "funnel_skill_2",
+                project: "funnel",
+                world: "G",
+                trit: -1,
+                color: "#3088e9",
+                x: 3.390617510211243,
+                y: 9.407641077377747
+            },
+            {
+                id: 42,
+                name: "funnel_skill_3",
+                project: "funnel",
+                world: "G",
+                trit: -1,
+                color: "#1c9e20",
+                x: 2.171279281633489,
+                y: 9.761431453420634
+            },
+            {
+                id: 43,
+                name: "funnel_skill_4",
+                project: "funnel",
+                world: "G",
+                trit: -1,
+                color: "#63c064",
+                x: 7.156801319661276,
+                y: 6.984281821604586
+            },
+            {
+                id: 44,
+                name: "kubeflow_skill_1",
+                project: "kubeflow",
+                world: "K",
+                trit: 1,
+                color: "#c846b6",
+                x: -4.364131289577134,
+                y: -8.997463861034138
+            },
+            {
+                id: 45,
+                name: "kubeflow_skill_2",
+                project: "kubeflow",
+                world: "K",
+                trit: 1,
+                color: "#b3890d",
+                x: -4.145077052515089,
+                y: -9.100457904106525
+            },
+            {
+                id: 46,
+                name: "kubeflow_skill_3",
+                project: "kubeflow",
+                world: "K",
+                trit: 1,
+                color: "#bc8a83",
+                x: -4.578815287006536,
+                y: -8.890132081036958
+            },
+            {
+                id: 47,
+                name: "kubeflow_skill_4",
+                project: "kubeflow",
+                world: "K",
+                trit: 1,
+                color: "#3aea9a",
+                x: -4.789097703094222,
+                y: -8.778641184630223
+            },
+            {
+                id: 48,
+                name: "asi_skill_1",
+                project: "asi",
+                world: "P",
+                trit: 0,
+                color: "#0bfaf6",
+                x: 5.59015375702738,
+                y: -8.291572773631575
+            },
+            {
+                id: 49,
+                name: "asi_skill_2",
+                project: "asi",
+                world: "P",
+                trit: 0,
+                color: "#22bc9e",
+                x: 5.409119172433159,
+                y: -8.410792344337638
+            },
+            {
+                id: 50,
+                name: "asi_skill_3",
+                project: "asi",
+                world: "P",
+                trit: 0,
+                color: "#1849de",
+                x: 4.840864591883058,
+                y: -8.750201601325053
+            },
+            {
+                id: 51,
+                name: "plurigrid_skill_1",
+                project: "plurigrid",
+                world: "P",
+                trit: 0,
+                color: "#e822e0",
+                x: 5.223930443342563,
+                y: -8.527048070559516
+            },
+            {
+                id: 52,
+                name: "plurigrid_skill_2",
+                project: "plurigrid",
+                world: "P",
+                trit: 0,
+                color: "#4ed1a0",
+                x: 5.034531458298288,
+                y: -8.640225174330045
+            },
+            {
+                id: 53,
+                name: "plurigrid_skill_3",
+                project: "plurigrid",
+                world: "P",
+                trit: 0,
+                color: "#9836e5",
+                x: 2.0004006611856053,
+                y: -9.797877062521355
+            },
+            {
+                id: 54,
+                name: "CatColab_skill_1",
+                project: "CatColab",
+                world: "T",
+                trit: 0,
+                color: "#5d8e96",
+                x: 5.9973168344493235,
+                y: -8.002011466787472
+            },
+            {
+                id: 55,
+                name: "CatColab_skill_2",
+                project: "CatColab",
+                world: "T",
+                trit: 0,
+                color: "#d43c39",
+                x: 5.735217623603601,
+                y: -8.191903045925077
+            },
+            {
+                id: 56,
+                name: "CatColab_skill_3",
+                project: "CatColab",
+                world: "T",
+                trit: 0,
+                color: "#6705da",
+                x: 6.248743246699656,
+                y: -7.807253331722711
+            },
+            {
+                id: 57,
+                name: "CatColab_skill_4",
+                project: "CatColab",
+                world: "T",
+                trit: 0,
+                color: "#4dca53",
+                x: 2.2695817019490327,
+                y: -9.73904495540788
+            },
+            {
+                id: 58,
+                name: "TeglonLabs_skill_1",
+                project: "TeglonLabs",
+                world: "T",
+                trit: 0,
+                color: "#64dcb4",
+                x: 2.792394504888343,
+                y: -9.602214884582605
+            },
+            {
+                id: 59,
+                name: "TeglonLabs_skill_2",
+                project: "TeglonLabs",
+                world: "T",
+                trit: 0,
+                color: "#55bd29",
+                x: 1.7260273858285986,
+                y: -9.849915085584671
+            },
+            {
+                id: 60,
+                name: "TeglonLabs_skill_3",
+                project: "TeglonLabs",
+                world: "T",
+                trit: 0,
+                color: "#3bbed1",
+                x: 2.5335713726884723,
+                y: -9.673728022457336
+            },
+            {
+                id: 61,
+                name: "TeglonLabs_skill_4",
+                project: "TeglonLabs",
+                world: "T",
+                trit: 0,
+                color: "#01543e",
+                x: 0.5779143838632118,
+                y: -9.983286666500156
+            },
+            {
+                id: 62,
+                name: "TheNumarati_skill_1",
+                project: "TheNumarati",
+                world: "T",
+                trit: 0,
+                color: "#be3ed6",
+                x: 0.8722793381014353,
+                y: -9.961883680502355
+            },
+            {
+                id: 63,
+                name: "TheNumarati_skill_2",
+                project: "TheNumarati",
+                world: "T",
+                trit: 0,
+                color: "#8b083d",
+                x: 1.1618686123544033,
+                y: -9.932273608917953
+            },
+            {
+                id: 64,
+                name: "TheNumarati_skill_3",
+                project: "TheNumarati",
+                world: "T",
+                trit: 0,
+                color: "#0309da",
+                x: 1.4464927171602782,
+                y: -9.89482978840209
+            },
+            {
+                id: 65,
+                name: "AdventOfCode2017_skill_1",
+                project: "AdventOfCode2017",
+                world: "c",
+                trit: 1,
+                color: "#4a4a9d",
+                x: 6.006732310898496,
+                y: 7.994946195216546
+            },
+            {
+                id: 66,
+                name: "AdventOfCode2017_skill_2",
+                project: "AdventOfCode2017",
+                world: "c",
+                trit: 1,
+                color: "#309356",
+                x: -8.498050104535984,
+                y: 5.270971611547088
+            },
+            {
+                id: 67,
+                name: "AdventOfCode2017_skill_3",
+                project: "AdventOfCode2017",
+                world: "c",
+                trit: 1,
+                color: "#e7c7b1",
+                x: 0.6914932650357102,
+                y: 9.976063090689971
+            },
+            {
+                id: 68,
+                name: "AdventOfCode2017_skill_4",
+                project: "AdventOfCode2017",
+                world: "c",
+                trit: 1,
+                color: "#2132dd",
+                x: 0.47541358194923267,
+                y: 9.9886925895285
+            },
+            {
+                id: 69,
+                name: "Continuum-Corporation_skill_1",
+                project: "Continuum-Corporation",
+                world: "c",
+                trit: 1,
+                color: "#63f023",
+                x: -8.855618824564484,
+                y: 4.645213937521328
+            },
+            {
+                id: 70,
+                name: "Continuum-Corporation_skill_2",
+                project: "Continuum-Corporation",
+                world: "c",
+                trit: 1,
+                color: "#840a4b",
+                x: 4.366025366415171,
+                y: 8.996544905555872
+            },
+            {
+                id: 71,
+                name: "Continuum-Corporation_skill_3",
+                project: "Continuum-Corporation",
+                world: "c",
+                trit: 1,
+                color: "#bb7d42",
+                x: 7.461705970629236,
+                y: 6.657547723524973
+            },
+            {
+                id: 72,
+                name: "JaM_skill_1",
+                project: "JaM",
+                world: "c",
+                trit: 1,
+                color: "#bdf4c5",
+                x: -8.742454296233749,
+                y: 4.854841931109399
+            },
+            {
+                id: 73,
+                name: "JaM_skill_2",
+                project: "JaM",
+                world: "c",
+                trit: 1,
+                color: "#7e6292",
+                x: 8.035038490317758,
+                y: 5.952995390410685
+            },
+            {
+                id: 74,
+                name: "JaM_skill_3",
+                project: "JaM",
+                world: "c",
+                trit: 1,
+                color: "#efdb75",
+                x: 5.478166208090137,
+                y: 8.365984265091951
+            },
+            {
+                id: 75,
+                name: "BayesTheseus-PP_skill_1",
+                project: "BayesTheseus-PP",
+                world: "d",
+                trit: 0,
+                color: "#9a11ca",
+                x: 9.329121243108133,
+                y: -3.6010407323170184
+            },
+            {
+                id: 76,
+                name: "BayesTheseus-PP_skill_2",
+                project: "BayesTheseus-PP",
+                world: "d",
+                trit: 0,
+                color: "#767128",
+                x: 9.414269064645634,
+                y: -3.372170741725507
+            },
+            {
+                id: 77,
+                name: "BayesTheseus-PP_skill_3",
+                project: "BayesTheseus-PP",
+                world: "d",
+                trit: 0,
+                color: "#197e54",
+                x: 9.039549731389503,
+                y: -4.2762762015336255
+            },
+            {
+                id: 78,
+                name: "BayesTheseus-PP_skill_4",
+                project: "BayesTheseus-PP",
+                world: "d",
+                trit: 0,
+                color: "#36b6c3",
+                x: 9.567199640429052,
+                y: -2.9101011305680755
+            },
+            {
+                id: 79,
+                name: "DMLAI_skill_1",
+                project: "DMLAI",
+                world: "d",
+                trit: 0,
+                color: "#cca5b1",
+                x: 8.696733667009164,
+                y: -4.936276026076464
+            },
+            {
+                id: 80,
+                name: "DMLAI_skill_2",
+                project: "DMLAI",
+                world: "d",
+                trit: 0,
+                color: "#0d2aef",
+                x: 9.141742156359761,
+                y: -4.053214508742499
+            },
+            {
+                id: 81,
+                name: "DMLAI_skill_3",
+                project: "DMLAI",
+                world: "d",
+                trit: 0,
+                color: "#56ed3a",
+                x: 8.81601827381969,
+                y: -4.719938483192225
+            },
+            {
+                id: 82,
+                name: "Databases---Categories_skill_1",
+                project: "Databases---Categories",
+                world: "d",
+                trit: 0,
+                color: "#01bb4c",
+                x: 8.571913594199119,
+                y: -5.149980078101598
+            },
+            {
+                id: 83,
+                name: "Databases---Categories_skill_2",
+                project: "Databases---Categories",
+                world: "d",
+                trit: 0,
+                color: "#827a98",
+                x: 3.9330030284650603,
+                y: -9.19410057456555
+            },
+            {
+                id: 84,
+                name: "Databases---Categories_skill_3",
+                project: "Databases---Categories",
+                world: "d",
+                trit: 0,
+                color: "#2fcb77",
+                x: 8.385129349742401,
+                y: -5.448816682313582
+            },
+            {
+                id: 85,
+                name: "Databases---Categories_skill_4",
+                project: "Databases---Categories",
+                world: "d",
+                trit: 0,
+                color: "#702fae",
+                x: 8.246832668222384,
+                y: -5.655948053297762
+            },
+            {
+                id: 86,
+                name: "721_skill_1",
+                project: "721",
+                world: "e",
+                trit: -1,
+                color: "#27a002",
+                x: -5.473637374855027,
+                y: 8.368948061526797
+            },
+            {
+                id: 87,
+                name: "721_skill_2",
+                project: "721",
+                world: "e",
+                trit: -1,
+                color: "#f9df8c",
+                x: -5.98486621315746,
+                y: 8.011327866294499
+            },
+            {
+                id: 88,
+                name: "721_skill_3",
+                project: "721",
+                world: "e",
+                trit: -1,
+                color: "#117560",
+                x: -7.068822445784573,
+                y: 7.073312307539286
+            },
+            {
+                id: 89,
+                name: "721_skill_4",
+                project: "721",
+                world: "e",
+                trit: -1,
+                color: "#39e2a4",
+                x: -4.749631963482931,
+                y: 8.800056475584244
+            },
+            {
+                id: 90,
+                name: "infinity-cosmos_skill_1",
+                project: "infinity-cosmos",
+                world: "e",
+                trit: -1,
+                color: "#1de572",
+                x: -6.923451854034219,
+                y: 7.215664362735011
+            },
+            {
+                id: 91,
+                name: "infinity-cosmos_skill_2",
+                project: "infinity-cosmos",
+                world: "e",
+                trit: -1,
+                color: "#ffc23a",
+                x: -6.774895312771284,
+                y: 7.355324008654361
+            },
+            {
+                id: 92,
+                name: "infinity-cosmos_skill_3",
+                project: "infinity-cosmos",
+                world: "e",
+                trit: -1,
+                color: "#2f623f",
+                x: -5.817523254889125,
+                y: 8.133659751228773
+            },
+            {
+                id: 93,
+                name: "infinity-cosmos_skill_4",
+                project: "infinity-cosmos",
+                world: "e",
+                trit: -1,
+                color: "#82e430",
+                x: -5.647107477039165,
+                y: 8.252888882797025
+            },
+            {
+                id: 94,
+                name: "yoneda_skill_1",
+                project: "yoneda",
+                world: "e",
+                trit: -1,
+                color: "#63e6fa",
+                x: -3.1633152604633996,
+                y: 9.486486931800915
+            },
+            {
+                id: 95,
+                name: "yoneda_skill_2",
+                project: "yoneda",
+                world: "e",
+                trit: -1,
+                color: "#01087a",
+                x: -5.117614417756091,
+                y: 8.591275832869986
+            },
+            {
+                id: 96,
+                name: "yoneda_skill_3",
+                project: "yoneda",
+                world: "e",
+                trit: -1,
+                color: "#598e8a",
+                x: -4.1757170887517505,
+                y: 9.086439597049129
+            },
+            {
+                id: 97,
+                name: "yoneda_skill_4",
+                project: "yoneda",
+                world: "e",
+                trit: -1,
+                color: "#94eba5",
+                x: -4.561221054358061,
+                y: 8.899171885824519
+            },
+            {
+                id: 98,
+                name: "gdlog_skill_1",
+                project: "gdlog",
+                world: "h",
+                trit: 0,
+                color: "#d1818b",
+                x: -3.9786990081335736,
+                y: 9.174418344320323
+            },
+            {
+                id: 99,
+                name: "gdlog_skill_2",
+                project: "gdlog",
+                world: "h",
+                trit: 0,
+                color: "#77a1d9",
+                x: -6.623168168574644,
+                y: 7.492238729670422
+            },
+            {
+                id: 100,
+                name: "gdlog_skill_3",
+                project: "gdlog",
+                world: "h",
+                trit: 0,
+                color: "#146b64",
+                x: -4.369904359272817,
+                y: 8.994661397129354
+            },
+            {
+                id: 101,
+                name: "gdlog_skill_4",
+                project: "gdlog",
+                world: "h",
+                trit: 0,
+                color: "#97fabf",
+                x: -4.935105764112536,
+                y: 8.697397821230268
+            },
+            {
+                id: 102,
+                name: "hdresearch_skill_1",
+                project: "hdresearch",
+                world: "h",
+                trit: 0,
+                color: "#b19a98",
+                x: -6.310264115306375,
+                y: 7.757613329279338
+            },
+            {
+                id: 103,
+                name: "hdresearch_skill_2",
+                project: "hdresearch",
+                world: "h",
+                trit: 0,
+                color: "#3a9d04",
+                x: -3.7788951630925567,
+                y: 9.25850685035079
+            },
+            {
+                id: 104,
+                name: "hdresearch_skill_3",
+                project: "hdresearch",
+                world: "h",
+                trit: 0,
+                color: "#58cbfb",
+                x: -3.5763566560366966,
+                y: 9.33861182500302
+            },
+            {
+                id: 105,
+                name: "micro_datalog_gpu_skill_1",
+                project: "micro_datalog_gpu",
+                world: "h",
+                trit: 0,
+                color: "#0fb8e1",
+                x: -6.149118784759314,
+                y: 7.885958149909037
+            },
+            {
+                id: 106,
+                name: "micro_datalog_gpu_skill_2",
+                project: "micro_datalog_gpu",
+                world: "h",
+                trit: 0,
+                color: "#1d345b",
+                x: -6.468285885766437,
+                y: 7.626354009070482
+            },
+            {
+                id: 107,
+                name: "micro_datalog_gpu_skill_3",
+                project: "micro_datalog_gpu",
+                world: "h",
+                trit: 0,
+                color: "#198e2e",
+                x: -3.3711414611682096,
+                y: 9.41463769858462
+            },
+            {
+                id: 108,
+                name: "micro_datalog_gpu_skill_4",
+                project: "micro_datalog_gpu",
+                world: "h",
+                trit: 0,
+                color: "#3cf742",
+                x: -5.297132630181896,
+                y: 8.481767720525843
+            },
+            {
+                id: 109,
+                name: "InverterNetwork_skill_1",
+                project: "InverterNetwork",
+                world: "i",
+                trit: 0,
+                color: "#d74196",
+                x: 9.80548703182232,
+                y: 1.9627588907399125
+            },
+            {
+                id: 110,
+                name: "InverterNetwork_skill_2",
+                project: "InverterNetwork",
+                world: "i",
+                trit: 0,
+                color: "#2339c8",
+                x: 4.371506892629916,
+                y: -8.993882686328424
+            },
+            {
+                id: 111,
+                name: "InverterNetwork_skill_3",
+                project: "InverterNetwork",
+                world: "i",
+                trit: 0,
+                color: "#fd8cd3",
+                x: 4.626877826259733,
+                y: -8.865212906283961
+            },
+            {
+                id: 112,
+                name: "creative-coding_skill_1",
+                project: "creative-coding",
+                world: "l",
+                trit: 1,
+                color: "#8020db",
+                x: -7.55027373228526,
+                y: -6.5569325463158235
+            },
+            {
+                id: 113,
+                name: "creative-coding_skill_2",
+                project: "creative-coding",
+                world: "l",
+                trit: 1,
+                color: "#7fcb74",
+                x: -1.4487988563415466,
+                y: -9.894492396872984
+            },
+            {
+                id: 114,
+                name: "creative-coding_skill_3",
+                project: "creative-coding",
+                world: "l",
+                trit: 1,
+                color: "#e13830",
+                x: -6.640901125595709,
+                y: -7.476525279502355
+            },
+            {
+                id: 115,
+                name: "creative-coding_skill_4",
+                project: "creative-coding",
+                world: "l",
+                trit: 1,
+                color: "#3a8ebe",
+                x: 9.812267851331132,
+                y: -1.9285739954321213
+            },
+            {
+                id: 116,
+                name: "glitch-explorer_skill_1",
+                project: "glitch-explorer",
+                world: "l",
+                trit: 1,
+                color: "#7c40c1",
+                x: -1.839532050772367,
+                y: -9.829349915655847
+            },
+            {
+                id: 117,
+                name: "glitch-explorer_skill_2",
+                project: "glitch-explorer",
+                world: "l",
+                trit: 1,
+                color: "#c45b10",
+                x: -4.697145226490289,
+                y: -8.82818354779779
+            },
+            {
+                id: 118,
+                name: "glitch-explorer_skill_3",
+                project: "glitch-explorer",
+                world: "l",
+                trit: 1,
+                color: "#025329",
+                x: -7.781174176261616,
+                y: -6.281188284861755
+            },
+            {
+                id: 119,
+                name: "pretty-bugs_skill_1",
+                project: "pretty-bugs",
+                world: "l",
+                trit: 1,
+                color: "#e9d135",
+                x: -7.33650655089649,
+                y: -6.7952681702967315
+            },
+            {
+                id: 120,
+                name: "pretty-bugs_skill_2",
+                project: "pretty-bugs",
+                world: "l",
+                trit: 1,
+                color: "#06a3de",
+                x: 9.727994694100898,
+                y: -2.316488133620553
+            },
+            {
+                id: 121,
+                name: "pretty-bugs_skill_3",
+                project: "pretty-bugs",
+                world: "l",
+                trit: 1,
+                color: "#f25ce3",
+                x: -1.3969337471064258,
+                y: 9.901948005252533
+            },
+            {
+                id: 122,
+                name: "pretty-bugs_skill_4",
+                project: "pretty-bugs",
+                world: "l",
+                trit: 1,
+                color: "#f56893",
+                x: -7.075555428126906,
+                y: -7.066577199418282
+            },
+            {
+                id: 123,
+                name: "1lab_skill_1",
+                project: "1lab",
+                world: "m",
+                trit: -1,
+                color: "#6ad220",
+                x: 9.839885936129807,
+                y: 1.7823139353808548
+            },
+            {
+                id: 124,
+                name: "1lab_skill_2",
+                project: "1lab",
+                world: "m",
+                trit: -1,
+                color: "#5d6729",
+                x: -3.7958891177653835,
+                y: -9.251552509289079
+            },
+            {
+                id: 125,
+                name: "1lab_skill_3",
+                project: "1lab",
+                world: "m",
+                trit: -1,
+                color: "#a9a892",
+                x: -8.562041391436084,
+                y: -5.166376412082282
+            },
+            {
+                id: 126,
+                name: "DynamicalSystemsBook_skill_1",
+                project: "DynamicalSystemsBook",
+                world: "m",
+                trit: -1,
+                color: "#dfc75b",
+                x: -3.12206900479423,
+                y: 9.500141222293424
+            },
+            {
+                id: 127,
+                name: "DynamicalSystemsBook_skill_2",
+                project: "DynamicalSystemsBook",
+                world: "m",
+                trit: -1,
+                color: "#98bf9f",
+                x: -2.616145106839975,
+                y: 9.651724348109914
+            },
+            {
+                id: 128,
+                name: "DynamicalSystemsBook_skill_3",
+                project: "DynamicalSystemsBook",
+                world: "m",
+                trit: -1,
+                color: "#74f0cd",
+                x: -9.981849003958237,
+                y: -0.6022362846380548
+            },
+            {
+                id: 129,
+                name: "DynamicalSystemsBook_skill_4",
+                project: "DynamicalSystemsBook",
+                world: "m",
+                trit: -1,
+                color: "#c84c00",
+                x: -6.330405929025261,
+                y: -7.741185874878736
+            },
+            {
+                id: 130,
+                name: "MintedMosaic_skill_1",
+                project: "MintedMosaic",
+                world: "m",
+                trit: -1,
+                color: "#8ad5bc",
+                x: -8.215897759383868,
+                y: -5.700791350127129
+            },
+            {
+                id: 131,
+                name: "MintedMosaic_skill_2",
+                project: "MintedMosaic",
+                world: "m",
+                trit: -1,
+                color: "#3bc8f4",
+                x: -9.996590893533563,
+                y: 0.2610911660825814
+            },
+            {
+                id: 132,
+                name: "MintedMosaic_skill_3",
+                project: "MintedMosaic",
+                world: "m",
+                trit: -1,
+                color: "#f49721",
+                x: 9.953494585003149,
+                y: 0.9632983713725574
+            },
+            {
+                id: 133,
+                name: "nlab-content_skill_1",
+                project: "nlab-content",
+                world: "n",
+                trit: 0,
+                color: "#c7bd62",
+                x: 0.08062922719492237,
+                y: -9.999674844777832
+            },
+            {
+                id: 134,
+                name: "nlab-content_skill_2",
+                project: "nlab-content",
+                world: "n",
+                trit: 0,
+                color: "#76be95",
+                x: 7.576121540121718,
+                y: -6.527049929725818
+            },
+            {
+                id: 135,
+                name: "nlab-content_skill_3",
+                project: "nlab-content",
+                world: "n",
+                trit: 0,
+                color: "#4c305d",
+                x: 7.406000849768299,
+                y: -6.719460527879638
+            },
+            {
+                id: 136,
+                name: "Category_Theory_Machine_Learning_skill_1",
+                project: "Category_Theory_Machine_Learning",
+                world: "o",
+                trit: 0,
+                color: "#63a083",
+                x: 9.97477316245287,
+                y: 0.7098583467152754
+            },
+            {
+                id: 137,
+                name: "Category_Theory_Machine_Learning_skill_2",
+                project: "Category_Theory_Machine_Learning",
+                world: "o",
+                trit: 0,
+                color: "#dada6d",
+                x: 9.802362215183425,
+                y: 1.9783057190014968
+            },
+            {
+                id: 138,
+                name: "Category_Theory_Machine_Learning_skill_3",
+                project: "Category_Theory_Machine_Learning",
+                world: "o",
+                trit: 0,
+                color: "#18ce37",
+                x: 9.990583148160237,
+                y: 0.4338742603759172
+            },
+            {
+                id: 139,
+                name: "StructuredDecompositions.jl_skill_1",
+                project: "StructuredDecompositions.jl",
+                world: "o",
+                trit: 0,
+                color: "#d22233",
+                x: 9.935581914551037,
+                y: 1.133230132925984
+            },
+            {
+                id: 140,
+                name: "StructuredDecompositions.jl_skill_2",
+                project: "StructuredDecompositions.jl",
+                world: "o",
+                trit: 0,
+                color: "#335c6f",
+                x: 9.904921584247393,
+                y: 1.3756914353315457
+            },
+            {
+                id: 141,
+                name: "StructuredDecompositions.jl_skill_3",
+                project: "StructuredDecompositions.jl",
+                world: "o",
+                trit: 0,
+                color: "#8b890b",
+                x: 9.890838713729593,
+                y: -1.4735358672064303
+            },
+            {
+                id: 142,
+                name: "StructuredDecompositions.jl_skill_4",
+                project: "StructuredDecompositions.jl",
+                world: "o",
+                trit: 0,
+                color: "#17b2d8",
+                x: 9.523189717098536,
+                y: -3.0510417925532844
+            },
+            {
+                id: 143,
+                name: "agent-o-rama_skill_1",
+                project: "agent-o-rama",
+                world: "o",
+                trit: 0,
+                color: "#769b4a",
+                x: 9.341191810405103,
+                y: -3.5696125792050037
+            },
+            {
+                id: 144,
+                name: "agent-o-rama_skill_2",
+                project: "agent-o-rama",
+                world: "o",
+                trit: 0,
+                color: "#5c8163",
+                x: 9.087158362568047,
+                y: -4.174152763920174
+            },
+            {
+                id: 145,
+                name: "agent-o-rama_skill_3",
+                project: "agent-o-rama",
+                world: "o",
+                trit: 0,
+                color: "#886d06",
+                x: 8.744460337327105,
+                y: -4.851227865965368
+            },
+            {
+                id: 146,
+                name: "AgentGPT_skill_1",
+                project: "AgentGPT",
+                world: "r",
+                trit: 0,
+                color: "#82f023",
+                x: 9.74709455844763,
+                y: 2.2347586379222486
+            },
+            {
+                id: 147,
+                name: "AgentGPT_skill_2",
+                project: "AgentGPT",
+                world: "r",
+                trit: 0,
+                color: "#fb35d6",
+                x: 9.865483507094794,
+                y: 1.6346968124782082
+            },
+            {
+                id: 148,
+                name: "AgentGPT_skill_3",
+                project: "AgentGPT",
+                world: "r",
+                trit: 0,
+                color: "#605b65",
+                x: 9.997534699881193,
+                y: -0.22203246157330203
+            },
+            {
+                id: 149,
+                name: "AgentGPT_skill_4",
+                project: "AgentGPT",
+                world: "r",
+                trit: 0,
+                color: "#f5917a",
+                x: 9.592599124757278,
+                y: 2.8252505255723026
+            },
+            {
+                id: 150,
+                name: "complexity-scaling_skill_1",
+                project: "complexity-scaling",
+                world: "r",
+                trit: 0,
+                color: "#a7368a",
+                x: 7.051395820091408,
+                y: -7.090685111739457
+            },
+            {
+                id: 151,
+                name: "complexity-scaling_skill_2",
+                project: "complexity-scaling",
+                world: "r",
+                trit: 0,
+                color: "#822d34",
+                x: 7.741278644251635,
+                y: -6.330292515444497
+            },
+            {
+                id: 152,
+                name: "complexity-scaling_skill_3",
+                project: "complexity-scaling",
+                world: "r",
+                trit: 0,
+                color: "#739f63",
+                x: 7.23104589831864,
+                y: -6.90738543773639
+            },
+            {
+                id: 153,
+                name: "rzk_skill_1",
+                project: "rzk",
+                world: "r",
+                trit: 0,
+                color: "#e1e31e",
+                x: 9.93960771981209,
+                y: -1.0973590393576198
+            },
+            {
+                id: 154,
+                name: "rzk_skill_2",
+                project: "rzk",
+                world: "r",
+                trit: 0,
+                color: "#f9d6d5",
+                x: 9.989449570802915,
+                y: -0.4592338839816683
+            },
+            {
+                id: 155,
+                name: "rzk_skill_3",
+                project: "rzk",
+                world: "r",
+                trit: 0,
+                color: "#42c38f",
+                x: 9.96401840138602,
+                y: -0.8475469211257964
+            },
+            {
+                id: 156,
+                name: ".flox_skill_1",
+                project: ".flox",
+                world: "v",
+                trit: -1,
+                color: "#8422ad",
+                x: -9.871825469655995,
+                y: -1.5959511603194763
+            },
+            {
+                id: 157,
+                name: ".flox_skill_2",
+                project: ".flox",
+                world: "v",
+                trit: -1,
+                color: "#8d2d51",
+                x: -9.245866244377453,
+                y: -3.809718569895886
+            },
+            {
+                id: 158,
+                name: ".flox_skill_3",
+                project: ".flox",
+                world: "v",
+                trit: -1,
+                color: "#0e833a",
+                x: -9.923436335215442,
+                y: -1.2350746989968966
+            },
+            {
+                id: 159,
+                name: ".flox_skill_4",
+                project: ".flox",
+                world: "v",
+                trit: -1,
+                color: "#e62cdb",
+                x: -9.521238866764074,
+                y: -3.0571242435479355
+            },
+            {
+                id: 160,
+                name: "AlgebraicCategories_skill_1",
+                project: "AlgebraicCategories",
+                world: "v",
+                trit: -1,
+                color: "#a6ee44",
+                x: -9.807135951338088,
+                y: -1.9545031694552892
+            },
+            {
+                id: 161,
+                name: "AlgebraicCategories_skill_2",
+                project: "AlgebraicCategories",
+                world: "v",
+                trit: -1,
+                color: "#fae53e",
+                x: -9.392637877010971,
+                y: -3.431960359041166
+            },
+            {
+                id: 162,
+                name: "AlgebraicCategories_skill_3",
+                project: "AlgebraicCategories",
+                world: "v",
+                trit: -1,
+                color: "#f97d74",
+                x: -9.998290241817994,
+                y: -0.18490661134770214
+            },
+            {
+                id: 163,
+                name: "AlgebraicCategories_skill_4",
+                project: "AlgebraicCategories",
+                world: "v",
+                trit: -1,
+                color: "#f448c9",
+                x: -9.966254203453676,
+                y: -0.8208382088951003
+            },
+            {
+                id: 164,
+                name: "BridgeBasicTests_skill_1",
+                project: "BridgeBasicTests",
+                world: "v",
+                trit: -1,
+                color: "#c902b5",
+                x: -9.632722189855356,
+                y: -2.6852674755021337
+            },
+            {
+                id: 165,
+                name: "BridgeBasicTests_skill_2",
+                project: "BridgeBasicTests",
+                world: "v",
+                trit: -1,
+                color: "#5f4799",
+                x: 9.508669939892066,
+                y: 3.0959964741171193
+            },
+            {
+                id: 166,
+                name: "BridgeBasicTests_skill_3",
+                project: "BridgeBasicTests",
+                world: "v",
+                trit: -1,
+                color: "#b7e1e7",
+                x: -9.727572800466058,
+                y: -2.3182591780364117
+            },
+        ];
+
+        // Create SVG
+        const svg = d3.select("#visualization");
+        const width = 1000, height = 700;
+        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+
+        // Scales
+        const xScale = d3.scaleLinear()
+            .domain(d3.extent(skills, d => d.x))
+            .range([margin.left, width - margin.right]);
+
+        const yScale = d3.scaleLinear()
+            .domain(d3.extent(skills, d => d.y))
+            .range([height - margin.bottom, margin.top]);
+
+        // Draw skills
+        svg.selectAll(".skill-node")
+            .data(skills)
+            .enter()
+            .append("circle")
+            .attr("class", "skill-node")
+            .attr("cx", d => xScale(d.x))
+            .attr("cy", d => yScale(d.y))
+            .attr("r", 5)
+            .attr("fill", d => d.color)
+            .attr("opacity", 0.8)
+            .attr("stroke", "#333")
+            .attr("stroke-width", 1)
+            .on("mouseover", function(event, d) {
+                d3.select(this).attr("r", 8).attr("stroke-width", 2);
+                document.getElementById("skill-info").innerHTML =
+                    "<strong>" + d.name + "</strong><br/>" +
+                    "Project: " + d.project + "<br/>" +
+                    "World: " + d.world + "<br/>" +
+                    "Trit: " + d.trit + "<br/>" +
+                    "Color: " + d.color;
+            })
+            .on("mouseout", function() {
+                d3.select(this).attr("r", 5).attr("stroke-width", 1);
+            });
+
+        // Legend
+        const worlds = [...new Set(skills.map(s => s.world))];
+        const legendContent = worlds.map(w =>
+            "<div><span style='display:inline-block; width:12px; height:12px; " +
+            "background:" + skills.find(s => s.world === w).color +
+            ";'></span> " + w + "</div>"
+        ).join("");
+        document.getElementById("legend-content").innerHTML = legendContent;
+    </script>
+</body>
+</html>
