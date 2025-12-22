@@ -1,10 +1,12 @@
 ---
 name: acsets-algebraic-databases
-description: "ACSets (Attributed C-Sets): Algebraic databases as in-memory data structures. Category-theoretic formalism for relational databases generalizing graphs and data frames."
-source: AlgebraicJulia/ACSets.jl + music-topos
+description: "ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional navigation. Category-theoretic formalism for relational databases."
+source: AlgebraicJulia/ACSets.jl + music-topos + Specter CPS patterns
 license: MIT
 xenomodern: true
 ironic_detachment: 0.73
+trit: 0
+version: 1.3.0
 ---
 
 # ACSets: Algebraic Databases Skill
@@ -208,6 +210,66 @@ end
 ```
 
 This integrates the semantic naming from PR #990 with Gay.jl's deterministic coloring to create self-validating, visually debuggable ACSet constructions.
+
+## Specter-Style Bidirectional Navigation
+
+Inspired by Nathan Marz's Specter library, navigate ACSets with paths that work for both **select** AND **transform**:
+
+### ACSet Navigators
+
+```julia
+using SpecterACSet
+
+# Navigate morphism values
+acset_field(:E, :src)         # All source vertex IDs
+acset_field(:E, :tgt)         # All target vertex IDs
+
+# Filter parts by predicate
+acset_where(:E, :src, ==(1))  # Edges where src == 1
+
+# Navigate all parts of an object
+acset_parts(:V)               # All vertex IDs
+acset_parts(:E)               # All edge IDs
+```
+
+### Bidirectional Example
+
+```julia
+g = @acset Graph begin V=4; E=3; src=[1,2,3]; tgt=[2,3,4] end
+
+# Select: get all source vertices
+select([acset_field(:E, :src)], g)  # → [1, 2, 3]
+
+# Transform: shift all targets (same path!)
+g2 = transform([acset_field(:E, :tgt)], t -> mod1(t+1, 4), g)
+select([acset_field(:E, :tgt)], g2)  # → [3, 4, 1]
+```
+
+### Integration with ∫G (Category of Elements)
+
+Navigate the category of elements using paths:
+
+```julia
+# ∫G objects: (Ob, part_id) pairs
+# Navigate to all elements
+select([elements_of(:V)], g)  # → [(V,1), (V,2), (V,3), (V,4)]
+
+# Navigate morphism structure
+select([elements_of(:E), incident_to(:src, 1)], g)  # Edges from vertex 1
+```
+
+### Cross-Domain Bridge (Sexp ↔ ACSet)
+
+```julia
+# ACSet → Sexp → Navigate → Transform → Sexp → ACSet
+sexp = sexp_of_acset(g)
+
+# Navigate sexp to find all morphism names
+morphism_names = select([SEXP_CHILDREN, sexp_nth(1), ATOM_VALUE], sexp)
+
+# Roundtrip back to ACSet
+g2 = acset_of_sexp(Graph, sexp)
+```
 
 ## Higher-Order Functions on ACSets
 
