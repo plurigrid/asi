@@ -1081,3 +1081,167 @@ just acset-graph         # Create and visualize graph
 just acset-symmetric     # Symmetric graph example
 just acset-gf3           # Check GF(3) conservation
 ```
+
+---
+
+## Ramanujan Spectral Integration (NEW 2025-12-22)
+
+ACSet-based edge growth with spectral constraints:
+
+### Ramanujan-Preserving Growth
+
+```julia
+@present SchRamanujanGraph <: SchGraph begin
+  SpectralData::AttrType
+  lambda2::Attr(V, SpectralData)  # Track λ₂ per growth step
+end
+
+function grow_edge_ramanujan!(G::ACSet, u, v)
+    """
+    Add edge preserving Ramanujan property.
+    Uses Alon-Boppana bound: λ₂ ≥ 2√(d-1).
+    """
+    d = degree(G)
+    bound = 2 * sqrt(d - 1)
+    
+    # Tentatively add edge
+    add_part!(G, :E, src=u, tgt=v)
+    
+    # Check spectral constraint
+    λ₂ = second_eigenvalue(adjacency_matrix(G))
+    
+    if λ₂ > bound + 0.01  # Tolerance
+        # Rollback: remove edge
+        rem_part!(G, :E, nparts(G, :E))
+        return false
+    end
+    
+    return true
+end
+```
+
+### Non-Backtracking Edge Schema (Ihara Zeta)
+
+```julia
+@present SchNonBacktracking(FreeSchema) begin
+  V::Ob; E::Ob; DE::Ob  # DE = directed edges
+  src::Hom(E,V); tgt::Hom(E,V)
+  forward::Hom(E, DE); backward::Hom(E, DE)
+  de_src::Hom(DE, V); de_tgt::Hom(DE, V)
+  
+  # Non-backtracking constraint: head(e) = tail(f) ∧ e ≠ f⁻¹
+  nonbacktrack::Hom(DE, DE)  # B matrix as morphism
+end
+
+# Ihara zeta via ACSet homomorphisms
+function prime_cycles(G::ACSet, max_length)
+    cycles = []
+    for k in 1:max_length
+        if moebius(k) != 0  # Only squarefree lengths
+            push!(cycles, find_cycles(G, k))
+        end
+    end
+    return cycles
+end
+```
+
+### Centrality via Möbius Inversion
+
+```julia
+function alternating_centrality(G::ACSet)
+    """
+    Centrality via Möbius-weighted path counts.
+    c(v) = Σ_{k} μ(k) × paths_k(v) / k
+    """
+    n = nparts(G, :V)
+    A = adjacency_matrix(G)
+    c = zeros(n)
+    
+    for k in 1:diameter(G)
+        μ_k = moebius(k)
+        if μ_k != 0
+            paths_k = diag(A^k)
+            c .+= μ_k .* paths_k ./ k
+        end
+    end
+    
+    return c ./ sum(abs.(c))
+end
+```
+
+---
+
+## StructACSet Internals (DeepWiki 2025-12-22)
+
+Schema and attribute types known at compile time, enabling performance optimizations.
+
+### Type Parameters
+
+```julia
+StructACSet{S, Ts, PT}
+# S  = TypeLevelSchema{Symbol} - schema at compile time
+# Ts = Tuple of Julia types for attributes (e.g., Float64 for Weight)
+# PT = PartsType strategy (IntParts or BitSetParts)
+```
+
+### Column Storage
+
+```julia
+struct StructACSet{S, Ts, PT}
+  parts::NamedTuple     # {:V => IntParts, :E => IntParts, ...}
+  subparts::NamedTuple  # {:src => Column, :tgt => Column, :weight => Column, ...}
+end
+
+# Column types:
+# - Homs: Vector{Int} mapping parts to parts
+# - Attrs: Vector{Union{AttrVar,T}} for attribute values
+```
+
+### Index Configuration
+
+```julia
+@acset_type Graph(SchGraph, 
+    index=[:src, :tgt],         # Preimage cache: O(1) incident queries
+    unique_index=[:inv]          # Injective cache: even faster
+)
+
+# Index types:
+# - NoIndex: Linear scan O(n)
+# - Index (StoredPreimageCache): O(1) average via hash
+# - UniqueIndex (InjectiveCache): O(1) guaranteed, injective morphisms only
+```
+
+### Part ID Allocation Strategies
+
+| Strategy | Type | Deletion | Use Case |
+|----------|------|----------|----------|
+| **IntParts** | DenseParts | Pop-and-swap (renumbers) | Fast, compact storage |
+| **BitSetParts** | MarkAsDeleted | Preserves IDs, requires gc!() | Stable references |
+
+```julia
+# IntParts (default): contiguous IDs 1..n
+add_parts!(G, :V, 3)  # IDs: 1, 2, 3
+rem_part!(G, :V, 2)   # ID 3 → 2, ID 2 gone
+
+# BitSetParts: sparse IDs with gaps
+rem_part!(G, :V, 2)   # ID 2 marked deleted, ID 3 unchanged
+gc!(G)                # Compact: removes gaps
+```
+
+---
+
+## Spectral Bundle Triads (GF(3) Conserved)
+
+```
+ramanujan-expander (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [Graph Coloring]
+ramanujan-expander (-1) ⊗ acsets (0) ⊗ moebius-inversion (+1) = 0 ✓  [Edge Growth]
+ihara-zeta (-1) ⊗ acsets (0) ⊗ moebius-inversion (+1) = 0 ✓  [Prime Cycles]
+sheaf-cohomology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [ACSet Navigation]
+```
+
+### Related Spectral Skills
+
+- **ramanujan-expander**: Alon-Boppana spectral bounds, LPS construction
+- **ihara-zeta**: Non-backtracking walks, prime cycles, Graph RH
+- **moebius-inversion**: Poset inversion, chromatic polynomials, μ(3) = -1
+- **deepwiki-mcp**: Repository documentation (trit 0, substitutes in triads)
