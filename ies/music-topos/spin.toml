@@ -1,0 +1,75 @@
+spin_manifest_version = "1"
+name = "ramanujan-crdt-network"
+version = "1.0.0"
+description = "Ramanujan CRDT Network with 11 Components"
+authors = ["IES Collective"]
+trigger = { type = "http" }
+
+# Stream Components (3) - RED, GREEN, BLUE
+[[component]]
+id = "stream-red"
+source = "target/wasm32-wasip1/release/stream_red.wasm"
+[component.trigger.http]
+route = "/stream/red/..."
+
+[[component]]
+id = "stream-blue"
+source = "target/wasm32-wasip1/release/stream_blue.wasm"
+[component.trigger.http]
+route = "/stream/blue/..."
+
+[[component]]
+id = "stream-green"
+source = "target/wasm32-wasip1/release/stream_green.wasm"
+[component.trigger.http]
+route = "/stream/green/..."
+
+# Service Components (4) - Core Services
+[[component]]
+id = "crdt-service"
+source = "target/wasm32-wasip1/release/crdt_service.wasm"
+[component.trigger.http]
+route = "/crdt/..."
+
+[[component]]
+id = "egraph-service"
+source = "target/wasm32-wasip1/release/egraph_service.wasm"
+[component.trigger.http]
+route = "/egraph/..."
+
+[[component]]
+id = "skill-verification"
+source = "target/wasm32-wasip1/release/skill_verification.wasm"
+[component.trigger.http]
+route = "/verify/..."
+
+[[component]]
+id = "agent-orchestrator"
+source = "target/wasm32-wasip1/release/agent_orchestrator.wasm"
+[component.trigger.http]
+route = "/agents/..."
+
+# Interface Components (4) - User-Facing Services
+[[component]]
+id = "duck-colors"
+source = "target/wasm32-wasip1/release/duck_colors.wasm"
+[component.trigger.http]
+route = "/colors/..."
+
+[[component]]
+id = "transduction-sync"
+source = "target/wasm32-wasip1/release/transduction_2tdx.wasm"
+[component.trigger.http]
+route = "/sync/..."
+
+[[component]]
+id = "interaction-timeline"
+source = "target/wasm32-wasip1/release/interaction_timeline.wasm"
+[component.trigger.http]
+route = "/timeline/..."
+
+[[component]]
+id = "dashboard"
+source = "target/wasm32-wasip1/release/dashboard.wasm"
+[component.trigger.http]
+route = "/dashboard/..."

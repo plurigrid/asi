@@ -1,0 +1,77 @@
+project:
+  type: website
+  title: "Ramanujan CRDT Network: Content-Addressed Memoization with Multi-Agent Verification"
+  output-dir: _site
+
+website:
+  title: "Ramanujan CRDT Network"
+  favicon: "https://topos.site/favicon.ico"
+  navbar:
+    background: light
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "System Architecture"
+        href: architecture/index.qmd
+      - text: "CRDT Theory"
+        href: crdt/index.qmd
+      - text: "E-Graph Verification"
+        href: egraph/index.qmd
+      - text: "Multi-Agent Coordination"
+        href: agents/index.qmd
+      - text: "Deployment & Game Theory"
+        href: deployment/index.qmd
+      - text: "API Reference"
+        href: reference/index.qmd
+    right:
+      - icon: github
+        href: https://github.com/topos-institute/ramanujan-crdt
+      - icon: twitter
+        href: https://twitter.com/topos_institute
+
+  sidebar:
+    - href: index.qmd
+      text: Home
+    - href: architecture/index.qmd
+      text: System Architecture
+    - href: crdt/index.qmd
+      text: CRDT Theory
+    - href: egraph/index.qmd
+      text: E-Graph Verification
+    - href: agents/index.qmd
+      text: Multi-Agent System
+    - href: deployment/index.qmd
+      text: Deployment Overview
+    - href: deployment/game-theory.qmd
+      text: Game Theory
+    - href: deployment/targets.qmd
+      text: WASM Targets
+    - href: deployment/checklist.qmd
+      text: Deployment Checklist
+    - href: reference/index.qmd
+      text: API Reference
+
+format:
+  html:
+    theme: cosmo
+    code-fold: true
+    code-summary: "Show code"
+    highlight-style: github
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 300px
+    css: styles.css
+execute:
+  freeze: auto
+  eval: false
+
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+
+bibliography: references.bib
+
+prefer-html: true
