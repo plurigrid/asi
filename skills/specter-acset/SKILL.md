@@ -61,22 +61,38 @@ end
 | `keypath(k)` | Value at key | Update value at key |
 | `pred(f)` | Stay if f(x) true | Transform if f(x) true |
 
-## Composition: comp_navs
+## Composition: comp_navs (The Key to Performance)
+
+Nathan Marz's critical insight: **composition is just allocation + field sets**.
+
+### Why This Matters
+
+Traditional approaches compile/interpret paths at composition time. Specter does **zero work** at composition - it just creates an object:
 
 ```julia
-# Specter's key to performance: just allocation + field sets
+# Specter's key to performance: ONLY allocation + field sets
 struct ComposedNav <: Navigator
-    navs::Vector{Navigator}
+    navs::Vector{Navigator}  # Just a field - no processing
 end
 
+# comp_navs does ONE thing: allocate and set field
 comp_navs(navs::Navigator...) = ComposedNav(collect(navs))
+# That's it. No compilation. No interpretation. No optimization.
+# Just: new ComposedNav() + set navs field
+```
 
-# Chain of continuations
+### The Magic: Work Happens at Traversal
+
+All the actual work happens when you call `select` or `transform`:
+
+```julia
+# Chain of continuations - CPS (continuation-passing style)
 function nav_select(cn::ComposedNav, structure, next_fn)
     function chain_select(navs, struct_val)
         if isempty(navs)
-            next_fn(struct_val)
+            next_fn(struct_val)  # Base case: call continuation
         else
+            # Recursive case: process first nav, chain the rest
             nav_select(first(navs), struct_val, 
                       s -> chain_select(navs[2:end], s))
         end
@@ -84,6 +100,40 @@ function nav_select(cn::ComposedNav, structure, next_fn)
     chain_select(cn.navs, structure)
 end
 ```
+
+### Why CPS + Lazy Composition = Fast
+
+```
+Traditional:
+  compose(a, b, c) → [compile a+b+c] → CompiledPath
+  
+Specter:
+  comp_navs(a, b, c) → ComposedNav{[a, b, c]}  # Just store refs
+  select(path, data) → [chain continuations] → results
+```
+
+**Benefits:**
+1. **O(1) composition** - just allocate, no work
+2. **Inline caching** - same ComposedNav reused at callsite
+3. **Late binding** - dynamic navs resolved at traversal time
+4. **No intermediate allocations** - CPS avoids building result lists
+
+### Inline Caching Pattern
+
+```julia
+# At each callsite, the path is compiled ONCE and cached:
+@compiled_select([ALL, pred(iseven)], data)
+
+# Expands to something like:
+let cached_nav = nothing
+    if cached_nav === nothing
+        cached_nav = comp_navs(ALL, pred(iseven))  # First call only
+    end
+    nav_select(cached_nav, data, identity)  # Reuse forever
+end
+```
+
+This is why Specter achieves **near-hand-written performance** despite the abstraction.
 
 ## S-expression Navigators
 
