@@ -20,12 +20,7 @@ CREATE TABLE IF NOT EXISTS artifact_provenance (
     researchers_involved JSON,       -- ["user1", "user2", ...]
     artifact_metadata JSON,          -- Type-specific metadata
     is_verified BOOLEAN DEFAULT FALSE,
-    verification_timestamp TIMESTAMP,
-
-    INDEX idx_artifact_type (artifact_type),
-    INDEX idx_github_interaction (github_interaction_id),
-    INDEX idx_gayseed (gayseed_index),
-    INDEX idx_creation_time (creation_timestamp)
+    verification_timestamp TIMESTAMP
 );
 
 -- ============================================================================
@@ -33,7 +28,6 @@ CREATE TABLE IF NOT EXISTS artifact_provenance (
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS provenance_nodes (
-    node_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     artifact_id VARCHAR NOT NULL,
     node_type VARCHAR NOT NULL,      -- 'Query' | 'MD5' | 'File' | 'Witness' | 'Doc'
     sequence_order INTEGER NOT NULL,  -- Order in pipeline
@@ -52,9 +46,7 @@ CREATE TABLE IF NOT EXISTS provenance_nodes (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (artifact_id) REFERENCES artifact_provenance(artifact_id),
-    UNIQUE KEY uk_artifact_sequence (artifact_id, sequence_order),
-    INDEX idx_node_type (node_type),
-    INDEX idx_artifact_nodes (artifact_id)
+    PRIMARY KEY (artifact_id, sequence_order)
 );
 
 -- ============================================================================
@@ -62,7 +54,6 @@ CREATE TABLE IF NOT EXISTS provenance_nodes (
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS provenance_morphisms (
-    morphism_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     artifact_id VARCHAR NOT NULL,
     source_node_type VARCHAR NOT NULL,
     target_node_type VARCHAR NOT NULL,
@@ -76,8 +67,7 @@ CREATE TABLE IF NOT EXISTS provenance_morphisms (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (artifact_id) REFERENCES artifact_provenance(artifact_id),
-    INDEX idx_artifact_morphisms (artifact_id),
-    INDEX idx_morphism_label (morphism_label)
+    PRIMARY KEY (artifact_id, source_node_type, target_node_type)
 );
 
 -- ============================================================================
@@ -85,7 +75,6 @@ CREATE TABLE IF NOT EXISTS provenance_morphisms (
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS tripartite_connections (
-    connection_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     composition_id VARCHAR NOT NULL,
 
     -- Machine Partition (from color_chain)
@@ -110,12 +99,7 @@ CREATE TABLE IF NOT EXISTS tripartite_connections (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (composition_id) REFERENCES artifact_provenance(artifact_id),
-    FOREIGN KEY (shared_artifact_id) REFERENCES artifact_provenance(artifact_id),
-    FOREIGN KEY (machine_cycle) REFERENCES color_chain(cycle),
-    INDEX idx_composition (composition_id),
-    INDEX idx_edge_type (edge_type),
-    INDEX idx_researcher (user_researcher),
-    INDEX idx_temporal (machine_timestamp)
+    FOREIGN KEY (shared_artifact_id) REFERENCES artifact_provenance(artifact_id)
 );
 
 -- ============================================================================
@@ -123,7 +107,6 @@ CREATE TABLE IF NOT EXISTS tripartite_connections (
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS artifact_exports (
-    export_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     artifact_id VARCHAR NOT NULL,
     export_format VARCHAR NOT NULL,  -- 'json' | 'markdown' | 'lean4' | 'pdf'
     export_path VARCHAR NOT NULL,
@@ -134,8 +117,7 @@ CREATE TABLE IF NOT EXISTS artifact_exports (
     is_archived BOOLEAN DEFAULT FALSE,
 
     FOREIGN KEY (artifact_id) REFERENCES artifact_provenance(artifact_id),
-    INDEX idx_artifact_exports (artifact_id),
-    INDEX idx_export_format (export_format)
+    PRIMARY KEY (artifact_id, export_format)
 );
 
 -- ============================================================================
@@ -143,7 +125,6 @@ CREATE TABLE IF NOT EXISTS artifact_exports (
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS provenance_audit_log (
-    log_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     artifact_id VARCHAR NOT NULL,
 
     action VARCHAR NOT NULL,         -- 'created' | 'hashed' | 'stored' | 'verified' | 'published'
@@ -152,11 +133,7 @@ CREATE TABLE IF NOT EXISTS provenance_audit_log (
 
     details JSON,                    -- Action-specific details
     status VARCHAR,                  -- 'success' | 'error' | 'pending'
-    error_message VARCHAR,
-
-    INDEX idx_artifact_audit (artifact_id),
-    INDEX idx_action (action),
-    INDEX idx_timestamp (action_timestamp)
+    error_message VARCHAR
 );
 
 -- ============================================================================
@@ -164,11 +141,10 @@ CREATE TABLE IF NOT EXISTS provenance_audit_log (
 -- ============================================================================
 
 CREATE TABLE IF NOT EXISTS artist_theorem_registry (
-    theorem_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     artist_name VARCHAR NOT NULL,
     proof_artifact_id VARCHAR NOT NULL,
-
     theorem_name VARCHAR NOT NULL,
+
     theorem_statement JSON,          -- Lean4 theorem syntax
     proof_status VARCHAR,            -- 'proven' | 'partial' | 'conjectured'
 
@@ -181,8 +157,7 @@ CREATE TABLE IF NOT EXISTS artist_theorem_registry (
     verified_at TIMESTAMP,
 
     FOREIGN KEY (proof_artifact_id) REFERENCES artifact_provenance(artifact_id),
-    INDEX idx_artist (artist_name),
-    INDEX idx_proof_artifact (proof_artifact_id)
+    PRIMARY KEY (artist_name, theorem_name, proof_artifact_id)
 );
 
 -- ============================================================================
@@ -309,63 +284,18 @@ FROM artist_theorem_registry
 GROUP BY artist_name;
 
 -- ============================================================================
--- 11. TRIGGERS (maintain audit trail)
--- ============================================================================
-
-DELIMITER ;;
-
--- Trigger: Log artifact creation
-CREATE TRIGGER IF NOT EXISTS tr_artifact_created
-AFTER INSERT ON artifact_provenance
-FOR EACH ROW
-BEGIN
-    INSERT INTO provenance_audit_log
-    (artifact_id, action, status, details)
-    VALUES
-    (NEW.artifact_id, 'created', 'success',
-     JSON_OBJECT('type', NEW.artifact_type, 'hash', NEW.content_hash));
-END;;
-
--- Trigger: Log verification
-CREATE TRIGGER IF NOT EXISTS tr_artifact_verified
-AFTER UPDATE ON artifact_provenance
-FOR EACH ROW
-BEGIN
-    IF NEW.is_verified AND NOT OLD.is_verified THEN
-        INSERT INTO provenance_audit_log
-        (artifact_id, action, status, details)
-        VALUES
-        (NEW.artifact_id, 'verified', 'success',
-         JSON_OBJECT('verified_at', NEW.verification_timestamp));
-    END IF;
-END;;
-
--- Trigger: Update last_updated timestamp
-CREATE TRIGGER IF NOT EXISTS tr_artifact_updated
-BEFORE UPDATE ON artifact_provenance
-FOR EACH ROW
-BEGIN
-    SET NEW.last_updated = CURRENT_TIMESTAMP;
-END;;
-
-DELIMITER ;
-
--- ============================================================================
--- 12. INDICES FOR PERFORMANCE
+-- 11. INDICES FOR PERFORMANCE
 -- ============================================================================
 
 CREATE INDEX IF NOT EXISTS idx_gayseed_color ON artifact_provenance(gayseed_hex);
-CREATE INDEX IF NOT EXISTS idx_verification_status ON artifact_provenance(is_verified, artifact_type);
+CREATE INDEX IF NOT EXISTS idx_verification_status ON artifact_provenance(is_verified);
 CREATE INDEX IF NOT EXISTS idx_node_sequence ON provenance_nodes(artifact_id, sequence_order);
 CREATE INDEX IF NOT EXISTS idx_morphism_flow ON provenance_morphisms(source_node_type, target_node_type);
-CREATE INDEX IF NOT EXISTS idx_edge_temporal ON tripartite_connections(machine_timestamp, user_researcher);
-CREATE INDEX IF NOT EXISTS idx_export_artifact ON artifact_exports(artifact_id, export_format);
+CREATE INDEX IF NOT EXISTS idx_edge_temporal ON tripartite_connections(machine_timestamp);
+CREATE INDEX IF NOT EXISTS idx_export_artifact ON artifact_exports(artifact_id);
 
 -- ============================================================================
--- MIGRATION STATUS
+-- SCHEMA INITIALIZATION COMPLETE
 -- ============================================================================
 
--- Log this migration
-INSERT INTO _migrations (migration_name, status, timestamp)
-VALUES ('002_ananas_provenance_schema', 'completed', CURRENT_TIMESTAMP)
-ON DUPLICATE KEY UPDATE status = 'completed', timestamp = CURRENT_TIMESTAMP;
+-- DuckDB Provenance System ready for use
