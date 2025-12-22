@@ -96,6 +96,35 @@ kolmogorov-compression (-1) ⊗ turing-chemputer (0) ⊗ dna-origami (+1) = 0 �
 three-match (-1) ⊗ lispsyntax-acset (0) ⊗ gay-mcp (+1) = 0 ✓  [Path Validation]
 polyglot-spi (-1) ⊗ lispsyntax-acset (0) ⊗ gay-mcp (+1) = 0 ✓  [Cross-Lang Navigation]
 sheaf-cohomology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [ACSet Navigation]
+
+# DeepWiki Research Bundle (NEW 2025-12-22, Repository Documentation via MCP)
+# Free, no-auth access to AI-generated docs for any public GitHub repo
+hatchery-papers (-1) ⊗ deepwiki-mcp (0) ⊗ bmorphism-stars (+1) = 0 ✓  [Research]
+persistent-homology (-1) ⊗ deepwiki-mcp (0) ⊗ gay-mcp (+1) = 0 ✓  [Documentation]
+sheaf-cohomology (-1) ⊗ deepwiki-mcp (0) ⊗ topos-generate (+1) = 0 ✓  [Knowledge]
+three-match (-1) ⊗ deepwiki-mcp (0) ⊗ cider-clojure (+1) = 0 ✓  [Clojure Repos]
+polyglot-spi (-1) ⊗ deepwiki-mcp (0) ⊗ gay-mcp (+1) = 0 ✓  [Cross-Lang Docs]
+
+# Ramanujan Spectral Bundle (NEW 2025-12-22, Edge Growth + Möbius Centrality)
+# Key insight: Alon-Boppana λ₂ ≥ 2√(d-1) is unbreakable
+# Non-backtracking walks encode prime cycles via Ihara zeta
+# Möbius inversion harmonizes centrality validity predicates
+ramanujan-expander (-1) ⊗ ihara-zeta (0) ⊗ moebius-inversion (+1) = 0 ✓  [Spectral Core]
+ramanujan-expander (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [Graph Coloring]
+ramanujan-expander (-1) ⊗ acsets (0) ⊗ moebius-inversion (+1) = 0 ✓  [Edge Growth]
+ramanujan-expander (-1) ⊗ influence-propagation (0) ⊗ agent-o-rama (+1) = 0 ✓  [Centrality]
+ihara-zeta (-1) ⊗ acsets (0) ⊗ moebius-inversion (+1) = 0 ✓  [Prime Cycles]
+three-match (-1) ⊗ ihara-zeta (0) ⊗ moebius-inversion (+1) = 0 ✓  [Chromatic Polynomial]
+
+# Compositional ACSet Comparison Bundle (NEW 2025-12-22, DuckDB vs LanceDB via ACSets)
+# Key insight: Golden thread φ-angle walk (137.508°) for maximal dimension dispersion
+# Lance SDK 1.0.0 milestone: SemVer for SDK, independent versioning for formats
+# Homoiconic: algorithm ↔ data boundary dissolves in self-hosted Lisps
+# Phase-scoped evaluation avoids unintentional entanglement
+schema-validation (-1) ⊗ compositional-acset-comparison (0) ⊗ gay-mcp (+1) = 0 ✓  [Property Analysis]
+three-match (-1) ⊗ compositional-acset-comparison (0) ⊗ koopman-generator (+1) = 0 ✓  [Dynamic Traversal]
+temporal-coalgebra (-1) ⊗ compositional-acset-comparison (0) ⊗ oapply-colimit (+1) = 0 ✓  [Versioning]
+polyglot-spi (-1) ⊗ compositional-acset-comparison (0) ⊗ gay-mcp (+1) = 0 ✓  [Homoiconic Interop]
 ```
 
 ## Skill Loading Commands
@@ -138,9 +167,9 @@ Example for `:derivation` domain:
 
 Skills with the same trit can substitute for each other in triads:
 
-- **MINUS (-1)**: three-match, slime-lisp, clj-kondo-3color, hatchery-papers, proofgeneral-narya, sheaf-cohomology, temporal-coalgebra, persistent-homology, cubes, cactus, gravity, cohomology-obstruction, spined-categories, bumpus-width, influence-propagation, polyglot-spi, dmd-spectral, interval-presheaf, schema-validation
-- **ERGODIC (0)**: unworld, world-hopping, acsets, glass-bead-game, epistemic-arbitrage, kan-extensions, dialectica, open-games, discohy-streams, thread, lhott-cohesive-linear, asi-polynomial-operads, condensed-analytic-stacks, abductive-repl, entropy-sequencer, cognitive-surrogate, lispsyntax-acset, structured-decomp, algebraic-dynamics
-- **PLUS (+1)**: gay-mcp, cider-clojure, geiser-chicken, rubato-composer, free-monad-gen, operad-compose, topos-generate, little-disks, modular, swiss-cheese, libkind-directed, pattern-runs-on-matter, open-games-arena, free-monad-trees, agent-o-rama, pulse-mcp-stream, koopman-generator, oapply-colimit, colimit-reconstruct
+- **MINUS (-1)**: three-match, slime-lisp, clj-kondo-3color, hatchery-papers, proofgeneral-narya, sheaf-cohomology, temporal-coalgebra, persistent-homology, cubes, cactus, gravity, cohomology-obstruction, spined-categories, bumpus-width, influence-propagation, polyglot-spi, dmd-spectral, interval-presheaf, schema-validation, **ramanujan-expander**
+- **ERGODIC (0)**: unworld, world-hopping, acsets, glass-bead-game, epistemic-arbitrage, kan-extensions, dialectica, open-games, discohy-streams, thread, lhott-cohesive-linear, asi-polynomial-operads, condensed-analytic-stacks, abductive-repl, entropy-sequencer, cognitive-surrogate, lispsyntax-acset, structured-decomp, algebraic-dynamics, deepwiki-mcp, ihara-zeta, **compositional-acset-comparison**
+- **PLUS (+1)**: gay-mcp, cider-clojure, geiser-chicken, rubato-composer, free-monad-gen, operad-compose, topos-generate, little-disks, modular, swiss-cheese, libkind-directed, pattern-runs-on-matter, open-games-arena, free-monad-trees, agent-o-rama, pulse-mcp-stream, koopman-generator, oapply-colimit, colimit-reconstruct, **moebius-inversion**
 
 ## Integration with Music Topos
 
@@ -150,6 +179,6 @@ The triadic structure mirrors the core patterns:
 - **3-MATCH**: Colored subgraph isomorphism with GF(3) = 0
 - **Glass Bead Game**: Badiou triangle with three polarities
 
-## Available Skills (29)
+## Available Skills (30)
 
 See `.agents/skills/` for symlinks to all skill definitions in `.ruler/skills/`.
