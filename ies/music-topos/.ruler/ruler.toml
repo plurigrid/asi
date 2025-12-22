@@ -1,0 +1,239 @@
+# .ruler/ruler.toml
+# Music Topos: Ruler Configuration for AI Agent Skills Distribution
+#
+# Propagates skills and MCP configurations to 30+ coding assistants
+# Based on: intellectronica/ruler + skillcreatorai/Ai-Agent-Skills
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DEFAULT AGENTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+default_agents = ["claude", "amp", "cursor", "copilot"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NESTED MODE (for monorepo/component-specific rules)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+nested = false
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GITIGNORE MANAGEMENT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[gitignore]
+enabled = true
+track_generated = true
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SKILLS PROPAGATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[skills]
+enabled = true
+propagate_to_mcp = true
+skills_dir = ".ruler/skills"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MCP (Model Context Protocol) SERVER CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[mcp]
+enabled = true
+strategy = "merge"  # or "overwrite"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# GAY.JL MCP SERVER (Deterministic Color Generation)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.gay]
+command = "julia"
+args = ["--project=@gay", "-e", "using Gay; Gay.serve_mcp()"]
+env = { GAY_SEED = "1069" }
+description = "Deterministic color generation via SplitMix64 + golden angle"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# NATS/SYNADIA MCP SERVER (Distributed Messaging)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.synadia]
+command = "ruby"
+args = ["-I", "lib", "-r", "synadia_broadcast", "-e", "SynadiaBroadcast.serve_mcp"]
+env = { NATS_URL = "nats://127.0.0.1:4222" }
+description = "NATS/JetStream pub/sub for mathematician broadcasts"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# WORLD BROADCAST MCP SERVER (Tripartite Mathematicians)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.world]
+command = "ruby"
+args = ["-I", "lib", "-r", "world_broadcast", "-e", "WorldBroadcast.serve_mcp"]
+description = "Word Models ↔ World Models broadcasting"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# GLASS BEAD GAME MCP SERVER (Topos of Music)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.glass_bead]
+command = "ruby"
+args = ["-I", "lib", "-r", "glass_bead_game", "-e", "GlassBeadGame.serve_mcp"]
+description = "Hesse-inspired game of interdisciplinary connections"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# PROPAGATOR MCP SERVER (Epistemic Arbitrage)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.propagator]
+command = "lein"
+args = ["run", "-m", "music-topos.propagator-mcp"]
+env = { DUCKDB_PATH = "/tmp/propagator-state.duckdb" }
+description = "Local scoped propagators for parallel computation"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# FIRECRAWL (Web Scraping - from crush config)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.firecrawl]
+command = "npx"
+args = ["-y", "firecrawl-mcp"]
+env = { FIRECRAWL_API_KEY = "${FIRECRAWL_API_KEY}" }
+description = "Web scraping and crawling"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# EXA (AI-Powered Search - from crush config)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.exa]
+command = "npx"
+args = ["-y", "@anthropic/exa-mcp-server"]
+env = { EXA_API_KEY = "${EXA_API_KEY}" }
+description = "AI-powered web search"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# HUGGING FACE (Models, Datasets, Spaces)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.huggingface]
+command = "npx"
+args = ["-y", "@anthropic/huggingface-mcp-server"]
+env = { HF_TOKEN = "${HF_TOKEN}" }
+description = "Hugging Face hub access"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# RADARE2 (Binary Analysis)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.radare2]
+command = "npx"
+args = ["-y", "@anthropic/radare2-mcp-server"]
+description = "Binary analysis and reverse engineering"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# TREE-SITTER (Code Analysis)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.tree_sitter]
+command = "uvx"
+args = ["mcp-tree-sitter"]
+description = "AST-based code analysis"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# AGENT-SPECIFIC CONFIGURATIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[agents.claude]
+enabled = true
+output_path = "CLAUDE.md"
+
+[agents.claude.mcp]
+enabled = true
+strategy = "merge"
+
+[agents.amp]
+enabled = true
+output_path = "AGENTS.md"
+
+[agents.amp.mcp]
+enabled = true
+strategy = "merge"
+
+[agents.cursor]
+enabled = true
+output_path = "AGENTS.md"
+
+[agents.cursor.mcp]
+enabled = true
+output_path = ".cursor/mcp.json"
+
+[agents.copilot]
+enabled = true
+output_path = "AGENTS.md"
+
+[agents.copilot.mcp]
+enabled = true
+output_path = ".vscode/mcp.json"
+
+[agents.windsurf]
+enabled = false
+
+[agents.cline]
+enabled = false
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CODEX (OpenAI CLI Agent) - Self-Rewriting Lisp Machine Mode
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[agents.codex]
+enabled = true
+output_path = "CODEX.md"
+
+[agents.codex.mcp]
+enabled = true
+strategy = "merge"
+output_path = ".codex/mcp.json"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# NARYA OBSERVATIONAL BRIDGE (Structure-Aware Version Control)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.narya]
+command = "bb"
+args = ["gay.bb", "1069"]
+env = { TAP_STATE = "LIVE", SPECTRAL_GAP = "0.25" }
+description = "Narya observational bridge for self-rewriting via MCP Tasks"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# MCP TASKS SERVER (Durable State Machines)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.tasks]
+command = "bb"
+args = ["mcp-tasks.bb", "1069"]
+env = { TTL_MS = "60000", POLL_INTERVAL_MS = "5000" }
+description = "MCP Tasks for cognitive continuity and self-rewriting"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# MATHPIX OCR (LaTeX Extraction with Balanced Ternary Checkpoints)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_servers.mathpix]
+command = "ruby"
+args = ["-I", "lib", "-r", "mathpix/mcp", "-e", "Mathpix::MCP.serve"]
+env = { MATHPIX_APP_ID = "${MATHPIX_APP_ID}", MATHPIX_APP_KEY = "${MATHPIX_APP_KEY}", GF3_SEED = "1069" }
+description = "Mathematical OCR with balanced ternary checkpoints (seed 1069)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BISIMULATION GAME (Skill Dispersal)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[bisimulation]
+enabled = true
+strategy = "redundant"
+polarity_rotation = true  # MINUS → ERGODIC → PLUS
+
+[bisimulation.agents]
+# Each agent gets a GF(3) polarity for resilient dispersal
+claude = "PLUS"      # +1 Optimistic
+codex = "ERGODIC"    # 0  Verification
+cursor = "MINUS"     # -1 Conservative
+copilot = "PLUS"     # +1 Optimistic

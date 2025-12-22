@@ -1,0 +1,250 @@
+[application]
+name = "crdt-skill-verification-network"
+version = "3.0.0"
+description = "CRDT Memoization + E-Graph + 17-Agent Skill Verification on Fermyon Serverless"
+authors = ["HDResearch Team <crdt@worm.sex>"]
+
+[build]
+command = "cargo build --release --target wasm32-wasi"
+workdir = "."
+
+# ============================================================================
+# Color Stream Endpoints (worm.sex/_/)
+# ============================================================================
+
+# RED Stream: Forward rewriting (positive polarity)
+[[component]]
+id = "stream-red"
+source = { type = "rust", path = "crates/stream-red" }
+environment = {
+    STREAM_COLOR = "RED",
+    STREAM_POLARITY = "positive",
+    WORM_SEX_ENDPOINT = "https://worm.sex/red/",
+    DUCK_INTEGRATION = "enabled",
+    AGENT_O_RAMA_ENABLED = "true",
+    VERIFICATION_MODE = "self-transduction"
+}
+[component.trigger]
+route = "/red/..."
+[component.build]
+command = "cargo build --release --target wasm32-wasi -p stream-red"
+
+# BLUE Stream: Backward rewriting (negative polarity)
+[[component]]
+id = "stream-blue"
+source = { type = "rust", path = "crates/stream-blue" }
+environment = {
+    STREAM_COLOR = "BLUE",
+    STREAM_POLARITY = "negative",
+    WORM_SEX_ENDPOINT = "https://worm.sex/blue/",
+    DUCK_INTEGRATION = "enabled",
+    AGENT_O_RAMA_ENABLED = "true",
+    VERIFICATION_MODE = "self-transduction"
+}
+[component.trigger]
+route = "/blue/..."
+
+# GREEN Stream: Identity verification (neutral polarity)
+[[component]]
+id = "stream-green"
+source = { type = "rust", path = "crates/stream-green" }
+environment = {
+    STREAM_COLOR = "GREEN",
+    STREAM_POLARITY = "neutral",
+    WORM_SEX_ENDPOINT = "https://worm.sex/green/",
+    DUCK_INTEGRATION = "enabled",
+    AGENT_O_RAMA_ENABLED = "true",
+    VERIFICATION_MODE = "self-transduction"
+}
+[component.trigger]
+route = "/green/..."
+
+# ============================================================================
+# Core CRDT & E-Graph Services
+# ============================================================================
+
+# CRDT Memoization Service (Phase 1)
+[[component]]
+id = "crdt-service"
+source = { type = "rust", path = "crates/crdt-service" }
+environment = {
+    SERVICE_NAME = "CRDT Memoization",
+    LANCEDB_ENDPOINT = "https://lancedb.worm.sex/v1/",
+    VERS_INTEGRATION = "enabled",
+    TEMPORAL_DB = "duckdb",
+    VECTOR_CLOCK_TRACKING = "enabled",
+    SELF_TRANSDUCTION = "enabled"
+}
+[component.trigger]
+route = "/crdt/..."
+
+# E-Graph Service (Phase 2)
+[[component]]
+id = "egraph-service"
+source = { type = "rust", path = "crates/egraph-service" }
+environment = {
+    SERVICE_NAME = "E-Graph 3-Gadgets",
+    GADGETS_ENABLED = "red,blue,green",
+    SATURATION_TIMEOUT_MS = "5000",
+    CONSTRAINT_ENFORCEMENT = "construction",
+    VERIFICATION_ENABLED = "true",
+    VERS_INTEGRATION = "enabled"
+}
+[component.trigger]
+route = "/egraph/..."
+
+# ============================================================================
+# 17-Agent Skill Verification Service (Phase 3)
+# ============================================================================
+
+[[component]]
+id = "skill-verification-service"
+source = { type = "rust", path = "crates/skill-verification" }
+environment = {
+    NUM_AGENTS = "17",
+    NEG_AGENTS = "6",
+    NEUTRAL_AGENTS = "5",
+    POS_AGENTS = "6",
+    IMAGE_EMBEDDING_MODEL = "resnet50",
+    LANCEDB_COLLECTION = "skill_verifications",
+    SELF_VERIFICATION_ENABLED = "true",
+    VECTOR_CLOCK_TRACKING = "enabled",
+    PHOTO_LIBRARY_PATH = "~/Pictures/Photos Library.photoslibrary",
+    BATCH_SIZE = "100"
+}
+[component.trigger]
+route = "/skills/..."
+
+# ============================================================================
+# Agent-O-Rama Integration (Multi-Agent Orchestration)
+# ============================================================================
+
+[[component]]
+id = "agent-orchestrator"
+source = { type = "rust", path = "crates/agent-orchestrator" }
+environment = {
+    AGENT_O_RAMA_VERSION = "latest",
+    MAX_AGENTS = "48",
+    TOPOLOGY = "ramanujan-3d",
+    SIERPINSKI_ADDRESSING = "enabled",
+    NATS_CLUSTER = "worm.sex-nats",
+    COORDINATION_PROTOCOL = "vector-clock",
+    FAILURE_RECOVERY = "crdt-merge",
+    SELF_VERIFICATION_ENABLED = "true"
+}
+[component.trigger]
+route = "/agents/..."
+
+# ============================================================================
+# Duck Color Generation Service
+# ============================================================================
+
+[[component]]
+id = "duck-colors"
+source = { type = "rust", path = "crates/duck-colors" }
+environment = {
+    DUCK_REPO = "hdresearch/duck",
+    COLOR_ALGORITHM = "gay-jl-golden-spiral",
+    SEED_MANAGEMENT = "splitmix64",
+    OUTPUT_FORMAT = "hex,rgb,sigil",
+    CACHE_ENABLED = "true",
+    FINGERPRINTING = "fnv1a"
+}
+[component.trigger]
+route = "/colors/..."
+
+# ============================================================================
+# 2TDX Bidirectional Transduction Service
+# ============================================================================
+
+[[component]]
+id = "transduction-2tdx"
+source = { type = "rust", path = "crates/transduction-2tdx" }
+environment = {
+    LOCAL_ENDPOINT = "https://localhost:3000/",
+    VERS_ENDPOINT = "https://vers.hdresearch.io/",
+    TRANSDUCTION_MODE = "bidirectional",
+    SELF_VERIFICATION = "enabled",
+    INTERACTION_TRACKING = "enabled",
+    CACHE_STRATEGY = "content-addressed",
+    VECTOR_CLOCK_SYNC = "enabled",
+    MAX_LATENCY_MS = "100"
+}
+[component.trigger]
+route = "/2tdx/..."
+
+# ============================================================================
+# Temporal Interaction Tracking Service
+# ============================================================================
+
+[[component]]
+id = "interaction-timeline"
+source = { type = "rust", path = "crates/interaction-timeline" }
+environment = {
+    TIMELINE_DB = "duckdb",
+    INTERACTION_STORAGE = "append-only",
+    VECTOR_CLOCK_CAUSALITY = "enabled",
+    FREEZE_RECOVER_ENABLED = "true",
+    AUDIT_LOG = "enabled",
+    INTERACTION_MOMENTS_TRACKED = "true"
+}
+[component.trigger]
+route = "/timeline/..."
+
+# ============================================================================
+# WebUI Dashboard
+# ============================================================================
+
+[[component]]
+id = "dashboard"
+source = { type = "rust", path = "crates/dashboard" }
+environment = {
+    DASHBOARD_PORT = "3000",
+    REAL_TIME_UPDATES = "websocket",
+    COLOR_VISUALIZATION = "enabled",
+    AGENT_TOPOLOGY_DISPLAY = "sierpinski-graph",
+    METRICS_ENABLED = "true",
+    PERFORMANCE_GRAPHS = "enabled"
+}
+[component.trigger]
+route = "/"
+
+# ============================================================================
+# Configuration: Deployment Target
+# ============================================================================
+
+[deployment]
+remote = "fermyon.worm.sex"
+namespace = "crdt"
+
+# ============================================================================
+# Variables: Secrets & Configuration
+# ============================================================================
+
+[[env]]
+name = "WORM_SEX_DOMAIN"
+value = "worm.sex"
+
+[[env]]
+name = "ENVIRONMENT"
+value = "production"
+
+[[env]]
+name = "LOG_LEVEL"
+value = "info"
+
+[[env]]
+name = "ENABLE_PROFILING"
+value = "true"
+
+[[env]]
+name = "MAX_WORKERS"
+value = "128"
+
+[[env]]
+name = "TIMEOUT_SECONDS"
+value = "30"
+
+[[env]]
+name = "CACHE_STRATEGY"
+value = "redis"

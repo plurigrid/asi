@@ -1,0 +1,263 @@
+# AI Skills Registry
+# Your own source of skills for AI agents
+#
+# This registry defines:
+# 1. Skills available for propagation
+# 2. MCP servers that provide tool capabilities
+# 3. Agent configurations for skill distribution
+#
+# Based on: intellectronica/ruler + skillcreatorai/ai-agent-skills
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# REGISTRY METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[registry]
+name = "music-topos-skills"
+version = "0.69.1"
+description = "AI Skills for categorical music composition and color dynamics"
+author = "barton"
+seed = 1069
+license = "MIT"
+
+# Source URLs for skill discovery
+sources = [
+  "https://github.com/barton/music-topos-skills",
+  "https://github.com/skillcreatorai/ai-agent-skills",
+  "https://github.com/intellectronica/ruler"
+]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SKILL DEFINITIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[skills.unworld]
+name = "unworld"
+version = "1.0.0"
+description = "Replace time with color chain derivations"
+trit = 0  # ERGODIC
+path = ".ruler/skills/unworld"
+propagate_to = ["codex", "claude", "amp", "cursor"]
+
+[skills.unworld.capabilities]
+seed_chaining = true
+color_derivation = true
+involution = true
+nash_equilibrium = true
+gf3_conservation = true
+
+[skills.three-match]
+name = "three-match"
+version = "1.0.0"
+description = "3-SAT via colored subgraph isomorphism"
+trit = -1  # MINUS
+path = ".ruler/skills/three-match"
+propagate_to = ["codex", "claude"]
+
+[skills.three-match.capabilities]
+geodesic = true
+moebius_filter = true
+subgraph_isomorphism = true
+
+[skills.borkdude]
+name = "borkdude"
+version = "1.0.0"
+description = "ClojureScript runtime selection (Cherry, Squint, SCI, Babashka)"
+trit = 0  # ERGODIC
+path = ".ruler/skills/borkdude"
+propagate_to = ["codex", "claude", "amp"]
+
+[skills.borkdude.runtimes]
+browser = ["cherry", "squint", "scittle"]
+local = ["babashka", "sci", "nbb"]
+
+[skills.gay-mcp]
+name = "gay-mcp"
+version = "1.0.0"
+description = "Deterministic color generation via Gay.jl"
+trit = 1  # PLUS
+path = ".ruler/skills/gay-mcp"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.gay-mcp.capabilities]
+splitmix64 = true
+golden_angle = true
+gf3_trits = true
+palette_generation = true
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MCP SERVER REGISTRY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[mcp_registry]
+name = "music-topos-mcp"
+description = "MCP servers for music-topos ecosystem"
+
+# ───────────────────────────────────────────────────────────────────────────────
+# LOCAL MCP SERVERS (built in this repo)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_registry.servers.gay]
+type = "local"
+command = "julia"
+args = ["--project=@gay", "-e", "using Gay; Gay.serve_mcp()"]
+description = "Deterministic color generation"
+capabilities = ["color_at", "palette", "golden_thread", "reafference", "loopy_strange"]
+
+[mcp_registry.servers.unworld]
+type = "local"
+command = "ruby"
+args = ["-I", "lib", "-r", "unworld", "-e", "Unworld.serve_mcp"]
+description = "Seed-chaining derivation system"
+capabilities = ["chain_seed", "derive_color", "color_chain", "involution_chain"]
+
+[mcp_registry.servers.synadia]
+type = "local"
+command = "ruby"
+args = ["-I", "lib", "-r", "synadia_broadcast", "-e", "SynadiaBroadcast.serve_mcp"]
+description = "NATS distributed messaging"
+capabilities = ["publish", "subscribe", "request", "jetstream"]
+
+[mcp_registry.servers.world]
+type = "local"
+command = "ruby"
+args = ["-I", "lib", "-r", "world_broadcast", "-e", "WorldBroadcast.serve_mcp"]
+description = "World broadcast (mathematician triplets)"
+capabilities = ["broadcast", "mathematician", "tripartite"]
+
+[mcp_registry.servers.propagator]
+type = "local"
+command = "lein"
+args = ["run", "-m", "music-topos.propagator-mcp"]
+description = "Epistemic arbitrage propagators"
+capabilities = ["cell", "propagator", "merge", "epistemic"]
+
+[mcp_registry.servers.glass_bead]
+type = "local"
+command = "ruby"
+args = ["-I", "lib", "-r", "glass_bead_game", "-e", "GlassBeadGame.serve_mcp"]
+description = "Glass Bead Game (Hesse)"
+capabilities = ["move", "synthesis", "connection"]
+
+# ───────────────────────────────────────────────────────────────────────────────
+# EXTERNAL MCP SERVERS (from npm/uvx)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_registry.servers.firecrawl]
+type = "npm"
+package = "firecrawl-mcp"
+description = "Web scraping and crawling"
+capabilities = ["scrape", "crawl", "search", "extract"]
+
+[mcp_registry.servers.exa]
+type = "npm"
+package = "@anthropic/exa-mcp-server"
+description = "AI-powered web search"
+capabilities = ["web_search", "crawl", "deep_search"]
+
+[mcp_registry.servers.huggingface]
+type = "npm"
+package = "@anthropic/huggingface-mcp-server"
+description = "Hugging Face hub"
+capabilities = ["model_search", "dataset_search", "space_search", "paper_search"]
+
+[mcp_registry.servers.tree_sitter]
+type = "uvx"
+package = "mcp-tree-sitter"
+description = "AST-based code analysis"
+capabilities = ["get_ast", "run_query", "find_usage", "get_symbols"]
+
+[mcp_registry.servers.radare2]
+type = "npm"
+package = "@anthropic/radare2-mcp-server"
+description = "Binary analysis"
+capabilities = ["analyze", "disassemble", "decompile"]
+
+[mcp_registry.servers.marginalia]
+type = "npm"
+package = "@anthropic/marginalia-mcp-server"
+description = "Web search via Marginalia"
+capabilities = ["search"]
+
+# ───────────────────────────────────────────────────────────────────────────────
+# SKILLZ MCP SERVER (for agent skill loading)
+# ───────────────────────────────────────────────────────────────────────────────
+
+[mcp_registry.servers.skillz]
+type = "uvx"
+package = "mcp-skillz"
+description = "Skill loading for AI agents"
+capabilities = ["list_skills", "load_skill", "apply_skill"]
+config = { skills_dir = ".ruler/skills" }
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# AGENT CONFIGURATIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[agents]
+# GF(3) trit assignments for balanced distribution
+# Sum of any triplet should be ≡ 0 (mod 3)
+
+[agents.codex]
+trit = 0  # ERGODIC - verification
+skills_path = ".codex/skills"
+mcp_path = ".codex/mcp.json"
+instructions_path = ".codex/AGENTS.md"
+skills = ["unworld", "three-match", "borkdude", "gay-mcp"]
+
+[agents.claude]
+trit = -1  # MINUS - conservative
+skills_path = ".claude/skills"
+mcp_path = ".claude/mcp.json"
+instructions_path = "CLAUDE.md"
+skills = ["unworld", "three-match", "borkdude", "gay-mcp"]
+
+[agents.amp]
+trit = 0  # ERGODIC - neutral
+skills_path = ".ruler/skills"
+mcp_path = ".mcp.json"
+instructions_path = "AGENTS.md"
+skills = ["unworld", "three-match", "borkdude", "gay-mcp"]
+
+[agents.cursor]
+trit = -1  # MINUS - conservative
+skills_path = ".cursor/skills"
+mcp_path = ".cursor/mcp.json"
+instructions_path = ".cursor/rules/AGENTS.md"
+skills = ["unworld", "gay-mcp"]
+
+[agents.copilot]
+trit = 1  # PLUS - optimistic
+skills_path = ".vscode/skills"
+mcp_path = ".vscode/mcp.json"
+instructions_path = ".github/copilot-instructions.md"
+skills = ["gay-mcp"]
+
+[agents.aider]
+trit = 1  # PLUS - optimistic
+skills_path = ".skillz"
+mcp_path = ".aider/mcp.json"
+instructions_path = ".aider/AGENTS.md"
+skills = ["unworld", "borkdude"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GF(3) VERIFICATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[gf3]
+# Verify triplets sum to 0 mod 3
+triplets = [
+  ["codex", "claude", "copilot"],     # 0 + (-1) + 1 = 0 ✓
+  ["amp", "cursor", "aider"],         # 0 + (-1) + 1 = 0 ✓
+  ["codex", "amp", "cursor"]          # 0 + 0 + (-1) = -1 (needs copilot +1)
+]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROPAGATION COMMANDS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[commands]
+propagate = "bb .ruler/propagate.clj"
+verify = "bb .ruler/verify.clj"
+list_skills = "ls -la .ruler/skills/"
+list_servers = "cat .ruler/ai-skills-registry.toml | grep '\\[mcp_registry.servers'"
