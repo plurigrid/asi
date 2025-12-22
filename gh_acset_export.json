@@ -1,0 +1,57 @@
+{
+  "schema": {
+    "objects": [
+      "Issue",
+      "PR",
+      "Commit",
+      "User",
+      "Repo"
+    ],
+    "morphisms": {
+      "authored_by": [
+        "Issue",
+        "User"
+      ],
+      "pr_authored_by": [
+        "PR",
+        "User"
+      ],
+      "commit_authored_by": [
+        "Commit",
+        "User"
+      ],
+      "on_repo": [
+        "Issue",
+        "Repo"
+      ],
+      "pr_on_repo": [
+        "PR",
+        "Repo"
+      ],
+      "commit_on_repo": [
+        "Commit",
+        "Repo"
+      ],
+      "references": [
+        "PR",
+        "Issue"
+      ],
+      "reviews": [
+        "User",
+        "PR"
+      ]
+    }
+  },
+  "tables": {
+    "Issue": [],
+    "PR": [],
+    "Commit": [],
+    "User": [],
+    "Repo": []
+  },
+  "colors": {},
+  "trits": {},
+  "gf3_sum": 0,
+  "seed": "0x42d",
+  "agent": "ERGODIC(0)"
+}

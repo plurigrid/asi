@@ -1,0 +1,117 @@
+{
+  "source": "ducklake_duckdb",
+  "duckdb_analysis": {
+    "tables": [
+      "claude_history",
+      "claude_history_colored",
+      "fingerprint_correlations",
+      "gf3_balancing_transactions",
+      "gf3_flow_analysis",
+      "gf3_momentum_detector",
+      "gh_contributions",
+      "gh_repos",
+      "gh_repos_colored",
+      "ies_duckdb_patterns",
+      "interaction_velocity",
+      "simultaneity_surfaces",
+      "skill_dependency_graph",
+      "skill_manifests",
+      "topic_clusters",
+      "unified_interactions",
+      "unified_interactions_balanced",
+      "workspace_files"
+    ],
+    "patterns": [
+      {
+        "table": "claude_history",
+        "row_count": 1316,
+        "columns": [
+          "display",
+          "timestamp",
+          "ts",
+          "project",
+          "sessionId",
+          "interaction_type"
+        ]
+      },
+      {
+        "table": "claude_history_colored",
+        "row_count": 1316,
+        "columns": [
+          "display",
+          "timestamp",
+          "ts",
+          "project",
+          "sessionId",
+          "interaction_type",
+          "fingerprint",
+          "color_hex",
+          "trit"
+        ]
+      },
+      {
+        "table": "fingerprint_correlations",
+        "row_count": 10,
+        "columns": [
+          "edge_type",
+          "correlation_count",
+          "avg_time_delta"
+        ]
+      },
+      {
+        "table": "gf3_balancing_transactions",
+        "row_count": 2,
+        "columns": [
+          "tx_id",
+          "timestamp",
+          "source",
+          "content",
+          "category",
+          "fingerprint",
+          "color_hex",
+          "trit"
+        ]
+      },
+      {
+        "table": "gf3_flow_analysis",
+        "row_count": 11,
+        "columns": [
+          "day",
+          "total_interactions",
+          "daily_gf3_sum",
+          "gf3_status",
+          "breakdown"
+        ]
+      }
+    ],
+    "cycles": [
+      {
+        "table": "claude_history",
+        "temporal_columns": [
+          "timestamp"
+        ]
+      },
+      {
+        "table": "claude_history_colored",
+        "temporal_columns": [
+          "timestamp"
+        ]
+      },
+      {
+        "table": "fingerprint_correlations",
+        "temporal_columns": [
+          "avg_time_delta"
+        ]
+      },
+      {
+        "table": "gf3_balancing_transactions",
+        "temporal_columns": [
+          "timestamp"
+        ]
+      }
+    ]
+  },
+  "coherence_detected": true,
+  "agent": "ERGODIC(0)",
+  "seed": "0x42D"
+}

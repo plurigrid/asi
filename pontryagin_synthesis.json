@@ -1,0 +1,102 @@
+{
+  "synthesis": {
+    "total_patterns": 10,
+    "pattern_type_distribution": {
+      "constraint_convergent": 3,
+      "constraint_oscillating": 2,
+      "coordination_stable": 1,
+      "coordination_adaptive": 2,
+      "generation_surprising": 1
+    },
+    "gf3_conserved": true,
+    "trit_sum": 0
+  },
+  "pontryagin_spectrum": {
+    "\u03c7\u2080_weight": 0.5555555555555556,
+    "\u03c7\u2081_weight": 0.2222222222222222,
+    "\u03c7\u2082_weight": 0.2222222222222222,
+    "dominant_character": "\u03c7_0",
+    "interpretation": "Uniform/stable: trivial character dominates \u2192 rapid mixing achieved"
+  },
+  "agent_outputs": {
+    "minus": {
+      "role": "Validator",
+      "artifacts": [
+        "scripts/validate_skills.py",
+        "lib/edge_phase_propagator.py"
+      ],
+      "key_findings": {
+        "validated_skills": 36,
+        "failed_skills": 13,
+        "warning_skills": 2,
+        "sheaf_condition": "satisfiable on 3-bag decomposition"
+      }
+    },
+    "ergodic": {
+      "role": "Coordinator",
+      "artifacts": [
+        "lib/gh_acset_export.py",
+        "lib/coherence_periods.py",
+        "lib/test_ergodic_integration.py"
+      ],
+      "key_findings": {
+        "ducklake_tables": 18,
+        "claude_history_rows": 1316,
+        "temporal_cycles": [
+          "claude_history",
+          "gf3_balancing_transactions"
+        ],
+        "dominant_skill": [
+          "gay-mcp",
+          4
+        ]
+      }
+    },
+    "plus": {
+      "role": "Generator",
+      "artifacts": [
+        "lib/ramanujan_walk.py",
+        "lib/pattern_types.py"
+      ],
+      "key_findings": {
+        "spectral_gap": 0.8,
+        "ramanujan_bound": 3.46,
+        "is_ramanujan": false,
+        "pattern_categories": 4,
+        "dominant_pontryagin": "\u03c7\u2080 (trivial)"
+      }
+    }
+  },
+  "color_palette": [
+    {
+      "type": "constraint_convergent",
+      "count": 3,
+      "color": "oklch(0.50 0.150 270.0)",
+      "trit": -1
+    },
+    {
+      "type": "constraint_oscillating",
+      "count": 2,
+      "color": "oklch(0.55 0.180 290.0)",
+      "trit": -1
+    },
+    {
+      "type": "coordination_adaptive",
+      "count": 2,
+      "color": "oklch(0.65 0.140 200.0)",
+      "trit": 0
+    },
+    {
+      "type": "coordination_stable",
+      "count": 1,
+      "color": "oklch(0.60 0.120 180.0)",
+      "trit": 0
+    },
+    {
+      "type": "generation_surprising",
+      "count": 1,
+      "color": "oklch(0.70 0.250 60.0)",
+      "trit": 1
+    }
+  ]
+}
