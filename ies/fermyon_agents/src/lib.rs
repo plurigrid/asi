@@ -254,3 +254,11 @@ pub use dashboard::{Dashboard, AgentDashboardData, NetworkDashboardData, Perform
 pub mod qasm_integration;
 
 pub use qasm_integration::{QuantumGate, HybridCircuit, QasmTransducer, CircuitInstruction};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// P2: JIT Compilation and Runtime Optimization
+// ═══════════════════════════════════════════════════════════════════════════════
+
+pub mod jit_compilation;
+
+pub use jit_compilation::{JitCompiler, JitConfig, CompiledFunction, CompilationStats, CacheStatistics};
