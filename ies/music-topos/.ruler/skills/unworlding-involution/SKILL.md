@@ -1,3 +1,8 @@
+---
+name: unworlding-involution
+description: Self-inverse derivation patterns where ι∘ι = id for frame-invariant self
+---
+
 # Unworlding Involution Skill
 
 **Status**: ✅ Production Ready

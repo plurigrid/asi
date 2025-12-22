@@ -1,6 +1,6 @@
 # Firecrawl Index (Combined)
 
-Total items: 80
+Total items: 91
 
 | Source | Status | URL | Title | Summary |
 | --- | --- | --- | --- | --- |
@@ -22,6 +22,16 @@ Total items: 80
 | github | ok | https://github.com/redplanetlabs/rama-azure-deploy | GitHub - redplanetlabs/rama-azure-deploy | Repository for deploying Rama infrastructure on Azure using infrastructure-as-code tooling. |
 | github | ok | https://github.com/spinframework/spin-js-sdk | GitHub - spinframework/spin-js-sdk: JavaScript/TypeScript SDK | SDK for JavaScript and TypeScript based on ComponentizeJS, providing tooling for componentizing JS/TS source code for Spin. |
 | github | ok | https://github.com/spinframework/spin-python-sdk | GitHub - spinframework/spin-python-sdk: Spin SDK for Python | SDK for creating Spin apps using Python, providing tools for building and deploying applications. |
+| github | ok | https://github.com/firecrawl/firecrawl | firecrawl | A web crawling framework designed for efficiency and scalability, allowing users to extract data from websites effectively. |
+| github | ok | https://github.com/firecrawl/firecrawl-app-examples | firecrawl-app-examples | This repository contains complete application examples, including websites and other projects, developed using Firecrawl. |
+| github | ok | https://github.com/firecrawl/firecrawl-py | firecrawl-py | A Python library for Firecrawl, providing tools and utilities for web crawling and data extraction. |
+| github | ok | https://github.com/spinframework/spin | spin | Spin is a framework for building and deploying microservices with a focus on simplicity and performance. |
+| github | ok | https://github.com/spinframework | spinframework | The organization for the Spin framework, hosting various repositories related to microservices and application development. |
+| github | ok | https://github.com/spinframework/spin/releases | spin releases | Releases for the Spin framework, providing updates and new features for users. |
+| github | ok | https://github.com/spinframework/spin-operator | spin-operator | An operator for managing Spin applications in Kubernetes environments. |
+| github | ok | https://github.com/spinframework/community | spin community | Community resources and discussions for users and developers of the Spin framework. |
+| github | ok | https://github.com/redplanetlabs | redplanetlabs | An organization focused on innovative software solutions and development projects. |
+| github | ok | https://github.com/redplanetlabs/rama-examples/actions | rama-examples actions | Example actions for the Rama project, showcasing various workflows and automation. |
 | external | missing | https://api.firecrawl.dev/v1/scrape |  |  |
 | external | missing | https://api.firecrawl.dev/v1 |  |  |
 | external | ok | https://arxiv.org/abs/2401.13203 | Style-Consistent 3D Indoor Scene Synthesis with Decoupled Objects | This paper presents a novel pipeline for controllable 3D indoor scene synthesis that allows for the stylization and decoupling of objects, enhancing the editing process for applications in gaming, film, and augmented/virtual reality. The approach ensures style consistency across multiple objects while allowing for individual customization, resulting in visually impressive and diverse scenes. |
@@ -84,3 +94,4 @@ Total items: 80
 | external | ok | https://www.firecrawl.dev | Firecrawl - The Web Data API for AI | Firecrawl is a web crawling, scraping, and search API designed for AI applications. It provides clean, structured data from the web, enabling developers to build powerful AI solutions. |
 | external | ok | https://www.firecrawl.dev/dashboard | Firecrawl Dashboard | The Firecrawl dashboard offers users a comprehensive interface to manage their web scraping tasks, monitor performance, and access data insights in real-time. |
 | external | ok | https://www.springer.com/gp/book/9783764357313 | Book on Web Data Extraction | This book provides in-depth knowledge on techniques and methodologies for extracting data from the web, covering various tools and frameworks available for developers. |
+| external | ok | https://www.firecrawl.dev/blog/os-watch-github-monitoring-tool | Building an Open-Source Project Monitoring Tool with Firecrawl and Streamlit | This article explores the OS-watch application, a tool that helps users monitor trending open-source projects on GitHub and sends notifications via Slack. It utilizes Firecrawl for web scraping and Streamlit for the user interface. |

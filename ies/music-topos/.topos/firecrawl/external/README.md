@@ -4,7 +4,7 @@ This folder contains Firecrawl extraction results for non-GitHub URLs referenced
 
 Files:
 - external_seed_urls.txt: all extracted non-GitHub URLs from docs.
-- external_seed_urls.filtered.txt: filtered list (62 URLs) used for Firecrawl.
+- external_seed_urls.filtered.txt: filtered list (63 URLs) used for Firecrawl.
 - raw/: raw batch outputs from Firecrawl extract calls.
 - index.json: merged index for requested URLs (generated).
 - index.md: human-readable index.

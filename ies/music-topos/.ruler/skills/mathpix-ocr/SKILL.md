@@ -1,3 +1,8 @@
+---
+name: mathpix-ocr
+description: Mathpix OCR for LaTeX extraction with balanced ternary checkpoints
+---
+
 # mathpix-ocr - Balanced Ternary OCR Pipeline for LaTeX → ACSet Extraction
 
 ## Overview
