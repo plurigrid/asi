@@ -243,7 +243,7 @@ pub mod dashboard;
 
 pub use agent_orchestrator::{OrchestrationState, AgentMetadata, RoundStatistics};
 pub use duck_colors::{ColorAssigner, Polarity as ColorPolarity};
-pub use transduction_2tdx::{Transducer, RewriteRule, TopologicalPattern, PatternExpr, Polarity as RewritePolarity};
+pub use transduction_2tdx::{Transducer, RewriteRule, TopologicalPattern, PatternExpr, Polarity as RewritePolarity, CodegenTarget};
 pub use interaction_timeline::{InteractionTimeline, TimelineEvent, EventType, MessageFlow, PerformanceMetrics};
 pub use dashboard::{Dashboard, AgentDashboardData, NetworkDashboardData, PerformanceDashboardData};
 

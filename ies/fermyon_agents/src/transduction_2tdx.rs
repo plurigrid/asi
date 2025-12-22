@@ -16,6 +16,17 @@
 use crate::{Color, ENode, CRDTEGraph};
 use std::collections::HashMap;
 
+/// Code generation target language/format
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum CodegenTarget {
+    /// Rust code (default, existing)
+    Rust,
+    /// OpenQASM 3.0 quantum circuits (new)
+    QASM,
+    /// LLVM IR (future)
+    LLVM,
+}
+
 /// 2-Topological pattern (2-cell in category theory)
 #[derive(Debug, Clone)]
 pub struct TopologicalPattern {
@@ -131,8 +142,17 @@ impl Transducer {
         Ok(constrained_rule)
     }
 
-    /// Generate Rust code for rewrite rule
-    pub fn codegen_rule(&mut self, rule: &RewriteRule) -> String {
+    /// Generate code for rewrite rule (multi-target)
+    pub fn codegen_rule(&mut self, rule: &RewriteRule, target: CodegenTarget) -> String {
+        match target {
+            CodegenTarget::Rust => self.codegen_rule_rust(rule),
+            CodegenTarget::QASM => self.codegen_rule_qasm(rule),
+            CodegenTarget::LLVM => self.codegen_rule_llvm(rule),
+        }
+    }
+
+    /// Generate Rust code for rewrite rule (original implementation)
+    fn codegen_rule_rust(&mut self, rule: &RewriteRule) -> String {
         let source_code = self.expr_to_rust(&rule.source);
         let target_code = self.expr_to_rust(&rule.target);
         let conditions_code = self.conditions_to_rust(&rule.conditions);
@@ -153,6 +173,46 @@ pub fn apply_rewrite(egraph: &mut CRDTEGraph, node_id: String) -> Result<(), Str
             conditions_code, target_code
         );
 
+        self.generated_code.push(code.clone());
+        code
+    }
+
+    /// Generate OpenQASM code for rewrite rule
+    fn codegen_rule_qasm(&mut self, rule: &RewriteRule) -> String {
+        let source_expr = self.expr_to_qasm(&rule.source);
+        let target_expr = self.expr_to_qasm(&rule.target);
+        let conditions = self.conditions_to_qasm(&rule.conditions);
+
+        let code = format!(
+            r#"// OpenQASM circuit from pattern
+OPENQASM 3.0;
+include "stdgates.inc";
+
+qubit[2] q;
+bit[2] c;
+
+// Source pattern: {}
+{}
+
+// Rewrite to target pattern: {}
+{}
+
+// Conditions: {}
+measure q[0] -> c[0];
+measure q[1] -> c[1];
+"#,
+            source_expr, self.pattern_to_qasm_init(&rule.source),
+            target_expr, self.pattern_to_qasm_apply(&rule.target),
+            conditions
+        );
+
+        self.generated_code.push(code.clone());
+        code
+    }
+
+    /// Generate LLVM IR code for rewrite rule (future)
+    fn codegen_rule_llvm(&mut self, _rule: &RewriteRule) -> String {
+        let code = "; LLVM IR generation not yet implemented".to_string();
         self.generated_code.push(code.clone());
         code
     }
@@ -199,6 +259,88 @@ pub fn apply_rewrite(egraph: &mut CRDTEGraph, node_id: String) -> Result<(), Str
                 })
                 .collect();
             conditions.join(" && ")
+        }
+    }
+
+    /// Convert pattern expression to QASM code
+    fn expr_to_qasm(&self, expr: &PatternExpr) -> String {
+        match expr {
+            PatternExpr::Var(name) => format!("// Variable: {}", name),
+            PatternExpr::Op { name, args } => {
+                let arg_code = args
+                    .iter()
+                    .enumerate()
+                    .map(|(i, _)| format!("q[{}]", i))
+                    .collect::<Vec<_>>()
+                    .join(", ");
+                match name.as_str() {
+                    "compose" => format!("// Composition of operators"),
+                    "forward" | "red" => format!("h {};  // RED: Hadamard (forward)", arg_code),
+                    "backward" | "blue" => format!("sdg {};  // BLUE: S-dagger (inverse)", arg_code),
+                    "verify" | "green" => format!("id {};  // GREEN: Identity (verify)", arg_code),
+                    _ => format!("// Operator: {}", name),
+                }
+            }
+            PatternExpr::Compose(f, g) => {
+                format!("{}\n{}", self.expr_to_qasm(f), self.expr_to_qasm(g))
+            }
+            PatternExpr::Identity => "// Identity operation".to_string(),
+        }
+    }
+
+    /// Convert constraints to QASM comments
+    fn conditions_to_qasm(&self, constraints: &[Constraint]) -> String {
+        if constraints.is_empty() {
+            "// No constraints".to_string()
+        } else {
+            let conditions: Vec<String> = constraints
+                .iter()
+                .map(|c| match c {
+                    Constraint::ColorMustBe(var, color) => {
+                        format!("// {} must be {:?}", var, color)
+                    }
+                    Constraint::ColorNot(var, color) => {
+                        format!("// {} must not be {:?}", var, color)
+                    }
+                    Constraint::NotEqual(v1, v2) => {
+                        format!("// {} ≠ {}", v1, v2)
+                    }
+                    Constraint::ParentOf(parent, child) => {
+                        format!("// {} is parent of {}", parent, child)
+                    }
+                })
+                .collect();
+            conditions.join("\n")
+        }
+    }
+
+    /// Initialize QASM circuit from source pattern
+    fn pattern_to_qasm_init(&self, expr: &PatternExpr) -> String {
+        match expr {
+            PatternExpr::Op { name, .. } => {
+                match name.as_str() {
+                    "forward" | "red" => "h q[0];".to_string(),
+                    "backward" | "blue" => "sdg q[0];".to_string(),
+                    "verify" | "green" => "id q[0];".to_string(),
+                    _ => format!("// Initialize {}", name),
+                }
+            }
+            _ => "// Initialize pattern".to_string(),
+        }
+    }
+
+    /// Apply target pattern transformation in QASM
+    fn pattern_to_qasm_apply(&self, expr: &PatternExpr) -> String {
+        match expr {
+            PatternExpr::Op { name, .. } => {
+                match name.as_str() {
+                    "forward" | "red" => "h q[1];".to_string(),
+                    "backward" | "blue" => "sdg q[1];".to_string(),
+                    "verify" | "green" => "id q[1];".to_string(),
+                    _ => format!("// Apply {}", name),
+                }
+            }
+            _ => "// Apply target".to_string(),
         }
     }
 
@@ -426,7 +568,7 @@ mod tests {
     }
 
     #[test]
-    fn test_codegen_rule() {
+    fn test_codegen_rule_rust() {
         let mut transducer = Transducer::new();
 
         let rule = RewriteRule::new(
@@ -434,9 +576,37 @@ mod tests {
             PatternExpr::Var("target".to_string()),
         );
 
-        let code = transducer.codegen_rule(&rule);
+        let code = transducer.codegen_rule(&rule, CodegenTarget::Rust);
         assert!(code.contains("apply_rewrite"));
         assert!(code.contains("CRDTEGraph"));
+    }
+
+    #[test]
+    fn test_codegen_rule_qasm() {
+        let mut transducer = Transducer::new();
+
+        let rule = RewriteRule::new(
+            PatternExpr::Var("source".to_string()),
+            PatternExpr::Var("target".to_string()),
+        );
+
+        let code = transducer.codegen_rule(&rule, CodegenTarget::QASM);
+        assert!(code.contains("OPENQASM"));
+        assert!(code.contains("qubit"));
+        assert!(code.contains("measure"));
+    }
+
+    #[test]
+    fn test_codegen_rule_llvm() {
+        let mut transducer = Transducer::new();
+
+        let rule = RewriteRule::new(
+            PatternExpr::Var("source".to_string()),
+            PatternExpr::Var("target".to_string()),
+        );
+
+        let code = transducer.codegen_rule(&rule, CodegenTarget::LLVM);
+        assert!(code.contains("LLVM"));
     }
 
     #[test]
