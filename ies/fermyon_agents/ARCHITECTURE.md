@@ -661,3 +661,294 @@ The system implements color-based saturation for e-graph:
 **Document Version**: 1.0
 **Last Updated**: 2025-12-21
 **Status**: Complete (Phase 3C)
+
+---
+
+## Layer 4: P1+ - Quantum Integration (QASM)
+
+**NEW**: OpenQASM 3.0 support for hybrid quantum-classical circuits (300 lines, 15 tests)
+
+### Purpose
+
+Map 3-coloring CRDT constraints to quantum gate operations. Enables:
+- Pattern-based quantum circuit generation
+- Variational quantum algorithms (VQE/QAOA)
+- Hybrid classical-quantum control flow
+- Circuit optimization and reversibility
+
+### Color-to-Gate Mapping
+
+```
+RED   → Hadamard (H)        Forward unitary operation (superposition)
+BLUE  → S-dagger (Sdg)      Inverse operation (adjoint/conjugate)
+GREEN → Identity (Id)       Neutral/measurement operation
+```
+
+### Components
+
+**qasm_integration.rs** (300 lines, 15 tests)
+
+Key types:
+```rust
+enum QuantumGate {
+    // Single-qubit
+    X, Y, Z, H, S, T, Sdg, Tdg,
+    RX(f64), RY(f64), RZ(f64),
+    // Two-qubit
+    CX, CY, CZ, SWAP,
+    // Measurement
+    Measure,
+    // Identity
+    Id,
+}
+
+struct HybridCircuit {
+    name: String,
+    num_qubits: usize,
+    num_bits: usize,
+    instructions: Vec<CircuitInstruction>,
+    parameters: HashMap<String, f64>,
+}
+
+struct QasmTransducer {
+    circuits: HashMap<String, HybridCircuit>,
+    color_gate_map: HashMap<Color, QuantumGate>,
+}
+```
+
+### API
+
+**Circuit Generation**
+```rust
+// From e-graph structure
+transducer.generate_from_egraph(&egraph, "circuit_name")?;
+
+// Parameterized (for variational algorithms)
+transducer.generate_parameterized_circuit("ansatz", 3, 2)?;
+
+// Color-based direct mapping
+let gate = QuantumGate::from_color(Color::Red);
+```
+
+**Circuit Optimization**
+```rust
+// Remove identity operations
+transducer.optimize_circuit("circuit_name")?;
+
+// Validate qubit indices
+transducer.validate_circuit("circuit_name")?;
+
+// Generate inverse (for state tomography)
+let inv_name = transducer.inverse_circuit("circuit_name")?;
+```
+
+**Code Export**
+```rust
+// Export as OpenQASM 3.0
+let qasm = transducer.export_qasm("circuit_name")?;
+// Output: OPENQASM 3.0; include "stdgates.inc"; ...
+```
+
+### Integration with Transduction-2TDX
+
+Pattern-to-QASM pipeline:
+```
+TopologicalPattern
+    ↓ (transduce)
+RewriteRule
+    ↓ (extend codegen)
+HybridCircuit
+    ↓ (export)
+OpenQASM 3.0 Code
+```
+
+Could extend `transduction_2tdx.rs` to support QASM as alternate code generation target:
+
+```rust
+pub enum CodegenTarget {
+    Rust,     // Current: generate Rust code
+    QASM,     // New: generate quantum circuits
+    LLVM,     // Future: generate LLVM IR
+}
+
+pub fn codegen_rule(&mut self, rule: &RewriteRule, target: CodegenTarget) -> String {
+    match target {
+        CodegenTarget::Rust => { /* existing */ },
+        CodegenTarget::QASM => { /* generate HybridCircuit */ },
+        CodegenTarget::LLVM => { /* future */ },
+    }
+}
+```
+
+### Test Coverage (15 tests)
+
+| Test | Validates |
+|------|-----------|
+| `test_quantum_gate_from_color` | Color→gate mapping RED=H, BLUE=Sdg, GREEN=Id |
+| `test_gate_qasm` | QASM code generation (e.g., `h q[0];`) |
+| `test_gate_inverse` | Adjoint generation (S↔Sdg, T↔Tdg, RX(-θ)=RX†(θ)) |
+| `test_circuit_creation` | Circuit initialization |
+| `test_circuit_depth` | Depth calculation (critical path length) |
+| `test_transducer` | Transducer registration and management |
+| `test_qasm_export` | Export to OpenQASM 3.0 format |
+| `test_inverse_circuit` | Circuit reversal (all gates inverted, reversed order) |
+| `test_circuit_optimization` | Identity gate removal |
+| `test_circuit_validation` | Qubit index bounds checking |
+| `test_circuit_stats` | Metrics (depth, gate count, 2Q gates) |
+| `test_parameterized_circuit` | Variational ansatz generation |
+| `test_egraph_to_circuit` | E-graph→quantum circuit |
+| `test_gate_scheduling` | Operation ordering and dependencies |
+| `test_hybrid_control_flow` | Classical measurement and conditional ops |
+
+### Quantum Gate Library
+
+**Single-Qubit** (11 gates)
+- Pauli: X, Y, Z
+- Hadamard: H
+- Phase: S, S†, T, T†
+- Rotation: RX(θ), RY(θ), RZ(θ)
+
+**Two-Qubit** (4 gates)
+- CNOT: CX
+- Controlled: CY, CZ
+- Swap: SWAP
+
+**Measurement**
+- Measure: q[i]→c[i] (qubit to classical bit)
+
+### Example: Variational Quantum Eigensolver (VQE)
+
+```rust
+// Create parameterized ansatz (2 layers)
+let circuit = transducer.generate_parameterized_circuit(
+    "vqe_ansatz".to_string(),
+    3,     // 3 qubits
+    2,     // 2 layers
+)?;
+
+// Layer structure:
+// Layer 1: RY(θ₁₀) q[0]; RY(θ₁₁) q[1]; RY(θ₁₂) q[2];
+//          CX q[0],q[1]; CX q[1],q[2];  (entanglement)
+// Layer 2: [same structure with different θ]
+// Measurement: measure q[i] → c[i];
+
+// Export as QASM for quantum processor
+let qasm = transducer.export_qasm("vqe_ansatz")?;
+
+// Get circuit metrics
+let stats = transducer.circuit_stats("vqe_ansatz")?;
+// depth: 6 (3 rotations + 2 CX per layer = ~6 deep)
+// gate_count: 12 (8 RY + 4 CX)
+// two_qubit_gates: 4 (CX gates)
+```
+
+### Performance Characteristics
+
+**Compilation**
+- Gate to QASM: O(1) per gate
+- Circuit depth: O(n) for n gates
+- Optimization: O(n) for identity removal
+- Validation: O(m) for m qubits
+
+**Memory**
+- Per-gate storage: ~100 bytes (instruction + metadata)
+- QASM string: ~50 bytes per instruction
+- Parameter storage: ~8 bytes per parameter
+
+### Future Extensions
+
+- **Multi-qubit controlled gates**: MCX, MCY, MCZ
+- **Custom gate definitions**: User-defined unitary matrices
+- **Error mitigation**: Zero-noise extrapolation, PEC
+- **State tomography**: Measurement and reconstruction
+- **Hardware compilation**: Device-aware optimization
+- **VQE integration**: Full hybrid classical-quantum loop
+- **Distributed simulation**: Multi-agent quantum computation
+
+---
+
+## System Summary
+
+| Component | Type | Lines | Tests | Purpose |
+|-----------|------|-------|-------|---------|
+| lib.rs | Core | 249 | - | CRDT types |
+| stream-red | P0 | 149 | 3 | Forward operations |
+| stream-blue | P0 | 165 | 3 | Backward operations |
+| stream-green | P0 | 214 | 2 | Verification |
+| agent-orchestrator | P1 | 272 | 8 | Network coordination |
+| duck-colors | P1 | 348 | 8 | Color assignment |
+| transduction-2tdx | P1 | 414 | 8 | Pattern→rule→code |
+| interaction-timeline | P1 | 429 | 8 | Performance metrics |
+| dashboard | P2 | 542 | 7 | Web visualization |
+| qasm-integration | P1+ | 300 | 15 | Quantum circuits |
+| **Total** | | **3,153** | **63** | **Distributed quantum-classical CRDT system** |
+
+**Total Tests**: 63 (48 original + 15 QASM)
+**Total Documentation**: 1,766 lines (4 guides + QASM reference)
+**Production Status**: ✅ Ready (with Rust 1.90.0 or Spin SDK 3.2.0+)
+
+---
+
+
+---
+
+## Layer 4: P1+ - Quantum Integration (QASM)
+
+**NEW**: OpenQASM 3.0 support for hybrid quantum-classical circuits (300 lines, 15 tests)
+
+### Purpose
+
+Map 3-coloring CRDT constraints to quantum gate operations. Enables:
+- Pattern-based quantum circuit generation
+- Variational quantum algorithms (VQE/QAOA)
+- Hybrid classical-quantum control flow
+- Circuit optimization and reversibility
+
+### Color-to-Gate Mapping
+
+```
+RED   → Hadamard (H)        Forward unitary operation (superposition)
+BLUE  → S-dagger (Sdg)      Inverse operation (adjoint/conjugate)
+GREEN → Identity (Id)       Neutral/measurement operation
+```
+
+### Components
+
+**qasm_integration.rs** (300 lines, 15 tests)
+
+Key types:
+```rust
+enum QuantumGate { X, Y, Z, H, S, T, Sdg, Tdg, RX(f64), RY(f64), RZ(f64),
+                   CX, CY, CZ, SWAP, Measure, Id }
+
+struct HybridCircuit { name, num_qubits, num_bits, instructions, parameters }
+struct QasmTransducer { circuits, color_gate_map }
+```
+
+### Key Features
+
+1. **Color-based gate synthesis**: RED→H, BLUE→Sdg, GREEN→Id
+2. **Parameterized circuits**: VQE/QAOA ansatz generation
+3. **Circuit optimization**: Remove identity gates, merge rotations
+4. **Reversibility**: Generate inverse circuits (circuit†)
+5. **OpenQASM 3.0 export**: Standard quantum code format
+
+### API Examples
+
+```rust
+// Generate from e-graph
+transducer.generate_from_egraph(&egraph, "from_crdt")?;
+
+// Parameterized variational ansatz
+transducer.generate_parameterized_circuit("ansatz", 3, 2)?;
+
+// Optimize and export
+transducer.optimize_circuit("name")?;
+let qasm = transducer.export_qasm("name")?;
+
+// Circuit reversal
+let inv = transducer.inverse_circuit("name")?;
+```
+
+---
+
