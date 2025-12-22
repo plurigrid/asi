@@ -104,7 +104,6 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - `qa-regression` skill for automated Playwright testing
-- `jira-issues` skill for Jira integration
 - GitHub issue templates and PR templates
 - CI validation workflow
 - Funding configuration
