@@ -6,6 +6,8 @@ Files:
 - github_seed_urls.txt: seed list of GitHub URLs harvested from project docs.
 - github/index.json: extracted metadata (title, summary, topics, repo, status).
 - github/index.md: human-readable index.
+- github/raw/: trimmed Firecrawl batch outputs for newly added GitHub URLs.
+- discovery/search_results.json: Firecrawl search results used to expand GitHub seeds.
 - github/sonify_firecrawl.rb: sonification script (reads github/index.json).
 - firecrawl_sonification.wav: rendered audio output.
 - firecrawl_sonification.json: event metadata for the rendered audio.

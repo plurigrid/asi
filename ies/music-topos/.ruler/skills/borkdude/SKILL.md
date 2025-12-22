@@ -1,3 +1,8 @@
+---
+name: borkdude
+description: Babashka and ClojureScript runtime selection guidance by @borkdude
+---
+
 <!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/borkdude -->
 
 # Borkdude Skill: ClojureScript Runtime Selection

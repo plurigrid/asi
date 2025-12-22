@@ -1,3 +1,8 @@
+---
+name: codex-self-rewriting
+description: Lisp machine self-modification patterns via MCP Tasks and Narya bridge types
+---
+
 # codex-self-rewriting - Lisp Machine Self-Modification via MCP Tasks
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+name: unworld
+description: Replace time with color chain derivations via seed chaining
+---
+
 <!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/unworld -->
 
 <!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/unworld -->

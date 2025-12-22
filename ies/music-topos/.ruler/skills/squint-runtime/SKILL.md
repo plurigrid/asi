@@ -1,3 +1,8 @@
+---
+name: squint-runtime
+description: Squint ClojureScript runtime for minimal JS output compilation
+---
+
 # Squint Runtime Skill
 
 **Status**: ✅ Production Ready

@@ -1,3 +1,8 @@
+---
+name: three-match
+description: 3-MATCH colored subgraph isomorphism gadget for 3-SAT reduction
+---
+
 <!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/three-match -->
 
 # Three-Match Skill: 3-SAT via Colored Subgraph Isomorphism
