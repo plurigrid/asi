@@ -1,0 +1,53 @@
+{
+  "system": "GMRA + GOKO + IsUMAP Production Pipeline",
+  "version": "1.0",
+  "date": "2025-12-22T10:28:51.420148",
+  "status": "\u2713 COMPLETE",
+  "total_phases": 8,
+  "completed_phases": 8,
+  "total_execution_time_seconds": 48,
+  "total_output_files": 8,
+  "total_output_size_mb": 4.5,
+  "peak_memory_mb": 600,
+  "skills_processed": 166,
+  "morphisms_computed": 830,
+  "clusters_detected": 6,
+  "worlds_processed": 26,
+  "architecture": {
+    "levels": 4,
+    "total_objects": 291,
+    "embedding_dimension": 384,
+    "projection_type": "IsUMAP (Geodesic-Preserving)",
+    "metric": "Wasserstein Distance"
+  },
+  "quality_metrics": {
+    "cluster_silhouette": 0.6153,
+    "hierarchical_quality": "strong",
+    "geodesic_preservation": "fair",
+    "gf3_conservation_percentage": 16.7,
+    "neighborhood_preservation_k10_percent": 3.7
+  },
+  "outputs": {
+    "embeddings": "skill_embeddings_lightweight.json",
+    "morphisms": "goko_morphisms.tsv",
+    "projection_2d": "isumap_embedding_2d.npy",
+    "projection_3d": "isumap_embedding_3d.npy",
+    "visualization_spec": "isumap_visualization_spec.json",
+    "interactive_html": "isumap_visualization.html",
+    "analysis": "semantic_closure_analysis.json",
+    "documentation": [
+      "ARCHITECTURE.md",
+      "EXECUTION_GUIDE.md",
+      "PERFORMANCE_METRICS.md",
+      "DEPLOYMENT_CHECKLIST.md"
+    ]
+  },
+  "recommendations": [
+    "Use 2D/3D projections for interactive visualization",
+    "Use GOKO morphisms for curriculum design",
+    "Use cluster assignments for skill grouping",
+    "Use original Wasserstein distances for topology-aware analysis",
+    "Monitor geodesic preservation if increasing to 1000+ skills",
+    "Consider LSH/HNSW k-NN approximation for scaling beyond 1000 skills"
+  ]
+}
