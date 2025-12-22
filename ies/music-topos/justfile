@@ -606,9 +606,63 @@ discohy-arity:
 discohy-stream-history thread_id:
     duckdb thread_operad.duckdb -c "SELECT stream, index_position, h as hue, trit, timestamp FROM color_stream_history WHERE thread_id LIKE '%{{thread_id}}%' ORDER BY stream, index_position"
 
-# Generate Mermaid diagram from thread operad (requires hy)
+# Generate Mermaid diagram from thread operad (Python version)
 discohy-mermaid:
-    hy -c "(import [discohy_thread_operad [*]]) (setv op (build-operad-from-threads [{\"id\" \"T-root\" \"title\" \"Root\"}])) (print (operad-to-mermaid op))"
+    uv run python -c "from src.discohy_thread_operad import *; op = build_operad_from_threads([{'id': 'T-root', 'title': 'Root'}]); print(operad_to_mermaid(op))"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UV/UVX/RUFF TOOLCHAIN
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Initialize uv environment
+uv-init:
+    uv venv .venv
+    uv pip install -e ".[dev]"
+    @echo "✓ UV environment initialized"
+
+# Sync dependencies from pyproject.toml
+uv-sync:
+    uv pip sync pyproject.toml
+
+# Run DiscoHy operad demo (Python)
+uv-discohy:
+    uv run python src/discohy_thread_operad.py
+
+# Run DiscoHy operad demo (Hy, if available)
+uv-discohy-hy:
+    uv run hy lib/discohy_thread_operad.hy
+
+# Lint with ruff
+uv-lint:
+    uvx ruff check src/
+
+# Format with ruff  
+uv-format:
+    uvx ruff format src/
+
+# Fix and format
+uv-fix:
+    uvx ruff check --fix src/ && uvx ruff format src/
+
+# Run tests
+uv-test:
+    uvx pytest tests/ -v
+
+# Type check with mypy
+uv-typecheck:
+    uvx mypy src/
+
+# Full check (lint + format check)
+uv-check:
+    uvx ruff check src/
+    uvx ruff format --check src/
+
+# Show uv/ruff versions
+uv-versions:
+    @echo "UV version:"
+    uv --version
+    @echo "Ruff version:"
+    uvx ruff --version
 
 # Show triadic groupings with GF(3) conservation
 acset-triads:
