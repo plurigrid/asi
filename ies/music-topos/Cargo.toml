@@ -1,0 +1,24 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/stream-red",
+    "crates/stream-blue",
+    "crates/stream-green",
+    "crates/crdt-service",
+    "crates/egraph-service",
+    "crates/skill-verification",
+    "crates/agent-orchestrator",
+    "crates/duck-colors",
+    "crates/transduction-2tdx",
+    "crates/interaction-timeline",
+    "crates/dashboard",
+]
+
+[profile.release]
+opt-level = "z"      # Optimize for size (WASM)
+lto = true           # Enable LTO for smaller binaries
+strip = true         # Strip symbols
+codegen-units = 1    # Single codegen unit for optimization
+
+[profile.release.package."*"]
+opt-level = "z"      # Optimize dependencies for size too
