@@ -85,6 +85,18 @@ version = "1.0.0"
 description = "Codex Self-Rewriting"
 propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
+[skills.color-envelope-preserving]
+name = "color-envelope-preserving"
+version = "1.0.0"
+description = "GF(3) Color Envelope Preservation"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.constraint-generalization]
+name = "constraint-generalization"
+version = "1.0.0"
+description = "Constraint Generalization and Composition"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
 [skills.crdt]
 name = "crdt"
 version = "1.0.0"
@@ -139,6 +151,12 @@ version = "1.0.0"
 description = "Mathpix OCR"
 propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
+[skills.möbius-path-filtering]
+name = "möbius-path-filtering"
+version = "1.0.0"
+description = "Möbius Path Filtering (Non-Orientable Elimination)"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
 [skills.proofgeneral-narya]
 name = "proofgeneral-narya"
 version = "1.0.0"
@@ -181,6 +199,12 @@ version = "1.0.0"
 description = "SPI Parallel Verification"
 propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
+[skills.specter-navigator-gadget]
+name = "specter-navigator-gadget"
+version = "1.0.0"
+description = "Specter Navigator Gadget (Bidirectional Path Compilation)"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
 [skills.squint-runtime]
 name = "squint-runtime"
 version = "1.0.0"
@@ -197,6 +221,18 @@ propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 name = "three-match"
 version = "1.0.0"
 description = "3-Match (3-SAT via Subgraph Isomorphism)"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.tuple-nav-composition]
+name = "tuple-nav-composition"
+version = "1.0.0"
+description = "Tuple and Product Navigation with Composition"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+
+[skills.type-inference-validation]
+name = "type-inference-validation"
+version = "1.0.0"
+description = "Type Inference and Validation for Navigation Paths"
 propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
 
 [skills.triad-interleave]
@@ -287,35 +323,35 @@ trit = 0  # ERGODIC - verification
 skills_path = ".codex/skills"
 mcp_path = ".codex/mcp.json"
 instructions_path = ".codex/AGENTS.md"
-skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "color-envelope-preserving", "constraint-generalization", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "möbius-path-filtering", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "specter-navigator-gadget", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "tuple-nav-composition", "type-inference-validation", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 [agents.claude]
 trit = -1  # MINUS - conservative
 skills_path = ".claude/skills"
 mcp_path = ".claude/mcp.json"
 instructions_path = "CLAUDE.md"
-skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "color-envelope-preserving", "constraint-generalization", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "möbius-path-filtering", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "specter-navigator-gadget", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "tuple-nav-composition", "type-inference-validation", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 [agents.amp]
 trit = 0  # ERGODIC - neutral
 skills_path = ".ruler/skills"
 mcp_path = ".mcp.json"
 instructions_path = "AGENTS.md"
-skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "color-envelope-preserving", "constraint-generalization", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "möbius-path-filtering", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "specter-navigator-gadget", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "tuple-nav-composition", "type-inference-validation", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 [agents.cursor]
 trit = -1  # MINUS - conservative
 skills_path = ".cursor/skills"
 mcp_path = ".cursor/mcp.json"
 instructions_path = ".cursor/rules/AGENTS.md"
-skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "color-envelope-preserving", "constraint-generalization", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "möbius-path-filtering", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "specter-navigator-gadget", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "tuple-nav-composition", "type-inference-validation", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 [agents.copilot]
 trit = 1  # PLUS - optimistic
 skills_path = ".vscode/skills"
 mcp_path = ".vscode/mcp.json"
 instructions_path = ".github/copilot-instructions.md"
-skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
+skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorphism-stars", "borkdude", "cider-clojure", "cider-embedding", "clj-kondo-3color", "codex-self-rewriting", "color-envelope-preserving", "constraint-generalization", "crdt", "duckdb-temporal-versioning", "epistemic-arbitrage", "frontend-design", "gay-mcp", "geiser-chicken", "glass-bead-game", "hatchery-papers", "mathpix-ocr", "möbius-path-filtering", "proofgeneral-narya", "rama-gay-clojure", "reafference-corollary-discharge", "rubato-composer", "self-validation-loop", "slime-lisp", "spi-parallel-verify", "specter-navigator-gadget", "squint-runtime", "tailscale-file-transfer", "three-match", "triad-interleave", "tuple-nav-composition", "type-inference-validation", "unworld", "unworlding-involution", "world-hopping", "xenodium-elisp"]
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # GF(3) VERIFICATION
@@ -323,12 +359,21 @@ skills = ["acsets", "bdd-mathematical-verification", "bisimulation-game", "bmorp
 
 [gf3]
 triplets = [
-  ["codex", "claude", "copilot"],     # 0 + (-1) + 1 = 0 ✓
-  ["amp", "cursor", "copilot"],       # 0 + (-1) + 1 = 0 ✓
-  ["codex", "claude", "amp"]          # 0 + (-1) + 0 = -1 (balanced by copilot +1)
+  ["codex", "claude", "copilot"],                         # 0 + (-1) + 1 = 0 ✓
+  ["amp", "cursor", "copilot"],                           # 0 + (-1) + 1 = 0 ✓
+  ["codex", "claude", "amp"],                             # 0 + (-1) + 0 = -1 (balanced by copilot +1)
+  ["möbius-path-filtering", "specter-navigator-gadget", "color-envelope-preserving"],  # (-1) + 0 + (+1) = 0 ✓
+  ["type-inference-validation", "tuple-nav-composition", "constraint-generalization"]  # (-1) + 0 + (+1) = 0 ✓
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
+[skills.compositional-acset-comparison]
+name = "compositional-acset-comparison"
+version = "1.0.0"
+description = "DuckDB vs LanceDB compositional comparison via ACSets with golden angle coloring"
+propagate_to = ["codex", "claude", "amp", "cursor", "copilot"]
+trit = 0  # ERGODIC
+
 # PROPAGATION COMMANDS
 # ═══════════════════════════════════════════════════════════════════════════════
 
