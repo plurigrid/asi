@@ -1,8 +1,89 @@
+---
+name: compositional-acset-comparison
+description: "Compare data structures (DuckDB, LanceDB) via ACSets with persistent homology coverage analysis and geometric morphism translation."
+source: music-topos
+license: MIT
+xenomodern: true
+ironic_detachment: 0.69
+trit: 0
+triangulated: 2025-12-22
+---
+
 # Compositional ACSet Comparison Skill
+
+> *"The algorithm IS the data, the data IS the algorithm"*
+> — Homoiconic Principle
 
 **Trit**: 0 (ERGODIC - Coordinator)
 **Color**: #26D826 (Green)
 **Domain**: Compositional algorithm/data analysis via algebraic databases
+
+---
+
+## SYNOPSIS (Man Page)
+
+```
+compositional-acset-comparison - compare storage schemas via algebraic databases
+
+USAGE:
+    include("DuckDBACSet.jl")
+    include("LanceDBACSet.jl")
+    compare_schemas(SchDuckDB, SchLanceDB)
+
+TOOLS:
+    ComparisonUtils.jl     - 12-dimension golden spiral comparison
+    GhristCoverage.jl      - Persistent homology coverage analysis
+    ColoringFunctor.jl     - GF(3) coloring and 3-colorability
+    GeometricMorphism.jl   - Presheaf topos translation analysis
+    IrreversibleMorphisms.jl - Detect lossy morphisms
+    SideBySideComparison.jl  - Visual diff tables
+
+SEEDS:
+    1000000 - Core schemas and comparison
+    2000000 - Irreversibility analysis
+    3000000 - Side-by-side streams
+    4000000 - Ghrist/Coloring/Morphism analysis
+
+SEE ALSO:
+    acsets(7), gay-mcp(7), three-match(7), temporal-coalgebra(7)
+```
+
+---
+
+## INFO (Quick Reference)
+
+| Key | Value |
+|-----|-------|
+| **Type** | ERGODIC (0) - Coordinator |
+| **Color** | #26D826 (Green) |
+| **Seed** | 1000000 (core), 4000000 (analysis) |
+| **Golden Angle** | 137.508° |
+| **Dimensions** | 12 comparison axes |
+| **Schemas** | DuckDB (10 Ob, 11 Hom), LanceDB (14 Ob, 18 Hom) |
+| **Irreversible** | 0 (DuckDB), 2 (LanceDB) |
+| **Coverage** | Table ↔ Table ✓, Column ↔ Column ✓ |
+| **Dead Zones** | Segment, Manifest, VectorIndex |
+
+### Quick Commands
+
+```julia
+# Full 12-dimension comparison
+full_comparison()
+
+# Coverage analysis (Ghrist)
+run_coverage_analysis()
+
+# Coloring functor with GF(3) verification
+run_coloring_comparison()
+
+# Geometric morphism (presheaf topos translation)
+run_geometric_morphism_analysis()
+
+# Reversibility statistics
+reversibility_summary()
+```
+
+---
 
 ## Homoiconic Insight
 
@@ -352,6 +433,54 @@ For presheaf topoi PSh(SchDuckDB) and PSh(SchLanceDB):
 - Manifest ← ??? (LanceDB-only)
 - VectorIndex ← ??? (LanceDB-only)
 
+## DeepWiki Integration (Verified 2025-12-22)
+
+Query repository documentation via MCP for up-to-date schema information:
+
+```julia
+# DuckDB architecture via DeepWiki
+mcp__deepwiki__ask_question("duckdb/duckdb", 
+    "How does RowGroup partitioning work with ColumnData?")
+
+# LanceDB versioning via DeepWiki
+mcp__deepwiki__ask_question("lancedb/lancedb", 
+    "How does manifest versioning enable time travel?")
+
+# ACSets internals via DeepWiki
+mcp__deepwiki__ask_question("AlgebraicJulia/ACSets.jl", 
+    "How does StructACSet implement columnar storage?")
+```
+
+### Cross-Skill Synergy
+
+| Source Skill | Comparison Application |
+|--------------|------------------------|
+| **gay-mcp** (+1) | Golden thread colors for 12 dimensions |
+| **three-match** (-1) | 3-colorability validation of schemas |
+| **temporal-coalgebra** (-1) | Version chain analysis (Manifest→Manifest) |
+| **koopman-generator** (+1) | Dynamic traversal patterns |
+| **oapply-colimit** (+1) | Schema composition via colimits |
+| **polyglot-spi** (-1) | Cross-language type generation |
+| **sheaf-cohomology** (-1) | Local-to-global consistency |
+| **persistent-homology** (-1) | Coverage hole detection |
+| **acsets** (0) | Core algebraic database primitives |
+| **deepwiki-mcp** (0) | Live repository documentation |
+
+---
+
+## Related Skills
+
+- **acsets**: Core ACSets primitives, StructACSet internals
+- **gay-mcp**: Deterministic color generation via SplitMix64
+- **three-match**: Colored subgraph isomorphism for 3-SAT
+- **temporal-coalgebra**: Coalgebraic observation of streams
+- **persistent-homology**: Topological data analysis
+- **sheaf-cohomology**: Čech cohomology for consistency
+- **deepwiki-mcp**: Repository documentation via MCP
+- **structured-decomp**: StructuredDecompositions.jl integration
+
+---
+
 ## References
 
 - [de Silva & Ghrist, Coverage via Persistent Homology](https://www2.math.upenn.edu/~ghrist/preprints/persistent.pdf)
@@ -360,3 +489,4 @@ For presheaf topoi PSh(SchDuckDB) and PSh(SchLanceDB):
 - [ACSets.jl Documentation](https://algebraicjulia.github.io/ACSets.jl/)
 - [StructuredDecompositions.jl](https://github.com/AlgebraicJulia/StructuredDecompositions.jl)
 - [Gay.jl Deterministic Colors](https://github.com/bmorphism/Gay.jl)
+- [Bumpus, Deciding Sheaves on Presheaves](https://arxiv.org/abs/2302.00952)
