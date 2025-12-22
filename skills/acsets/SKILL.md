@@ -213,7 +213,28 @@ This integrates the semantic naming from PR #990 with Gay.jl's deterministic col
 
 ## Specter-Style Bidirectional Navigation
 
-Inspired by Nathan Marz's Specter library, navigate ACSets with paths that work for both **select** AND **transform**:
+Inspired by Nathan Marz's Specter library, navigate ACSets with paths that work for both **select** AND **transform**.
+
+### The Key Insight: comp-navs = alloc + field sets
+
+From Marz: **"comp-navs is fast because it's just object allocation + field sets"**
+
+```julia
+# What comp_navs actually does:
+comp_navs(a, b, c) = ComposedNav([a, b, c])  # That's it!
+# No compilation, no interpretation, no optimization
+# Just: allocate struct, set field, done
+
+# All work happens at traversal via CPS:
+nav_select(nav1, data, 
+    r1 -> nav_select(nav2, r1,
+        r2 -> nav_select(nav3, r2, identity)))
+```
+
+This means:
+- **O(1) composition** - constant time path building
+- **Inline caching** - paths compiled once per callsite
+- **Near-hand-written speed** - CPS eliminates intermediate allocations
 
 ### ACSet Navigators
 

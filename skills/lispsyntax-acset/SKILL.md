@@ -143,19 +143,54 @@ morphism_names = select([SEXP_CHILDREN, sexp_nth(1), ATOM_VALUE], sexp)
 graph2 = acset_of_sexp(Graph, sexp)
 ```
 
-## Performance: Inline Caching
+## Performance: Inline Caching (comp-navs = alloc + field sets)
 
-From Marz's Specter talk: "comp-navs is fast because it's just object allocation + field sets"
+From Marz's Specter talk: **"comp-navs is fast because it's just object allocation + field sets"**
+
+### What This Means
 
 ```julia
-# Cache demonstration
-path = [ALL, pred(iseven)]
-nav1 = coerce_nav(path)  # First call: compile path
-nav2 = coerce_nav(path)  # Reuses compiled navigator
+# Traditional approach: work at composition time
+compose(a, b, c) → [compile] → [optimize] → CompiledPath  # SLOW
 
-# Production: @compiled_select caches by callsite
-@compiled_select([ALL, pred(iseven)], data)
+# Specter approach: zero work at composition
+comp_navs(a, b, c) → ComposedNav{navs: [a, b, c]}  # Just allocate!
 ```
+
+The `comp_navs` function does **exactly two things**:
+1. Allocate a `ComposedNav` struct
+2. Set its `navs` field to the array of navigators
+
+**No compilation. No interpretation. No tree walking. Just allocation.**
+
+### Why This Works: CPS (Continuation-Passing Style)
+
+All actual work happens at traversal time via chained continuations:
+
+```julia
+# When you call select(), it builds a chain:
+nav_select(first_nav, data, 
+    result1 -> nav_select(second_nav, result1,
+        result2 -> nav_select(third_nav, result2,
+            final_result -> collect(final_result))))
+```
+
+### Inline Caching at Callsite
+
+```julia
+# At each callsite, path compiled ONCE:
+@compiled_select([ALL, pred(iseven)], data)
+
+# Internally:
+let cached = @__MODULE__.CACHE[callsite_id]
+    if cached === nothing
+        cached = comp_navs(ALL, pred(iseven))  # Once!
+    end
+    nav_select(cached, data, identity)
+end
+```
+
+**Result**: Near-hand-written performance with full abstraction.
 
 ## GF(3) Triads
 
