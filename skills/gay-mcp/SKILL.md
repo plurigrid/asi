@@ -259,6 +259,29 @@ proof = SplitMixTernary.prove_out_of_order(seed)
 #    }
 ```
 
+## Integration with Langevin Dynamics (NEW)
+
+Track which colors affect which noise calls in Langevin training:
+
+```julia
+# Instrument Langevin noise via color tracking
+function instrument_langevin_noise(sde, step_id)
+    color = color_at(rng, step_id)
+    noise = randn_from_color(color)
+    return (color, noise, step_id)
+end
+
+# Export audit trail showing cause-effect
+audit_log = export_color_trace(
+    trajectory=sde_solution,
+    seed=base_seed
+)
+# Shows: step_47 → color_0xD8267F → noise_0.342 → parameter_update
+
+# Verify GF(3) conservation across trajectory
+gf3_check(color_sequence, balance_threshold=0.1)
+```
+
 ## Integration with Unworld
 
 Colors are derived, not temporal:

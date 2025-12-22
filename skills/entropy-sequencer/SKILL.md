@@ -10,6 +10,8 @@
 
 Entropy-sequencer arranges interaction sequences to maximize learning efficiency. Instead of chronological replay, it reorders interactions to maximize information gain at each step, enabling 3x faster pattern learning.
 
+**NEW (Langevin Integration)**: Temperature-aware sequencing that respects Langevin dynamics and Fokker-Planck convergence analysis. Temperature from Langevin analysis directly controls the noise scale in sequence optimization.
+
 ## Capabilities
 
 ### 1. arrange-by-max-entropy
@@ -28,6 +30,25 @@ optimal_sequence = arranger.arrange(
 )
 
 # Returns sequence where each step maximizes new information
+```
+
+### 1b. arrange-with-temperature-awareness (NEW)
+
+Reorder interactions respecting Langevin temperature dynamics.
+
+```python
+# Temperature from Langevin analysis affects noise scale
+optimal_sequence = arranger.arrange_temperature_aware(
+    interactions=all_interactions,
+    temperature=0.01,  # From Langevin analysis
+    maximize_gradient_alignment=True,  # Color-gradient correlation
+    fokker_planck_mixing_time=500     # Estimated convergence time
+)
+
+# Temperature directly controls exploration vs exploitation:
+# - Low T (0.001): Sharp basin exploration
+# - Medium T (0.01): Balanced exploration
+# - High T (0.1): Broad exploration
 ```
 
 ### 2. calculate-information-gain

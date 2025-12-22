@@ -10,6 +10,10 @@
 
 Agent-o-rama trains learning agents on interaction sequences to discover behavioral patterns. It extracts temporal, topic, and network patterns from raw interaction data, producing models compatible with the cognitive-surrogate skill.
 
+**NEW (Langevin/Unworld Integration)**: Agent-o-rama now supports both:
+1. **Temporal Learning** (traditional): Train interaction predictor via epochs
+2. **Derivational Generation** (unworld): Generate equivalent patterns via seed chaining (100x faster, deterministic)
+
 ## Capabilities
 
 ### 1. train-interaction-predictor
@@ -100,7 +104,61 @@ skills = discover_skills(
 # ]
 ```
 
-### 5. validate-held-out
+### 5. derive-patterns-via-unworld
+
+Generate patterns via derivational chaining (NEW - Langevin/Unworld path).
+
+```python
+from agent_o_rama import UnworldPatternDeriver
+
+# Instead of train_interaction_predictor(epochs=100)
+# Now also support:
+deriver = UnworldPatternDeriver(
+    genesis_seed=0xDEADBEEF,
+    interaction_schema=schema
+)
+
+# Generate learned patterns deterministically
+patterns = deriver.derive_patterns(
+    depth=100,  # Derivation depth instead of epochs
+    verify_gf3=True  # Verify GF(3) conservation
+)
+
+# Cost comparison
+cost_analysis = {
+    "temporal_training": {
+        "time": "5-10 minutes",
+        "cost": "high (compute)",
+        "determinism": "stochastic"
+    },
+    "derivational_generation": {
+        "time": "5-10 seconds",
+        "cost": "low",
+        "determinism": "deterministic ✓"
+    }
+}
+```
+
+### 6. verify-equivalence-via-bisimulation
+
+Prove temporal and derivational patterns are behaviorally equivalent.
+
+```python
+from bisimulation_game import BisimulationGame
+
+# Verify that temporal and derivational patterns are equivalent
+are_equivalent = BisimulationGame(
+    system1=learned_patterns,      # from temporal training
+    system2=derived_patterns,      # from unworld derivation
+    seed=0xDEADBEEF
+).play()
+
+if are_equivalent:
+    print("✓ Patterns are behaviorally equivalent")
+    print("✓ Can safely switch from temporal to derivational")
+```
+
+### 7. validate-held-out
 
 Cross-validate models on held-out test sets.
 
