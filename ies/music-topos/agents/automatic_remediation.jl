@@ -203,8 +203,8 @@ function generate_remediation_plan(
         )
     end
 
-    # Rank issues by severity (zero-allocation via functor)
-    sorted_issues = sort(issues, IssueSeverityComparator())
+    # Rank issues by severity (descending - highest severity first)
+    sorted_issues = sort(issues, by = x -> x.severity, rev = true)
 
     # Select most effective strategies
     strategies = Set{Symbol}()
