@@ -1,0 +1,21 @@
+graph LR
+    skill[skill: 5]
+    subagent[subagent: 3]
+    MCP[MCP: 3]
+    GF3[GF3: 3]
+    LocalSend[LocalSend: 2]
+    justfile[justfile: 2]
+    ACSet[ACSet: 2]
+    WORLD[WORLD: 2]
+    codex[codex: 2]
+    fork[fork: 2]
+    relational[relational: 1]
+    HyJAX[HyJAX: 1]
+    skill -->|2| subagent
+    relational -->|1| HyJAX
+    skill -->|1| MCP
+    skill -->|1| alife
+    MCP -->|1| alife
+    skill -->|1| LocalSend
+    subagent -->|1| LocalSend
+    skill -->|1| ACSet

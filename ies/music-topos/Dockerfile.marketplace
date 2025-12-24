@@ -1,0 +1,44 @@
+# Dockerfile for Marketplace Gateway
+#
+# Build: docker build -f Dockerfile.marketplace -t marketplace-gateway:latest .
+# Run:   docker run -p 8080:8080 marketplace-gateway:latest
+
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application files
+COPY marketplace_gateway.py .
+COPY test_marketplace_gateway.py .
+COPY marketplace_client_examples.py .
+COPY MARKETPLACE_GATEWAY_README.md .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir \
+    aiohttp==3.9.1 \
+    numpy==1.26.2 \
+    pytest==8.0.0 \
+    pytest-asyncio==0.23.3
+
+# Create non-root user
+RUN useradd -m -u 1000 gateway && \
+    chown -R gateway:gateway /app
+
+USER gateway
+
+# Expose port
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8080/health || exit 1
+
+# Run gateway
+CMD ["python", "marketplace_gateway.py", "--host", "0.0.0.0", "--port", "8080"]

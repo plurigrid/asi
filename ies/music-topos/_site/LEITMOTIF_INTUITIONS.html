@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>leitmotif_intuitions – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="leitmotifs-of-the-music-topos-system" class="level1">
+<h1>Leitmotifs of the Music Topos System</h1>
+<p>The leitmotifs are the recurring themes that bind mathematical structure to musical meaning. They appear as constraints, axioms, and structural properties throughout all 11 categories.</p>
+<section id="the-tonic-leitmotif-home-and-return" class="level2">
+<h2 class="anchored" data-anchor-id="the-tonic-leitmotif-home-and-return">1. THE TONIC LEITMOTIF: Home and Return</h2>
+<p><strong>Musical Intuition:</strong> The tonic is the “home” - the note or chord to which all harmonic motion tends. Music that wanders away from the tonic feels unstable; return to the tonic brings closure and satisfaction.</p>
+<p><strong>Mathematical Manifestation:</strong></p>
+<pre><code>Category 3 (Pitch): C=0 as the reference point in pitch space
+Category 5 (Harmony): T (Tonic) function as the stable node
+Category 9 (Tonality): Phrase ending on I = conclusive cadence</code></pre>
+<p><strong>The Axiom:</strong> Every piece of tonal music must: 1. Establish a tonic (usually in the opening phrase) 2. Move away from it (modulation, harmony change) 3. Return to it (cadence, closure)</p>
+<p><strong>Why it matters:</strong> The tonic leitmotif is what makes music <em>coherent</em>. Without return to tonic, there’s no sense of completion. This is why: - V→I is conclusive (returns home) - I→V is open (leaves home) - V→vi is deceptive (promises home but goes elsewhere)</p>
+<hr>
+</section>
+<section id="the-harmonic-function-leitmotif-tension-and-resolution" class="level2">
+<h2 class="anchored" data-anchor-id="the-harmonic-function-leitmotif-tension-and-resolution">2. THE HARMONIC FUNCTION LEITMOTIF: Tension and Resolution</h2>
+<p><strong>Musical Intuition:</strong> Three harmonic functions create the fundamental dynamic: - <strong>Tonic (T)</strong>: Stability, rest, acceptance - <strong>Subdominant (S)</strong>: Preparation, movement away, building tension - <strong>Dominant (D)</strong>: Maximum tension, expectation, the “need” to resolve</p>
+<p>The cycle T→S→D→T is the heartbeat of harmonic music. It can be extended but always returns.</p>
+<p><strong>Mathematical Manifestation:</strong></p>
+<pre><code>T ←→ S (distance 2 semitones, IV to I)
+S ←→ D (distance 2 semitones, V to IV)
+D ←→ T (distance 7 semitones, most distant, maximum tension)</code></pre>
+<p><strong>The Axiom:</strong> Valid progressions follow the functional cycle: - T to S (move away from stability) - S to D (increase tension) - D to T (resolve the tension) - Deviations create meaning (surprise, deception, suspension)</p>
+<p><strong>Why it matters:</strong> This leitmotif explains why certain progressions feel “right” and others feel jarring: - I-IV-V-I feels natural (T→S→D→T) - I-II-III feels awkward (crossing functional boundaries) - V-vi feels deceptive (D promises T but gives vi)</p>
+<hr>
+</section>
+<section id="the-voice-leading-leitmotif-smoothness-and-economy" class="level2">
+<h2 class="anchored" data-anchor-id="the-voice-leading-leitmotif-smoothness-and-economy">3. THE VOICE LEADING LEITMOTIF: Smoothness and Economy</h2>
+<p><strong>Musical Intuition:</strong> Voices should move as little as possible between chords. When a voice can stay on the same note, it should. When it must move, it should move by the smallest interval possible.</p>
+<p><strong>Mathematical Manifestation:</strong></p>
+<pre><code>Semitone motion penalty: |p2 - p1| (in semitones)
+Parallel fifths penalty: + 1.0 if two voices move to perfect 5th
+Parallel octaves penalty: + 2.0 if two voices move to perfect 8va</code></pre>
+<p><strong>The Axiom:</strong> Voice leading distance = Σ(semitone_motions) + parallel_penalties</p>
+<p>Minimize this distance while respecting harmonic functions.</p>
+<p><strong>Why it matters:</strong> This leitmotif is why SATB writing has rules: - Avoid parallel fifths/octaves (unbalances the texture) - Keep voices within their ranges (SATB ranges) - Move by step when possible (economies of motion) - Resolve tendency tones properly</p>
+<p>Real example: C Major I to IV chord - Soprano: C→F (4 semitones) - worth it for voice independence - Alto: E→C (3 semitones) - necessary, moves by step - Tenor: G→F (2 semitones) - smooth - Bass: C→F (jump of perfect 4th) - acceptable in bass</p>
+<hr>
+</section>
+<section id="the-triangle-inequality-leitmotif-metric-structure" class="level2">
+<h2 class="anchored" data-anchor-id="the-triangle-inequality-leitmotif-metric-structure">4. THE TRIANGLE INEQUALITY LEITMOTIF: Metric Structure</h2>
+<p><strong>Musical Intuition:</strong> Music exists in space. This space has distances. The triangle inequality says: “The direct distance from A to C is never greater than the path A→B→C”</p>
+<pre><code>d(A, C) ≤ d(A, B) + d(B, C)</code></pre>
+<p><strong>Mathematical Manifestation:</strong> Every world enforces: - Harmonic distance: |root1 - root2| in semitone space - Voice leading distance: Σ(semitone_motions) + penalties - Tonality distance: closure_score differences - Spectral distance: overtone alignment</p>
+<p><strong>The Axiom:</strong> The space of musical objects must be a metric space: 1. d(A, B) ≥ 0 (non-negative) 2. d(A, B) = 0 iff A = B (identity) 3. d(A, B) = d(B, A) (symmetry) 4. d(A, C) ≤ d(A, B) + d(B, C) (triangle inequality)</p>
+<p><strong>Why it matters:</strong> This ensures that: - Voice leading via an intermediate chord is never shorter than direct voice leading - Harmonic paths always make sense (no shortcuts) - Tonality has coherent structure (closure is meaningful) - The system is <em>structurally sound</em> - paths can be compared and optimized</p>
+<hr>
+</section>
+<section id="the-semantic-closure-leitmotif-8-dimensional-completeness" class="level2">
+<h2 class="anchored" data-anchor-id="the-semantic-closure-leitmotif-8-dimensional-completeness">5. THE SEMANTIC CLOSURE LEITMOTIF: 8-Dimensional Completeness</h2>
+<p><strong>Musical Intuition:</strong> Music is complete when it satisfies 8 simultaneous conditions:</p>
+<ol type="1">
+<li><strong>pitch_space</strong>: All notes are in valid pitch range</li>
+<li><strong>chord_space</strong>: All chords are valid harmonies</li>
+<li><strong>metric_valid</strong>: Triangle inequality holds</li>
+<li><strong>appearance</strong>: Objects actually appear (non-empty)</li>
+<li><strong>transformations_necessary</strong>: Changes serve the harmonic function</li>
+<li><strong>consistent</strong>: No contradictions (voice overlap, parallel fifths, etc.)</li>
+<li><strong>existence</strong>: Objects exist in the world (are defined)</li>
+<li><strong>complete</strong>: The piece returns to tonic (harmonic closure)</li>
+</ol>
+<p><strong>Mathematical Manifestation:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>closed <span class="op">=</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  pitch_space <span class="op">&amp;&amp;</span>        <span class="co"># All pitches valid</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  chord_space <span class="op">&amp;&amp;</span>        <span class="co"># All chords valid</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  metric_valid <span class="op">&amp;&amp;</span>       <span class="co"># Distance properties hold</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  appearance <span class="op">&amp;&amp;</span>         <span class="co"># Objects present</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  transformations_necessary <span class="op">&amp;&amp;</span>  <span class="co"># Changes meaningful</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  consistent <span class="op">&amp;&amp;</span>         <span class="co"># No violations</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  existence <span class="op">&amp;&amp;</span>          <span class="co"># Everything defined</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  complete              <span class="co"># Harmonic closure achieved</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>The Axiom:</strong> A musical world is <em>closed</em> (complete) when all 8 dimensions are true.</p>
+<p><strong>Why it matters:</strong> This is what makes a piece of music feel “finished”. A piece that: - Has valid pitches but poor voice leading = not closed - Has proper voice leading but doesn’t return to tonic = not closed - Returns to tonic but has parallel fifths = not closed</p>
+<p>All 8 must be true for genuine artistic closure.</p>
+<hr>
+</section>
+<section id="the-cadence-leitmotif-punctuation-and-phrase-structure" class="level2">
+<h2 class="anchored" data-anchor-id="the-cadence-leitmotif-punctuation-and-phrase-structure">6. THE CADENCE LEITMOTIF: Punctuation and Phrase Structure</h2>
+<p><strong>Musical Intuition:</strong> A cadence is musical punctuation: - <strong>Authentic (V-I)</strong>: Period. Full stop. Maximum closure. - <strong>Plagal (IV-I)</strong>: “Amen.” Gentle, prayerful conclusion. - <strong>Half (I-V)</strong>: Comma. Pause, but expecting continuation. - <strong>Deceptive (V-vi)</strong>: Exclamation mark or surprise dash. Subverts expectation.</p>
+<p><strong>Mathematical Manifestation:</strong></p>
+<pre><code>Authentic:   Score = 1.0 (conclusive)
+Plagal:      Score = 0.8 (conclusive but less powerful)
+Half:        Score = 0.2 (inconclusive, opens phrase)
+Deceptive:   Score = 0.5 (subverts expectation)</code></pre>
+<p><strong>The Axiom:</strong> A phrase’s meaning is defined by its ending cadence.</p>
+<p><strong>Why it matters:</strong> This leitmotif structures entire pieces: - An exposition ends with half cadence (I-V): “here are the themes” - Development ends with authentic cadence (V-I): “themes developed” - Recapitulation ends with authentic cadence (V-I): “themes return home”</p>
+<p>The cadence type is the PUNCTUATION that gives form to music.</p>
+<hr>
+</section>
+<section id="the-period-leitmotif-question-and-answer" class="level2">
+<h2 class="anchored" data-anchor-id="the-period-leitmotif-question-and-answer">7. THE PERIOD LEITMOTIF: Question and Answer</h2>
+<p><strong>Musical Intuition:</strong> Music often speaks in 2-phrase units: - <strong>Antecedent</strong> (first phrase): Poses a question, ends open (usually on V) - <strong>Consequent</strong> (second phrase): Answers the question, ends closed (on I)</p>
+<pre><code>Question:  I - IV - V (we leave home)
+Answer:    V - I     (we return home)</code></pre>
+<p><strong>Mathematical Manifestation:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> tonal_closure_valid?</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  antecedent_open <span class="op">=</span> <span class="op">!</span>antecedent<span class="at">.ends_on_tonic</span>    <span class="co"># Ends on V</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  consequent_closed <span class="op">=</span> consequent<span class="at">.ends_on_tonic</span>   <span class="co"># Ends on I</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  antecedent_open <span class="op">&amp;&amp;</span> consequent_closed</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>The Axiom:</strong> A period is <em>closed</em> (has tonal closure) only when: - Antecedent: open ending (V) - Consequent: closed ending (I)</p>
+<p><strong>Why it matters:</strong> This creates narrative in music: - Antecedent: “Once upon a time…” - Consequent: “…and they lived happily ever after.”</p>
+<p>Without this structure, music feels aimless or fragmentary.</p>
+<hr>
+</section>
+<section id="the-modulation-leitmotif-journey-through-key-space" class="level2">
+<h2 class="anchored" data-anchor-id="the-modulation-leitmotif-journey-through-key-space">8. THE MODULATION LEITMOTIF: Journey Through Key Space</h2>
+<p><strong>Musical Intuition:</strong> Modulation is traveling to a new key and establishing it temporarily before returning (or not).</p>
+<p><strong>Mathematical Manifestation:</strong></p>
+<pre><code>Distance to new key = chromatic distance + circle-of-fifths penalty
+- Chromatic distance: |new_root - old_root| (direct pitch distance)
+- Circle-of-fifths distance: steps in the circle of fifths (musical distance)</code></pre>
+<p><strong>The Axiom:</strong> Valid modulations follow harmonic function: - Modulate TO a key (establish new tonic) - Journey through that key’s harmonic functions - Modulate BACK or establish as new home</p>
+<p><strong>Why it matters:</strong> This explains: - Why C→G is “natural” (perfect fifth, 1 step on circle) - Why C→F# is “far” (tritone, opposite on circle) - Why modulations to V or IV feel like “journeys” while C→C is no journey</p>
+<hr>
+</section>
+<section id="integration-how-leitmotifs-work-together" class="level2">
+<h2 class="anchored" data-anchor-id="integration-how-leitmotifs-work-together">Integration: How Leitmotifs Work Together</h2>
+<pre><code>TONIC                    (Where we are)
+  ↓
+HARMONIC FUNCTION        (How we move)
+  ↓
+VOICE LEADING            (What path we take)
+  ↓
+TRIANGLE INEQUALITY      (Is the path valid?)
+  ↓
+CADENCE                  (How we punctuate)
+  ↓
+PERIOD                   (Question-answer structure)
+  ↓
+SEMANTIC CLOSURE (8D)    (Is everything complete?)
+  ↓
+TONAL COHERENCE          (Does it make musical sense?)</code></pre>
+<p>Each leitmotif responds to the previous one. None stands alone. Together, they create <strong>music</strong>.</p>
+<hr>
+</section>
+<section id="why-this-matters-for-categories-10-11" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters-for-categories-10-11">Why This Matters for Categories 10-11</h2>
+<p><strong>Category 10: Form &amp; Analysis</strong> - Uses periods and cadences as building blocks - Sonata form: exposition (opens in V), development (wanders), recapitulation (returns to I) - Rondo: theme (tonic closure) → episode (away from tonic) → return - Theme &amp; Variation: preserve the leitmotif, vary the surface</p>
+<p><strong>Category 11: Advanced Topics (Spectral)</strong> - Extends voice leading to overtones (spectral analysis) - Extends harmonic functions to spectral harmonicity - Preserves semantic closure in higher dimensions - All leitmotifs apply to spectral space too</p>
+<hr>
+</section>
+<section id="the-deepest-leitmotif-closure" class="level2">
+<h2 class="anchored" data-anchor-id="the-deepest-leitmotif-closure">The Deepest Leitmotif: Closure</h2>
+<p>Everything in this system serves one principle:</p>
+<p><strong>Music means return. Mathematics ensures it.</strong></p>
+<p>The journey from tonic away (harmonic function) along a smooth path (voice leading) that respects distance (triangle inequality) and arrives at meaningful points (cadences) creates complete utterances (periods) that satisfy all dimensions (semantic closure) and establish tonality (home).</p>
+<p>This is not arbitrary. This is not simulation. This is the structure of music itself, formalized.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

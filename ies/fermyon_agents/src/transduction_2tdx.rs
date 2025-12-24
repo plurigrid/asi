@@ -101,6 +101,7 @@ impl RewriteRule {
 }
 
 /// 2TDX Transducer: converts algebraic patterns to rewrite rules
+#[derive(Debug, Clone)]
 pub struct Transducer {
     pub patterns: HashMap<String, TopologicalPattern>,
     pub rules: Vec<RewriteRule>,
@@ -270,7 +271,6 @@ nomatch:
   ret i32 0
 }}
 
-; Pattern expression: {}
 ; Transformation rules:
 ;   Source: {}
 ;   Target: {}
