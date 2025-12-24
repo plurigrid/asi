@@ -34,41 +34,43 @@ module BidirectionalSkillTraversal
     def apply(input_a, input_b = nil)
       # Apply the gate to inputs.
       # Gate returns output AND records interaction.
-      
+      # Convert inputs to binary (0 or 1)
+
+      bin_a = (input_a > 0.5) ? 1 : 0
+      bin_b = (input_b.nil? || input_b > 0.5) ? 1 : 0
+
       output = case @gate_type
       when :and
-        input_a & input_b
+        bin_a & bin_b
       when :not
-        ~input_a & 1
+        ~bin_a & 1
       when :cnot
-        input_a ^ (input_a & input_b)
+        bin_a ^ (bin_a & bin_b)
       when :nand
-        ~(input_a & input_b) & 1
+        ~(bin_a & bin_b) & 1
       when :or
-        input_a | input_b
+        bin_a | bin_b
       when :nor
-        ~(input_a | input_b) & 1
+        ~(bin_a | bin_b) & 1
       when :xor
-        input_a ^ input_b
+        bin_a ^ bin_b
       when :xnor
-        ~(input_a ^ input_b) & 1
+        ~(bin_a ^ bin_b) & 1
       else
-        input_a
+        bin_a
       end
-      
+
       # Interaction changes the junction's quantum state
-      record_interaction(input_a, input_b, output)
-      
+      record_interaction(bin_a, bin_b, output)
+
       output
     end
     
     def rewire_from_interaction(feedback)
-      """
-      Based on what this gate's output enabled/disabled,
-      the junction itself may change gate type.
-
-      Like AlphaGo improving, the gate learns better logic.
-      """
+      # Based on what this gate's output enabled/disabled,
+      # the junction itself may change gate type.
+      #
+      # Like AlphaGo improving, the gate learns better logic.
 
       effectiveness = feedback[:effectiveness]
       old_gate = @gate_type  # Capture old gate type before any potential change
@@ -139,15 +141,18 @@ module BidirectionalSkillTraversal
       # Run the circuit.
       # Passes inputs through composed junctions.
       # Each junction's output feeds to next.
-      
-      result = inputs
+
+      # Start with the first input
+      result = inputs.first
       execution_path = []
-      
+
       @gates.each_with_index do |gate, i|
-        result = gate.apply(result, inputs[i % inputs.length])
+        # Each gate takes the result from previous gate and another input
+        next_input = inputs[i % inputs.length]
+        result = gate.apply(result, next_input)
         execution_path << { gate: i, output: result }
       end
-      
+
       {
         final_output: result,
         execution_path: execution_path,
@@ -252,10 +257,8 @@ module BidirectionalSkillTraversal
     end
     
     def create_subordinate_concept
-      """
-      If this is a Concept, create a Concept-of-Concept below it.
-      The subordinate concept understands THIS concept.
-      """
+      # If this is a Concept, create a Concept-of-Concept below it.
+      # The subordinate concept understands THIS concept.
       
       subordinate = ConceptLayer.new(
         level: @level + 1,
@@ -268,14 +271,12 @@ module BidirectionalSkillTraversal
     end
     
     def interpret
-      """
-      What does this level understand about what's below?
-      
-      Level 0: Execute skill circuit
-      Level 1: Understand skill's behavior
-      Level 2: Understand understanding of skill
-      Level 3: ...
-      """
+      # What does this level understand about what's below?
+      #
+      # Level 0: Execute skill circuit
+      # Level 1: Understand skill's behavior
+      # Level 2: Understand understanding of skill
+      # Level 3: ...
       
       case @level
       when 0
@@ -295,10 +296,8 @@ module BidirectionalSkillTraversal
     end
     
     def observe_lower_interaction(env_feedback)
-      """
-      The level below (or the skill) interacted with environment.
-      This level observes and updates its model.
-      """
+      # The level below (or the skill) interacted with environment.
+      # This level observes and updates its model.
       
       # Update my self_model of the level below
       @self_model[:observed_pattern] = extract_pattern(env_feedback)
@@ -313,12 +312,10 @@ module BidirectionalSkillTraversal
     end
     
     def rewrite_lower_level(instruction)
-      """
-      This concept level can rewrite the level below.
-      
-      Like: Concept can rewrite Skill
-              or Concept-of-Concept can rewrite Concept
-      """
+      # This concept level can rewrite the level below.
+      #
+      # Like: Concept can rewrite Skill
+      #       or Concept-of-Concept can rewrite Concept
       
       if @superordinate  # I have a level below me
         case @level
@@ -342,7 +339,7 @@ module BidirectionalSkillTraversal
     end
     
     def can_predict_lower_behavior
-      @self_model[:observed_pattern].present?
+      !@self_model[:observed_pattern].nil?
     end
     
     def extract_pattern(env_feedback)
@@ -355,21 +352,19 @@ module BidirectionalSkillTraversal
   # ===========================================================================
   
   class LivingSkillEcosystem
-    """
-    A community where:
-    - Skills (level 0) execute and interact
-    - Concepts (level 1) emerge from interaction
-    - Concepts-of-Concepts (level 2) develop understanding
-    - All levels bidirectionally coupled
-    
-    Like AlphaGo vs human players:
-    - Skill learns from execution feedback
-    - Concept learns from skill behavior
-    - Concept-of-Concept learns from concept evolution
-    - And concept can rewrite skill
-    
-    The whole becomes irreducible and alive.
-    """
+    # A community where:
+    # - Skills (level 0) execute and interact
+    # - Concepts (level 1) emerge from interaction
+    # - Concepts-of-Concepts (level 2) develop understanding
+    # - All levels bidirectionally coupled
+    #
+    # Like AlphaGo vs human players:
+    # - Skill learns from execution feedback
+    # - Concept learns from skill behavior
+    # - Concept-of-Concept learns from concept evolution
+    # - And concept can rewrite skill
+    #
+    # The whole becomes irreducible and alive.
     
     attr_reader :skills, :concept_layers, :interactions
     
@@ -398,15 +393,13 @@ module BidirectionalSkillTraversal
     end
     
     def skill_interaction(skill_name:, inputs:, env_feedback:)
-      """
-      When a skill is used:
-      1. Skill executes
-      2. Environment responds
-      3. Skill receives feedback and rewires
-      4. Concept layer observes and updates understanding
-      5. Concept-of-Concept updates its model
-      6. Concept can rewrite skill if needed (feedback loop)
-      """
+      # When a skill is used:
+      # 1. Skill executes
+      # 2. Environment responds
+      # 3. Skill receives feedback and rewires
+      # 4. Concept layer observes and updates understanding
+      # 5. Concept-of-Concept updates its model
+      # 6. Concept can rewrite skill if needed (feedback loop)
       
       skill = @skills[skill_name]
       concepts = @concept_layers[skill_name]
