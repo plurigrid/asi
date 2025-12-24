@@ -1,5 +1,6 @@
 # lib/audio_synthesis.rb
 require 'socket'
+require_relative 'audio_effects'
 
 class AudioSynthesis
   SAMPLE_RATE = 44100
@@ -8,9 +9,10 @@ class AudioSynthesis
 
   def initialize(output_file: '/tmp/audio.wav')
     @output_file = output_file
+    @audio_effects = AudioEffects.new
   end
 
-  def render_score(score_events, tempo: 120)
+  def render_score(score_events, tempo: 120, effects_chain: nil)
     return @output_file if score_events.empty?
 
     seconds_per_beat = 60.0 / tempo
@@ -44,28 +46,39 @@ class AudioSynthesis
     end
 
     pcm = mixed.map { |s| (s * MAX_AMPLITUDE).to_i }
+
+    # Apply audio effects if specified
+    if effects_chain && !effects_chain.empty?
+      pcm = @audio_effects.apply_effects(pcm, effects_chain)
+    end
+
     write_wav_file(pcm, @output_file)
     @output_file
   end
 
-  def render_sequence(sequence, silence_between: 0.1)
+  def render_sequence(sequence, silence_between: 0.1, effects_chain: nil)
     full_samples = []
-    
+
     sequence.each do |event|
       freqs = event[:frequencies]
       freqs = [freqs] unless freqs.is_a?(Array)
       duration = event[:duration] || 1.0
       amplitude = event[:amplitude] || 0.5
-      
+
       event_samples = generate_mixed_wave(freqs, duration, amplitude)
       full_samples.concat(event_samples)
-      
+
       if silence_between > 0
         silence_samples = Array.new((silence_between * SAMPLE_RATE).to_i, 0)
         full_samples.concat(silence_samples)
       end
     end
-    
+
+    # Apply audio effects if specified
+    if effects_chain && !effects_chain.empty?
+      full_samples = @audio_effects.apply_effects(full_samples, effects_chain)
+    end
+
     write_wav_file(full_samples, @output_file)
     @output_file
   end
