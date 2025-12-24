@@ -607,11 +607,30 @@ class AlifeP5Visualizer
   # Generate visualization + document playback together
 
   def generate_audiovisual_page(result, audio_file, output_file: 'alife_audiovisual.html')
-    grid_frames = result[:visual_frames]
+    visual_frames = result[:visual_frames]
     duration_seconds = result[:duration_seconds]
 
-    # Convert grid frames
-    grid_json = grid_frames.map { |grid| grid.map { |row| row.map { |cell| (cell * 255).to_i } } }
+    # Detect if frames are grids (Lenia) or particles (swarms)
+    is_particles = visual_frames[0].is_a?(Array) && visual_frames[0][0].respond_to?(:x)
+
+    # Convert appropriately
+    if is_particles
+      # Particle frames - convert to grid visualization
+      grid_json = visual_frames.map do |particles|
+        grid = Array.new(@height) { Array.new(@width, 0) }
+        particles.each do |p|
+          x = (p.x / @width * @width).to_i
+          y = (p.y / @height * @height).to_i
+          x = [@width - 1, [0, x].max].min
+          y = [@height - 1, [0, y].max].min
+          grid[y][x] = [(grid[y][x] + (p.energy * 255).to_i) / 2, 255].min
+        end
+        grid
+      end
+    else
+      # Grid frames (Lenia) - standard conversion
+      grid_json = visual_frames.map { |grid| grid.map { |row| row.map { |cell| (cell * 255).to_i } } }
+    end
 
     set_palette(:viridis)
 
@@ -718,7 +737,7 @@ class AlifeP5Visualizer
               <button id="resetVisBtn">↻ Reset</button>
             </div>
             <div class="info">
-              Frame <span id="frameNum">0</span> / #{grid_frames.length}
+              Frame <span id="frameNum">0</span> / #{visual_frames.length}
             </div>
             <div class="spectrum"></div>
           </div>
@@ -893,6 +912,6 @@ class AlifeP5Visualizer
     HTML
 
     File.write(output_file, html)
-    { file: output_file, duration: duration_seconds, frames: grid_frames.length }
+    { file: output_file, duration: duration_seconds, frames: visual_frames.length }
   end
 end
