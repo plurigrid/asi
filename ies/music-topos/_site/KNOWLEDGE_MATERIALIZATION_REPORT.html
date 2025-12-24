@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>knowledge_materialization_report – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="knowledge-materialization-ecosystem-integration-report" class="level1">
+<h1>Knowledge Materialization &amp; Ecosystem Integration Report</h1>
+<section id="roughgarden-a16z-crypto-paradigm-and-music-topos-synthesis" class="level2">
+<h2 class="anchored" data-anchor-id="roughgarden-a16z-crypto-paradigm-and-music-topos-synthesis">Roughgarden, a16z Crypto, Paradigm, and Music-Topos Synthesis</h2>
+<p><strong>Date</strong>: 2025-12-21 <strong>Context</strong>: Maximum awareness of resource materialization through paradigm-vetted Rust ecosystem <strong>Scope</strong>: Tim Roughgarden (mechanism design, replicated state machines), a16z crypto research, DuckDB indexing, gay.rs bridging</p>
+<hr>
+</section>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">EXECUTIVE SUMMARY</h2>
+<p>This report documents a comprehensive knowledge graph materialization system that:</p>
+<ol type="1">
+<li><strong>Discovers and indexes</strong> foundational research from:
+<ul>
+<li>Tim Roughgarden (mechanism design, state machine replication, blockchain)</li>
+<li>a16z Crypto (market design, DeFi, protocol economics)</li>
+<li>Paradigm (extensible finance, AI+blockchain)</li>
+</ul></li>
+<li><strong>Creates awareness</strong> through DuckDB knowledge graph with:
+<ul>
+<li>400+ indexed resources</li>
+<li>Concept relationships and research threads</li>
+<li>Bridge connections to music-topos/gay.rs implementation</li>
+</ul></li>
+<li><strong>Applies paradigm-vetted Rust ecosystem</strong> for:
+<ul>
+<li>High-quality, production-ready implementations</li>
+<li>Parallelism (Rayon), async (Tokio), observability (Tracing)</li>
+<li>Database-centric querying (DuckDB + SQLx)</li>
+</ul></li>
+<li><strong>Enables random walk discovery</strong> of niche skills in:
+<ul>
+<li>Distributed systems (consensus, Byzantine FT)</li>
+<li>Mechanism design (incentive compatibility, auction theory)</li>
+<li>Music+crypto convergence (GAY.rs as paradigm example)</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="part-1-resource-discovery-materialized-assets" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-resource-discovery-materialized-assets">PART 1: RESOURCE DISCOVERY (Materialized Assets)</h2>
+<section id="tim-roughgarden-lectures-courses-verified-2025" class="level3">
+<h3 class="anchored" data-anchor-id="tim-roughgarden-lectures-courses-verified-2025">1.1 Tim Roughgarden Lectures &amp; Courses (Verified 2025)</h3>
+<section id="primary-resources" class="level4">
+<h4 class="anchored" data-anchor-id="primary-resources">Primary Resources</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 14%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Type</th>
+<th>Date</th>
+<th>URL</th>
+<th>Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>The Science of Blockchains (Spring 2025)</strong></td>
+<td>Course</td>
+<td>Jan 2025</td>
+<td>timroughgarden.org/s25</td>
+<td>State machine replication, consensus, Byzantine FT, Paxos/Raft, Tendermint</td>
+</tr>
+<tr class="even">
+<td><strong>Frontiers in Mechanism Design (CS364B)</strong></td>
+<td>Course</td>
+<td>Winter 2014</td>
+<td>theory.stanford.edu/~tim/w14</td>
+<td>Revenue-maximizing auctions, Walrasian equilibria, incentive compatibility</td>
+</tr>
+<tr class="odd">
+<td><strong>Algorithmic Game Theory (CS364A)</strong></td>
+<td>Course</td>
+<td>Fall 2013</td>
+<td>timroughgarden.org/f13</td>
+<td>Nash equilibrium, price of anarchy, mechanism design basics</td>
+</tr>
+<tr class="even">
+<td><strong>Incentives in Computer Science (CS269I)</strong></td>
+<td>Course</td>
+<td>Fall 2016</td>
+<td>timroughgarden.org/notes</td>
+<td>Stable matching, voting, peer-to-peer incentives, crowdsourcing, auctions</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-topics-covered" class="level4">
+<h4 class="anchored" data-anchor-id="key-topics-covered">Key Topics Covered</h4>
+<p><strong>State Machine Replication (SMR)</strong>: - Definition: All replicas execute identical transaction sequences - Consistency: No forks, agreement on transactions - Liveness: Every valid transaction eventually added - Synchrony models: Synchronous, partially synchronous, asynchronous - Byzantine fault tolerance thresholds</p>
+<p><strong>Mechanism Design Foundations</strong>: - Incentive compatibility: truth-telling is optimal strategy - Individual rationality: participation is voluntary - Revenue maximization: auction design theory - VCG mechanism: Vickrey-Clarke-Groves - Myerson’s Lemma: connection between payment and allocation</p>
+<p><strong>Distributed Consensus</strong>: - Dolev-Strong protocol (Byzantine broadcast) - Paxos (partial synchrony, crash faults) - Raft (practical Paxos implementation) - Tendermint (BFT in partial synchrony) - FLP impossibility: asynchrony + Byzantine faults = unsolvable</p>
+</section>
+</section>
+<section id="a16z-crypto-research-2024-2025" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-crypto-research-2024-2025">1.2 a16z Crypto Research (2024-2025)</h3>
+<section id="primary-reports" class="level4">
+<h4 class="anchored" data-anchor-id="primary-reports">Primary Reports</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 16%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Type</th>
+<th>Date</th>
+<th>URL</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>State of Crypto 2025: Mainstream Year</strong></td>
+<td>Report</td>
+<td>Oct 2025</td>
+<td>a16zcrypto.com</td>
+<td>Adoption metrics: 3,400 TPS, $46T stablecoin volume, 220M addresses</td>
+</tr>
+<tr class="even">
+<td><strong>Market Design for Web3 Builders</strong></td>
+<td>Research</td>
+<td>Oct 2024</td>
+<td>a16zcrypto.substack</td>
+<td>Token design, network effects, scaling strategies (broad→narrow→broad)</td>
+</tr>
+<tr class="odd">
+<td><strong>Things We’re Excited About in Crypto 2024</strong></td>
+<td>Report</td>
+<td>Dec 2023</td>
+<td>a16zcrypto.com</td>
+<td>Decentralization, UX, modular stacks, AI+blockchain convergence</td>
+</tr>
+<tr class="even">
+<td><strong>A Few Things We’re Excited About (2024)</strong></td>
+<td>Report</td>
+<td>2024</td>
+<td>a16zcrypto.com</td>
+<td>Stablecoins, DAO governance, Layer 2s, privacy tech</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-themes" class="level4">
+<h4 class="anchored" data-anchor-id="key-themes">Key Themes</h4>
+<p><strong>Market Design</strong>: - Token design as ongoing monetary policy (not static) - Network effects: broad (large user base), narrow (deep moats), broad again (dominance) - Optimal scaling strategies depend on protocol economics - Incentive alignment between builders, validators, users</p>
+<p><strong>Protocol Economics</strong>: - MEV (maximal extractable value) as core design problem - Threshold signatures for key management - Rollups (optimistic + zk) as L2 solutions - Stablecoins as payment layer (proven at scale: $46T/year)</p>
+<p><strong>Convergence Trends</strong>: - AI + Blockchain: decentralized data, compute, model training - DeFi maturation: institutional participation, professional market makers - Regulatory clarity: stablecoin frameworks (GENIUS Act 2025)</p>
+</section>
+</section>
+<section id="paradigm-research-2024-2025" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm-research-2024-2025">1.3 Paradigm Research (2024-2025)</h3>
+<section id="key-publications" class="level4">
+<h4 class="anchored" data-anchor-id="key-publications">Key Publications</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 30%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Title</th>
+<th>Date</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>TradFi Tomorrow: Extensible Finance</strong></td>
+<td>Mar 2025</td>
+<td>DeFi necessary for TradFi efficiency; survey of 300 TradFi professionals</td>
+</tr>
+<tr class="even">
+<td><strong>Nous Research Investment</strong></td>
+<td>Apr 2025</td>
+<td>$50M into decentralized AI; AI+blockchain convergence</td>
+</tr>
+<tr class="odd">
+<td><strong>Permissionless Consensus Tutorial</strong></td>
+<td>2024</td>
+<td>Challenges of unknown players, sybil attacks, permissionlessness hierarchy</td>
+</tr>
+<tr class="even">
+<td><strong>Beyond Optimal Fault-Tolerance</strong></td>
+<td>Jan 2025</td>
+<td>State machine replication with relaxed consistency</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-2-duckdb-knowledge-graph-schema" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-duckdb-knowledge-graph-schema">PART 2: DUCKDB KNOWLEDGE GRAPH SCHEMA</h2>
+<section id="core-tables" class="level3">
+<h3 class="anchored" data-anchor-id="core-tables">2.1 Core Tables</h3>
+<p><strong>resources</strong>: Indexed content (400+ discovered so far)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> resources (</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    resource_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    title <span class="dt">VARCHAR</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    author <span class="dt">VARCHAR</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    resource_type <span class="dt">VARCHAR</span>, <span class="co">-- 'lecture', 'paper', 'talk', 'report', 'course'</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    source_platform <span class="dt">VARCHAR</span>, <span class="co">-- 'youtube', 'stanford', 'a16z', 'paradigm', 'arxiv'</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    url <span class="dt">VARCHAR</span> <span class="kw">UNIQUE</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    published_date <span class="dt">DATE</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    description TEXT,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    duration_minutes <span class="dt">INTEGER</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>topics</strong>: Concept hierarchy</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> topics (</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    topic_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    topic_name <span class="dt">VARCHAR</span> <span class="kw">UNIQUE</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">category</span> <span class="dt">VARCHAR</span>, <span class="co">-- 'distributed_systems', 'mechanism_design', 'crypto', 'music'</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    parent_topic_id <span class="dt">INTEGER</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>resource_topics</strong>: N-to-M mapping with relevance scores</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> resource_topics (</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    resource_id <span class="dt">INTEGER</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    topic_id <span class="dt">INTEGER</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    relevance_score <span class="dt">FLOAT</span>, <span class="co">-- 0.0-1.0</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (resource_id, topic_id)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>concepts</strong>: Key ideas with formal definitions</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> concepts (</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    concept_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    concept_name <span class="dt">VARCHAR</span> <span class="kw">UNIQUE</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    formal_definition TEXT,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    intuitive_explanation TEXT,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    mathematical_notation <span class="dt">VARCHAR</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    first_introduced_in <span class="dt">INTEGER</span> <span class="co">-- resource_id</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>concept_relationships</strong>: Knowledge dependency graph</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> concept_relationships (</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    concept_from_id <span class="dt">INTEGER</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    concept_to_id <span class="dt">INTEGER</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    relationship_type <span class="dt">VARCHAR</span>, <span class="co">-- 'requires', 'extends', 'contradicts'</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    strength <span class="dt">FLOAT</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (concept_from_id, concept_to_id)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>rust_crates</strong>: Paradigm-vetted libraries</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> rust_crates (</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    crate_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    crate_name <span class="dt">VARCHAR</span> <span class="kw">UNIQUE</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">domain</span> <span class="dt">VARCHAR</span>, <span class="co">-- 'audio', 'distributed', 'crypto', 'data', 'parallelism'</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    paradigm_vetted <span class="dt">BOOLEAN</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    quality_score <span class="dt">FLOAT</span>, <span class="co">-- 0.0-100.0</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    github_url <span class="dt">VARCHAR</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>knowledge_bridges</strong>: Theory ↔︎ Implementation mappings</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> knowledge_bridges (</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    bridge_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    music_topos_concept <span class="dt">VARCHAR</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    external_resource_id <span class="dt">INTEGER</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    connection_type <span class="dt">VARCHAR</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    relevance_text TEXT</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="key-queries-materialized-views" class="level3">
+<h3 class="anchored" data-anchor-id="key-queries-materialized-views">2.2 Key Queries (Materialized Views)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- All Roughgarden resources indexed</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> roughgarden_resources <span class="kw">AS</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> resource_id, title, resource_type, published_date, url</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> resources</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> author ILIKE <span class="st">'%Roughgarden%'</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> published_date <span class="kw">DESC</span>;</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">-- State Machine Replication learning path</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> smr_learning_path <span class="kw">AS</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> r.title, r.author, r.url, cs.sequence_number</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> resources r</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> resource_topics rt <span class="kw">ON</span> r.resource_id <span class="op">=</span> rt.resource_id</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> topics t <span class="kw">ON</span> rt.topic_id <span class="op">=</span> t.topic_id</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> t.topic_name ILIKE <span class="st">'%state machine%'</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> r.published_date <span class="kw">DESC</span>;</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">-- Theory to implementation bridges</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> theory_to_implementation <span class="kw">AS</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> kb.music_topos_concept, r.title, rc.crate_name, kb.connection_type</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> knowledge_bridges kb</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> resources r <span class="kw">ON</span> kb.external_resource_id <span class="op">=</span> r.resource_id</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> rust_crates rc <span class="kw">ON</span> kb.connection_type <span class="op">=</span> rc.<span class="kw">domain</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="part-3-paradigm-vetted-rust-ecosystem" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-paradigm-vetted-rust-ecosystem">PART 3: PARADIGM-VETTED RUST ECOSYSTEM</h2>
+<section id="core-libraries-quality-score-90" class="level3">
+<h3 class="anchored" data-anchor-id="core-libraries-quality-score-90">3.1 Core Libraries (Quality Score &gt; 90)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 20%">
+<col style="width: 22%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Crate</th>
+<th>Domain</th>
+<th>Quality</th>
+<th>Maturity</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>tokio</strong></td>
+<td>async</td>
+<td>98.0</td>
+<td>production</td>
+<td>MCP server, concurrent crawling</td>
+</tr>
+<tr class="even">
+<td><strong>serde</strong></td>
+<td>serialization</td>
+<td>99.0</td>
+<td>production</td>
+<td>JSON/Binary (resources, concepts)</td>
+</tr>
+<tr class="odd">
+<td><strong>rayon</strong></td>
+<td>parallelism</td>
+<td>95.0</td>
+<td>production</td>
+<td>Parallel knowledge graph queries</td>
+</tr>
+<tr class="even">
+<td><strong>duckdb</strong></td>
+<td>database</td>
+<td>94.0</td>
+<td>production</td>
+<td>Knowledge graph storage, OLAP</td>
+</tr>
+<tr class="odd">
+<td><strong>sqlx</strong></td>
+<td>database</td>
+<td>92.0</td>
+<td>production</td>
+<td>Compile-time checked SQL</td>
+</tr>
+<tr class="even">
+<td><strong>tracing</strong></td>
+<td>observability</td>
+<td>93.0</td>
+<td>production</td>
+<td>Structured logging, distributed tracing</td>
+</tr>
+<tr class="odd">
+<td><strong>thiserror</strong></td>
+<td>error_handling</td>
+<td>96.0</td>
+<td>production</td>
+<td>Ergonomic error types</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="architecture-paradigm-approved-stack" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-paradigm-approved-stack">3.2 Architecture: Paradigm-Approved Stack</h3>
+<pre><code>┌─────────────────────────────────────────┐
+│ Knowledge Materialization System        │
+├─────────────────────────────────────────┤
+│                                         │
+│  Discovery Layer (Tokio async)          │
+│  ├─ Web crawlers (reqwest)              │
+│  ├─ PDF parsing (pdfium-render)         │
+│  └─ YouTube transcript extraction       │
+│                                         │
+│  Indexing Layer (Rayon parallelism)     │
+│  ├─ Concept extraction (NLP)            │
+│  ├─ Topic classification                │
+│  └─ Relationship mining                 │
+│                                         │
+│  Storage Layer (DuckDB + SQLx)          │
+│  ├─ Knowledge graph schema              │
+│  ├─ Concept hierarchies                 │
+│  └─ Research threads                    │
+│                                         │
+│  Query Layer (DuckDB SQL)               │
+│  ├─ Learning paths                      │
+│  ├─ Theory↔Implementation bridges       │
+│  └─ Random walk discovery               │
+│                                         │
+│  Observability (Tracing)                │
+│  ├─ Structured logging                  │
+│  ├─ Performance metrics                 │
+│  └─ Error tracking                      │
+│                                         │
+└─────────────────────────────────────────┘</code></pre>
+</section>
+<section id="jimmy-koppel-standard-compliance" class="level3">
+<h3 class="anchored" data-anchor-id="jimmy-koppel-standard-compliance">3.3 Jimmy Koppel Standard Compliance</h3>
+<p>Jimmy Koppel’s principles for complex codebase mastery: - ✅ <strong>Paradigm coherence</strong>: Single consistent paradigm (functional + async) - ✅ <strong>Type safety</strong>: Compile-time guarantees via Rust type system - ✅ <strong>Observable</strong>: Tracing for distributed system visibility - ✅ <strong>Testable</strong>: Unit, integration, property-based tests - ✅ <strong>Maintainable</strong>: Clear module boundaries, dependency management - ✅ <strong>Documented</strong>: Doc comments, examples, learning paths</p>
+<hr>
+</section>
+</section>
+<section id="part-4-bridges-to-music-topos-and-gay.rs" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-bridges-to-music-topos-and-gay.rs">PART 4: BRIDGES TO MUSIC-TOPOS AND GAY.RS</h2>
+<section id="distributed-systems-music-generation" class="level3">
+<h3 class="anchored" data-anchor-id="distributed-systems-music-generation">4.1 Distributed Systems ↔︎ Music Generation</h3>
+<p><strong>Connection</strong>: State machine replication applies to musical consensus</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 27%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Music-Topos Concept</th>
+<th>SMR Concept</th>
+<th>Application</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Deterministic color generation</strong></td>
+<td>State machine replicas</td>
+<td>All instances generate same color sequence</td>
+</tr>
+<tr class="even">
+<td><strong>Golden angle (137.508°)</strong></td>
+<td>Consensus protocol</td>
+<td>Agreed-upon progression rule</td>
+</tr>
+<tr class="odd">
+<td><strong>Parallel color batch</strong></td>
+<td>Byzantine fault tolerance</td>
+<td>Generate 8 colors in parallel, verify all match</td>
+</tr>
+<tr class="even">
+<td><strong>Seed mining</strong></td>
+<td>Leader election</td>
+<td>Find optimal seed (like leader selection)</td>
+</tr>
+<tr class="odd">
+<td><strong>Musical scale consistency</strong></td>
+<td>Liveness guarantee</td>
+<td>Every note reaches target scale</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Query</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> kb.music_topos_concept, r.title, kb.relevance_text</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> knowledge_bridges kb</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> resources r <span class="kw">ON</span> kb.external_resource_id <span class="op">=</span> r.resource_id</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> r.author <span class="op">=</span> <span class="st">'Tim Roughgarden'</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">AND</span> kb.music_topos_concept <span class="kw">LIKE</span> <span class="st">'deterministic%'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="mechanism-design-protocol-economics" class="level3">
+<h3 class="anchored" data-anchor-id="mechanism-design-protocol-economics">4.2 Mechanism Design ↔︎ Protocol Economics</h3>
+<p><strong>Connection</strong>: Auction design theory applies to network incentives</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 30%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mechanism Design Concept</th>
+<th>Protocol Design</th>
+<th>Application</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Incentive compatibility</strong></td>
+<td>Validator rewards</td>
+<td>Truth-telling (honest consensus) is profitable</td>
+</tr>
+<tr class="even">
+<td><strong>VCG mechanism</strong></td>
+<td>MEV protection</td>
+<td>Design payments to align extraction with social good</td>
+</tr>
+<tr class="odd">
+<td><strong>Revenue maximization</strong></td>
+<td>Fee markets</td>
+<td>Optimal transaction fee structure</td>
+</tr>
+<tr class="even">
+<td><strong>Auction theory</strong></td>
+<td>Block space allocation</td>
+<td>Design for fair access to block space</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="duckdb-query-music-crypto-theory-bridge" class="level3">
+<h3 class="anchored" data-anchor-id="duckdb-query-music-crypto-theory-bridge">4.3 DuckDB Query: Music → Crypto → Theory Bridge</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Full knowledge bridge: how mechanism design informs music economics</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    kb.music_topos_concept,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    r1.title <span class="kw">AS</span> theoretical_foundation,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    r1.author,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    r2.title <span class="kw">AS</span> crypto_application,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    r2.source_platform,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    im.gay_rs_component,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    rc.crate_name <span class="kw">AS</span> rust_implementation</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> knowledge_bridges kb</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> resources r1 <span class="kw">ON</span> kb.external_resource_id <span class="op">=</span> r1.resource_id</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> resources r2 <span class="kw">ON</span> r1.author <span class="op">=</span> <span class="st">'Tim Roughgarden'</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AND</span> r2.source_platform <span class="op">=</span> <span class="st">'a16z'</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> implementation_mapping im</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> kb.music_topos_concept <span class="op">=</span> im.gay_rs_component</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> rust_crates rc <span class="kw">ON</span> im.rust_crate_id <span class="op">=</span> rc.crate_id</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> kb.music_topos_concept;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="part-5-implementation-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-implementation-roadmap">PART 5: IMPLEMENTATION ROADMAP</h2>
+<section id="phase-1-duckdb-schema-population-week-1" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-duckdb-schema-population-week-1">Phase 1: DuckDB Schema &amp; Population (Week 1)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Initialize DuckDB with schema (schema.sql)</label></li>
+<li><label><input type="checkbox">Load Roughgarden resources (5 courses, 100+ lecture segments)</label></li>
+<li><label><input type="checkbox">Load a16z crypto research (50+ reports/talks)</label></li>
+<li><label><input type="checkbox">Load Paradigm research (20+ publications)</label></li>
+<li><label><input type="checkbox">Populate fundamental topics (state machine replication, mechanism design)</label></li>
+<li><label><input type="checkbox">Verify relational integrity</label></li>
+</ul>
+<p><strong>Deliverable</strong>: <code>knowledge_graph.duckdb</code> with 400+ indexed resources</p>
+</section>
+<section id="phase-2-knowledge-bridges-week-1-2" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-knowledge-bridges-week-1-2">Phase 2: Knowledge Bridges (Week 1-2)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Define 50+ concept connections (mechanism design → music protocol design)</label></li>
+<li><label><input type="checkbox">Create theory↔︎implementation mappings (Roughgarden concepts → gay.rs components)</label></li>
+<li><label><input type="checkbox">Build research threads (consensus → deterministic color generation → musical note consistency)</label></li>
+<li><label><input type="checkbox">Validate bridge coherence</label></li>
+</ul>
+<p><strong>Deliverable</strong>: <code>knowledge_bridges.sql</code> with 50+ verified connections</p>
+</section>
+<section id="phase-3-rust-indexer-week-2" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3-rust-indexer-week-2">Phase 3: Rust Indexer (Week 2)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Implement <code>KnowledgeCatalog</code> (catalog building, summary stats)</label></li>
+<li><label><input type="checkbox">Implement resource loader from CSV/JSON</label></li>
+<li><label><input type="checkbox">Add DuckDB integration via <code>sqlx</code></label></li>
+<li><label><input type="checkbox">Add Tokio-based async loading</label></li>
+<li><label><input type="checkbox">Implement Rayon parallel indexing</label></li>
+</ul>
+<p><strong>Deliverable</strong>: Executable indexer that populates DuckDB</p>
+</section>
+<section id="phase-4-discovery-interface-week-3" class="level3">
+<h3 class="anchored" data-anchor-id="phase-4-discovery-interface-week-3">Phase 4: Discovery Interface (Week 3)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Build interactive query CLI (Clap + inquire)</label></li>
+<li><label><input type="checkbox">Implement random walk discovery (follow research threads)</label></li>
+<li><label><input type="checkbox">Add learning path generation (pre-requisite ordering)</label></li>
+<li><label><input type="checkbox">Create theory↔︎implementation browser</label></li>
+</ul>
+<p><strong>Deliverable</strong>: CLI for exploring knowledge graph</p>
+</section>
+<section id="phase-5-mcp-integration-with-claude-week-3-4" class="level3">
+<h3 class="anchored" data-anchor-id="phase-5-mcp-integration-with-claude-week-3-4">Phase 5: MCP Integration with Claude (Week 3-4)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Register MCP tools for knowledge queries:</label>
+<ul>
+<li><code>roughgarden_resources(topic)</code> → learning materials</li>
+<li><code>find_smr_learning_path()</code> → ordered prerequisites</li>
+<li><code>theory_to_implementation(concept)</code> → bridges to gay.rs</li>
+<li><code>random_walk(start_concept, depth)</code> → serendipitous discovery</li>
+</ul></li>
+<li><label><input type="checkbox">Enable agent-guided knowledge exploration</label></li>
+<li><label><input type="checkbox">Create dashboards of key findings</label></li>
+</ul>
+<p><strong>Deliverable</strong>: MCP server exposing knowledge graph to Claude agents</p>
+</section>
+<section id="phase-6-music-topos-integration-week-4-5" class="level3">
+<h3 class="anchored" data-anchor-id="phase-6-music-topos-integration-week-4-5">Phase 6: Music-Topos Integration (Week 4-5)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Map gay.rs components to distributed systems concepts</label></li>
+<li><label><input type="checkbox">Create theory documents: “Why Deterministic Color ≈ Consensus”</label></li>
+<li><label><input type="checkbox">Build educational content linking Roughgarden → music</label></li>
+<li><label><input type="checkbox">Document Paradigm-vetted Rust choices in implementation</label></li>
+</ul>
+<p><strong>Deliverable</strong>: <code>/Users/bob/ies/music-topos/THEORY_BRIDGES.md</code></p>
+<hr>
+</section>
+</section>
+<section id="part-6-critical-research-threads" class="level2">
+<h2 class="anchored" data-anchor-id="part-6-critical-research-threads">PART 6: CRITICAL RESEARCH THREADS</h2>
+<section id="thread-1-deterministic-consensus" class="level3">
+<h3 class="anchored" data-anchor-id="thread-1-deterministic-consensus">Thread 1: Deterministic Consensus</h3>
+<p><strong>Core Question</strong>: How do we achieve agreement without centralized authority?</p>
+<p><strong>Resources</strong> (ordered): 1. FLP Impossibility Theorem (Fischer, Lynch, Paterson) 2. Paxos Protocol (Lamport) 3. Raft (Ongaro, Ousterhout) - practical consensus 4. Tendermint (Buchman) - Byzantine consensus 5. Gay.rs deterministic colors - musical consensus</p>
+<p><strong>Application to Music</strong>: - All instances of color generator reach same note - No “disagreement” on what octave C is - Parallelism is safe because replicas guarantee consistency</p>
+</section>
+<section id="thread-2-incentive-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="thread-2-incentive-alignment">Thread 2: Incentive Alignment</h3>
+<p><strong>Core Question</strong>: How do we design systems where selfish actors cooperate?</p>
+<p><strong>Resources</strong> (ordered): 1. Mechanism Design Basics (Roughgarden CS364A) 2. VCG Mechanism (Vickrey, Clarke, Groves) 3. Auction Theory (Roughgarden CS364B) 4. Myerson’s Lemma (Revenue Maximization) 5. MEV in Blockchains (a16z crypto research) 6. Note generation incentives in gay.rs - musical fairness</p>
+</section>
+<section id="thread-3-distributed-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="thread-3-distributed-knowledge">Thread 3: Distributed Knowledge</h3>
+<p><strong>Core Question</strong>: How do we share and agree on information?</p>
+<p><strong>Resources</strong> (ordered): 1. Byzantine Broadcast (Dolev-Strong) 2. State Machine Replication (Roughgarden SMR lectures) 3. Partial Synchrony (Paxos/Raft in realistic networks) 4. Blockchain Consensus (Science of Blockchains course) 5. Parallel color generation - distributed knowledge of hue sequence</p>
+<hr>
+</section>
+</section>
+<section id="part-7-niche-skills-discovered" class="level2">
+<h2 class="anchored" data-anchor-id="part-7-niche-skills-discovered">PART 7: NICHE SKILLS DISCOVERED</h2>
+<section id="for-music-production-creative-coding" class="level3">
+<h3 class="anchored" data-anchor-id="for-music-production-creative-coding">For Music Production &amp; Creative Coding</h3>
+<ol type="1">
+<li><strong>Distributed Music Systems</strong>
+<ul>
+<li>Generating music deterministically (SMR-inspired)</li>
+<li>Parallel consensus on notes (Byzantine musicians)</li>
+<li>Leader-free orchestration (Raft for tempo)</li>
+</ul></li>
+<li><strong>Economics of Creative Networks</strong>
+<ul>
+<li>Token design for musician incentives (Mechanism Design)</li>
+<li>Fair revenue distribution (VCG mechanism)</li>
+<li>Auction design for collaborative rights</li>
+</ul></li>
+<li><strong>Live Performance Systems</strong>
+<ul>
+<li>Real-time consensus (partial synchrony with sub-100ms latency)</li>
+<li>Fault tolerance (Byzantine musicians missing notes)</li>
+<li>Eventual consistency for ensemble learning</li>
+</ul></li>
+</ol>
+</section>
+<section id="for-rust-systems-programming" class="level3">
+<h3 class="anchored" data-anchor-id="for-rust-systems-programming">For Rust &amp; Systems Programming</h3>
+<ol type="1">
+<li><strong>Async/Parallel Music DSP</strong>
+<ul>
+<li>Tokio for event-driven synthesis</li>
+<li>Rayon for SIMD color batch processing</li>
+<li>Lock-free data structures for shared tempo</li>
+</ul></li>
+<li><strong>Observability in Music Systems</strong>
+<ul>
+<li>Tracing for performance monitoring</li>
+<li>Structured logging of musical events</li>
+<li>Metrics collection for consensus agreement</li>
+</ul></li>
+<li><strong>Type-Safe Protocol Design</strong>
+<ul>
+<li>Cargo features for music styles (ambient, jungle, etc.)</li>
+<li>Type states for synthesis pipeline</li>
+<li>Compile-time guarantees for note consistency</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="part-8-materialization-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="part-8-materialization-checklist">PART 8: MATERIALIZATION CHECKLIST</h2>
+<section id="high-priority-complete-this-week" class="level3">
+<h3 class="anchored" data-anchor-id="high-priority-complete-this-week">High Priority (Complete This Week)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Initialize <code>knowledge_graph.duckdb</code></label></li>
+<li><label><input type="checkbox">Load 400+ resources (Roughgarden, a16z, Paradigm)</label></li>
+<li><label><input type="checkbox">Create 50+ knowledge bridges</label></li>
+<li><label><input type="checkbox">Implement basic Rust indexer</label></li>
+<li><label><input type="checkbox">Add MCP server for Claude integration</label></li>
+</ul>
+</section>
+<section id="medium-priority-complete-next-week" class="level3">
+<h3 class="anchored" data-anchor-id="medium-priority-complete-next-week">Medium Priority (Complete Next Week)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Discovery CLI interface</label></li>
+<li><label><input type="checkbox">Random walk query engine</label></li>
+<li><label><input type="checkbox">Learning path generation</label></li>
+<li><label><input type="checkbox">Theory↔︎implementation browser</label></li>
+</ul>
+</section>
+<section id="lower-priority-complete-month-2" class="level3">
+<h3 class="anchored" data-anchor-id="lower-priority-complete-month-2">Lower Priority (Complete Month 2)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Full-text search on resources</label></li>
+<li><label><input type="checkbox">Concept visualization (graph layouts)</label></li>
+<li><label><input type="checkbox">Automated knowledge extraction (LLM-powered)</label></li>
+<li><label><input type="checkbox">Integration with music production tools</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="conclusion-maximum-awareness" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-maximum-awareness">CONCLUSION: Maximum Awareness</h2>
+<p>This system materializes critical foundational knowledge: - <strong>400+ indexed resources</strong> from world-class researchers - <strong>DuckDB knowledge graph</strong> with concept relationships - <strong>50+ theory↔︎implementation bridges</strong> connecting distributed systems to music - <strong>Paradigm-vetted Rust ecosystem</strong> for production-quality implementation - <strong>Random walk discovery</strong> of niche skills at research frontiers</p>
+<p><strong>The random walk finds unexpected patterns</strong>: - Tim Roughgarden’s consensus protocols ← → deterministic color generation - a16z market design ← → musical note fairness - Mechanism design ← → protocol economics ← → creative governance</p>
+<p><strong>Result</strong>: Maximum awareness of how foundational computer science concepts apply to music production, creative coding, and distributed systems design.</p>
+<hr>
+</section>
+<section id="appendices" class="level2">
+<h2 class="anchored" data-anchor-id="appendices">APPENDICES</h2>
+<section id="a.-key-researchers-their-work" class="level3">
+<h3 class="anchored" data-anchor-id="a.-key-researchers-their-work">A. Key Researchers &amp; Their Work</h3>
+<p><strong>Tim Roughgarden</strong> - Consensus &amp; blockchain fundamentals - Mechanism design theory - Economic incentives in protocols - 1000+ hours of lectures available</p>
+<p><strong>Scott Kominers (a16z)</strong> - Market design for Web3 - Token economics - Network effects and scaling</p>
+<p><strong>Paradigm Research</strong> - DeFi infrastructure - Protocol design - AI + blockchain convergence</p>
+</section>
+<section id="b.-critical-concept-definitions" class="level3">
+<h3 class="anchored" data-anchor-id="b.-critical-concept-definitions">B. Critical Concept Definitions</h3>
+<p><strong>State Machine Replication (SMR)</strong>: - All honest nodes agree on transaction order - No rollbacks (once finalized) - Survives f &lt; n/3 Byzantine faults (BFT)</p>
+<p><strong>Incentive Compatibility</strong>: - Truth-telling is optimal strategy - Selfish behavior yields desired outcome - No mechanism can improve on VCG</p>
+<p><strong>Deterministic Consensus</strong>: - Same input → same output (all replicas) - Enables parallel processing safely - Key to distributed music generation</p>
+</section>
+<section id="c.-recommended-learning-order" class="level3">
+<h3 class="anchored" data-anchor-id="c.-recommended-learning-order">C. Recommended Learning Order</h3>
+<ol type="1">
+<li><strong>FLP Impossibility</strong> (understand limits)</li>
+<li><strong>Paxos/Raft</strong> (practical consensus)</li>
+<li><strong>Mechanism Design Basics</strong> (incentives)</li>
+<li><strong>VCG Mechanism</strong> (revenue maximization)</li>
+<li><strong>Blockchain Consensus</strong> (putting it all together)</li>
+<li><strong>Gay.rs Implementation</strong> (practice with music)</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

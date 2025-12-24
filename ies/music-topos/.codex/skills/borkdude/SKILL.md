@@ -1,11 +1,9 @@
 ---
 name: borkdude
-description: Guidance for selecting the right ClojureScript runtime across scripting, browser, Node, and embedded use.
-source: local
-license: UNLICENSED
+description: Babashka and ClojureScript runtime selection guidance by @borkdude
 ---
 
-<!-- Propagated to codex | Trit: 0 | Source: .ruler/skills/borkdude -->
+<!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/borkdude -->
 
 # Borkdude Skill: ClojureScript Runtime Selection
 

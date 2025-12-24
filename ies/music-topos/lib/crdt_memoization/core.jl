@@ -18,6 +18,26 @@
 using Dates
 
 # =============================================================================
+# Zero-Allocation Functors for Sorting (GF(3) Conservation Pattern)
+# =============================================================================
+
+"""
+Functor for sorting tuples by first element (fractional index).
+Replaces closure: by=x -> x[1]
+Used in TextCRDT key sorting for content-addressed fingerprints.
+"""
+struct TupleFirstExtractor <: Base.Order.Ordering end
+@inline Base.isless(::TupleFirstExtractor, a::Tuple, b::Tuple) = isless(a[1], b[1])
+
+"""
+Functor for sorting tuples by second element (timestamp).
+Replaces closure: by=x -> x[2]
+Used in TAPStateCRDT history merging and causality tracking.
+"""
+struct TupleSecondExtractor <: Base.Order.Ordering end
+@inline Base.isless(::TupleSecondExtractor, a::Tuple, b::Tuple) = isless(a[2], b[2])
+
+# =============================================================================
 # Vector Clock (Causality Tracking)
 # =============================================================================
 
@@ -150,21 +170,21 @@ function insert_char!(crdt::TextCRDT, pos::Int, char::Char)
     increment!(crdt.vector_clock, crdt.agent_id)
 
     # Recompute fingerprint
-    sorted_keys = sort(collect(keys(crdt.content)), by=x -> x[1])
+    sorted_keys = sort(collect(keys(crdt.content)), TupleFirstExtractor())
     content_str = join([crdt.content[k] for k in sorted_keys])
     crdt.fingerprint = fnv1a_hash(content_str)
 end
 
 function delete_char!(crdt::TextCRDT, pos::Int)
     # Get key at position
-    sorted_keys = sort(collect(keys(crdt.content)), by=x -> x[1])
+    sorted_keys = sort(collect(keys(crdt.content)), TupleFirstExtractor())
     if pos > 0 && pos <= length(sorted_keys)
         key = sorted_keys[pos]
         delete!(crdt.content, key)
         push!(crdt.tombstones, key)
 
         increment!(crdt.vector_clock, crdt.agent_id)
-        remaining_keys = sort(collect(keys(crdt.content)), by=x -> x[1])
+        remaining_keys = sort(collect(keys(crdt.content)), TupleFirstExtractor())
         content_str = join([crdt.content[k] for k in remaining_keys])
         crdt.fingerprint = fnv1a_hash(content_str)
     end
@@ -172,7 +192,7 @@ end
 
 function Base.String(crdt::TextCRDT)::String
     # Sort keys by fractional index to ensure consistent ordering
-    sorted_keys = sort(collect(keys(crdt.content)), by=x -> x[1])
+    sorted_keys = sort(collect(keys(crdt.content)), TupleFirstExtractor())
     join([crdt.content[k] for k in sorted_keys])
 end
 
@@ -218,7 +238,8 @@ function set_value!(crdt::JSONCRDT, path::Vector{String}, value::Any)
     increment!(crdt.vector_clock, crdt.agent_id)
 
     # Recompute fingerprint from sorted structure
-    items = sort(collect(crdt.data), by=first)
+    # Note: collect(dict) returns Pair{key, value}, use default sort (Pairs sort by key)
+    items = sort(collect(crdt.data))
     crdt.fingerprint = fnv1a_hash(string(items))
 end
 
@@ -531,7 +552,7 @@ function merge(tap1::TAPStateCRDT, tap2::TAPStateCRDT)::TAPStateCRDT
 
     # Merge history: combine and sort by timestamp
     all_history = vcat(tap1.history, tap2.history)
-    sort!(all_history, by=x -> x[2])
+    sort!(all_history, TupleSecondExtractor())
     merged.history = all_history
 
     merged.vector_clock = merge_clocks(tap1.vector_clock, tap2.vector_clock)

@@ -24,6 +24,7 @@ module ReafferenceFixtures
   }
 
   REVERSE_COLORS = SEED_COLORS.invert
+  MASK64 = (1 << 64) - 1
 
   def self.color_at(seed, index)
     """Generate color at index using SplitMix64."""
@@ -42,7 +43,6 @@ module ReafferenceFixtures
 
   def self.splitmix64(state)
     """SplitMix64 RNG step."""
-    MASK64 = (1 << 64) - 1
     state = (state + 0x9e3779b97f4a7c15) & MASK64
     z = state
     z = ((z ^ (z >> 30)) * 0xbf58476d1ce4e5b9) & MASK64

@@ -1,11 +1,9 @@
 ---
 name: gay-mcp
-description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP tools for palettes and threads.
-source: local
-license: UNLICENSED
+description: Gay.jl MCP server integration for deterministic color generation via SplitMix64
 ---
 
-<!-- Propagated to codex | Trit: 0 | Source: .ruler/skills/gay-mcp -->
+<!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/gay-mcp -->
 
 # Gay-MCP Skill: Deterministic Color Generation
 
@@ -178,8 +176,43 @@ Seed: 0x42D
 
 ---
 
+## Specter Navigation Integration (NEW 2025-12-22)
+
+Gay-MCP colors integrate with Specter-style path navigation for **correct-by-construction** caching:
+
+### Color as Navigator Type
+
+```julia
+# Each navigator gets a deterministic color from seed
+nav_color = Gay.color_at(hash(typeof(nav)), 1)
+
+# TupleNav preserves GF(3) across path
+path = (ALL, pred(iseven), FIRST)
+#       trit mapping: +1, 0, -1 → sum = 0 ✓
+```
+
+### Benchmark Integration
+
+Colors visualize benchmark results:
+- **Red (#D82626)**: >10x overhead (needs optimization)
+- **Green (#26D826)**: 1-2x overhead (acceptable)
+- **Blue (#2626D8)**: <1x overhead (faster than baseline!)
+
+### Specter Path Coloring
+
+```julia
+# Colorize a navigation path
+colored_path = map(enumerate(path)) do (i, nav)
+    color = Gay.color_at(hash(typeof(nav)), i)
+    (nav=nav, color=color)
+end
+```
+
+---
+
 **Skill Name**: gay-mcp
-**Type**: Deterministic Color Generation
+**Type**: Deterministic Color Generation / Navigation Coloring
 **Trit**: +1 (PLUS)
 **GF(3)**: Conserved via tripartite streams
 **SPI**: Guaranteed (same seed → same output)
+**Specter**: Path coloring for visualization

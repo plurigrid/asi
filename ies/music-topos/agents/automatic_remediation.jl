@@ -49,6 +49,10 @@ mutable struct RemediationIssue
     timestamp::Float64
 end
 
+# Zero-allocation functor for sorting by severity (replaces closure)
+struct IssueSeverityComparator <: Base.Order.Ordering end
+@inline Base.isless(::IssueSeverityComparator, a::RemediationIssue, b::RemediationIssue) = isless(b.severity, a.severity)
+
 """
     RemediationPlan
 
@@ -199,8 +203,8 @@ function generate_remediation_plan(
         )
     end
 
-    # Rank issues by severity
-    sorted_issues = sort(issues, by=issue -> issue.severity, rev=true)
+    # Rank issues by severity (zero-allocation via functor)
+    sorted_issues = sort(issues, IssueSeverityComparator())
 
     # Select most effective strategies
     strategies = Set{Symbol}()

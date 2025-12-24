@@ -1,0 +1,53 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "gay": {
+      "type": "local",
+      "command": ["julia", "--project=@gay", "-e", "using Gay; Gay.serve_mcp()"],
+      "environment": {
+        "GAY_SEED": "1069"
+      }
+    },
+    "glass-bead-game": {
+      "type": "local",
+      "command": ["ruby", "-I", "lib", "-r", "glass_bead_game", "-e", "GlassBeadGame.serve_mcp"]
+    },
+    "firecrawl": {
+      "type": "local",
+      "command": ["npx", "-y", "firecrawl-mcp"],
+      "environment": {
+        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
+      }
+    },
+    "exa": {
+      "type": "local",
+      "command": ["npx", "-y", "@anthropic/exa-mcp-server"],
+      "environment": {
+        "EXA_API_KEY": "{env:EXA_API_KEY}"
+      }
+    },
+    "tree-sitter": {
+      "type": "local",
+      "command": ["uvx", "mcp-tree-sitter"]
+    },
+    "localsend": {
+      "type": "local",
+      "command": ["node", "/Users/bob/ies/music-topos/packages/localsend-mcp/dist/index.js"]
+    },
+    "radare2": {
+      "type": "local",
+      "command": ["npx", "-y", "radare2-mcp-server"]
+    },
+    "huggingface": {
+      "type": "local",
+      "command": ["npx", "-y", "@anthropic/huggingface-mcp-server"],
+      "environment": {
+        "HF_TOKEN": "{env:HF_TOKEN}"
+      }
+    },
+    "marginalia": {
+      "type": "local",
+      "command": ["npx", "-y", "@anthropic/marginalia-mcp-server"]
+    }
+  }
+}

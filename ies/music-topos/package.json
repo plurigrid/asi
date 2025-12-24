@@ -1,0 +1,124 @@
+{
+  "name": "urepl-skill",
+  "version": "0.2.0",
+  "description": "UREPL Phase 2: Universal REPL Protocol for Scheme, Clojure, and Common Lisp",
+  "main": "src/urepl/skill.js",
+  "bin": {
+    "urepl": "bin/urepl.js",
+    "urepl-server": "bin/urepl-server.js"
+  },
+  "scripts": {
+    "start": "node bin/urepl-server.js",
+    "test": "jest",
+    "test:connectors": "jest src/urepl/repl-connectors.test.js",
+    "test:bootstrap": "jest src/urepl/bootstrap.test.js",
+    "lint": "eslint src/ bin/",
+    "build": "tsc",
+    "clean": "rm -rf dist/"
+  },
+  "keywords": [
+    "repl",
+    "universal",
+    "scheme",
+    "clojure",
+    "common-lisp",
+    "meta-interpreter",
+    "protocol",
+    "crdt",
+    "color-guidance",
+    "srfi"
+  ],
+  "author": "Music-Topos Project",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.14.2",
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "uuid": "^9.0.1",
+    "clojure": "^1.11.1",
+    "net": "^1.0.2",
+    "stream": "^0.0.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.8",
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3",
+    "eslint": "^8.56.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/music-topos/urepl-skill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/music-topos/urepl-skill/issues"
+  },
+  "homepage": "https://github.com/music-topos/urepl-skill#readme",
+  "claude": {
+    "skills": [
+      {
+        "name": "urepl",
+        "description": "Execute code in Scheme, Clojure, or Common Lisp with color-guided coordination",
+        "commands": [
+          {
+            "name": "execute",
+            "description": "Execute code through UREPL coordinator",
+            "usage": "/urepl execute [dialect] [code] [seed]",
+            "examples": [
+              "/urepl execute scheme \"(+ 1 2 3)\" 42",
+              "/urepl execute clojure \"(+ 1 2 3)\" 42",
+              "/urepl execute lisp \"(+ 1 2 3)\" 42"
+            ]
+          },
+          {
+            "name": "bootstrap",
+            "description": "Run UREPL bootstrap sequence with color guidance",
+            "usage": "/urepl bootstrap [seed]",
+            "examples": [
+              "/urepl bootstrap 42",
+              "/urepl bootstrap"
+            ]
+          },
+          {
+            "name": "load-srfi",
+            "description": "Load a Scheme Request for Implementation",
+            "usage": "/urepl load-srfi [number]",
+            "examples": [
+              "/urepl load-srfi 26",
+              "/urepl load-srfi 2"
+            ]
+          },
+          {
+            "name": "list-srfis",
+            "description": "List available SRFIs",
+            "usage": "/urepl list-srfis",
+            "examples": [
+              "/urepl list-srfis"
+            ]
+          },
+          {
+            "name": "status",
+            "description": "Check UREPL server and REPL status",
+            "usage": "/urepl status",
+            "examples": [
+              "/urepl status"
+            ]
+          },
+          {
+            "name": "server",
+            "description": "Start UREPL WebSocket server",
+            "usage": "/urepl server [port]",
+            "examples": [
+              "/urepl server 8765",
+              "/urepl server"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

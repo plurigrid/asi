@@ -37,6 +37,12 @@ just parallel-fork-ternary    # Ternary ACSet negotiation
 # Glass Bead Game
 just glass-bead               # Start interactive game
 just world-hop                # Badiou triangle world hopping
+
+# DuckDB Time Travel
+just duck-at-version db 3     # Query at snapshot version
+just duck-at-date db "2025-11-30"  # Query at specific date
+just duck-snapshots db        # List all snapshots
+just duck-nov2025 db          # November 2025 time travel
 ```
 
 ## File Structure

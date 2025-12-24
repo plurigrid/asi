@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tim_roughgarden_educational_content_index – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="tim-roughgarden-educational-content---comprehensive-index" class="level1">
+<h1>Tim Roughgarden Educational Content - Comprehensive Index</h1>
+<p><strong>Last Updated:</strong> December 21, 2025 <strong>Purpose:</strong> Knowledge indexing for mechanism design, replicated state machines, distributed systems, and game theory research</p>
+<hr>
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#stanford-courses">Stanford Course Series (2004-2018)</a></li>
+<li><a href="#columbia-courses">Columbia Course Series (2019-Present)</a></li>
+<li><a href="#youtube-playlists">YouTube Lecture Playlists</a></li>
+<li><a href="#moocs">Online MOOCs</a></li>
+<li><a href="#conference-talks">Conference Talks &amp; Tutorials</a></li>
+<li><a href="#key-papers">Key Papers by Topic</a></li>
+<li><a href="#lecture-notes">Lecture Notes Repository</a></li>
+</ol>
+<hr>
+</section>
+<section id="stanford-courses" class="level2">
+<h2 class="anchored" data-anchor-id="stanford-courses">Stanford Courses</h2>
+<section id="cs364a-algorithmic-game-theory-fall-2013" class="level3">
+<h3 class="anchored" data-anchor-id="cs364a-algorithmic-game-theory-fall-2013">CS364A: Algorithmic Game Theory (Fall 2013)</h3>
+<ul>
+<li><strong>Platform:</strong> YouTube + Course Website</li>
+<li><strong>URL (Playlist):</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4</li>
+<li><strong>URL (Notes):</strong> https://timroughgarden.org/f13/f13.html</li>
+<li><strong>Lectures:</strong> 20 videos + comprehensive lecture notes</li>
+<li><strong>Duration:</strong> ~60-70 minutes per lecture</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Mechanism design basics (Vickrey auctions, Myerson’s Lemma)</li>
+<li>Algorithmic mechanism design</li>
+<li>Revenue-maximizing auctions</li>
+<li>VCG mechanism and multi-parameter mechanism design</li>
+<li>Combinatorial auctions and spectrum auctions</li>
+<li>Price of anarchy in selfish routing</li>
+<li>No-regret dynamics and learning in games</li>
+<li>Computational complexity (PLS-completeness, PPAD-completeness)</li>
+<li>Smooth games and robust equilibrium analysis</li>
+</ul></li>
+<li><strong>Textbook:</strong> “Twenty Lectures on Algorithmic Game Theory” (Cambridge, 2016)</li>
+<li><strong>Relevance:</strong> ⭐⭐⭐⭐⭐ - Foundational for mechanism design and game theory</li>
+</ul>
+</section>
+<section id="cs364b-advanced-mechanism-design-winter-2014" class="level3">
+<h3 class="anchored" data-anchor-id="cs364b-advanced-mechanism-design-winter-2014">CS364B: Advanced Mechanism Design (Winter 2014)</h3>
+<ul>
+<li><strong>Platform:</strong> YouTube + Course Website</li>
+<li><strong>URL (Playlist):</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RI77PL4gwLld_OU9Zh3TCX9</li>
+<li><strong>URL (Notes):</strong> https://timroughgarden.org/w14/w14.html</li>
+<li><strong>Lectures:</strong> 20 videos</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Ascending and ex post incentive compatible mechanisms</li>
+<li>Walrasian equilibria and gross substitutes condition</li>
+<li>Crawford-Knoer and Clinching auctions</li>
+<li>Submodular valuations</li>
+<li>MIR and MIDR mechanisms</li>
+<li>Bayesian incentive-compatibility</li>
+<li>Price of anarchy in simple auctions</li>
+<li>Border’s theorem</li>
+<li>Multi-parameter revenue maximization</li>
+<li>Truthful approximation mechanisms</li>
+</ul></li>
+<li><strong>Relevance:</strong> ⭐⭐⭐⭐⭐ - Advanced techniques for combinatorial auctions</li>
+</ul>
+</section>
+<section id="cs261-a-second-course-in-algorithms-winter-2016" class="level3">
+<h3 class="anchored" data-anchor-id="cs261-a-second-course-in-algorithms-winter-2016">CS261: A Second Course in Algorithms (Winter 2016)</h3>
+<ul>
+<li><strong>Platform:</strong> YouTube + Course Website</li>
+<li><strong>URL (Playlist):</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RJh2yDxlJJjnKswWdoO8gAc</li>
+<li><strong>URL (Notes):</strong> https://timroughgarden.org/w16/w16.html</li>
+<li><strong>Lectures:</strong> 20 videos</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Maximum flow algorithms (augmenting paths, push-relabel)</li>
+<li>Bipartite matching and generalizations</li>
+<li>Linear programming and duality</li>
+<li>Multiplicative weights algorithm</li>
+<li>Online algorithms and competitive analysis</li>
+<li>Approximation algorithms</li>
+<li>TSP problem</li>
+<li>Beating brute-force search for NP-hard problems</li>
+</ul></li>
+<li><strong>Relevance:</strong> ⭐⭐⭐ - Algorithmic foundations supporting mechanism design</li>
+</ul>
+</section>
+<section id="cs168-modern-algorithmic-toolbox-spring-2017-with-greg-valiant" class="level3">
+<h3 class="anchored" data-anchor-id="cs168-modern-algorithmic-toolbox-spring-2017-with-greg-valiant">CS168: Modern Algorithmic Toolbox (Spring 2017, with Greg Valiant)</h3>
+<ul>
+<li><strong>Platform:</strong> Course Website (lecture notes)</li>
+<li><strong>URL:</strong> https://web.stanford.edu/class/cs168/</li>
+<li><strong>URL (Notes):</strong> https://timroughgarden.org/notes.html</li>
+<li><strong>Lectures:</strong> 19 lecture note sets</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Consistent hashing</li>
+<li>Count-Min sketch and heavy hitters</li>
+<li>Dimensionality reduction</li>
+<li>PCA and SVD</li>
+<li>Spectral graph theory</li>
+<li>Markov Chain Monte Carlo</li>
+<li>Fourier transform and convolution</li>
+<li>Compressive sensing</li>
+<li>Expander codes</li>
+</ul></li>
+<li><strong>Relevance:</strong> ⭐⭐⭐ - Modern data structures and probabilistic methods</li>
+</ul>
+</section>
+<section id="cs264cs369n-beyond-worst-case-analysis-fall-2014-winter-2017" class="level3">
+<h3 class="anchored" data-anchor-id="cs264cs369n-beyond-worst-case-analysis-fall-2014-winter-2017">CS264/CS369N: Beyond Worst-Case Analysis (Fall 2014, Winter 2017)</h3>
+<ul>
+<li><strong>Platform:</strong> YouTube + Course Website</li>
+<li><strong>URL (Playlist):</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RL8jsZpaf2tLHa5LotFEt5b</li>
+<li><strong>URL (Notes):</strong> https://timroughgarden.org/f14/f14.html</li>
+<li><strong>Lectures:</strong> 20 videos</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Smoothed analysis</li>
+<li>Parameterized analysis</li>
+<li>Instance optimality</li>
+<li>Stable clustering</li>
+<li>Planted and semi-random graph models</li>
+<li>LP decoding</li>
+<li>Pseudorandom data models</li>
+<li>Self-improving algorithms</li>
+</ul></li>
+<li><strong>Relevance:</strong> ⭐⭐⭐ - Alternative analytical frameworks</li>
+</ul>
+</section>
+<section id="cs269i-incentives-in-computer-science-fall-2016-fall-2018" class="level3">
+<h3 class="anchored" data-anchor-id="cs269i-incentives-in-computer-science-fall-2016-fall-2018">CS269I: Incentives in Computer Science (Fall 2016, Fall 2018)</h3>
+<ul>
+<li><strong>Platform:</strong> YouTube + Course Website</li>
+<li><strong>URL (Playlist):</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RJdrKZ431SidRX_T4VmAKx8</li>
+<li><strong>URL (Notes):</strong> https://timroughgarden.org/f16/f16.html</li>
+<li><strong>Lectures:</strong> Short course (accessible introduction)</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Markets in computer science</li>
+<li>Prisoner’s Dilemma and BitTorrent</li>
+<li>Asymmetric information (adverse selection, moral hazard)</li>
+<li>eBay reputation systems</li>
+<li>Auctions and sponsored search</li>
+<li>Voting and participatory budgeting</li>
+<li>Game theory in Bitcoin mining</li>
+</ul></li>
+<li><strong>Relevance:</strong> ⭐⭐⭐⭐ - Applied game theory in systems</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="columbia-courses" class="level2">
+<h2 class="anchored" data-anchor-id="columbia-courses">Columbia Courses</h2>
+<section id="coms-6998-foundations-of-blockchains-fall-2020-fall-2021" class="level3">
+<h3 class="anchored" data-anchor-id="coms-6998-foundations-of-blockchains-fall-2020-fall-2021">COMS 6998: Foundations of Blockchains (Fall 2020, Fall 2021)</h3>
+<ul>
+<li><strong>Platform:</strong> YouTube + GitHub Pages</li>
+<li><strong>URL (Playlist):</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RLOHv_xUGLqRts_9JxrckiA</li>
+<li><strong>URL (Course Site):</strong> https://timroughgarden.github.io/fob21/</li>
+<li><strong>URL (GitHub):</strong> https://github.com/timroughgarden/fob21</li>
+<li><strong>Lectures:</strong> Complete video series + lecture notes</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li><strong>Byzantine Fault Tolerance:</strong>
+<ul>
+<li>Dolev-Strong protocol for Byzantine broadcast</li>
+<li>FLP impossibility theorem</li>
+<li>Partially synchronous model</li>
+<li>Tendermint protocol</li>
+</ul></li>
+<li><strong>Consensus Protocols:</strong>
+<ul>
+<li>State machine replication (SMR)</li>
+<li>Longest-chain consensus</li>
+<li>Permissionless vs permissioned consensus</li>
+</ul></li>
+<li><strong>Proof Systems:</strong>
+<ul>
+<li>Proof-of-work and Nakamoto consensus</li>
+<li>Proof-of-stake protocols</li>
+<li>Selfish mining attacks</li>
+</ul></li>
+<li><strong>Blockchain Economics:</strong>
+<ul>
+<li>Transaction fee mechanism design</li>
+<li>EIP-1559 analysis</li>
+<li>Economic security limits</li>
+</ul></li>
+<li><strong>DeFi and Applications:</strong>
+<ul>
+<li>Automated market makers</li>
+<li>MEV (miner extractable value)</li>
+<li>Layer-2 scaling (optimistic and zk-rollups)</li>
+</ul></li>
+</ul></li>
+<li><strong>Lecture Notes Available:</strong>
+<ul>
+<li>L1: Introduction and Overview</li>
+<li>L2: Dolev-Strong Protocol (Byzantine broadcast in synchronous model)</li>
+<li>L3: Simulation and Indistinguishability</li>
+<li>L4-5: FLP Impossibility Theorem</li>
+<li>L6: Partially Synchronous Model and CAP Principle</li>
+<li>L7: Tendermint Protocol</li>
+<li>L8: Longest-Chain Consensus</li>
+<li>L9: Permissionless Consensus and Proof-of-Work</li>
+<li>L10: Selfish Mining (partial)</li>
+</ul></li>
+<li><strong>Relevance:</strong> ⭐⭐⭐⭐⭐ - Essential for RSM, BFT, and distributed consensus</li>
+</ul>
+</section>
+<section id="coms-4995-the-science-of-blockchains-spring-2025---current" class="level3">
+<h3 class="anchored" data-anchor-id="coms-4995-the-science-of-blockchains-spring-2025---current">COMS 4995: The Science of Blockchains (Spring 2025 - Current)</h3>
+<ul>
+<li><strong>Platform:</strong> Course Website</li>
+<li><strong>URL:</strong> https://timroughgarden.org/s25/</li>
+<li><strong>Lectures:</strong> Ongoing (lecture slides available)</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li><strong>Part I: Building a Shared Global Virtual Machine</strong>
+<ul>
+<li>SMR problem definition</li>
+<li>Consensus, consistency, liveness</li>
+<li>Crash faults vs Byzantine faults</li>
+<li>Paxos/Raft for crash fault tolerance</li>
+<li>Tendermint for Byzantine fault tolerance</li>
+<li>Longest-chain consensus</li>
+</ul></li>
+<li><strong>Part II: Scaling</strong>
+<ul>
+<li>Cryptographic hash functions</li>
+<li>Merkle and Merkle-Patricia trees</li>
+<li>KZG commitments</li>
+<li>Data availability and light clients</li>
+<li>Optimistic rollups (fraud proofs)</li>
+<li>Validity rollups (SNARKs)</li>
+<li>Cross-chain bridges</li>
+</ul></li>
+<li><strong>Part III: Permissionless Validation</strong>
+<ul>
+<li>Proof-of-work and Nakamoto consensus</li>
+<li>Difficulty adjustment</li>
+<li>Proof-of-stake design</li>
+<li>VRFs and randomness beacons</li>
+<li>Mempools and gossip protocols</li>
+<li>Transaction fees and gas</li>
+<li>MEV and proposer-builder separation</li>
+</ul></li>
+</ul></li>
+<li><strong>Lecture Materials:</strong> Slides and outlines for all 28 lectures available</li>
+<li><strong>Relevance:</strong> ⭐⭐⭐⭐⭐ - Most current treatment of blockchain consensus</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="youtube-playlists" class="level2">
+<h2 class="anchored" data-anchor-id="youtube-playlists">YouTube Playlists</h2>
+<section id="foundations-of-blockchains-primary-series" class="level3">
+<h3 class="anchored" data-anchor-id="foundations-of-blockchains-primary-series">Foundations of Blockchains (Primary Series)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RLOHv_xUGLqRts_9JxrckiA</li>
+<li><strong>Videos:</strong> Complete lecture series</li>
+<li><strong>Key Lecture Examples:</strong>
+<ul>
+<li>1.1: Focus of Lecture Series</li>
+<li>1.4: State Machine Replication</li>
+<li>2.1-2.4: Dolev-Strong Protocol</li>
+<li>3.1: PSL-FLM Impossibility Result</li>
+<li>4.3: Byzantine Agreement</li>
+<li>8.1-8.8: Longest-Chain Consensus</li>
+<li>9.1: Permissionless Consensus</li>
+<li>12.1-12.2: Review of Consensus</li>
+</ul></li>
+</ul>
+</section>
+<section id="algorithmic-game-theory-stanford-cs364a" class="level3">
+<h3 class="anchored" data-anchor-id="algorithmic-game-theory-stanford-cs364a">Algorithmic Game Theory (Stanford CS364A)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4</li>
+<li><strong>Videos:</strong> 20 complete lectures</li>
+<li><strong>Popular Lectures:</strong>
+<ul>
+<li>L1: Introduction and Examples (245K views)</li>
+<li>L2: Mechanism Design Basics (36K views)</li>
+<li>L4: Algorithmic Mechanism Design (20K views)</li>
+<li>L7: VCG Mechanism (10K views)</li>
+</ul></li>
+</ul>
+</section>
+<section id="advanced-mechanism-design-stanford-cs364b" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-mechanism-design-stanford-cs364b">Advanced Mechanism Design (Stanford CS364B)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RI77PL4gwLld_OU9Zh3TCX9</li>
+<li><strong>Videos:</strong> 20 lectures on advanced topics</li>
+</ul>
+</section>
+<section id="a-second-course-in-algorithms-stanford-cs261" class="level3">
+<h3 class="anchored" data-anchor-id="a-second-course-in-algorithms-stanford-cs261">A Second Course in Algorithms (Stanford CS261)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RJh2yDxlJJjnKswWdoO8gAc</li>
+<li><strong>Videos:</strong> 20 lectures</li>
+</ul>
+</section>
+<section id="beyond-worst-case-analysis-stanford-cs264" class="level3">
+<h3 class="anchored" data-anchor-id="beyond-worst-case-analysis-stanford-cs264">Beyond Worst-Case Analysis (Stanford CS264)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RL8jsZpaf2tLHa5LotFEt5b</li>
+<li><strong>Videos:</strong> 20 lectures</li>
+</ul>
+</section>
+<section id="incentives-in-computer-science-short-course" class="level3">
+<h3 class="anchored" data-anchor-id="incentives-in-computer-science-short-course">Incentives in Computer Science (Short Course)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RJdrKZ431SidRX_T4VmAKx8</li>
+<li><strong>Videos:</strong> Accessible introduction series</li>
+</ul>
+</section>
+<section id="tim-roughgarden-lectures-main-channel" class="level3">
+<h3 class="anchored" data-anchor-id="tim-roughgarden-lectures-main-channel">Tim Roughgarden Lectures (Main Channel)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.youtube.com/channel/UCcH4Ga14Y4ELFKrEYM1vXCg</li>
+<li><strong>Content:</strong> All course playlists plus additional talks</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="moocs" class="level2">
+<h2 class="anchored" data-anchor-id="moocs">MOOCs</h2>
+<section id="algorithms-specialization-coursera" class="level3">
+<h3 class="anchored" data-anchor-id="algorithms-specialization-coursera">Algorithms Specialization (Coursera)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.coursera.org/specializations/algorithms</li>
+<li><strong>Institution:</strong> Stanford University</li>
+<li><strong>Format:</strong> 4-course series (4 weeks each)</li>
+<li><strong>Courses:</strong>
+<ol type="1">
+<li><strong>Divide and Conquer, Sorting and Searching</strong>
+<ul>
+<li>Asymptotic notation, sorting, randomized algorithms</li>
+</ul></li>
+<li><strong>Graph Search, Shortest Paths, Data Structures</strong>
+<ul>
+<li>Heaps, BSTs, hash tables, BFS/DFS, shortest paths</li>
+</ul></li>
+<li><strong>Greedy Algorithms, MST, Dynamic Programming</strong>
+<ul>
+<li>Scheduling, MST, clustering, Huffman, knapsack</li>
+</ul></li>
+<li><strong>Shortest Paths Revisited, NP-Complete Problems</strong>
+<ul>
+<li>Bellman-Ford, Floyd-Warshall, NP-completeness, heuristics</li>
+</ul></li>
+</ol></li>
+<li><strong>Book Series:</strong> “Algorithms Illuminated” (4 volumes)</li>
+<li><strong>Recognition:</strong> Multiple “top MOOCs of all time” lists</li>
+<li><strong>Relevance:</strong> ⭐⭐⭐ - Foundational algorithms</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="conference-talks-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="conference-talks-tutorials">Conference Talks &amp; Tutorials</h2>
+<section id="mechanism-design-focus" class="level3">
+<h3 class="anchored" data-anchor-id="mechanism-design-focus">Mechanism Design Focus</h3>
+<p><strong>How To Think About Algorithmic Mechanism Design</strong> - <strong>Conference:</strong> FOCS 2010 (Tutorial) - <strong>URL:</strong> Video available on YouTube - <strong>Slides:</strong> https://timroughgarden.org/talks/focs10.pdf - <strong>Topics:</strong> Survey of mechanism design fundamentals</p>
+<p><strong>Approximately Optimal Mechanism Design</strong> - <strong>Conference:</strong> EC 2014 - <strong>URL:</strong> https://timroughgarden.org/talks/ec14talk.pdf (slides) - <strong>Paper:</strong> https://arxiv.org/abs/1406.6773 - <strong>Topics:</strong> Motivation and lessons learned from approximate mechanisms</p>
+<p><strong>Learning Near-Optimal Auctions</strong> - <strong>Conference:</strong> WINE 2017 (Keynote) - <strong>URL:</strong> https://www.youtube.com/watch?v=zgbq4j8SDKE - <strong>Slides:</strong> https://timroughgarden.org/talks/wine17public.pdf - <strong>Topics:</strong> Statistical, computational, and strategic challenges</p>
+</section>
+<section id="byzantine-fault-tolerance-consensus" class="level3">
+<h3 class="anchored" data-anchor-id="byzantine-fault-tolerance-consensus">Byzantine Fault Tolerance &amp; Consensus</h3>
+<p><strong>Permissionless Consensus</strong> - <strong>Conference:</strong> ICDCN 2022 (Keynote) - <strong>URL:</strong> https://timroughgarden.org/tldr/icdcn22.pdf - <strong>Topics:</strong> Proof-of-work, longest-chain, permissionless vs permissioned</p>
+<p><strong>Tutorial Series on Permissionless Consensus</strong> - <strong>Format:</strong> 13-part YouTube series - <strong>URL:</strong> Search “Permissionless Consensus Tutorial Tim Roughgarden” - <strong>Topics:</strong> Complete treatment from classical to permissionless consensus</p>
+<p><strong>Blockchain Protocols and Web3: A Glimpse Under the Hood</strong> - <strong>Format:</strong> Public lecture - <strong>URL:</strong> https://www.youtube.com/watch?v=-mWjDgVWl20 - <strong>Topics:</strong> Accessible overview of consensus and protocol design</p>
+</section>
+<section id="price-of-anarchy" class="level3">
+<h3 class="anchored" data-anchor-id="price-of-anarchy">Price of Anarchy</h3>
+<p><strong>Extension Theorems for the Price of Anarchy</strong> - <strong>Conference:</strong> Texas A&amp;M Fish Bowl Seminar (2013) - <strong>URL:</strong> https://www.youtube.com/watch?v=e3O_tMsN2t8 - <strong>Slides:</strong> https://timroughgarden.org/talks/nytheoryday13.pdf - <strong>Papers:</strong> STOC ’09, EC ’12</p>
+<p><strong>Barriers to Near-Optimal Equilibria</strong> - <strong>Conference:</strong> Twenty Years of Price of Anarchy (2019) - <strong>URL:</strong> https://www.youtube.com/watch?v=pl4vaS7xnts - <strong>Paper:</strong> FOCS ’14</p>
+<p><strong>Intrinsic Robustness of the Price of Anarchy</strong> - <strong>Event:</strong> Kalai Prize Lecture (2016) - <strong>Slides:</strong> https://timroughgarden.org/talks/kalai.pdf - <strong>Topics:</strong> Connection between worst-case and Bayesian price of anarchy</p>
+</section>
+<section id="additional-surveys" class="level3">
+<h3 class="anchored" data-anchor-id="additional-surveys">Additional Surveys</h3>
+<p><strong>Game Theory Through the Computational Lens</strong> - <strong>Venue:</strong> London School of Economics Public Lecture (2017) - <strong>URL:</strong> https://www.youtube.com/watch?v=7HYJ2oJtLZk - <strong>Slides:</strong> https://timroughgarden.org/talks/lse_public17public.pdf</p>
+<p><strong>How Computer Science Informs Modern Auction Design</strong> - <strong>Venue:</strong> Simons Foundation Public Lecture (2018) - <strong>URL:</strong> https://www.youtube.com/watch?v=mSekp5ctcQw - <strong>Slides:</strong> https://timroughgarden.org/talks/simonsfoundation18public.pdf</p>
+<hr>
+</section>
+</section>
+<section id="key-papers-by-topic" class="level2">
+<h2 class="anchored" data-anchor-id="key-papers-by-topic">Key Papers by Topic</h2>
+<section id="transaction-fee-mechanism-design" class="level3">
+<h3 class="anchored" data-anchor-id="transaction-fee-mechanism-design">Transaction Fee Mechanism Design</h3>
+<p><strong>Transaction Fee Mechanism Design for the Ethereum Blockchain: An Economic Analysis of EIP-1559</strong> - <strong>Authors:</strong> Tim Roughgarden - <strong>Venue:</strong> ACM Conference on Economics and Computation (EC), 2021 - <strong>URL:</strong> https://timroughgarden.org/papers/eip1559.pdf - <strong>Abstract:</strong> Economic analysis of Ethereum’s EIP-1559 transaction fee mechanism, including variable-size blocks, history-dependent reserve price, and base fee burning - <strong>Related Talk:</strong> https://www.youtube.com/watch?v=ndNyx-Oj9Wk - <strong>Relevance:</strong> ⭐⭐⭐⭐⭐ - Essential for blockchain fee market design</p>
+<p><strong>Transaction Fee Mechanism Design</strong> - <strong>Authors:</strong> Tim Roughgarden - <strong>Venue:</strong> ACM SIGecom Exchanges, 2021 - <strong>URL:</strong> https://arxiv.org/abs/2106.01340 - <strong>Abstract:</strong> Broader treatment of transaction fee mechanism design principles</p>
+</section>
+<section id="byzantine-fault-tolerance" class="level3">
+<h3 class="anchored" data-anchor-id="byzantine-fault-tolerance">Byzantine Fault Tolerance</h3>
+<p><strong>Byzantine Generals in the Permissionless Setting</strong> - <strong>Authors:</strong> Andrew Lewis-Pye, Tim Roughgarden - <strong>Year:</strong> 2021 - <strong>URL:</strong> https://arxiv.org/pdf/2101.07095.pdf - <strong>Abstract:</strong> Characterization of permissionless consensus and its relationship to classical Byzantine agreement</p>
+<p><strong>Permissionless Consensus</strong> - <strong>Authors:</strong> Andrew Lewis-Pye, Tim Roughgarden - <strong>Year:</strong> 2023 - <strong>URL:</strong> https://arxiv.org/pdf/2304.14701 - <strong>Abstract:</strong> Comprehensive treatment of permissionless consensus protocols</p>
+<p><strong>The Economic Limits of Permissionless Consensus</strong> - <strong>Authors:</strong> Eric Budish, Andrew Lewis-Pye, Tim Roughgarden - <strong>Year:</strong> 2024 - <strong>URL:</strong> Check author websites - <strong>Abstract:</strong> Economic analysis of security bounds in permissionless systems</p>
+</section>
+<section id="mechanism-design---combinatorial-auctions" class="level3">
+<h3 class="anchored" data-anchor-id="mechanism-design---combinatorial-auctions">Mechanism Design - Combinatorial Auctions</h3>
+<p><strong>Combinatorial Auctions with Restricted Complements</strong> - <strong>Authors:</strong> Ittai Abraham, Moshe Babaioff, Shaddin Dughmi, Tim Roughgarden - <strong>Venue:</strong> EC 2012 - <strong>URL:</strong> https://arxiv.org/abs/1205.4104 - <strong>Abstract:</strong> Model for valuations with complements that enables mechanism design inroads</p>
+<p><strong>Optimal Mechanisms for Combinatorial Auctions</strong> - <strong>Authors:</strong> Ittai Abraham, Moshe Babaioff, Shaddin Dughmi, Tim Roughgarden - <strong>Venue:</strong> Journal of the ACM, 2016 - <strong>URL:</strong> https://dl.acm.org/doi/10.1145/2908735 - <strong>Abstract:</strong> Convex rounding framework for computationally tractable truthful mechanisms</p>
+<p><strong>Lectures on Combinatorial Auctions</strong> - <strong>Author:</strong> Tim Roughgarden - <strong>Year:</strong> 2008 - <strong>URL:</strong> https://timroughgarden.org/f05/ca.pdf - <strong>Type:</strong> Comprehensive lecture notes</p>
+</section>
+<section id="price-of-anarchy-1" class="level3">
+<h3 class="anchored" data-anchor-id="price-of-anarchy-1">Price of Anarchy</h3>
+<p><strong>The Price of Anarchy in Games of Incomplete Information</strong> - <strong>Author:</strong> Tim Roughgarden - <strong>Venue:</strong> Multiple (STOC, EC) - <strong>URL:</strong> http://www.timroughgarden.org/papers/inc.pdf - <strong>Abstract:</strong> General theory for bounding price of anarchy in Bayesian games</p>
+<p><strong>The Price of Anarchy is Independent of the Network Topology</strong> - <strong>Authors:</strong> Multiple including Tim Roughgarden - <strong>URL:</strong> https://theory.stanford.edu/~tim/papers/indep.pdf - <strong>Abstract:</strong> Fundamental result on robustness of price of anarchy bounds</p>
+<p><strong>Intrinsic Robustness of the Price of Anarchy</strong> - <strong>Authors:</strong> Tim Roughgarden - <strong>Venue:</strong> STOC 2009, JACM 2015 - <strong>URL:</strong> https://www.timroughgarden.org/papers/robust_cacm.pdf - <strong>Abstract:</strong> Connection between worst-case and smoothed/Bayesian price of anarchy</p>
+<p><strong>Weighted Congestion Games: Price of Anarchy and Universal Worst-Case Examples</strong> - <strong>URL:</strong> https://timroughgarden.org/papers/wcg.pdf - <strong>Abstract:</strong> Characterization of price of anarchy as function of cost functions</p>
+</section>
+<section id="proof-of-stake-and-blockchain-security" class="level3">
+<h3 class="anchored" data-anchor-id="proof-of-stake-and-blockchain-security">Proof-of-Stake and Blockchain Security</h3>
+<p><strong>On the Instability of Bitcoin Without the Block Reward</strong> - <strong>Authors:</strong> Miles Carlsten, Harry Kalodner, S. Matthew Weinberg, Arvind Narayanan - <strong>Venue:</strong> CCS 2016 - <strong>URL:</strong> https://www.cs.princeton.edu/~arvindn/publications/mining_CCS.pdf - <strong>Abstract:</strong> Analysis of Bitcoin security when block rewards diminish</p>
+<p><strong>Majority is not Enough: Bitcoin Mining is Vulnerable</strong> - <strong>Authors:</strong> Ittay Eyal, Emin Gün Sirer - <strong>Venue:</strong> Financial Cryptography 2014 - <strong>URL:</strong> https://www.cs.cornell.edu/~ie53/publications/btcProcFC.pdf - <strong>Abstract:</strong> Selfish mining attack on Bitcoin</p>
+</section>
+<section id="historicalfoundational-papers-referenced" class="level3">
+<h3 class="anchored" data-anchor-id="historicalfoundational-papers-referenced">Historical/Foundational Papers Referenced</h3>
+<p><strong>The Byzantine Generals Problem</strong> - <strong>Authors:</strong> Lamport, Shostak, Pease - <strong>Venue:</strong> TOPLAS, 1982 - <strong>URL:</strong> https://lamport.azurewebsites.net/pubs/byz.pdf</p>
+<p><strong>Impossibility of Distributed Consensus with One Faulty Process</strong> - <strong>Authors:</strong> Fischer, Lynch, Paterson - <strong>Venue:</strong> JACM, 1985 (FLP Theorem) - <strong>URL:</strong> https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf</p>
+<p><strong>Consensus in the Presence of Partial Synchrony</strong> - <strong>Authors:</strong> Dwork, Lynch, Stockmeyer - <strong>Venue:</strong> JACM, 1988 - <strong>URL:</strong> https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf</p>
+<p><strong>The latest gossip on BFT consensus (Tendermint)</strong> - <strong>Authors:</strong> Buchman, Kwon, Milosevic - <strong>Year:</strong> 2018 - <strong>URL:</strong> https://arxiv.org/abs/1807.04938</p>
+<hr>
+</section>
+</section>
+<section id="lecture-notes-repository" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-notes-repository">Lecture Notes Repository</h2>
+<section id="complete-course-notes-available-at-httpstimroughgarden.orgnotes.html" class="level3">
+<h3 class="anchored" data-anchor-id="complete-course-notes-available-at-httpstimroughgarden.orgnotes.html">Complete Course Notes Available at: https://timroughgarden.org/notes.html</h3>
+<section id="foundations-of-blockchains-coms-6998-2021" class="level4">
+<h4 class="anchored" data-anchor-id="foundations-of-blockchains-coms-6998-2021">Foundations of Blockchains (COMS 6998, 2021)</h4>
+<ul>
+<li><strong>Format:</strong> PDF lecture notes (rough drafts)</li>
+<li><strong>Status:</strong> Lectures 1-9 available, L10 partial</li>
+<li><strong>Topics Covered:</strong>
+<ul>
+<li>L1: Introduction and Overview</li>
+<li>L2: Dolev-Strong Protocol</li>
+<li>L3: Simulation and Indistinguishability</li>
+<li>L4-5: FLP Impossibility Theorem</li>
+<li>L6: Partially Synchronous Model and CAP Principle</li>
+<li>L7: Tendermint Protocol</li>
+<li>L8: Longest-Chain Consensus</li>
+<li>L9: Permissionless Consensus and Proof-of-Work</li>
+<li>L10: Selfish Mining (incomplete)</li>
+</ul></li>
+</ul>
+</section>
+<section id="algorithmic-game-theory-cs364a-2013" class="level4">
+<h4 class="anchored" data-anchor-id="algorithmic-game-theory-cs364a-2013">Algorithmic Game Theory (CS364A, 2013)</h4>
+<ul>
+<li><strong>Format:</strong> Complete PDF set</li>
+<li><strong>URL:</strong> https://timroughgarden.org/f13/f13.pdf</li>
+<li><strong>Also Available:</strong> As book “Twenty Lectures on Algorithmic Game Theory”</li>
+<li><strong>All 20 Lectures:</strong> Fully documented with proofs and examples</li>
+</ul>
+</section>
+<section id="advanced-mechanism-design-cs364b-2014" class="level4">
+<h4 class="anchored" data-anchor-id="advanced-mechanism-design-cs364b-2014">Advanced Mechanism Design (CS364B, 2014)</h4>
+<ul>
+<li><strong>Format:</strong> Individual lecture PDFs</li>
+<li><strong>URL Base:</strong> https://timroughgarden.org/w14/l/</li>
+<li><strong>Lectures:</strong> l21.pdf through l40.pdf</li>
+<li><strong>Topics:</strong> Ex post mechanisms, Walrasian equilibria, gross substitutes, etc.</li>
+</ul>
+</section>
+<section id="modern-algorithmic-toolbox-cs168-2017" class="level4">
+<h4 class="anchored" data-anchor-id="modern-algorithmic-toolbox-cs168-2017">Modern Algorithmic Toolbox (CS168, 2017)</h4>
+<ul>
+<li><strong>Format:</strong> Individual lecture PDFs</li>
+<li><strong>URL Base:</strong> https://timroughgarden.org/s17/l/</li>
+<li><strong>19 Lectures:</strong> Consistent hashing through expander codes</li>
+</ul>
+</section>
+<section id="a-second-course-in-algorithms-cs261-2016" class="level4">
+<h4 class="anchored" data-anchor-id="a-second-course-in-algorithms-cs261-2016">A Second Course in Algorithms (CS261, 2016)</h4>
+<ul>
+<li><strong>Format:</strong> Individual lecture PDFs</li>
+<li><strong>URL Base:</strong> https://timroughgarden.org/w16/l/</li>
+<li><strong>20 Lectures:</strong> Maximum flow through beating brute-force search</li>
+</ul>
+</section>
+<section id="beyond-worst-case-analysis-cs264-20142017" class="level4">
+<h4 class="anchored" data-anchor-id="beyond-worst-case-analysis-cs264-20142017">Beyond Worst-Case Analysis (CS264, 2014/2017)</h4>
+<ul>
+<li><strong>Format:</strong> Individual lecture PDFs</li>
+<li><strong>Two Versions:</strong> 2014 full set, 2017 updated lectures</li>
+<li><strong>URL Base:</strong> https://timroughgarden.org/f14/l/ and https://timroughgarden.org/w17/l/</li>
+</ul>
+</section>
+<section id="incentives-in-computer-science-cs269i-2016" class="level4">
+<h4 class="anchored" data-anchor-id="incentives-in-computer-science-cs269i-2016">Incentives in Computer Science (CS269I, 2016)</h4>
+<ul>
+<li><strong>Format:</strong> Individual lecture PDFs</li>
+<li><strong>URL Base:</strong> https://timroughgarden.org/f16/l/</li>
+<li><strong>Topics:</strong> Stable matching, voting, auctions, VCG, asymmetric information</li>
+</ul>
+</section>
+<section id="communication-complexity-cs369e-2015" class="level4">
+<h4 class="anchored" data-anchor-id="communication-complexity-cs369e-2015">Communication Complexity (CS369E, 2015)</h4>
+<ul>
+<li><strong>Format:</strong> Combined and individual lecture PDFs</li>
+<li><strong>URL:</strong> https://timroughgarden.org/w15/l/w15.pdf</li>
+<li><strong>8 Lectures:</strong> Data streams through property testing</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="quick-access-most-relevant-for-mechanism-design-rsm" class="level2">
+<h2 class="anchored" data-anchor-id="quick-access-most-relevant-for-mechanism-design-rsm">Quick Access: Most Relevant for Mechanism Design &amp; RSM</h2>
+<section id="top-priority-resources" class="level3">
+<h3 class="anchored" data-anchor-id="top-priority-resources">Top Priority Resources:</h3>
+<ol type="1">
+<li><strong>Foundations of Blockchains (Columbia 2021)</strong>
+<ul>
+<li>YouTube: https://www.youtube.com/playlist?list=PLEGCF-WLh2RLOHv_xUGLqRts_9JxrckiA</li>
+<li>Course: https://timroughgarden.github.io/fob21/</li>
+<li><strong>Why:</strong> Most comprehensive treatment of RSM, BFT, and consensus</li>
+</ul></li>
+<li><strong>Algorithmic Game Theory (Stanford 2013)</strong>
+<ul>
+<li>YouTube: https://www.youtube.com/playlist?list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4</li>
+<li>Notes: https://timroughgarden.org/f13/f13.html</li>
+<li><strong>Why:</strong> Foundational mechanism design theory</li>
+</ul></li>
+<li><strong>Advanced Mechanism Design (Stanford 2014)</strong>
+<ul>
+<li>YouTube: https://www.youtube.com/playlist?list=PLEGCF-WLh2RI77PL4gwLld_OU9Zh3TCX9</li>
+<li>Notes: https://timroughgarden.org/w14/w14.html</li>
+<li><strong>Why:</strong> Advanced techniques for combinatorial auctions</li>
+</ul></li>
+<li><strong>Science of Blockchains (Columbia 2025 - Current)</strong>
+<ul>
+<li>Course: https://timroughgarden.org/s25/</li>
+<li><strong>Why:</strong> Most up-to-date consensus protocol coverage</li>
+</ul></li>
+<li><strong>Transaction Fee Mechanism Design Paper</strong>
+<ul>
+<li>PDF: https://timroughgarden.org/papers/eip1559.pdf</li>
+<li><strong>Why:</strong> Applied mechanism design in blockchain context</li>
+</ul></li>
+</ol>
+</section>
+<section id="key-lecture-sequences" class="level3">
+<h3 class="anchored" data-anchor-id="key-lecture-sequences">Key Lecture Sequences:</h3>
+<p><strong>For Byzantine Fault Tolerance:</strong> - Foundations of Blockchains L1-L7 (Dolev-Strong → Tendermint) - L8-L9 (Longest-chain and permissionless consensus)</p>
+<p><strong>For Mechanism Design:</strong> - CS364A L1-L9 (Mechanism design basics through VCG) - CS364B L1-L6 (Ascending auctions through gross substitutes)</p>
+<p><strong>For Price of Anarchy:</strong> - CS364A L11-L15 (Selfish routing through equilibrium concepts)</p>
+<hr>
+</section>
+</section>
+<section id="additional-resources" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
+<section id="supplementary-reading" class="level3">
+<h3 class="anchored" data-anchor-id="supplementary-reading">Supplementary Reading</h3>
+<ul>
+<li><strong>Decentralized Thoughts Blog:</strong> https://decentralizedthoughts.github.io/</li>
+<li><strong>Elaine Shi’s Book:</strong> “Foundations of Distributed Consensus and Blockchains”</li>
+<li><strong>Andrew Lewis-Pye:</strong> “Consensus in 50 pages” (rough draft)</li>
+<li><strong>James Aspnes:</strong> “Notes on Theory of Distributed Systems”</li>
+</ul>
+</section>
+<section id="related-courses-other-instructors" class="level3">
+<h3 class="anchored" data-anchor-id="related-courses-other-instructors">Related Courses (Other Instructors)</h3>
+<ul>
+<li><strong>David Tse (Stanford):</strong> Internet-Scale Consensus in the Blockchain Era</li>
+<li><strong>Jason Hartline (Northwestern):</strong> “Lectures on Optimal Mechanism Design”</li>
+</ul>
+</section>
+<section id="tools-for-further-exploration" class="level3">
+<h3 class="anchored" data-anchor-id="tools-for-further-exploration">Tools for Further Exploration</h3>
+<ul>
+<li><strong>GitHub Repository:</strong> https://github.com/timroughgarden/fob21</li>
+<li><strong>Course Website Archive:</strong> https://timroughgarden.org/teaching.html</li>
+<li><strong>Complete Papers List:</strong> https://timroughgarden.org/ (homepage)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="citation-information" class="level2">
+<h2 class="anchored" data-anchor-id="citation-information">Citation Information</h2>
+<p><strong>Author:</strong> Tim Roughgarden - <strong>Current Position:</strong> Professor, Computer Science Department, Columbia University - <strong>Previous Position:</strong> Professor, Stanford University (2004-2018) - <strong>Email:</strong> tr@cs.columbia.edu - <strong>Homepage:</strong> https://timroughgarden.org/ - <strong>YouTube Channel:</strong> https://www.youtube.com/channel/UCcH4Ga14Y4ELFKrEYM1vXCg</p>
+<p><strong>Areas of Expertise:</strong> - Algorithmic game theory - Mechanism design - Byzantine fault tolerance and distributed consensus - Blockchain protocol design - Price of anarchy - Computational complexity in economics</p>
+<hr>
+</section>
+<section id="usage-notes-for-knowledge-indexing" class="level2">
+<h2 class="anchored" data-anchor-id="usage-notes-for-knowledge-indexing">Usage Notes for Knowledge Indexing</h2>
+<p><strong>Video Duration Patterns:</strong> - Most lectures: 60-75 minutes - Tutorial talks: 90-120 minutes - Short course videos: 15-30 minutes</p>
+<p><strong>Content Difficulty Levels:</strong> - <strong>Accessible:</strong> Incentives in CS, Public lectures - <strong>Intermediate:</strong> CS364A (Algorithmic Game Theory) - <strong>Advanced:</strong> CS364B (Advanced Mechanism Design), Foundations of Blockchains - <strong>Specialized:</strong> Beyond Worst-Case Analysis, Communication Complexity</p>
+<p><strong>Lecture Note Quality:</strong> - <strong>Complete/Published:</strong> CS364A (as book), CS261, CS364B - <strong>Draft/In Progress:</strong> Foundations of Blockchains (L1-9) - <strong>Comprehensive:</strong> CS168, CS264, CS269I</p>
+<p><strong>Update Frequency:</strong> - Historical courses: Content stable (2013-2018) - Current course (S25): Active updates weekly - Papers: Check https://timroughgarden.org/ for latest publications</p>
+<hr>
+</section>
+<section id="index-compiled-by" class="level2">
+<h2 class="anchored" data-anchor-id="index-compiled-by">Index Compiled By</h2>
+<p>Agent: Claude (Anthropic) Date: December 21, 2025 Source: Comprehensive web search and analysis of Tim Roughgarden’s educational materials</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

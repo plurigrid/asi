@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  marketplace-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.marketplace
+    image: marketplace-gateway:latest
+    container_name: marketplace-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - GATEWAY_HOST=0.0.0.0
+      - GATEWAY_PORT=8080
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    networks:
+      - marketplace-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  marketplace-network:
+    driver: bridge

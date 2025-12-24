@@ -1,0 +1,416 @@
+{
+  "chip": "Apple M5",
+  "generation": 5,
+  "process_node": "3nm (N3P)",
+  "release_date": "2025-10-15",
+
+  "core_configuration": {
+    "total_cores": 10,
+    "p_cores": {
+      "count": 4,
+      "name": "Performance (Firestorm-based)",
+      "base_frequency_hz": 1260000000,
+      "boost_frequency_hz": 4420000000,
+      "sustained_frequency_hz": 4100000000,
+      "cluster_topology": "2 clusters of 2 cores each (P0, P1)"
+    },
+    "e_cores": {
+      "count": 6,
+      "name": "Efficiency (Icestorm-based)",
+      "min_frequency_hz": 1020000000,
+      "max_frequency_hz": 2850000000,
+      "typical_frequency_hz": 2500000000,
+      "cluster_topology": "Single E-cluster with 6 cores"
+    }
+  },
+
+  "cache_hierarchy": {
+    "p_cores": {
+      "l1_instruction_kb": 768,
+      "l1_data_kb": 512,
+      "l2_mb": 64,
+      "l2_shared": "per 2-core cluster",
+      "system_level_cache_mb": 8
+    },
+    "e_cores": {
+      "l1_instruction_kb": 768,
+      "l1_data_kb": 384,
+      "l2_mb": 6,
+      "l2_shared": "all E-cores",
+      "system_level_cache_mb": 8
+    },
+    "cache_line_size_bytes": 128,
+    "notes": "No L3 cache; unified memory serves as shared cache"
+  },
+
+  "memory": {
+    "unified_memory_bandwidth_gbps": 153.0,
+    "bandwidth_improvement_vs_m4": "30%",
+    "memory_types": ["LPDDR5X-8500", "LPDDR5X-7500"],
+    "max_memory_capacity_gb": 32
+  },
+
+  "thermal_design": {
+    "tdp_base_w": 27,
+    "tdp_boost_w": 40,
+    "thermal_throttle_point_celsius": 100,
+    "max_junction_temp_celsius": 114,
+    "thermal_throttle_frequency_hz": 800000000,
+    "throttle_behavior": "At 100°C, cores throttle to 800 MHz idle speed",
+    "m5_specific_notes": "M5 can reach 99°C under sustained load with single-fan cooling; runs cooler than M4 at same workload"
+  },
+
+  "power_characteristics": {
+    "max_sustained_power_w": 40,
+    "typical_sustained_power_w": 27,
+    "idle_power_w": 1.5,
+    "idle_to_boost_ratio": 26.67,
+
+    "p_core_power": {
+      "idle_mw": 2,
+      "typical_load_mw": 2500,
+      "floating_point_peak_mw": 1400,
+      "neon_vector_peak_mw": 3230,
+      "per_core_estimated_w": 5.0,
+      "notes": "P-cores can consume up to 3.2W per core at peak NEON workloads"
+    },
+
+    "e_core_power": {
+      "idle_mw": 1,
+      "typical_load_mw": 800,
+      "peak_mw": 1500,
+      "per_core_estimated_w": 1.5,
+      "notes": "E-cores are 3-4x more power efficient than P-cores"
+    },
+
+    "power_budget_allocation": {
+      "cpu_max_w": 40,
+      "gpu_estimated_w": 50,
+      "ane_neural_engine_w": 5,
+      "memory_controller_w": 3,
+      "system_total_estimate_w": 98,
+      "notes": "Power budget increasingly shifted to GPU/memory vs CPU in M5"
+    }
+  },
+
+  "dvfs_parameters": {
+    "voltage_range": {
+      "min_v": 0.6,
+      "typical_v": 0.8,
+      "max_v": 1.2,
+      "notes": "Estimated from typical ARM SoC ranges; Apple does not publish exact values"
+    },
+
+    "frequency_scaling": {
+      "p_core_steps": [
+        {"frequency_hz": 1260000000, "voltage_v": 0.65, "power_w": 0.5},
+        {"frequency_hz": 2000000000, "voltage_v": 0.75, "power_w": 1.8},
+        {"frequency_hz": 3000000000, "voltage_v": 0.85, "power_w": 3.2},
+        {"frequency_hz": 4000000000, "voltage_v": 0.95, "power_w": 4.5},
+        {"frequency_hz": 4420000000, "voltage_v": 1.05, "power_w": 5.8}
+      ],
+      "e_core_steps": [
+        {"frequency_hz": 1020000000, "voltage_v": 0.60, "power_w": 0.2},
+        {"frequency_hz": 1500000000, "voltage_v": 0.70, "power_w": 0.6},
+        {"frequency_hz": 2000000000, "voltage_v": 0.75, "power_w": 0.9},
+        {"frequency_hz": 2500000000, "voltage_v": 0.80, "power_w": 1.2},
+        {"frequency_hz": 2850000000, "voltage_v": 0.85, "power_w": 1.5}
+      ]
+    },
+
+    "thermal_thresholds": {
+      "normal_operation_max_celsius": 85,
+      "warning_threshold_celsius": 95,
+      "throttle_threshold_celsius": 100,
+      "emergency_shutdown_celsius": 115
+    }
+  },
+
+  "power_model_coefficients": {
+    "formula": "P = C × f × V²",
+    "capacitance_f": 1.0e-10,
+    "p_core_coefficient": 1.2e-10,
+    "e_core_coefficient": 0.8e-10,
+
+    "power_per_watt_efficiency": {
+      "p_core_gflops_per_watt": 45.0,
+      "e_core_gflops_per_watt": 60.0,
+      "overall_improvement_vs_m4": "20-25%"
+    }
+  },
+
+  "qos_class_mapping": {
+    "background": {
+      "qos_level": 9,
+      "cores": "E-cores only",
+      "frequency_range_hz": [1020000000, 2000000000],
+      "power_budget_w": 3,
+      "use_case": "Background tasks, indexing, maintenance"
+    },
+    "utility": {
+      "qos_level": 17,
+      "cores": "E-cores preferred, P-cores if needed",
+      "frequency_range_hz": [1500000000, 2500000000],
+      "power_budget_w": 8,
+      "use_case": "System utilities, secondary tasks"
+    },
+    "user_initiated": {
+      "qos_level": 25,
+      "cores": "P-cores preferred, E-cores for parallelism",
+      "frequency_range_hz": [2000000000, 4000000000],
+      "power_budget_w": 20,
+      "use_case": "User-facing operations, UI responsiveness"
+    },
+    "user_interactive": {
+      "qos_level": 33,
+      "cores": "P-cores prioritized",
+      "frequency_range_hz": [3000000000, 4420000000],
+      "power_budget_w": 35,
+      "use_case": "Active user interactions, animations, input response"
+    },
+    "default": {
+      "qos_level": 4,
+      "cores": "P+E mixed allocation",
+      "frequency_range_hz": [1260000000, 4100000000],
+      "power_budget_w": 15,
+      "use_case": "General system tasks"
+    }
+  },
+
+  "workload_profiles": {
+    "single_threaded_peak": {
+      "cores_active": "1 P-core",
+      "frequency_hz": 4420000000,
+      "power_w": 6.0,
+      "thermal_headroom_w": 34,
+      "duration_seconds": 10,
+      "notes": "Burst performance for short-duration single-thread work"
+    },
+
+    "multi_threaded_sustained": {
+      "cores_active": "4 P-cores + 6 E-cores",
+      "p_core_frequency_hz": 4100000000,
+      "e_core_frequency_hz": 2500000000,
+      "power_w": 35,
+      "thermal_headroom_w": 5,
+      "duration_seconds": 600,
+      "notes": "Sustained all-core workload"
+    },
+
+    "balanced_efficiency": {
+      "cores_active": "2 P-cores + 4 E-cores",
+      "p_core_frequency_hz": 3000000000,
+      "e_core_frequency_hz": 2000000000,
+      "power_w": 15,
+      "thermal_headroom_w": 25,
+      "duration_seconds": 3600,
+      "notes": "Optimal for long-running tasks with thermal constraints"
+    },
+
+    "red_team_stealth": {
+      "cores_active": "6 E-cores only",
+      "e_core_frequency_hz": 2000000000,
+      "power_w": 6,
+      "thermal_signature_w": 6,
+      "notes": "E-core only execution for minimal power signature"
+    },
+
+    "blue_team_detection": {
+      "cores_active": "4 P-cores",
+      "p_core_frequency_hz": 4100000000,
+      "power_w": 20,
+      "thermal_signature_w": 20,
+      "notes": "P-core detection engines with thermal monitoring"
+    }
+  },
+
+  "comparison_to_previous_generations": {
+    "vs_m4": {
+      "performance_improvement": "20-30% single-core",
+      "efficiency_improvement": "25% better performance per watt",
+      "architectural_changes": [
+        "GPU cores have integrated Neural Accelerators (major architectural shift)",
+        "Improved 3nm N3P process vs N3E",
+        "30% memory bandwidth increase (153 GB/s vs 120 GB/s)",
+        "Enhanced dynamic caching in GPU"
+      ],
+      "frequency_increase": "20 MHz (4.42 GHz vs 4.40 GHz)",
+      "power_efficiency": "Same TDP (27W base) with better performance"
+    },
+
+    "vs_m3": {
+      "performance_improvement": "40-50% single-core",
+      "frequency_increase": "320 MHz (4.42 GHz vs 4.10 GHz)",
+      "core_count_change": "+2 E-cores (6 vs 4)",
+      "cache_improvements": "64 MB L2 for P-cores (vs 16 MB)",
+      "architectural_leap": "Major AI-first redesign with GPU-integrated ML"
+    },
+
+    "vs_m2": {
+      "performance_improvement": "60-70% single-core",
+      "frequency_increase": "920 MHz (4.42 GHz vs 3.50 GHz)",
+      "process_improvement": "3nm vs 5nm (3.5nm enhanced)",
+      "memory_bandwidth": "+27.5 GB/s"
+    },
+
+    "vs_m1": {
+      "performance_improvement": "85-100% single-core",
+      "frequency_increase": "1194 MHz (4.42 GHz vs 3.228 GHz)",
+      "process_improvement": "3nm vs 5nm",
+      "core_architecture": "4th generation Firestorm/Icestorm vs 1st gen",
+      "cache_quadrupled": "64 MB vs 16 MB L2 for P-cores"
+    }
+  },
+
+  "m5_specific_features": {
+    "ai_optimizations": {
+      "neural_accelerators_per_gpu_core": 1,
+      "description": "Each GPU core has dedicated ML unit, major architectural departure",
+      "impact": "Shifts AI compute from Neural Engine to GPU parallel pipelines",
+      "advantage_vs_m4": "M4 has no GPU-integrated ML units"
+    },
+
+    "gpu_improvements": {
+      "hardware_ray_tracing": "Enhanced second-generation",
+      "dynamic_caching": "Improved efficiency",
+      "mesh_shading": true
+    },
+
+    "power_management": {
+      "performance_controller": "Enhanced DVFS with AI workload prediction",
+      "thermal_awareness": "Predictive throttling based on workload history",
+      "cluster_migration": "Fast thread migration between P/E clusters"
+    }
+  },
+
+  "qigong_optimization_recommendations": {
+    "red_team_parameters": {
+      "target_qos": "background (9)",
+      "target_cores": "E-cores only",
+      "frequency_cap_hz": 2000000000,
+      "power_budget_w": 6,
+      "thermal_signature_target_w": 6,
+      "rationale": "E-core operation keeps power signature minimal and avoids P-core thermal spikes"
+    },
+
+    "blue_team_parameters": {
+      "target_qos": "user_initiated (25)",
+      "target_cores": "P-cores preferred",
+      "frequency_range_hz": [3000000000, 4100000000],
+      "power_budget_w": 20,
+      "thermal_monitoring": true,
+      "rationale": "P-cores provide detection throughput while staying within thermal envelope"
+    },
+
+    "thermal_budget_split": {
+      "red_team_allocation_w": 6,
+      "blue_team_allocation_w": 20,
+      "system_overhead_w": 6,
+      "reserve_w": 8,
+      "total_w": 40
+    },
+
+    "frequency_stepping_strategy": {
+      "aggressive": {
+        "description": "Maximum performance, thermal throttling acceptable",
+        "p_core_frequency_hz": 4420000000,
+        "e_core_frequency_hz": 2850000000,
+        "power_w": 40,
+        "duration_s": 60
+      },
+      "balanced": {
+        "description": "Sustained performance without throttling",
+        "p_core_frequency_hz": 4100000000,
+        "e_core_frequency_hz": 2500000000,
+        "power_w": 30,
+        "duration_s": 600
+      },
+      "conservative": {
+        "description": "Long-duration, thermal-constrained scenarios",
+        "p_core_frequency_hz": 3500000000,
+        "e_core_frequency_hz": 2000000000,
+        "power_w": 20,
+        "duration_s": 3600
+      }
+    },
+
+    "cache_optimization": {
+      "cache_line_bytes": 128,
+      "false_sharing_avoidance": "Align data structures to 128-byte boundaries",
+      "cluster_affinity": "Pin red team threads to E-cluster, blue team to P0 or P1",
+      "slc_awareness": "8 MB shared system-level cache; consider as L3 equivalent"
+    },
+
+    "taskpolicy_commands": {
+      "red_team_ecore_only": "sudo taskpolicy -b -p <pid>",
+      "blue_team_pcore_prefer": "sudo taskpolicy -B -p <pid>",
+      "thread_affinity_ecore": "sudo taskpolicy -c e -t <tid>",
+      "thread_affinity_pcore": "sudo taskpolicy -c p -t <tid>"
+    }
+  },
+
+  "measurement_tools": {
+    "powermetrics": {
+      "command": "sudo powermetrics -n 10 -s cpu_power,gpu_power,thermal -f json",
+      "sample_rate_ms": 1000,
+      "metrics": ["cpu_power", "gpu_power", "ane_power", "thermal_pressure", "cpu_freq_mhz"]
+    },
+
+    "asitop": {
+      "command": "asitop -o output.csv -n 60",
+      "metrics": ["P-core utilization", "E-core utilization", "power per cluster", "thermal state"]
+    },
+
+    "instruments": {
+      "template": "Time Profiler + System Trace",
+      "focus": "CPU cluster assignment, frequency transitions, thermal events"
+    },
+
+    "dtrace_power_probe": {
+      "script": "dtrace -n 'BEGIN { trace(\"Monitor DVFS transitions\"); }'"
+    }
+  },
+
+  "validation_criteria": {
+    "red_team_success": {
+      "e_core_exclusive": true,
+      "power_under_w": 8,
+      "thermal_signature_under_w": 8,
+      "no_p_core_wakeups": true
+    },
+
+    "blue_team_success": {
+      "p_core_utilization_percent": [60, 100],
+      "detection_latency_ms": [1, 50],
+      "sustained_frequency_hz": [4000000000, 4100000000],
+      "power_within_budget_w": 25
+    },
+
+    "thermal_compliance": {
+      "sustained_temp_celsius": [75, 90],
+      "peak_temp_celsius": [90, 99],
+      "no_throttling_events": true,
+      "fan_speed_rpm": [0, 5000]
+    }
+  },
+
+  "references": [
+    "https://en.wikipedia.org/wiki/Apple_M5",
+    "https://www.apple.com/newsroom/2025/10/apple-unleashes-m5-the-next-big-leap-in-ai-performance-for-apple-silicon/",
+    "https://nanoreview.net/en/cpu/apple-m4",
+    "https://www.notebookcheck.net/Apple-M5-10-Cores-Processor-Benchmarks-and-Specs.1139129.0.html",
+    "https://eclecticlight.co/2024/11/18/inside-m4-chips-e-and-p-cores/",
+    "https://www.tomshardware.com/laptops/macbooks/m3-macbook-air-hits-eye-popping-114-degrees-celsius-in-stress-test-and-didnt-melt",
+    "https://lowendmac.com/2025/m1-vs-m2-vs-m3-vs-m4-vs-m5/",
+    "https://www.tweaktown.com/news/108478/apples-new-m5-macbook-pro-cant-stay-cool-with-single-fan-m5-chip-hits-crazy-99c-under-load/index.html",
+    "https://www.techradar.com/pro/where-apple-spends-its-power-m4-max-cpu-consumes-just-48w-why-the-gpu-and-memory-system-define-the-true-cost-of-your-macbook-pro"
+  ],
+
+  "metadata": {
+    "config_version": "1.0.0",
+    "generated_date": "2025-12-22",
+    "target_platform": "macOS 15+ (Sequoia)",
+    "requires_sudo": true,
+    "compatible_hardware": ["MacBook Pro 14\" M5 (2025)", "Mac mini M5 (2025)", "iPad Pro M5 (2025)"]
+  }
+}
