@@ -4,6 +4,21 @@
 
 Skills are loaded via symlinks from `.ruler/skills/` to `.agents/skills/`. Each skill has a **trit assignment** (-1, 0, +1) that enables **GF(3) conservation** when skills are combined in triads.
 
+## Autopoiesis: Self-Rewriting ACSet
+
+The system supports **self-modification** via `bin/autopoi.bb`:
+
+```bash
+just autopoi-init           # Initialize autopoiesis database
+just autopoi-skill name trit # Add skill to all agents
+just autopoi-system name seed trit  # Register an agent system
+just autopoi-verify         # Check operational closure
+```
+
+**Key insight:** DPO rewriting ensures `produces ∘ regenerates = id_System` — components regenerate the system that produced them, creating operational closure.
+
+See: [autopoiesis skill](.agents/skills/autopoiesis/SKILL.md), [thread T-019b5197](https://ampcode.com/threads/T-019b5197-5e59-778a-b515-a2a84df7e644)
+
 ## Trit Polarity → Subagent Role
 
 | Trit | Polarity | Color | Subagent | Action |
@@ -133,6 +148,39 @@ polyglot-spi (-1) ⊗ ies (0) ⊗ gay-mcp (+1) = 0 ✓  [Environment]
 three-match (-1) ⊗ ies (0) ⊗ pulse-mcp-stream (+1) = 0 ✓  [Social Analysis]
 influence-propagation (-1) ⊗ ies (0) ⊗ agent-o-rama (+1) = 0 ✓  [Cognitive Surrogate]
 temporal-coalgebra (-1) ⊗ ies (0) ⊗ cider-clojure (+1) = 0 ✓  [Clojure/Julia Bridge]
+
+# Geography Bundle (NEW 2025-12-24, Spatial Analysis with GF(3) Coloring)
+# Key insight: Earth's surface is a 2-manifold; projections are functors
+# Geohashes provide hierarchical spatial indexing with deterministic colors
+# OSM topology validates network consistency
+osm-topology (-1) ⊗ duckdb-spatial (0) ⊗ map-projection (+1) = 0 ✓  [Spatial SQL]
+osm-topology (-1) ⊗ geodesic-manifold (0) ⊗ geohash-coloring (+1) = 0 ✓  [Spherical]
+osm-topology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [Graph Coloring]
+three-match (-1) ⊗ duckdb-spatial (0) ⊗ geohash-coloring (+1) = 0 ✓  [H3 Indexing]
+three-match (-1) ⊗ geodesic-manifold (0) ⊗ map-projection (+1) = 0 ✓  [Great Circles]
+persistent-homology (-1) ⊗ duckdb-spatial (0) ⊗ geohash-coloring (+1) = 0 ✓  [Topological GIS]
+
+# MDM Cobordism Bundle (NEW 2025-12-24, Auth Manifolds as State Transitions)
+# Key insight: Auth is cobordism W: ∂₀ → ∂₁, not event sequence
+# Enrollment chain: W₁(+1) → W₂(0) → W₃(-1) → W₄(+1) → W₅(-1) = 0
+# Philosophy: No demos (credentials derive, not perform)
+keychain-secure (-1) ⊗ mdm-cobordism (0) ⊗ gay-mcp (+1) = 0 ✓  [Credential Derivation]
+temporal-coalgebra (-1) ⊗ mdm-cobordism (0) ⊗ oapply-colimit (+1) = 0 ✓  [State Observation]
+sheaf-cohomology (-1) ⊗ mdm-cobordism (0) ⊗ koopman-generator (+1) = 0 ✓  [Pattern Learning]
+three-match (-1) ⊗ mdm-cobordism (0) ⊗ gay-mcp (+1) = 0 ✓  [Enrollment Chain]
+keychain-secure (-1) ⊗ unworld (0) ⊗ oapply-colimit (+1) = 0 ✓  [Keychain Derivation]
+
+# Cat# Video Extraction Bundle (NEW 2025-12-24, from Spivak ACT 2023)
+# Key insight: Cat# = Comod(P) where P = (Poly, y, ◁)
+# Horizontal morphisms = bicomodules = pra-functors = data migrations
+# Video: reference/videos/spivak_cat_sharp.mkv (16 slides, 31.7 min)
+# Database: tensor_skill_paper.duckdb (v_catsharp_* views)
+temporal-coalgebra (-1) ⊗ asi-polynomial-operads (0) ⊗ free-monad-gen (+1) = 0 ✓  [Poly Comonads]
+yoneda-directed (-1) ⊗ kan-extensions (0) ⊗ oapply-colimit (+1) = 0 ✓  [Mac Lane Universal]
+structured-decomp (-1) ⊗ acsets (0) ⊗ operad-compose (+1) = 0 ✓  [Cat# Bicomodules]
+sheaf-cohomology (-1) ⊗ dialectica (0) ⊗ operad-compose (+1) = 0 ✓  [Three Homes]
+persistent-homology (-1) ⊗ algebraic-dynamics (0) ⊗ operad-compose (+1) = 0 ✓  [Wiring Diagrams]
+segal-types (-1) ⊗ acsets (0) ⊗ topos-generate (+1) = 0 ✓  [Nerves & Elements]
 ```
 
 ## Skill Loading Commands
@@ -175,9 +223,9 @@ Example for `:derivation` domain:
 
 Skills with the same trit can substitute for each other in triads:
 
-- **MINUS (-1)**: three-match, slime-lisp, clj-kondo-3color, hatchery-papers, proofgeneral-narya, sheaf-cohomology, temporal-coalgebra, persistent-homology, cubes, cactus, gravity, cohomology-obstruction, spined-categories, bumpus-width, influence-propagation, polyglot-spi, dmd-spectral, interval-presheaf, schema-validation, **ramanujan-expander**
-- **ERGODIC (0)**: unworld, world-hopping, acsets, glass-bead-game, epistemic-arbitrage, kan-extensions, dialectica, open-games, discohy-streams, thread, lhott-cohesive-linear, asi-polynomial-operads, condensed-analytic-stacks, abductive-repl, entropy-sequencer, cognitive-surrogate, lispsyntax-acset, structured-decomp, algebraic-dynamics, deepwiki-mcp, ihara-zeta, compositional-acset-comparison, **ies**
-- **PLUS (+1)**: gay-mcp, cider-clojure, geiser-chicken, rubato-composer, free-monad-gen, operad-compose, topos-generate, little-disks, modular, swiss-cheese, libkind-directed, pattern-runs-on-matter, open-games-arena, free-monad-trees, agent-o-rama, pulse-mcp-stream, koopman-generator, oapply-colimit, colimit-reconstruct, **moebius-inversion**
+- **MINUS (-1)**: three-match, slime-lisp, clj-kondo-3color, hatchery-papers, proofgeneral-narya, sheaf-cohomology, temporal-coalgebra, persistent-homology, cubes, cactus, gravity, cohomology-obstruction, spined-categories, bumpus-width, influence-propagation, polyglot-spi, dmd-spectral, interval-presheaf, schema-validation, ramanujan-expander, keychain-secure, **osm-topology**
+- **ERGODIC (0)**: unworld, world-hopping, acsets, glass-bead-game, epistemic-arbitrage, kan-extensions, dialectica, open-games, discohy-streams, thread, lhott-cohesive-linear, asi-polynomial-operads, condensed-analytic-stacks, abductive-repl, entropy-sequencer, cognitive-surrogate, lispsyntax-acset, structured-decomp, algebraic-dynamics, deepwiki-mcp, ihara-zeta, compositional-acset-comparison, ies, mdm-cobordism, **duckdb-spatial**, **geodesic-manifold**
+- **PLUS (+1)**: gay-mcp, cider-clojure, geiser-chicken, rubato-composer, free-monad-gen, operad-compose, topos-generate, little-disks, modular, swiss-cheese, libkind-directed, pattern-runs-on-matter, open-games-arena, free-monad-trees, agent-o-rama, pulse-mcp-stream, koopman-generator, oapply-colimit, colimit-reconstruct, moebius-inversion, **map-projection**, **geohash-coloring**
 
 ## Integration with Music Topos
 
@@ -187,6 +235,6 @@ The triadic structure mirrors the core patterns:
 - **3-MATCH**: Colored subgraph isomorphism with GF(3) = 0
 - **Glass Bead Game**: Badiou triangle with three polarities
 
-## Available Skills (30)
+## Available Skills (99+)
 
 See `.agents/skills/` for symlinks to all skill definitions in `.ruler/skills/`.
