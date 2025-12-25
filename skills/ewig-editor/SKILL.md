@@ -1,3 +1,9 @@
+---
+name: ewig-editor
+description: The eternal text editor — Didactic Ersatz Emacs demonstrating immutable
+  data-structures and the single-atom architecture.
+---
+
 # Ewig - Eternal Didactic Text Editor
 
 The eternal text editor — Didactic Ersatz Emacs demonstrating immutable data-structures and the single-atom architecture.

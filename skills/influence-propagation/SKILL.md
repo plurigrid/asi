@@ -1,3 +1,8 @@
+---
+name: influence-propagation
+description: "' Layer 7: Interperspectival Network Analysis and Influence Flow'"
+---
+
 # influence-propagation
 
 > Layer 7: Interperspectival Network Analysis and Influence Flow

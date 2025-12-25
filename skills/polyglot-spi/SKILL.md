@@ -1,3 +1,8 @@
+---
+name: polyglot-spi
+description: ' Cross-Language Strong Parallelism Invariance Verification'
+---
+
 # polyglot-spi
 
 > Cross-Language Strong Parallelism Invariance Verification

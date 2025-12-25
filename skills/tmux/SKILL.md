@@ -1,3 +1,8 @@
+---
+name: tmux
+description: Terminal multiplexer.
+---
+
 # tmux
 
 Terminal multiplexer.

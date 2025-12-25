@@ -1,7 +1,6 @@
 ---
 name: duck-time-travel
-description: SKILL: Duck Time Travel
-source: local
+description: ""SKILL: Duck Time Travel""
 license: UNLICENSED
 ---
 

@@ -1,3 +1,8 @@
+---
+name: hoot
+description: Scheme→WebAssembly compiler (4K lines info).
+---
+
 # hoot
 
 Scheme→WebAssembly compiler (4K lines info).

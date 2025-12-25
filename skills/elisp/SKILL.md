@@ -1,3 +1,8 @@
+---
+name: elisp
+description: Emacs Lisp reference (106K lines info).
+---
+
 # elisp
 
 Emacs Lisp reference (106K lines info).

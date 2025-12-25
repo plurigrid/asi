@@ -1,8 +1,10 @@
 ---
 name: deepwiki-mcp
-description: "DeepWiki MCP server for AI-powered GitHub repository documentation and Q&A"
-trit: 0
-bundle: research
+description: DeepWiki MCP server for AI-powered GitHub repository documentation and
+  Q&A
+metadata:
+  trit: 0
+  bundle: research
 ---
 
 # DeepWiki MCP Skill

@@ -1,3 +1,11 @@
+---
+name: nix-acset-worlding
+description: Model Nix store as Attributed C-Set for dependency verification, GC analysis,
+  and Flox world management with Gay.jl coloring.
+metadata:
+  short-description: Nix store as ACSet
+---
+
 # Nix ACSet Worlding Skill
 
 > **Trit**: -1 (MINUS) - Constraint verification of Nix store semantics

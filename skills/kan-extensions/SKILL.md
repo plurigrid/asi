@@ -1,8 +1,9 @@
 ---
 name: kan-extensions
 description: Kan Extensions Skill (ERGODIC 0)
-source: local
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Kan Extensions Skill (ERGODIC 0)

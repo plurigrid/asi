@@ -1,3 +1,8 @@
+---
+name: flox
+description: Reproducible development environments powered by Nix.
+---
+
 # flox
 
 Reproducible development environments powered by Nix.

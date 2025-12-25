@@ -1,3 +1,8 @@
+---
+name: emacs
+description: Emacs ecosystem = elisp + org + gnus + tramp + eglot.
+---
+
 # emacs
 
 Emacs ecosystem = elisp + org + gnus + tramp + eglot.

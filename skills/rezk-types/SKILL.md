@@ -1,10 +1,15 @@
 ---
 name: rezk-types
-description: "Rezk types (complete Segal spaces). Local univalence: categorical isomorphisms ≃ type-theoretic identities."
-trit: 1
-polarity: PLUS
-source: "Riehl-Shulman 2017 + Rezk 2001: Complete Segal Spaces"
-technologies: [Rzk, Lean4, InfinityCosmos]
+description: "'Rezk types (complete Segal spaces). Local univalence: categorical isomorphisms"
+  ≃ type-theoretic identities.'
+metadata:
+  trit: 1
+  polarity: PLUS
+  source: 'Riehl-Shulman 2017 + Rezk 2001: Complete Segal Spaces'
+  technologies:
+  - Rzk
+  - Lean4
+  - InfinityCosmos
 ---
 
 # Rezk Types Skill

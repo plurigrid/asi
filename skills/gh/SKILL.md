@@ -1,3 +1,8 @@
+---
+name: gh
+description: GitHub CLI (212 man pages).
+---
+
 # gh
 
 GitHub CLI (212 man pages).

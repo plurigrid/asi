@@ -1,7 +1,9 @@
 ---
 name: job-application
-description: Write tailored cover letters and job applications using your CV and preferred style
-version: 1.0.0
+description: Write tailored cover letters and job applications using your CV and preferred
+  style
+metadata:
+  version: 1.0.0
 ---
 
 # Job Application Assistant

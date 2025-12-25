@@ -1,8 +1,10 @@
 ---
 name: gay-mcp
-description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP tools for palettes and threads.
-source: local
+description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+  tools for palettes and threads.
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 <!-- Propagated to codex | Trit: 0 | Source: .ruler/skills/gay-mcp -->

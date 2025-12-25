@@ -1,3 +1,8 @@
+---
+name: ffmpeg
+description: Media processing (10 man pages).
+---
+
 # ffmpeg
 
 Media processing (10 man pages).

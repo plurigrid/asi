@@ -1,3 +1,8 @@
+---
+name: abductive-repl
+description: ' Hypothesis-Test Loops via REPL for Exploratory Abductive Inference'
+---
+
 # abductive-repl
 
 > Hypothesis-Test Loops via REPL for Exploratory Abductive Inference

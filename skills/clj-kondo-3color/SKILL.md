@@ -1,11 +1,13 @@
 ---
 name: clj-kondo-3color
-description: "clj-kondo linter with Gay.jl 3-color integration for GF(3) conservation in Clojure code analysis."
-source: clj-kondo/clj-kondo + music-topos
+description: clj-kondo linter with Gay.jl 3-color integration for GF(3) conservation
+  in Clojure code analysis.
 license: EPL-1.0
-xenomodern: true
-stars: 1800
-ironic_detachment: 0.42
+metadata:
+  source: clj-kondo/clj-kondo + music-topos
+  xenomodern: true
+  stars: 1800
+  ironic_detachment: 0.42
 ---
 
 # clj-kondo 3-Color Integration

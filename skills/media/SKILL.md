@@ -1,3 +1,8 @@
+---
+name: media
+description: Media processing = ffmpeg + imagemagick + sox.
+---
+
 # media
 
 Media processing = ffmpeg + imagemagick + sox.

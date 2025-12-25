@@ -1,10 +1,19 @@
 ---
 name: cognitive-superposition
-description: "Cognitive superposition synthesizing Riehl (∞-categories), Sutskever (compression), Schmidhuber (curiosity-driven), and Bengio (GFlowNets) into unified ASI framework with quantum-inspired measurement collapse."
-trit: 0
-polarity: ERGODIC
-source: "Riehl-Shulman + Sutskever-SSI + Schmidhuber-LSTM + Bengio-GFlowNet"
-technologies: [Rzk, Lean4, MLX, JAX, Julia, DisCoPy]
+description: Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
+  (compression), Schmidhuber (curiosity-driven), and Bengio (GFlowNets) into unified
+  ASI framework with quantum-inspired measurement collapse.
+metadata:
+  trit: 0
+  polarity: ERGODIC
+  source: Riehl-Shulman + Sutskever-SSI + Schmidhuber-LSTM + Bengio-GFlowNet
+  technologies:
+  - Rzk
+  - Lean4
+  - MLX
+  - JAX
+  - Julia
+  - DisCoPy
 ---
 
 # Cognitive Superposition Skill

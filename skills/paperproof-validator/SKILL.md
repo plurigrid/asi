@@ -1,3 +1,8 @@
+---
+name: paperproof-validator
+description: ' Formal Proof Visualization and Verification for Lean 4'
+---
+
 # paperproof-validator
 
 > Formal Proof Visualization and Verification for Lean 4

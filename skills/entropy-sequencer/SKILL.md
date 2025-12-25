@@ -1,3 +1,8 @@
+---
+name: entropy-sequencer
+description: "' Layer 5: Interaction Interleaving for Maximum Information Gain'"
+---
+
 # entropy-sequencer
 
 > Layer 5: Interaction Interleaving for Maximum Information Gain

@@ -1,7 +1,9 @@
 ---
 name: discohy-streams
-description: DisCoPy categorical color streams via Hy with 3 parallel TAP streams and 7 operad variants
-trit: 0
+description: DisCoPy categorical color streams via Hy with 3 parallel TAP streams
+  and 7 operad variants
+metadata:
+  trit: 0
 ---
 
 # discohy-streams - DiscoHy Operadic Color Streams

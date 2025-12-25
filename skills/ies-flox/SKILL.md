@@ -1,3 +1,10 @@
+---
+name: ies-flox
+description: FloxHub publication `bmorphism/ies` - a focused development environment
+  for Clojure, Julia, Python, and multimedia with Gay.jl/Gay.bb deterministic coloring
+  integration.
+---
+
 # ies-flox
 
 FloxHub publication `bmorphism/ies` - a focused development environment for Clojure, Julia, Python, and multimedia with Gay.jl/Gay.bb deterministic coloring integration.

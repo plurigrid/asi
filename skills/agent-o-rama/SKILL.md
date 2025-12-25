@@ -1,3 +1,8 @@
+---
+name: agent-o-rama
+description: "' Layer 4: Learning and Pattern Extraction for Cognitive Surrogate Systems'"
+---
+
 # agent-o-rama
 
 > Layer 4: Learning and Pattern Extraction for Cognitive Surrogate Systems

@@ -1,8 +1,11 @@
 ---
 name: pptx
-description: Presentation creation, editing, and analysis. When Claude needs to work with presentations (.pptx files) for creating new presentations, modifying content, working with layouts, adding speaker notes, or any presentation tasks.
-source: anthropics/skills
+description: Presentation creation, editing, and analysis. When Claude needs to work
+  with presentations (.pptx files) for creating new presentations, modifying content,
+  working with layouts, adding speaker notes, or any presentation tasks.
 license: Apache-2.0
+metadata:
+  source: anthropics/skills
 ---
 
 # PowerPoint Processing

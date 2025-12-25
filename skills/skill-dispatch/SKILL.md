@@ -1,3 +1,8 @@
+---
+name: skill-dispatch
+description: ' GF(3) Triadic Task Routing for Subagent Orchestration'
+---
+
 # skill-dispatch
 
 > GF(3) Triadic Task Routing for Subagent Orchestration

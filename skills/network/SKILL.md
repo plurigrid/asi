@@ -1,3 +1,8 @@
+---
+name: network
+description: Network tools = tailscale + curl + ssh + nmap.
+---
+
 # network
 
 Network tools = tailscale + curl + ssh + nmap.

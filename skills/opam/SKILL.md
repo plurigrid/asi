@@ -1,3 +1,8 @@
+---
+name: opam
+description: OCaml package manager (45 subcommands).
+---
+
 # opam
 
 OCaml package manager (45 subcommands).

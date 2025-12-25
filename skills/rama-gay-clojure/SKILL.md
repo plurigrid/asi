@@ -1,9 +1,11 @@
 ---
 name: rama-gay-clojure
-description: "Red Planet Labs Rama with Gay.jl deterministic coloring for 100x backend development with gay-colored parentheses as expressive as tensor shapes."
-source: redplanetlabs/rama + music-topos
+description: Red Planet Labs Rama with Gay.jl deterministic coloring for 100x backend
+  development with gay-colored parentheses as expressive as tensor shapes.
 license: Proprietary (Rama) + MIT (integration)
-xenomodern: true
+metadata:
+  source: redplanetlabs/rama + music-topos
+  xenomodern: true
 ---
 
 # Rama + Gay.jl: Colored Scalable Backends

@@ -1,3 +1,8 @@
+---
+name: tailscale
+description: Mesh VPN.
+---
+
 # tailscale
 
 Mesh VPN.

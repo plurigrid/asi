@@ -1,8 +1,11 @@
 ---
 name: javascript-typescript
-description: JavaScript and TypeScript development with ES6+, Node.js, React, and modern web frameworks. Use for frontend, backend, or full-stack JavaScript/TypeScript projects.
-source: wshobson/agents
+description: JavaScript and TypeScript development with ES6+, Node.js, React, and
+  modern web frameworks. Use for frontend, backend, or full-stack JavaScript/TypeScript
+  projects.
 license: MIT
+metadata:
+  source: wshobson/agents
 ---
 
 # JavaScript/TypeScript Development

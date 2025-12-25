@@ -1,8 +1,10 @@
 ---
 name: persistent-homology
-description: Topological data analysis for stable feature verification across filtrations of code complexity.
-source: local
+description: Topological data analysis for stable feature verification across filtrations
+  of code complexity.
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Persistent Homology Skill: Stable Feature Verification

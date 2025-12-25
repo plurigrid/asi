@@ -1,8 +1,9 @@
 ---
 name: open-games
 description: Open Games Skill (ERGODIC 0)
-source: local
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Open Games Skill (ERGODIC 0)

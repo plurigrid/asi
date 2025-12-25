@@ -1,10 +1,14 @@
 ---
 name: directed-interval
-description: "Directed interval type 2 axiomatizing (0 → 1). Time-directed homotopy for reactions."
-trit: 0
-polarity: ERGODIC
-source: "Riehl-Shulman 2017: directed cubes and extension types"
-technologies: [Rzk, Cubical Agda]
+description: Directed interval type 2 axiomatizing (0 → 1). Time-directed homotopy
+  for reactions.
+metadata:
+  trit: 0
+  polarity: ERGODIC
+  source: 'Riehl-Shulman 2017: directed cubes and extension types'
+  technologies:
+  - Rzk
+  - Cubical Agda
 ---
 
 # Directed Interval Skill

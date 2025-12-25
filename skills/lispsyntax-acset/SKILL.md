@@ -1,12 +1,14 @@
 ---
 name: lispsyntax-acset
-description: "LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv-style deriving and Specter-style navigation"
-source: music-topos + Specter CPS patterns
+description: LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv-style
+  deriving and Specter-style navigation
 license: MIT
-trit: 0
-gf3_conserved: true
-dynamic_sufficiency: verified
-version: 1.2.0
+metadata:
+  source: music-topos + Specter CPS patterns
+  trit: 0
+  gf3_conserved: true
+  dynamic_sufficiency: verified
+  version: 1.2.0
 ---
 
 # lispsyntax-acset

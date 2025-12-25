@@ -1,8 +1,9 @@
 ---
 name: operad-compose
 description: Operad Composition Skill (PLUS +1)
-source: local
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Operad Composition Skill (PLUS +1)

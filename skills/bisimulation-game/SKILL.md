@@ -1,10 +1,12 @@
 ---
 name: bisimulation-game
-description: "Bisimulation game for resilient skill dispersal across AI agents with GF(3) conservation and observational bridge types."
-source: music-topos + DiscoHy + DisCoPy
+description: Bisimulation game for resilient skill dispersal across AI agents with
+  GF(3) conservation and observational bridge types.
 license: MIT
-xenomodern: true
-ironic_detachment: 0.42
+metadata:
+  source: music-topos + DiscoHy + DisCoPy
+  xenomodern: true
+  ironic_detachment: 0.42
 ---
 
 # Bisimulation Game Skill
