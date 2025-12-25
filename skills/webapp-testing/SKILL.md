@@ -5,6 +5,7 @@ description: Toolkit for interacting with and testing local web applications usi
   browser screenshots, and viewing browser logs.
 license: Apache-2.0
 metadata:
+  trit: -1
   source: anthropics/skills
 ---
 

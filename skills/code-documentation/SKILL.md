@@ -5,6 +5,7 @@ description: Writing effective code documentation - API docs, README files, inli
   developer guides.
 license: MIT
 metadata:
+  trit: 0
   source: wshobson/agents
 ---
 

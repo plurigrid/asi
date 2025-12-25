@@ -4,6 +4,7 @@ description: Lee Cronin's Assembly Theory for molecular complexity measurement a
   life detection via assembly index computation.
 license: UNLICENSED
 metadata:
+  trit: 1
   source: local
 ---
 

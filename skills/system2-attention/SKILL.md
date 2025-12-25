@@ -4,6 +4,7 @@ description: System 2 attention mechanisms for deliberate, slow reasoning in tra
   architectures.
 license: UNLICENSED
 metadata:
+  trit: 0
   source: local
 ---
 

@@ -4,6 +4,7 @@ description: Elements of ∞-Category Theory (Riehl-Verity) for foundational ∞
   constructions and model-independence.
 license: UNLICENSED
 metadata:
+  trit: -1
   source: local
 ---
 

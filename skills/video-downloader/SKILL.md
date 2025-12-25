@@ -2,6 +2,8 @@
 name: video-downloader
 description: Downloads videos from YouTube and other platforms for offline viewing,
   editing, or archival. Handles various formats and quality options.
+metadata:
+  trit: 0
 ---
 
 # Video Downloader

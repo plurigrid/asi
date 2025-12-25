@@ -5,6 +5,7 @@ description: Create beautiful visual art in .png and .pdf documents using design
   visual piece. Creates original visual designs.
 license: Apache-2.0
 metadata:
+  trit: 1
   source: anthropics/skills
 ---
 

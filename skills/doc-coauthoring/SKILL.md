@@ -6,6 +6,8 @@ description: Guide users through a structured workflow for co-authoring document
   context, refine content through iteration, and verify the doc works for readers.
   Trigger when user mentions writing docs, creating proposals, drafting specs, or
   similar documentation tasks.
+metadata:
+  trit: 0
 ---
 
 # Doc Co-Authoring Workflow

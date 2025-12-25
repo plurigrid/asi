@@ -1,6 +1,8 @@
 ---
 name: gh
 description: GitHub CLI (212 man pages).
+metadata:
+  trit: 0
 ---
 
 # gh

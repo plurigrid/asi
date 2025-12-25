@@ -5,6 +5,7 @@ description: Code refactoring patterns and techniques for improving code quality
   maintainability.
 license: MIT
 metadata:
+  trit: 0
   source: wshobson/agents
 ---
 

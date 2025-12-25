@@ -1,6 +1,8 @@
 ---
 name: cider-embedding
 description: Semantic embeddings for Clojure code navigation via CIDER
+metadata:
+  trit: 0
 ---
 
 # Cider Embedding Skill

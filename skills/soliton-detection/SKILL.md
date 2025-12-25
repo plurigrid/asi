@@ -6,7 +6,7 @@ metadata:
   source: music-topos/lib/soliton_skill_bridge.jl + topological_solitons_anyons.jl
   xenomodern: true
   ironic_detachment: 0.88
-  trit: 0
+  trit: -1
   version: 1.0.0
   tags:
   - topology

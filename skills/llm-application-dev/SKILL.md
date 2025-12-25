@@ -5,6 +5,7 @@ description: Building applications with Large Language Models - prompt engineeri
   automation.
 license: MIT
 metadata:
+  trit: 0
   source: wshobson/agents
 ---
 

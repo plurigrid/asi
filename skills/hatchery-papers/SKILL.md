@@ -4,6 +4,7 @@ description: Chicken Scheme Hatchery eggs and academic papers for color logic, 2
   colored operads, and higher observational type theory.
 license: MIT
 metadata:
+  trit: -1
   source: music-topos/skills
 ---
 

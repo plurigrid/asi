@@ -3,6 +3,8 @@ name: image-enhancer
 description: Improves the quality of images, especially screenshots, by enhancing
   resolution, sharpness, and clarity. Perfect for preparing images for presentations,
   documentation, or social media posts.
+metadata:
+  trit: 0
 ---
 
 # Image Enhancer
