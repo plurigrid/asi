@@ -20,7 +20,8 @@ Skills are allocated across 3 agents such that `sum(trits) ≡ 0 (mod 3)`.
 │  bisimulation-game   unwiring-arena        gay-mcp                 │
 │  spi-parallel-verify acsets                triad-interleave        │
 │  polyglot-spi        skill-dispatch        world-hopping           │
-│                      entropy-sequencer     agent-o-rama            │
+│  nix-acset-worlding  bumpus-narratives     agent-o-rama            │
+│  structured-decomp   entropy-sequencer     cognitive-superpos      │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -33,6 +34,8 @@ Skills are allocated across 3 agents such that `sum(trits) ≡ 0 (mod 3)`.
 | `bisimulation-game` | Attacker/Defender/Arbiter verification |
 | `spi-parallel-verify` | Strong Parallelism Invariance checking |
 | `polyglot-spi` | Cross-language SPI verification |
+| `nix-acset-worlding` | Nix store dependency verification via ACSets |
+| `structured-decomp` | Sheaves on tree decompositions (FPT) |
 
 **Role**: Constraint verification, error detection, falsification
 
@@ -44,6 +47,7 @@ Skills are allocated across 3 agents such that `sum(trits) ≡ 0 (mod 3)`.
 | `acsets` | Algebraic database schemas |
 | `skill-dispatch` | GF(3) triadic routing |
 | `entropy-sequencer` | Information-gain ordering |
+| `bumpus-narratives` | Sheaves on time categories for temporal reasoning |
 
 **Role**: Balance, flow, coordination, arena equilibrium
 
