@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  music-topos-api:
+    build: .
+    ports:
+      - "4567:4567"
+    environment:
+      - RACK_ENV=production
+      - SINATRA_SETTINGS=production
+    healthcheck:
+      test: ["CMD", "ruby", "-e", "require 'net/http'; Net::HTTP.get(URI('http://localhost:4567/health'))"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+    volumes:
+      - ./lib:/app/lib:ro
+      - ./api:/app/api:ro
+    networks:
+      - music-topos-network
+
+networks:
+  music-topos-network:
+    driver: bridge
