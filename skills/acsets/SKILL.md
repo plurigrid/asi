@@ -1,7 +1,6 @@
 ---
 name: acsets-algebraic-databases
-description: "'ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional"
-  navigation. Category-theoretic formalism for relational databases.'
+description: "ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional navigation. Category-theoretic formalism for relational databases."
 license: MIT
 metadata:
   source: AlgebraicJulia/ACSets.jl + music-topos + Specter CPS patterns

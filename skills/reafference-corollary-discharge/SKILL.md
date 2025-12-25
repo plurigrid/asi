@@ -1,6 +1,6 @@
 ---
 name: reafference-corollary-discharge
-description: ""Skill: Reafference & Corollary Discharge (von Holst Neuroscience)""
+description: "Von Holst reafference and corollary discharge for behavioral verification and signal processing"
 license: UNLICENSED
 ---
 
