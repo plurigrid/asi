@@ -1,0 +1,201 @@
+#+TITLE: Alpha Executor System Documentation
+#+AUTHOR: Auto-generated from execution thread T-019b361a-6ebd-768f-afd5-af0ce22f8b8d
+#+DATE: 2025-12-19
+#+STARTUP: overview
+
+* System Overview
+** Purpose
+Automated APT trading executor for Aptos mainnet with price-triggered profit-taking and dip-buying (vulture) strategies.
+
+** Design Goal
+2x returns in 12 hours via aggressive alpha extraction.
+
+** Actual Result
++8.61% price appreciation, $0 profit taken (triggers too aggressive).
+
+* File Structure
+** /Users/alice/agent_scripts/
+| File | Purpose |
+|------|---------|
+| alpha_executor.py | Main execution script |
+| wallets.yaml | Wallet configuration (CONTAINS PRIVATE KEYS) |
+| Holdings.md | Current state tracker |
+| alpha.log | Execution log |
+| alpha_executor_system.org | This documentation |
+
+* Wallet Configuration
+** Primary Trading Wallet
+- Account: ~0xe2124a9703eac1745cd9495c26dcae3f9991e69278751ebc00ae94881dac0f7c~
+- Public Key: ~ed25519-pub-0xd235cff3e47ef3b6266b5e9a64f4c75851da3a422adfd73dd18222d921d6a441~
+- Private Key: ~ed25519-priv-0xf9f66ca4c2542e240fa550d269d433f5eca2bad2f3275a0003336fc1926ea2f1~
+- Purpose: APT trading, staking, leverage positions
+- Fungible Store (APT): ~0xc95f37039644dc7e9ef6bbdbc1dc2b4d2be1fd96c38f541a64c79b5bc87e55f3~
+- Fungible Store (amAPT): ~0x81a4a0890ed1738f1d42f76d7470c73648725f43f6f19632a0766ba629a376b4~
+
+** USDC Withdrawal Wallet
+- Account: ~0x4569c5d92fa4d3369dc0aa5413426445900eb9081fcd65ca0e68f0efa2cdd28d~
+- Public Key: ~ed25519-pub-0x5ef40e2771e732d976508f4bcf7d898d380a73aa80d47ac7f1bb76ab079b0841~
+- Private Key: ~ed25519-priv-0x80506c559fea0afcc387dc9e274386c3470f07b9eda59ef723c0674dbaa3d92d~
+- Purpose: USDC profit extraction
+- Status: Unfunded (needs gas)
+
+* Script Architecture
+** Dependencies
+#+begin_src python
+import asyncio
+import aiohttp
+import yaml
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+#+end_src
+
+** Configuration Constants
+#+begin_src python
+ALLOCATION = {
+    "spot": 45.0,           # APT held in wallet
+    "leverage_collateral": 10.0,  # For 5x leverage (50 notional)
+    "vultures": 45.0,       # Reserved for dip-buying
+}
+
+# Price triggers (USD)
+BULL_1 = 1.60   # Log trigger only
+BULL_2 = 1.80   # Swap 30% to USDC
+BULL_3 = 2.00   # Swap 50% to USDC
+MOON = 2.50     # Swap 75% to USDC
+
+# Vulture levels (buy dips)
+VULTURE_LEVELS = [(1.40, 15.0), (1.30, 15.0), (1.20, 15.0)]
+#+end_src
+
+** Core Classes
+*** AptosClient
+Handles mainnet interaction via REST API.
+
+**** Methods
+- ~get_account_info()~ - Fetch account sequence number
+- ~get_balance()~ - Read APT from fungible asset store
+- ~submit_transaction(payload)~ - Sign and submit tx to mainnet
+- ~swap_apt_to_usdc(amount, min_out)~ - Execute Liquidswap swap
+
+*** Price Feed
+~get_price()~ with fallbacks:
+1. CoinGecko API
+2. Binance API
+3. Default: $1.50
+
+** Main Loop Logic
+#+begin_src
+1. Initialize client, get balance
+2. Set start price, calculate 2x target
+3. Loop for 12 hours:
+   a. Fetch price
+   b. Check hour-8 alert
+   c. Check vulture fills (price < level)
+   d. Check bull triggers (price > level)
+   e. Log every 10 minutes
+   f. Update Holdings.md
+   g. Sleep 5 seconds
+4. Log completion
+#+end_src
+
+* Execution Log Analysis
+** Timeline Summary
+| Time | Event | Price | PnL |
+|------|-------|-------|-----|
+| 05:44 | START | $1.51 | 0% |
+| 11:13 | B1 TRIGGERED | $1.61 | +6.62% |
+| 13:53 | HOUR 8 ALERT | $1.60 | +5.96% |
+| 15:38 | PEAK | $1.66 | +9.93% |
+| 17:56 | END | $1.64 | +8.61% |
+
+** Triggers Status
+| Trigger | Target | Status | Reason |
+|---------|--------|--------|--------|
+| B1 | $1.60 | FIRED | Price reached $1.61 |
+| B2 | $1.80 | NOT FIRED | Price peaked at $1.66 |
+| B3 | $2.00 | NOT FIRED | Price never reached |
+| MOON | $2.50 | NOT FIRED | Price never reached |
+| Vulture $1.40 | $1.40 | NOT FILLED | Price never dropped |
+| Vulture $1.30 | $1.30 | NOT FILLED | Price never dropped |
+| Vulture $1.20 | $1.20 | NOT FILLED | Price never dropped |
+
+** Key Observations
+1. B1 triggered but only logged (no action taken)
+2. Price peaked at $1.66 (+9.93%) but no profits locked
+3. All vulture bids were too deep - price stayed above $1.50
+4. Hour 8 alert fired correctly at 13:53
+
+* On-Chain State
+** Pre-Execution Transaction (NOT from this script)
+- Hash: ~0x586798a430497717a036121555b72c2b232bd2dae0d3d2d3aadfb2ac28277e9e~
+- Function: ~0x111ae3e5bc816a5e63c2da97d0aa3886519e0cd5e4b046659fa35796bd11542a::router::deposit_entry~
+- Effect:
+  - 25 APT deposited to Amnis
+  - 21.07 stAPT BURNED
+  - 25 amAPT received
+- Sequence: 0 (before executor ran)
+- WARNING: This converted existing stAPT to amAPT
+
+** Final Balances
+| Asset | Amount | USD Value |
+|-------|--------|-----------|
+| APT | 274.5044 | $450.19 |
+| amAPT | 25.0000 | $41.00 |
+| stAPT | 0 | $0 (burned) |
+| USDC | 0 | $0 |
+| TOTAL | 299.50 APT equiv | $491.19 |
+
+* Critical Issues Identified
+** Issue 1: Profit Triggers Too Aggressive
+- Problem: Set at $1.80/$2.00/$2.50 for 12h window
+- Reality: Price only reached $1.66
+- Result: Zero profit taken despite +10% rally
+- Fix: Scale triggers to timeframe (e.g., +5%/+10%/+15% for 12h)
+
+** Issue 2: B1 Trigger Non-Actionable
+- Problem: B1 at $1.60 only logged, didn't take profit
+- Result: Watched the rally do nothing
+- Fix: B1 should close 25% of position
+
+** Issue 3: Vulture Bids Too Deep
+- Problem: Set at $1.40/$1.30/$1.20
+- Reality: Price never went below $1.50
+- Result: 45 APT sat unused
+- Fix: Set within 5-10% of current price
+
+** Issue 4: stAPT Conversion (External)
+- Problem: Pre-execution tx converted stAPT → amAPT
+- Source: Previous thread or manual action
+- Result: User's stAPT position burned without consent
+- Fix: Review previous thread's actions
+
+* Recommended Improvements
+** Short-Term Fixes
+1. Lower profit triggers: B1=$1.55, B2=$1.65, B3=$1.75
+2. Make B1 take 20% profit, not just log
+3. Set vultures within 10%: $1.45, $1.40, $1.35
+4. Add trailing stop after +5%
+
+** Architecture Improvements
+1. Add funding rate / perp basis checks
+2. Implement time-weighted exit (start exiting at hour 10)
+3. Add volatility-adjusted position sizing
+4. Separate monitoring from execution
+
+** Agent Weight Adjustments
+| Agent | Old | New | Reason |
+|-------|-----|-----|--------|
+| Exa-Stalker | 24% | 30% | Most accurate predictions |
+| Macro-Basalt | 12% | 18% | Correct floor identification |
+| Technical-Vulture | 21% | 8% | Vultures never filled |
+| Nash-Oracle | 10% | 4% | No actionable edge |
+
+* Security Notes
+- Private keys stored in wallets.yaml - DO NOT COMMIT
+- USDC wallet unfunded - needs gas before use
+- Script has live swap capability via Liquidswap
+- All transactions signed locally, submitted to mainnet
+
+* Thread References
+- Execution: T-019b361a-6ebd-768f-afd5-af0ce22f8b8d
+- Planning: T-019b35f9-8a35-740f-be27-0560e76d9221
+- Analysis: /Users/alice/aptos-crypto-analysis.org
