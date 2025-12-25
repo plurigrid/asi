@@ -22,6 +22,7 @@ Skills are allocated across 3 agents such that `sum(trits) ≡ 0 (mod 3)`.
 │  polyglot-spi        skill-dispatch        world-hopping           │
 │  nix-acset-worlding  bumpus-narratives     agent-o-rama            │
 │  structured-decomp   entropy-sequencer     cognitive-superpos      │
+│  three-match         tripartite-decomp     skill-evolution         │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -36,6 +37,7 @@ Skills are allocated across 3 agents such that `sum(trits) ≡ 0 (mod 3)`.
 | `polyglot-spi` | Cross-language SPI verification |
 | `nix-acset-worlding` | Nix store dependency verification via ACSets |
 | `structured-decomp` | Sheaves on tree decompositions (FPT) |
+| `three-match` | 3-SAT reduction via colored subgraph isomorphism |
 
 **Role**: Constraint verification, error detection, falsification
 
@@ -48,6 +50,7 @@ Skills are allocated across 3 agents such that `sum(trits) ≡ 0 (mod 3)`.
 | `skill-dispatch` | GF(3) triadic routing |
 | `entropy-sequencer` | Information-gain ordering |
 | `bumpus-narratives` | Sheaves on time categories for temporal reasoning |
+| `tripartite-decompositions` | GF(3)-balanced structured decompositions |
 
 **Role**: Balance, flow, coordination, arena equilibrium
 
@@ -59,6 +62,7 @@ Skills are allocated across 3 agents such that `sum(trits) ≡ 0 (mod 3)`.
 | `triad-interleave` | 3-stream scheduling |
 | `world-hopping` | Badiou possible world navigation |
 | `agent-o-rama` | Pattern extraction and learning |
+| `skill-evolution` | Evolutionary skill fitness and mutation |
 
 **Role**: Generative exploration, color generation, world navigation
 

@@ -1,7 +1,6 @@
 ---
 name: curiosity-driven
-description: "'Schmidhuber''s curiosity-driven learning: Intrinsic motivation via compression"
-  progress. Seek states that improve world model.'
+description: "Schmidhuber's curiosity-driven learning: Intrinsic motivation via compression progress. Seek states that improve world model."
 metadata:
   trit: 1
   polarity: PLUS

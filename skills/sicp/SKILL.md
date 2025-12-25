@@ -1,7 +1,6 @@
 ---
 name: sicp
-description: "'SICP: Structure and Interpretation of Computer Programs - computational"
-  processes, abstraction, and metalinguistic design'
+description: "SICP: Structure and Interpretation of Computer Programs - computational processes, abstraction, and metalinguistic design"
 license: CC-BY-SA-4.0
 metadata:
   source: info-geometric-morphism

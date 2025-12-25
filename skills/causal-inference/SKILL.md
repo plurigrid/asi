@@ -1,7 +1,6 @@
 ---
 name: causal-inference
-description: "'Bengio''s causal inference for AI: Interventional reasoning, counterfactuals,"
-  and System 2 deep learning. World models with causal structure.'
+description: "Bengio's causal inference for AI: Interventional reasoning, counterfactuals, and System 2 deep learning. World models with causal structure."
 metadata:
   trit: 0
   polarity: ERGODIC

@@ -1,7 +1,6 @@
 ---
 name: godel-machine
-description: "'Schmidhuber''s Gödel Machine: Self-improving systems that prove their"
-  own improvements. Darwin Gödel Machine (DGM) combines evolution with formal verification.'
+description: "Schmidhuber's Gödel Machine: Self-improving systems that prove their own improvements. Darwin Gödel Machine (DGM) combines evolution with formal verification."
 metadata:
   trit: 1
   polarity: PLUS
