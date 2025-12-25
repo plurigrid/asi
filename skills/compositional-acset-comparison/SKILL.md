@@ -4,6 +4,8 @@ description: "Compositional algorithm and data analysis via algebraic databases"
 license: UNLICENSED
 metadata:
   trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Compositional ACSet Comparison Skill
@@ -368,3 +370,22 @@ For presheaf topoi PSh(SchDuckDB) and PSh(SchLanceDB):
 - [ACSets.jl Documentation](https://algebraicjulia.github.io/ACSets.jl/)
 - [StructuredDecompositions.jl](https://github.com/AlgebraicJulia/StructuredDecompositions.jl)
 - [Gay.jl Deterministic Colors](https://github.com/bmorphism/Gay.jl)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

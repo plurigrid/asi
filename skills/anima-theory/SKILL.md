@@ -1,6 +1,8 @@
 ---
 name: anima-theory
 description: ANIMA as limit construction over condensed skill applications. Formalizes prediction markets as belief ANIMAs, structure dishes as condensation media, and impact as equivalence class change. Use for understanding agency at maximum entropy, compositional world modeling, or applying Scholze-Clausen condensed mathematics to AI.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # ANIMA Theory
@@ -382,3 +384,22 @@ just anima-gf3-check
 **Trit**: 0 (ERGODIC - coordinator of phases)  
 **Phase Diagram**: BEFORE → AT → BEYOND  
 **Agency Criterion**: EnumEntropy = MaxEnumEntropy
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

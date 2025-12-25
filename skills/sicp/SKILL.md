@@ -8,6 +8,8 @@ metadata:
   gf3_conserved: true
   xenomodern: true
   ironic_detachment: 0.42
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # SICP Skill
@@ -151,3 +153,22 @@ bb info_to_skill_morphism.bb parse sicp.info > sicp.sexp
 - [Full text online](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
 - [MIT OCW 6.001](https://ocw.mit.edu/courses/6-001-structure-and-interpretation-of-computer-programs-spring-2005/)
 - [SICP Distilled](https://www.sicpdistilled.com/) (Clojure version)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

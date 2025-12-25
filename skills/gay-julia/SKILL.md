@@ -4,6 +4,8 @@ description: Wide-gamut color sampling with splittable determinism using Pigeons
   SPI pattern and LispSyntax integration.
 metadata:
   trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Gay.jl - Wide-Gamut Deterministic Color Sampling
@@ -98,3 +100,22 @@ schedule = interleave(
 - `spi-parallel-verify` - Strong Parallelism Invariance verification
 - `triad-interleave` - Three-stream scheduling
 - `bisimulation-game` - GF(3) conservation in game semantics
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

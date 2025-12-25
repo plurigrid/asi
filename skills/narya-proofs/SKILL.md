@@ -1,6 +1,8 @@
 ---
 name: narya-proofs
 description: Mechanically verified proofs from Narya event logs. Verifies queue consistency, replay determinism, non-leakage, and GF(3) conservation. Use for proving system invariants, audit trails, or formal verification of event-sourced systems.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Narya Proofs Skill
@@ -341,3 +343,22 @@ just narya-gf3-report events.jsonl
 **Trit**: -1 (MINUS - overall validator role)  
 **GF(3)**: Conserved via meta-trit balancing  
 **Proof Hash**: SHA-256 Merkle root over all proof objects
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

@@ -1,6 +1,8 @@
 ---
 name: triadic-skill-orchestrator
 description: Orchestrates multiple skills in GF(3)-balanced triplets. Assigns MINUS/ERGODIC/PLUS trits to skills ensuring conservation. Use for multi-skill workflows, parallel skill dispatch, or maintaining GF(3) invariants across skill compositions.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Triadic Skill Orchestrator
@@ -172,3 +174,22 @@ See [scripts/triadic_skill_orchestrator.bb](file:///Users/alice/agent-o-rama/age
 **Type**: Skill Composition / Parallel Dispatch  
 **Trit**: 0 (ERGODIC - coordinator)  
 **GF(3)**: Enforced via third-trit correction
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

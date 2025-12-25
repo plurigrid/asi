@@ -5,6 +5,8 @@ metadata:
   trit: -1
   version: "1.0.0"
   bundle: tooling
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # OPAM OCaml Skill
@@ -75,4 +77,23 @@ let gf3_conserved trits =
 ```
 opam-ocaml (-1) ⊗ nickel (0) ⊗ geb (+1) = 0 ✓
 opam-ocaml (-1) ⊗ lispsyntax-acset (0) ⊗ free-monad-gen (+1) = 0 ✓
+```
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
 ```

@@ -4,6 +4,8 @@ trit: 0
 neighbors:
   left: pun-decomposition
   right: reflow
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Gestalt Hacking Skill (ERGODIC 0)
@@ -190,3 +192,22 @@ just gestalt-verify         # Check attack stats
 - [gestalt hacking thread](https://ampcode.com/threads/T-019b3e8d-1ab1-7548-ab74-fdd531cda57f)
 - [chromatic verifier thread](https://ampcode.com/threads/T-019b0ce1-815d-773b-b2ce-f5ef9b26e48d)
 - [cohesive sonification thread](https://ampcode.com/threads/T-019b43e6-3692-7390-af9a-e2da68fed856)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

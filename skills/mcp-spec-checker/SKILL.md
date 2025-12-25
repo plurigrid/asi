@@ -1,6 +1,8 @@
 ---
 name: mcp-spec-checker
 description: Predicate-level semantic diff for MCP protocol specs. Compares 0618 vs 1125 specs via Narya types, GF(3) evaluators, and Unison-style effects. Use for protocol verification, spec migration, or detecting breaking changes.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # MCP Spec Checker
@@ -285,3 +287,22 @@ Applied to MCP:
 **Type**: Protocol Verification / Semantic Diff  
 **Trit**: 0 (ERGODIC - coordinates three approaches)  
 **GF(3)**: Narya(-1) + Evaluators(0) + Unison(+1) = 0 ✓
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

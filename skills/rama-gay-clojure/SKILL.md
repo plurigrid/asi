@@ -7,6 +7,8 @@ metadata:
   trit: 0
   source: redplanetlabs/rama + music-topos
   xenomodern: true
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Rama + Gay.jl: Colored Scalable Backends
@@ -200,3 +202,22 @@ just rama-simulflow               # Voice-enabled Rama
 - [Rama Clojure API](https://redplanetlabs.com/docs/~/clj-defining-modules.html)
 - [Mastodon Clone](https://redplanetlabs.com/mastodon-clone) (10k LOC, Twitter-scale)
 - [Rama in 5 Minutes](https://blog.redplanetlabs.com/2025/12/02/rama-in-five-minutes-clojure-version/)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

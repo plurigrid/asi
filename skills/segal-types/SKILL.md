@@ -11,6 +11,8 @@ metadata:
   - Lean4
   - Agda
   - InfinityCosmos
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Segal Types Skill
@@ -129,3 +131,22 @@ end
 - Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories." *Higher Structures* 1(1):116-193.
 - [Rzk repository](https://github.com/rzk-lang/rzk)
 - [InfinityCosmos](https://github.com/emilyriehl/infinity-cosmos)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

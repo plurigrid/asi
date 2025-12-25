@@ -2,6 +2,8 @@
 name: aptos-trading
 description: Execute trades on Aptos mainnet with price-triggered profit-taking and dip-buying strategies. Includes wallet management, transaction signing, and DEX swaps via Liquidswap. Use when automating APT trading, checking balances, or executing swaps.
 compatibility: Requires Python 3.8+, aiohttp, pyyaml, cryptography. Mainnet access via REST API.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Aptos Trading Executor
@@ -80,3 +82,22 @@ Use `aptos init --private-key` to derive addresses correctly.
 - `/Users/alice/agent_scripts/wallets.yaml` - Wallet config (external)
 - `/Users/alice/agent_scripts/Holdings.md` - Live state tracker
 - `/Users/alice/agent_scripts/alpha.log` - Execution log
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

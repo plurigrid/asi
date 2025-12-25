@@ -3,6 +3,8 @@ name: mlx-jax-splitmix
 description: "MLX on Apple Silicon with JAX-style SplitMix64 PRNG. Deterministic color generation with GPU acceleration."
 trit: 0
 gf3_triad: "three-match (-1) ⊗ mlx-jax-splitmix (0) ⊗ gay-mcp (+1)"
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # MLX + JAX SplitMix64 Skill
@@ -304,3 +306,22 @@ temporal-coalgebra (-1) ⊗ mlx-jax-splitmix (0) ⊗ koopman-generator (+1) = 0 
 - [`agent-o-rama`](../agent-o-rama/SKILL.md) — JAX training integration
 - [`cybernetic-immune`](../cybernetic-immune/SKILL.md) — Self/non-self via colors
 - [`spi-parallel-verify`](../spi-parallel-verify/SKILL.md) — Parallelism invariance
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

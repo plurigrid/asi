@@ -5,6 +5,8 @@ description: Model Nix store as Attributed C-Set for dependency verification, GC
 metadata:
   trit: 0
   short-description: Nix store as ACSet
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Nix ACSet Worlding Skill
@@ -144,3 +146,22 @@ When two derivations depend on conflicting versions:
 2. **Eelco** - The Purely Functional Software Deployment Model
 3. **ACSets.jl** - Attributed C-Sets for algebraic databases
 4. **Gay.jl** - Deterministic coloring for store visualization
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

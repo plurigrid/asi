@@ -10,6 +10,8 @@ metadata:
   - Python
   - MLX
   - Lean4
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Kolmogorov Compression Skill
@@ -124,3 +126,22 @@ Gödel: Some true statements have K(T) = ∞ (unprovable)
 2. Solomonoff, R.J. (1964). "A formal theory of inductive inference."
 3. Li, M. & Vitányi, P. (2008). *An Introduction to Kolmogorov Complexity and Its Applications*.
 4. Fan et al. (2025). "The KoLMogorov-Test: Compression-Based Intelligence Evaluation."
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

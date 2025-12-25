@@ -3,6 +3,8 @@ name: topos-of-music
 description: Guerino Mazzola's mathematical music theory - Forms, Denotators, Morphisms, and Neo-Riemannian PLR operations with Gay.jl color integration
 trit: +1
 color: "#D82626"
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Topos of Music Skill
@@ -259,3 +261,22 @@ just knet-verify nodes="0 4 7" arrows="T4 T3 T7"
 - Mazzola, G. *Musical Performance* (2011)
 - Fiore & Noll. "Commuting Groups and the Topos of Triads"
 - Cohn, R. "Neo-Riemannian Operations, Parsimonious Trichords"
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

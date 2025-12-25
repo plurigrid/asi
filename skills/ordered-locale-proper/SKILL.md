@@ -5,6 +5,8 @@ trit: 0
 polarity: ERGODIC
 source: "Heunen & van der Schaaf, J. Pure Appl. Algebra 228 (2024) 107654"
 technologies: [Julia, Catlab.jl, ACSets.jl, GATlab.jl, MLX]
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Ordered Locale Skill
@@ -338,3 +340,22 @@ just ordered-locale-mlx
 **GF(3)**: Mediates between schema (-1) and generation (+1)
 **Open Cones**: ↑x and ↓x must be opens
 **Duality**: Spatial ordered locales ≃ Sober T₀-ordered spaces
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

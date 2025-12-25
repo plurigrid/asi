@@ -7,6 +7,8 @@ license: MIT
 metadata:
   trit: 0
   source: wshobson/agents
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Code Documentation
@@ -265,3 +267,22 @@ Handles user authentication using JWT tokens with refresh rotation.
 3. **Update with code** - Stale docs are worse than none
 4. **Examples over explanations** - Show, don't just tell
 5. **Progressive disclosure** - Quick start first, details later
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

@@ -1,6 +1,8 @@
 ---
 name: fswatch-duckdb
 description: FileSystemWatcher over /tmp with DuckDB/DuckLake persistence. Auto-starts on Amp sessions for resilient file monitoring with temporal queries.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # FileSystemWatcher + DuckDB Skill
@@ -381,3 +383,22 @@ SELECT input_path, trit, frame_count FROM recording_processing WHERE trit = -1;
 **Auto-Start**: Yes - runs daemon on every Amp session
 **Watch Paths**: /tmp, ~/Desktop, ~/Movies (configurable)
 **DuckLake**: /tmp/ducklake/
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

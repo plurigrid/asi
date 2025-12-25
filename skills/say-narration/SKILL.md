@@ -2,6 +2,8 @@
 name: say-narration
 description: Use macOS text-to-speech for agent narration and announcements. Sub-agents announce themselves using different language voices speaking English. Use for multi-agent workflows where each agent has a distinct voice identity.
 compatibility: macOS only. Uses built-in `say` command.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Say Narration (macOS TTS)
@@ -125,3 +127,22 @@ Each voice interaction contributes to the triadic balance:
 - Use Premium voices for primary agents (best quality)
 - Never use Daniel or any British male voices
 - Never use novelty/effect voices
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

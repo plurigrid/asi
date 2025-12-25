@@ -6,6 +6,8 @@ description: Sheaves on time categories for compositional temporal reasoning. Bu
 metadata:
   trit: 0
   short-description: Temporal narratives via sheaves
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Bumpus Narratives Skill
@@ -129,3 +131,22 @@ obstruction = cech_H0(n)
 2. **Ghrist** - Elementary Applied Topology (Čech cohomology)
 3. **Fairbanks** - AlgebraicJulia ecosystem for ACSets
 4. **Gay.jl** - Deterministic color chains for diagram coloring
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

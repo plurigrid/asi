@@ -3,6 +3,8 @@ name: random-walk-fusion
 description: Navigate skill graphs via deterministic random walks. Fuses derivational chains, algebraic structure, color determinism, and bidirectional flow for skill recombination.
 source: skill-random-walk-fusion
 license: UNLICENSED
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Random Walk Fusion: Skill Graph Navigation
@@ -198,3 +200,22 @@ The fusion is not additive but **multiplicative** — concepts don't just accumu
 **Trit**: +1 (PLUS)  
 **GF(3)**: Conserved via rebalancing  
 **Walk**: Derivational, deterministic, bidirectional
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

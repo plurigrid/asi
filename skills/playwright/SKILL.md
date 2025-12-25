@@ -2,6 +2,8 @@
 name: playwright
 description: Browser automation via Playwright MCP. Use for web scraping, taking screenshots, interacting with web pages, testing web UIs, and automating browser tasks. Headless browser support.
 compatibility: Requires npx and @anthropic-ai/mcp-server-playwright package.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Playwright Browser Automation
@@ -72,3 +74,22 @@ MCP server configured in `~/.mcp.json`:
 - Wait for page loads before interacting
 - Browser runs headless by default
 - Screenshots are useful for debugging
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

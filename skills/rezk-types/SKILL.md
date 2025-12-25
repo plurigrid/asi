@@ -9,6 +9,8 @@ metadata:
   - Rzk
   - Lean4
   - InfinityCosmos
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Rezk Types Skill
@@ -122,3 +124,22 @@ end
 - Rezk, C. (2001). "A model for the homotopy theory of homotopy theory." *Trans. AMS*.
 - Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories."
 - [sHoTT library](https://rzk-lang.github.io/sHoTT/)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

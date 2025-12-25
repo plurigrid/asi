@@ -1,6 +1,8 @@
 ---
 name: docs-acset
 description: Google Docs/Sheets management via ACSet condensation. Transforms documents into GF(3)-typed Interactions, tracks comments/cells, detects saturation when all comments resolved. Use for document workflows, spreadsheet automation, or applying ANIMA principles to Workspace documents.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Docs ACSet Skill
@@ -251,3 +253,22 @@ comment (-1) ⊗ reply (0) ⊗ resolve (0) + export (+1) = 0 ✓
 **Trit**: 0 (ERGODIC - coordinator)  
 **GF(3)**: Conserved via verb typing  
 **ANIMA**: Published Document = Condensed State
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

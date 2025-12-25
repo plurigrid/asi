@@ -1,6 +1,8 @@
 ---
 name: plurigrid-asi-integrated
 description: Unified Plurigrid ASI skill combining ACSets, Gay-MCP colors, bisimulation games, world-hopping, glass-bead synthesis, and triad interleaving for autonomous skill dispersal.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Plurigrid ASI Integrated Skill
@@ -207,3 +209,22 @@ Last integration: `plurigrid-asi-20251224184534`
 - Arbiter (ERGODIC): `c6e1294a-*` (133 invocations)
 - Defender (PLUS): `9b24821d-*` (1 invocation)
 - GF(3) Sum: 0 ✓ Conserved
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

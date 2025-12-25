@@ -4,6 +4,8 @@ description: The eternal text editor — Didactic Ersatz Emacs demonstrating imm
   data-structures and the single-atom architecture.
 metadata:
   trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Ewig - Eternal Didactic Text Editor
@@ -115,3 +117,22 @@ make
 - `code-refactoring` - Immutable refactoring patterns
 - `bisimulation-game` - State equivalence
 - `gay-mcp` - Deterministic UI coloring
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

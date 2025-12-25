@@ -3,6 +3,8 @@ name: mlx-apple-silicon
 description: "Run LLMs on Apple Silicon with MLX/mlx_lm - unified memory, 4-bit quantization, streaming generation, prompt caching. Optimal for M-series chips."
 compatibility: Requires macOS with Apple Silicon (M1/M2/M3/M4), Python 3.10+, mlx, mlx-lm packages.
 trit: +1
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # MLX Apple Silicon Skill
@@ -641,3 +643,22 @@ def free_energy(model, x, prior_mean, prior_var):
 **GF(3)**: Generates tokens deterministically
 **Platform**: macOS with Apple Silicon
 **Active Inference**: Supports latent space extraction + free energy minimization
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

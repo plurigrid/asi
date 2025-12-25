@@ -2,6 +2,8 @@
 name: uv-discohy
 description: UV/UVX/Ruff toolchain for DiscoHy Thread Operad with Python packaging and linting
 trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # UV-DiscoHy Skill: Modern Python Tooling for Thread Operads
@@ -338,3 +340,22 @@ uv run hy lib/discohy_thread_operad.hy
 **Trit**: 0 (ERGODIC)
 **Toolchain**: uv + uvx + ruff
 **Package Format**: pyproject.toml + hatchling
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

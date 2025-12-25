@@ -1,6 +1,8 @@
 ---
 name: gmail-anima
 description: Gmail inbox management via ANIMA condensation. Transforms messages into GF(3)-typed Interactions, routes to triadic queues, detects saturation for inbox-zero-as-condensed-state. Use for email triage, workflow automation, or applying ANIMA principles to Gmail.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Gmail ANIMA Skill
@@ -419,3 +421,22 @@ logger.log(before, after, Trit.PLUS, impact=True)
 **Trit**: 0 (ERGODIC - coordinator)  
 **GF(3)**: Conserved via triadic queue routing  
 **ANIMA**: Inbox Zero = Condensed Equilibrium State
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

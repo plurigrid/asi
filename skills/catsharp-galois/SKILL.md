@@ -3,6 +3,8 @@ name: catsharp-galois
 description: CatSharp Scale Galois Connections between agent-o-rama and Plurigrid ACT via Mazzola's categorical music theory
 trit: 0
 color: "#D8D826"
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # CatSharp Galois Skill
@@ -148,3 +150,22 @@ just catsharp-play pitch-classes="0 4 7"
 - Mazzola, G. *The Topos of Music* (2002)
 - Noll, T. "Neo-Riemannian Theory and the PLR Group"
 - Heunen & van der Schaaf. "Ordered Locales" (2024)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

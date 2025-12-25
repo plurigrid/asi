@@ -5,6 +5,8 @@ trit: 0
 polarity: ERGODIC
 depends_on: [glass-bead-game, world-hopping, ordered-locale]
 source: "Synthesis of Hesse, Badiou, Heunen-van der Schaaf (2024)"
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Glass Hopping: Observational Bridge Navigation
@@ -366,3 +368,22 @@ just glass-hop-demo
 **GF(3)**: Conserved at each hop
 **Bridge Types**: Observational (asymmetric, directed)
 **Triangle Inequality**: Enforced by ≪ transitivity
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

@@ -54,6 +54,8 @@ metadata:
       Features:\n  • Register verified formulas as artifacts\n  • Map formulas to\
       \ GaySeed colors\n  • Create provenance records in DuckDB\n  • Enable formula\
       \ search via retromap\n"
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # BDD Mathematical Verification Skill
@@ -574,3 +576,22 @@ end
 
 **Status**: ✓ Ready for iterative BDD-driven mathematical discovery
 **Last Updated**: December 21, 2025
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

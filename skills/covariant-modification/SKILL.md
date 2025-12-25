@@ -3,6 +3,8 @@ name: covariant-modification
 description: Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and MCP Tasks self-rewriting. GF(3) conserved.
 trit: 0
 color: "#26D826"
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Covariant Modification Skill
@@ -167,3 +169,22 @@ just covariant-modify skill=target mod=change.diff
 - [Covariant Fibrations in Directed Type Theory](https://arxiv.org/abs/2211.01602)
 - [Darwin Gödel Machine](https://hf.co/papers/2505.22954)
 - [MCP Tasks Specification](https://modelcontextprotocol.io/specification/draft/basic/utilities/tasks)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

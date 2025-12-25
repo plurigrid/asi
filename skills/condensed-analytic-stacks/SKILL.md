@@ -4,6 +4,8 @@ description: Scholze-Clausen condensed mathematics bridge to sheaf neural networ
   via 6-functor formalism
 metadata:
   trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # condensed-analytic-stacks Skill
@@ -354,3 +356,22 @@ just sheaf-bridge-demo        # Demo condensed→sheaf NN bridge
 - `lib/lispsyntax_acset_bridge.jl` - LispSyntax.jl ↔ ACSet.jl bridge
 - `PONTRYAGIN_DUALITY_COMPREHENSIVE_ANALYSIS.md` - Condensed extension (lines 844-860)
 - `LISPSYNTAX_ACSET_BRIDGE_COMPLETE.md` - Integration summary
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

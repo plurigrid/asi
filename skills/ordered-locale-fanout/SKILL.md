@@ -3,6 +3,8 @@ name: ordered-locale-fanout
 description: "UPDATED: Now uses proper ordered-locale (Heunen-van der Schaaf 2024). Cocone construction over triadic ordered locale with open cone condition."
 trit: 0
 depends_on: ordered-locale
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Ordered Locale Fanout
@@ -377,3 +379,22 @@ For proper frame structure, cones, cocones, and Stone duality, see:
 **Trit**: 0 (ERGODIC - coordinator)  
 **GF(3)**: Conserved by construction  
 **Platform**: macOS Apple Silicon
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

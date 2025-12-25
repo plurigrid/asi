@@ -4,6 +4,8 @@ description: "Extract value from world transitions via Markov blanket arbitrage.
 trit: 0
 polarity: ERGODIC
 source: "Friston (2010) + Roughgarden (2002) + Paradigm/Dave White (2025)"
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # World Extractable Value (WEV) Skill
@@ -237,3 +239,22 @@ WEV extraction = pull_up after favorable verse resolution.
 - [open-games](../open-games/SKILL.md) - Nash equilibrium
 - [glass-bead-game](../glass-bead-game/SKILL.md) - World-hopping
 - [influence-propagation](../influence-propagation/SKILL.md) - Network effects
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

@@ -6,6 +6,8 @@ license: MIT
 metadata:
   trit: 1
   source: music-topos/skills
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Epistemic Arbitrage: Propagator-Based Knowledge Synthesis
@@ -248,4 +250,23 @@ just arbitrage               # Run arbitrage network
 just arbitrage-domains a b   # Arbitrage between specific domains
 just propagator-network      # Visualize propagator network
 just knowledge-flow          # Show knowledge flow diagram
+```
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
 ```

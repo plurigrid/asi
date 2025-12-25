@@ -7,6 +7,8 @@ gay_index: 43
 neighbors:
   left: gestalt-hacking
   right: gay-mcp
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Information Reflow Skill (ERGODIC 0)
@@ -140,3 +142,22 @@ A seed "resonates" when its decomposition yields balanced composition:
 - [Clojure](file:///Users/bob/ies/music-topos/src/agents/reflow_nats.clj)
 - [XIP](file:///Users/bob/ies/music-topos/proposals/XIP-6728DB-information-reflow.md)
 - [Etymology](file:///Users/bob/ies/music-topos/lib/etymological_resonance.rb)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

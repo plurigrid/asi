@@ -4,6 +4,8 @@ description: Temporal versioning and interaction history with time-travel querie
   causality tracking, and deterministic replay
 metadata:
   trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 <!-- Propagated to amp | Trit: +1 | Source: .ruler/skills/duckdb-temporal-versioning -->
@@ -632,3 +634,22 @@ db.close()
 **GF(3)**: Balanced with clj-kondo-3color (-1) + acsets (0)
 **SPI**: Guaranteed (same schema + data → same results)
 **Applications**: Data acquisition, feature storage, training trace logging, audit trails
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

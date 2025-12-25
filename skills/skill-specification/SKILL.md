@@ -5,6 +5,8 @@ metadata:
   short-description: SKILL.md format specification
   spec-url: https://agentskills.io/specification
   validator: skills-ref validate
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Skill Specification
@@ -155,3 +157,22 @@ for d in skills/*/; do skills-ref validate "$d"; done
 - [github.com/agentskills/agentskills](https://github.com/agentskills/agentskills)
 - [OpenAI Codex Skills](https://developers.openai.com/codex/skills/)
 - [Claude Code Skills](https://docs.claude.com/en/docs/claude-code/skills)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

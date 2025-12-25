@@ -2,6 +2,8 @@
 name: say-ducklake-xor
 description: Parallel thread/DuckLake discovery with XOR uniqueness from gay_seed. Finds "say" or MCP usage, cross-refs with all DuckDB sources, launches bounded parallel ops.
 trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Say-DuckLake XOR Discovery
@@ -153,3 +155,22 @@ async def parallel_xor_discovery(seed: int, bound: int):
 - [PigeonsGayBridge.jl](file:///Users/bob/ies/PigeonsGayBridge.jl) - SPI via unworld dynamics
 - [ducklake_discover.py](file:///Users/bob/ies/music-topos/scripts/ducklake_discover.py) - Discovery patterns
 - [SUBOBJECT_CLASSIFIER_RECURRENCES.md](file:///Users/bob/ies/SUBOBJECT_CLASSIFIER_RECURRENCES.md) - Recurrence types
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

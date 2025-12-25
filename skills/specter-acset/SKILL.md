@@ -7,6 +7,8 @@ metadata:
   trit: 0
   gf3_conserved: true
   version: 1.0.0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # specter-acset
@@ -269,3 +271,22 @@ lispsyntax-acset (-1) ⊗ specter-acset (0) ⊗ cider-clojure (+1) = 0 ✓
 - Nathan Marz: "Rama on Clojure's Terms" (2024)
 - Nathan Marz: "Specter: Powerful and Simple Data Structure Manipulation"
 - [Lens laws](https://hackage.haskell.org/package/lens) (Haskell perspective)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

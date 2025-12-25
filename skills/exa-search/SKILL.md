@@ -1,6 +1,8 @@
 ---
 name: exa-search
 description: Use Exa for semantic/neural web search. Exa understands context and returns high-quality results. Use this skill when you need to search the web for documentation, research, or any information that requires understanding meaning rather than just keyword matching. NEVER substitute web_search for Exa - they serve completely different purposes.
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # Exa Semantic Search
@@ -59,3 +61,22 @@ Use the Exa MCP tools directly when semantic search is needed.
 1. **NEVER replace Exa with web_search** - they are fundamentally different
 2. **NEVER use web_search in Task sub-agents** as a substitute for Exa
 3. If Exa fails, troubleshoot Exa - do not substitute
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

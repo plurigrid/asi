@@ -7,6 +7,8 @@ metadata:
   source: ProofGeneral/PG + mikeshulman/narya + music-topos
   xenomodern: true
   stars: 768
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # ProofGeneral + Narya Skill
@@ -206,3 +208,22 @@ just measure-laxity       # Compute Bumpus laxity metrics
 - [Narya GitHub](https://github.com/mikeshulman/narya)
 - [Higher Observational Type Theory](https://ncatlab.org/nlab/show/higher+observational+type+theory)
 - [Topos Institute: Structure-Aware Version Control](https://topos.institute/blog/2024-11-13-structure-aware-version-control-via-observational-bridge-types/)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

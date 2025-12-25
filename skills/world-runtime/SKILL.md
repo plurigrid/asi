@@ -4,6 +4,8 @@ description: "Firecracker microVM + Morph Infinibranch WorldRuntime for parallel
 trit: +1
 polarity: PLUS
 source: "AWS Firecracker (2018) + Morph Labs Infinibranch (2025) + Paradigm Multiverse Finance (2025)"
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # World Runtime Skill
@@ -354,3 +356,22 @@ Monad Block = [Tx1, Tx2, Tx3, ...]
 - [world-hopping](../world-hopping/SKILL.md) - Badiou triangle traversal
 - [chromatic-walk](../chromatic-walk/SKILL.md) - 3-agent exploration
 - [mdm-cobordism](../mdm-cobordism/SKILL.md) - State cobordisms
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

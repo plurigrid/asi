@@ -4,6 +4,8 @@ description: Metaskill that fans out on every interaction, using interaction ent
   as SplitMixTernary seed for maximum synergistic parallelism
 metadata:
   trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # parallel-fanout - Interaction-Entropy-Seeded Parallel Skill Dispatch
@@ -290,3 +292,22 @@ This creates a **skill tree** of depth N with 3^N leaves, all deterministically 
 - `gay-mcp` - Color generation backend
 - `INTERACTION_ENTROPY_FRAMEWORK.md` - Entropy metrics
 - `lib/spi_parallel.rb` - SPI implementation
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

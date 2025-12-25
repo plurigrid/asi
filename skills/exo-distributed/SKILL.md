@@ -2,6 +2,8 @@
 name: exo-distributed
 description: "Distributed LLM inference across Apple Silicon clusters with exo. Run models across Mac Studios via Thunderbolt RDMA, auto peer discovery, and MLX sharding. Use for multi-device inference, model parallelism, or building LLM clusters."
 trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # exo-distributed Skill
@@ -363,3 +365,22 @@ ORDER BY avg_latency;
 **GF(3)**: Coordinates multi-device inference with balanced sharding
 **Platform**: Apple Silicon clusters (macOS)
 **Discovery**: Random walk fusion over DuckLake + DeepWiki exo-explore/exo
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```

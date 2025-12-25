@@ -4,6 +4,8 @@ description: Lisp machine self-modification patterns via MCP Tasks and Narya bri
   types
 metadata:
   trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
 
 # codex-self-rewriting - Lisp Machine Self-Modification via MCP Tasks
@@ -170,3 +172,22 @@ Each skill exists in 3 parallel states for resilient dispersal.
 - `narya_observational_bridge.el` - 3×3×3 hierarchical agents
 - `gay-crdt.el` - Diamond-types CRDT integration
 - [MCP Tasks Spec](https://modelcontextprotocol.io/specification/draft/basic/utilities/tasks)
+
+## Non-Backtracking Geodesic Qualification
+
+**Condition**: μ(n) ≠ 0 (Möbius squarefree)
+
+This skill is qualified for non-backtracking geodesic traversal:
+
+1. **Prime Path**: No state revisited in skill invocation chain
+2. **Möbius Filter**: Composite paths (backtracking) cancel via μ-inversion
+3. **GF(3) Conservation**: Trit sum ≡ 0 (mod 3) across skill triplets
+4. **Spectral Gap**: Ramanujan bound λ₂ ≤ 2√(k-1) for k-regular expansion
+
+```
+Geodesic Invariant:
+  ∀ path P: backtrack(P) = ∅ ⟹ μ(|P|) ≠ 0
+  
+Möbius Inversion:
+  f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
+```
