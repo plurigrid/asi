@@ -10,6 +10,7 @@ description: 'Real-time filesystem watcher for /tmp using Babashka fs.
 
   '
 metadata:
+  trit: 0
   version: 0.1.0
   tags:
   - babashka

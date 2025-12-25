@@ -4,6 +4,7 @@ description: Badiou-inspired possible world navigation using triangle inequality
   event ontology, and truth procedures for traversing mathematical possibility space.
 license: MIT
 metadata:
+  trit: 1
   source: music-topos/skills
 ---
 

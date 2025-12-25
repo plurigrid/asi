@@ -4,6 +4,7 @@ description: Cronin's Turing-complete chemputer for programmable chemical synthe
   via XDL.
 license: UNLICENSED
 metadata:
+  trit: 1
   source: local
 ---
 

@@ -1,6 +1,8 @@
 ---
 name: ocaml
 description: OCaml ecosystem = opam + dune + merlin + ocamlformat.
+metadata:
+  trit: 0
 ---
 
 # ocaml

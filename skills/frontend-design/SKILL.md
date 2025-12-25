@@ -7,6 +7,7 @@ description: Create distinctive, production-grade frontend interfaces with high 
   creative, polished code and UI design that avoids generic AI aesthetics.
 license: Apache-2.0
 metadata:
+  trit: 1
   source: anthropics/skills
 ---
 

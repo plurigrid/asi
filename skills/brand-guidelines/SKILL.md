@@ -5,6 +5,7 @@ description: Apply brand colors and typography to artifacts. Use when brand colo
   consistency across branded content.
 license: Apache-2.0
 metadata:
+  trit: 0
   source: anthropics/skills
 ---
 

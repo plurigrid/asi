@@ -6,6 +6,7 @@ description: Comprehensive document creation, editing, and analysis with support
   modifying content, working with tracked changes, or adding comments.
 license: Apache-2.0
 metadata:
+  trit: 0
   source: anthropics/skills
 ---
 

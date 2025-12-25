@@ -6,6 +6,7 @@ description: Guide for creating high-quality MCP (Model Context Protocol) server
   Python (FastMCP) or Node/TypeScript (MCP SDK).
 license: Apache-2.0
 metadata:
+  trit: 1
   source: anthropics/skills
 ---
 

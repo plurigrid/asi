@@ -2,6 +2,8 @@
 name: duck-time-travel
 description: "DuckDB time-travel queries for temporal versioning and causality tracking"
 license: UNLICENSED
+metadata:
+  trit: 0
 ---
 
 # SKILL: Duck Time Travel

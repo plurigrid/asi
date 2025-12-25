@@ -3,6 +3,8 @@ name: ies-flox
 description: FloxHub publication `bmorphism/ies` - a focused development environment
   for Clojure, Julia, Python, and multimedia with Gay.jl/Gay.bb deterministic coloring
   integration.
+metadata:
+  trit: 0
 ---
 
 # ies-flox

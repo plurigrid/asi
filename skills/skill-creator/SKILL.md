@@ -5,6 +5,7 @@ description: Guide for creating effective skills. Use when users want to create 
   specialized knowledge, workflows, or tool integrations.
 license: Apache-2.0
 metadata:
+  trit: 0
   source: anthropics/skills
 ---
 

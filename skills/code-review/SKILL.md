@@ -5,6 +5,7 @@ description: Automated code review for pull requests using specialized review pa
   code changes, PRs, or doing code audits.
 license: Apache-2.0
 metadata:
+  trit: -1
   source: anthropics/claude-code
 ---
 

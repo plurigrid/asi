@@ -4,6 +4,7 @@ description: LocalSend-based P2P transfer with MCP server design for NATS/Tailsc
   discovery and throughput tuning.
 license: UNLICENSED
 metadata:
+  trit: 0
   source: local
 ---
 

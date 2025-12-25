@@ -4,6 +4,7 @@ description: Riehl-Shulman covariant fibrations for dependent types over directe
   intervals in synthetic ∞-categories.
 license: UNLICENSED
 metadata:
+  trit: -1
   source: local
 ---
 

@@ -3,6 +3,7 @@ name: proofgeneral-narya
 description: "Proof General + Narya: Higher-dimensional type theory proof assistant with observational bridge types for version control."
 license: GPL-3.0
 metadata:
+  trit: -1
   source: ProofGeneral/PG + mikeshulman/narya + music-topos
   xenomodern: true
   stars: 768

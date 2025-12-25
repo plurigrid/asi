@@ -1,6 +1,8 @@
 ---
 name: terminal
 description: Terminal tools = tmux + zsh + fzf + ripgrep.
+metadata:
+  trit: 0
 ---
 
 # terminal

@@ -1,6 +1,8 @@
 ---
 name: squint-runtime
 description: Squint ClojureScript runtime for minimal JS output compilation
+metadata:
+  trit: 0
 ---
 
 # Squint Runtime Skill

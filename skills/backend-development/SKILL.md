@@ -5,6 +5,7 @@ description: Backend API design, database architecture, microservices patterns, 
   architecture.
 license: MIT
 metadata:
+  trit: 0
   source: wshobson/agents
 ---
 

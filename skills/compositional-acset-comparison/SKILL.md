@@ -2,6 +2,8 @@
 name: compositional-acset-comparison
 description: "Compositional algorithm and data analysis via algebraic databases"
 license: UNLICENSED
+metadata:
+  trit: 0
 ---
 
 # Compositional ACSet Comparison Skill

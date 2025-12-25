@@ -4,6 +4,7 @@ description: Red Planet Labs Rama with Gay.jl deterministic coloring for 100x ba
   development with gay-colored parentheses as expressive as tensor shapes.
 license: Proprietary (Rama) + MIT (integration)
 metadata:
+  trit: 0
   source: redplanetlabs/rama + music-topos
   xenomodern: true
 ---

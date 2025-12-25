@@ -4,6 +4,7 @@ description: Propagator-based parallel structure for exploiting knowledge differ
   across domains using local scoped propagators and SplitMixTernary RNG.
 license: MIT
 metadata:
+  trit: 1
   source: music-topos/skills
 ---
 

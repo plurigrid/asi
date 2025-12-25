@@ -2,6 +2,8 @@
 name: crdt-vterm
 description: Collaborative terminal session sharing using CRDT-style s-expressions
   with GF(3) trifurcated conflict resolution.
+metadata:
+  trit: 0
 ---
 
 # CRDT-VTerm - Collaborative Terminal Sharing

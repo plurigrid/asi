@@ -2,6 +2,8 @@
 name: unwiring-arena
 description: "Play/Coplay arena theory for autopoietic closure with GF(3) conservation"
 license: UNLICENSED
+metadata:
+  trit: 0
 ---
 
 # Unwiring Arena Skill

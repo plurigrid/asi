@@ -5,6 +5,7 @@ description: Hesse-inspired interdisciplinary synthesis game with Badiou triangl
   domains.
 license: MIT
 metadata:
+  trit: 1
   source: music-topos/skills
 ---
 

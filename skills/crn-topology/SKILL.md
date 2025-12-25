@@ -4,6 +4,7 @@ description: Chemical Reaction Network topology for generating and analyzing rea
   graph structures.
 license: UNLICENSED
 metadata:
+  trit: 1
   source: local
 ---
 

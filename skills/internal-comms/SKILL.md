@@ -5,6 +5,7 @@ description: Write internal communications using company formats. Use when writi
   project updates, or any internal communications.
 license: Apache-2.0
 metadata:
+  trit: 0
   source: anthropics/skills
 ---
 

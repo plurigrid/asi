@@ -5,6 +5,7 @@ description: JavaScript and TypeScript development with ES6+, Node.js, React, an
   projects.
 license: MIT
 metadata:
+  trit: 0
   source: wshobson/agents
 ---
 

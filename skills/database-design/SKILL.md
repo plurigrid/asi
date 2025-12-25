@@ -5,6 +5,7 @@ description: Database schema design, optimization, and migration patterns for Po
   queries.
 license: MIT
 metadata:
+  trit: 0
   source: wshobson/agents
 ---
 

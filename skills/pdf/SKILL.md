@@ -6,6 +6,7 @@ description: Comprehensive PDF manipulation toolkit for extracting text and tabl
   documents at scale.
 license: Apache-2.0
 metadata:
+  trit: 0
   source: anthropics/skills
 ---
 

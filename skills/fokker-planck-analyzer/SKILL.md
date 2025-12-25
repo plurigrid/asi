@@ -1,6 +1,8 @@
 ---
 name: fokker-planck-analyzer
 description: "' Layer 5: Convergence to Equilibrium Analysis'"
+metadata:
+  trit: 0
 ---
 
 # fokker-planck-analyzer
