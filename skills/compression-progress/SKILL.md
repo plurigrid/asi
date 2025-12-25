@@ -4,6 +4,7 @@ description: Schmidhuber's compression progress as intrinsic curiosity reward fo
   learning systems.
 license: UNLICENSED
 metadata:
+  trit: 0
   source: local
 ---
 

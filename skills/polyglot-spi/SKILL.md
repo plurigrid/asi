@@ -1,6 +1,8 @@
 ---
 name: polyglot-spi
 description: ' Cross-Language Strong Parallelism Invariance Verification'
+metadata:
+  trit: 0
 ---
 
 # polyglot-spi

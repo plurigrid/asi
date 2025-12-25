@@ -4,6 +4,7 @@ description: Synthetic adjunctions in directed type theory for ∞-categorical u
   constructions.
 license: UNLICENSED
 metadata:
+  trit: -1
   source: local
 ---
 

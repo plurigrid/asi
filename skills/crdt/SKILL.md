@@ -1,6 +1,7 @@
 ---
 name: crdt
 metadata:
+  trit: 0
   version: 1.0
   status: production
   framework: Jules Hedges' Compositional Game Theory

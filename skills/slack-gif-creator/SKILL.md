@@ -5,6 +5,8 @@ description: Toolkit for creating animated GIFs optimized for Slack, with valida
   users request animated GIFs or emoji animations for Slack from descriptions like
   "make me a GIF for Slack of X doing Y".
 license: Complete terms in LICENSE.txt
+metadata:
+  trit: 0
 ---
 
 # Slack GIF Creator - Flexible Toolkit

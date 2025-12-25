@@ -2,6 +2,8 @@
 name: mcp-tripartite
 description: "MCP tripartite integration for orchestrating distributed tool protocols"
 license: UNLICENSED
+metadata:
+  trit: 1
 ---
 
 # SKILL: MCP Tripartite Integration

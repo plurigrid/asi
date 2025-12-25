@@ -5,6 +5,8 @@ description: Toolkit for styling artifacts with a theme. These artifacts can be 
   that you can apply to any artifact that has been creating, or can generate a new
   theme on-the-fly.
 license: Complete terms in LICENSE.txt
+metadata:
+  trit: 0
 ---
 
 # Theme Factory Skill

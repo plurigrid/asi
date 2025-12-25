@@ -3,6 +3,7 @@ name: topos-generate
 description: Topos Generation Skill (PLUS +1)
 license: UNLICENSED
 metadata:
+  trit: 1
   source: local
 ---
 

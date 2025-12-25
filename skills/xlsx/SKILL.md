@@ -6,6 +6,7 @@ description: Comprehensive spreadsheet creation, editing, and analysis with supp
   reading/analyzing data, modifying existing spreadsheets, or recalculating formulas.
 license: Apache-2.0
 metadata:
+  trit: 0
   source: anthropics/skills
 ---
 

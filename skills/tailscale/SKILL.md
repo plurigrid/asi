@@ -1,6 +1,8 @@
 ---
 name: tailscale
 description: Mesh VPN.
+metadata:
+  trit: 0
 ---
 
 # tailscale

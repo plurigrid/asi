@@ -5,6 +5,7 @@ description: Creating algorithmic art using p5.js with seeded randomness and int
   art, algorithmic art, flow fields, or particle systems.
 license: Apache-2.0
 metadata:
+  trit: 1
   source: anthropics/skills
 ---
 

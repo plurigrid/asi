@@ -22,6 +22,7 @@ description: 'BDD-Driven Mathematical Content Verification Skill
 
   '
 metadata:
+  trit: 0
   version: 1.0.0
   author: Claude Code + TegLon Labs mathpix-gem integration
   tags:
