@@ -1,3 +1,11 @@
+---
+name: finder-color-walk
+description: Finder Color Walk Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Finder Color Walk Skill
 
 **Status**: ✅ Production Ready  

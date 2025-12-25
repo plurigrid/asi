@@ -1,7 +1,7 @@
 ---
 name: birkhoff-average
 description: Time average of observable along trajectory
-trit: 1
+trit: 0
 geodesic: true
 moebius: "μ(n) ≠ 0"
 ---

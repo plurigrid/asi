@@ -1,3 +1,11 @@
+---
+name: rick-roderick
+description: Rick Roderick: Philosophy Under Siege
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Rick Roderick: Philosophy Under Siege
 
 **Status**: ✅ Production Ready  

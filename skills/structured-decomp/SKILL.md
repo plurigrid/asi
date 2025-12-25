@@ -1,3 +1,11 @@
+---
+name: structured-decomp
+description: structured-decomp - Sheaves on Tree Decompositions for FPT Algorithms
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # structured-decomp - Sheaves on Tree Decompositions for FPT Algorithms
 
 ## Overview

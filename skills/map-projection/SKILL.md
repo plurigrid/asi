@@ -1,3 +1,11 @@
+---
+name: map-projection
+description: Map Projection Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Map Projection Skill
 
 Category theory of map projections: functors between manifolds with distortion analysis.

@@ -1,3 +1,11 @@
+---
+name: scum-score
+description: SCUM Score Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # SCUM Score Skill
 
 > **S**ystem **C**onsumer **U**tilization **M**etrics - Identify and terminate resource-hogging processes

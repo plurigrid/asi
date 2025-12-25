@@ -1,3 +1,11 @@
+---
+name: ctp-yoneda
+description: CTP-Yoneda Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # CTP-Yoneda Skill
 
 > *"The Yoneda lemma is arguably the most important result in category theory."*

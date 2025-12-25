@@ -1,3 +1,11 @@
+---
+name: trifurcated-transfer
+description: Trifurcated Transfer Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Trifurcated Transfer Skill
 
 ```yaml

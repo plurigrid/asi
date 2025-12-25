@@ -1,3 +1,11 @@
+---
+name: pre-agent-ontology
+description: Pre-Agent Ontology Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Pre-Agent Ontology Skill
 
 **Trit**: 0 (ERGODIC - coordinates the ontology)

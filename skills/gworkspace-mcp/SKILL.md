@@ -1,3 +1,11 @@
+---
+name: gworkspace-mcp
+description: gworkspace-mcp - Google Workspace MCP Integration with Temporal Consistency
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # gworkspace-mcp - Google Workspace MCP Integration with Temporal Consistency
 
 ## Overview

@@ -1,3 +1,11 @@
+---
+name: universal-captp-derivation
+description: Universal CapTP Derivation Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Universal CapTP Derivation Skill
 
 Traces capability derivation chains through 3×3 expert poset with GF(3) conservation.

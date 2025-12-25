@@ -1,3 +1,11 @@
+---
+name: multiversal-finance
+description: Multiversal Finance: Prediction Markets for Interesting Observations
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Multiversal Finance: Prediction Markets for Interesting Observations
 
 **Trit**: +1 (PLUS - generative, creates value from attention)

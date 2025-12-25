@@ -1,7 +1,7 @@
 ---
 name: bifurcation
 description: Qualitative change in dynamics as parameters vary
-trit: 1
+trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"
 ---

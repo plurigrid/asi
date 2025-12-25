@@ -1,3 +1,11 @@
+---
+name: ies-triadic
+description: IES Triadic Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # IES Triadic Skill
 
 > *Three maximally polarizing yet topos-compatible directions of the ies collective mind*

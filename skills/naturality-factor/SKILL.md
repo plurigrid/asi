@@ -1,3 +1,11 @@
+---
+name: naturality-factor
+description: Naturality Factor Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Naturality Factor Skill
 
 > *"The naturality condition ensures transformations commute with structure."*

@@ -1,3 +1,11 @@
+---
+name: time-travel-crdt
+description: Time Travel CRDT Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Time Travel CRDT Skill
 
 > *"Time is of the essence — but the essence is not time."*

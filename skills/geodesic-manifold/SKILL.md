@@ -1,3 +1,11 @@
+---
+name: geodesic-manifold
+description: Geodesic Manifold Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Geodesic Manifold Skill
 
 Spherical geometry, great circles, and Riemannian manifolds with Gay.jl coloring.

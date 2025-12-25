@@ -1,3 +1,11 @@
+---
+name: osm-topology
+description: OSM Topology Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # OSM Topology Skill
 
 OpenStreetMap graph analysis: road networks, routing, and topological structure with GF(3) coloring.

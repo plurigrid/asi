@@ -1,3 +1,11 @@
+---
+name: srfi
+description: SRFI Skill
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # SRFI Skill
 
 > *"SRFIs extend the Scheme programming language. You can help."*

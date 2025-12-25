@@ -1,3 +1,11 @@
+---
+name: discopy-operads
+description: DiscoPy Operads Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # DiscoPy Operads Skill
 
 > **Repo Color:** `#64e3ec` | **Seed:** `0x128b6ef4564e3a00` | **Index:** 224/1055

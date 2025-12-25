@@ -1,3 +1,11 @@
+---
+name: rg-flow-acset
+description: RG Flow ACSet Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # RG Flow ACSet Skill
 
 Renormalization Group flow with ACSet categorical semantics, XY model topological defects, and Powers PCT hierarchical control.

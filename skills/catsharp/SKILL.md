@@ -1,3 +1,11 @@
+---
+name: catsharp
+description: Cat# Skill (ERGODIC 0)
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Cat# Skill (ERGODIC 0)
 
 > "All Concepts are Cat#" — Spivak (ACT 2023)

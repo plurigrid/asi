@@ -1,3 +1,11 @@
+---
+name: ies
+description: ies
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # ies
 
 > FloxHub `bmorphism/ies` - Clojure/Julia/Python/multimedia environment with Gay.jl coloring, Flox composition, and DuckDB social analysis.

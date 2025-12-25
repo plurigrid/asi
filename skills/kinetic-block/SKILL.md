@@ -1,3 +1,11 @@
+---
+name: kinetic-block
+description: Kinetic Block Skill
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Kinetic Block Skill
 
 > **Seed Approach List for Stratification × Fabrication via GF(3) Conservation**

@@ -1,3 +1,11 @@
+---
+name: captp
+description: CapTP: Capability Transfer Protocol
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # CapTP: Capability Transfer Protocol
 
 **Trit**: 0 (ERGODIC - transports capabilities without amplification)

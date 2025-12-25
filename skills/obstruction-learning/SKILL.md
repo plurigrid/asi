@@ -1,3 +1,11 @@
+---
+name: obstruction-learning
+description: Obstruction Learning Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Obstruction Learning Skill
 
 Learn topological ASI via random walk obstruction detection and Čech H⁰ cohomology.

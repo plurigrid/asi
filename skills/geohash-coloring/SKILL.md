@@ -1,3 +1,11 @@
+---
+name: geohash-coloring
+description: Geohash Coloring Skill
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Geohash Coloring Skill
 
 GF(3) colored geohashes for hierarchical spatial indexing with deterministic color derivation.

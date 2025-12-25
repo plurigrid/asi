@@ -1,3 +1,11 @@
+---
+name: duckdb-spatial
+description: DuckDB Spatial Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # DuckDB Spatial Skill
 
 H3 hexagonal indexing, PostGIS-compatible spatial queries, and geographic analysis with GF(3) coloring.

@@ -1,3 +1,11 @@
+---
+name: sense
+description: sense - Diagrammatic Video Extraction with Subtitle Alignment
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # sense - Diagrammatic Video Extraction with Subtitle Alignment
 
 > **Trit**: 0 (ERGODIC - Coordinator)

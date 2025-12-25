@@ -1,3 +1,11 @@
+---
+name: resource-sharing
+description: Resource Sharing Skill
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Resource Sharing Skill
 
 > Distribute computational load across machines using GF(3) balanced allocation

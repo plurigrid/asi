@@ -1,3 +1,11 @@
+---
+name: criticality-detector
+description: Criticality Detector Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Criticality Detector Skill
 
 Measures distance to fixed point via comparator error and detects self-loop closure for phase classification in dynamical systems.

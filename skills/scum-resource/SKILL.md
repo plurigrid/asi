@@ -1,3 +1,11 @@
+---
+name: scum-resource
+description: SCUM Resource Skill
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # SCUM Resource Skill
 
 **System Consumption Utilization Monitor** - Libkind-style compositional resource management.

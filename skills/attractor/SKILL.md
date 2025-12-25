@@ -1,7 +1,7 @@
 ---
 name: attractor
 description: Invariant set attracting nearby trajectories
-trit: 1
+trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"
 ---

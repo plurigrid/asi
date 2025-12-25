@@ -1,3 +1,11 @@
+---
+name: nerv
+description: NERV - Rapid LocalSend Test with Voice
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # NERV - Rapid LocalSend Test with Voice
 
 Rapid peer discovery and LocalSend connectivity testing with Italian voice announcements.

@@ -1,3 +1,11 @@
+---
+name: asi-agent-orama
+description: ASI Agent-O-Rama Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # ASI Agent-O-Rama Skill
 
 **Status**: ✅ Production Ready

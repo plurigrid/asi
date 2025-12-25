@@ -1,3 +1,11 @@
+---
+name: haskell-diagrams
+description: haskell-diagrams - Declarative Vector Graphics with Diagrams DSL
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # haskell-diagrams - Declarative Vector Graphics with Diagrams DSL
 
 ## Overview

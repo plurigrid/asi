@@ -1,3 +1,11 @@
+---
+name: l-space
+description: L-Space Skill: The Library of All Libraries
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # L-Space Skill: The Library of All Libraries
 
 **Status**: ✅ Production Ready  

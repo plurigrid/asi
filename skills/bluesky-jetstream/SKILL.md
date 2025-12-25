@@ -1,3 +1,11 @@
+---
+name: bluesky-jetstream
+description: Bluesky Jetstream Firehose Skill
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Bluesky Jetstream Firehose Skill
 
 **GF(3) Trit**: -1 (MINUS - validator/filter on incoming data stream)

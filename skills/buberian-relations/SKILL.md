@@ -1,3 +1,11 @@
+---
+name: buberian-relations
+description: Buberian Relations Skill
+trit: -1
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Buberian Relations Skill
 
 ## Overview

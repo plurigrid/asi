@@ -1,3 +1,11 @@
+---
+name: skill-validation-gf3
+description: Skill Validation GF(3) - SLAVE (-1)
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Skill Validation GF(3) - SLAVE (-1)
 
 > *"The validator constrains and verifies."*

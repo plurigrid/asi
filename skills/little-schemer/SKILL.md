@@ -1,3 +1,11 @@
+---
+name: little-schemer
+description: Little Schemer Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # Little Schemer Skill
 
 > *"The Law of Car: The primitive car is defined only for non-empty lists."*

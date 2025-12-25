@@ -1,3 +1,11 @@
+---
+name: hyjax-relational
+description: HyJAX Relational Thinking Skill
+trit: 0
+geodesic: true
+moebius: "μ(n) ≠ 0"
+---
+
 # HyJAX Relational Thinking Skill
 
 Apply relational thinking (ACSets/C-Sets) to Amp thread analysis using HyJAX patterns.
