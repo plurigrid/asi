@@ -1,3 +1,8 @@
+---
+name: babashka
+description: Clojure scripting without JVM startup.
+---
+
 # babashka
 
 Clojure scripting without JVM startup.

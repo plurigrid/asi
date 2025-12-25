@@ -1,3 +1,8 @@
+---
+name: duckdb-timetravel
+description: "' Layer 3: Temporal Versioning and ACSet Schema Generation for DuckDB'"
+---
+
 # duckdb-timetravel
 
 > Layer 3: Temporal Versioning and ACSet Schema Generation for DuckDB

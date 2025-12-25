@@ -1,3 +1,8 @@
+---
+name: unworld
+description: "' Layer 4: Derivational Pattern Generation via Seed Chaining'"
+---
+
 # unworld-skill
 
 > Layer 4: Derivational Pattern Generation via Seed Chaining

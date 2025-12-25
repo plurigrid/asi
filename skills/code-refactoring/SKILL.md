@@ -1,8 +1,11 @@
 ---
 name: code-refactoring
-description: Code refactoring patterns and techniques for improving code quality without changing behavior. Use for cleaning up legacy code, reducing complexity, or improving maintainability.
-source: wshobson/agents
+description: Code refactoring patterns and techniques for improving code quality without
+  changing behavior. Use for cleaning up legacy code, reducing complexity, or improving
+  maintainability.
 license: MIT
+metadata:
+  source: wshobson/agents
 ---
 
 # Code Refactoring

@@ -1,8 +1,9 @@
 ---
 name: free-monad-gen
 description: Free Monad Generation Skill (PLUS +1)
-source: local
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Free Monad Generation Skill (PLUS +1)

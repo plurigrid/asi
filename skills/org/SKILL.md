@@ -1,3 +1,8 @@
+---
+name: org
+description: Org-mode manual (25K lines info).
+---
+
 # org
 
 Org-mode manual (25K lines info).

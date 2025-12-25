@@ -1,3 +1,10 @@
+---
+name: unwiring-arena
+description: ""**Status**: ✅ Production Ready  \n**Trit**: 0 (ERGODIC - balanced flow)\"
+  \  \n**Principle**: Play/Coplay autopoietic closure with GF(3) conservation  \n\
+  **Source**: plurigrid/UnwiringDiagrams.jl#1 + Capucci et al. Arena Theory"
+---
+
 # Unwiring Arena Skill
 
 **Status**: ✅ Production Ready  

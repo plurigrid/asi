@@ -1,3 +1,8 @@
+---
+name: pulse-mcp-stream
+description: "' Layer 1: Real-Time Social Stream Monitoring via MCP'"
+---
+
 # pulse-mcp-stream
 
 > Layer 1: Real-Time Social Stream Monitoring via MCP

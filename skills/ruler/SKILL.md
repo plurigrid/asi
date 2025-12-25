@@ -1,3 +1,8 @@
+---
+name: ruler
+description: Unified AI agent configuration propagation across 18+ coding assistants.
+---
+
 # ruler
 
 Unified AI agent configuration propagation across 18+ coding assistants.

@@ -1,8 +1,11 @@
 ---
 name: backend-development
-description: Backend API design, database architecture, microservices patterns, and test-driven development. Use for designing APIs, database schemas, or backend system architecture.
-source: wshobson/agents
+description: Backend API design, database architecture, microservices patterns, and
+  test-driven development. Use for designing APIs, database schemas, or backend system
+  architecture.
 license: MIT
+metadata:
+  source: wshobson/agents
 ---
 
 # Backend Development

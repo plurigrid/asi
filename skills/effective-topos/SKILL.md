@@ -1,3 +1,11 @@
+---
+name: effective-topos
+description: FloxHub publication `bmorphism/effective-topos` - a comprehensive development
+  environment with 606 man pages, 97 Emacs info manuals, and deep integration across
+  Scheme (Guile/Goblins/Hoot), functional languages (OCaml, Haskell, Racket), systems
+  tools (Rust, Go), and Gay.jl deterministic coloring.
+---
+
 # effective-topos
 
 FloxHub publication `bmorphism/effective-topos` - a comprehensive development environment with 606 man pages, 97 Emacs info manuals, and deep integration across Scheme (Guile/Goblins/Hoot), functional languages (OCaml, Haskell, Racket), systems tools (Rust, Go), and Gay.jl deterministic coloring.

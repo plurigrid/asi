@@ -1,11 +1,13 @@
 ---
 name: structured-decomp
-description: "StructuredDecompositions.jl: Sheaves on tree decompositions for FPT algorithms with Specter-style bidirectional navigation"
-source: AlgebraicJulia/StructuredDecompositions.jl + music-topos
+description: "'StructuredDecompositions.jl: Sheaves on tree decompositions for FPT"
+  algorithms with Specter-style bidirectional navigation'
 license: MIT
-trit: 0
-gf3_conserved: true
-version: 1.1.0
+metadata:
+  source: AlgebraicJulia/StructuredDecompositions.jl + music-topos
+  trit: 0
+  gf3_conserved: true
+  version: 1.1.0
 ---
 
 # Structured Decompositions Skill

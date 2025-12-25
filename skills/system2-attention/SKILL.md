@@ -1,8 +1,10 @@
 ---
 name: system2-attention
-description: System 2 attention mechanisms for deliberate, slow reasoning in transformer architectures.
-source: local
+description: System 2 attention mechanisms for deliberate, slow reasoning in transformer
+  architectures.
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # System 2 Attention Skill: Deliberate Reasoning Validation

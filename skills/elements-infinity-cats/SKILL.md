@@ -1,8 +1,10 @@
 ---
 name: elements-infinity-cats
-description: Elements of ∞-Category Theory (Riehl-Verity) for foundational ∞-categorical constructions and model-independence.
-source: local
+description: Elements of ∞-Category Theory (Riehl-Verity) for foundational ∞-categorical
+  constructions and model-independence.
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Elements of ∞-Categories Skill: Model-Independent Foundations

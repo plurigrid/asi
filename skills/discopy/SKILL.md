@@ -1,13 +1,15 @@
 ---
 name: discopy
-description: "DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum circuits, QNLP, operads, and tensor networks"
-source: discopy/discopy + DeepWiki (8 interactions 2025-12-22)
+description: "'DisCoPy: Python library for computing with string diagrams - monoidal"
+  categories, quantum circuits, QNLP, operads, and tensor networks'
 license: BSD-3-Clause
-xenomodern: true
-ironic_detachment: 0.42
-trit: 0
-version: 2.0.0
-triangulated: 2025-12-22
+metadata:
+  source: discopy/discopy + DeepWiki (8 interactions 2025-12-22)
+  xenomodern: true
+  ironic_detachment: 0.42
+  trit: 0
+  version: 2.0.0
+  triangulated: 2025-12-22
 ---
 
 # DisCoPy: String Diagrams in Python

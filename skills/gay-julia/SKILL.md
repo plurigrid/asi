@@ -1,3 +1,9 @@
+---
+name: gay-julia
+description: Wide-gamut color sampling with splittable determinism using Pigeons.jl
+  SPI pattern and LispSyntax integration.
+---
+
 # Gay.jl - Wide-Gamut Deterministic Color Sampling
 
 Wide-gamut color sampling with splittable determinism using Pigeons.jl SPI pattern and LispSyntax integration.

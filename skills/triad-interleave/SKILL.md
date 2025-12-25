@@ -1,6 +1,7 @@
 ---
 name: triad-interleave
-description: Interleave three deterministic color streams into balanced schedules for parallel execution and evaluation.
+description: Interleave three deterministic color streams into balanced schedules
+  for parallel execution and evaluation.
 ---
 
 # Triad Interleave

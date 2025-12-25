@@ -1,8 +1,11 @@
 ---
 name: self-evolving-agent
-description: Darwin Gödel Machine patterns for self-improving AI agents with open-ended code evolution. Use for building agents that autonomously improve their own capabilities, modify their codebases, and evolve through interaction.
-trit: 0
-color: "#26D826"
+description: Darwin Gödel Machine patterns for self-improving AI agents with open-ended
+  code evolution. Use for building agents that autonomously improve their own capabilities,
+  modify their codebases, and evolve through interaction.
+metadata:
+  trit: 0
+  color: '#26D826'
 ---
 
 # Self-Evolving Agent

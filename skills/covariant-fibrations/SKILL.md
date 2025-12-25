@@ -1,8 +1,10 @@
 ---
 name: covariant-fibrations
-description: Riehl-Shulman covariant fibrations for dependent types over directed intervals in synthetic ∞-categories.
-source: local
+description: Riehl-Shulman covariant fibrations for dependent types over directed
+  intervals in synthetic ∞-categories.
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Covariant Fibrations Skill: Directed Transport

@@ -1,3 +1,8 @@
+---
+name: goblins
+description: Distributed object capability system (6.5K lines info).
+---
+
 # goblins
 
 Distributed object capability system (6.5K lines info).

@@ -1,9 +1,11 @@
 ---
 name: uv-oneliners
-description: "UV/UVX awesome one-liners for ephemeral Python environments with multi-package stacks"
-source: astral-sh/uv + gemini-cookbook patterns
-trit: +1 (PLUS - generative)
-seed: 0x42D
+description: UV/UVX awesome one-liners for ephemeral Python environments with multi-package
+  stacks
+metadata:
+  source: astral-sh/uv + gemini-cookbook patterns
+  trit: +1 (PLUS - generative)
+  seed: 1069
 ---
 
 # UV One-Liners Skill

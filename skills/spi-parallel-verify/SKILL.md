@@ -1,6 +1,7 @@
 ---
 name: spi-parallel-verify
-description: Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for 3-way color streams with arbitrary precision.
+description: Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for
+  3-way color streams with arbitrary precision.
 ---
 
 # SPI Parallel Verify

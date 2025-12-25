@@ -1,8 +1,10 @@
 ---
 name: synthetic-adjunctions
-description: Synthetic adjunctions in directed type theory for ∞-categorical universal constructions.
-source: local
+description: Synthetic adjunctions in directed type theory for ∞-categorical universal
+  constructions.
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Synthetic Adjunctions Skill: Universal Construction Generation

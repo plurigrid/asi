@@ -1,3 +1,8 @@
+---
+name: cargo
+description: Rust package manager (36 subcommands).
+---
+
 # cargo
 
 Rust package manager (36 subcommands).

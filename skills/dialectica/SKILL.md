@@ -1,8 +1,9 @@
 ---
 name: dialectica
 description: Dialectica Skill (ERGODIC 0)
-source: local
 license: UNLICENSED
+metadata:
+  source: local
 ---
 
 # Dialectica Skill (ERGODIC 0)

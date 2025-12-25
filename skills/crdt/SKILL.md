@@ -1,11 +1,13 @@
 ---
-name: CRDT Skill
-version: 1.0
-status: production
-framework: Jules Hedges' Compositional Game Theory
-language: Ruby
-trit: ±1
-integration: Amp, Codex, Music-Topos
+name: crdt
+metadata:
+  version: 1.0
+  status: production
+  framework: Jules Hedges' Compositional Game Theory
+  language: Ruby
+  trit: ±1
+  integration: Amp, Codex, Music-Topos
+description: crdt skill
 ---
 
 # CRDT Skill - Conflict-free Replicated Data Types

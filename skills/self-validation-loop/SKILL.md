@@ -1,6 +1,7 @@
 ---
 name: self-validation-loop
-description: Run self-validation loops for triadic color systems using prediction vs observation and error minimization.
+description: Run self-validation loops for triadic color systems using prediction
+  vs observation and error minimization.
 ---
 
 # Self-Validation Loop

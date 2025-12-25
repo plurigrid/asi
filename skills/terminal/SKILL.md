@@ -1,3 +1,8 @@
+---
+name: terminal
+description: Terminal tools = tmux + zsh + fzf + ripgrep.
+---
+
 # terminal
 
 Terminal tools = tmux + zsh + fzf + ripgrep.

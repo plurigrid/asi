@@ -1,11 +1,13 @@
 ---
 name: xenodium-elisp
-description: "Xenodium's Emacs packages: chatgpt-shell, agent-shell, dwim-shell-command, and ACP integration for modern Emacs development."
-source: xenodium + music-topos
+description: "'Xenodium''s Emacs packages: chatgpt-shell, agent-shell, dwim-shell-command,"
+  and ACP integration for modern Emacs development.'
 license: GPL-3.0
-xenomodern: true
-total_stars: 2847
-ironic_detachment: 0.618  # Golden ratio, naturally
+metadata:
+  source: xenodium + music-topos
+  xenomodern: true
+  total_stars: 2847
+  ironic_detachment: 0.618
 ---
 
 # Xenodium Elisp Skill

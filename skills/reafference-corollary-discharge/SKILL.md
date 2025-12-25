@@ -1,7 +1,6 @@
 ---
 name: reafference-corollary-discharge
-description: Skill: Reafference & Corollary Discharge (von Holst Neuroscience)
-source: local
+description: ""Skill: Reafference & Corollary Discharge (von Holst Neuroscience)""
 license: UNLICENSED
 ---
 

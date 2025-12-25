@@ -1,10 +1,16 @@
 ---
 name: causal-inference
-description: "Bengio's causal inference for AI: Interventional reasoning, counterfactuals, and System 2 deep learning. World models with causal structure."
-trit: 0
-polarity: ERGODIC
-source: "Bengio et al. 2019: Towards Causal Representation Learning"
-technologies: [Python, DoWhy, CausalML, Pyro]
+description: "'Bengio''s causal inference for AI: Interventional reasoning, counterfactuals,"
+  and System 2 deep learning. World models with causal structure.'
+metadata:
+  trit: 0
+  polarity: ERGODIC
+  source: 'Bengio et al. 2019: Towards Causal Representation Learning'
+  technologies:
+  - Python
+  - DoWhy
+  - CausalML
+  - Pyro
 ---
 
 # Causal Inference Skill

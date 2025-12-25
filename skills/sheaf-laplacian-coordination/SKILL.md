@@ -1,8 +1,11 @@
 ---
 name: sheaf-laplacian-coordination
-description: Sheaf neural network coordination via graph Laplacians for distributed consensus and harmonic inference. Use when coordinating multi-agent systems, building sheaf-aware GNNs, or implementing distributed consensus protocols.
-trit: 0
-color: "#26D826"
+description: Sheaf neural network coordination via graph Laplacians for distributed
+  consensus and harmonic inference. Use when coordinating multi-agent systems, building
+  sheaf-aware GNNs, or implementing distributed consensus protocols.
+metadata:
+  trit: 0
+  color: '#26D826'
 ---
 
 # Sheaf Laplacian Coordination

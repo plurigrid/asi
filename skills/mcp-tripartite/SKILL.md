@@ -1,7 +1,6 @@
 ---
 name: mcp-tripartite
-description: SKILL: MCP Tripartite Integration
-source: local
+description: ""SKILL: MCP Tripartite Integration""
 license: UNLICENSED
 ---
 

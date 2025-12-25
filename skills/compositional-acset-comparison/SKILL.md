@@ -1,3 +1,12 @@
+---
+name: compositional-acset-comparison
+description: "'**Trit**: 0 (ERGODIC - Coordinator)"
+
+  **Color**: #26D826 (Green)
+
+  **Domain**: Compositional algorithm/data analysis via algebraic databases'
+---
+
 # Compositional ACSet Comparison Skill
 
 **Trit**: 0 (ERGODIC - Coordinator)

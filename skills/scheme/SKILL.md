@@ -1,3 +1,8 @@
+---
+name: scheme
+description: GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+---
+
 # scheme
 
 GNU Scheme ecosystem = guile + goblins + hoot + fibers.

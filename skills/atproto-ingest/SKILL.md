@@ -1,3 +1,8 @@
+---
+name: atproto-ingest
+description: Layer 1 - Data Acquisition for Bluesky/AT Protocol social graph and content.
+---
+
 # AT Protocol Data Ingestion
 
 Layer 1 - Data Acquisition for Bluesky/AT Protocol social graph and content.

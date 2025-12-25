@@ -1,3 +1,8 @@
+---
+name: duckdb-ies
+description: "' Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking'"
+---
+
 # duckdb-ies
 
 > Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking

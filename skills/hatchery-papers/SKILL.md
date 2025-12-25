@@ -1,8 +1,10 @@
 ---
 name: hatchery-papers
-description: Chicken Scheme Hatchery eggs and academic papers for color logic, 2TDX, colored operads, and higher observational type theory.
-source: music-topos/skills
+description: Chicken Scheme Hatchery eggs and academic papers for color logic, 2TDX,
+  colored operads, and higher observational type theory.
 license: MIT
+metadata:
+  source: music-topos/skills
 ---
 
 # Hatchery & Papers: Research Resources
