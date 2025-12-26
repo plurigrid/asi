@@ -1,0 +1,19 @@
+[ruler]
+version = "0.1.0"
+source_of_truth = ".ruler/skills/"
+
+[agents]
+claude = { path = "~/.claude/", skills = true, prompts = true }
+codex = { path = "~/.codex/", skills = true, prompts = false }
+cursor = { path = ".cursor/", skills = true, prompts = false }
+amp = { path = "~/.amp/", skills = true, prompts = true }
+vscode = { path = ".github/", skills = true, prompts = false }
+goose = { path = "~/.config/goose/", skills = true, prompts = true }
+
+[propagation]
+gf3_conservation = true
+deterministic_colors = true
+seed = 69420
+
+[mcp]
+servers = ["gay", "firecrawl", "duckdb"]

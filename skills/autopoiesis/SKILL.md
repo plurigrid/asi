@@ -1,296 +1,354 @@
 ---
 name: autopoiesis
 description: "Self-modifying AI agent configuration via ruler + MCP + DuckDB. All behavior mods become one-liners."
+version: 1.0.0
 trit: 0
-gf3_triad: "three-match (-1) ⊗ autopoiesis (0) ⊗ gay-mcp (+1)"
+color: "#26D826"
+source: hdresearch/duck + intellectronica/ruler
+invariant: true
 ---
 
 # Autopoiesis Skill
 
-> *"A system is autopoietic if it continuously produces itself through its own operations while maintaining its organization."*
-> — Maturana & Varela (1980)
+Self-modifying AI agent configuration via ruler + MCP + DuckDB.
+All behavior modifications become one-liners.
 
-## 1. Core Concept
+## Core Concept
 
-Autopoiesis = **self-production** + **self-maintenance** + **self-boundary**
+Autopoiesis = self-making. This skill enables agents to:
+1. **Configure themselves** - Modify system prompts, skills, and MCP servers
+2. **Propagate configurations** - Sync across agents with GF(3) conservation
+3. **Track modifications** - DuckDB temporal versioning of all changes
+4. **Self-heal** - Restore from known-good states
 
-In the context of AI agents:
-- **Self-production**: Agent spawns new skills/capabilities
-- **Self-maintenance**: Agent validates its own consistency (reafference)
-- **Self-boundary**: Capabilities define what agent can/cannot do (OCapN)
-
-## 2. ACSet Schema (Julia)
-
-```julia
-using Catlab, ACSets
-
-@present SchemaAutopoiesis(FreeSchema) begin
-    # Objects
-    System::Ob       # Autopoietic systems (agents)
-    Component::Ob    # Produced components (skills, configs)
-    Boundary::Ob     # Capability boundaries
-    
-    # Morphisms (production network)
-    produces::Hom(System, Component)      # System produces components
-    regenerates::Hom(Component, System)   # Components regenerate system
-    delimits::Hom(Boundary, System)       # Boundary delimits system
-    
-    # Attributes
-    seed::Attr(System, UInt64)            # Gay.jl deterministic seed
-    trit::Attr(System, Int8)              # GF(3) assignment {-1, 0, +1}
-    capability::Attr(Boundary, String)    # OCapN sturdyref
-    name::Attr(Component, String)         # Component identifier
-    
-    # OPERATIONAL CLOSURE CONSTRAINT
-    # composition: produces ∘ regenerates = id_System
-end
-
-const AutopoiesisACSet = @acset_type AutopoiesisSchema
-
-# Verify operational closure
-function is_operationally_closed(aps::AutopoiesisACSet)
-    for s in parts(aps, :System)
-        components = incident(aps, s, :produces)
-        for c in components
-            if aps[c, :regenerates] != s
-                return false  # Component doesn't regenerate its producer
-            end
-        end
-    end
-    return true
-end
-```
-
-## 3. GF(3) Triad
-
-| Component | Trit | Role | Implementation |
-|-----------|------|------|----------------|
-| Recognition | -1 | Self-verify | Reafference loop (Gay.jl) |
-| Boundary | 0 | Coordinate | OCapN capability refs |
-| Production | +1 | Generate | Spawn actors/skills |
-
-**Conservation:** (-1) + (0) + (+1) = 0 ✓
-
-## 4. Self-Rewriting via DPO
-
-Double Pushout (DPO) rewriting ensures consistency:
-
-```
-     L ←── K ──→ R
-     ↓     ↓     ↓
-     G ←── D ──→ H
-```
-
-- **L** = Pattern to match (current config)
-- **K** = Interface (preserved structure)
-- **R** = Replacement (new config)
-- **G** = Current system state
-- **H** = New system state (self-rewritten)
-
-The DPO ensures `produces ∘ regenerates = id_System` is preserved.
-
-## 5. CLI: autopoi.bb
+## Prerequisites
 
 ```bash
-#!/usr/bin/env bb
-# Self-modifying agent configuration
+# Install globally
+npm install -g nbb ai-agent-skills
 
-# Add a skill to all agents
-bb autopoi.bb skill:add curiosity-driven +1
-
-# Add an MCP server to all agents
-bb autopoi.bb mcp:add gay '{"command":"julia","args":["--project=@gay","-e","using Gay; serve()"]}'
-
-# Propagate changes via ruler
-bb autopoi.bb sync
-
-# Check operational closure
-bb autopoi.bb verify
+# Or via npx (preferred)
+npx ai-agent-skills install autopoiesis --agent amp
 ```
 
-### Implementation
+## Ruler Integration
+
+Ruler (intellectronica/ruler) provides centralized skill/prompt management.
+
+### Initialize Ruler
+
+```bash
+npx ruler init
+```
+
+Creates `.ruler/` directory structure:
+```
+.ruler/
+├── ruler.toml           # Main configuration
+├── skills/              # Skill source of truth
+├── prompts/             # System prompts
+├── mcp/                 # MCP server configs
+└── agents/              # Per-agent overrides
+```
+
+### ruler.toml
+
+```toml
+[ruler]
+version = "0.1.0"
+source_of_truth = ".ruler/skills/"
+
+[agents]
+claude = { path = "~/.claude/", skills = true, prompts = true }
+codex = { path = "~/.codex/", skills = true, prompts = false }
+cursor = { path = ".cursor/", skills = true, prompts = false }
+amp = { path = "~/.amp/", skills = true, prompts = true }
+vscode = { path = ".github/", skills = true, prompts = false }
+goose = { path = "~/.config/goose/", skills = true, prompts = true }
+
+[propagation]
+gf3_conservation = true
+deterministic_colors = true
+seed = 69420
+
+[mcp]
+servers = ["gay", "firecrawl", "duckdb"]
+```
+
+## Self-Modification Patterns
+
+### 1. System Prompt Modification
 
 ```clojure
-#!/usr/bin/env bb
-(ns autopoi
-  (:require [babashka.fs :as fs]
-            [babashka.process :as p]
+;; autopoiesis.clj - Run with nbb
+(ns autopoiesis.prompt
+  (:require ["fs" :as fs]
+            ["path" :as path]))
+
+(def PROMPT_PATHS
+  {:claude "~/.claude/CLAUDE.md"
+   :codex "~/.codex/instructions.md"
+   :amp "~/.amp/AGENTS.md"
+   :cursor ".cursorrules"})
+
+(defn modify-prompt! [agent section content]
+  (let [path (get PROMPT_PATHS agent)
+        expanded (-> path (.replace "~" (js/process.env.HOME)))
+        existing (when (.existsSync fs expanded)
+                   (.readFileSync fs expanded "utf8"))
+        marker (str "<!-- autopoiesis:" section " -->")
+        end-marker (str "<!-- /autopoiesis:" section " -->")
+        new-section (str marker "\n" content "\n" end-marker)
+        updated (if (and existing (.includes existing marker))
+                  ;; Replace existing section
+                  (.replace existing 
+                    (js/RegExp. (str marker "[\\s\\S]*?" end-marker))
+                    new-section)
+                  ;; Append new section
+                  (str (or existing "") "\n\n" new-section))]
+    (.writeFileSync fs expanded updated)
+    {:agent agent :section section :path expanded}))
+
+;; Example: Add tool preferences
+(modify-prompt! :claude "tool-preferences"
+  "Always prefer:
+   - finder over multiple greps
+   - Read over cat/head/tail
+   - edit_file over sed
+   - create_file over echo/heredoc")
+```
+
+### 2. MCP Server Configuration
+
+```clojure
+;; autopoiesis-mcp.clj
+(ns autopoiesis.mcp
+  (:require ["fs" :as fs]
+            [clojure.edn :as edn]))
+
+(def MCP_CONFIG_PATHS
+  {:claude "~/.claude/mcp_servers.json"
+   :amp "~/.config/amp/mcp.json"
+   :cursor "~/.cursor/mcp.json"})
+
+(defn add-mcp-server! [agent server-name config]
+  (let [path (-> (get MCP_CONFIG_PATHS agent)
+                 (.replace "~" (js/process.env.HOME)))
+        existing (when (.existsSync fs path)
+                   (js/JSON.parse (.readFileSync fs path "utf8")))
+        updated (assoc (or existing {}) server-name config)]
+    (.writeFileSync fs path (js/JSON.stringify updated nil 2))
+    {:agent agent :server server-name :status "added"}))
+
+;; Example: Add gay-mcp server
+(add-mcp-server! :claude "gay"
+  {:type "stdio"
+   :command "julia"
+   :args ["--project=/path/to/Gay.jl" "-e" "using Gay; Gay.serve_mcp()"]})
+```
+
+### 3. Skill Propagation
+
+```clojure
+;; propagate-skills.clj
+(ns autopoiesis.propagate
+  (:require [babashka.process :refer [shell]]
+            [clojure.string :as str]))
+
+(def AGENTS [:claude :cursor :amp :codex :vscode :goose])
+
+(defn propagate-skill! [skill-name]
+  (doseq [agent AGENTS]
+    (let [result (shell {:out :string :continue true}
+                   "npx" "ai-agent-skills" "install" skill-name 
+                   "--agent" (name agent))]
+      (println (str "  " (name agent) ": " 
+                   (if (zero? (:exit result)) "✓" "✗"))))))
+
+(defn propagate-all! [skills]
+  (println "╔═══════════════════════════════════════════════════════════════╗")
+  (println "║  AUTOPOIESIS: Skill Propagation                               ║")
+  (println "╚═══════════════════════════════════════════════════════════════╝")
+  (doseq [skill skills]
+    (println (str "\n→ " skill))
+    (propagate-skill! skill)))
+
+;; Usage
+(propagate-all! ["gay-mcp" "bisimulation-game" "duckdb-temporal-versioning"])
+```
+
+## DuckDB Configuration Tracking
+
+Track all configuration changes in DuckDB for temporal queries and rollback.
+
+```clojure
+;; autopoiesis-duckdb.clj
+(ns autopoiesis.duckdb
+  (:require [babashka.process :refer [shell]]
             [cheshire.core :as json]))
 
-(def db-path "autopoiesis.duckdb")
-(def agent-dirs [".agents" ".claude" ".codex" ".cursor"])
+(def CONFIG_DB (str (System/getProperty "user.home") "/.autopoiesis/config.duckdb"))
 
-(defn duck-log! [event data]
-  (p/shell "duckdb" db-path "-c"
-    (format "INSERT INTO events (event, data, ts) VALUES ('%s', '%s', NOW())"
-            event (json/generate-string data))))
+(defn init-db! []
+  (shell "duckdb" CONFIG_DB "-c"
+    "CREATE TABLE IF NOT EXISTS config_log (
+       id INTEGER PRIMARY KEY,
+       timestamp TIMESTAMP DEFAULT current_timestamp,
+       agent VARCHAR,
+       config_type VARCHAR,  -- 'prompt', 'mcp', 'skill'
+       key VARCHAR,
+       old_value JSON,
+       new_value JSON,
+       checksum VARCHAR
+     );
+     
+     CREATE TABLE IF NOT EXISTS skill_inventory (
+       agent VARCHAR,
+       skill_name VARCHAR,
+       version VARCHAR,
+       installed_at TIMESTAMP DEFAULT current_timestamp,
+       trit INTEGER,
+       PRIMARY KEY (agent, skill_name)
+     );"))
 
-(defn add-skill! [skill-name trit]
-  (doseq [dir agent-dirs]
-    (let [skill-dir (str dir "/skills/" skill-name)]
-      (fs/create-dirs skill-dir)
-      (spit (str skill-dir "/SKILL.md")
-            (format "---\nname: %s\ntrit: %d\n---\n" skill-name trit))))
-  (duck-log! "skill:add" {:skill skill-name :trit trit})
-  (println "✓ Added skill" skill-name "to all agents"))
+(defn log-change! [agent config-type key old-val new-val]
+  (let [sql (format 
+              "INSERT INTO config_log (agent, config_type, key, old_value, new_value) 
+               VALUES ('%s', '%s', '%s', '%s', '%s')"
+              agent config-type key 
+              (json/generate-string old-val)
+              (json/generate-string new-val))]
+    (shell "duckdb" CONFIG_DB "-c" sql)))
 
-(defn mcp-add! [server-name config]
-  (doseq [dir agent-dirs]
-    (let [mcp-file (str dir "/.mcp.json")]
-      (when (fs/exists? mcp-file)
-        (let [current (json/parse-string (slurp mcp-file) true)
-              updated (assoc-in current [:mcpServers (keyword server-name)] 
-                                (json/parse-string config true))]
-          (spit mcp-file (json/generate-string updated {:pretty true}))))))
-  (duck-log! "mcp:add" {:server server-name})
-  (println "✓ Added MCP server" server-name))
-
-(defn verify-closure! []
-  (let [systems (p/shell {:out :string} "duckdb" db-path "-json" "-c"
-                  "SELECT * FROM systems")
-        data (json/parse-string (:out systems) true)]
-    (every? (fn [sys]
-              (let [components (filter #(= (:producer %) (:id sys)) data)]
-                (every? #(= (:regenerates %) (:id sys)) components)))
-            data)))
-
-(defn -main [& args]
-  (case (first args)
-    "skill:add" (add-skill! (second args) (parse-long (nth args 2 "0")))
-    "mcp:add" (mcp-add! (second args) (nth args 2 "{}"))
-    "verify" (if (verify-closure!)
-               (println "✓ Operationally closed")
-               (println "✗ Closure violated"))
-    "sync" (p/shell "ruler" "sync")
-    (println "Usage: autopoi.bb <skill:add|mcp:add|verify|sync> [args]")))
-
-(apply -main *command-line-args*)
+(defn rollback-to! [timestamp]
+  "Rollback configuration to a specific timestamp"
+  (let [sql (format 
+              "SELECT * FROM config_log WHERE timestamp <= '%s' ORDER BY timestamp DESC"
+              timestamp)
+        result (shell {:out :string} "duckdb" CONFIG_DB "-json" "-c" sql)]
+    (json/parse-string (:out result) true)))
 ```
 
-## 6. Reafference Loop (Self-Recognition)
+## One-Liner Modifications
 
-```julia
-using Gay
-
-function reafference_check(seed::UInt64, index::Int)
-    Gay.gay_seed(seed)
-    
-    # Prediction: what I expect
-    predicted = Gay.color_at(index)
-    
-    # Action: generate the color
-    Gay.gay_seed(seed)  # Reset to same state
-    observed = Gay.color_at(index)
-    
-    # Reafference: did I cause this?
-    if predicted == observed
-        # Self-caused → I am who I think I am
-        return (verified=true, trit=-1, color=predicted)
-    else
-        # External perturbation → something changed me
-        return (verified=false, trit=+1, color=observed)
-    end
-end
-
-# Verify agent identity
-function verify_identity(agent_seed::UInt64)
-    checks = [reafference_check(agent_seed, i) for i in 1:10]
-    all(c.verified for c in checks)
-end
-```
-
-## 7. DuckDB Schema
-
-```sql
-CREATE TABLE IF NOT EXISTS systems (
-    id INTEGER PRIMARY KEY,
-    name VARCHAR NOT NULL,
-    seed UBIGINT NOT NULL,
-    trit TINYINT CHECK (trit IN (-1, 0, 1)),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS components (
-    id INTEGER PRIMARY KEY,
-    name VARCHAR NOT NULL,
-    producer INTEGER REFERENCES systems(id),
-    regenerates INTEGER REFERENCES systems(id),
-    component_type VARCHAR  -- 'skill', 'mcp', 'config'
-);
-
-CREATE TABLE IF NOT EXISTS boundaries (
-    id INTEGER PRIMARY KEY,
-    system_id INTEGER REFERENCES systems(id),
-    capability VARCHAR NOT NULL,  -- OCapN sturdyref
-    permission VARCHAR  -- 'read', 'write', 'spawn'
-);
-
-CREATE TABLE IF NOT EXISTS events (
-    id INTEGER PRIMARY KEY,
-    event VARCHAR NOT NULL,
-    data JSON,
-    ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Operational closure check
-CREATE VIEW v_closure_check AS
-SELECT 
-    s.id as system_id,
-    s.name as system_name,
-    COUNT(c.id) as component_count,
-    SUM(CASE WHEN c.regenerates = s.id THEN 1 ELSE 0 END) as regenerating,
-    COUNT(c.id) = SUM(CASE WHEN c.regenerates = s.id THEN 1 ELSE 0 END) as is_closed
-FROM systems s
-LEFT JOIN components c ON c.producer = s.id
-GROUP BY s.id, s.name;
-```
-
-## 8. Integration with Tensor Space
-
-The autopoiesis skill connects to the tensor product framework:
-
-```sql
--- Autopoietic tensor elements
-SELECT 
-    te.element_id,
-    'autopoiesis' as skill,
-    p.title as paper,
-    CASE 
-        WHEN p.title LIKE '%Maturana%' OR p.title LIKE '%Varela%' THEN 1.0
-        WHEN p.title LIKE '%self%' OR p.title LIKE '%autopoie%' THEN 0.8
-        ELSE 0.0
-    END as affinity
-FROM tensor_elements te
-JOIN papers p ON te.paper_id = p.paper_id
-WHERE te.skill_id = 'autopoiesis';
-```
-
-## 9. Commands
+The power of autopoiesis: complex modifications as one-liners.
 
 ```bash
-# Initialize autopoiesis database
-just autopoi-init
+# Add a skill to all agents
+just install-all gay-mcp
 
-# Add skill with GF(3) trit
-just autopoi-skill curiosity-driven +1
+# Modify Claude's system prompt
+npx nbb -e '(require "[autopoiesis.prompt]") (modify-prompt! :claude "context" "You have access to Gay.jl color generation.")'
 
-# Verify operational closure
-just autopoi-verify
+# Add MCP server to all agents
+npx nbb propagate-mcp.cljs gay
 
-# Sync to all agents via ruler
-just autopoi-sync
+# Track configuration change
+npx nbb -e '(require "[autopoiesis.duckdb]") (log-change! :claude :prompt "context" nil "new context")'
+
+# Query configuration history
+duckdb ~/.autopoiesis/config.duckdb -c "SELECT * FROM config_log ORDER BY timestamp DESC LIMIT 10"
+
+# Rollback to yesterday
+npx nbb -e '(require "[autopoiesis.duckdb]") (rollback-to! "2025-12-23")'
 ```
 
-## 10. See Also
+## Integration with hdresearch/duck
 
-- [`codex-self-rewriting`](../codex-self-rewriting/SKILL.md) - MCP Tasks for self-modification
-- [`bisimulation-game`](../bisimulation-game/SKILL.md) - Observational equivalence
-- [`gay-mcp`](../gay-mcp/SKILL.md) - Deterministic color generation
-- [`acsets-algebraic-databases`](../acsets/SKILL.md) - DPO rewriting
+Based on patterns from hdresearch/duck:
 
-## 11. References
+```clojure
+;; vers-autopoiesis.clj - Deploy autopoiesis to Vers VMs
+(ns vers.autopoiesis
+  (:require [babashka.process :refer [shell]]))
 
-1. **Maturana & Varela** — *Autopoiesis and Cognition* (1980)
-2. **Dittrich & di Fenizio** — *Chemical Organization Theory* (2007)
-3. **Kock** — *Decomposition Spaces, Incidence Algebras and Möbius Inversion* (2018)
-4. **Libkind & Spivak** — *Pattern Runs on Matter* (ACT 2024)
+(defn deploy-to-vm! [vm-id]
+  (println (str "🚀 Deploying autopoiesis to VM " vm-id "..."))
+  
+  ;; Install dependencies
+  (shell "vers" "execute" vm-id "npm install -g nbb ai-agent-skills")
+  (shell "vers" "execute" vm-id "curl -LsSf https://astral.sh/uv/install.sh | sh")
+  (shell "vers" "execute" vm-id "~/.local/bin/uv pip install --system duckdb")
+  
+  ;; Initialize ruler
+  (shell "vers" "execute" vm-id "npx ruler init")
+  
+  ;; Propagate skills
+  (shell "vers" "execute" vm-id 
+    "npx ai-agent-skills install plurigrid/asi --agent codex")
+  
+  (println "✅ Autopoiesis deployed!"))
+```
+
+## MCP Server Definition
+
+```json
+{
+  "autopoiesis": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "nbb", "/path/to/autopoiesis-mcp-server.cljs"],
+    "env": {
+      "AUTOPOIESIS_DB": "~/.autopoiesis/config.duckdb"
+    }
+  }
+}
+```
+
+## Tripartite Coordination
+
+Autopoiesis across the tripartite agent system:
+
+| Agent | Role | Trit | Responsibility |
+|-------|------|------|----------------|
+| Codex | Execution | 0 | Run modifications in sandboxed VMs |
+| Claude | Planning | -1 | Design configuration changes |
+| Cursor | UI | +1 | Interactive configuration editing |
+
+```bash
+# Deploy tripartite autopoiesis
+just install-tripartite-autopoiesis
+```
+
+## Safety Invariants
+
+1. **Checksum verification** - All changes are checksummed
+2. **Rollback capability** - Any change can be undone
+3. **GF(3) conservation** - Trit sums preserved across propagation
+4. **Deterministic colors** - Same seed → same configuration colors
+
+## Quick Reference
+
+```bash
+# Initialize autopoiesis
+npx ruler init
+
+# Install skill to specific agent
+npx ai-agent-skills install <skill> --agent <agent>
+
+# Propagate skill to all agents
+just install-all <skill>
+
+# Modify system prompt
+npx nbb autopoiesis-prompt.cljs <agent> <section> <content>
+
+# Add MCP server
+npx nbb autopoiesis-mcp.cljs <agent> <server> <config.json>
+
+# Query configuration history
+duckdb ~/.autopoiesis/config.duckdb -c "SELECT * FROM config_log"
+
+# Deploy to Vers VM
+npx nbb vers-autopoiesis.cljs --deploy <vm-id>
+```
+
+## Files
+
+| Path | Description |
+|------|-------------|
+| `.ruler/ruler.toml` | Main configuration |
+| `.ruler/skills/` | Skill source of truth |
+| `~/.autopoiesis/config.duckdb` | Configuration tracking DB |
+| `autopoiesis-prompt.cljs` | Prompt modification script |
+| `autopoiesis-mcp.cljs` | MCP server configuration |
+| `propagate-skills.cljs` | Multi-agent skill propagation |

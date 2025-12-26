@@ -1,8 +1,22 @@
 {
-  "version": "1.5.0",
-  "updated": "2025-12-24T16:00:00Z",
+  "version": "1.6.0",
+  "updated": "2025-12-24T00:00:00Z",
   "total": 63,
   "skills": [
+    {
+      "name": "autopoiesis",
+      "description": "Self-modifying AI agent configuration via ruler + MCP + DuckDB. All behavior mods become one-liners.",
+      "category": "meta",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/autopoiesis",
+      "stars": 0,
+      "downloads": 0,
+      "featured": true,
+      "verified": true,
+      "dependencies": ["nbb", "ai-agent-skills", "duckdb", "ruler"]
+    },
     {
       "name": "frontend-design",
       "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use for building web components, pages, dashboards, React components, HTML/CSS layouts, or styling any web UI.",
@@ -275,6 +289,19 @@
       "downloads": 180,
       "featured": false,
       "verified": false
+    },
+    {
+      "name": "jira-issues",
+      "description": "Create, update, and manage Jira issues from natural language. Use when logging bugs, creating tickets, updating issue status, or managing your Jira backlog.",
+      "category": "productivity",
+      "author": "skillcreatorai",
+      "source": "skillcreatorai/Ai-Agent-Skills",
+      "license": "MIT",
+      "path": "skills/jira-issues",
+      "stars": 100,
+      "downloads": 50,
+      "featured": true,
+      "verified": true
     },
     {
       "name": "qa-regression",
@@ -665,7 +692,7 @@
     },
     {
       "name": "gay-mcp",
-      "description": "Deterministic color generation with SplitMix64, GF(3) trits, and MCP tools for palettes and threads. Same seed \u2192 Same colors (SPI guarantee).",
+      "description": "Deterministic color generation with SplitMix64, GF(3) trits, and MCP tools for palettes and threads. Same seed → Same colors (SPI guarantee).",
       "category": "ai-agents",
       "author": "plurigrid",
       "source": "plurigrid/asi",
@@ -838,34 +865,6 @@
       "trit": 1,
       "bundle": "terminal",
       "agent": "plus"
-    },
-    {
-      "name": "bumpus-narratives",
-      "description": "Sheaves on time categories for compositional temporal reasoning. Bumpus et al. narrative framework with Gay.jl color integration.",
-      "category": "mathematics",
-      "author": "bmorphism",
-      "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/bumpus-narratives",
-      "stars": 0,
-      "downloads": 0,
-      "featured": false,
-      "verified": false,
-      "trit": 0
-    },
-    {
-      "name": "nix-acset-worlding",
-      "description": "Nix store modeled as Attributed C-Set for dependency verification and world management.",
-      "category": "infrastructure",
-      "author": "bmorphism",
-      "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/nix-acset-worlding",
-      "stars": 0,
-      "downloads": 0,
-      "featured": false,
-      "verified": false,
-      "trit": -1
     }
   ],
   "categories": [
@@ -948,6 +947,6 @@
         ]
       }
     ],
-    "gf3_conservation": "sum(agent.trit for agent in agents) \u2261 0 (mod 3)"
+    "gf3_conservation": "sum(agent.trit for agent in agents) ≡ 0 (mod 3)"
   }
 }
