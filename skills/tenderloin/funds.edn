@@ -1,0 +1,205 @@
+;; Tenderloin Fund Tracking Registry
+;; Mutual fund awareness for Protocol Labs manifest destiny
+
+{:version "0.1.0"
+ :updated "2025-12-25"
+ :thesis "Largest manifest destiny fund for Protocol Labs"
+ 
+ ;; Protocol Labs ecosystem protocols
+ :protocol-labs
+ {:core
+  [{:name "Filecoin"
+    :ticker "FIL"
+    :layer :storage
+    :trit +1
+    :market-cap "~$3B"
+    :thesis "Decentralized storage market with cryptographic proofs"}
+   
+   {:name "IPFS"
+    :ticker nil
+    :layer :storage
+    :trit +1
+    :thesis "Content-addressed permanent web"}
+   
+   {:name "libp2p"
+    :ticker nil
+    :layer :networking
+    :trit 0
+    :thesis "Modular p2p networking stack"}
+   
+   {:name "IPLD"
+    :ticker nil
+    :layer :data
+    :trit 0
+    :thesis "Linked data structures for content-addressed web"}]
+  
+  :compute
+  [{:name "Bacalhau"
+    :ticker nil
+    :layer :compute
+    :trit +1
+    :thesis "Compute over data where data lives"}
+   
+   {:name "Saturn"
+    :ticker nil
+    :layer :cdn
+    :trit 0
+    :thesis "Decentralized CDN for Web3"}]
+  
+  :research
+  [{:name "ConsensusLab"
+    :focus "Scalable consensus protocols"}
+   {:name "CryptoLab"
+    :focus "Applied cryptography"}
+   {:name "CryptoNetLab"
+    :focus "Cryptographic network protocols"}]}
+ 
+ ;; Competitor funds to track
+ :funds
+ {:tier-1
+  [{:name "Geometry"
+    :url "https://geometry.xyz"
+    :focus ["Deep math" "Cryptography" "Web3"]
+    :recent-investments
+    [{:project "Taproot Wizards" :amount "$30M" :date "2025-02"}
+     {:project "Alpen Labs" :amount "$8.5M" :date "2025-01"}
+     {:project "Dawn Wallet" :amount "$2M" :date "2025-01"}
+     {:project "Succinct Labs" :round "ZK proofs" :date "2024-03"}]
+    :pl-overlap :low
+    :threat-level :medium}
+   
+   {:name "a16z crypto"
+    :url "https://a16zcrypto.com"
+    :focus ["Full stack" "Infrastructure" "Consumer"]
+    :pl-overlap :medium
+    :threat-level :high}
+   
+   {:name "Paradigm"
+    :url "https://paradigm.xyz"
+    :focus ["Research-driven" "Protocol design"]
+    :pl-overlap :medium
+    :threat-level :high}
+   
+   {:name "Multicoin Capital"
+    :url "https://multicoin.capital"
+    :focus ["Thesis-driven" "Decentralized storage"]
+    :pl-overlap :high
+    :threat-level :critical}
+   
+   {:name "Polychain"
+    :url "https://polychain.capital"
+    :focus ["Layer 1s" "Infrastructure"]
+    :pl-overlap :medium
+    :threat-level :medium}]
+  
+  :tier-2
+  [{:name "Placeholder"
+    :focus ["Crypto networks"]}
+   {:name "Electric Capital"
+    :focus ["Developer ecosystem"]}
+   {:name "Framework"
+    :focus ["Infrastructure"]}
+   {:name "Variant"
+    :focus ["Consumer crypto"]}
+   {:name "1kx"
+    :focus ["Early stage"]}]}
+ 
+ ;; GF(3) portfolio balance
+ :portfolio
+ {:long ; +1
+  [{:asset "FIL" :allocation 0.30}
+   {:asset "IPFS-pinning" :allocation 0.15}
+   {:asset "Bacalhau-equity" :allocation 0.10}]
+  
+  :neutral ; 0
+  [{:asset "libp2p-grants" :allocation 0.10}
+   {:asset "PL-ecosystem-index" :allocation 0.10}]
+  
+  :short ; -1
+  [{:asset "AWS" :allocation -0.10}
+   {:asset "Cloudflare" :allocation -0.05}
+   {:asset "legacy-CDN-basket" :allocation -0.05}]
+  
+  :gf3-sum 0 ; Must equal 0
+  :rebalance-trigger :world-event}
+ 
+ ;; Protocol Labs investment activity
+ :protocol-labs-investments
+ {:total-companies 84
+  :notable ["Compute Labs" "Origami"]
+  :network "600+ tech startups connected"
+  :source "https://tracxn.com/d/corporate-investments/investments-by-protocol-labs"}
+ 
+ ;; Filecoin ecosystem funding (WEV opportunities)
+ :filecoin-funding
+ {:propgf-batch-2
+  {:amount "$4M"
+   :type "milestone-based"
+   :deadline "2025-12-23"
+   :focus ["open-source infrastructure" "research" "governance tooling" "UX"]
+   :apply "https://app.filpgf.io/programs/992/apply"}
+  
+  :propgf-batch-1
+  {:amount "$3.68M"
+   :recipients 14
+   :status :completed}
+  
+  :retropgf-round-3
+  {:amount "585K FIL"
+   :status :completed
+   :evolution ["Round 1: 200K FIL → 99 projects"
+               "Round 2: 300K FIL → 97 projects"
+               "Round 3: 585K FIL"]}
+  
+  :foundation-grants
+  {:categories ["Developer tooling" "Data tooling" "Integrations" 
+                "Applications" "Research" "FVM"]
+   :apply "https://github.com/filecoin-project/devgrants"}}
+ 
+ ;; 2025 strategic priorities (FF)
+ :ff-2025-priorities
+ {:objective "Make Filecoin work seamlessly, find product-market fit"
+  :network-stats {:age "4 years" 
+                  :scale "World's largest decentralized file storage"
+                  :providers "Thousands globally"}}
+ 
+ ;; World-generating events to monitor
+ :catalysts
+ [{:event "Filecoin FVM smart contracts"
+   :impact :high
+   :status :launched
+   :action :accumulate-fil}
+  
+  {:event "Enterprise Filecoin adoption"
+   :impact :high
+   :status :monitoring
+   :signals ["Fortune 500 announcements" "Data compliance solutions"]}
+  
+  {:event "AI/ML data storage demand"
+   :impact :critical
+   :status :emerging
+   :thesis "AI models need verifiable training data provenance"}
+  
+  {:event "Major cloud outage"
+   :impact :high
+   :status :contingent
+   :action :narrative-push}
+  
+  {:event "Regulatory clarity"
+   :impact :medium
+   :status :pending
+   :jurisdictions ["US" "EU" "Singapore"]}]
+ 
+ ;; Prisoner's dilemma strategy
+ :game-theory
+ {:strategy :tit-for-tat-with-forgiveness
+  :forgiveness-rounds 3
+  :cooperation-default true
+  :defection-triggers
+  ["Front-running detected"
+   "Hostile accumulation"
+   "Narrative attacks"]
+  :cooperation-signals
+  ["Joint ecosystem grants"
+   "Shared research"
+   "Co-investment offers"]}}
