@@ -1,0 +1,111 @@
+{
+  "mcpServers": {
+    "causality": {
+      "command": "julia",
+      "args": ["--project=@gay", "-e", "using Gay; Gay.serve_mcp()"],
+      "env": {
+        "GAY_SEED": "1069",
+        "AGENT_ROLE": "causality",
+        "TRIT_VALUE": "1"
+      },
+      "description": "PLUS (+1) agent: Generative exploration and move discovery"
+    },
+    "2-monad": {
+      "command": "python3",
+      "args": ["-m", "ies.world_memory_worlding"],
+      "env": {
+        "GAY_SEED": "2069",
+        "AGENT_ROLE": "2-monad",
+        "TRIT_VALUE": "0"
+      },
+      "description": "ERGODIC (0) agent: World coordination and navigation"
+    },
+    "amp": {
+      "command": "python3",
+      "args": ["-m", "ies.duckdb_acset_advanced_queries"],
+      "env": {
+        "GAY_SEED": "3069",
+        "AGENT_ROLE": "amp",
+        "TRIT_VALUE": "-1"
+      },
+      "description": "MINUS (-1) agent: Constraint verification and semantic validation"
+    },
+    "glass-bead-game": {
+      "command": "ruby",
+      "args": ["-I", "lib", "-r", "glass_bead_game", "-e", "GlassBeadGame.serve_mcp"],
+      "description": "Conceptual move generation via symbolic composition"
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      },
+      "description": "Web scraping and content extraction"
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/exa-mcp-server"],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      },
+      "description": "Web search and research"
+    },
+    "tree-sitter": {
+      "command": "uvx",
+      "args": ["mcp-tree-sitter"],
+      "description": "AST-based code analysis"
+    },
+    "skillz": {
+      "command": "uvx",
+      "args": ["mcp-skillz"],
+      "description": "Skill discovery and orchestration"
+    },
+    "localsend": {
+      "command": "node",
+      "args": ["/Users/bob/ies/asi/ies/music-topos/packages/localsend-mcp/dist/index.js"],
+      "description": "P2P skill exchange for distributed federation"
+    },
+    "unifier": {
+      "command": "python3",
+      "args": ["/Users/bob/ies/asi/ies/unifier_mcp_server.py"],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      },
+      "description": "Multi-modal unification across agent boundaries"
+    },
+    "deepwiki": {
+      "url": "https://mcp.deepwiki.com/mcp",
+      "description": "GitHub documentation and knowledge base"
+    }
+  },
+  "metadata": {
+    "federation": "UNWORLD",
+    "version": "1.0.0",
+    "agents": [
+      {
+        "name": "causality",
+        "role": "PLUS",
+        "trit": 1,
+        "seed": 1069,
+        "responsibility": "Generative exploration, move discovery, epistemic arbitrage ranking"
+      },
+      {
+        "name": "2-monad",
+        "role": "ERGODIC",
+        "trit": 0,
+        "seed": 2069,
+        "responsibility": "World state coordination, navigation, temporal versioning"
+      },
+      {
+        "name": "amp",
+        "role": "MINUS",
+        "trit": -1,
+        "seed": 3069,
+        "responsibility": "Constraint verification, semantic validation, GF(3) conservation"
+      }
+    ],
+    "gf3_balance": "1 + 0 + (-1) = 0 mod 3 ✓",
+    "last_updated": "2025-12-27T00:00:00Z"
+  }
+}
