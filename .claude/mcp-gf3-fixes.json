@@ -1,0 +1,193 @@
+{
+  "comment": "GF(3) Conservation Fix Strategies - Choose based on diagnostic results",
+  "status": "PHASE_A0_OPERATIONAL_VALIDATION",
+  "current_configuration": {
+    "causality": {
+      "generation_rate": 10,
+      "batch_size": 10,
+      "backpressure_enabled": false,
+      "trit": 1
+    },
+    "2-monad": {
+      "workers": 2,
+      "queue_depth": 500,
+      "filter_timeout_ms": 100,
+      "trit": 0
+    },
+    "amp": {
+      "verification_budget": 100,
+      "parallel_verifiers": 2,
+      "proof_cache_size": 1000,
+      "trit": -1
+    },
+    "gf3_balance": "1 + 0 + (-1) = 0 mod 3 ✓"
+  },
+  "fix_strategies": {
+    "strategy_A_increase_ergodic_capacity": {
+      "description": "Problem: 2-monad cannot route moves fast enough. Solution: Increase workers and queue depth.",
+      "root_cause": "ERGODIC BOTTLENECK (coordination latency exceeds budget)",
+      "diagnostic_signals": [
+        "Latency/timeout signals from 2-monad",
+        "Queue depth growing over time",
+        "Causality rate > Ergodic rate"
+      ],
+      "configuration": {
+        "causality": {
+          "generation_rate": 10,
+          "batch_size": 10,
+          "backpressure_enabled": false,
+          "trit": 1
+        },
+        "2-monad": {
+          "workers": 4,
+          "queue_depth": 1000,
+          "filter_timeout_ms": 200,
+          "trit": 0
+        },
+        "amp": {
+          "verification_budget": 100,
+          "parallel_verifiers": 2,
+          "proof_cache_size": 1000,
+          "trit": -1
+        }
+      },
+      "cost": "Higher memory usage (~2x), slight latency increase",
+      "expected_outcome": "GF(3) balance maintained, no backpressure, smooth installation",
+      "apply_command": "cp .claude/mcp-gf3-fixes.json#strategy_A .claude/mcp.json && npx ai-agent-skills install plurigrid/asi --agent crush"
+    },
+    "strategy_B_throttle_plus_generation": {
+      "description": "Problem: causality agent generates moves faster than system can handle. Solution: Reduce generation rate.",
+      "root_cause": "PLUS OVERFLOW (generative explosion exceeds filtering capacity)",
+      "diagnostic_signals": [
+        "Memory pressure signals",
+        "Queue overflow messages",
+        "Causality count >> Minus count"
+      ],
+      "configuration": {
+        "causality": {
+          "generation_rate": 5,
+          "batch_size": 5,
+          "backpressure_enabled": true,
+          "trit": 1
+        },
+        "2-monad": {
+          "workers": 2,
+          "queue_depth": 500,
+          "filter_timeout_ms": 100,
+          "trit": 0
+        },
+        "amp": {
+          "verification_budget": 100,
+          "parallel_verifiers": 2,
+          "proof_cache_size": 1000,
+          "trit": -1
+        }
+      },
+      "cost": "Slower skill installation (2x longer total time), lower peak memory",
+      "expected_outcome": "Sustainable generation rate, no buffer overflow, natural rhythm",
+      "apply_command": "cp .claude/mcp-gf3-fixes.json#strategy_B .claude/mcp.json && npx ai-agent-skills install plurigrid/asi --agent crush"
+    },
+    "strategy_C_increase_minus_budget": {
+      "description": "Problem: amp cannot verify all skills. Solution: Increase verification budget and parallel verifiers.",
+      "root_cause": "MINUS EXHAUSTION (verification budget depleted before all skills verified)",
+      "diagnostic_signals": [
+        "Verification failure signals",
+        "amp latency growing",
+        "Constraint violations accumulating",
+        "Later skills skipped verification"
+      ],
+      "configuration": {
+        "causality": {
+          "generation_rate": 10,
+          "batch_size": 10,
+          "backpressure_enabled": false,
+          "trit": 1
+        },
+        "2-monad": {
+          "workers": 2,
+          "queue_depth": 500,
+          "filter_timeout_ms": 100,
+          "trit": 0
+        },
+        "amp": {
+          "verification_budget": 500,
+          "parallel_verifiers": 4,
+          "proof_cache_size": 10000,
+          "trit": -1
+        }
+      },
+      "cost": "Higher CPU usage during verification, larger proof cache memory",
+      "expected_outcome": "All skills verified successfully, GF(3) conservation proven, coherence guaranteed",
+      "apply_command": "cp .claude/mcp-gf3-fixes.json#strategy_C .claude/mcp.json && npx ai-agent-skills install plurigrid/asi --agent crush"
+    },
+    "strategy_D_balanced_reweighting": {
+      "description": "Problem: All three agents imbalanced. Solution: Reweight to restore GF(3) symmetry.",
+      "root_cause": "GF(3) IMBALANCE (trits not summing to 0 operationally)",
+      "diagnostic_signals": [
+        "Multiple agents showing issues simultaneously",
+        "Trit sum diverging from 0",
+        "System behavior erratic and unpredictable",
+        "Recovery not possible with single-agent fix"
+      ],
+      "configuration": {
+        "causality": {
+          "generation_rate": 8,
+          "batch_size": 8,
+          "backpressure_enabled": true,
+          "trit": 1
+        },
+        "2-monad": {
+          "workers": 3,
+          "queue_depth": 750,
+          "filter_timeout_ms": 150,
+          "trit": 0
+        },
+        "amp": {
+          "verification_budget": 300,
+          "parallel_verifiers": 3,
+          "proof_cache_size": 5000,
+          "trit": -1
+        }
+      },
+      "cost": "Moderate across all dimensions, balanced performance",
+      "expected_outcome": "GF(3) conservation maintained throughout, all agents working together in rhythm",
+      "apply_command": "cp .claude/mcp-gf3-fixes.json#strategy_D .claude/mcp.json && npx ai-agent-skills install plurigrid/asi --agent crush"
+    }
+  },
+  "operational_gf3_conservation_checks": {
+    "before_installation": [
+      "Verify trit_sum = 1 + 0 + (-1) = 0",
+      "Check causality.backpressure_enabled = true",
+      "Verify 2-monad queue_depth > 0",
+      "Check amp.verification_budget > 0"
+    ],
+    "during_installation": [
+      "Monitor queue depth (should stay < 80% of max)",
+      "Track latency per agent (should stay < 200ms)",
+      "Count memory usage (should stay < 80% of available)",
+      "Verify trit_sum = 0 every 50 skills"
+    ],
+    "after_installation": [
+      "All 315 skills installed successfully",
+      "No protocol errors in logs",
+      "No timeouts or backpressure signals",
+      "All three agents stayed synchronized",
+      "GF(3) conservation maintained throughout"
+    ]
+  },
+  "diagnostic_workflow": {
+    "step_1_run_diagnostic": "./scripts/diagnose_gf3_protocol_error.sh .local/share/ies/logs/crush_latest.log",
+    "step_2_identify_root_cause": "Review 'Root Cause Determination' section in diagnostic output",
+    "step_3_choose_fix_strategy": "Select strategy A/B/C/D based on root cause",
+    "step_4_apply_fix": "Run apply_command from chosen strategy",
+    "step_5_verify_gf3_conservation": "Rerun crush validation and check for protocol errors",
+    "step_6_document_success": "Commit operational baseline and GF(3) verification report"
+  },
+  "gf3_conservation_formula": {
+    "definition": "rate_causality - rate_minus = rate_2monad (in equilibrium)",
+    "conservation_law": "causality_trit + ergodic_trit + minus_trit ≡ 0 (mod 3)",
+    "operational_meaning": "At every atomic operation, the sum of agent contributions must balance",
+    "failure_mode": "If sum ≠ 0, system enters Black Hole (frozen) or White Hole (exploding) state",
+    "success_indicator": "Smooth, rhythmic progress through all 315 skill installations with no protocol errors"
+  }
+}
