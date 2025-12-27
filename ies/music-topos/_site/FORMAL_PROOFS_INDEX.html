@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>formal_proofs_index – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="formal-proofs-index-3-match-mathlib-bridge" class="level1">
+<h1>Formal Proofs Index: 3-MATCH ↔︎ Mathlib Bridge</h1>
+<p><strong>Status</strong>: Active Development <strong>Seed</strong>: 1069 <strong>Trit</strong>: 0 (ERGODIC - Verification)</p>
+<hr>
+<section id="ranked-by-collaboration-entropy-3-interactors" class="level2">
+<h2 class="anchored" data-anchor-id="ranked-by-collaboration-entropy-3-interactors">Ranked by Collaboration Entropy (3+ Interactors)</h2>
+<section id="tier-1-high-entropy-proofs-multi-author-foundational" class="level3">
+<h3 class="anchored" data-anchor-id="tier-1-high-entropy-proofs-multi-author-foundational">Tier 1: High-Entropy Proofs (Multi-Author, Foundational)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 29%">
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Proof</th>
+<th>Mathlib Source</th>
+<th>Authors</th>
+<th>Stars</th>
+<th>Our Connection</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Möbius Inversion</strong></td>
+<td><code>ArithmeticFunction.Moebius</code></td>
+<td>Aaron Anderson + 20 contributors</td>
+<td>2684</td>
+<td>μ(3) = -1 for tritwise inversion</td>
+</tr>
+<tr class="even">
+<td><strong>Graph Coloring</strong></td>
+<td><code>SimpleGraph.Coloring</code></td>
+<td>Arthur Paulino, Kyle Miller</td>
+<td>2684</td>
+<td>3-coloring → 3-MATCH gadget</td>
+</tr>
+<tr class="odd">
+<td><strong>Laplacian Matrix</strong></td>
+<td><code>SimpleGraph.LapMatrix</code></td>
+<td>Adrian Wüthrich</td>
+<td>2684</td>
+<td>Spectral gap = 1/4</td>
+</tr>
+<tr class="even">
+<td><strong>p-adic Numbers</strong></td>
+<td><code>NumberTheory.Padics</code></td>
+<td>Multiple (10+)</td>
+<td>2684</td>
+<td>3-adic valuation depth</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tier-2-spectral-independence-3-authors" class="level3">
+<h3 class="anchored" data-anchor-id="tier-2-spectral-independence-3-authors">Tier 2: Spectral Independence (3 Authors)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 17%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Paper</th>
+<th>Authors</th>
+<th>Year</th>
+<th>Key Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Spectral independence coupling</strong></td>
+<td>Jain, Pham, Vuong</td>
+<td>2021</td>
+<td>Spectral gap → mixing time</td>
+</tr>
+<tr class="even">
+<td><strong>Rapid mixing for colorings</strong></td>
+<td>Chen, Galanis, Štefankovič, Vigoda</td>
+<td>2020</td>
+<td>Glauber dynamics for k-coloring</td>
+</tr>
+<tr class="odd">
+<td><strong>Non-backtracking Laplacian</strong></td>
+<td>Mulas, Zhang, Zucal</td>
+<td>2023</td>
+<td>Spectral gap upper bound</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tier-3-nash-equilibrium-verification-multi-author" class="level3">
+<h3 class="anchored" data-anchor-id="tier-3-nash-equilibrium-verification-multi-author">Tier 3: Nash Equilibrium Verification (Multi-Author)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 31%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Paper</th>
+<th>Authors</th>
+<th>Institution</th>
+<th>Key Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rational Verification</strong></td>
+<td>Wooldridge, Gutierrez, Harrenstein, Marchioni, Perelli, Toumi</td>
+<td>Oxford</td>
+<td>Model checking → equilibrium checking</td>
+</tr>
+<tr class="even">
+<td><strong>Nash Equilibrium Bisimulation</strong></td>
+<td>Gutierrez, Harrenstein, Perelli, Wooldridge</td>
+<td>Oxford/Göteborg</td>
+<td>Bisimulation invariance of NE</td>
+</tr>
+<tr class="odd">
+<td><strong>Designing Equilibria</strong></td>
+<td>Gutierrez, Najib, Perelli, Wooldridge</td>
+<td>Sussex/HW/Sapienza/Oxford</td>
+<td>Social welfare + temporal logic</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="proofs-we-can-formalize" class="level2">
+<h2 class="anchored" data-anchor-id="proofs-we-can-formalize">Proofs We Can Formalize</h2>
+<section id="gf3-conservation-complete-in-lean4" class="level3">
+<h3 class="anchored" data-anchor-id="gf3-conservation-complete-in-lean4">1. GF(3) Conservation (COMPLETE in Lean4)</h3>
+<p><strong>File</strong>: <code>lean4/MusicTopos/ThreeMatchGadget.lean</code></p>
+<pre class="lean"><code>theorem balanced_implies_gf3_conserved (t : TritTriplet) :
+    t.balanced → t.gf3Conserved</code></pre>
+<p><strong>Ruby Implementation</strong>: <code>lib/splitmix_ternary.rb</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> gf3_conserved?</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  sum <span class="op">=</span> <span class="ot">@agents</span><span class="at">.sum</span> <span class="op">{</span> <span class="op">|</span>a<span class="op">|</span> a<span class="kw">[</span><span class="wa">:trit</span><span class="kw">]</span> <span class="op">}</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  (sum <span class="op">%</span> <span class="dv">3</span>) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="möbius-inversion-μ3--1-bridges-to-mathlib" class="level3">
+<h3 class="anchored" data-anchor-id="möbius-inversion-μ3--1-bridges-to-mathlib">2. Möbius Inversion μ(3) = -1 (BRIDGES to Mathlib)</h3>
+<p><strong>Mathlib</strong>: <code>Mathlib.NumberTheory.ArithmeticFunction.Moebius</code></p>
+<pre class="lean"><code>theorem moebius_apply_prime {p : ℕ} (hp : p.Prime) : μ p = -1</code></pre>
+<p><strong>Our Extension</strong>:</p>
+<pre class="lean"><code>theorem moebius_at_three : moebius 3 = -1 := rfl</code></pre>
+<p><strong>Ruby Implementation</strong>: <code>lib/moebius.rb</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> mu(n)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span> <span class="cf">if</span> n<span class="at">.to_s</span>(<span class="dv">2</span>)<span class="at">.chars.uniq.size</span> <span class="op">&lt;</span> n<span class="at">.prime_factors.size</span>  <span class="co"># squared factor</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">-</span><span class="dv">1</span>) <span class="op">**</span> n<span class="at">.prime_factors.size</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="involution-ιι-id-complete-in-lean4" class="level3">
+<h3 class="anchored" data-anchor-id="involution-ιι-id-complete-in-lean4">3. Involution ι∘ι = id (COMPLETE in Lean4)</h3>
+<p><strong>File</strong>: <code>lean4/MusicTopos/ThreeMatchGadget.lean</code></p>
+<pre class="lean"><code>theorem trit_involution_self_inverse (t : Trit) :
+    tritInvolution (tritInvolution t) = t</code></pre>
+<p><strong>Ruby Implementation</strong>: <code>lib/unworlding_involution.rb</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> self_inverse?</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  apply!  <span class="co"># ι</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  apply!  <span class="co"># ι∘ι</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">@state</span> <span class="op">==</span> original_state</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="spectral-gap-14-in-progress" class="level3">
+<h3 class="anchored" data-anchor-id="spectral-gap-14-in-progress">4. Spectral Gap = 1/4 (IN PROGRESS)</h3>
+<p><strong>Mathlib Foundation</strong>: <code>Mathlib.Combinatorics.SimpleGraph.LapMatrix</code></p>
+<pre class="lean"><code>theorem posSemidef_lapMatrix : PosSemidef (G.lapMatrix R)</code></pre>
+<p><strong>Our Target</strong>:</p>
+<pre class="lean"><code>theorem ternary_walk_spectral_gap :
+    spectralGap = 1 / 4</code></pre>
+<p><strong>Paper Reference</strong>: Mulas, Zhang, Zucal (2023) - “Non-backtracking Laplacian”</p>
+</section>
+<section id="adic-depth-matching-bridges-to-mathlib" class="level3">
+<h3 class="anchored" data-anchor-id="adic-depth-matching-bridges-to-mathlib">5. 3-adic Depth Matching (BRIDGES to Mathlib)</h3>
+<p><strong>Mathlib</strong>: <code>Mathlib.NumberTheory.Padics.PadicIntegers</code></p>
+<p><strong>Our Extension</strong>:</p>
+<pre class="lean"><code>def threeMatch (c₁ c₂ c₃ : Color3adic) (d : ℕ) : Prop :=
+  matchesAtDepth c₁ c₂ d ∧ matchesAtDepth c₂ c₃ d ∧ matchesAtDepth c₃ c₁ d</code></pre>
+</section>
+<section id="nash-equilibrium-convergence-todo" class="level3">
+<h3 class="anchored" data-anchor-id="nash-equilibrium-convergence-todo">6. Nash Equilibrium Convergence (TODO)</h3>
+<p><strong>Paper Foundation</strong>: Wooldridge et al.&nbsp;(Oxford team)</p>
+<p><strong>Target Theorem</strong>:</p>
+<pre class="lean"><code>theorem best_response_converges_to_nash 
+    (agents : Fin 3 → Trit) :
+    ∃ (equilibrium : Fin 3 → Trit), 
+      NashEquilibrium equilibrium ∧ GF3Conserved equilibrium</code></pre>
+<hr>
+</section>
+</section>
+<section id="mathlib-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="mathlib-dependencies">Mathlib Dependencies</h2>
+<pre class="lean"><code>-- Required imports for full formalization
+import Mathlib.NumberTheory.ArithmeticFunction.Moebius
+import Mathlib.NumberTheory.Padics.PadicIntegers
+import Mathlib.NumberTheory.Padics.PadicNorm
+import Mathlib.Combinatorics.SimpleGraph.Coloring
+import Mathlib.Combinatorics.SimpleGraph.LapMatrix
+import Mathlib.Data.ZMod.Basic</code></pre>
+<hr>
+</section>
+<section id="key-papers-by-collaboration-count" class="level2">
+<h2 class="anchored" data-anchor-id="key-papers-by-collaboration-count">Key Papers by Collaboration Count</h2>
+<section id="authors-maximum-entropy" class="level3">
+<h3 class="anchored" data-anchor-id="authors-maximum-entropy">6 Authors (Maximum Entropy)</h3>
+<ul>
+<li><strong>Rational Verification</strong> (2016): Wooldridge, Gutierrez, Harrenstein, Marchioni, Perelli, Toumi
+<ul>
+<li>Model checking → equilibrium checking</li>
+<li>Reactive Modules Games framework</li>
+</ul></li>
+</ul>
+</section>
+<section id="authors" class="level3">
+<h3 class="anchored" data-anchor-id="authors">4 Authors</h3>
+<ul>
+<li><strong>Rapid Mixing for Colorings</strong> (2020): Chen, Galanis, Štefankovič, Vigoda
+<ul>
+<li>Spectral independence for k-coloring</li>
+<li>Glauber dynamics mixing</li>
+</ul></li>
+</ul>
+</section>
+<section id="authors-triadic---aligns-with-our-structure" class="level3">
+<h3 class="anchored" data-anchor-id="authors-triadic---aligns-with-our-structure">3 Authors (Triadic - aligns with our structure)</h3>
+<ul>
+<li><strong>Non-backtracking Laplacian</strong> (2023): Mulas, Zhang, Zucal
+<ul>
+<li>Spectral gap bounds</li>
+<li>Circularly partite graphs</li>
+</ul></li>
+<li><strong>Spectral Independence</strong> (2021): Jain, Pham, Vuong
+<ul>
+<li>Coupling with stationary distribution</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="implementation-status" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-status">Implementation Status</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Ruby</th>
+<th>Lean4</th>
+<th>Mathlib Bridge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SplitMix64 RNG</td>
+<td>✅</td>
+<td>✅</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>Trit/GF(3)</td>
+<td>✅</td>
+<td>✅</td>
+<td>ZMod 3</td>
+</tr>
+<tr class="odd">
+<td>Möbius Function</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ ArithmeticFunction</td>
+</tr>
+<tr class="even">
+<td>3-MATCH Gadget</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ Coloring</td>
+</tr>
+<tr class="odd">
+<td>p-adic Depth</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ Padics</td>
+</tr>
+<tr class="even">
+<td>Spectral Gap</td>
+<td>✅</td>
+<td>🔄</td>
+<td>🔄 LapMatrix</td>
+</tr>
+<tr class="odd">
+<td>Nash Equilibrium</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td>Non-backtracking</td>
+<td>✅</td>
+<td>🔄</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p>Legend: ✅ Complete, 🔄 In Progress, ❌ Not Started</p>
+<hr>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<ol type="1">
+<li><strong>Build Lean4 project</strong>: <code>cd lean4 &amp;&amp; lake build</code></li>
+<li><strong>Fill in <code>sorry</code> proofs</strong>: Replace trivial placeholders with real proofs</li>
+<li><strong>Add spectral gap theorem</strong>: Connect to LapMatrix</li>
+<li><strong>Formalize Nash convergence</strong>: Use game theory foundations</li>
+<li><strong>Extract verified Ruby</strong>: Generate Ruby from proven Lean specs</li>
+</ol>
+<hr>
+</section>
+<section id="commands" class="level2">
+<h2 class="anchored" data-anchor-id="commands">Commands</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build Lean4 proofs</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lean4 <span class="kw">&amp;&amp;</span> <span class="ex">lake</span> build</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run Ruby implementation</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> unworld</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Test GF(3) conservation</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">ruby</span> test/test_unworld.rb</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify 3-MATCH gadget</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ruby</span> lib/three_match_geodesic_gadget.rb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<p><strong>Maintained by</strong>: music-topos agents (claude:-1, codex:0, amp:0, cursor:-1, copilot:+1, aider:+1) <strong>GF(3) Sum</strong>: 0 ✓</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

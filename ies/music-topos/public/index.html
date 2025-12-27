@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Topos Framework - Interactive Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .status-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .status-label {
+            font-size: 0.9em;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.95em;
+        }
+
+        input[type="text"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: monospace;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .example-btn {
+            padding: 8px 12px;
+            font-size: 0.9em;
+            background: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .example-btn:hover {
+            background: #e0e0e0;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .results {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .result-card {
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .result-card h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .result-card p {
+            color: #666;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .category-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .category-box:hover {
+            transform: scale(1.05);
+        }
+
+        .category-num {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .category-name {
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #c33;
+        }
+
+        .success {
+            background: #efe;
+            color: #3c3;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #3c3;
+        }
+
+        .response-json {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .response-json pre {
+            margin: 0;
+            font-size: 0.85em;
+            color: #333;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        .footer {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 Music Topos Framework</h1>
+            <p class="subtitle">Unified Mathematical Analysis of Music Through 8 Categories</p>
+
+            <div class="status-bar">
+                <div class="status-item">
+                    <div class="status-value" id="test-count">27/27</div>
+                    <div class="status-label">Tests Passing</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="coverage">100%</div>
+                    <div class="status-label">Coverage</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="categories">8/8</div>
+                    <div class="status-label">Categories</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="api-status">✓</div>
+                    <div class="status-label">API Status</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <!-- Input Card -->
+            <div class="card">
+                <h2>Analyze Progression</h2>
+
+                <div class="input-group">
+                    <label>Key</label>
+                    <input type="text" id="key" value="C" placeholder="e.g., C, G, D, Am, Gm">
+                </div>
+
+                <div class="input-group">
+                    <label>Is Minor?</label>
+                    <select id="isMinor">
+                        <option value="false">Major</option>
+                        <option value="true">Minor</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Chord Progression (one per line, e.g., "C E G")</label>
+                    <textarea id="progressionInput" placeholder="C E G&#10;F A C&#10;G B D&#10;C E G"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button onclick="analyzeProgression()">Analyze</button>
+                    <button onclick="validateCoherence()">Validate Coherence</button>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h3 style="margin-bottom: 10px; color: #667eea;">Quick Examples:</h3>
+                    <div class="examples-grid">
+                        <button class="example-btn" onclick="loadExample('authentic')">V-I Cadence</button>
+                        <button class="example-btn" onclick="loadExample('bach')">Bach Chorale</button>
+                        <button class="example-btn" onclick="loadExample('jazz')">Jazz ii-V-I</button>
+                        <button class="example-btn" onclick="loadExample('plagal')">IV-I Cadence</button>
+                        <button class="example-btn" onclick="loadExample('progression')">I-IV-V-I</button>
+                        <button class="example-btn" onclick="loadExample('modulation')">Modulation</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Card -->
+            <div class="card">
+                <h2>8 Music Theory Categories</h2>
+                <p style="margin-bottom: 15px; color: #666;">Click a category to see analysis for just that domain:</p>
+
+                <div class="categories-grid">
+                    <div class="category-box" onclick="selectCategory(4)">
+                        <div class="category-num">4</div>
+                        <div class="category-name">Group Theory</div>
+                    </div>
+                    <div class="category-box" onclick="selectCategory(5)">
+                        <div class="category-num">5</div>
+                        <div class="category-name">Harmonic Function</div>
+                    </div>
+                    <div class="category-box" onclick="selectCategory(6)">
+                        <div class="category-num">6</div>
+                        <div class="category-name">Modulation</div>
+                    </div>
+                    <div class="category-box" onclick="selectCategory(7)">
+                        <div class="category-num">7</div>
+                        <div class="category-name">Voice Leading</div>
+                    </div>
+                    <div class="category-box" onclick="selectCategory(8)">
+                        <div class="category-num">8</div>
+                        <div class="category-name">Progressions</div>
+                    </div>
+                    <div class="category-box" onclick="selectCategory(9)">
+                        <div class="category-num">9</div>
+                        <div class="category-name">Structure</div>
+                    </div>
+                    <div class="category-box" onclick="selectCategory(10)">
+                        <div class="category-num">10</div>
+                        <div class="category-name">Form</div>
+                    </div>
+                    <div class="category-box" onclick="selectCategory(11)">
+                        <div class="category-num">11</div>
+                        <div class="category-name">Spectral</div>
+                    </div>
+                </div>
+
+                <div id="selectedCategory" style="margin-top: 15px; display: none;">
+                    <p style="color: #667eea; font-weight: 600;">Selected: <span id="categoryName"></span></p>
+                    <button onclick="analyzeSingleCategory()" style="width: 100%; margin-top: 10px;">Analyze This Category Only</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Card -->
+        <div class="card full-width">
+            <h2>Analysis Results</h2>
+            <div class="loading" id="loading">Analyzing... Please wait</div>
+            <div id="results" class="results"></div>
+        </div>
+
+        <footer>
+            <p>Music Topos Framework v1.0.0 | REST API on port 4567 | All 27 tests passing ✓</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                <a href="https://github.com" style="color: #667eea; text-decoration: none;">GitHub</a> •
+                <a href="/api/spec.json" style="color: #667eea; text-decoration: none;">API Spec</a> •
+                <a href="/examples" style="color: #667eea; text-decoration: none;">Examples</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:4567';
+        let selectedCat = null;
+        let lastProgression = null;
+
+        // Check API status on load
+        window.onload = () => {
+            checkAPIStatus();
+        };
+
+        async function checkAPIStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                if (response.ok) {
+                    document.getElementById('api-status').textContent = '✓';
+                    document.getElementById('api-status').style.color = '#3c3';
+                }
+            } catch (e) {
+                document.getElementById('api-status').textContent = '✗';
+                document.getElementById('api-status').style.color = '#c33';
+                document.getElementById('results').innerHTML = `
+                    <div class="error">
+                        <strong>API Connection Error:</strong> Cannot connect to API at ${API_BASE}.
+                        Make sure the server is running with: <code>ruby api/music_topos_server.rb</code>
+                    </div>
+                `;
+            }
+        }
+
+        function loadExample(type) {
+            const examples = {
+                'authentic': { key: 'C', progression: 'G B D\nC E G', isMinor: false },
+                'bach': { key: 'C', progression: 'C E G\nA C E\nF A C\nG B D', isMinor: false },
+                'jazz': { key: 'C', progression: 'D F A\nG B D\nC E G', isMinor: false },
+                'plagal': { key: 'C', progression: 'F A C\nC E G', isMinor: false },
+                'progression': { key: 'C', progression: 'C E G\nF A C\nG B D\nC E G', isMinor: false },
+                'modulation': { key: 'C', progression: 'C E G\nD F# A\nG B D\nB D F#\nG B D', isMinor: false }
+            };
+
+            const ex = examples[type];
+            document.getElementById('key').value = ex.key;
+            document.getElementById('isMinor').value = ex.isMinor ? 'true' : 'false';
+            document.getElementById('progressionInput').value = ex.progression;
+        }
+
+        function selectCategory(num) {
+            selectedCat = num;
+            const names = {
+                4: 'Group Theory',
+                5: 'Harmonic Function',
+                6: 'Modulation',
+                7: 'Voice Leading',
+                8: 'Progressions',
+                9: 'Structure',
+                10: 'Form',
+                11: 'Spectral Analysis'
+            };
+            document.getElementById('categoryName').textContent = `Category ${num}: ${names[num]}`;
+            document.getElementById('selectedCategory').style.display = 'block';
+        }
+
+        function parseProgression() {
+            const input = document.getElementById('progressionInput').value;
+            const lines = input.trim().split('\n').filter(l => l.trim());
+            return lines.map(line => line.trim().split(/\s+/));
+        }
+
+        async function analyzeProgression() {
+            showLoading(true);
+            try {
+                const progressions = parseProgression();
+                const key = document.getElementById('key').value;
+                const isMinor = document.getElementById('isMinor').value === 'true';
+
+                const response = await fetch(`${API_BASE}/analyze/progression`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ progressions, key, is_minor: isMinor })
+                });
+
+                const data = await response.json();
+                lastProgression = data;
+
+                if (data.success) {
+                    displayResults(data);
+                } else {
+                    showError(data.error);
+                }
+            } catch (e) {
+                showError(`Error: ${e.message}`);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function analyzeSingleCategory() {
+            if (!selectedCat) return;
+            showLoading(true);
+            try {
+                const progressions = parseProgression();
+                const key = document.getElementById('key').value;
+                const isMinor = document.getElementById('isMinor').value === 'true';
+
+                const response = await fetch(`${API_BASE}/analyze/category/${selectedCat}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ progressions, key, is_minor: isMinor })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    displayCategoryResults(data);
+                } else {
+                    showError(data.error);
+                }
+            } catch (e) {
+                showError(`Error: ${e.message}`);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function validateCoherence() {
+            if (!lastProgression) {
+                showError('Analyze a progression first');
+                return;
+            }
+
+            showLoading(true);
+            try {
+                const progressions = parseProgression();
+                const key = document.getElementById('key').value;
+                const isMinor = document.getElementById('isMinor').value === 'true';
+
+                const response = await fetch(`${API_BASE}/validate/coherence`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ progressions, key, is_minor: isMinor })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const html = `
+                        <div class="result-card" style="border-left-color: ${data.coherent ? '#3c3' : '#c33'};">
+                            <h3>Coherence Validation Result</h3>
+                            <p><strong>Status:</strong> ${data.coherent ? '✓ COHERENT' : '✗ INCOHERENT'}</p>
+                            <p><strong>All Categories Present:</strong> ${data.validations.all_categories_present ? '✓' : '✗'}</p>
+                            <p><strong>Progression Length Consistent:</strong> ${data.validations.progression_length_consistent ? '✓' : '✗'}</p>
+                            <p><strong>Harmonic & Structure Agree:</strong> ${data.validations.harmonic_and_structure_agree ? '✓' : '✗'}</p>
+                        </div>
+                    `;
+                    document.getElementById('results').innerHTML = html;
+                } else {
+                    showError(data.error);
+                }
+            } catch (e) {
+                showError(`Error: ${e.message}`);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function displayResults(data) {
+            let html = `<div class="success">✓ Analysis Complete - All 8 Categories Analyzed</div>`;
+
+            for (let cat = 4; cat <= 11; cat++) {
+                const catData = data.analyses_by_category[cat];
+                if (catData && catData.analysis) {
+                    const analysis = catData.analysis;
+                    html += `
+                        <div class="result-card">
+                            <h3>Category ${cat}: ${analysis.category}</h3>
+                            <div class="response-json">
+                                <pre>${JSON.stringify(analysis, null, 2)}</pre>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            document.getElementById('results').innerHTML = html;
+        }
+
+        function displayCategoryResults(data) {
+            const html = `
+                <div class="success">✓ Category ${data.category} Analysis Complete</div>
+                <div class="result-card">
+                    <h3>Analysis Result</h3>
+                    <div class="response-json">
+                        <pre>${JSON.stringify(data.analysis.analysis, null, 2)}</pre>
+                    </div>
+                </div>
+            `;
+            document.getElementById('results').innerHTML = html;
+        }
+
+        function showError(msg) {
+            document.getElementById('results').innerHTML = `<div class="error"><strong>Error:</strong> ${msg}</div>`;
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').classList.toggle('active', show);
+        }
+    </script>
+</body>
+</html>

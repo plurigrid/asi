@@ -1,0 +1,285 @@
+# Quantum Guitar Galois Derangement World - Complete Documentation for LLMs
+## Version 1.0
+## Generated: 2025-12-21T18:55:45.350639
+
+---
+
+## EXECUTIVE SUMMARY
+
+This is a **persistent quantum computing world** implementing:
+
+1. **Formal Verification (Lean 4)**: Galois connection derangement theory
+2. **Hy Language Skill**: Complete source code + all macros + HyJAX
+3. **Proof Visualization**: PyZX (ZX-calculus), HyZX, Quizx (quantum circuits)
+4. **Persistent State**: World serialization and deep learning integration
+5. **Wiki & Documentation**: MkDocs structure for human exploration
+
+---
+
+## QUICK REFERENCE
+
+**Load World**: `(load-quantum-guitar-world)`
+**Create Phase**: `(create-phase id tau timestamp polarity)`
+**Generate Proofs**: `(create-all-proofs phase gadget)`
+**PyZX Proof**: RED f(x)≥x | BLUE f(x)≤x | GREEN f(x)=x
+**Quizx Circuit**: OpenQASM 2.0 (ry gates + CNOT entanglement)
+**HyZX Proof**: Native Hy syntax for ZX diagrams
+
+---
+
+## THREE PHASE TYPES
+
+### RED Phase (Polarity = +1, Covariant Forward)
+
+**Mathematics**: f(x) ≥ x  for all x ∈ [0, τ]
+**Properties**: Monotone, amplification (1 + strength)
+**Physics**: Ferromagnetic expansion
+**Audio**: Rising frequencies, brighter timbre, circle of fifths
+
+**PyZX Proof**:
+  Input (X) → Hadamard → Z (amplify) → Hadamard → Output (X)
+
+**Quizx Circuit**:
+  ry(π/2 * τ) q[0];  // RED qubit rotation
+  cx q[0], q[2];      // RED controls GREEN
+
+---
+
+### BLUE Phase (Polarity = -1, Contravariant Backward)
+
+**Mathematics**: f(x) ≤ x  for all x ∈ [0, τ]
+**Properties**: Monotone (inverted), contraction (1 / (1 + strength))
+**Physics**: Antiferromagnetic contraction
+**Audio**: Falling frequencies, duller timbre, tritones, dissonance
+
+**PyZX Proof**:
+  Input (Z) → Hadamard (color-change) → X (contract) → Hadamard → Output (Z)
+
+**Quizx Circuit**:
+  ry(-π/2 * τ) q[1];  // BLUE qubit (inverted)
+  cx q[1], q[2];       // BLUE controls GREEN
+
+---
+
+### GREEN Phase (Polarity = 0, Neutral Identity)
+
+**Mathematics**: f(x) = x  for all x ∈ [0, τ]
+**Properties**: Identity, idempotent, transparent
+**Physics**: Paramagnetic equilibrium
+**Audio**: Constant frequency (pedal point), drone, beating
+
+**PyZX Proof**:
+  Input → H-box (identity) → Output
+
+**Quizx Circuit**:
+  id q[2];        // GREEN: identity
+  cx q[2], q[0];  // GREEN controls RED
+  cx q[2], q[1];  // GREEN controls BLUE
+
+---
+
+## HY LANGUAGE SKILL
+
+### Embedded Components
+
+**1. Complete Hy Source Code (v0.29.0)**
+   - All core modules: hy.core, hy.macros, hy.compiler, hy.reader
+   - Standard library functions
+   - Latest stable version
+
+**2. Best-Practice Macros**
+   - Threading: (-> x f g h)  and (->> x f g h)
+   - Error handling: (try body (except [...] ...)) (finally ...)
+   - Functional: (map f xs) (filter pred xs) (reduce f xs)
+   - Control: (if cond then else) (when cond body) (cond ...)
+   - Meta: (quote x) (unquote x) (eval form)
+   - Monadic: (do* [...]) (>>= m f) (chain f g)
+
+**3. HyJAX Integration**
+   - (jax.jit f) - JIT compilation
+   - (jax.grad f) - Gradient computation
+   - (jax.vmap f) - Vectorization
+   - (jax.pmap f) - Parallelization
+
+**4. Quantum Guitar Macros**
+
+   (defn* name [args] body)
+     Enhanced definition with JAX support
+
+   (phase-scoped phase-var body)
+     Execute in phase context with verification
+
+   (verify condition "error message")
+     Lightweight assertions
+
+   (with-proof :pyzx body)
+     Generate proof artifacts
+
+   (defmonadic name [args] body)
+     Composable operations
+
+   (defoperad name structure rules)
+     Formal operad structures
+
+   (with-jax body)
+     JAX context with auto-imports
+
+   (hy-zx-proof name body)
+     ZX proofs in Hy syntax
+
+### World State Management
+
+   (create-world "name")
+     Create persistent world
+
+   (add-phase-to-world world phase)
+     Add phase to world
+
+   (add-gadget-to-world world phase-id gadget)
+     Add verified gadget
+
+   (add-proof-to-world world proof-id proof)
+     Store formal proof
+
+   (world->json world)
+     Serialize to JSON
+
+   (json->world json-str)
+     Deserialize from JSON
+
+---
+
+## FORMAL PROOF SYSTEMS
+
+### PyZX System
+
+Python ZX-calculus for diagram reduction
+
+RED Gadget:
+  - Input: X-spider (qubit 0)
+  - Operation: Z-spider amplification
+  - Output: X-spider
+  - Theorem: f(x) = x(1+strength) ≥ x
+  - Rules: Spider fusion, Hadamard simplification
+
+BLUE Gadget:
+  - Input: Z-spider (qubit 1)
+  - Operation: X-spider contraction
+  - Output: Z-spider (Hadamard color-change)
+  - Theorem: f(x) = x/(1+strength) ≤ x
+  - Rules: Spider fusion, color-change, reduction
+
+GREEN Gadget:
+  - Input: Identity H-box
+  - Operation: Transparent
+  - Output: Identity H-box
+  - Theorem: f(x) = x
+  - Rules: None (identity)
+
+### HyZX System
+
+Hy + ZX-calculus fusion
+
+(hy-zx-proof name
+  (do
+    (setv diagram (zx-graph))
+    (setv input (diagram.add-vertex :x-spider))
+    (setv amp (diagram.add-vertex :z-spider))
+    (setv output (diagram.add-vertex :x-spider))
+    (diagram.add-edge input amp :hadamard)
+    (diagram.add-edge amp output :hadamard)
+    (setv reduced (zx-reduce diagram))
+    (setv circuit (zx-extract-circuit reduced))))
+
+### Quizx System
+
+OpenQASM 2.0 quantum circuits
+
+Complete circuit specification:
+  OPENQASM 2.0;
+  include "qelib1.inc";
+  qreg q[3];  // RED, BLUE, GREEN
+  creg c[3];  // Classical bits
+  [phase-specific gates]
+  measure q -> c;
+
+---
+
+## MATHEMATICAL FOUNDATIONS
+
+### Galois Connections
+
+Pairs of monotone functions (L, R) where:
+  ∀ x,y: x ≤ R(y) ⟺ L(x) ≤ y  (adjunction)
+
+### Galois Derangement
+
+Permutations π that:
+  1. Have no fixed points (IsDerangement π)
+  2. Violate adjunction (∃ x,y: x ≤ R(π y) ∧ π y < L(π x))
+
+### Phase-Scoped Correctness
+
+Main theorem:
+  ∀ φ₁, φ₂, g₁, g₂:
+    φ₁.timestamp < φ₂.timestamp ∧
+    IsCorrect(φ₁, g₁) ∧ IsCorrect(φ₂, g₂)
+    ⟹ ∀ x ≤ φ₁.τ: g₂(g₁(x)) ≤ φ₂.τ
+
+### Polarity Semantics
+
+RED (+1):   f(x) ≥ x  (covariant)
+BLUE (-1):  f(x) ≤ x  (contravariant)
+GREEN (0):  f(x) = x  (neutral)
+
+Composition rules:
+  RED ∘ RED = RED
+  BLUE ∘ BLUE = BLUE
+  RED ∘ BLUE = ERROR (polarity incompatible)
+  BLUE ∘ RED = ERROR (polarity incompatible)
+  * ∘ GREEN = *  (GREEN transparent)
+  GREEN ∘ * = *  (GREEN transparent)
+
+---
+
+## INTEGRATION GUIDE FOR LLMs
+
+### For Code Generation
+
+Use contexts:
+  1. Always include phase parameter in functions
+  2. Use (verify ...) for assertions
+  3. Wrap numerics with (with-jax ...) for autodiff
+  4. Generate all three proof types (PyZX, HyZX, Quizx)
+  5. Use world management functions (add-*-to-world)
+
+### For Mathematical Reasoning
+
+Remember:
+  1. Check Galois adjunction property
+  2. Look for derangements (no fixed points)
+  3. Verify causality (timestamp ordering)
+  4. Check polarity compatibility
+  5. Ensure phase bounds preserved
+
+### For Documentation
+
+Include:
+  1. Mathematical formulas (with proper notation)
+  2. Phase types (RED, BLUE, or GREEN)
+  3. References to proof artifacts
+  4. Both math and audio interpretations
+
+---
+
+## SYSTEM STATUS
+
+✓ Lean 4 verification complete
+✓ Hy skill fully embedded
+✓ All macros available
+✓ HyJAX integrated
+✓ Three proof systems ready
+✓ Persistent world implemented
+✓ Documentation generated
+
+**This world is ready for deployment and exploration.**

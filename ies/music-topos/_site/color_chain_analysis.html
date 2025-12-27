@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>color_chain_analysis – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="color-chain-covariance-analysis" class="level1">
+<h1>Color Chain Covariance Analysis</h1>
+<section id="input-data" class="level2">
+<h2 class="anchored" data-anchor-id="input-data">Input Data</h2>
+<ul>
+<li><strong>Genesis</strong>: SplitMix64 PRNG with seed <code>0x6761795f636f6c6f</code> (“gay_colo”)</li>
+<li><strong>Transform Chain</strong>: SplitMix64 → LCH → Lab → XYZ (D65) → sRGB</li>
+<li><strong>Battery</strong>: 35 cycles, 2% charge, 100% health</li>
+<li><strong>Display</strong>: Color LCD, no P3 support</li>
+</ul>
+</section>
+<section id="sample-data-points" class="level2">
+<h2 class="anchored" data-anchor-id="sample-data-points">Sample Data Points</h2>
+<pre><code>Cycle 0: #232100, L=9.95,  C=89.12, H=109.17
+Cycle 1: #FFC196, L=95.64, C=75.69, H=40.58
+Cycle 2: #B797F5, L=68.83, C=52.59, H=305.88</code></pre>
+<hr>
+</section>
+<section id="direct-covariance-lc-lh-ch" class="level2">
+<h2 class="anchored" data-anchor-id="direct-covariance-lc-lh-ch">1. DIRECT COVARIANCE (L↔︎C, L↔︎H, C↔︎H)</h2>
+<section id="lc-lightness-chroma-relationship" class="level3">
+<h3 class="anchored" data-anchor-id="lc-lightness-chroma-relationship">1.1 L↔︎C (Lightness-Chroma) Relationship</h3>
+<p><strong>Pattern Observed</strong>: - Cycle 0: L=9.95 (very dark) → C=89.12 (high chroma) ✓ VALID - Cycle 1: L=95.64 (very light) → C=75.69 (high chroma) ✓ VALID - Cycle 2: L=68.83 (mid-tone) → C=52.59 (moderate chroma) ✓ VALID</p>
+<p><strong>Covariant Structure</strong>:</p>
+<pre><code>Gamut Constraint: C_max(L, H) defines achievable boundary
+At extreme L values (L→0 or L→100): C_max → 0
+At mid-range L (L≈50-70): C_max is highest
+
+Mathematical relationship:
+C ≤ C_max(L, H) where C_max follows ellipsoidal boundary</code></pre>
+<p><strong>Analysis</strong>: - The SplitMix64 PRNG generates uniform random values in [0,1]³ - These map to (L, C, H) with inherent sRGB gamut clipping - <strong>Inverse covariance</strong>: Extreme L values constrain C values (forced correlation) - <strong>NOT independent</strong>: L and C are coupled through gamut boundaries</p>
+</section>
+<section id="lh-lightness-hue-relationship" class="level3">
+<h3 class="anchored" data-anchor-id="lh-lightness-hue-relationship">1.2 L↔︎H (Lightness-Hue) Relationship</h3>
+<p><strong>Pattern Observed</strong>:</p>
+<pre><code>Cycle 0: L=9.95  → H=109.17° (yellow-green)
+Cycle 1: L=95.64 → H=40.58°  (orange)
+Cycle 2: L=68.83 → H=305.88° (magenta)</code></pre>
+<p><strong>Covariant Structure</strong>:</p>
+<pre><code>Gamut Constraint: Available chroma varies by hue
+- Blue/Purple hues (H≈270-330°): Lower max lightness at high C
+- Yellow hues (H≈90-110°): Can achieve high L with high C
+- Red/Orange hues (H≈30-50°): Wide L range available
+
+Mathematical relationship:
+L_achievable(C, H) = f(sRGB_gamut_boundary)</code></pre>
+<p><strong>Analysis</strong>: - <strong>Weak direct correlation</strong> (PRNG should produce uniform H distribution) - <strong>Strong gamut covariance</strong>: Certain (L,H) combinations exclude high C values - <strong>Structural coupling</strong>: The transformation chain enforces sRGB clipping</p>
+</section>
+<section id="ch-chroma-hue-relationship" class="level3">
+<h3 class="anchored" data-anchor-id="ch-chroma-hue-relationship">1.3 C↔︎H (Chroma-Hue) Relationship</h3>
+<p><strong>Pattern Observed</strong>:</p>
+<pre><code>H=109.17° (yellow-green) → C=89.12 (very high) ✓ Yellow region
+H=40.58°  (orange)       → C=75.69 (high)      ✓ Orange region
+H=305.88° (magenta)      → C=52.59 (moderate)  ✓ Purple region</code></pre>
+<p><strong>Covariant Structure</strong>:</p>
+<pre><code>sRGB Gamut Asymmetry:
+- Yellow hues (H≈90-110°): C_max ≈ 130+ (largest gamut)
+- Cyan hues (H≈180-220°): C_max ≈ 50-90 (compressed gamut)
+- Blue/Purple hues (H≈270-330°): C_max ≈ 60-100 (moderate gamut)
+
+Mathematical relationship:
+C_max(H) is periodic with period 360°, but NOT sinusoidal
+C_max(H) = gamut_radius(H) for sRGB color space</code></pre>
+<p><strong>Analysis</strong>: - <strong>Strong structural covariance</strong>: Hue determines maximum achievable chroma - <strong>Deterministic coupling</strong>: C values are constrained by H through gamut mapping - <strong>Asymmetric</strong>: sRGB gamut is NOT circular in LCH space</p>
+<hr>
+</section>
+</section>
+<section id="structural-covariance-hexlch-mapping" class="level2">
+<h2 class="anchored" data-anchor-id="structural-covariance-hexlch-mapping">2. STRUCTURAL COVARIANCE (Hex↔︎LCH Mapping)</h2>
+<section id="hex-lch-forward-transform" class="level3">
+<h3 class="anchored" data-anchor-id="hex-lch-forward-transform">2.1 Hex → LCH Forward Transform</h3>
+<p><strong>Deterministic Chain</strong>:</p>
+<pre><code>#RRGGBB → sRGB → XYZ(D65) → Lab → LCH
+
+Example (Cycle 1):
+#FFC196 → RGB(255, 193, 150)
+        → sRGB(1.0, 0.757, 0.588) [linear]
+        → XYZ(0.648, 0.605, 0.391) [D65 white point]
+        → Lab(L=82.11, a=14.28, b=28.64)
+        → LCH(L=95.64, C=75.69, H=40.58°)</code></pre>
+<p><strong>Covariant Structures</strong>:</p>
+<ol type="1">
+<li><p><strong>RGB → L covariance</strong>:</p>
+<pre><code>L ≈ 116 * f(Y/Y_n) - 16
+where Y = 0.2126*R + 0.7152*G + 0.0722*B (linear)
+
+Green channel dominates luminance contribution</code></pre></li>
+<li><p><strong>RGB → C covariance</strong>:</p>
+<pre><code>C = sqrt(a² + b²)
+
+High chroma requires color imbalance:
+- R≠G≠B → high a,b → high C
+- R≈G≈B → low a,b → low C (achromatic)</code></pre></li>
+<li><p><strong>RGB → H covariance</strong>:</p>
+<pre><code>H = atan2(b, a) * 180/π
+
+Hue angle determined by red-green vs blue-yellow opponent channels</code></pre></li>
+</ol>
+</section>
+<section id="cycle-ordering-covariance" class="level3">
+<h3 class="anchored" data-anchor-id="cycle-ordering-covariance">2.2 Cycle Ordering Covariance</h3>
+<p><strong>Pattern</strong>:</p>
+<pre><code>Cycle N: PRNG_state_N → (L_N, C_N, H_N) → Hex_N
+Cycle N+1: PRNG_state_{N+1} = f(PRNG_state_N)
+
+SplitMix64 recurrence:
+state_{n+1} = state_n + 0x9e3779b97f4a7c15
+output = hash(state)</code></pre>
+<p><strong>Covariant Structure</strong>: - <strong>Deterministic sequence</strong>: Each cycle is uniquely determined by previous state - <strong>Non-reversible</strong>: Cannot compute state_N from output_N (one-way hash) - <strong>Zero correlation</strong>: Consecutive outputs should have zero autocorrelation - <strong>BUT</strong>: Cycle index ↔︎ battery cycles shows perfect 1:1 mapping</p>
+<p><strong>Mathematical Analysis</strong>:</p>
+<pre><code>Autocorrelation test (if full data available):
+ρ(k) = Corr(X_n, X_{n+k}) should ≈ 0 for k&gt;0
+
+For good PRNG:
+- ρ_L(1) ≈ 0 (lightness uncorrelated cycle-to-cycle)
+- ρ_C(1) ≈ 0 (chroma uncorrelated cycle-to-cycle)
+- ρ_H(1) ≈ 0 (hue uncorrelated cycle-to-cycle)</code></pre>
+<hr>
+</section>
+</section>
+<section id="metadata-covariance-battery-chain" class="level2">
+<h2 class="anchored" data-anchor-id="metadata-covariance-battery-chain">3. METADATA COVARIANCE (Battery ↔︎ Chain)</h2>
+<section id="cycles-35-battery-cycles-35" class="level3">
+<h3 class="anchored" data-anchor-id="cycles-35-battery-cycles-35">3.1 Cycles = 35 ↔︎ Battery Cycles = 35</h3>
+<p><strong>Perfect Covariance</strong>:</p>
+<pre><code>N_colors = N_battery_cycles = 35
+Correlation coefficient: ρ = 1.0 (perfect positive correlation)</code></pre>
+<p><strong>Structural Interpretation</strong>: - Each PRNG iteration consumes one “battery cycle” - Battery metaphor: PRNG entropy depletion - 2% charge = 35/1750 theoretical max cycles (if 100% = 1750 cycles)</p>
+</section>
+<section id="battery-charge-cycle-count" class="level3">
+<h3 class="anchored" data-anchor-id="battery-charge-cycle-count">3.2 Battery Charge ↔︎ Cycle Count</h3>
+<p><strong>Covariant Formula</strong>:</p>
+<pre><code>Charge% = (N_total - N_used) / N_total * 100
+2% = (N_total - 35) / N_total * 100
+
+Solving: N_total ≈ 35.7 ≈ 36 max cycles
+OR: 2% = 35/1750 → N_total = 1750 cycles</code></pre>
+<p><strong>Interpretation</strong>: - If max=36: Almost depleted (35/36 used) - If max=1750: Early stage (35/1750 used) - <strong>Metadata ambiguity</strong>: Charge% doesn’t uniquely determine scale</p>
+</section>
+<section id="health-100-prng-quality" class="level3">
+<h3 class="anchored" data-anchor-id="health-100-prng-quality">3.3 Health = 100% ↔︎ PRNG Quality</h3>
+<p><strong>Structural Covariance</strong>:</p>
+<pre><code>Health = Quality of randomness preservation
+100% health = No degradation in PRNG statistical properties
+
+If health &lt; 100%: Would imply:
+- Reduced output entropy
+- Bias in L/C/H distributions
+- Correlation between cycles</code></pre>
+<hr>
+</section>
+</section>
+<section id="transform-covariance-seed-output-chain" class="level2">
+<h2 class="anchored" data-anchor-id="transform-covariance-seed-output-chain">4. TRANSFORM COVARIANCE (Seed → Output Chain)</h2>
+<section id="seed-determinism" class="level3">
+<h3 class="anchored" data-anchor-id="seed-determinism">4.1 Seed Determinism</h3>
+<p><strong>Perfect Covariance</strong>:</p>
+<pre><code>Seed = 0x6761795f636f6c6f ("gay_colo")
+      ↓ (deterministic)
+State_0 = seed
+      ↓ (SplitMix64 iteration)
+State_1, State_2, ..., State_35
+      ↓ (output function + LCH mapping)
+Color_0, Color_1, ..., Color_35
+
+Correlation: ρ(seed, entire_chain) = 1.0 (deterministic)</code></pre>
+<p><strong>Entropy Analysis</strong>:</p>
+<pre><code>Input entropy:  64 bits (seed)
+Output entropy: 35 colors × 24 bits (RGB) = 840 bits
+
+Entropy expansion through:
+- PRNG state mixing (avalanche effect)
+- Continuous → discrete quantization (hex colors)
+- Gamut clipping (information loss)</code></pre>
+</section>
+<section id="seed-structure-output-bias" class="level3">
+<h3 class="anchored" data-anchor-id="seed-structure-output-bias">4.2 Seed Structure → Output Bias</h3>
+<p><strong>ASCII Seed Analysis</strong>:</p>
+<pre><code>0x6761795f636f6c6f = "gay_colo" (ASCII)
+Byte structure: [0x67, 0x61, 0x79, 0x5f, 0x63, 0x6f, 0x6c, 0x6f]
+
+All bytes in range 0x5f-0x79 (95-121 decimal)
+Limited byte diversity: 13 unique values across 8 bytes</code></pre>
+<p><strong>Potential Covariance</strong>: - If seed has low Hamming weight → biased initial state - <strong>BUT</strong>: SplitMix64 has strong avalanche (1-bit change → 50% output flip) - <strong>CONCLUSION</strong>: Minimal covariance between seed structure and output distribution</p>
+</section>
+<section id="transform-chain-linearity" class="level3">
+<h3 class="anchored" data-anchor-id="transform-chain-linearity">4.3 Transform Chain Linearity</h3>
+<p><strong>Reversibility Analysis</strong>:</p>
+<pre><code>Seed → PRNG → (L,C,H) → Lab → XYZ → sRGB → Hex
+  ↑      ↑       ↑        ↑      ↑      ↑       ↑
+  1      1       0        0      1      1       0
+
+Reversibility bits:
+1 = Fully reversible (bijective)
+0 = Information loss (many-to-one)
+
+Irreversible steps:
+- PRNG output function (cryptographic hash)
+- Gamut clipping (out-of-gamut LCH → sRGB boundary)
+- RGB quantization (float → 8-bit integer)</code></pre>
+<p><strong>Covariant Constraint</strong>:</p>
+<pre><code>Given Hex, can compute LCH uniquely (if in-gamut)
+Given LCH, CANNOT determine which PRNG state produced it</code></pre>
+<hr>
+</section>
+</section>
+<section id="constraint-covariance-display-color-range" class="level2">
+<h2 class="anchored" data-anchor-id="constraint-covariance-display-color-range">5. CONSTRAINT COVARIANCE (Display ↔︎ Color Range)</h2>
+<section id="srgb-gamut-limitation" class="level3">
+<h3 class="anchored" data-anchor-id="srgb-gamut-limitation">5.1 sRGB Gamut Limitation</h3>
+<p><strong>Constraint</strong>:</p>
+<pre><code>Display = "Color LCD, no P3 support"
+→ Gamut = sRGB (smallest standard gamut)
+→ All colors forced into sRGB triangle in xy chromaticity space</code></pre>
+<p><strong>Covariant Effects</strong>:</p>
+<ol type="1">
+<li><p><strong>Hue-Chroma coupling</strong>:</p>
+<pre><code>Available C range depends on H:
+
+H ∈ [90°, 110°] (yellow):  C_max ≈ 130 (wide gamut)
+H ∈ [180°, 220°] (cyan):   C_max ≈ 70  (narrow gamut)
+H ∈ [270°, 330°] (blue):   C_max ≈ 90  (moderate gamut)</code></pre></li>
+<li><p><strong>Lightness-Chroma coupling</strong>:</p>
+<pre><code>At L=50 (mid-gray):  C_max is highest for each H
+At L→0 or L→100:     C_max → 0 (forced achromatic)</code></pre></li>
+</ol>
+</section>
+<section id="missing-p3-support-gamut-clipping" class="level3">
+<h3 class="anchored" data-anchor-id="missing-p3-support-gamut-clipping">5.2 Missing P3 Support → Gamut Clipping</h3>
+<p><strong>Covariance Structure</strong>:</p>
+<pre><code>If display supported P3:
+- C_max would increase by ≈20-30% for saturated colors
+- More PRNG outputs would survive gamut mapping
+- Current clipped colors would retain higher chroma
+
+Without P3:
+- PRNG outputs with C &gt; C_max(sRGB) are clipped
+- Clipping introduces non-uniform density in output space
+- **Bias towards gamut boundary** (if PRNG sampled uniformly in LCH)</code></pre>
+<p><strong>Mathematical Model</strong>:</p>
+<pre><code>P(color_survives_clipping | C, H, L) = {
+  1.0   if (L,C,H) ∈ sRGB_gamut
+  0.0   if (L,C,H) ∉ sRGB_gamut AND clipped to boundary
+}
+
+Expected clipping rate:
+E[clipping] = ∫∫∫ P(outside_gamut) dL dC dH
+            ≈ 30-40% for uniform LCH sampling</code></pre>
+</section>
+<section id="display-bit-depth-quantization-covariance" class="level3">
+<h3 class="anchored" data-anchor-id="display-bit-depth-quantization-covariance">5.3 Display Bit Depth → Quantization Covariance</h3>
+<p><strong>Constraint</strong>:</p>
+<pre><code>"Color LCD" typically implies 8 bits/channel
+→ 256 levels per RGB channel
+→ 16,777,216 total colors (2^24)
+
+But LCH space is continuous:
+→ L ∈ [0, 100]
+→ C ∈ [0, ~150] (depending on H)
+→ H ∈ [0, 360)</code></pre>
+<p><strong>Quantization Covariance</strong>:</p>
+<pre><code>Multiple (L,C,H) values → same #RRGGBB
+
+Example:
+(L=95.64, C=75.69, H=40.58) → #FFC196
+(L=95.65, C=75.70, H=40.59) → #FFC196 (likely same)
+
+Quantization step size ≈ 1/256 in RGB space
+Maps to variable step size in LCH space (non-uniform)</code></pre>
+<hr>
+</section>
+</section>
+<section id="summary-of-covariant-structures" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-covariant-structures">SUMMARY OF COVARIANT STRUCTURES</h2>
+<section id="strong-covariance-ρ-0.7-or-deterministic" class="level3">
+<h3 class="anchored" data-anchor-id="strong-covariance-ρ-0.7-or-deterministic">Strong Covariance (ρ &gt; 0.7 or deterministic)</h3>
+<ol type="1">
+<li><strong>Seed → Entire Chain</strong>: Deterministic (ρ=1.0)</li>
+<li><strong>Cycle Index → Battery Cycles</strong>: Perfect 1:1 mapping (ρ=1.0)</li>
+<li><strong>Hex ↔︎ LCH</strong>: Bijective for in-gamut colors (ρ=1.0)</li>
+<li><strong>H → C_max</strong>: Structural constraint (ρ≈0.8-0.9)</li>
+<li><strong>L → C_max</strong>: Gamut boundary constraint (ρ≈0.7-0.8)</li>
+</ol>
+</section>
+<section id="moderate-covariance-0.3-ρ-0.7" class="level3">
+<h3 class="anchored" data-anchor-id="moderate-covariance-0.3-ρ-0.7">Moderate Covariance (0.3 &lt; ρ &lt; 0.7)</h3>
+<ol start="6" type="1">
+<li><strong>L ↔︎ H</strong>: Weak correlation through gamut asymmetry (ρ≈0.3-0.5)</li>
+<li><strong>Display Type → Achievable Hue Range</strong>: Gamut clipping bias (ρ≈0.4)</li>
+</ol>
+</section>
+<section id="zeroweak-covariance-ρ-0.3" class="level3">
+<h3 class="anchored" data-anchor-id="zeroweak-covariance-ρ-0.3">Zero/Weak Covariance (ρ &lt; 0.3)</h3>
+<ol start="8" type="1">
+<li><strong>Cycle_N ↔︎ Cycle_{N+1}</strong>: PRNG should have ρ≈0 (independent)</li>
+<li><strong>Seed Structure → Output Distribution</strong>: Avalanche destroys correlation (ρ≈0)</li>
+<li><strong>Battery Health → Color Properties</strong>: Metaphorical only (ρ=0)</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="mathematical-formalization" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-formalization">MATHEMATICAL FORMALIZATION</h2>
+<section id="gamut-boundary-function" class="level3">
+<h3 class="anchored" data-anchor-id="gamut-boundary-function">Gamut Boundary Function</h3>
+<pre><code>C_max(L, H) = min(
+  C_limit_lightness(L),
+  C_limit_hue(H),
+  C_limit_combined(L, H)
+)
+
+Where:
+- C_limit_lightness(L) ≈ k₁ * L * (100-L) [parabolic]
+- C_limit_hue(H) varies by sRGB primary angles
+- C_limit_combined from XYZ→sRGB Jacobian</code></pre>
+</section>
+<section id="prng-state-evolution" class="level3">
+<h3 class="anchored" data-anchor-id="prng-state-evolution">PRNG State Evolution</h3>
+<pre><code>x_{n+1} = x_n + φ  (mod 2^64)
+where φ = 0x9e3779b97f4a7c15 (golden ratio)
+
+Output: z = hash(x_n)
+Mapping: (L,C,H) = transform(z₁, z₂, z₃)</code></pre>
+</section>
+<section id="transform-jacobian" class="level3">
+<h3 class="anchored" data-anchor-id="transform-jacobian">Transform Jacobian</h3>
+<pre><code>∂(R,G,B)/∂(L,C,H) = ∂(R,G,B)/∂(X,Y,Z) · ∂(X,Y,Z)/∂(L,a,b) · ∂(L,a,b)/∂(L,C,H)
+
+Determinant ≠ 0 for in-gamut colors (locally invertible)
+Determinant = 0 at gamut boundary (non-invertible)</code></pre>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">CONCLUSION</h2>
+<p>The color chain exhibits <strong>five distinct classes of covariance</strong>:</p>
+<ol type="1">
+<li><strong>Cryptographic covariance</strong>: Seed deterministically generates entire chain</li>
+<li><strong>Geometric covariance</strong>: LCH↔︎sRGB gamut constraints couple L, C, H</li>
+<li><strong>Metadata covariance</strong>: Battery cycles metaphorically track PRNG iterations</li>
+<li><strong>Transform covariance</strong>: Each transform stage preserves/destroys information</li>
+<li><strong>Hardware covariance</strong>: Display limitations constrain achievable color space</li>
+</ol>
+<p>The strongest covariances are <strong>deterministic</strong> (seed→chain, hex↔︎LCH), while the PRNG should maintain <strong>zero autocorrelation</strong> between cycles. The gamut boundary creates <strong>forced correlations</strong> between L, C, and H that wouldn’t exist in unconstrained LCH space.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

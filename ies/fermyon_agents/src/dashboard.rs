@@ -28,7 +28,7 @@ pub struct Dashboard {
 }
 
 /// Per-agent dashboard information
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct AgentDashboardData {
     pub agent_id: usize,
     pub node_id: String,
@@ -54,7 +54,7 @@ pub struct NetworkDashboardData {
 }
 
 /// Message flow visualization
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct MessageFlowDashboard {
     pub source: usize,
     pub target: usize,

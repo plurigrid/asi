@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>catcolab_architecture_analysis – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="catcolab-architecture-analysis" class="level1">
+<h1>CatColab Architecture Analysis</h1>
+<p><strong>Date</strong>: 2025-12-21 <strong>Project</strong>: CatColab (Topos Institute) <strong>Repository</strong>: https://github.com/ToposInstitute/CatColab.git <strong>Analysis Tool</strong>: tree-sitter <strong>Status</strong>: Complete</p>
+<hr>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>CatColab is a formal collaborative modeling system built on <strong>double-categorical logic</strong>. It provides:</p>
+<ol type="1">
+<li><strong>Mathematical Foundation</strong>: Rigorous implementation of double category theory in Rust (catlog library)</li>
+<li><strong>Theory Definition System</strong>: Type-safe encoding of domain-specific modeling languages (Petri nets, stock-flow, schemas, causal loops)</li>
+<li><strong>Model Instantiation</strong>: Real-time collaborative editing of models with formal semantics</li>
+<li><strong>Analysis Framework</strong>: Pluggable analysis engines (simulation, verification, visualization)</li>
+<li><strong>Synesthetic Integration</strong>: Frontend combines mathematical rigor with interactive, reactive UI</li>
+</ol>
+<p>This architecture directly addresses the intersection of <strong>formal verification</strong> and <strong>distributed system modeling</strong> — a critical capability for mechanism design and consensus protocol specification.</p>
+<hr>
+</section>
+<section id="part-1-mathematical-foundation" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-mathematical-foundation">Part 1: Mathematical Foundation</h2>
+<section id="the-double-category-theory-core" class="level3">
+<h3 class="anchored" data-anchor-id="the-double-category-theory-core">The Double Category Theory Core</h3>
+<p>CatColab’s mathematical foundation spans <strong>three dimensions</strong> of category theory:</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│ CATLOG: Category Theory Toolbox (Rust)                 │
+├─────────────────────────────────────────────────────────┤
+│                                                          │
+│  Zero-Dimensional (0D): Sets &amp; Functions               │
+│  ├─ Basic algebra (monoids, rings, semirings)          │
+│  ├─ Qualified names and identifiers                    │
+│  └─ Column-oriented storage abstraction                │
+│                                                          │
+│  One-Dimensional (1D): Categories &amp; Functors           │
+│  ├─ Category trait with object/morphism abstraction    │
+│  ├─ Computads (computation as diagrams)                │
+│  ├─ Free presheaf categories                           │
+│  ├─ Functors and natural transformations               │
+│  ├─ Graph representations                              │
+│  ├─ Path composition and normalization                 │
+│  └─ Tree structures and algorithms                     │
+│                                                          │
+│  Two-Dimensional (2D): Double Categories &amp; Logic      │
+│  ├─ Virtual Double Categories (VDCs)                  │
+│  ├─ Double Theories (types + operations)              │
+│  ├─ Models of theories (concrete instantiations)      │
+│  ├─ Morphisms between models (structure-preserving)   │
+│  ├─ Diagrams in models (pasting diagrams)             │
+│  └─ Double Computads (2D computation)                 │
+│                                                          │
+└─────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="file-structure" class="level3">
+<h3 class="anchored" data-anchor-id="file-structure">File Structure</h3>
+<p><strong>Location</strong>: <code>packages/catlog/src/</code></p>
+<pre><code>catlog/src/
+├── lib.rs (module organization)
+├── zero/
+│   ├── mod.rs
+│   ├── set.rs (basic sets and functions)
+│   ├── column.rs (column-oriented storage)
+│   ├── qualified.rs (qualified names: module.name)
+│   ├── alg.rs (abstract algebra)
+│   └── rig.rs (semiring operations)
+├── one/
+│   ├── mod.rs
+│   ├── category.rs (Category trait)
+│   ├── computad.rs (diagrams as computation)
+│   ├── fp_category.rs (free presheaf categories)
+│   ├── functor.rs (category morphisms)
+│   ├── graph.rs (graph representation)
+│   ├── graph_algorithms.rs (path finding, etc)
+│   ├── path.rs (composition paths)
+│   └── tree.rs (tree structures)
+├── dbl/
+│   ├── mod.rs
+│   ├── category.rs (virtual double categories)
+│   ├── computad.rs (2D diagrams)
+│   ├── graph.rs (VDG data structure)
+│   ├── theory.rs ⭐ (double theories - CORE)
+│   ├── model.rs ⭐ (models of theories)
+│   ├── model_diagram.rs (diagrams in models)
+│   ├── model_morphism.rs (morphisms between models)
+│   ├── tree.rs (double trees for pasting)
+│   ├── discrete/
+│   │   ├── theory.rs (discrete double theories)
+│   │   └── model.rs (discrete models)
+│   ├── discrete_tabulator/
+│   │   ├── theory.rs (with tabulators)
+│   │   └── model.rs (tabulator models)
+│   └── modal/
+│       ├── theory.rs (modal logic)
+│       └── model.rs (modal models)
+├── simulate/
+│   ├── mod.rs
+│   └── ode/
+│       ├── mod.rs
+│       └── *.rs (ODE solver integrations)
+├── stdlib/
+│   └── analyses/
+│       └── ode/
+│           └── *.rs (standard ODE analysis tools)
+└── tt/
+    └── util/ (type theory utilities)</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-2-double-theory-design" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-double-theory-design">Part 2: Double Theory Design</h2>
+<section id="what-is-a-double-theory" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-double-theory">What is a Double Theory?</h3>
+<p>A <strong>double theory</strong> is a mathematical structure that specifies a categorical system. It’s the 2D analogue of a 1D “theory” from logic.</p>
+<p><strong>Key Insight</strong>: A double theory is “just” a virtual double category, which categorifies Lawvere’s idea that a theory is “just” a category.</p>
+</section>
+<section id="the-four-part-structure" class="level3">
+<h3 class="anchored" data-anchor-id="the-four-part-structure">The Four-Part Structure</h3>
+<p>Every double theory consists of:</p>
+<pre><code>┌────────────────────────────────────────────────────────────┐
+│                    Double Theory                           │
+├────────────────────────────────────────────────────────────┤
+│                                                             │
+│  1. OBJECT TYPES                                           │
+│     Interpreted as: Sets of objects in models              │
+│     Example: "Place" (in Petri nets)                       │
+│     Example: "Stock" (in stock-flow diagrams)              │
+│                                                             │
+│  2. MORPHISM TYPES                                         │
+│     Interpreted as: Spans of morphisms between objects     │
+│     Have: source and target object types                   │
+│     Example: "Transition" (in Petri nets)                  │
+│     Example: "Flow" (in stock-flow diagrams)               │
+│                                                             │
+│  3. OBJECT OPERATIONS                                      │
+│     Act on objects to produce new objects                  │
+│     Example: "Combine places into a subnet"                │
+│     Example: "Aggregate stocks"                            │
+│                                                             │
+│  4. MORPHISM OPERATIONS                                    │
+│     Act on morphisms to produce new morphisms              │
+│     Respects composition and identities                    │
+│     Example: "Combine transitions"                         │
+│     Example: "Aggregate flows"                             │
+│                                                             │
+└────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="theory-model-relationship" class="level3">
+<h3 class="anchored" data-anchor-id="theory-model-relationship">Theory-Model Relationship</h3>
+<pre><code>Double Theory (specification)
+    ↓
+    │ Defines allowed structures
+    ↓
+Double Model (concrete instantiation)
+    │
+    ├─ Objects (each typed by an object type)
+    ├─ Morphisms (each typed by a morphism type)
+    ├─ Object Actions (applying object operations)
+    ├─ Morphism Actions (applying morphism operations)
+    └─ Composition (paths of morphisms compose)</code></pre>
+</section>
+<section id="the-dbltheory-trait" class="level3">
+<h3 class="anchored" data-anchor-id="the-dbltheory-trait">The DblTheory Trait</h3>
+<p>From <code>packages/catlog/src/dbl/theory.rs</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">trait</span> DblTheory <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> ObType: Eq + Clone<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> MorType: Eq + Clone<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> ObOp: Eq + Clone<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> MorOp: Eq + Clone<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Membership tests</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> has_ob_type(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> x<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>ObType) <span class="op">-&gt;</span> <span class="dt">bool</span><span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> has_mor_type(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> m<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorType) <span class="op">-&gt;</span> <span class="dt">bool</span><span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> has_ob_op(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> f<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>ObOp) <span class="op">-&gt;</span> <span class="dt">bool</span><span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> has_mor_op(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> α<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorOp) <span class="op">-&gt;</span> <span class="dt">bool</span><span class="op">;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Structural relationships</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> src_type(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> m<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorType) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> tgt_type(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> m<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorType) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> ob_op_dom(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> f<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>ObOp) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> ob_op_cod(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> f<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>ObOp) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Morphism operations</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> src_op(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> α<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorOp) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>ObOp<span class="op">;</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> tgt_op(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> α<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorOp) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>ObOp<span class="op">;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> mor_op_dom(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> α<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorOp) <span class="op">-&gt;</span> <span class="dt">Path</span><span class="op">&lt;</span><span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">,</span> <span class="dt">Self</span><span class="pp">::</span>MorType<span class="op">&gt;;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> mor_op_cod(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> α<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorOp) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>MorType<span class="op">;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Composition (the heart of the theory)</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> compose_types(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> path<span class="op">:</span> <span class="dt">Path</span><span class="op">&lt;</span><span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">,</span> <span class="dt">Self</span><span class="pp">::</span>MorType<span class="op">&gt;</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">-&gt;</span> <span class="dt">Option</span><span class="op">&lt;</span><span class="dt">Self</span><span class="pp">::</span>MorType<span class="op">&gt;;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> compose_ob_ops(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> path<span class="op">:</span> <span class="dt">Path</span><span class="op">&lt;</span><span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">,</span> <span class="dt">Self</span><span class="pp">::</span>ObOp<span class="op">&gt;</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>ObOp<span class="op">;</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> compose_mor_ops(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> tree<span class="op">:</span> DblTree<span class="op">&lt;</span><span class="dt">Self</span><span class="pp">::</span>ObOp<span class="op">,</span> <span class="dt">Self</span><span class="pp">::</span>MorType<span class="op">,</span> <span class="dt">Self</span><span class="pp">::</span>MorOp<span class="op">&gt;</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>MorOp<span class="op">;</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Key methods</strong>: - <code>compose_types</code>: Defines how morphism types can be composed (core of categorical structure) - <code>compose_ob_ops</code>: Defines how object operations can be composed - <code>compose_mor_ops</code>: Defines how morphism operations can be composed</p>
+<hr>
+</section>
+</section>
+<section id="part-3-model-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-model-implementation">Part 3: Model Implementation</h2>
+<section id="the-dblmodel-trait" class="level3">
+<h3 class="anchored" data-anchor-id="the-dblmodel-trait">The DblModel Trait</h3>
+<p>From <code>packages/catlog/src/dbl/model.rs</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">trait</span> DblModel<span class="op">:</span> Category <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> ObType: Eq<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> MorType: Eq<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> ObOp: Eq<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> MorOp: Eq<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> Theory: DblTheory<span class="op">&lt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        ObType <span class="op">=</span> <span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        MorType <span class="op">=</span> <span class="dt">Self</span><span class="pp">::</span>MorType<span class="op">,</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        ObOp <span class="op">=</span> <span class="dt">Self</span><span class="pp">::</span>ObOp<span class="op">,</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        MorOp <span class="op">=</span> <span class="dt">Self</span><span class="pp">::</span>MorOp<span class="op">,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Access to theory</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> theory(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>Theory<span class="op">;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Typing functions</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> ob_type(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> x<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>Ob) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>ObType<span class="op">;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> mor_type(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> m<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>Mor) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>MorType<span class="op">;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Actions</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> ob_act(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> x<span class="op">:</span> <span class="dt">Self</span><span class="pp">::</span>Ob<span class="op">,</span> f<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>ObOp) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>Ob<span class="op">;</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> mor_act(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> path<span class="op">:</span> <span class="dt">Path</span><span class="op">&lt;</span><span class="dt">Self</span><span class="pp">::</span>Ob<span class="op">,</span> <span class="dt">Self</span><span class="pp">::</span>Mor<span class="op">&gt;,</span> α<span class="op">:</span> <span class="op">&amp;</span><span class="dt">Self</span><span class="pp">::</span>MorOp) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="pp">::</span>Mor<span class="op">;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Finitely Generated Models</strong> (<code>FgDblModel</code>): - Have generators for objects and morphisms - All objects/morphisms are composed from generators - Enables finite representation of potentially infinite structures</p>
+<p><strong>Mutable Models</strong> (<code>MutDblModel</code>): - Can add objects and morphisms dynamically - Essential for interactive editing in the frontend</p>
+</section>
+<section id="key-operations" class="level3">
+<h3 class="anchored" data-anchor-id="key-operations">Key Operations</h3>
+<pre><code>Model State:
+├─ Objects (each has a type from the theory)
+├─ Morphisms (each has a type from the theory)
+└─ Actions (operations that derive new objects/morphisms)
+
+When user adds object X of type ObType₁:
+├─ Validate: theory.has_ob_type(ObType₁)?
+├─ Store: add to model's object pool
+└─ Available: can now be used in morphisms of compatible types
+
+When user adds morphism M of type MorType₁:
+├─ Validate: theory.has_mor_type(MorType₁)?
+├─ Validate: source/target types match MorType₁
+├─ Store: add to model's morphism pool
+└─ Available: can compose with adjacent morphisms
+
+When user applies operation O to objects:
+├─ Validate: theory.has_ob_op(O)?
+├─ Validate: objects match operation domain
+├─ Execute: new_ob = model.ob_act(ob, O)
+└─ Store: derived object added to model</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-4-theory-implementation-in-frontend" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-theory-implementation-in-frontend">Part 4: Theory Implementation in Frontend</h2>
+<section id="theory-plugin-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="theory-plugin-architecture">Theory Plugin Architecture</h3>
+<p><strong>Location</strong>: <code>packages/frontend/src/stdlib/theories/</code></p>
+<p>CatColab implements <strong>11 domain-specific theories</strong>:</p>
+<pre><code>1. empty.ts
+   └─ Base theory (no operations)
+
+2. simple-schema.ts
+   └─ Database schema definition
+
+3. petri-net.ts ⭐ MAIN EXAMPLE
+   ├─ Object type: "Place" (state)
+   ├─ Morphism type: "Transition" (event)
+   ├─ Uses: SymMonoidalCategory (symmetric monoidal structure)
+   └─ Analyses: Visualization, Mass Action, Stochastic Dynamics, Reachability
+
+4. primitive-stock-flow.ts
+   ├─ Object type: "Stock"
+   ├─ Morphism type: "Flow"
+   └─ Analysis: System Dynamics
+
+5. primitive-signed-stock-flow.ts
+   ├─ Extends stock-flow with signed flows
+   └─ Analysis: Signed causality
+
+6. causal-loop.ts
+   ├─ Object type: "Variable"
+   ├─ Morphism type: "Causal Link"
+   └─ Analysis: Loop detection, causal analysis
+
+7. causal-loop-delays.ts
+   ├─ Extends causal-loop with time delays
+   └─ Analysis: Oscillation prediction
+
+8. indeterminate-causal-loop.ts
+   ├─ Causal loops with uncertain directions
+   └─ Analysis: Uncertainty propagation
+
+9. power-system.ts
+   ├─ Domain-specific for electrical systems
+   ├─ Object types: Bus, Generator, Load
+   └─ Analysis: Power flow calculation
+
+10. reg-net.ts
+    ├─ Regulatory networks (biological)
+    ├─ Object type: "Gene"
+    ├─ Morphism type: "Regulation"
+    └─ Analysis: Steady state, bifurcation
+
+11. simple-olog.ts
+    ├─ Ologs (ontology logs)
+    ├─ Object type: "Type"
+    ├─ Morphism type: "Aspect"
+    └─ Analysis: Schema visualization
+
+12. unary-dec.ts
+    └─ Unary decision process</code></pre>
+</section>
+<section id="petri-net-theory-deep-dive" class="level3">
+<h3 class="anchored" data-anchor-id="petri-net-theory-deep-dive">Petri Net Theory: Deep Dive</h3>
+<p>From <code>packages/frontend/src/stdlib/theories/petri-net.ts</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">createPetriNetTheory</span>(theoryMeta<span class="op">:</span> TheoryMeta)<span class="op">:</span> Theory {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> thSymMonoidalCategory <span class="op">=</span> <span class="kw">new</span> <span class="fu">ThSymMonoidalCategory</span>()<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">new</span> <span class="fu">Theory</span>({</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span>theoryMeta<span class="op">,</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        theory<span class="op">:</span> thSymMonoidalCategory<span class="op">.</span><span class="fu">theory</span>()<span class="op">,</span>  <span class="co">// Rust theory via WASM</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        onlyFreeModels<span class="op">:</span> <span class="kw">true</span><span class="op">,</span>  <span class="co">// No operation-derived objects</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Define how object types appear in the UI</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        modelTypes<span class="op">:</span> [</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                tag<span class="op">:</span> <span class="st">"ObType"</span><span class="op">,</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                obType<span class="op">:</span> { tag<span class="op">:</span> <span class="st">"Basic"</span><span class="op">,</span> content<span class="op">:</span> <span class="st">"Object"</span> }<span class="op">,</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                name<span class="op">:</span> <span class="st">"Place"</span><span class="op">,</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                description<span class="op">:</span> <span class="st">"State of the system"</span><span class="op">,</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                shortcut<span class="op">:</span> [<span class="st">"O"</span>]<span class="op">,</span>  <span class="co">// Keyboard shortcut</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>            }<span class="op">,</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                tag<span class="op">:</span> <span class="st">"MorType"</span><span class="op">,</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                morType<span class="op">:</span> {</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                    tag<span class="op">:</span> <span class="st">"Hom"</span><span class="op">,</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                    content<span class="op">:</span> { tag<span class="op">:</span> <span class="st">"Basic"</span><span class="op">,</span> content<span class="op">:</span> <span class="st">"Object"</span> }<span class="op">,</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>                }<span class="op">,</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>                name<span class="op">:</span> <span class="st">"Transition"</span><span class="op">,</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>                description<span class="op">:</span> <span class="st">"Event causing change of state"</span><span class="op">,</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>                shortcut<span class="op">:</span> [<span class="st">"M"</span>]<span class="op">,</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>                domain<span class="op">:</span> {</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>                    apply<span class="op">:</span> { tag<span class="op">:</span> <span class="st">"Basic"</span><span class="op">,</span> content<span class="op">:</span> <span class="st">"tensor"</span> }<span class="op">,</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>                }<span class="op">,</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>                codomain<span class="op">:</span> {</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>                    apply<span class="op">:</span> { tag<span class="op">:</span> <span class="st">"Basic"</span><span class="op">,</span> content<span class="op">:</span> <span class="st">"tensor"</span> }<span class="op">,</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>                }<span class="op">,</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>            }<span class="op">,</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Define analyses available for this theory</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        modelAnalyses<span class="op">:</span> [</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Visualization</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>            analyses<span class="op">.</span><span class="fu">petriNetVisualization</span>({</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>                id<span class="op">:</span> <span class="st">"diagram"</span><span class="op">,</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>                name<span class="op">:</span> <span class="st">"Visualization"</span><span class="op">,</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>                help<span class="op">:</span> <span class="st">"visualization"</span><span class="op">,</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Deterministic simulation (mass action kinetics)</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>            analyses<span class="op">.</span><span class="fu">massAction</span>({</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>                <span class="fu">simulate</span>(model<span class="op">,</span> data) {</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> thSymMonoidalCategory<span class="op">.</span><span class="fu">massAction</span>(model<span class="op">,</span> data)<span class="op">;</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>                }<span class="op">,</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Stochastic simulation</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>            analyses<span class="op">.</span><span class="fu">massAction</span>({</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>                id<span class="op">:</span> <span class="st">"stochastic-mass-action"</span><span class="op">,</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>                name<span class="op">:</span> <span class="st">"Stochastic mass action dynamics"</span><span class="op">,</span></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>                <span class="fu">simulate</span>(model<span class="op">,</span> data) {</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> thSymMonoidalCategory<span class="op">.</span><span class="fu">stochasticMassAction</span>(model<span class="op">,</span> data)<span class="op">;</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>                }<span class="op">,</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Reachability checking</span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>            analyses<span class="op">.</span><span class="fu">reachability</span>({</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>                <span class="fu">check</span>(model<span class="op">,</span> data) {</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> thSymMonoidalCategory<span class="op">.</span><span class="fu">subreachability</span>(model<span class="op">,</span> data)<span class="op">;</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>                }<span class="op">,</span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Key Pattern</strong>: Each theory: 1. <strong>Specifies</strong> what types of objects and morphisms exist 2. <strong>Provides</strong> analysis engines that work with instances of the theory 3. <strong>Delegates</strong> computation to Rust (via WASM) for correctness 4. <strong>Renders</strong> UI for interactive editing</p>
+<hr>
+</section>
+</section>
+<section id="part-5-analysis-framework" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-analysis-framework">Part 5: Analysis Framework</h2>
+<section id="analysis-types" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-types">Analysis Types</h3>
+<p><strong>Location</strong>: <code>packages/frontend/src/stdlib/analyses/</code></p>
+<pre><code>Analysis = computation on a model that produces insights</code></pre>
+<p><strong>Four Analysis Configurations</strong>:</p>
+<ol type="1">
+<li><strong>Simulator</strong> (<code>simulator_types.ts</code>)
+<ul>
+<li>Input: Model + initial conditions</li>
+<li>Computation: Numerical integration (ODE)</li>
+<li>Output: Time series (visualization via ECharts)</li>
+<li>Used by: Mass action kinetics, system dynamics, power flow</li>
+</ul></li>
+<li><strong>Checker</strong> (<code>checker_types.ts</code>)
+<ul>
+<li>Input: Model + assertion</li>
+<li>Computation: Formal verification</li>
+<li>Output: True/False + witness/counterexample</li>
+<li>Used by: Reachability, invariant checking</li>
+</ul></li>
+<li><strong>Visualizer</strong> (diagram rendering)
+<ul>
+<li>Input: Model</li>
+<li>Computation: Layout + rendering</li>
+<li>Output: SVG or interactive diagram</li>
+<li>Used by: All theories</li>
+</ul></li>
+<li><strong>Jupyter</strong> (<code>jupyter.ts</code>)
+<ul>
+<li>Input: Model + code cell</li>
+<li>Computation: Execute in notebook environment</li>
+<li>Output: Results + plots</li>
+<li>Used by: Ad-hoc analysis</li>
+</ul></li>
+</ol>
+</section>
+<section id="ode-simulation-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="ode-simulation-pipeline">ODE Simulation Pipeline</h3>
+<pre><code>Model (graph with types and parameters)
+    ↓
+Theory converts to ODE system (dx/dt = f(x))
+    ↓
+ODE Solver (Runge-Kutta, Adams-Bashforth, etc.)
+    ├─ Numerically integrate equations
+    ├─ Record state at time points
+    └─ Return time series
+    ↓
+Visualization (ECharts)
+    ├─ Plot x(t) for each variable
+    ├─ Interactive legend
+    └─ Export to CSV/JSON</code></pre>
+<p><strong>ODE Analysis Tool</strong> (<code>stdlib/analyses/ode/</code>): - Steady state analysis - Bifurcation detection - Sensitivity analysis - Phase portrait computation</p>
+<hr>
+</section>
+</section>
+<section id="part-6-architecture-layers" class="level2">
+<h2 class="anchored" data-anchor-id="part-6-architecture-layers">Part 6: Architecture Layers</h2>
+<section id="system-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="system-architecture">System Architecture</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│ User Interface Layer (TypeScript/SolidJS)                   │
+│ ├─ Notebook environment (cells)                             │
+│ ├─ Theory selector and model editor                         │
+│ ├─ Analysis configuration panel                             │
+│ ├─ Visualization outputs                                    │
+│ └─ Collaborative editing (Automerge)                        │
+├─────────────────────────────────────────────────────────────┤
+│ Theory Definition Layer (TypeScript)                        │
+│ ├─ 12 built-in theories                                     │
+│ ├─ Model type specifications                                │
+│ ├─ Analysis engine registrations                            │
+│ └─ UI metadata and shortcuts                                │
+├─────────────────────────────────────────────────────────────┤
+│ Mathematical Computation Layer (Rust via WASM)              │
+│ ├─ Catlog library (category theory)                         │
+│ │  ├─ Theory validation                                    │
+│ │  ├─ Model semantics                                      │
+│ │  └─ Composition checking                                 │
+│ ├─ Domain-specific computations                            │
+│ │  ├─ Petri net semantics (mass action)                   │
+│ │  ├─ Stock-flow system dynamics                           │
+│ │  ├─ Causal loop detection                                │
+│ │  └─ Power flow equations                                 │
+│ └─ Analysis implementations                                │
+│    ├─ ODE solvers (ode_solvers crate)                      │
+│    ├─ Linear algebra (nalgebra)                            │
+│    └─ Symbolic computation (egglog)                        │
+├─────────────────────────────────────────────────────────────┤
+│ Backend Layer (Rust/Axum)                                   │
+│ ├─ REST API                                                 │
+│ ├─ WebSocket for real-time sync                            │
+│ ├─ JSON-RPC endpoints                                       │
+│ ├─ Firebase authentication                                  │
+│ ├─ PostgreSQL persistence                                   │
+│ └─ Document collaboration server                           │
+├─────────────────────────────────────────────────────────────┤
+│ Storage Layer                                               │
+│ ├─ PostgreSQL (documents, models)                          │
+│ ├─ Redis/Cache (sessions)                                  │
+│ └─ File storage (exports)                                  │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="data-flow" class="level3">
+<h3 class="anchored" data-anchor-id="data-flow">Data Flow</h3>
+<pre><code>User Action (edit model or run analysis)
+    ↓
+SolidJS reactive update
+    ↓
+Model state change (Automerge CRDT)
+    ↓
+Theory validation (Rust via WASM)
+    ├─ Type check objects/morphisms
+    ├─ Validate composition
+    └─ Return errors or confirmation
+    ↓
+Analysis execution (if applicable)
+    ├─ Serialize model to Rust types
+    ├─ Invoke domain-specific computation
+    ├─ Receive results
+    └─ Render visualization
+    ↓
+Broadcast to other users (WebSocket)
+    └─ Automerge changes replicate</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-7-key-design-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="part-7-key-design-patterns">Part 7: Key Design Patterns</h2>
+<section id="theory-as-plugin-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="theory-as-plugin-pattern">1. Theory-as-Plugin Pattern</h3>
+<p><strong>Problem</strong>: Different users need different domain languages</p>
+<p><strong>Solution</strong>: Define a <code>Theory</code> trait that: - Specifies object/morphism types - Registers analysis engines - Provides UI metadata</p>
+<p><strong>Benefit</strong>: New theories can be added without modifying core system</p>
+<pre><code>New Theory = Register handlers + Define UI metadata + Implement analyses</code></pre>
+</section>
+<section id="crdt-based-collaboration" class="level3">
+<h3 class="anchored" data-anchor-id="crdt-based-collaboration">2. CRDT-Based Collaboration</h3>
+<p><strong>Problem</strong>: Multiple users editing the same model simultaneously</p>
+<p><strong>Solution</strong>: Automerge CRDT (Conflict-free Replicated Data Type) - Each change is a unique operation - No central server needed for consistency - Automatic merge of concurrent changes</p>
+<p><strong>Benefit</strong>: - Real-time collaborative editing - Offline-first capability - No coordination overhead</p>
+</section>
+<section id="formal-semantics-via-wasm" class="level3">
+<h3 class="anchored" data-anchor-id="formal-semantics-via-wasm">3. Formal Semantics via WASM</h3>
+<p><strong>Problem</strong>: Complex domain logic needs rigorous correctness guarantees</p>
+<p><strong>Solution</strong>: Implement critical computation in Rust + WASM: - Type-safe categorical structures - Compile-time verified correctness - Performance via native code - Still callable from JavaScript</p>
+<p><strong>Example</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Frontend (TypeScript)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> results <span class="op">=</span> thSymMonoidalCategory<span class="op">.</span><span class="fu">massAction</span>(model<span class="op">,</span> data)<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                                                 ↓</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="co">// Backend (Rust)</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                                        <span class="co">// Strict type checking</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                                        <span class="co">// Correct math</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                                        <span class="co">// Return to JS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="compositional-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="compositional-analysis">4. Compositional Analysis</h3>
+<p><strong>Problem</strong>: Same model should support multiple analyses</p>
+<p><strong>Solution</strong>: Register multiple analysis engines:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>modelAnalyses<span class="op">:</span> [</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    visualization<span class="op">,</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    massActionDeterministic<span class="op">,</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    massActionStochastic<span class="op">,</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    reachabilityChecker<span class="op">,</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Add more without touching existing ones</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Benefit</strong>: Extensibility without modification</p>
+</section>
+<section id="dimension-based-organization" class="level3">
+<h3 class="anchored" data-anchor-id="dimension-based-organization">5. Dimension-Based Organization</h3>
+<p><strong>Problem</strong>: Organize mathematical concepts coherently</p>
+<p><strong>Solution</strong>: Three-layer dimensional hierarchy: - <strong>0D</strong>: Algebraic primitives (sets, functions, semirings) - <strong>1D</strong>: Category theory (objects, morphisms, functors) - <strong>2D</strong>: Double categories (operations, cells, theories)</p>
+<p><strong>Benefit</strong>: Clear progression from simple to complex, each layer building on previous</p>
+<hr>
+</section>
+</section>
+<section id="part-8-integration-with-distributed-systems" class="level2">
+<h2 class="anchored" data-anchor-id="part-8-integration-with-distributed-systems">Part 8: Integration with Distributed Systems</h2>
+<section id="relevance-to-consensus-mechanism-design" class="level3">
+<h3 class="anchored" data-anchor-id="relevance-to-consensus-mechanism-design">Relevance to Consensus &amp; Mechanism Design</h3>
+<p>CatColab excels at modeling <strong>distributed systems</strong> because:</p>
+<ol type="1">
+<li><strong>Formal Semantics</strong>: Double theories encode distributed system invariants</li>
+<li><strong>Type Safety</strong>: Object/morphism types prevent invalid states</li>
+<li><strong>Composition</strong>: Complex systems from simple components</li>
+<li><strong>Verification</strong>: Built-in analysis for correctness checking</li>
+</ol>
+</section>
+<section id="example-modeling-a-consensus-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="example-modeling-a-consensus-protocol">Example: Modeling a Consensus Protocol</h3>
+<pre><code>Theory Definition:
+  ObType "Process" (with states: voting, committed, failed)
+  ObType "Message" (with types: propose, commit, abort)
+  MorType "SendMessage" (Process → Message → Process)
+  MorType "StateTransition" (Process → Process)
+
+Model Instance:
+  Objects: p₁, p₂, p₃, m₁, m₂, ...
+  Morphisms:
+    - p₁ sends propose → p₂
+    - p₂ transitions from voting → committed
+    - p₃ receives message
+
+Analyses:
+  - Reachability: Can all processes reach committed state?
+  - Invariant: No process returns to voting once committed?
+  - Liveness: Every process eventually gets a decision?</code></pre>
+</section>
+<section id="example-modeling-mechanism-design" class="level3">
+<h3 class="anchored" data-anchor-id="example-modeling-mechanism-design">Example: Modeling Mechanism Design</h3>
+<pre><code>Theory Definition:
+  ObType "Agent" (bidder, seller, mechanism)
+  ObType "Bid" (amount, validity)
+  MorType "PlaceBid" (Agent → Bid)
+  MorType "ReceiveAllocation" (Agent → Outcome)
+
+Observations:
+  - Truthful bidding is dominant strategy
+  - Budget feasibility maintained
+  - Welfare is maximized</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-9-technology-stack" class="level2">
+<h2 class="anchored" data-anchor-id="part-9-technology-stack">Part 9: Technology Stack</h2>
+<section id="backend-technologies" class="level3">
+<h3 class="anchored" data-anchor-id="backend-technologies">Backend Technologies</h3>
+<pre><code>Rust + Axum (web framework)
+  ├─ tokio (async runtime)
+  ├─ jsonrpsee (JSON-RPC)
+  ├─ socketioxide (WebSocket)
+  ├─ sqlx (PostgreSQL driver)
+  ├─ firebase-auth (authentication)
+  └─ ts-rs (TypeScript type generation)</code></pre>
+</section>
+<section id="frontend-technologies" class="level3">
+<h3 class="anchored" data-anchor-id="frontend-technologies">Frontend Technologies</h3>
+<pre><code>TypeScript + SolidJS (UI framework)
+  ├─ @automerge/automerge (CRDT)
+  ├─ @automerge/prosemirror (rich text)
+  ├─ Vite (bundler)
+  ├─ vitest (testing)
+  ├─ echarts (visualization)
+  ├─ KaTeX (math rendering)
+  └─ catlog-wasm (core computation)</code></pre>
+</section>
+<section id="mathematical-libraries-rust" class="level3">
+<h3 class="anchored" data-anchor-id="mathematical-libraries-rust">Mathematical Libraries (Rust)</h3>
+<pre><code>catlog-core
+  ├─ egglog (expression graph evaluation)
+  ├─ nalgebra (linear algebra)
+  ├─ ode_solvers (ODE integration)
+  ├─ rebop (symbolic computation)
+  └─ nonempty (non-empty collections)</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-10-architectural-insights" class="level2">
+<h2 class="anchored" data-anchor-id="part-10-architectural-insights">Part 10: Architectural Insights</h2>
+<section id="strengths" class="level3">
+<h3 class="anchored" data-anchor-id="strengths">Strengths</h3>
+<ol type="1">
+<li><strong>Mathematical Rigor</strong>: Foundation in formal category theory</li>
+<li><strong>Type Safety</strong>: Rust prevents entire classes of bugs</li>
+<li><strong>Compositionality</strong>: Objects and morphisms compose naturally</li>
+<li><strong>Extensibility</strong>: New theories and analyses without core changes</li>
+<li><strong>Collaborative</strong>: Real-time multi-user editing with Automerge</li>
+<li><strong>Performant</strong>: Critical paths in Rust + WASM, interactive paths in TypeScript</li>
+</ol>
+</section>
+<section id="design-patterns-worth-extracting" class="level3">
+<h3 class="anchored" data-anchor-id="design-patterns-worth-extracting">Design Patterns Worth Extracting</h3>
+<ol type="1">
+<li><strong>Virtual Double Categories</strong>: General framework for structure with operations</li>
+<li><strong>Theory-as-Code</strong>: Define domain languages declaratively</li>
+<li><strong>CRDT + Formal Semantics</strong>: Combine collaboration with correctness</li>
+<li><strong>Dimensional Hierarchy</strong>: Organize complexity in layers (0D, 1D, 2D)</li>
+<li><strong>Plugin Analysis Engines</strong>: Register custom computations without coupling</li>
+</ol>
+</section>
+<section id="connection-to-ies-knowledge-system" class="level3">
+<h3 class="anchored" data-anchor-id="connection-to-ies-knowledge-system">Connection to IES Knowledge System</h3>
+<p>CatColab can be <strong>integrated</strong> with the music-topos knowledge system:</p>
+<pre><code>Knowledge Graph (DuckDB)
+  ├─ Topics as Object Types
+  ├─ Relationships as Morphism Types
+  └─ Materialization as Model
+
+Theory Definition:
+  - Create theory for distributed systems domain
+  - Object types: Consensus protocols, Byzantine faults, safety/liveness properties
+  - Morphism types: Message passing, state transitions, causal relationships
+
+Model Instances:
+  - Each consensus protocol = one model
+  - Visualize as colored diagram (Gay.rs colors)
+  - Sonify learning paths through protocol space (music-topos)
+
+Analyses:
+  - Verify safety properties
+  - Generate learning progressions
+  - Find related protocols (Jaccard similarity of morphism types)</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-11-code-examples" class="level2">
+<h2 class="anchored" data-anchor-id="part-11-code-examples">Part 11: Code Examples</h2>
+<section id="creating-a-simple-theory-typescript" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-simple-theory-typescript">Creating a Simple Theory (TypeScript)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">createMyTheory</span>(theoryMeta<span class="op">:</span> TheoryMeta)<span class="op">:</span> Theory {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> rustyTheory <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyTheory</span>()<span class="op">;</span>  <span class="co">// Instantiate Rust theory</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">new</span> <span class="fu">Theory</span>({</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span>theoryMeta<span class="op">,</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        theory<span class="op">:</span> rustyTheory<span class="op">.</span><span class="fu">theory</span>()<span class="op">,</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Define what can be in models</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        modelTypes<span class="op">:</span> [</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>                tag<span class="op">:</span> <span class="st">"ObType"</span><span class="op">,</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>                obType<span class="op">:</span> { tag<span class="op">:</span> <span class="st">"Basic"</span><span class="op">,</span> content<span class="op">:</span> <span class="st">"Object"</span> }<span class="op">,</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                name<span class="op">:</span> <span class="st">"MyObjectType"</span><span class="op">,</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                shortcut<span class="op">:</span> [<span class="st">"O"</span>]<span class="op">,</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>            }<span class="op">,</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>                tag<span class="op">:</span> <span class="st">"MorType"</span><span class="op">,</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>                morType<span class="op">:</span> { tag<span class="op">:</span> <span class="st">"Hom"</span><span class="op">,</span> content<span class="op">:</span> { tag<span class="op">:</span> <span class="st">"Basic"</span><span class="op">,</span> content<span class="op">:</span> <span class="st">"Object"</span> } }<span class="op">,</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>                name<span class="op">:</span> <span class="st">"MyMorphismType"</span><span class="op">,</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>                shortcut<span class="op">:</span> [<span class="st">"M"</span>]<span class="op">,</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>            }<span class="op">,</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Register analyses</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>        modelAnalyses<span class="op">:</span> [</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>            analyses<span class="op">.</span><span class="fu">myVisualization</span>({</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>                id<span class="op">:</span> <span class="st">"diagram"</span><span class="op">,</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>                name<span class="op">:</span> <span class="st">"Visualization"</span><span class="op">,</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>            analyses<span class="op">.</span><span class="fu">mySimulation</span>({</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>                id<span class="op">:</span> <span class="st">"simulate"</span><span class="op">,</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>                name<span class="op">:</span> <span class="st">"Run simulation"</span><span class="op">,</span></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>                <span class="fu">simulate</span>(model<span class="op">,</span> data) {</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> rustyTheory<span class="op">.</span><span class="fu">simulate</span>(model<span class="op">,</span> data)<span class="op">;</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>                }<span class="op">,</span></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>            })<span class="op">,</span></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="validation-flow" class="level3">
+<h3 class="anchored" data-anchor-id="validation-flow">Validation Flow</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode typescript code-with-copy"><code class="sourceCode typescript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">// User adds object to model</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>model<span class="op">.</span><span class="fu">addObject</span>({</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    id<span class="op">:</span> <span class="st">"obj1"</span><span class="op">,</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    type<span class="op">:</span> <span class="st">"MyObjectType"</span><span class="op">,</span>  <span class="co">// User specifies this</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    properties<span class="op">:</span> { <span class="co">/* ... */</span> }</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">// System validates</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">!</span>theory<span class="op">.</span><span class="fu">has_ob_type</span>(<span class="st">"MyObjectType"</span>)) {</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">"Invalid object type"</span>)<span class="op">;</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">// User adds morphism</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>model<span class="op">.</span><span class="fu">addMorphism</span>({</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    id<span class="op">:</span> <span class="st">"mor1"</span><span class="op">,</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    source<span class="op">:</span> <span class="st">"obj1"</span><span class="op">,</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    target<span class="op">:</span> <span class="st">"obj2"</span><span class="op">,</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    type<span class="op">:</span> <span class="st">"MyMorphismType"</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="co">// System validates</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> srcType <span class="op">=</span> theory<span class="op">.</span><span class="fu">ob_type</span>(<span class="st">"obj1"</span>)<span class="op">;</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> tgtType <span class="op">=</span> theory<span class="op">.</span><span class="fu">ob_type</span>(<span class="st">"obj2"</span>)<span class="op">;</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">!</span>theory<span class="op">.</span><span class="fu">has_mor_type</span>(<span class="st">"MyMorphismType"</span>) <span class="op">||</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    theory<span class="op">.</span><span class="fu">src_type</span>(<span class="st">"MyMorphismType"</span>) <span class="op">!==</span> srcType <span class="op">||</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    theory<span class="op">.</span><span class="fu">tgt_type</span>(<span class="st">"MyMorphismType"</span>) <span class="op">!==</span> tgtType) {</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">"Invalid morphism"</span>)<span class="op">;</span></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="part-12-summary-and-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="part-12-summary-and-recommendations">Part 12: Summary and Recommendations</h2>
+<section id="what-makes-catcolab-unique" class="level3">
+<h3 class="anchored" data-anchor-id="what-makes-catcolab-unique">What Makes CatColab Unique</h3>
+<p>CatColab is the <strong>only system</strong> that combines:</p>
+<ol type="1">
+<li><strong>Formal category theory</strong> as core mathematical foundation</li>
+<li><strong>Domain-specific theories</strong> as plugins (not hard-coded)</li>
+<li><strong>Real-time collaboration</strong> via CRDTs (not post-hoc sync)</li>
+<li><strong>Type-safe computation</strong> in Rust (not interpreted)</li>
+<li><strong>Interactive visualization</strong> in a modern UI framework</li>
+</ol>
+</section>
+<section id="for-integration-with-music-topos" class="level3">
+<h3 class="anchored" data-anchor-id="for-integration-with-music-topos">For Integration with Music-Topos</h3>
+<p><strong>Opportunity 1: Domain Specification</strong> - Define consensus protocol theory in CatColab - Generate learning paths that respect category structure - Visualize as colored graph (Gay.rs) - Sonify morphism composition as harmonic progression</p>
+<p><strong>Opportunity 2: Mechanism Design</strong> - Model bidding mechanisms as theories - Visualize allocation algorithms as morphisms - Verify incentive compatibility computationally - Teach via interactive examples</p>
+<p><strong>Opportunity 3: Distributed Systems Verification</strong> - Formalize fault models as morphism types - Compose safety/liveness as operations - Generate counterexample traces as musical sequences - Learn protocol families through systematic exploration</p>
+</section>
+<section id="recommended-next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-next-steps">Recommended Next Steps</h3>
+<ol type="1">
+<li><strong>Deep-dive</strong>: Study <code>packages/catlog/src/dbl/discrete/</code> to understand minimal theories</li>
+<li><strong>Extract</strong>: Document the “virtual double category” pattern (reusable abstraction)</li>
+<li><strong>Prototype</strong>: Create a simple theory for distributed systems (2 object types, 3 morphism types)</li>
+<li><strong>Verify</strong>: Run existing test suites and understand validation patterns</li>
+<li><strong>Integrate</strong>: Connect to knowledge graph for topic-to-theory mapping</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p><strong>In Codebase</strong>: - <code>/Users/bob/ies/CatColab/packages/catlog/src/dbl/theory.rs</code> - DblTheory trait definition - <code>/Users/bob/ies/CatColab/packages/catlog/src/dbl/model.rs</code> - DblModel trait definition - <code>/Users/bob/ies/CatColab/packages/frontend/src/stdlib/theories/petri-net.ts</code> - Concrete theory example</p>
+<p><strong>Related Papers</strong>: - Lambert &amp; Patterson, 2024 (referenced in theory.rs) - Patterson, 2024, “Double Products” Section 10 (referenced in theory.rs) - Lawvere’s “Functorial Semantics of Algebraic Theories” (foundational) - Shulman, “Framed Bicategories and Monoidal Fibrations” (virtual double categories)</p>
+<hr>
+<p><strong>Analysis Complete</strong>: 2025-12-21 <strong>Next Step</strong>: Study discrete and modal doctrine implementations</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

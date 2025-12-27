@@ -179,9 +179,102 @@ influence-hy:
     uv run hy -c "(import influence_perspectives) (print 'Ready')"
 ```
 
+---
+
+## Spectral Centrality with Ramanujan Bounds (NEW 2025-12-22)
+
+### Alon-Boppana Validity Predicate
+
+```ruby
+module InfluencePropagation
+  def self.spectral_centrality_valid?(network, node, threshold: 0.01)
+    """
+    Validate centrality using Alon-Boppana spectral bounds.
+    For Ramanujan graphs: λ₂ ≤ 2√(d-1)
+    """
+    d = average_degree(network)
+    spectral_bound = 2 * Math.sqrt(d - 1) / d
+    
+    centrality = spectral_centrality(network)
+    local_c = neighbors(network, node).sum { |u| centrality[u] } / d
+    
+    # Validity: local ≈ global (up to spectral gap)
+    (centrality[node] - local_c).abs <= spectral_bound + threshold
+  end
+  
+  def self.alternating_harmonic_centrality(network, seed: 1069)
+    """
+    Centrality via Möbius-weighted paths.
+    c(v) = Σ_{k} μ(k) × paths_k(v) / k
+    """
+    rng = SplitMixTernary.new(seed)
+    n = network[:nodes].size
+    centrality = Array.new(n, 0.0)
+    
+    max_k = diameter(network)
+    (1..max_k).each do |k|
+      mu_k = moebius(k)
+      next if mu_k == 0
+      
+      paths_k = count_paths(network, k)
+      centrality = centrality.zip(paths_k).map do |c, p|
+        c + mu_k * p.to_f / k
+      end
+    end
+    
+    # Normalize
+    total = centrality.map(&:abs).sum
+    centrality.map { |c| c / total }
+  end
+  
+  def self.moebius(n)
+    return 1 if n == 1
+    factors = prime_factors(n)
+    return 0 if factors.any? { |_, exp| exp > 1 }
+    (-1) ** factors.keys.size
+  end
+end
+```
+
+### Non-Backtracking Centrality via Ihara Zeta
+
+```ruby
+def self.non_backtracking_centrality(network)
+  """
+  Centrality from non-backtracking matrix eigenvectors.
+  More robust than adjacency-based (Bordenave et al. 2015).
+  """
+  b_matrix = non_backtracking_matrix(network)
+  eigenvalues, eigenvectors = eigen_decomposition(b_matrix)
+  
+  # Second eigenvector gives community structure
+  v2 = eigenvectors[sorted_by_magnitude(eigenvalues)[1]]
+  
+  project_to_vertices(network, v2)
+end
+```
+
+---
+
+## Extended GF(3) Triads
+
+```
+# Original triad
+influence-propagation (-1) ⊗ bisimulation-game (0) ⊗ pulse-mcp-stream (+1) = 0 ✓
+
+# Spectral triads (NEW)
+ramanujan-expander (-1) ⊗ influence-propagation (0) ⊗ agent-o-rama (+1) = 0 ✓  [Centrality]
+influence-propagation (-1) ⊗ ihara-zeta (0) ⊗ moebius-inversion (+1) = 0 ✓  [Alternating]
+```
+
+---
+
 ## Related Skills
 
 - `bisimulation-game` - Network equivalence checking
 - `pulse-mcp-stream` (Layer 1) - Live data source
 - `cognitive-surrogate` (Layer 6) - Uses perspective data
 - `condensed-analytic-stacks` - Sheaf structure for networks
+- `ramanujan-expander` - Alon-Boppana spectral bounds
+- `ihara-zeta` - Non-backtracking walks
+- `moebius-inversion` - Alternating centrality sums

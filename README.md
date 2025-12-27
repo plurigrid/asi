@@ -106,6 +106,11 @@ Works with **Claude Code**, **Cursor**, **Amp**, **VS Code**, **GitHub Copilot**
 | `domain-name-brainstormer` | Generate and check domain availability |
 | `lead-research-assistant` | Identify and qualify leads |
 
+### Meta / Autopoiesis
+| Skill | Description |
+|-------|-------------|
+| `autopoiesis` | Self-modifying agent configuration via ruler + MCP + DuckDB |
+
 ### Productivity
 | Skill | Description |
 |-------|-------------|
@@ -212,11 +217,78 @@ We review all contributions for quality and spec compliance.
 - [Create Skills](https://skillcreator.ai/build) - Generate skills (waitlist) 
 - [Anthropic Skills](https://github.com/anthropics/skills) - Official example skills
 
+## Autopoiesis: Self-Modifying Configuration
+
+The `autopoiesis` skill enables agents to configure themselves via `just` commands.
+
+### Quick Setup
+
+```bash
+# Full autopoiesis setup (ruler + DuckDB + tripartite agents)
+just quick-setup
+
+# Or step by step:
+just autopoiesis-init      # Initialize DuckDB tracking
+just ruler-config          # Create .ruler/ruler.toml
+just install-all gay-mcp   # Install skill to all agents
+```
+
+### One-Liners
+
+```bash
+# Install skill to ALL agents (Claude, Cursor, Amp, Codex, VSCode, Goose, Letta)
+just install-all frontend-design
+
+# Modify Claude system prompt
+just prompt-claude context "You have access to Gay.jl color generation."
+
+# Add MCP server preset to Claude
+just mcp-add-firecrawl
+
+# Deploy autopoiesis to Vers VM
+just vers-deploy-autopoiesis vm-123
+
+# Query configuration history
+just config-history 20
+```
+
+### nbb Scripts
+
+```bash
+# Modify agent prompts
+npx nbb skills/autopoiesis/autopoiesis-prompt.cljs claude tool-prefs "Prefer finder over grep"
+
+# Configure MCP servers
+npx nbb skills/autopoiesis/autopoiesis-mcp.cljs preset-all firecrawl
+
+# Propagate skills with GF(3) conservation
+npx nbb skills/autopoiesis/propagate-skills.cljs --tripartite
+
+# Track configuration in DuckDB
+npx nbb skills/autopoiesis/autopoiesis-duckdb.cljs history 20
+```
+
+### GF(3) Conservation
+
+Skill propagation preserves trit sums modulo 3:
+
+| Agent | Trit | Role |
+|-------|------|------|
+| Claude | -1 | MINUS (backward/utility) |
+| Codex | 0 | ERGODIC (neutral/transport) |
+| Cursor | +1 | PLUS (forward/state) |
+
+Tripartite sum: -1 + 0 + 1 = 0 ≡ 0 (mod 3) ✓
+
 ## See Also
 
 **[openskills](https://github.com/numman-ali/openskills)** - another universal skills loader that inspired parts of this project (created pre the open agent skills standard) & Requires global install, AGENTS.md sync, and Bash calls. Great for flexibility.
 
 **ai-agent-skills** - Just `npx`, installs to native agent folders. Homebrew for skills.
+
+**[hdresearch/duck](https://github.com/hdresearch/duck)** - Patterns for Vers VM deployment with nbb + ai-agent-skills.
+
+**[intellectronica/ruler](https://github.com/intellectronica/ruler)** - Centralized skill/prompt management.
 
 ---
 

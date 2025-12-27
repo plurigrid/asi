@@ -61,7 +61,7 @@ impl AgentMessage {
 // E-Graph Node
 // ═══════════════════════════════════════════════════════════════════════════════
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub enum Color {
     Red,   // Positive/forward operations
     Blue,  // Negative/backward operations
@@ -216,9 +216,6 @@ impl From<&ServerlessAgent> for AgentStateResponse {
     }
 }
 
-pub use self::{AgentMessage, Color, CRDTEGraph, ENode, MessageType, ServerlessAgent, AgentStateResponse};
-
-
 // ═══════════════════════════════════════════════════════════════════════════════
 // P0: Core Infrastructure Components
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -262,3 +259,15 @@ pub use qasm_integration::{QuantumGate, HybridCircuit, QasmTransducer, CircuitIn
 pub mod jit_compilation;
 
 pub use jit_compilation::{JitCompiler, JitConfig, CompiledFunction, CompilationStats, CacheStatistics};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Skill: Pattern Rewriting JIT Compilation
+// ═══════════════════════════════════════════════════════════════════════════════
+
+pub mod skill_pattern_rewriting;
+
+pub use skill_pattern_rewriting::{
+    PatternRewritingSkill, SkillOperation, SkillResponse, OperationType, OperationStatus,
+    RegisterPatternRequest, TransducePatternRequest, GenerateCodeRequest,
+    CompileCodeRequest, CompilationResult,
+};

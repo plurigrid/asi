@@ -1,0 +1,103 @@
+================================================================================
+DISK INVENTORY: IMMORTAL vs MORTAL COMPUTATION
+Generated: 2025-12-21
+================================================================================
+
+IMMORTAL COMPUTATION (Irreducible, Must Preserve)
+================================================================================
+
+Source Code & Semantics:
+  src/                           740 KB
+  lib/                          1.4 MB
+  crates/                        88 KB
+  Subtotal:                    2.2 MB
+
+Specifications & Contracts:
+  test/                         248 KB
+  lean4/                         68 KB
+  features/                      84 KB
+  Subtotal:                    400 KB
+
+Documentation & Architecture:
+  docs/                         428 KB
+  A16Z_PARADIGM_RESEARCH_INDEX.md        40 KB
+  CATCOLAB_ARCHITECTURE_ANALYSIS.md      36 KB
+  CRDT_OPEN_GAMES_COLOR_HARMONIZATION.md 32 KB
+  Subtotal:                    536 KB
+
+Persistent State (Data):
+  music_knowledge.duckdb       8.8 MB
+  moebius_coinflip.duckdb      1.3 MB
+  Subtotal:                   10.1 MB
+
+Configuration:
+  Cargo.lock                     32 KB
+  justfile                      148 KB
+  bin/                           92 KB
+  Subtotal:                    272 KB
+
+───────────────────────────────────────────────────────────────────────────────
+TOTAL IMMORTAL:               13.5 MB (1.4%)
+───────────────────────────────────────────────────────────────────────────────
+
+
+MORTAL COMPUTATION (Regenerable, Candidates for Deletion)
+================================================================================
+
+Build Artifacts:
+  target/                      997 MB  ⚠️  HIGHEST PRIORITY
+  spin/                        104 MB  ⚠️  REVIEW
+  native/                       44 MB  ⚠️  REVIEW
+  Subtotal:                  1,145 MB
+
+Deprecated Backups:
+  codex-0.69.0-backup/          34 MB  ⚠️  DELETE
+  Subtotal:                     34 MB
+
+───────────────────────────────────────────────────────────────────────────────
+TOTAL MORTAL:               1,179 MB (98.6%)
+───────────────────────────────────────────────────────────────────────────────
+
+GRAND TOTAL:                1,192.5 MB (100%)
+
+================================================================================
+RECOVERY POTENTIAL
+================================================================================
+
+Conservative (No-Risk):
+  Delete: codex-0.69.0-backup/
+  Free: 34 MB
+
+Aggressive (Safe):
+  Delete: target/ + codex-0.69.0-backup/
+  Free: 1,031 MB
+  Command: rm -rf target/ codex-0.69.0-backup/
+
+Maximum (Verify First):
+  Delete: target/ + spin/ + native/ + codex-0.69.0-backup/
+  Free: 1,179 MB (keeping only 13.5 MB)
+  NOTE: Requires verification that spin/ and native/ are regenerable
+
+================================================================================
+IMMORTALITY COEFFICIENT
+================================================================================
+
+Compression Ratio: 1,179 / 13.5 = 87.3x
+  (Mortal computation is 87x larger than immortal)
+
+Essential Payload: 13.5 / 1,192.5 = 1.13%
+  (Only 1% of disk usage is irreplaceable)
+
+Regeneration Gain: 1,179 / 1,192.5 = 98.87%
+  (Could recover 99% of space with rebuild)
+
+================================================================================
+TOPOLOGICAL IMPLICATION
+================================================================================
+
+The system's "essence" (source, data, specs) occupies 1.13% of local storage.
+The remaining 98.87% are computational shadows—important for performance,
+worthless for semantics.
+
+This suggests: Prioritize immortal forms in version control.
+Treat mortal computation as caches, not assets.

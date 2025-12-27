@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Game-Theoretic Incentive Alignment – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../https://topos.site/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Game-Theoretic Incentive Alignment</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Game-Theoretic Incentive Alignment</h1>
+<p class="subtitle lead">Cryptographic Commitments and Dominant Strategy Equilibrium</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-problem-honest-coordination-without-central-authority" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-honest-coordination-without-central-authority">The Problem: Honest Coordination Without Central Authority</h2>
+<p>In a distributed system of 9 agents, how can we ensure all agents behave honestly without: - Byzantine Fault Tolerance (expensive, requires <span class="math inline">\(n \geq 3f + 1\)</span> consensus) - Proof of Work (wasteful energy) - Centralized authority (violates distribution principle)</p>
+<p><strong>Our Solution:</strong> Merkle commitments + game-theoretic incentive alignment</p>
+</section>
+<section id="merkle-commitment-mechanism" class="level2">
+<h2 class="anchored" data-anchor-id="merkle-commitment-mechanism">Merkle Commitment Mechanism</h2>
+<section id="basic-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="basic-protocol">Basic Protocol</h3>
+<p><strong>Epoch Structure:</strong> System operates in discrete epochs <span class="math inline">\(t = 1, 2, 3, ...\)</span></p>
+<p><strong>At Each Epoch:</strong></p>
+<ol type="1">
+<li><p><strong>Commitment Phase</strong></p>
+<pre><code>Agent_i publishes: c_i(t) = SHA256(serialize(state_i(t)))
+All agents: broadcast to NATS subject "world.vector_clock.{agent_id}"</code></pre></li>
+<li><p><strong>Operation Phase</strong></p>
+<pre><code>Agents execute operations:
+- Insert, merge, delete, etc.
+- Update internal state
+- Broadcast operations to NATS</code></pre></li>
+<li><p><strong>Verification Phase</strong></p>
+<pre><code>At epoch end, agents verify:
+For each agent_j:
+  actual_state = latest_known_state(j)
+  claimed_commitment = c_j(t)
+  verify: SHA256(serialize(actual_state)) ?= claimed_commitment
+
+Result:
+  ✓ Match: agent_j is honest
+  ✗ Mismatch: agent_j is dishonest → reputation destroyed</code></pre></li>
+</ol>
+</section>
+<section id="properties" class="level3">
+<h3 class="anchored" data-anchor-id="properties">Properties</h3>
+<p><strong>Commitment is Cryptographically Binding:</strong> - Agent cannot change state after publishing commitment - Probability of finding collision: <span class="math inline">\(2^{-256}\)</span> (negligible) - Commitment reveals no information about state (hash function property)</p>
+<p><strong>Dishonesty is Detectable with Certainty:</strong> - If agent deviates from committed state, difference is detected in 1 round - Detection is deterministic (no probabilistic Byzantine mechanisms) - All agents can verify independently</p>
+</section>
+</section>
+<section id="game-theoretic-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="game-theoretic-analysis">Game-Theoretic Analysis</h2>
+<section id="payoff-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="payoff-matrix">Payoff Matrix</h3>
+<p>Consider a single agent’s decision between <strong>Honest</strong> and <strong>Dishonest</strong> play.</p>
+<pre><code>Agent's payoff when:
+
+                    | All Others Honest     | Some Others Dishonest
+───────────────────┼──────────────────────┼──────────────────────
+Agent Plays Honest  | Coordination Gain (C) | Reduced gain (C')
+                    | Sustained forever     | Continued cooperation
+                    | Payoff: C/(1-δ)      | Payoff: C'/(1-δ)
+───────────────────┼──────────────────────┼──────────────────────
+Agent Plays Dis.    | CAUGHT in 1 round    | Maybe gain (D)
+                    | Reputation: 0        | But detection → expelled
+                    | Payoff: D - ∞        | Payoff: D - ∞
+───────────────────┴──────────────────────┴──────────────────────</code></pre>
+</section>
+<section id="expected-value-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="expected-value-calculation">Expected Value Calculation</h3>
+<p><strong>Honest Strategy:</strong> - Cooperation value per round: <span class="math inline">\(C\)</span> (benefit of distributed coordination) - Reputation: infinite value (allows future cooperation) - Sustained payoff: <span class="math inline">\(\sum_{t=1}^{\infty} C \cdot \delta^{t-1} = \frac{C}{1-\delta}\)</span></p>
+<p>Where <span class="math inline">\(\delta \in (0,1)\)</span> is discount factor (present value of future rounds)</p>
+<p><strong>Dishonest Strategy:</strong> - One-time gain: <span class="math inline">\(D\)</span> (some advantage in one round) - Detection probability: 100% in 1 round - Reputation destroyed: future payoff = 0 - Expected payoff: <span class="math inline">\(D + 0 = D\)</span></p>
+</section>
+<section id="dominant-strategy-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="dominant-strategy-theorem">Dominant Strategy Theorem</h3>
+<p><strong>Claim:</strong> For any reasonable parameters, Honest play dominates Dishonest play.</p>
+<p><strong>Proof:</strong></p>
+<pre><code>Condition for Honest dominance:
+  E[Honest] &gt; E[Dishonest]
+  C/(1-δ) &gt; D
+
+With typical parameters:
+  C = coordination gain (~100 units)
+  D = dishonest gain (~10 units, at best)
+  δ = discount factor ≥ 0.95 (future matters)
+
+Substituting:
+  100/(1-0.95) &gt; 10
+  100/0.05 &gt; 10
+  2000 &gt; 10  ✓ TRUE
+
+Therefore: Honest is strictly dominant. ∎</code></pre>
+<p><strong>Key Insight:</strong> The longer the game continues (<span class="math inline">\(\delta → 1\)</span>), the more honest play dominates.</p>
+</section>
+</section>
+<section id="nash-equilibrium-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="nash-equilibrium-analysis">Nash Equilibrium Analysis</h2>
+<section id="definition" class="level3">
+<h3 class="anchored" data-anchor-id="definition">Definition</h3>
+<p>A strategy profile is a <strong>Nash Equilibrium</strong> if no agent can improve payoff by unilaterally deviating.</p>
+</section>
+<section id="theorem-honest-is-unique-subgame-perfect-nash-equilibrium" class="level3">
+<h3 class="anchored" data-anchor-id="theorem-honest-is-unique-subgame-perfect-nash-equilibrium">Theorem: Honest is Unique Subgame-Perfect Nash Equilibrium</h3>
+<p><strong>Claim:</strong> The profile where all agents play Honest is the unique subgame-perfect Nash equilibrium.</p>
+<p><strong>Proof Strategy:</strong></p>
+<ol type="1">
+<li><strong>Honest is a Nash Equilibrium</strong>
+<ul>
+<li>If all others play Honest, agent’s best response is Honest</li>
+<li>Deviating → caught → reputation destroyed → negative future payoff</li>
+<li>Therefore, playing Honest is best response</li>
+</ul></li>
+<li><strong>Dishonest is NOT a Nash Equilibrium</strong>
+<ul>
+<li>If others play Dishonest, agent cannot improve by playing Dishonest</li>
+<li>(Both get caught, both lose reputation)</li>
+<li>But agent gets better payoff by playing Honest (appears trustworthy)</li>
+<li>Therefore, some agent will deviate to Honest</li>
+</ul></li>
+<li><strong>Subgame Perfection</strong>
+<ul>
+<li>At every history (every epoch), honest play is best response</li>
+<li>No profitable deviations at any point in game tree</li>
+<li>Honest equilibrium is “trembling hand perfect”</li>
+</ul></li>
+</ol>
+<p><strong>Therefore: Honest play is the unique equilibrium. ∎</strong></p>
+</section>
+</section>
+<section id="reputation-system" class="level2">
+<h2 class="anchored" data-anchor-id="reputation-system">Reputation System</h2>
+<section id="reputation-tracking" class="level3">
+<h3 class="anchored" data-anchor-id="reputation-tracking">Reputation Tracking</h3>
+<p>Each agent maintains a reputation score:</p>
+<pre><code>reputation[i] = total_epochs_cooperative[i] / total_epochs</code></pre>
+<p><strong>Initialization:</strong> <code>reputation[i] = 1.0</code> (clean slate)</p>
+<p><strong>Update Rule:</strong></p>
+<pre><code>if verify(commitment[i], actual_state[i]) == true:
+    reputation[i] *= 0.999  (slight decay, accounting for new evidence)
+    reputation[i] = min(reputation[i], 1.0)
+else:
+    reputation[i] = 0.0  (permanent destruction on dishonesty)</code></pre>
+</section>
+<section id="reputation-in-decision-making" class="level3">
+<h3 class="anchored" data-anchor-id="reputation-in-decision-making">Reputation in Decision Making</h3>
+<p>Agents use reputation to decide whether to trust others’ messages:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> should_accept_message(from<span class="op">:</span> AgentId<span class="op">,</span> msg<span class="op">:</span> Message) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> reputation[from] <span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        r <span class="cf">if</span> r <span class="op">&gt;=</span> <span class="dv">0.99</span>  <span class="op">=&gt;</span> <span class="cn">true</span><span class="op">,</span>   <span class="co">// Trusted agents</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        r <span class="cf">if</span> r <span class="op">&gt;=</span> <span class="dv">0.50</span>  <span class="op">=&gt;</span> verify_message(msg)<span class="op">,</span>  <span class="co">// Skeptical verification</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        _               <span class="op">=&gt;</span> <span class="cn">false</span><span class="op">,</span>   <span class="co">// Banned agents</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="consequences-of-dishonesty" class="level3">
+<h3 class="anchored" data-anchor-id="consequences-of-dishonesty">Consequences of Dishonesty</h3>
+<p><strong>Single Dishonest Action:</strong> - Reputation drops from 1.0 to 0.0 (irreversible) - Agent is immediately excluded from quorum - Messages rejected from that epoch forward - Effectively, agent is kicked out of the network</p>
+<p><strong>Network Effect:</strong> - Once one agent is caught being dishonest - Other agents learn immediately (published commitments) - Collective agreement on dishonest agent’s exclusion - No need for voting or consensus on reputation</p>
+</section>
+</section>
+<section id="comparison-with-alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-with-alternatives">Comparison with Alternatives</h2>
+<section id="vs.-byzantine-fault-tolerance" class="level3">
+<h3 class="anchored" data-anchor-id="vs.-byzantine-fault-tolerance">vs.&nbsp;Byzantine Fault Tolerance</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Merkle Commitments</th>
+<th>BFT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Consensus required</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Participants needed</td>
+<td>1+</td>
+<td><span class="math inline">\(3f+1\)</span></td>
+</tr>
+<tr class="odd">
+<td>Dishonesty detection</td>
+<td>Deterministic (1 round)</td>
+<td>Probabilistic</td>
+</tr>
+<tr class="even">
+<td>Message complexity</td>
+<td>O(n)</td>
+<td>O(n²)</td>
+</tr>
+<tr class="odd">
+<td>Latency</td>
+<td>&lt;1ms</td>
+<td>O(log n) rounds</td>
+</tr>
+<tr class="even">
+<td>Computational cost</td>
+<td>~100 CPU cycles (hash)</td>
+<td>O(n²) crypto ops</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vs.-reputation-systems" class="level3">
+<h3 class="anchored" data-anchor-id="vs.-reputation-systems">vs.&nbsp;Reputation Systems</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Merkle Commitments</th>
+<th>Traditional Reputation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sybil resistance</td>
+<td>Perfect (cryptographic)</td>
+<td>Vulnerable</td>
+</tr>
+<tr class="even">
+<td>False accusations</td>
+<td>Impossible (cryptographic proof)</td>
+<td>Possible</td>
+</tr>
+<tr class="odd">
+<td>Convergence</td>
+<td>Instant (1 round)</td>
+<td>Slow (many epochs)</td>
+</tr>
+<tr class="even">
+<td>Storage</td>
+<td>O(n) current commitment</td>
+<td>O(n × history)</td>
+</tr>
+<tr class="odd">
+<td>Privacy</td>
+<td>Hash hides actual state</td>
+<td>Exposures details</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vs.-proof-of-work" class="level3">
+<h3 class="anchored" data-anchor-id="vs.-proof-of-work">vs.&nbsp;Proof of Work</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Merkle Commitments</th>
+<th>PoW</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Energy cost</td>
+<td>~0J per verification</td>
+<td>Enormous (ASICs)</td>
+</tr>
+<tr class="even">
+<td>Latency</td>
+<td>&lt;1ms</td>
+<td>Minutes</td>
+</tr>
+<tr class="odd">
+<td>Scalability</td>
+<td>O(n) agents</td>
+<td>Limited by difficulty</td>
+</tr>
+<tr class="even">
+<td>Fairness</td>
+<td>All agents equal</td>
+<td>Power-proportional</td>
+</tr>
+<tr class="odd">
+<td>Cryptographic</td>
+<td>SHA256 standard</td>
+<td>Specialized algorithms</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="implementation-details" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-details">Implementation Details</h2>
+<section id="commitment-generation" class="level3">
+<h3 class="anchored" data-anchor-id="commitment-generation">Commitment Generation</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> generate_commitment(agent<span class="op">:</span> <span class="op">&amp;</span>Agent<span class="op">,</span> epoch<span class="op">:</span> <span class="dt">u64</span>) <span class="op">-&gt;</span> [<span class="dt">u8</span><span class="op">;</span> <span class="dv">32</span>] <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> hasher <span class="op">=</span> <span class="pp">Sha256::</span>new()<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Include state components</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    hasher<span class="op">.</span>update(<span class="op">&amp;</span>agent<span class="op">.</span>vector_clock<span class="op">.</span>serialize())<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    hasher<span class="op">.</span>update(<span class="op">&amp;</span>agent<span class="op">.</span>crdt_state<span class="op">.</span>serialize())<span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    hasher<span class="op">.</span>update(<span class="op">&amp;</span>agent<span class="op">.</span>e_graph_state<span class="op">.</span>serialize())<span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    hasher<span class="op">.</span>update(<span class="op">&amp;</span>epoch<span class="op">.</span>to_le_bytes())<span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    hasher<span class="op">.</span>finalize()<span class="op">.</span>into()</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="commitment-broadcasting" class="level3">
+<h3 class="anchored" data-anchor-id="commitment-broadcasting">Commitment Broadcasting</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> broadcast_commitment(agent_id<span class="op">:</span> <span class="dt">u8</span><span class="op">,</span> commitment<span class="op">:</span> [<span class="dt">u8</span><span class="op">;</span> <span class="dv">32</span>]<span class="op">,</span> epoch<span class="op">:</span> <span class="dt">u64</span>) <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> subject <span class="op">=</span> <span class="pp">format!</span>(<span class="st">"world.vector_clock.agent_{}"</span><span class="op">,</span> agent_id)<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> msg <span class="op">=</span> <span class="pp">json!</span>(<span class="op">{</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"agent_id"</span><span class="op">:</span> agent_id<span class="op">,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"epoch"</span><span class="op">:</span> epoch<span class="op">,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"commitment"</span><span class="op">:</span> <span class="pp">hex::</span>encode(commitment)<span class="op">,</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mathematician"</span><span class="op">:</span> AGENT_NAMES[agent_id <span class="kw">as</span> <span class="dt">usize</span>]<span class="op">,</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"polarity"</span><span class="op">:</span> AGENT_POLARITIES[agent_id <span class="kw">as</span> <span class="dt">usize</span>]<span class="op">,</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    nats_client<span class="op">.</span>publish(<span class="op">&amp;</span>subject<span class="op">,</span> msg<span class="op">.</span>to_string())<span class="op">;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="verification" class="level3">
+<h3 class="anchored" data-anchor-id="verification">Verification</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> verify_commitment(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    agent_id<span class="op">:</span> <span class="dt">u8</span><span class="op">,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    epoch<span class="op">:</span> <span class="dt">u64</span><span class="op">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    claimed_commitment<span class="op">:</span> [<span class="dt">u8</span><span class="op">;</span> <span class="dv">32</span>]<span class="op">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    actual_state<span class="op">:</span> <span class="op">&amp;</span>AgentState</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> computed <span class="op">=</span> generate_commitment(actual_state<span class="op">,</span> epoch)<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    constant_time_eq(<span class="op">&amp;</span>computed<span class="op">,</span> <span class="op">&amp;</span>claimed_commitment)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> constant_time_eq(a<span class="op">:</span> <span class="op">&amp;</span>[<span class="dt">u8</span><span class="op">;</span> <span class="dv">32</span>]<span class="op">,</span> b<span class="op">:</span> <span class="op">&amp;</span>[<span class="dt">u8</span><span class="op">;</span> <span class="dv">32</span>]) <span class="op">-&gt;</span> <span class="dt">bool</span> <span class="op">{</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Prevent timing attacks</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> result <span class="op">=</span> <span class="dv">0u8</span><span class="op">;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span><span class="dv">32</span> <span class="op">{</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        result <span class="op">|=</span> a[i] <span class="op">^</span> b[i]<span class="op">;</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    result <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="incentive-alignment-guarantees" class="level2">
+<h2 class="anchored" data-anchor-id="incentive-alignment-guarantees">Incentive Alignment Guarantees</h2>
+<section id="guarantee-1-no-profitable-unilateral-deviations" class="level3">
+<h3 class="anchored" data-anchor-id="guarantee-1-no-profitable-unilateral-deviations">Guarantee 1: No Profitable Unilateral Deviations</h3>
+<p>For any agent and any epoch: <span class="math display">\[E[Honest | \text{others honest}] &gt; E[\text{any other strategy} | \text{others honest}]\]</span></p>
+<p><strong>Consequence:</strong> No agent has incentive to deviate unilaterally.</p>
+</section>
+<section id="guarantee-2-detectable-dishonesty" class="level3">
+<h3 class="anchored" data-anchor-id="guarantee-2-detectable-dishonesty">Guarantee 2: Detectable Dishonesty</h3>
+<p>If an agent deviates from its commitment: <span class="math display">\[P(\text{detection} | \text{deviation}) = 1 - 2^{-256}\]</span></p>
+<p><strong>Consequence:</strong> Dishonesty is practically certain to be detected.</p>
+</section>
+<section id="guarantee-3-irreversible-consequences" class="level3">
+<h3 class="anchored" data-anchor-id="guarantee-3-irreversible-consequences">Guarantee 3: Irreversible Consequences</h3>
+<p>If an agent is caught being dishonest: <span class="math display">\[reputation(\text{agent}) = 0 \text{ permanently}\]</span></p>
+<p><strong>Consequence:</strong> Single dishonest action destroys all future cooperation value.</p>
+</section>
+<section id="guarantee-4-symmetric-incentives" class="level3">
+<h3 class="anchored" data-anchor-id="guarantee-4-symmetric-incentives">Guarantee 4: Symmetric Incentives</h3>
+<p>All agents face identical payoff structures: <span class="math display">\[\forall i, j: E_i[\text{honest}] = E_j[\text{honest}]\]</span></p>
+<p><strong>Consequence:</strong> No agent is advantaged by dishonesty.</p>
+</section>
+</section>
+<section id="robustness-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="robustness-analysis">Robustness Analysis</h2>
+<section id="what-if-one-agent-is-dishonest" class="level3">
+<h3 class="anchored" data-anchor-id="what-if-one-agent-is-dishonest">What If One Agent is Dishonest?</h3>
+<ul>
+<li>Detection in 1 round (at next epoch boundary)</li>
+<li>Reputation dropped to 0</li>
+<li>Other 8 agents exclude it from consensus</li>
+<li>System continues with 8/9 agents</li>
+<li>Merkle commitments from remaining 8 are still valid</li>
+</ul>
+</section>
+<section id="what-if-multiple-agents-are-dishonest" class="level3">
+<h3 class="anchored" data-anchor-id="what-if-multiple-agents-are-dishonest">What If Multiple Agents are Dishonest?</h3>
+<ul>
+<li>Each dishonest agent independently detected</li>
+<li>All reputation scores drop to 0</li>
+<li>Honest agents still coordinate among themselves</li>
+<li>CRDT operations from honest agents still converge</li>
+<li>System degrades gracefully (requires 6/9 minimum for quorum)</li>
+</ul>
+</section>
+<section id="what-if-network-is-partitioned" class="level3">
+<h3 class="anchored" data-anchor-id="what-if-network-is-partitioned">What If Network is Partitioned?</h3>
+<ul>
+<li>Agents in each partition continue broadcasting commitments</li>
+<li>Upon reconnection, commitments are compared</li>
+<li>Dishonest deviations are detected</li>
+<li>Vector clocks ensure causality is preserved</li>
+<li>No split-brain scenarios (commitments are immutable)</li>
+</ul>
+</section>
+</section>
+<section id="formal-verification" class="level2">
+<h2 class="anchored" data-anchor-id="formal-verification">Formal Verification</h2>
+<section id="theorem-convergence-with-honest-agents" class="level3">
+<h3 class="anchored" data-anchor-id="theorem-convergence-with-honest-agents">Theorem: Convergence with Honest Agents</h3>
+<p><strong>Claim:</strong> If all 9 agents play honestly, the system converges to a consistent global state.</p>
+<p><strong>Proof:</strong> 1. Each agent’s commitment is immutable (SHA256) 2. Each agent’s CRDT operations preserve join-semilattice properties 3. Vector clocks ensure causal consistency 4. Merge of all operations is commutative and idempotent 5. Therefore, all agents converge to same state ✓</p>
+<p><strong>Convergence Time:</strong> O(mixing_time) = O(log 9 / 2) ≈ 1.1 network rounds</p>
+</section>
+<section id="theorem-no-byzantine-behavior-possible" class="level3">
+<h3 class="anchored" data-anchor-id="theorem-no-byzantine-behavior-possible">Theorem: No Byzantine Behavior Possible</h3>
+<p><strong>Claim:</strong> No honest agent can be forced into inconsistent state by dishonest agents.</p>
+<p><strong>Proof by Construction:</strong> 1. Dishonest agent claims false commitment 2. Other agents verify against actual operations 3. Mismatch is detected with certainty 4. Dishonest agent is excluded 5. Honest agents continue without the dishonest agent 6. No inconsistency for honest agents ✓</p>
+</section>
+</section>
+<section id="economic-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="economic-considerations">Economic Considerations</h2>
+<section id="rational-agent-assumption" class="level3">
+<h3 class="anchored" data-anchor-id="rational-agent-assumption">Rational Agent Assumption</h3>
+<p>We assume agents are rational: - Each agent seeks to maximize its own payoff - Agents have perfect information about payoff matrices - Agents play strategically (not randomly)</p>
+<p><strong>In This Model:</strong> - Honesty is rational (maximizes expected payoff) - Dishonesty is irrational (destroys future payoff) - No external enforcement needed</p>
+</section>
+<section id="implications-for-real-world-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="implications-for-real-world-deployment">Implications for Real-World Deployment</h3>
+<ol type="1">
+<li><strong>Self-Interested Agents:</strong> Works perfectly (they have incentive to be honest)</li>
+<li><strong>Malicious Agents:</strong> Works if they value future participation</li>
+<li><strong>Buggy Agents:</strong> Detected and excluded (fault tolerance)</li>
+<li><strong>Colluding Agents:</strong> Can be detected via cryptographic proof</li>
+<li><strong>Network Adversaries:</strong> Cannot spoof commitments (require private keys)</li>
+</ol>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>The Merkle commitment mechanism provides:</p>
+<p>✅ <strong>Cryptographic Security</strong> - SHA256 binding commitments ✅ <strong>Game-Theoretic Equilibrium</strong> - Honest play is dominant strategy ✅ <strong>Instant Detection</strong> - Dishonesty visible in 1 round ✅ <strong>Permanent Consequences</strong> - Reputation destruction is irreversible ✅ <strong>Efficient Verification</strong> - O(1) per agent, O(n) total ✅ <strong>Byzantine Resilience</strong> - Functions with minority dishonest agents ✅ <strong>No Consensus Needed</strong> - Decentralized reputation tracking</p>
+<p>This approach trades the computational overhead of traditional BFT for the simplicity and efficiency of cryptographic commitment, making it ideal for distributed systems that value both security and performance.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

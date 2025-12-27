@@ -37,6 +37,10 @@ export
     start_navigation_session,
     update_navigation_context
 
+# Zero-allocation pair value comparator (replaces closure)
+struct PairValueComparator <: Base.Order.Ordering end
+@inline Base.isless(::PairValueComparator, a::Pair, b::Pair) = isless(a.second, b.second)
+
 # ============================================================================
 # Part 1: Data Structures
 # ============================================================================

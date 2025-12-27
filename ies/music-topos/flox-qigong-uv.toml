@@ -1,0 +1,563 @@
+# qigong: macOS Red Team / Blue Team Resource Management Environment
+# Pure Nix + Modern Python Tooling (uv, ruff, uvx)
+# Built with Flox for reproducible, portable dev environments
+
+[flox]
+name = "qigong"
+description = "High-octane red team / blue team resource management for macOS Sequoia"
+version = "3.0.0"
+authors = ["Claude Code", "Security Research"]
+systems = ["aarch64-darwin", "x86_64-darwin"]
+
+# ==============================================================================
+# CORE MONITORING TOOLS (System-provided on macOS)
+# ==============================================================================
+
+# These are built-in macOS tools, no package needed:
+# - powermetrics: System binary at /usr/bin/powermetrics
+# - taskpolicy: System binary at /usr/sbin/taskpolicy
+# - dtrace: System binary at /usr/sbin/dtrace
+# - Instruments.app: Part of Xcode
+
+# ==============================================================================
+# MODERN PYTHON TOOLING (uv, ruff, uvx)
+# ==============================================================================
+
+[[package]]
+name = "uv"
+description = "Ultra-fast Python package installer and environment manager"
+package = "nixpkgs#uv"
+category = "python"
+priority = "high"
+
+[[package]]
+name = "ruff"
+description = "Ultra-fast Python linter (written in Rust)"
+package = "nixpkgs#ruff"
+category = "python"
+priority = "high"
+
+[[package]]
+name = "python312"
+description = "Python 3.12 for monitoring scripts & analysis"
+package = "nixpkgs#python312"
+category = "languages"
+
+[[package]]
+name = "python312-pip"
+description = "Pip package manager for Python"
+package = "nixpkgs#python312.pkgs.pip"
+category = "languages"
+
+# ==============================================================================
+# DEVELOPMENT LANGUAGES
+# ==============================================================================
+
+[[package]]
+name = "swift"
+description = "Swift compiler for DispatchQueue utilities"
+package = "nixpkgs#swift"
+category = "languages"
+
+[[package]]
+name = "go"
+description = "Go compiler for memory-efficient red team payloads"
+package = "nixpkgs#go"
+category = "languages"
+
+[[package]]
+name = "rust"
+description = "Rust for high-performance monitoring tools"
+package = "nixpkgs#rust"
+category = "languages"
+
+# ==============================================================================
+# DATA ANALYSIS & PROCESSING
+# ==============================================================================
+
+[[package]]
+name = "duckdb"
+description = "DuckDB for temporal resource accounting queries"
+package = "nixpkgs#duckdb"
+category = "analysis"
+
+[[package]]
+name = "jq"
+description = "JSON query tool for parsing powermetrics output"
+package = "nixpkgs#jq"
+category = "analysis"
+
+[[package]]
+name = "sqlite"
+description = "SQLite for engagement database"
+package = "nixpkgs#sqlite"
+category = "analysis"
+
+[[package]]
+name = "graphviz"
+description = "Graph visualization for thread dependency mapping"
+package = "nixpkgs#graphviz"
+category = "analysis"
+
+# ==============================================================================
+# TEXT PROCESSING & SCRIPTING
+# ==============================================================================
+
+[[package]]
+name = "bash"
+description = "Bash shell for orchestration scripts"
+package = "nixpkgs#bash"
+category = "scripting"
+
+[[package]]
+name = "coreutils"
+description = "GNU coreutils for standard utilities"
+package = "nixpkgs#coreutils"
+category = "scripting"
+
+[[package]]
+name = "gnused"
+description = "GNU sed for text processing"
+package = "nixpkgs#gnused"
+category = "scripting"
+
+[[package]]
+name = "gawk"
+description = "GNU awk for data processing"
+package = "nixpkgs#gawk"
+category = "scripting"
+
+[[package]]
+name = "findutils"
+description = "GNU find utilities"
+package = "nixpkgs#findutils"
+category = "scripting"
+
+[[package]]
+name = "watch"
+description = "Watch command for monitoring in real-time"
+package = "nixpkgs#procps"
+category = "scripting"
+
+# ==============================================================================
+# DEVELOPMENT TOOLS
+# ==============================================================================
+
+[[package]]
+name = "git"
+description = "Git for version control"
+package = "nixpkgs#git"
+category = "tools"
+
+[[package]]
+name = "lldb"
+description = "LLVM debugger for ARM64 inspection"
+package = "nixpkgs#lldb"
+category = "tools"
+
+[[package]]
+name = "vim"
+description = "Vim editor for configuration files"
+package = "nixpkgs#vim"
+category = "tools"
+
+[[package]]
+name = "helix"
+description = "Modern editor with better ARM64 support"
+package = "nixpkgs#helix"
+category = "tools"
+
+# ==============================================================================
+# SECURITY & FORENSICS
+# ==============================================================================
+
+[[package]]
+name = "openssl"
+description = "OpenSSL for crypto operations & timing analysis"
+package = "nixpkgs#openssl"
+category = "security"
+
+[[package]]
+name = "curl"
+description = "curl for network testing"
+package = "nixpkgs#curl"
+category = "security"
+
+[[package]]
+name = "wget"
+description = "wget for file downloads"
+package = "nixpkgs#wget"
+category = "security"
+
+# ==============================================================================
+# DOCUMENTATION & REPORTING
+# ==============================================================================
+
+[[package]]
+name = "pandoc"
+description = "Pandoc for document conversion"
+package = "nixpkgs#pandoc"
+category = "docs"
+
+[[package]]
+name = "quarto"
+description = "Quarto for engagement reports & findings"
+package = "nixpkgs#quarto"
+category = "docs"
+
+# ==============================================================================
+# ENVIRONMENT CONFIGURATION
+# ==============================================================================
+
+[vars]
+# Power budget for red team (watts) - pre-throttle margin
+QIGONG_THERMAL_BUDGET_WATTS = "25"
+
+# Cache line size (M-series = 128 bytes, Intel = 64 bytes)
+QIGONG_CACHE_LINE_BYTES = "128"
+
+# Background QoS level for baseline (9 = most conservative)
+QIGONG_QOS_BASELINE = "9"
+
+# Memory accounting interval (milliseconds)
+QIGONG_FOOTPRINT_WINDOW = "1000"
+
+# Data directory for metrics
+QIGONG_HOME = "~/.qigong"
+
+# Python environment
+PYTHONUNBUFFERED = "1"
+
+# uv configuration
+UV_PYTHON = "3.12"
+UV_CACHE_DIR = "$HOME/.cache/uv"
+
+[hooks]
+# Initialize environment on activation
+init = '''
+  echo "=========================================="
+  echo "qigong: Red Team / Blue Team Environment"
+  echo "=========================================="
+  echo ""
+  echo "Version: 3.0.0 (Pure Nix + uv/ruff)"
+  echo "Platform: macOS Sequoia (arm64)"
+  echo ""
+  echo "System Tools Available:"
+  echo "  ✓ powermetrics (system)"
+  echo "  ✓ taskpolicy (system)"
+  echo "  ✓ dtrace (system)"
+  echo "  ✓ Instruments.app (Xcode)"
+  echo ""
+  echo "Python Tooling (Modern):"
+  echo "  ✓ uv (ultra-fast package manager)"
+  echo "  ✓ ruff (fast linter & formatter)"
+  echo "  ✓ uvx (run isolated Python CLI tools)"
+  echo ""
+  echo "Nix-provided Tools:"
+  echo "  ✓ Python 3.12 + pip"
+  echo "  ✓ Swift, Go, Rust"
+  echo "  ✓ DuckDB, SQLite, jq"
+  echo "  ✓ Pandoc, Quarto"
+  echo ""
+  echo "Quick Start:"
+  echo "  mkdir -p ~/.qigong/{logs,data}"
+  echo "  uv venv ~/.qigong/venv"
+  echo "  source ~/.qigong/venv/bin/activate"
+  echo "  uv pip install asitop psutil pandas"
+  echo ""
+  echo "OR use uvx for one-off tools:"
+  echo "  uvx asitop"
+  echo ""
+'''
+
+[profile]
+# Make system tools discoverable
+systemTools = '''
+  export PATH="/usr/bin:/usr/sbin:$PATH"
+  export QIGONG_ACTIVE=1
+'''
+
+# uv environment
+uvEnvironment = '''
+  # Initialize uv cache
+  export UV_CACHE_DIR="$HOME/.cache/uv"
+
+  # Use system python if project doesn't pin version
+  export UV_PYTHON="3.12"
+'''
+
+# ==============================================================================
+# SCRIPTS & CONVENIENCE COMMANDS
+# ==============================================================================
+
+[scripts.setup]
+description = "Initialize qigong baselines & monitoring"
+script = '''
+  mkdir -p ~/.qigong/{logs,data,venv}
+
+  echo "[*] qigong environment initialized"
+  echo "[*] Nix packages available via this environment"
+  echo "[*] System tools (powermetrics, taskpolicy, dtrace) from /usr/bin"
+  echo ""
+  echo "Next steps:"
+  echo "  1. Create uv virtual environment:"
+  echo "     uv venv ~/.qigong/venv"
+  echo "  2. Activate environment:"
+  echo "     source ~/.qigong/venv/bin/activate"
+  echo "  3. Install monitoring tools:"
+  echo "     uv pip install asitop psutil pandas"
+  echo "  4. Or use uvx for one-off execution:"
+  echo "     uvx asitop"
+'''
+
+[scripts.venv-create]
+description = "Create uv virtual environment"
+script = '''
+  echo "[*] Creating uv virtual environment at ~/.qigong/venv..."
+  uv venv ~/.qigong/venv --python 3.12
+  echo "[✓] Virtual environment created"
+  echo ""
+  echo "To activate:"
+  echo "  source ~/.qigong/venv/bin/activate"
+'''
+
+[scripts.venv-activate]
+description = "Activate uv virtual environment"
+script = '''
+  if [ -f ~/.qigong/venv/bin/activate ]; then
+    source ~/.qigong/venv/bin/activate
+    echo "[✓] Virtual environment activated"
+    echo "  Python: $(which python3)"
+    echo "  Version: $(python3 --version)"
+  else
+    echo "[!] Virtual environment not found"
+    echo "    Run: flox scripts venv-create"
+  fi
+'''
+
+[scripts.install-monitoring]
+description = "Install monitoring tools via uv pip"
+script = '''
+  if [ ! -f ~/.qigong/venv/bin/activate ]; then
+    echo "[!] Virtual environment not found"
+    echo "    Run: flox scripts venv-create"
+    exit 1
+  fi
+
+  source ~/.qigong/venv/bin/activate
+
+  echo "[*] Installing monitoring tools..."
+  uv pip install asitop psutil pandas numpy scipy matplotlib
+  echo "[✓] Tools installed in ~/.qigong/venv"
+  echo ""
+  echo "Available commands:"
+  asitop --version && echo "  ✓ asitop"
+  python3 -c "import psutil; print('  ✓ psutil')"
+  python3 -c "import pandas; print('  ✓ pandas')"
+'''
+
+[scripts.status]
+description = "Show qigong environment status"
+script = '''
+  echo "=== qigong Environment Status ==="
+  echo ""
+  echo "System Tools:"
+  which powermetrics && echo "  ✓ powermetrics" || echo "  ✗ powermetrics not found"
+  which taskpolicy && echo "  ✓ taskpolicy" || echo "  ✗ taskpolicy not found"
+  which dtrace && echo "  ✓ dtrace" || echo "  ✗ dtrace not found"
+  echo ""
+  echo "Python Tooling:"
+  which uv && echo "  ✓ uv" || echo "  ✗ uv not found"
+  which ruff && echo "  ✓ ruff" || echo "  ✗ ruff not found"
+  which python3 && echo "  ✓ python3" || echo "  ✗ python3 not found"
+  echo ""
+  echo "Nix Tools:"
+  which duckdb && echo "  ✓ duckdb" || echo "  ✗ duckdb not found"
+  which jq && echo "  ✓ jq" || echo "  ✗ jq not found"
+  echo ""
+  echo "Virtual Environment:"
+  if [ -f ~/.qigong/venv/bin/activate ]; then
+    echo "  ✓ ~/.qigong/venv exists"
+    source ~/.qigong/venv/bin/activate
+    uv pip list | head -5
+  else
+    echo "  ✗ ~/.qigong/venv not found (run: flox scripts venv-create)"
+  fi
+'''
+
+[scripts.lint-scripts]
+description = "Lint qigong scripts with ruff"
+script = '''
+  echo "[*] Linting Python scripts with ruff..."
+
+  if [ -f ~/.qigong/data/power_model.py ]; then
+    ruff check ~/.qigong/data/power_model.py --fix
+    echo "[✓] Linted power_model.py"
+  fi
+
+  if [ -f ~/.qigong/data/footprint_tracker.py ]; then
+    ruff check ~/.qigong/data/footprint_tracker.py --fix
+    echo "[✓] Linted footprint_tracker.py"
+  fi
+
+  echo "[✓] Linting complete"
+'''
+
+[scripts.format-scripts]
+description = "Format Python scripts with ruff"
+script = '''
+  echo "[*] Formatting Python scripts with ruff..."
+
+  ruff format ~/.qigong/data/*.py 2>/dev/null || true
+
+  echo "[✓] Formatting complete"
+'''
+
+[scripts.run-asitop]
+description = "Run asitop via uvx (one-off)"
+script = '''
+  echo "[*] Running asitop via uvx (isolated)..."
+  uvx asitop
+'''
+
+[scripts.run-monitoring]
+description = "Start complete monitoring dashboard"
+script = '''
+  echo "Starting qigong monitoring dashboard..."
+  echo ""
+
+  # Check if venv is set up
+  if [ ! -f ~/.qigong/venv/bin/activate ]; then
+    echo "[!] Virtual environment not found"
+    echo "    Run: flox scripts venv-create"
+    echo "    Then: flox scripts install-monitoring"
+    exit 1
+  fi
+
+  source ~/.qigong/venv/bin/activate
+
+  # Run monitoring in background
+  python3 << 'PYTHON'
+import subprocess
+import json
+import sys
+
+print("Monitoring dashboard (Press Ctrl+C to stop)...")
+print("")
+
+try:
+  while True:
+    # P/E core utilization
+    result = subprocess.run(['sysctl', '-n', 'hw.perflevel0.active_threads', 'hw.perflevel1.active_threads'],
+                           capture_output=True, text=True)
+    cores = result.stdout.strip().split('\n')
+    print(f"Active Cores: P={cores[0]}, E={cores[1]}")
+
+    # Power consumption
+    result = subprocess.run(['powermetrics', '-n', '1', '-f', 'json', '-s', 'cpu_power,gpu_power'],
+                           capture_output=True, text=True)
+    try:
+      metrics = json.loads(result.stdout)[0]
+      print(f"Power: CPU={metrics['cpu_power']:.1f}W, GPU={metrics['gpu_power']:.1f}W")
+    except:
+      pass
+
+    print("---")
+
+except KeyboardInterrupt:
+  print("\nMonitoring stopped")
+PYTHON
+'''
+
+[scripts.python-shell]
+description = "Interactive Python shell with qigong venv"
+script = '''
+  if [ ! -f ~/.qigong/venv/bin/activate ]; then
+    echo "[!] Virtual environment not found"
+    echo "    Run: flox scripts venv-create"
+    exit 1
+  fi
+
+  source ~/.qigong/venv/bin/activate
+  python3
+'''
+
+[scripts.monitor-cores]
+description = "Monitor P/E core utilization (real-time)"
+script = '''
+  echo "Monitoring P/E core utilization (Ctrl+C to stop)..."
+  echo ""
+
+  # Try uvx asitop first
+  if command -v uvx &> /dev/null; then
+    echo "[*] Running asitop via uvx (isolated environment)..."
+    uvx asitop
+  else
+    # Fallback: use system monitoring
+    echo "[*] Using system monitoring (install asitop for better view)"
+    while true; do
+      clear
+      echo "=== P/E Core Activity ==="
+      P_CORES=$(sysctl -n hw.perflevel0.active_threads)
+      E_CORES=$(sysctl -n hw.perflevel1.active_threads)
+      P_LOGICAL=$(sysctl -n hw.perflevel0.logicalcpu)
+      E_LOGICAL=$(sysctl -n hw.perflevel1.logicalcpu)
+      echo "P-cores: $P_CORES / $P_LOGICAL active"
+      echo "E-cores: $E_CORES / $E_LOGICAL active"
+      sleep 2
+    done
+  fi
+'''
+
+[scripts.monitor-power]
+description = "Monitor CPU/GPU power consumption (real-time)"
+script = '''
+  echo "Monitoring power consumption (Ctrl+C to stop)..."
+
+  while true; do
+    powermetrics -n 1 -s cpu_power,gpu_power,thermal_pressure -f json 2>/dev/null | \
+      jq -r '.[] | "CPU: \(.cpu_power)W | GPU: \(.gpu_power)W | Thermal: \(.thermal_pressure)"'
+    sleep 1
+  done
+'''
+
+[scripts.analyze-resources]
+description = "Analyze current resource usage across all cores"
+script = '''
+  echo "=== Resource Analysis ==="
+  echo ""
+  echo "Core Count:"
+  sysctl hw.logicalcpu hw.physicalcpu hw.perflevel0.logicalcpu hw.perflevel1.logicalcpu
+  echo ""
+  echo "Memory:"
+  vm_stat | head -20
+  echo ""
+  echo "Thermal:"
+  powermetrics -n 1 -s thermal_pressure -f json 2>/dev/null | jq '.[] | .thermal_pressure' || echo "  (requires powermetrics)"
+'''
+
+# ==============================================================================
+# SHELL ENVIRONMENT ACTIVATION
+# ==============================================================================
+
+[shell]
+init = '''
+  # Ensure system tools are available
+  export PATH="/usr/bin:/usr/sbin:$PATH"
+  export QIGONG_ACTIVE=1
+  export QIGONG_HOME="${QIGONG_HOME:=$HOME/.qigong}"
+
+  # uv configuration
+  export UV_PYTHON="3.12"
+  export UV_CACHE_DIR="$HOME/.cache/uv"
+
+  # Initialize logging
+  mkdir -p "$QIGONG_HOME/logs"
+
+  # Convenience aliases
+  alias qigong-status="flox scripts status"
+  alias qigong-cores="flox scripts monitor-cores"
+  alias qigong-power="flox scripts monitor-power"
+  alias qigong-python="flox scripts python-shell"
+  alias qigong-asitop="flox scripts run-asitop"
+'''

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>phase_1_quick_reference – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="phase-1-quick-reference-card" class="level1">
+<h1>Phase 1: Quick Reference Card</h1>
+<p><strong>Status</strong>: ✅ READY TO EXECUTE <strong>Date</strong>: 2025-12-21</p>
+<hr>
+<section id="one-line-execution" class="level2">
+<h2 class="anchored" data-anchor-id="one-line-execution">One-Line Execution</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[agents.phase<span class="dv">-1</span>-orchestration <span class="at">:as</span> p1]) (p1/quick-start)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="execution-options" class="level2">
+<h2 class="anchored" data-anchor-id="execution-options">3 Execution Options</h2>
+<section id="option-1-quick-start-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="option-1-quick-start-recommended">Option 1: Quick Start (Recommended)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[agents.phase<span class="dv">-1</span>-orchestration <span class="at">:as</span> p1])</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(p1/quick-start)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Uses persistent database</li>
+<li>Default configuration</li>
+<li>Full output reporting</li>
+<li><strong>Duration</strong>: 2-5 seconds (mock), 2-4 hours (real APIs)</li>
+</ul>
+</section>
+<section id="option-2-in-memory-testing" class="level3">
+<h3 class="anchored" data-anchor-id="option-2-in-memory-testing">Option 2: In-Memory Testing</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[agents.phase<span class="dv">-1</span>-orchestration <span class="at">:as</span> p1])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(p1/quick-start-memory)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Uses in-memory database</li>
+<li>Fast testing (2-5 seconds)</li>
+<li>Drops existing data</li>
+<li>Perfect for validation</li>
+</ul>
+</section>
+<section id="option-3-custom-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="option-3-custom-configuration">Option 3: Custom Configuration</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[agents.phase<span class="dv">-1</span>-orchestration <span class="at">:as</span> p1])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(p1/execute-phase<span class="dv">-1</span> <span class="at">:username</span> <span class="st">"barton.bluesky"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:github-username</span> <span class="st">"barton"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:include-web</span> <span class="va">true</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:in-memory</span> <span class="va">true</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">:drop-existing</span> <span class="va">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Full control</li>
+<li>Custom parameters</li>
+<li>All options available</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="what-happens" class="level2">
+<h2 class="anchored" data-anchor-id="what-happens">What Happens</h2>
+<pre><code>Phase 1a: Create Schema (7 tables, 13 indexes) ──→ ✅ Complete
+     ↓
+Phase 1b: Acquire Data (4 sources) ────────────────→ ✅ Complete
+     ↓
+Phase 1c: Populate DuckDB ──────────────────────────→ ✅ Complete
+     ↓
+Phase 1d: Validate &amp; Report ────────────────────────→ ✅ Complete</code></pre>
+<hr>
+</section>
+<section id="expected-output" class="level2">
+<h2 class="anchored" data-anchor-id="expected-output">Expected Output</h2>
+<pre><code>✅ PHASE 1 EXECUTION - COMPLETE SUCCESS
+
+Total Duration: 2.345 seconds
+
+📊 FINAL SUMMARY:
+  Phase 1a (Setup):        ✅ 7 tables created
+  Phase 1b (Acquisition):  ✅ All 4 sources acquired
+  Phase 1c (Population):   ✅ Data loaded to DuckDB
+  Phase 1d (Validation):   ✅ Schema validated
+
+📈 DATA STATISTICS:
+  Bluesky Posts:         10
+  Interactions:          50
+  Network Nodes:         100
+  GitHub Repositories:   20
+  GitHub Activities:     100
+  Web Pages:             10
+  Network Relationships: 50</code></pre>
+<hr>
+</section>
+<section id="module-reference" class="level2">
+<h2 class="anchored" data-anchor-id="module-reference">Module Reference</h2>
+<section id="data-acquisition-agents.data-acquisition" class="level3">
+<h3 class="anchored" data-anchor-id="data-acquisition-agents.data-acquisition">Data Acquisition (<code>agents.data-acquisition</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[agents.data-acquisition <span class="at">:as</span> acq])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">;; Individual functions</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>(acq/acquire-bluesky-posts <span class="at">:username</span> <span class="st">"barton.bluesky"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>(acq/acquire-bluesky-interactions <span class="at">:username</span> <span class="st">"barton.bluesky"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>(acq/acquire-bluesky-network <span class="at">:username</span> <span class="st">"barton.bluesky"</span> <span class="at">:depth</span> <span class="dv">2</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>(acq/acquire-github-repositories <span class="at">:username</span> <span class="st">"barton"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>(acq/acquire-github-activity <span class="at">:username</span> <span class="st">"barton"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>(acq/acquire-firecrawled-content <span class="at">:urls</span> urls <span class="at">:max-urls</span> <span class="dv">100</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>(acq/acquire-network-data <span class="at">:interactions</span> interactions <span class="at">:posts</span> posts)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">;; Master orchestration</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> result </span>(acq/acquire-all-data <span class="at">:username</span> <span class="st">"barton.bluesky"</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">:github-username</span> <span class="st">"barton"</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">:include-web</span> <span class="va">true</span>))</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">;; Statistics</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>(acq/get-acquisition-stats)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>(acq/reset-acquisition-stats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="duckdb-schema-agents.duckdb-schema" class="level3">
+<h3 class="anchored" data-anchor-id="duckdb-schema-agents.duckdb-schema">DuckDB Schema (<code>agents.duckdb-schema</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[agents.duckdb-schema <span class="at">:as</span> db])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">;; Connection</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>(db/create-connection)      <span class="co">;; Connect to DuckDB</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>(db/close-connection)       <span class="co">;; Close connection</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">;; Schema</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>(db/create-schema <span class="at">:drop-existing</span> <span class="va">false</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">;; Population</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>(db/insert-posts posts)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>(db/insert-interactions interactions)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>(db/insert-network relationships)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>(db/insert-github-activity activities)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>(db/insert-web-references references)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">;; Validation</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>(db/validate-schema)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>(db/get-table-stats <span class="st">"barton_posts"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="phase-1-orchestration-agents.phase-1-orchestration" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-orchestration-agents.phase-1-orchestration">Phase 1 Orchestration (<code>agents.phase-1-orchestration</code>)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">require</span> '[agents.phase<span class="dv">-1</span>-orchestration <span class="at">:as</span> p1])</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">;; Execute complete Phase 1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>(p1/execute-phase<span class="dv">-1</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">;; Quick starts</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>(p1/quick-start)           <span class="co">;; Default (persistent)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>(p1/quick-start-memory)    <span class="co">;; In-memory test</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>(p1/quick-start-persistent)<span class="co">;; Explicit persistent</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="configuration-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="configuration-parameters">Configuration Parameters</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:username</code></td>
+<td><code>"barton.bluesky"</code></td>
+<td>Bluesky username to analyze</td>
+</tr>
+<tr class="even">
+<td><code>:github-username</code></td>
+<td><code>"barton"</code></td>
+<td>GitHub username</td>
+</tr>
+<tr class="odd">
+<td><code>:include-web</code></td>
+<td><code>true</code></td>
+<td>Include web content acquisition</td>
+</tr>
+<tr class="even">
+<td><code>:in-memory</code></td>
+<td><code>false</code></td>
+<td>Use in-memory DB (vs persistent)</td>
+</tr>
+<tr class="odd">
+<td><code>:drop-existing</code></td>
+<td><code>false</code></td>
+<td>Drop existing tables first</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="database-schema" class="level2">
+<h2 class="anchored" data-anchor-id="database-schema">Database Schema</h2>
+<p><strong>7 Tables Created</strong>: 1. <code>barton_posts</code> - Posts with engagement 2. <code>barton_interactions</code> - Replies, likes, reposts 3. <code>barton_network</code> - Network relationships 4. <code>github_activity</code> - GitHub commits, PRs, issues 5. <code>web_references</code> - Crawled web content 6. <code>interaction_entropy</code> - Pattern sequences 7. <code>cognitive_profile</code> - Learned model state</p>
+<p><strong>13 Indexes</strong> for performance optimization</p>
+<hr>
+</section>
+<section id="data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources">Data Sources</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Function</th>
+<th>Data Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bluesky Posts</td>
+<td><code>acquire-bluesky-posts</code></td>
+<td>10+ (mock)</td>
+</tr>
+<tr class="even">
+<td>Bluesky Interactions</td>
+<td><code>acquire-bluesky-interactions</code></td>
+<td>50+ (mock)</td>
+</tr>
+<tr class="odd">
+<td>Bluesky Network</td>
+<td><code>acquire-bluesky-network</code></td>
+<td>100+ nodes (mock)</td>
+</tr>
+<tr class="even">
+<td>GitHub Repos</td>
+<td><code>acquire-github-repositories</code></td>
+<td>20+ (mock)</td>
+</tr>
+<tr class="odd">
+<td>GitHub Activity</td>
+<td><code>acquire-github-activity</code></td>
+<td>100+ (mock)</td>
+</tr>
+<tr class="even">
+<td>Web Content</td>
+<td><code>acquire-firecrawled-content</code></td>
+<td>10+ (mock)</td>
+</tr>
+<tr class="odd">
+<td>Network Analysis</td>
+<td><code>acquire-network-data</code></td>
+<td>50+ relationships (mock)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="performance" class="level2">
+<h2 class="anchored" data-anchor-id="performance">Performance</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Time (Mock)</th>
+<th>Time (Real APIs)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1a (Schema)</td>
+<td>~0.5s</td>
+<td>~1s</td>
+</tr>
+<tr class="even">
+<td>1b (Acquisition)</td>
+<td>~2s</td>
+<td>30-120 min</td>
+</tr>
+<tr class="odd">
+<td>1c (Population)</td>
+<td>~1s</td>
+<td>5-10 min</td>
+</tr>
+<tr class="even">
+<td>1d (Validation)</td>
+<td>~0.5s</td>
+<td>~1 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>2-5s</strong></td>
+<td><strong>30-120+ min</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“No active DuckDB connection”</td>
+<td>Call <code>(db/create-connection)</code> first</td>
+</tr>
+<tr class="even">
+<td>“Table already exists”</td>
+<td>Use <code>:drop-existing true</code></td>
+</tr>
+<tr class="odd">
+<td>“Foreign key constraint failed”</td>
+<td>Ensure posts inserted before interactions</td>
+</tr>
+<tr class="even">
+<td>“Memory exhausted”</td>
+<td>Use <code>:in-memory false</code> for persistent DB</td>
+</tr>
+<tr class="odd">
+<td>“Module not found”</td>
+<td>Ensure <code>src/agents/</code> files exist</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="next-steps-after-phase-1" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps-after-phase-1">Next Steps After Phase 1</h2>
+<ol type="1">
+<li><strong>Phase 2</strong>: MCP Space Saturation
+<ul>
+<li>Load all data into perception space</li>
+<li>Expose all operations in action space</li>
+</ul></li>
+<li><strong>Phase 3</strong>: Pattern Extraction
+<ul>
+<li>Extract 5-dimensional patterns</li>
+<li>Train agent-o-rama model</li>
+</ul></li>
+<li><strong>Phase 4+</strong>: Surrogate Creation
+<ul>
+<li>Create cognitive surrogate engine</li>
+<li>Implement interaction interleaving</li>
+<li>Perform interperspectival analysis</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="real-api-integration-future" class="level2">
+<h2 class="anchored" data-anchor-id="real-api-integration-future">Real API Integration (Future)</h2>
+<p><strong>Replace mock implementations with real APIs</strong>:</p>
+<section id="bluesky" class="level3">
+<h3 class="anchored" data-anchor-id="bluesky">Bluesky</h3>
+<ul>
+<li>Option 1: AT Protocol Clojure client</li>
+<li>Option 2: Firecrawl profile scraping</li>
+</ul>
+</section>
+<section id="github" class="level3">
+<h3 class="anchored" data-anchor-id="github">GitHub</h3>
+<ul>
+<li>GitHub GraphQL API with authentication</li>
+</ul>
+</section>
+<section id="firecrawl" class="level3">
+<h3 class="anchored" data-anchor-id="firecrawl">Firecrawl</h3>
+<ul>
+<li>Firecrawl MCP tool or API client</li>
+</ul>
+</section>
+<section id="pulsemcp" class="level3">
+<h3 class="anchored" data-anchor-id="pulsemcp">PulseMCP</h3>
+<ul>
+<li>Real-time update subscription</li>
+</ul>
+<p>See <code>PHASE_1_COMPLETE_IMPLEMENTATION.md</code> for details</p>
+<hr>
+</section>
+</section>
+<section id="files-to-know" class="level2">
+<h2 class="anchored" data-anchor-id="files-to-know">Files to Know</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>src/agents/data_acquisition.clj</code></td>
+<td>Data acquisition (600 LOC)</td>
+</tr>
+<tr class="even">
+<td><code>src/agents/duckdb_schema.clj</code></td>
+<td>Schema &amp; population (400 LOC)</td>
+</tr>
+<tr class="odd">
+<td><code>src/agents/phase_1_orchestration.clj</code></td>
+<td>Master pipeline (300 LOC)</td>
+</tr>
+<tr class="even">
+<td><code>PHASE_1_COMPLETE_IMPLEMENTATION.md</code></td>
+<td>Full guide</td>
+</tr>
+<tr class="odd">
+<td><code>PHASE_1_EXECUTION_GUIDE.md</code></td>
+<td>Detailed walkthrough</td>
+</tr>
+<tr class="even">
+<td><code>SESSION_PHASE_1_COMPLETION_SUMMARY.md</code></td>
+<td>Session summary</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="success-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="success-checklist">Success Checklist</h2>
+<p>After running Phase 1, verify:</p>
+<ul>
+<li>✅ All phases complete (1a-1d)</li>
+<li>✅ 7 tables created</li>
+<li>✅ 13 indexes created</li>
+<li>✅ Data loaded from 4 sources</li>
+<li>✅ Statistics generated</li>
+<li>✅ No errors reported</li>
+<li>✅ DuckDB file created</li>
+</ul>
+<hr>
+</section>
+<section id="one-command-to-rule-them-all" class="level2">
+<h2 class="anchored" data-anchor-id="one-command-to-rule-them-all">One Command to Rule Them All</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">do</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">require</span> '[agents.phase<span class="dv">-1</span>-orchestration <span class="at">:as</span> p1])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  (p1/quick-start))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>This single command</strong>: 1. Connects to DuckDB 2. Creates 7 tables with 13 indexes 3. Acquires data from 4 sources 4. Populates DuckDB 5. Validates data 6. Prints complete summary 7. Closes connection cleanly</p>
+<p><strong>Duration</strong>: 2-5 seconds (mock), 2-4 hours (real APIs)</p>
+<hr>
+<p><strong>Status</strong>: ✅ READY TO EXECUTE <strong>Confidence</strong>: 100% <strong>Next</strong>: Run Phase 1 or proceed to Phase 2</p>
+<hr>
+<p><em>For more details, see PHASE_1_COMPLETE_IMPLEMENTATION.md</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

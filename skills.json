@@ -1,8 +1,22 @@
 {
-  "version": "1.5.2",
-  "updated": "2025-12-26T13:15:00Z",
-  "total": 65,
+  "version": "1.6.0",
+  "updated": "2025-12-24T00:00:00Z",
+  "total": 63,
   "skills": [
+    {
+      "name": "autopoiesis",
+      "description": "Self-modifying AI agent configuration via ruler + MCP + DuckDB. All behavior mods become one-liners.",
+      "category": "meta",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/autopoiesis",
+      "stars": 0,
+      "downloads": 0,
+      "featured": true,
+      "verified": true,
+      "dependencies": ["nbb", "ai-agent-skills", "duckdb", "ruler"]
+    },
     {
       "name": "frontend-design",
       "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use for building web components, pages, dashboards, React components, HTML/CSS layouts, or styling any web UI.",
@@ -225,32 +239,6 @@
       "verified": false
     },
     {
-      "name": "iroh-p2p",
-      "description": "Build peer-to-peer applications with Iroh. Modern QUIC-based P2P networking, automatic hole punching, content distribution, and decentralized data synchronization. Data sovereignty and direct connections for nextgen applications.",
-      "category": "development",
-      "author": "bmorphism",
-      "source": "custom",
-      "license": "MIT",
-      "path": "skills/iroh-p2p",
-      "stars": 0,
-      "downloads": 0,
-      "featured": true,
-      "verified": true
-    },
-    {
-      "name": "protocol-acset",
-      "description": "Model decentralized protocols as attributed C-sets for compositional analysis, interoperability verification, and protocol evolution. Apply categorical mathematics and sheaf theory to P2P infrastructure design. Design optimal protocol stacks for data sovereignty.",
-      "category": "development",
-      "author": "bmorphism",
-      "source": "custom",
-      "license": "MIT",
-      "path": "skills/protocol-acset",
-      "stars": 0,
-      "downloads": 0,
-      "featured": true,
-      "verified": true
-    },
-    {
       "name": "database-design",
       "description": "Database schema design, optimization, and migration patterns for PostgreSQL, MySQL, and NoSQL databases. Use for designing schemas or optimizing queries.",
       "category": "development",
@@ -301,6 +289,19 @@
       "downloads": 180,
       "featured": false,
       "verified": false
+    },
+    {
+      "name": "jira-issues",
+      "description": "Create, update, and manage Jira issues from natural language. Use when logging bugs, creating tickets, updating issue status, or managing your Jira backlog.",
+      "category": "productivity",
+      "author": "skillcreatorai",
+      "source": "skillcreatorai/Ai-Agent-Skills",
+      "license": "MIT",
+      "path": "skills/jira-issues",
+      "stars": 100,
+      "downloads": 50,
+      "featured": true,
+      "verified": true
     },
     {
       "name": "qa-regression",
@@ -691,7 +692,7 @@
     },
     {
       "name": "gay-mcp",
-      "description": "Deterministic color generation with SplitMix64, GF(3) trits, and MCP tools for palettes and threads. Same seed \u2192 Same colors (SPI guarantee).",
+      "description": "Deterministic color generation with SplitMix64, GF(3) trits, and MCP tools for palettes and threads. Same seed → Same colors (SPI guarantee).",
       "category": "ai-agents",
       "author": "plurigrid",
       "source": "plurigrid/asi",
@@ -864,84 +865,6 @@
       "trit": 1,
       "bundle": "terminal",
       "agent": "plus"
-    },
-    {
-      "name": "bumpus-narratives",
-      "description": "Sheaves on time categories for compositional temporal reasoning. Bumpus et al. narrative framework with Gay.jl color integration.",
-      "category": "mathematics",
-      "author": "bmorphism",
-      "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/bumpus-narratives",
-      "stars": 0,
-      "downloads": 0,
-      "featured": false,
-      "verified": false,
-      "trit": 0
-    },
-    {
-      "name": "nix-acset-worlding",
-      "description": "Nix store modeled as Attributed C-Set for dependency verification and world management.",
-      "category": "infrastructure",
-      "author": "bmorphism",
-      "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/nix-acset-worlding",
-      "stars": 0,
-      "downloads": 0,
-      "featured": false,
-      "verified": false,
-      "trit": -1
-    },
-    {
-      "name": "world-memory-worlding",
-      "description": "World memory is world remembering is world worlding - the autopoietic strange loop where memory enables remembering enables worlding enables memory.",
-      "category": "theory",
-      "author": "bmorphism",
-      "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/world-memory-worlding",
-      "stars": 0,
-      "downloads": 0,
-      "featured": true,
-      "verified": true,
-      "trit": 0
-    },
-    {
-      "name": "hyperbolic-bulk",
-      "description": "On-chain GF(3) entropy storage via Aptos Move - bulk-boundary correspondence where entropy lives in the interior and observables project to agents.",
-      "category": "blockchain",
-      "author": "bmorphism",
-      "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/hyperbolic-bulk",
-      "stars": 0,
-      "downloads": 0,
-      "featured": true,
-      "verified": true,
-      "trit": 0
-    },
-    {
-      "name": "boneh-roughgarden-wev",
-      "description": "Stanford FDCI research bridge: Boneh cryptographic primitives (ZK, BLS, VRFs) + Roughgarden mechanism design (TFM, MEV mitigation). WEV = World Extractable Value via GF(3) conservation.",
-      "category": "blockchain",
-      "author": "bmorphism",
-      "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/boneh-roughgarden-wev",
-      "stars": 0,
-      "downloads": 0,
-      "featured": true,
-      "verified": true,
-      "trit": 0,
-      "bundle": "mechanism-design",
-      "agent": "ergodic",
-      "references": [
-        "SPEEDEX",
-        "Groundhog",
-        "TFM Post-MEV",
-        "Nova"
-      ]
     }
   ],
   "categories": [
@@ -1024,6 +947,6 @@
         ]
       }
     ],
-    "gf3_conservation": "sum(agent.trit for agent in agents) \u2261 0 (mod 3)"
+    "gf3_conservation": "sum(agent.trit for agent in agents) ≡ 0 (mod 3)"
   }
 }

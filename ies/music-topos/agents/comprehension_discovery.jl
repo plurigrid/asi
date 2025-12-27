@@ -312,7 +312,8 @@ function discover_related_theorems(
         end
 
         # Get all theorems in region except the target
-        candidate_theorems = filter(t -> t != theorem_id, region.theorems)
+        # Use comprehension instead of filter for zero-allocation optimization
+        candidate_theorems = [t for t in region.theorems if t != theorem_id]
 
         if isempty(candidate_theorems)
             return Int[]

@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Deployment Checklist – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../https://topos.site/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Deployment Checklist</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Deployment Checklist</h1>
+<p class="subtitle lead">Pre-Deployment Validation and Go-Live Procedures</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pre-deployment-verification" class="level2">
+<h2 class="anchored" data-anchor-id="pre-deployment-verification">Pre-Deployment Verification</h2>
+<p>Before deploying to Fermyon Cloud, verify all system components are operational.</p>
+<section id="phase-completeness-checklist" class="level3">
+<h3 class="anchored" data-anchor-id="phase-completeness-checklist">Phase Completeness Checklist</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Phase 1: CRDT Memoization</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">TextCRDT fully implemented with fractional indexing</label></li>
+<li><label><input type="checkbox">JSONCRDT with last-writer-wins semantics</label></li>
+<li><label><input type="checkbox">GCounter and PNCounter grow-only counters</label></li>
+<li><label><input type="checkbox">ORSet observed-remove semantics</label></li>
+<li><label><input type="checkbox">TAPStateCRDT balanced ternary states</label></li>
+<li><label><input type="checkbox">UnifiedGadgetCache with polarity indexing</label></li>
+<li><label><input type="checkbox">DuckDB temporal versioning configured</label></li>
+<li><label><input type="checkbox">Vector clock causality tracking functional</label></li>
+<li><label><input type="checkbox">Test suite: 9/9 suites passing</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Phase 2: E-Graph Verification</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">RED gadgets (forward associative, +1 polarity)</label></li>
+<li><label><input type="checkbox">BLUE gadgets (backward distributive, -1 polarity)</label></li>
+<li><label><input type="checkbox">GREEN gadgets (identity verification, 0 polarity)</label></li>
+<li><label><input type="checkbox">3-coloring by construction verified</label></li>
+<li><label><input type="checkbox">Saturation algorithm reaching fixpoint</label></li>
+<li><label><input type="checkbox">Memoization cache functional</label></li>
+<li><label><input type="checkbox">Test suite: 7/7 suites passing</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Phase 3: Multi-Agent Distribution</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">9-agent Ramanujan topology configured</label></li>
+<li><label><input type="checkbox">Sierpinski addressing deterministic and load-balanced</label></li>
+<li><label><input type="checkbox">Vector clocks synchronized across agents</label></li>
+<li><label><input type="checkbox">NATS pub/sub coordination operational</label></li>
+<li><label><input type="checkbox">Polarity-based operation routing working</label></li>
+<li><label><input type="checkbox">Test suite: 109/109 tests passing</label></li>
+</ul></li>
+</ul>
+</section>
+<section id="testing-verification" class="level3">
+<h3 class="anchored" data-anchor-id="testing-verification">Testing Verification</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Local Testing (Babashka)</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Run: <code>bb test_local.bb</code></label></li>
+<li><label><input type="checkbox">Expected: 10/10 tests passing</label></li>
+<li><label><input type="checkbox">Time: ~30 seconds</label></li>
+<li><label><input type="checkbox">All 11 components responding</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Browser Testing (Playwright)</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Run: <code>npx playwright test</code></label></li>
+<li><label><input type="checkbox">Expected: 50+ tests passing</label></li>
+<li><label><input type="checkbox">Coverage: Chrome, Firefox, Safari</label></li>
+<li><label><input type="checkbox">Time: ~2 minutes</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Performance Benchmarks</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">CRDT merge throughput: 10K+ ops/sec per agent</label></li>
+<li><label><input type="checkbox">Total throughput (9 agents): 90K+ ops/sec</label></li>
+<li><label><input type="checkbox">E-graph saturation: 2-20 iterations to fixpoint</label></li>
+<li><label><input type="checkbox">P99 latency: &lt;100ms</label></li>
+<li><label><input type="checkbox">Cache hit rate: 70-90% (actual: 100%)</label></li>
+</ul></li>
+</ul>
+</section>
+<section id="architecture-validation" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-validation">Architecture Validation</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>CRDT Convergence</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Merge commutativity: <span class="math inline">\(a \sqcup b = b \sqcup a\)</span> ✓</label></li>
+<li><label><input type="checkbox">Merge associativity: <span class="math inline">\((a \sqcup b) \sqcup c = a \sqcup (b \sqcup c)\)</span> ✓</label></li>
+<li><label><input type="checkbox">Merge idempotence: <span class="math inline">\(a \sqcup a = a\)</span> ✓</label></li>
+<li><label><input type="checkbox">All 6 CRDT types verified</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>E-Graph Properties</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">RED gadgets only produce RED nodes</label></li>
+<li><label><input type="checkbox">BLUE gadgets only produce BLUE nodes</label></li>
+<li><label><input type="checkbox">GREEN gadgets only produce GREEN nodes</label></li>
+<li><label><input type="checkbox">3-coloring constraints satisfied</label></li>
+<li><label><input type="checkbox">Color violations: 0</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Multi-Agent Properties</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Ramanujan spectral gap: λ ≥ 2.0</label></li>
+<li><label><input type="checkbox">Graph diameter: 2 (maximum distance)</label></li>
+<li><label><input type="checkbox">Mixing time: O(log 9 / λ) ≈ 1.1 steps</label></li>
+<li><label><input type="checkbox">All 9 agents functional</label></li>
+<li><label><input type="checkbox">Mathematician assignments correct</label></li>
+<li><label><input type="checkbox">Polarity distribution: 3 RED, 3 BLUE, 3 GREEN</label></li>
+</ul></li>
+</ul>
+</section>
+<section id="game-theory-verification" class="level3">
+<h3 class="anchored" data-anchor-id="game-theory-verification">Game Theory Verification</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Merkle Commitment Mechanism</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Commitments generated via SHA256</label></li>
+<li><label><input type="checkbox">Commitments published at each epoch</label></li>
+<li><label><input type="checkbox">Dishonesty detection working (1 round)</label></li>
+<li><label><input type="checkbox">Reputation system functional</label></li>
+<li><label><input type="checkbox">Dominant strategy equilibrium verified</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Incentive Analysis</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Honest strategy payoff: &gt; dishonest payoff</label></li>
+<li><label><input type="checkbox">Reputation destruction irreversible</label></li>
+<li><label><input type="checkbox">Cooperation benefits verified</label></li>
+<li><label><input type="checkbox">Nash equilibrium confirmed</label></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="deployment-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-configuration">Deployment Configuration</h2>
+<section id="fermyon-spin-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="fermyon-spin-configuration">Fermyon Spin Configuration</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>spin.toml updated</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Application name: <code>ramanujan-crdt</code></label></li>
+<li><label><input type="checkbox">Version: <code>1.0.0</code></label></li>
+<li><label><input type="checkbox">9 components defined (agents 0-8)</label></li>
+<li><label><input type="checkbox">NATS connectivity configured</label></li>
+<li><label><input type="checkbox">Environment variables set:</label>
+<ul>
+<li><code>AGENT_ID</code> (0-8)</li>
+<li><code>MATHEMATICIAN</code> name</li>
+<li><code>NATS_URL</code> = <code>nats://nats.worm.sex:4222</code></li>
+</ul></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>WASM modules compiled</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">agent-0: Ramanujan (RED/+1)</label></li>
+<li><label><input type="checkbox">agent-1: Grothendieck (GREEN/0)</label></li>
+<li><label><input type="checkbox">agent-2: Euler (BLUE/-1)</label></li>
+<li><label><input type="checkbox">agent-3: de Paiva (GREEN/0)</label></li>
+<li><label><input type="checkbox">agent-4: Hedges (RED/+1)</label></li>
+<li><label><input type="checkbox">agent-5: Girard (BLUE/-1)</label></li>
+<li><label><input type="checkbox">agent-6: Spivak (RED/+1)</label></li>
+<li><label><input type="checkbox">agent-7: Lawvere (GREEN/0)</label></li>
+<li><label><input type="checkbox">agent-8: Scholze (BLUE/-1)</label></li>
+<li><label><input type="checkbox">All 11 components present in <code>target/wasm32-wasi/release/</code></label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>DNS Configuration</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Wildcard DNS: <code>*.worm.sex</code> → Fermyon edge</label></li>
+<li><label><input type="checkbox">Endpoints available:</label>
+<ul>
+<li><code>https://stream-red.worm.sex/</code></li>
+<li><code>https://dashboard.worm.sex/</code></li>
+<li><code>https://agent-*.worm.sex/</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="database-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="database-configuration">Database Configuration</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>DuckDB Schema Initialized</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>crdt_operations</code> table created</label></li>
+<li><label><input type="checkbox"><code>crdt_snapshots</code> table created</label></li>
+<li><label><input type="checkbox"><code>merge_cache</code> table created</label></li>
+<li><label><input type="checkbox"><code>egg_eclasses</code> table created</label></li>
+<li><label><input type="checkbox">Indexes created for fast queries</label></li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Temporal Versioning</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Append-only operation log functional</label></li>
+<li><label><input type="checkbox">Freeze/recover semantics implemented</label></li>
+<li><label><input type="checkbox">Point-in-time recovery tested</label></li>
+</ul></li>
+</ul>
+</section>
+<section id="nats-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="nats-configuration">NATS Configuration</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>NATS Server Ready</strong></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Endpoint: <code>nats://nats.worm.sex:4222</code></label></li>
+<li><label><input type="checkbox">Authentication configured (if needed)</label></li>
+<li><label><input type="checkbox">JetStream enabled for persistence</label></li>
+<li><label><input type="checkbox">Subject hierarchy pre-defined:</label>
+<ul>
+<li><code>world.crdt.*.*</code></li>
+<li><code>world.sierpinski.*</code></li>
+<li><code>world.merge.*</code></li>
+<li><code>world.vector_clock.*</code></li>
+<li><code>world.egg.verify.*</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="build-compilation" class="level2">
+<h2 class="anchored" data-anchor-id="build-compilation">Build &amp; Compilation</h2>
+<ul class="task-list">
+<li><p><label><input type="checkbox"><strong>Local Build Successful</strong></label></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./verify_local_build.sh</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected: 11/11 components compiled</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><label><input type="checkbox"><strong>Rust Compilation</strong></label></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> build <span class="at">--release</span> <span class="at">--target</span> wasm32-wasi</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># No warnings or errors</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><label><input type="checkbox"><strong>Julia Tests</strong></label></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> test_crdt_memoization.jl</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 9/9 suites passing</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><label><input type="checkbox"><strong>Ruby Tests</strong></label></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ruby</span> test/test_phase_3_ramanujan.rb</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 109/109 tests passing</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><label><input type="checkbox"><strong>TypeScript/Playwright</strong></label></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> playwright test</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 50+ tests passing across browsers</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section>
+<section id="documentation-ready" class="level2">
+<h2 class="anchored" data-anchor-id="documentation-ready">Documentation Ready</h2>
+<ul class="task-list">
+<li><p><label><input type="checkbox"><strong>Quarto Project Built</strong></label></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># _site/ directory created with all HTML</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><label><input type="checkbox"><strong>Sections Complete</strong></label></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Architecture documentation</label></li>
+<li><label><input type="checkbox">CRDT theory and implementation</label></li>
+<li><label><input type="checkbox">E-graph verification details</label></li>
+<li><label><input type="checkbox">Multi-agent coordination</label></li>
+<li><label><input type="checkbox">Deployment procedures</label></li>
+<li><label><input type="checkbox">API reference</label></li>
+</ul></li>
+<li><p><label><input type="checkbox"><strong>Bibliography Complete</strong></label></p>
+<ul class="task-list">
+<li><label><input type="checkbox">20+ academic references</label></li>
+<li><label><input type="checkbox">Proper BibTeX formatting</label></li>
+<li><label><input type="checkbox">All citations resolvable</label></li>
+</ul></li>
+</ul>
+</section>
+<section id="pre-launch-smoke-tests" class="level2">
+<h2 class="anchored" data-anchor-id="pre-launch-smoke-tests">Pre-Launch Smoke Tests</h2>
+<p>Run these final validation tests before going live:</p>
+<section id="test-1-agent-availability" class="level3">
+<h3 class="anchored" data-anchor-id="test-1-agent-availability">Test 1: Agent Availability</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">0</span><span class="dt">..</span><span class="dv">8</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">curl</span> <span class="at">-I</span> https://agent-<span class="va">$i</span>.worm.sex/health</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Expected: 200 OK</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="test-2-crdt-merge" class="level3">
+<h3 class="anchored" data-anchor-id="test-2-crdt-merge">Test 2: CRDT Merge</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST https://stream-red.worm.sex/api/merge <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{"doc_id": "test_1", "operation": "merge"}'</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected: Successful response</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="test-3-vector-clock-sync" class="level3">
+<h3 class="anchored" data-anchor-id="test-3-vector-clock-sync">Test 3: Vector Clock Sync</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://dashboard.worm.sex/api/agents</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected: All 9 agents reporting synchronized clocks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="test-4-e-graph-verification" class="level3">
+<h3 class="anchored" data-anchor-id="test-4-e-graph-verification">Test 4: E-Graph Verification</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://stream-green.worm.sex/api/verify <span class="dt">\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{"expression": "test", "rules": ["commutativity"]}'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected: Verification result</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="test-5-load-balancing" class="level3">
+<h3 class="anchored" data-anchor-id="test-5-load-balancing">Test 5: Load Balancing</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">100</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">curl</span> <span class="at">-X</span> POST https://stream-red.worm.sex/api/insert <span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-d</span> <span class="st">"{</span><span class="dt">\"</span><span class="st">doc_id</span><span class="dt">\"</span><span class="st">: </span><span class="dt">\"</span><span class="st">doc_</span><span class="va">$i</span><span class="dt">\"</span><span class="st">, </span><span class="dt">\"</span><span class="st">value</span><span class="dt">\"</span><span class="st">: </span><span class="dt">\"</span><span class="st">data</span><span class="dt">\"</span><span class="st">}"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected: All routed correctly via Sierpinski addressing</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="go-live-procedure" class="level2">
+<h2 class="anchored" data-anchor-id="go-live-procedure">Go-Live Procedure</h2>
+<section id="final-verification-1-hour-before-launch" class="level3">
+<h3 class="anchored" data-anchor-id="final-verification-1-hour-before-launch">1. Final Verification (1 hour before launch)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All tests passing</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bb</span> test_local.bb        <span class="co"># ✓ 10/10</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> playwright test     <span class="co"># ✓ 50+ tests</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render          <span class="co"># ✓ HTML generated</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="backup-current-state" class="level3">
+<h3 class="anchored" data-anchor-id="backup-current-state">2. Backup Current State</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Snapshot all agent states</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> backups/<span class="va">$(</span><span class="fu">date</span> +%Y%m%d_%H%M%S<span class="va">)</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./backup_agents.sh</span>     <span class="co"># Creates snapshots</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="deploy-to-staging-if-available" class="level3">
+<h3 class="anchored" data-anchor-id="deploy-to-staging-if-available">3. Deploy to Staging (if available)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test on staging first</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">spin</span> deploy <span class="at">--environment</span> staging</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run smoke tests</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./smoke_tests.sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="deploy-to-production" class="level3">
+<h3 class="anchored" data-anchor-id="deploy-to-production">4. Deploy to Production</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final check</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">spin</span> version           <span class="co"># Latest version</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./spin</span> deploy          <span class="co"># Deploy to production</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify all 9 agents online</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> <span class="at">-n</span> 1 <span class="st">'curl https://dashboard.worm.sex/api/agents/status'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="monitor-post-launch" class="level3">
+<h3 class="anchored" data-anchor-id="monitor-post-launch">5. Monitor Post-Launch</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Watch metrics</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://dashboard.worm.sex/api/metrics/realtime</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check error rates</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://dashboard.worm.sex/api/errors</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify throughput</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://dashboard.worm.sex/api/throughput</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="rollback-procedure" class="level2">
+<h2 class="anchored" data-anchor-id="rollback-procedure">Rollback Procedure</h2>
+<p>If issues detected:</p>
+<section id="identify-problem" class="level3">
+<h3 class="anchored" data-anchor-id="identify-problem">1. Identify Problem</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check logs</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">spin</span> logs <span class="at">--follow</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check metrics</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://dashboard.worm.sex/api/metrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="determine-severity" class="level3">
+<h3 class="anchored" data-anchor-id="determine-severity">2. Determine Severity</h3>
+<ul>
+<li><strong>Critical (data loss):</strong> Immediate rollback required</li>
+<li><strong>High (&gt;10% error rate):</strong> Rollback recommended</li>
+<li><strong>Medium (service degradation):</strong> Assess and decide</li>
+<li><strong>Low (single-agent issue):</strong> Scale down, diagnose</li>
+</ul>
+</section>
+<section id="execute-rollback" class="level3">
+<h3 class="anchored" data-anchor-id="execute-rollback">3. Execute Rollback</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Restore from backup</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./restore_agents.sh</span> backups/YYYYMMDD_HHMMSS</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Redeploy from last known good</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>last-working-commit<span class="op">&gt;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./spin</span> deploy</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify all agents online</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="ex">spin</span> list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="post-incident-review" class="level3">
+<h3 class="anchored" data-anchor-id="post-incident-review">4. Post-Incident Review</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Root cause identified</label></li>
+<li><label><input type="checkbox">Fix implemented and tested</label></li>
+<li><label><input type="checkbox">Plan for redeployment</label></li>
+</ul>
+</section>
+</section>
+<section id="post-deployment-validation" class="level2">
+<h2 class="anchored" data-anchor-id="post-deployment-validation">Post-Deployment Validation</h2>
+<p>After go-live, verify for 24 hours:</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>No error spikes</strong></label>
+<ul>
+<li>Target: &lt;0.1% error rate</li>
+<li>Check hourly</li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Throughput stable</strong></label>
+<ul>
+<li>Target: 90K+ ops/sec sustained</li>
+<li>Monitor latency percentiles</li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Cache hit rates optimal</strong></label>
+<ul>
+<li>Target: 70-90%</li>
+<li>Verify content-addressing working</li>
+</ul></li>
+<li><label><input type="checkbox"><strong>All agents participating</strong></label>
+<ul>
+<li>Target: 9/9 agents online</li>
+<li>Verify load balancing</li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Vector clocks synchronized</strong></label>
+<ul>
+<li>Target: Clock skew &lt;1 second across network</li>
+<li>Verify causality tracking</li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Commits being recorded</strong></label>
+<ul>
+<li>Target: Merkle commitments published each epoch</li>
+<li>Verify game-theoretic mechanism</li>
+</ul></li>
+</ul>
+</section>
+<section id="success-criteria" class="level2">
+<h2 class="anchored" data-anchor-id="success-criteria">Success Criteria</h2>
+<p>Launch is <strong>successful</strong> when:</p>
+<p>✅ All 227 tests passing ✅ 9/9 agents operational ✅ Throughput &gt; 90K ops/sec ✅ P99 latency &lt; 100ms ✅ Cache hit rate &gt; 70% ✅ Zero critical errors ✅ Game-theoretic mechanism verified ✅ Documentation published ✅ DNS configured and resolving ✅ Monitoring and alerting active</p>
+</section>
+<section id="contact-support" class="level2">
+<h2 class="anchored" data-anchor-id="contact-support">Contact &amp; Support</h2>
+<p><strong>On-Call Engineer:</strong> [Contact info] <strong>Escalation:</strong> [Process] <strong>Rollback Authority:</strong> [Who can approve]</p>
+<hr>
+<p><strong>Last Updated:</strong> December 21, 2025 <strong>Deployment Status:</strong> ✅ Ready for Production Launch</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

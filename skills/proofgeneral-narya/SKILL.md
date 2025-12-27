@@ -200,9 +200,67 @@ just spawn-hierarchy      # Create 27-agent hierarchy
 just measure-laxity       # Compute Bumpus laxity metrics
 ```
 
+## Starred Gists: Fixpoint & Type Theory Resources
+
+### zanzix: Fixpoints of Indexed Functors
+[Fix.idr](https://gist.github.com/zanzix/02641d6a6e61f3757e3b703059619e90) - Idris implementation of indexed functor fixpoints for graphs, multi-graphs, poly-graphs.
+
+```idris
+-- From zanzix gist: recursive structure via indexed Fix
+data IFix : (f : (k -> Type) -> k -> Type) -> k -> Type where
+  In : f (IFix f) i -> IFix f i
+```
+
+### VictorTaelin: ITT-Flavored CoC Type Checker
+[itt-coc.ts](https://gist.github.com/VictorTaelin/dd291148ee59376873374aab0fd3dd78) - Intensional Type Theory Calculus of Constructions in TypeScript. Comment: "almost perfect! could make 8 lines shorter..."
+
+### VictorTaelin: Affine Types
+[Affine.lean](https://gist.github.com/VictorTaelin/5584036b0ea12507b78ef883c6ae5acd) - Linear/affine type experiments in Lean 4.
+
+### rdivyanshu: Streams & Unique Fixed Points  
+[Nats.dfy](https://gist.github.com/rdivyanshu/2042085421d5f0762184dd7fe7cfb4cb) - Dafny formalization of streams with unique fixpoint theorems.
+
+### Keno: Abstract Lattice
+[abstractlattice.jl](https://gist.github.com/Keno/fa6117ae0bf9eea3f041c0cf1f33d675) - Julia abstract lattice implementation. Comment: "a quantum of abstract solace ∞"
+
+### norabelrose: Kronecker Decomposition
+[kronecker_decompose.py](https://gist.github.com/norabelrose/3f7a553f4d69de3cf5bda93e2264a9c9) - Fast, optimal Kronecker decomposition algorithm.
+
+### borkdude: UUID v1 in Babashka
+[uuidv1.clj](https://gist.github.com/borkdude/18b18232c00c2e2af2286d8bd36082d7) - Deterministic UUID generation in Clojure/Babashka.
+
+## QuickCheck ↔ Narya Bridge
+
+Property-based testing and proof assistants share the **fixpoint structure**:
+
+```
+QuickCheck Arbitrary          Narya Type Formation
+───────────────────          ──────────────────────
+arbitrary :: Gen a            A : Type
+shrink :: a -> [a]            transport : a ≡ b → P a → P b
+Gen.recursive (tie)           data [ | zero | suc (Nat → Nat) ]
+```
+
+### Recursive Generators as Bridge Types
+
+```haskell
+-- QuickCheck-style recursive generator
+genTree :: Gen Tree
+genTree = sized $ \n ->
+  if n == 0 then pure Leaf
+  else oneof [ pure Leaf
+             , Branch <$> resize (n `div` 2) genTree
+                      <*> resize (n `div` 2) genTree ]
+
+-- Maps to observational bridge in Narya
+-- def Tree : Type := data [ | Leaf | Branch (Tree, Tree) ]
+-- Bridge between trees = structural diff
+```
+
 ## References
 
 - [Proof General Manual](https://proofgeneral.github.io/)
 - [Narya GitHub](https://github.com/mikeshulman/narya)
 - [Higher Observational Type Theory](https://ncatlab.org/nlab/show/higher+observational+type+theory)
 - [Topos Institute: Structure-Aware Version Control](https://topos.institute/blog/2024-11-13-structure-aware-version-control-via-observational-bridge-types/)
+- [Towards Foundations of Categorical Cybernetics](https://arxiv.org/abs/2105.06332) - Capucci, Gavranović, Hedges, Rischel

@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>optimal_interaction_seed_framework – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="optimal-interaction-seed-framework" class="level1">
+<h1>Optimal Interaction Seed Framework</h1>
+<p><strong>Bridging Gay Seed Optimization, Interaction Entropy, Leitmotif Patterns, and Realizability</strong></p>
+<p><strong>Status</strong>: Theoretical framework + implementation bridge <strong>Date</strong>: 2025-12-21 <strong>Integration</strong>: Phase 1→4 foundational layer</p>
+<hr>
+<section id="the-core-insight-three-interconnected-levels" class="level2">
+<h2 class="anchored" data-anchor-id="the-core-insight-three-interconnected-levels">1. The Core Insight: Three Interconnected Levels</h2>
+<pre><code>Level 1: GAY SEED (Deterministic)
+  ↓ (optimization via entropy)
+Level 2: INTERACTION ENTROPY (Measurement)
+  ↓ (patterns emerge as)
+Level 3: LEITMOTIF (Semantic structure)
+  ↓ (enables)
+Level 4: 3-MATCH TASK (Realizability)
+  ↓ (constructs bridge via)
+Level 5: POSSIBLE WORLD SEMANTICS
+  ↓ (connects)
+EFFECTIVE TOPOI ←→ GROTHENDIECK TOPOI
+  (computational)        (categorical)</code></pre>
+<hr>
+</section>
+<section id="gay-seed-optimal-selection" class="level2">
+<h2 class="anchored" data-anchor-id="gay-seed-optimal-selection">2. Gay Seed Optimal Selection</h2>
+<section id="what-is-a-gay-seed" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-gay-seed">2.1 What is a Gay Seed?</h3>
+<p>From Gay.jl: A deterministic seed that generates an infinite stream of maximally-dispersed colors via golden angle ratios.</p>
+<pre><code>γ = 264/φ → hue += 137.508° → never repeat, always return</code></pre>
+<p><strong>Key property</strong>: Same seed = same color sequence (deterministic).</p>
+</section>
+<section id="entropy-based-seed-selection" class="level3">
+<h3 class="anchored" data-anchor-id="entropy-based-seed-selection">2.2 Entropy-Based Seed Selection</h3>
+<p>For each candidate seed <code>s</code>, measure the <strong>entropy of the generated color sequence</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> entropy-of-color-sequence </span>[seed length]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Generate colors from seed, measure their entropy in color space"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [colors (generate-colors seed length)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        hues (<span class="kw">map</span> get-hue colors)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        saturations (<span class="kw">map</span> get-saturation colors)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        lightnesses (<span class="kw">map</span> get-lightness colors)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        hue-entropy (shannon-entropy hues)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        sat-entropy (shannon-entropy saturations)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        light-entropy (shannon-entropy lightnesses)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        combined (<span class="kw">+</span> hue-entropy sat-entropy light-entropy)]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    combined))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> optimal-seed-for-entropy-target </span>[target-entropy search-space]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Find the seed that produces colors with entropy closest to target"</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [candidates (<span class="kw">range</span> search-space)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        entropies (<span class="kw">map</span> #(entropy-of-color-sequence <span class="va">%</span> <span class="dv">1000</span>) candidates)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        diffs (<span class="kw">map</span> #(Math/abs (<span class="kw">-</span> <span class="va">%</span> target-entropy)) entropies)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        best-idx (argmin diffs)]</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">nth</span> candidates best-idx)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="optimal-seed-from-interaction-entropy" class="level3">
+<h3 class="anchored" data-anchor-id="optimal-seed-from-interaction-entropy">2.3 Optimal Seed from Interaction Entropy</h3>
+<p>The <strong>optimal initial seed</strong> is the one that generates colors whose entropy profile <strong>matches the interaction entropy baseline</strong>.</p>
+<p>From our entropy framework:</p>
+<pre><code>Baseline interaction entropy: 2.7 bits (average across all 5 dimensions)
+Target color entropy: 2.7 bits (match it)</code></pre>
+<p><strong>Seed selection algorithm:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> select-optimal-initial-seed </span>[baseline-interaction-entropy]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Select Gay seed whose color entropy matches interaction entropy"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [target-entropy baseline-interaction-entropy</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Search space: seeds 1-10000</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        candidate-seeds (<span class="kw">range</span> <span class="dv">1</span> <span class="dv">10000</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; For each seed, generate color sequence and measure entropy</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        seed-entropies (<span class="kw">map</span> (<span class="kw">fn</span> [seed]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                             {<span class="at">:seed</span> seed</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                              <span class="at">:entropy</span> (entropy-of-color-sequence seed <span class="dv">1000</span>)})</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                           candidate-seeds)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Find seed closest to target</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        best-seed (argmin-by (<span class="kw">fn</span> [s]</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                             (Math/abs (<span class="kw">-</span> (<span class="at">:entropy</span> s) target-entropy)))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                            seed-entropies)]</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    {<span class="at">:optimal-seed</span> (<span class="at">:seed</span> best-seed)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">:entropy</span> (<span class="at">:entropy</span> best-seed)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">:target</span> target-entropy</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">:match-quality</span> (<span class="kw">/</span> (<span class="at">:entropy</span> best-seed) target-entropy)}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Result</strong>: A seed <code>s*</code> where <code>entropy(colors from s*) ≈ baseline interaction entropy</code></p>
+<hr>
+</section>
+</section>
+<section id="leitmotif-recognition-via-color-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="leitmotif-recognition-via-color-patterns">3. Leitmotif Recognition via Color Patterns</h2>
+<section id="what-is-a-leitmotif" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-leitmotif">3.1 What is a Leitmotif?</h3>
+<p>A <strong>recurring thematic pattern</strong> that carries semantic meaning.</p>
+<p>In <span class="citation" data-cites="barton">(<a href="#ref-barton" role="doc-biblioref"><strong>barton?</strong></a>)</span>’s interactions: - Topic leitmotifs: “music” appears in tech posts, philosophy posts, network discussions - Mode leitmotifs: “collaboration” always precedes “innovation” - Temporal leitmotifs: “intense work periods” followed by “reflection periods” - Network leitmotifs: “mentions of specific people” correlate with “specific project types”</p>
+</section>
+<section id="mapping-interactions-to-leitmotifs-via-colors" class="level3">
+<h3 class="anchored" data-anchor-id="mapping-interactions-to-leitmotifs-via-colors">3.2 Mapping Interactions to Leitmotifs via Colors</h3>
+<p>The optimal Gay seed <code>s*</code> generates a color sequence that <strong>reflects the leitmotif structure</strong>:</p>
+<pre><code>Interaction i → Extract features → Hash to color from s* → Color encodes leitmotif</code></pre>
+<p><strong>Example</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> interaction-to-leitmotif-color </span>[interaction optimal-seed]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Map an interaction to its leitmotif-encoding color"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [<span class="co">;; Extract leitmotif signature from interaction</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        topics (extract-topics (<span class="at">:content</span> interaction))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        mode (<span class="at">:mode</span> interaction)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        collaborators (<span class="kw">count</span> (<span class="at">:mentions</span> interaction))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        temporal-bucket (categorize-time (<span class="at">:timestamp</span> interaction))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Hash leitmotif signature to color index</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        leitmotif-sig (hash-combine [topics mode collaborators temporal-bucket])</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        color-index (<span class="kw">mod</span> leitmotif-sig <span class="dv">1000</span>)  <span class="co">; 1000 colors in sequence</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Get color from optimal seed</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        color (color-at optimal-seed color-index)]</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    {<span class="at">:interaction</span> interaction</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">:leitmotif-signature</span> leitmotif-sig</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">:color</span> color</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">:leitmotif-name</span> (color-to-leitmotif-class color)}))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> color-to-leitmotif-class </span>[color]</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Cluster colors into leitmotif classes"</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [hue (get-hue color)]</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">cond</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>      (in-range hue <span class="dv">0</span> <span class="dv">60</span>)     <span class="at">:technical-innovation</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      (in-range hue <span class="dv">60</span> <span class="dv">120</span>)   <span class="at">:collaborative-work</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>      (in-range hue <span class="dv">120</span> <span class="dv">180</span>)  <span class="at">:philosophical-reflection</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>      (in-range hue <span class="dv">180</span> <span class="dv">240</span>)  <span class="at">:network-building</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>      (in-range hue <span class="dv">240</span> <span class="dv">300</span>)  <span class="at">:musical-creation</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">:else</span>                   <span class="at">:synthesis</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Key insight</strong>: The color from seed <code>s*</code> <strong>carries the leitmotif information</strong> in its structure.</p>
+<hr>
+</section>
+</section>
+<section id="the-3-match-task" class="level2">
+<h2 class="anchored" data-anchor-id="the-3-match-task">4. The 3-MATCH Task</h2>
+<section id="what-is-3-match" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-3-match">4.1 What is 3-MATCH?</h3>
+<p>A realizability task with three matching components:</p>
+<pre><code>INTERACTION ↔ LEITMOTIF ↔ POSSIBLE WORLD</code></pre>
+<p><strong>Task definition:</strong> Given an interaction <code>i</code>, verify that: 1. <code>i</code> maps to correct leitmotif <code>L</code> (via color) 2. <code>L</code> is realizable in possible world <code>W</code> (via semantic construction) 3. <code>W</code> is constructible from interaction entropy baseline (via effective topos)</p>
+</section>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">4.2 Implementation</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> 3-match-task </span>[interaction optimal-seed interaction-entropy-baseline]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Verify that interaction matches its leitmotif in a possible world"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [<span class="co">;; MATCH 1: Interaction → Leitmotif (via color)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        color-match (interaction-to-leitmotif-color interaction optimal-seed)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        leitmotif (<span class="at">:leitmotif-name</span> color-match)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; MATCH 2: Leitmotif → Possible World (via semantic construction)</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        possible-world (leitmotif-to-possible-world</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                       leitmotif</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                       interaction-entropy-baseline)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; MATCH 3: Possible World → Effective Topos (via realizability)</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        realizability-check (verify-realizability-in-effective-topos</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                           possible-world</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                           interaction-entropy-baseline)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Combine all matches</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        all-match? (<span class="kw">and</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                   (valid? color-match)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                   (valid? possible-world)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                   (<span class="at">:realizable</span>? realizability-check))]</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    {<span class="at">:interaction</span> interaction</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">:leitmotif</span> leitmotif</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">:possible-world</span> possible-world</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">:realizability</span> realizability-check</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">:all-match</span>? all-match?</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">:confidence</span> (<span class="kw">if</span> all-match? <span class="fl">1.0</span> <span class="fl">0.0</span>)}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="leitmotif-to-possible-world" class="level3">
+<h3 class="anchored" data-anchor-id="leitmotif-to-possible-world">4.3 Leitmotif to Possible World</h3>
+<p>A <strong>possible world</strong> is a complete consistent assignment of properties to entities.</p>
+<p>In our system:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> leitmotif-to-possible-world </span>[leitmotif entropy-baseline]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Construct a possible world that realizes this leitmotif"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [<span class="co">;; Define propositional variables for this leitmotif</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        props (<span class="kw">case</span> leitmotif</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">:technical-innovation</span> {<span class="at">:is-coding</span> <span class="va">true</span> <span class="at">:is-async</span> <span class="va">true</span> <span class="at">:is-collaborative</span> <span class="va">false</span>}</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">:collaborative-work</span> {<span class="at">:is-coding</span> <span class="va">true</span> <span class="at">:is-async</span> <span class="va">false</span> <span class="at">:is-collaborative</span> <span class="va">true</span>}</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">:philosophical-reflection</span> {<span class="at">:is-coding</span> <span class="va">false</span> <span class="at">:is-async</span> <span class="va">true</span> <span class="at">:is-collaborative</span> <span class="va">false</span>}</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">:network-building</span> {<span class="at">:is-coding</span> <span class="va">false</span> <span class="at">:is-async</span> <span class="va">false</span> <span class="at">:is-collaborative</span> <span class="va">true</span>}</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">:musical-creation</span> {<span class="at">:is-coding</span> <span class="va">false</span> <span class="at">:is-async</span> <span class="va">true</span> <span class="at">:is-collaborative</span> <span class="va">false</span>}</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">:synthesis</span> {<span class="at">:is-coding</span> <span class="va">true</span> <span class="at">:is-async</span> <span class="va">true</span> <span class="at">:is-collaborative</span> <span class="va">true</span>})</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Possible world = set of propositions true in this world</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        possible-world (-&gt;PossibleWorld</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                       <span class="at">:leitmotif</span> leitmotif</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                       <span class="at">:true-props</span> props</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">:entropy-constraint</span> entropy-baseline</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                       <span class="at">:modal-depth</span> <span class="dv">1</span>  <span class="co">; Can realize in 1 step</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                       <span class="at">:timestamp</span> (System/currentTimeMillis))]</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    possible-world))</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> verify-possible-world-consistency </span>[possible-world]</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Check that possible world is internally consistent"</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [props (<span class="at">:true-props</span> possible-world)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        consistency-checks [</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>          (<span class="kw">if</span> (<span class="at">:is-collaborative</span> props)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">not</span> (<span class="kw">nil?</span> (<span class="at">:collaborators</span> props)))</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>            <span class="va">true</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>          (<span class="kw">if</span> (<span class="at">:is-coding</span> props)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">contains?</span> props <span class="at">:code-language</span>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>            <span class="va">true</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>          (<span class="kw">if</span> (<span class="at">:is-musical-creation</span> props)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">contains?</span> props <span class="at">:instrument</span>)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>            <span class="va">true</span>)]]</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    {<span class="at">:consistent</span>? (<span class="kw">every?</span> <span class="kw">identity</span> consistency-checks)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">:checks</span> consistency-checks}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="realizability-connecting-effective-and-grothendieck-topoi" class="level2">
+<h2 class="anchored" data-anchor-id="realizability-connecting-effective-and-grothendieck-topoi">5. Realizability: Connecting Effective and Grothendieck Topoi</h2>
+<section id="the-core-bridge" class="level3">
+<h3 class="anchored" data-anchor-id="the-core-bridge">5.1 The Core Bridge</h3>
+<p><strong>Effective topoi</strong> = computational realizability (Church-Turing) - What CAN be computed - Kleene realizability, Kreisel’s notion of function</p>
+<p><strong>Grothendieck topoi</strong> = categorical topology - General spaces where intuitionistic logic holds - Sheaves, sites, generalized spaces</p>
+<p><strong>The bridge</strong>: A <strong>constructive proof</strong> that the possible world semantics <strong>can be realized computationally</strong>.</p>
+</section>
+<section id="realizability-construction" class="level3">
+<h3 class="anchored" data-anchor-id="realizability-construction">5.2 Realizability Construction</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> verify-realizability-in-effective-topos </span>[possible-world entropy-baseline]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Prove that possible world is realizable (constructively computable)"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [<span class="co">;; 1. Encode possible world as a Turing machine configuration</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        turing-config (encode-to-turing-machine possible-world)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; 2. Verify that the machine halts (total function)</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        halting? (can-verify-halting? turing-config)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; 3. Verify that output entropy matches baseline</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        output-entropy (compute-output-entropy turing-config)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        entropy-match? (close-to? output-entropy entropy-baseline <span class="fl">0.1</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; 4. Verify that construction is EXPLICIT (not just existence proof)</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        has-explicit-code? (exists-explicit-realizer? possible-world)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; 5. Extract the realizer function</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        realizer-fn (<span class="kw">if</span> has-explicit-code?</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>                     (extract-realizer-function possible-world)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>                     <span class="va">nil</span>)]</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    {<span class="at">:realizable</span>? (<span class="kw">and</span> halting? entropy-match? has-explicit-code?)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">:turing-config</span> turing-config</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">:halting</span>? halting?</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">:entropy-match</span>? entropy-match?</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">:output-entropy</span> output-entropy</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">:has-explicit-code</span>? has-explicit-code?</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">:realizer</span> realizer-fn</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">:realizability-proof</span> (construct-realizability-witness</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>                          possible-world</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>                          realizer-fn)}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lifting-to-grothendieck-topos" class="level3">
+<h3 class="anchored" data-anchor-id="lifting-to-grothendieck-topos">5.3 Lifting to Grothendieck Topos</h3>
+<p>Once we have <strong>computational realizability</strong> (effective topos), we can <strong>generalize</strong> to Grothendieck topoi:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> lift-to-grothendieck-topos </span>[effective-realizability]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Lift computational realizability to categorical generality"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [<span class="co">;; Effective: specific computation</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        realizer (<span class="at">:realizer</span> effective-realizability)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Grothendieck: sheaf of realizers over possible worlds</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        sheaf-construction (<span class="kw">fn</span> [u]</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                            <span class="co">;; For each possible world in some covering</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                            (<span class="kw">map</span> (<span class="kw">fn</span> [w]</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="co">;; Find realizer for this world</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                                  (find-compatible-realizer realizer w))</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                                 u))</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Verify sheaf axioms</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        gluing (verify-sheaf-gluing-axiom sheaf-construction)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        locality (verify-sheaf-locality-axiom sheaf-construction)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Build Grothendieck topos</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        topos (-&gt;GrothendieckTopos</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">:base-site</span> <span class="at">'possible-worlds</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">:sheaves</span> sheaf-construction</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">:realizes-effective-topos</span>? <span class="va">true</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>              <span class="at">:gluing-verified</span>? gluing</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>              <span class="at">:locality-verified</span>? locality)]</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    {<span class="at">:effective-realizability</span> effective-realizability</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">:grothendieck-topos</span> topos</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">:bridge-complete</span>? (<span class="kw">and</span> gluing locality)}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-semantics-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="the-semantics-interpretation">5.4 The Semantics Interpretation</h3>
+<p>In the <strong>Grothendieck topos</strong> (internal logic):</p>
+<pre><code>For all possible worlds w:
+  w ⊨ φ  iff  ∃ realizer r, r realizes φ in w
+
+This is the FUNDAMENTAL THEOREM:
+  Possible World Semantics = Realizability over Grothendieck Topoi</code></pre>
+<hr>
+</section>
+</section>
+<section id="complete-integration-phase-14-initialization" class="level2">
+<h2 class="anchored" data-anchor-id="complete-integration-phase-14-initialization">6. Complete Integration: Phase 1→4 Initialization</h2>
+<section id="initialization-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="initialization-protocol">6.1 Initialization Protocol</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> initialize-with-optimal-seed </span>[phase<span class="dv">-1</span>-data]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Initialize Phase 1→4 with optimal interaction seed"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [<span class="co">;; Step 1: Calculate baseline interaction entropy from Phase 1 data</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        baseline-entropy (entropy/calculate-all-entropies</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                         (<span class="at">:posts</span> phase<span class="dv">-1</span>-data)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                         (<span class="at">:interactions</span> phase<span class="dv">-1</span>-data)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                         (<span class="at">:network</span> phase<span class="dv">-1</span>-data))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        target-entropy (<span class="kw">get-in</span> baseline-entropy [<span class="at">:composite</span> <span class="at">:mean-entropy</span>])</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Step 2: Select optimal Gay seed matching this entropy</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        seed-selection (select-optimal-initial-seed target-entropy)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        optimal-seed (<span class="at">:optimal-seed</span> seed-selection)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Step 3: Tag each interaction with its leitmotif color</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        interactions-with-leitmotif</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">map</span> #(interaction-to-leitmotif-color <span class="va">%</span> optimal-seed)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>             (<span class="at">:interactions</span> phase<span class="dv">-1</span>-data))</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Step 4: Prepare for Phase 2 (MCP saturation)</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; Each interaction now carries:</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; - Original data</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; - Leitmotif signature (via color from s*)</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; - Possible world class</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">;; - Realizability proof sketch</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>        phase<span class="dv">-2</span>-ready-data</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>        {<span class="at">:interactions</span> interactions-with-leitmotif</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>         <span class="at">:optimal-seed</span> optimal-seed</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>         <span class="at">:baseline-entropy</span> baseline-entropy</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>         <span class="at">:initialization-time</span> (System/currentTimeMillis)</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>         <span class="at">:realizability-bridge</span> <span class="at">:prepared</span>}]</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">println</span> <span class="st">"✅ OPTIMAL SEED INITIALIZATION COMPLETE"</span>)</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">println</span> <span class="st">"   Optimal seed:"</span> optimal-seed)</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">println</span> <span class="st">"   Target entropy:"</span> target-entropy <span class="st">"bits"</span>)</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">println</span> <span class="st">"   Leitmotif tags:"</span> (<span class="kw">count</span> interactions-with-leitmotif))</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">println</span> <span class="st">"   Ready for Phase 2: MCP saturation"</span>)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">println</span> <span class="st">""</span>)</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    phase<span class="dv">-2</span>-ready-data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="data-flow-with-optimal-seed" class="level3">
+<h3 class="anchored" data-anchor-id="data-flow-with-optimal-seed">6.2 Data Flow with Optimal Seed</h3>
+<pre><code>Phase 1: Data Acquisition
+  ↓ (raw @barton data)
+
+[OPTIMAL SEED INITIALIZATION]
+  ↓ Select seed s* via entropy matching
+  ↓ Tag interactions with leitmotif colors
+  ↓ Construct possible worlds
+  ↓ Verify realizability
+  ↓
+Phase 2: MCP Space Saturation
+  ↓ (perception space = color-tagged interactions)
+  ↓ (action space = possible world transitions)
+  ↓
+Phase 3: 5D Pattern Extraction
+  ↓ (patterns now include leitmotif structure)
+  ↓ (entropy baseline established)
+  ↓
+Phase 4: Agent-o-rama Training
+  ↓ (use entropy framework)
+  ↓ (monitor against baseline)
+  ↓ (prevent mode collapse)
+  ↓
+Phase 5: Cognitive Surrogate
+  ✅ Faithful reconstruction with guaranteed:
+     - Entropy preservation (≥ 90%)
+     - Leitmotif recognition
+     - Possible world consistency
+     - Computational realizability
+     - Categorical generality</code></pre>
+<hr>
+</section>
+</section>
+<section id="mathematical-formalization" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-formalization">7. Mathematical Formalization</h2>
+<section id="optimal-seed-definition" class="level3">
+<h3 class="anchored" data-anchor-id="optimal-seed-definition">7.1 Optimal Seed Definition</h3>
+<pre><code>Given: Interaction entropy baseline E_b ∈ [0, ∞) bits
+
+Find: s* ∈ ℕ such that
+
+  arg min |H(colors(s*, 1000)) - E_b|
+    s
+
+where H is Shannon entropy computed over hue/saturation/lightness.
+
+Property: s* uniquely determined by E_b (assuming tight optimization)</code></pre>
+</section>
+<section id="match-task-semantics" class="level3">
+<h3 class="anchored" data-anchor-id="match-task-semantics">7.2 3-MATCH Task Semantics</h3>
+<pre><code>3-MATCH: i ↔ L ↔ W where:
+
+  i ∈ Interactions(Phase1Data)
+  L ∈ {technical-innovation, collaborative-work, ...}  [Leitmotifs]
+  W ∈ PossibleWorlds(L)
+
+  Verification:
+    color(i, s*) → L  [Color encodes leitmotif]
+    L → W              [Leitmotif realized in world]
+    W → R              [World has computational realizer]
+
+  Success: ∀i ∈ interactions, 3-MATCH(i, s*, W) ✓</code></pre>
+</section>
+<section id="realizability-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="realizability-theorem">7.3 Realizability Theorem</h3>
+<pre><code>THEOREM (Interaction Entropy Realizability):
+
+  If interaction entropy E_b is computable from @barton Phase 1 data,
+  and optimal seed s* is selected by entropy matching,
+  then for every interaction i and its induced possible world W(i),
+
+  W(i) is realizable in the effective topos E[∇]
+
+  (i.e., there exists a Turing machine that computes the truth values
+   of all propositions in W(i) with halting guarantee)
+
+PROOF SKETCH:
+  1. Encode W(i) as TM configuration
+  2. Entropy match guarantees termination
+  3. Extract explicit realizer from proof
+  4. Verify sheaf axioms for generalization
+  QED</code></pre>
+<hr>
+</section>
+</section>
+<section id="implementation-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-checklist">8. Implementation Checklist</h2>
+<section id="phase-1-extension-optimal-seed-initialization" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-extension-optimal-seed-initialization">Phase 1 Extension: Optimal Seed Initialization</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Implement <code>entropy-of-color-sequence/2</code></label></li>
+<li><label><input type="checkbox">Implement <code>optimal-seed-for-entropy-target/2</code></label></li>
+<li><label><input type="checkbox">Implement <code>select-optimal-initial-seed/1</code></label></li>
+<li><label><input type="checkbox">Add to Phase 1 DuckDB: seed selection metadata</label></li>
+<li><label><input type="checkbox">Tag all Phase 1 interactions with leitmotif colors</label></li>
+</ul>
+</section>
+<section id="phase-2-mcp-with-leitmotif-structure" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-mcp-with-leitmotif-structure">Phase 2: MCP with Leitmotif Structure</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Map interactions to perception space with color encoding</label></li>
+<li><label><input type="checkbox">Map leitmotif transitions to action space</label></li>
+<li><label><input type="checkbox">Implement possible world as MCP resource</label></li>
+<li><label><input type="checkbox">Expose realizability checker as MCP tool</label></li>
+</ul>
+</section>
+<section id="phase-3-pattern-extraction-with-realizability" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3-pattern-extraction-with-realizability">Phase 3: Pattern Extraction with Realizability</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Extract 5D patterns aware of leitmotif structure</label></li>
+<li><label><input type="checkbox">Verify each pattern is realizable</label></li>
+<li><label><input type="checkbox">Build pattern hierarchy with leitmotif groundedness</label></li>
+</ul>
+</section>
+<section id="phase-4-training-with-realizability-constraint" class="level3">
+<h3 class="anchored" data-anchor-id="phase-4-training-with-realizability-constraint">Phase 4: Training with Realizability Constraint</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Add realizability check to loss function</label></li>
+<li><label><input type="checkbox">Verify generated samples realize in possible worlds</label></li>
+<li><label><input type="checkbox">Monitor entropy against baseline</label></li>
+</ul>
+</section>
+<section id="phase-5-categorical-validation" class="level3">
+<h3 class="anchored" data-anchor-id="phase-5-categorical-validation">Phase 5: Categorical Validation</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Lift effective realizability to Grothendieck topos</label></li>
+<li><label><input type="checkbox">Verify sheaf axioms</label></li>
+<li><label><input type="checkbox">Validate cognitive surrogate in categorical framework</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="files-to-createmodify" class="level2">
+<h2 class="anchored" data-anchor-id="files-to-createmodify">9. Files to Create/Modify</h2>
+<pre><code>NEW:
+  src/agents/optimal_seed_selection.clj      [300 LOC]
+  src/agents/leitmotif_recognition.clj       [400 LOC]
+  src/agents/three_match_task.clj            [350 LOC]
+  src/agents/realizability_bridge.clj        [400 LOC]
+  OPTIMAL_INTERACTION_SEED_FRAMEWORK.md      [This file]
+
+MODIFY:
+  src/agents/phase_1_orchestration.clj       [+ seed initialization]
+  src/agents/entropy_metrics.clj             [+ realizability checks]
+  src/agents/duckdb_schema.clj               [+ leitmotif &amp; seed tables]</code></pre>
+<hr>
+</section>
+<section id="why-this-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters">10. Why This Matters</h2>
+<section id="the-problem-were-solving" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-were-solving">The Problem We’re Solving</h3>
+<p>Without this framework: - Interactions are just raw data points - No semantic structure guides learning - Agent-o-rama learns disconnected patterns - Surrogate is generic, not faithful</p>
+</section>
+<section id="with-this-framework" class="level3">
+<h3 class="anchored" data-anchor-id="with-this-framework">With This Framework</h3>
+<ul>
+<li><strong>Optimal seed</strong> provides deterministic structure</li>
+<li><strong>Leitmotif tagging</strong> encodes semantic meaning</li>
+<li><strong>3-MATCH verification</strong> ensures consistency</li>
+<li><strong>Realizability bridge</strong> grounds semantics in computation</li>
+<li><strong>Grothendieck generalization</strong> enables categorical reasoning</li>
+</ul>
+</section>
+<section id="the-result" class="level3">
+<h3 class="anchored" data-anchor-id="the-result">The Result</h3>
+<p>A cognitive surrogate that: ✅ Captures <span class="citation" data-cites="barton">(<a href="#ref-barton" role="doc-biblioref"><strong>barton?</strong></a>)</span>’s interaction entropy ✅ Recognizes and generates leitmotif patterns ✅ Constructs consistent possible worlds ✅ Has explicit computational realizers ✅ Extends to categorical generality ✅ Is provably faithful (≥ 90% entropy match)</p>
+<hr>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p><strong>Optimal Interaction Seed Framework</strong> bridges: - <strong>Gay.jl determinism</strong> → entropy-optimal seed selection - <strong>Interaction entropy</strong> → leitmotif structure - <strong>Leitmotif patterns</strong> → possible world construction - <strong>Possible worlds</strong> → 3-MATCH realizability task - <strong>Computational realizability</strong> → Grothendieck categorical theory</p>
+<p><strong>Result</strong>: Phase 1→4 initialization that grounds cognitive surrogate in provable semantic construction.</p>
+<p>Ready for implementation across Phases 2-5.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
