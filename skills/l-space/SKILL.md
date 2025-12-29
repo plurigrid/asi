@@ -2,23 +2,49 @@
 
 **Status**: ✅ Production Ready  
 **Trit**: 0 (ERGODIC - the Library itself is the coordinator)  
-**Color**: #8B4513 (Leather brown - the color of infinite shelves)  
-**Principle**: Books = Knowledge = Power = Energy = Mass  
-**Frame**: All libraries connected across spacetime via narrativium coherence
+**Color**: #8B4513 (Leather brown - the color of infinite shelves)
 
 ---
 
-## Overview
+## What This Skill Actually Does
 
-**L-Space** (short for Library-Space) implements Terry Pratchett's theory of informational physics combined with Bumpus's categorical narrative theory. In L-Space:
+L-Space extracts and analyzes narrative structure from text:
 
-> "Books bend space and time. One good bookshop can be a gate to a thousand worlds."
+```bash
+# Extract narrative arcs, causality, novelty from text
+bb narrative_extract.bb story.txt
 
-The skill enables navigation through the infinite library that connects all repositories of knowledge across spacetime, while maintaining the three sacred rules:
+# Measure token surprise for manifold positioning
+python token_novelty.py "your text" --backend estimate
 
-1. **Silence** in the Library
-2. **Books must be returned** by the date stamped
-3. **Do not interfere with the nature of causality**
+# Build causality graph from code or prose
+python causality_graph.py file.py --lang python
+```
+
+**Output**: `{arcs, causality_graph, novelty_curve}` — structured data, not poetry.
+
+## Core Principle
+
+> Books = Knowledge = Power = Energy = Mass
+
+In sufficiently large libraries, information becomes autonomous.
+
+---
+
+## Triadic Balance (2024-12-24 Review)
+
+| Concept | Status | Action |
+|---------|--------|--------|
+| Geometric metaphors | ⚠️ OVER-INDEXED (6×) | Collapsed to single Poincaré model |
+| Visualization | ⚠️ OVER-INDEXED (4 viz, 0 code) | Added P0-P2 implementations |
+| Magic numbers (23-dim, 0.95) | ⚠️ OVER-INDEXED | Use actual embeddings |
+| **Narrative extraction** | ✅ NOW IMPLEMENTED | `narrative_extract.bb` |
+| **Token novelty** | ✅ NOW IMPLEMENTED | `token_novelty.py` |
+| **Causality graph** | ✅ NOW IMPLEMENTED | `causality_graph.py` |
+
+**GF(3) rebalance**: Skill was +1 heavy (generative metaphor). Now includes -1 (working validators).
+
+---
 
 ## Pratchett's Informational Physics
 
@@ -349,52 +375,52 @@ def undelivered_letter_danger(letter, time_undelivered)
 end
 ```
 
-## Commands
+## Working Commands
 
 ```bash
-# Navigate L-Space
-just l-space-navigate from=book1 to=book2
+# P0: Extract narrative arcs + causality + novelty (WORKS NOW)
+bb /Users/alice/.agents/skills/l-space/narrative_extract.bb story.txt
 
-# Query the Librarian (be polite)
-just librarian-query "Where is the Necrotelecomnicon?"
+# P1: Token novelty measurement (WORKS NOW)
+python3 /Users/alice/.agents/skills/l-space/token_novelty.py "text" --json
+python3 /Users/alice/.agents/skills/l-space/token_novelty.py -f file.txt --backend openai
 
-# Check narrativium levels
-just narrativium-audit library/
+# P2: Causality graph from code (WORKS NOW)
+python3 /Users/alice/.agents/skills/l-space/causality_graph.py code.py
+python3 /Users/alice/.agents/skills/l-space/causality_graph.py prose.txt --lang text
 
-# Verify no causality violations
-just l-space-causality-check
-
-# Generate narrative decomposition
-just narrative-decompose story.txt
-
-# Walk through skill L-Space
-just l-space-skill-walk seed=0x42D steps=7
+# Generate Graphviz DOT
+python3 /Users/alice/.agents/skills/l-space/causality_graph.py code.py --dot | dot -Tpng > graph.png
 ```
 
-## API
+## API (Babashka)
 
-```ruby
-require 'l_space'
+```clojure
+;; Load narrative analysis
+(require '[cheshire.core :as json])
 
-# Initialize L-Space connection
-lspace = LSpace.new(
-  entry_point: :university_library,
-  librarian_mode: true
-)
+(defn analyze-narrative [text]
+  (let [result (shell/sh "bb" "narrative_extract.bb" "-" :in text)]
+    (json/parse-string (:out result) true)))
 
-# Navigate
-path = lspace.find_path(
-  from: "Erta Sive Tertius",
-  to: "Future Book Not Yet Written"
-)
+;; Extract arcs from file
+(def arcs (analyze-narrative (slurp "story.txt")))
+(:gf3 arcs)  ; => {:trits [-1 0 1], :sum 0, :balanced? true}
+```
 
-# Check narrative coherence
-lspace.narrativium_coherent?(path)
+## API (Python)
 
-# Execute traversal
-lspace.traverse!(path) do |shelf|
-  puts "Passing through: #{shelf.category}"
-end
+```python
+from l_space.token_novelty import analyze
+from l_space.causality_graph import parse_python_treesitter
+
+# Token novelty
+result = analyze("The Librarian knows all", backend="estimate")
+print(result['octavo_territory'])  # True if near manifold boundary
+
+# Causality from code
+graph = parse_python_treesitter(open("module.py").read())
+print(graph.gf3_check())  # {'balanced': True, 'sum': 0}
 ```
 
 ## Mathematical Foundation
@@ -719,6 +745,75 @@ function balanced_traverse(M::PoincareLSpace, path::Vector{InformationVector})
     @assert sum(trits) % 3 == 0 "GF(3) violation on path!"
     path
 end
+```
+
+---
+
+## Cross-Model Adjusted Novelty
+
+### Formula: Text Novelty − Model Novelty
+
+The key insight for L-Space navigation: **adjusted novelty** measures how surprising a token is *in this specific context* relative to its expected rarity across all models:
+
+```
+adjusted_novelty(token) = novelty_in_text(token) − mean_novelty_across_models(token)
+                        = −log₂ P(token|this_text) − (−log₂ P(token|models))
+```
+
+| Adjusted Value | Interpretation | Manifold Position |
+|----------------|----------------|-------------------|
+| **Positive** | Token rarer here than models expect | BOUNDARY (contextually surprising) |
+| **Zero** | Token matches model expectations | INTERIOR |
+| **Negative** | Token common here but rare in models | CENTER (domain vocabulary) |
+
+### Observed Results
+
+From the L-Space conversation analysis (153 tokens):
+
+**OCTAVO BOUNDARY (positive adjusted):**
+```
++3.42  'the'    ← Common word appearing less than expected
++1.61  'of'     ← Structural words under-represented
++0.61  'as'     ← Context makes these surprising
+```
+
+**MANIFOLD CENTER (negative adjusted):**
+```
+-22.64  'gf3'          ← Domain term, rare globally, common HERE
+-20.32  'narrativium'  ← Pratchett-specific, dominates this context
+-20.32  'bumpus'       ← Author name, extremely rare globally
+-19.32  'posets'       ← Category theory term
+-17.00  'derivational' ← L-Space specific vocabulary
+-16.00  'sheaves'      ← Mathematical structure
+-16.00  'octavo'       ← The book that reads the reader
+```
+
+### Poincaré Radius from Adjusted Novelty
+
+```julia
+function poincare_radius_adjusted(adjusted::Float64)
+    # Positive adjusted → boundary (r → 1)
+    # Negative adjusted → center (r → 0)
+    clamp(0.5 + adjusted / 30.0, 0.01, 0.99)
+end
+```
+
+### Visualization
+
+Interactive manifold at `/tmp/adjusted_novelty_manifold.html`:
+- **GREEN points**: Domain vocabulary (center) — narrativium, bumpus, sheaves
+- **RED points**: Contextually surprising (boundary) — common words appearing rarely
+- **Hover**: Shows token, adjusted novelty, model novelty, text novelty, Poincaré radius
+
+```python
+# Generate adjusted novelty visualization
+def adjusted_manifold(tokens, model_freqs):
+    for token in tokens:
+        model_nov = -log2(model_freqs.get(token, 1e-5))
+        text_nov = -log2(token_freq[token] / total)
+        adjusted = text_nov - model_nov
+        radius = 0.5 + adjusted / 30.0
+        yield {'token': token, 'adjusted': adjusted, 'radius': radius}
 ```
 
 ---
