@@ -1,340 +1,160 @@
----
-name: ordered-locale
-description: "Ordered Locales (Heunen-van der Schaaf 2024): Point-free topology with direction. Frame + compatible preorder with open cone conditions."
-trit: 0
-polarity: ERGODIC
-source: "Heunen & van der Schaaf, J. Pure Appl. Algebra 228 (2024) 107654"
-technologies: [Julia, Catlab.jl, ACSets.jl, GATlab.jl, MLX]
----
-
 # Ordered Locale Skill
 
-> *"We extend Stone duality between topological spaces and locales to include order."*
-> — Heunen & van der Schaaf, 2024
+**Trit**: +1 (PLUS/GENERATOR)
+**GF(3)**: Σ(-1,0,+1) = 0 (conserved)
 
 ## Overview
 
-An **ordered locale** is a locale (point-free topological space) equipped with a compatible preorder satisfying the **open cone condition**.
+Point-free topology with direction. MCP servers indexed by creation-time color via SplitMix64. Every decision trifurcates into MINUS/ERGODIC/PLUS parallel paths. GF(3) conservation guaranteed on every substrate in every interaction.
 
-```
-Ordered Locale = Frame + Preorder + Open Cones
-```
+Implements Heunen-style ordered locales with observational bridge types in Narya proof assistant. Bridge types model the "way below" relation U ≪ V in ordered locales, providing a foundation for:
 
-## Key Definitions
+- **MCP Locale**: Servers as opens, dependencies as way-below
+- Causal structure in topological spaces
+- Directed homotopy theory
+- Sheaves respecting directional constraints
+- GF(3) triadic systems
 
-### Frame (Locale)
+## Files
 
-A **frame** is a complete lattice where finite meets distribute over arbitrary joins:
+| File | Description |
+|------|-------------|
+| `mcp_locale.py` | Python: MCP ordered locale with triadic decisions |
+| `mcp_locale.mo` | Modelica: Acausal model (replaces Wolfram) |
+| `narya/ordered_locale.ny` | Core definitions: 𝟚, Bridge, WayBelow, frame ops |
+| `narya/gf3.ny` | GF(3) arithmetic and conservation |
+| `narya/bridge_sheaf.ny` | Sheaves respecting bridge structure |
+| `narya/narya-ordered-locale.el` | Emacs/Proof General integration |
+| `ordered_locale.jl` | Julia: Frame operations, cones/cocones |
 
-```
-a ∧ (⋁ᵢ bᵢ) = ⋁ᵢ (a ∧ bᵢ)
-```
+## MCP Locale
 
-Equivalently: a complete Heyting algebra.
+Every MCP server is an **open set** in the locale, indexed by creation-time color:
 
-### Open Cone Condition
+```python
+from mcp_locale import create_mcp_locale, trifurcate_decision
 
-For a preorder ≤ on locale L, the **open cone condition** requires:
-
-```
-↑x = {y ∈ L : x ≤ y}  is an open in L  (upper cone)
-↓x = {y ∈ L : y ≤ x}  is an open in L  (lower cone)
-```
-
-This ensures the order is "visible" to the topology.
-
-### Ordered Locale (Definition 2.1, Heunen-van der Schaaf)
-
-An **ordered locale** is a tuple (L, ≤) where:
-1. L is a locale (frame of opens)
-2. ≤ is a preorder on O(L)
-3. The open cone condition holds
-
-## Stone Duality Extended
-
-```
-┌────────────────────────┐     adjunction     ┌─────────────────────┐
-│ Preordered Topological │ ←───────────────→ │   Ordered Locales   │
-│ Spaces (open cones)    │                    │     (spatial)       │
-└────────────────────────┘                    └─────────────────────┘
+locale = create_mcp_locale(seed=0x42D)
+# Each MCP gets deterministic color: seed → SplitMix64 → RGB → hue → trit
 ```
 
-Restricts to an **equivalence**:
-- Spatial ordered locales ≃ Sober T₀-ordered spaces with open cones
+### Triadic Decisions
 
-## Julia Implementation (Catlab.jl)
+Every decision trifurcates into parallel paths:
 
-### Frame as Subobject Heyting Algebra
+| Path | Trit | Role | Action |
+|------|------|------|--------|
+| MINUS | -1 | Validator | Check constraints |
+| ERGODIC | 0 | Coordinator | Find optimal route |
+| PLUS | +1 | Executor | Generate result |
 
-From Catlab's `Subobjects.jl`:
-
-```julia
-using Catlab, Catlab.Theories, Catlab.CategoricalAlgebra
-
-# Frame operations via ThSubobjectHeytingAlgebra
-@signature ThFrame <: ThSubobjectHeytingAlgebra begin
-  # Infinite joins (frame-specific)
-  Join(I::TYPE, f::(I → Sub(X)))::Sub(X) ⊣ [X::Ob]
-  
-  # Frame distributivity: a ∧ (⋁ᵢ bᵢ) = ⋁ᵢ (a ∧ bᵢ)
-end
+```python
+decision = trifurcate_decision(
+    "swap 10 APT",
+    seed=0x42D,
+    minus_fn=validate,
+    ergodic_fn=coordinate,
+    plus_fn=execute,
+    aggregate_fn=aggregate
+)
+# GF(3): -1 + 0 + 1 = 0 ✓
 ```
 
-### Ordered Locale Schema (ACSet)
+### Safe Parallelism via SplitMix64
 
-```julia
-using ACSets
-
-@present SchOrderedLocale(FreeSchema) begin
-  Open::Ob                    # Opens of the frame
-  Arrow::Ob                   # Order relation arrows
-  
-  src::Hom(Arrow, Open)       # Source of order arrow
-  tgt::Hom(Arrow, Open)       # Target of order arrow
-  
-  # Cone structure
-  Cone::Ob
-  apex::Hom(Cone, Open)       # Apex of cone
-  leg::Hom(Cone, Arrow)       # Legs of cone
-  
-  # Attributes
-  Index::AttrType
-  idx::Attr(Open, Index)      # Open index
-  is_upper::Attr(Cone, Bool)  # Upper vs lower cone
-end
-
-@acset_type OrderedLocale(SchOrderedLocale)
+```python
+def splitmix_ternary(seed):
+    """Fork into 3 independent streams."""
+    s1 = splitmix64(seed)
+    s2 = splitmix64(s1)
+    s3 = splitmix64(s2)
+    return (s1, s2, s3)  # MINUS, ERGODIC, PLUS
 ```
 
-### Open Cone Verification
+Each substrate (Python, Julia, Babashka, Modelica) uses identical SplitMix64, ensuring reproducible parallel execution.
 
-```julia
-function verify_open_cone_condition(L::OrderedLocale)
-  """
-  Verify that ↑x and ↓x are opens for all x.
-  """
-  opens = parts(L, :Open)
-  
-  for x in opens
-    # Upper cone: ↑x = {y : x ≤ y}
-    upper_cone = Set{Int}()
-    for arr in parts(L, :Arrow)
-      if L[arr, :src] == x
-        push!(upper_cone, L[arr, :tgt])
-      end
-    end
-    push!(upper_cone, x)  # Reflexive
-    
-    # Check upper cone is an open (exists in frame)
-    if !is_open(L, upper_cone)
-      return false, "↑$x is not an open"
-    end
-    
-    # Lower cone: ↓x = {y : y ≤ x}
-    lower_cone = Set{Int}()
-    for arr in parts(L, :Arrow)
-      if L[arr, :tgt] == x
-        push!(lower_cone, L[arr, :src])
-      end
-    end
-    push!(lower_cone, x)  # Reflexive
-    
-    if !is_open(L, lower_cone)
-      return false, "↓$x is not an open"
-    end
-  end
-  
-  return true, "Open cone condition satisfied"
-end
-```
+## Key Concepts
 
-### Cone and Cocone Operations
+### Bridge Types
 
-From Catlab's `Limits.jl`:
-
-```julia
-using Catlab.Theories: ThCompleteCategory, ThCocompleteCategory
-
-# Cone: A natural transformation Δ(X) → D
-# where Δ(X) is the constant diagram at X
-struct Cone{Ob, Hom}
-  apex::Ob
-  legs::Vector{Hom}  # One leg per object in diagram
-end
-
-# Cocone: Dual - natural transformation D → Δ(X)
-struct Cocone{Ob, Hom}
-  apex::Ob
-  legs::Vector{Hom}
-end
-
-# Limit = universal cone
-function limit_cone(diagram::FreeDiagram, model)
-  # Find apex and legs such that any other cone factors through
-  lim = limit[model](diagram)
-  Cone(ob(lim), collect(legs(lim)))
-end
-
-# Colimit = universal cocone  
-function colimit_cocone(diagram::FreeDiagram, model)
-  colim = colimit[model](diagram)
-  Cocone(ob(colim), collect(legs(colim)))
-end
-```
-
-### Frame Operations via Limits/Colimits
-
-```julia
-# Meet (∧) = pullback = limit of cospan
-function frame_meet(L::OrderedLocale, a::Int, b::Int)
-  # Pullback in the locale category
-  diagram = FreeDiagram([a, b], [(a, top(L)), (b, top(L))])
-  lim = limit_cone(diagram, L)
-  return lim.apex
-end
-
-# Join (∨) = pushout = colimit of span
-function frame_join(L::OrderedLocale, a::Int, b::Int)
-  # Pushout in the locale category
-  bot = bottom(L)
-  diagram = FreeDiagram([a, b], [(bot, a), (bot, b)])
-  colim = colimit_cocone(diagram, L)
-  return colim.apex
-end
-
-# Infinite join (frame-specific)
-function frame_sup(L::OrderedLocale, opens::Vector{Int})
-  # Colimit of discrete diagram
-  diagram = FreeDiagram(opens, Pair{Int,Int}[])
-  colim = colimit_cocone(diagram, L)
-  return colim.apex
-end
-
-# Heyting implication: a ⇒ b = ⋁{c : a ∧ c ≤ b}
-function frame_implies(L::OrderedLocale, a::Int, b::Int)
-  candidates = [c for c in parts(L, :Open) 
-                if below_or_eq(L, frame_meet(L, a, c), b)]
-  return frame_sup(L, candidates)
-end
-```
-
-## GF(3) Triads
+A bridge from A to B is a directed path through the directed interval 𝟚:
 
 ```
-acsets (-1) ⊗ ordered-locale (0) ⊗ topos-generate (+1) = 0 ✓  [Schema]
-sheaf-cohomology (-1) ⊗ ordered-locale (0) ⊗ kan-extensions (+1) = 0 ✓  [Gluing]
-directed-interval (-1) ⊗ ordered-locale (0) ⊗ mlx-apple-silicon (+1) = 0 ✓  [Scale]
+def Bridge (A B : Type) : Type := sig (
+  path : 𝟚 → Type,
+  start : path zero. → A,
+  end : B → path one.
+)
 ```
 
-## Example Locales
+### Way Below (≪)
 
-### 1. Sierpinski Locale (2-point)
+The way-below relation U ≪ V captures "U is compact relative to V":
 
-```julia
-function sierpinski_locale()
-  L = OrderedLocale{Bool}()
-  add_parts!(L, :Open, 2, idx=[false, true])  # ⊥, ⊤
-  add_part!(L, :Arrow, src=1, tgt=2)          # ⊥ < ⊤
-  
-  # Cones
-  add_part!(L, :Cone, apex=2, is_upper=true)  # ↑⊥ = {⊥,⊤} = ⊤
-  add_part!(L, :Cone, apex=1, is_upper=false) # ↓⊤ = {⊥,⊤} = ⊤
-  L
-end
+```
+def WayBelow (U V : Open) : Type := sig (
+  bridge : (t : 𝟚) → Open,
+  at_zero : ... → U,
+  at_one : V → ...,
+  directed : ...
+)
 ```
 
-### 2. Diamond Locale
+### GF(3) Conservation
 
-```julia
-function diamond_locale()
-  L = OrderedLocale{Int}()
-  add_parts!(L, :Open, 4, idx=[0, 1, 1, 2])  # ⊥, a, b, ⊤
-  add_part!(L, :Arrow, src=1, tgt=2)  # ⊥ < a
-  add_part!(L, :Arrow, src=1, tgt=3)  # ⊥ < b
-  add_part!(L, :Arrow, src=2, tgt=4)  # a < ⊤
-  add_part!(L, :Arrow, src=3, tgt=4)  # b < ⊤
-  L
-end
+All triadic structures conserve sum ≡ 0 (mod 3):
+
 ```
-
-### 3. Scott Topology (Domain Theory)
-
-```julia
-function scott_locale(poset::OrderedLocale)
-  """
-  Scott topology: opens are upper sets closed under directed joins.
-  """
-  scott_opens = Vector{Set{Int}}()
-  
-  for u in parts(poset, :Open)
-    upset = upper_cone(poset, u)
-    if is_scott_open(poset, upset)
-      push!(scott_opens, upset)
-    end
-  end
-  
-  scott_opens
-end
-
-function is_scott_open(L, U::Set{Int})
-  # U is Scott-open iff:
-  # 1. U is upper-closed
-  # 2. For any directed D with ⋁D ∈ U, some d ∈ D is in U
-  is_upper_closed(L, U) && is_inaccessible_by_directed_joins(L, U)
-end
+def GF3Conserved (a b c : Trit) : Type := 
+  Id Trit (trit_sum3 a b c) ergodic.
 ```
-
-## Comparison with Implementation
-
-| Aspect | ordered_locale_mlx.py | Proper Ordered Locale |
-|--------|----------------------|----------------------|
-| Structure | Adjacency matrix (poset) | Frame + ACSet schema |
-| Opens | Finite indices | Complete Heyting algebra |
-| Meets/Joins | Graph search | Pullback/Pushout (categorical) |
-| Cones | Not implemented | Cone/Cocone with legs |
-| Open Cone Condition | Not checked | `verify_open_cone_condition` |
-| Infinite joins | No | `frame_sup` |
-
-## Applications
-
-1. **Spacetime Causality** — Order = causal influence, no points
-2. **Domain Theory** — Way-below relation, compact elements
-3. **Directed Homotopy** — Irreversible paths (directed-interval)
-4. **Modal Logic** — Accessibility relations as order
-5. **Concurrent Computing** — Partial order of events
 
 ## Commands
 
 ```bash
-# Run ordered locale demo
-just ordered-locale-demo
+# Verify all files
+~/.agents/skills/ordered-locale/narya/run_narya.sh
 
-# Verify open cone condition
-just ordered-locale-verify
+# Check GF(3) only
+~/.agents/skills/ordered-locale/narya/run_narya.sh --gf3
 
-# Scale test with MLX
-just ordered-locale-mlx
+# Run via headless Emacs
+~/.agents/skills/ordered-locale/narya/run_narya.sh --emacs
 ```
 
-## Files
+## Emacs Integration
 
-- `ordered_locale.jl` — Julia implementation with Catlab
-- `ordered_locale_mlx.py` — MLX-accelerated (finite approximation)
-- `frame.jl` — Frame operations via limits/colimits
-- `cone_cocone.jl` — Cone/cocone constructions
+```elisp
+;; Load the mode
+(load "~/.agents/skills/ordered-locale/narya/narya-ordered-locale.el")
+
+;; Key bindings
+;; C-c C-n  Step forward
+;; C-c C-u  Step backward
+;; C-c C-v  Verify all
+;; C-c C-g  Check GF(3)
+```
+
+## Related Skills
+
+- `proofgeneral-narya` - Proof General + Narya integration
+- `gf3` / `gay-mcp` - Triadic color systems
+- `segal-types` - Synthetic ∞-categories
+- `unworld` - Derivational chains
+- `triad-interleave` - Parallel triadic scheduling
 
 ## References
 
-1. Heunen, C. & van der Schaaf, N. (2024). "Ordered Locales." *J. Pure Appl. Algebra* 228(7), 107654.
-2. Heunen, C. & van der Schaaf, N. (2025). "Causal Coverage in Ordered Locales and Spacetimes." arXiv:2510.17417.
-3. Johnstone, P. (1982). *Stone Spaces*. Cambridge University Press.
-4. Catlab.jl — `src/theories/Limits.jl`, `src/categorical_algebra/cats/Subobjects.jl`
+- Heunen, C. - "Ordered Locales" (in `~/worlds/ordered-locales/heunen_orderedlocales.pdf`)
+- Riehl-Shulman - "A type theory for synthetic ∞-categories" 
+- Narya proof assistant - https://github.com/gwaithimirdain/narya
 
----
+## Mathematical Foundation
 
-**Skill Name**: ordered-locale
-**Type**: Point-free Topology / Frame Theory / Directed Order
-**Trit**: 0 (ERGODIC - coordinator)
-**GF(3)**: Mediates between schema (-1) and generation (+1)
-**Open Cones**: ↑x and ↓x must be opens
-**Duality**: Spatial ordered locales ≃ Sober T₀-ordered spaces
+Ordered locales extend frame theory with a compatible partial order on opens. The key axiom is:
+
+> Every open V is the join of opens U with U ≪ V
+
+This approximation property connects point-free topology to domain theory and provides a constructive foundation for causal structure.
+
+The bridge type formalization captures ≪ as a directed homotopy: paths that flow from U toward V through the directed interval 𝟚 = {0 → 1}.
