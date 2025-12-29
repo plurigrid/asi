@@ -17,6 +17,17 @@ A cryptographic puzzle requiring solvers to prove they traversed the Plurigrid A
 | GayMCP | Interaction colors | GF(3) conserved |
 | Skills | Minimum invoked | ≥ 6 |
 | Worlds | Minimum visited | ≥ 6 |
+| **Oracle** | ed25519 attestation | Required |
+
+## Security Model
+
+The contract uses **oracle attestation** to prevent spoofing:
+
+1. Quest creator specifies a trusted oracle's ed25519 public key
+2. Solver executes skills via Plurigrid ASI
+3. Oracle monitors execution and signs attestation: `(solver, quest, proof_data, timestamp)`
+4. Contract verifies oracle signature before releasing bounty
+5. Attestations expire after 1 hour (replay protection)
 
 ## Invocation
 

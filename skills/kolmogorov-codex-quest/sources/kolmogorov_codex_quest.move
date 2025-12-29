@@ -23,6 +23,8 @@ module kolmogorov_codex::quest {
     use aptos_framework::timestamp;
     use aptos_framework::event;
     use aptos_std::hash;
+    use aptos_std::ed25519;
+    use std::bcs;
 
     // ═══════════════════════════════════════════════════════════════════════
     // ERRORS
@@ -42,6 +44,8 @@ module kolmogorov_codex::quest {
     const E_NOT_QUEST_CREATOR: u64 = 12;
     const E_INVALID_WIKIDATA_ROOT: u64 = 13;
     const E_INVALID_GAYMCP_ROOT: u64 = 14;
+    const E_INVALID_ORACLE_SIGNATURE: u64 = 15;
+    const E_PROOF_EXPIRED: u64 = 16;
 
     // ═══════════════════════════════════════════════════════════════════════
     // CONSTANTS
@@ -58,6 +62,9 @@ module kolmogorov_codex::quest {
 
     /// Minimum worlds required for identity proof
     const MIN_WORLDS_REQUIRED: u64 = 6;
+
+    /// Proof validity window: 1 hour in seconds (prevents replay)
+    const PROOF_VALIDITY_SECS: u64 = 3600;
 
     // ═══════════════════════════════════════════════════════════════════════
     // STRUCTS
@@ -83,6 +90,8 @@ module kolmogorov_codex::quest {
         solved: bool,
         winner: Option<address>,
         winning_proof: Option<IdentityProof>,
+        /// Oracle public key (ed25519) that must attest to identity proofs
+        oracle_pubkey: vector<u8>,
     }
 
     // ═══════════════════════════════════════════════════════════════════════
@@ -121,14 +130,17 @@ module kolmogorov_codex::quest {
     // ═══════════════════════════════════════════════════════════════════════
 
     /// Create a new quest with bounty and solution commitment
+    /// oracle_pubkey: 32-byte ed25519 public key of trusted identity oracle
     public entry fun create_quest(
         creator: &signer,
         bounty_octas: u64,
         commitment: vector<u8>,
+        oracle_pubkey: vector<u8>,
     ) {
         let creator_addr = signer::address_of(creator);
         assert!(bounty_octas >= MIN_BOUNTY_OCTAS, E_INSUFFICIENT_BOUNTY);
         assert!(vector::length(&commitment) == 32, E_INVALID_COMMITMENT);
+        assert!(vector::length(&oracle_pubkey) == 32, E_INVALID_ORACLE_SIGNATURE);
         assert!(!exists<Quest>(creator_addr), E_QUEST_ALREADY_EXISTS);
 
         let bounty_coins = coin::withdraw<AptosCoin>(creator, bounty_octas);
@@ -143,6 +155,7 @@ module kolmogorov_codex::quest {
             solved: false,
             winner: option::none(),
             winning_proof: option::none(),
+            oracle_pubkey,
         });
 
         event::emit(QuestCreated {
@@ -154,7 +167,9 @@ module kolmogorov_codex::quest {
         });
     }
 
-    /// Submit solution with identity proof
+    /// Submit solution with identity proof and oracle attestation
+    /// oracle_signature: ed25519 signature over (solver_addr, quest_address, proof_data, proof_timestamp)
+    /// proof_timestamp: Unix timestamp when oracle created the attestation (must be within PROOF_VALIDITY_SECS)
     public entry fun submit_solution(
         solver: &signer,
         quest_address: address,
@@ -165,24 +180,57 @@ module kolmogorov_codex::quest {
         world_count: u64,
         gf3_sum: u8,
         proof_uri: vector<u8>,
+        oracle_signature: vector<u8>,
+        proof_timestamp: u64,
     ) acquires Quest {
         let solver_addr = signer::address_of(solver);
         assert!(exists<Quest>(quest_address), E_QUEST_NOT_FOUND);
-        
+
         let quest = borrow_global_mut<Quest>(quest_address);
         assert!(!quest.solved, E_QUEST_ALREADY_SOLVED);
-        assert!(timestamp::now_seconds() < quest.expires_at, E_QUEST_EXPIRED);
 
-        // Verify solution
+        let now = timestamp::now_seconds();
+        assert!(now < quest.expires_at, E_QUEST_EXPIRED);
+
+        // Verify solution hash
         let solution_hash = hash::sha3_256(solution);
         assert!(solution_hash == quest.commitment, E_INVALID_SOLUTION);
 
-        // Verify identity proof
+        // Verify proof timestamp is recent (prevents replay attacks)
+        assert!(proof_timestamp <= now, E_PROOF_EXPIRED);
+        assert!(now - proof_timestamp <= PROOF_VALIDITY_SECS, E_PROOF_EXPIRED);
+
+        // Verify identity proof counts (sanity checks, oracle is source of truth)
         assert!(skill_count >= MIN_SKILLS_REQUIRED, E_INSUFFICIENT_SKILLS);
         assert!(world_count >= MIN_WORLDS_REQUIRED, E_INSUFFICIENT_WORLDS);
         assert!(gf3_sum % 3 == 0, E_GF3_VIOLATION);
         assert!(vector::length(&wikidata_root) == 32, E_INVALID_WIKIDATA_ROOT);
         assert!(vector::length(&gaymcp_root) == 32, E_INVALID_GAYMCP_ROOT);
+
+        // ═══════════════════════════════════════════════════════════════════
+        // ORACLE SIGNATURE VERIFICATION (Critical security check)
+        // ═══════════════════════════════════════════════════════════════════
+        // The oracle attests: "I verified that solver_addr executed skill_count
+        // skills across world_count worlds with GF(3) conservation at proof_timestamp"
+
+        // Construct message that oracle signed: BCS-serialized proof data
+        let message = vector::empty<u8>();
+        vector::append(&mut message, bcs::to_bytes(&solver_addr));
+        vector::append(&mut message, bcs::to_bytes(&quest_address));
+        vector::append(&mut message, wikidata_root);
+        vector::append(&mut message, gaymcp_root);
+        vector::append(&mut message, bcs::to_bytes(&skill_count));
+        vector::append(&mut message, bcs::to_bytes(&world_count));
+        vector::append(&mut message, bcs::to_bytes(&gf3_sum));
+        vector::append(&mut message, bcs::to_bytes(&proof_timestamp));
+
+        // Verify ed25519 signature
+        let pubkey = ed25519::new_unvalidated_public_key_from_bytes(quest.oracle_pubkey);
+        let sig = ed25519::new_signature_from_bytes(oracle_signature);
+        assert!(
+            ed25519::signature_verify_strict(&sig, &pubkey, message),
+            E_INVALID_ORACLE_SIGNATURE
+        );
 
         // Record solution
         quest.solved = true;
@@ -201,7 +249,7 @@ module kolmogorov_codex::quest {
             bounty_octas: bounty_value,
             skill_count,
             world_count,
-            solved_at: timestamp::now_seconds(),
+            solved_at: now,
         });
     }
 
@@ -210,7 +258,7 @@ module kolmogorov_codex::quest {
         let creator_addr = signer::address_of(creator);
         assert!(exists<Quest>(creator_addr), E_QUEST_NOT_FOUND);
 
-        let Quest { creator: c, commitment: _, bounty, created_at: _, expires_at, solved, winner: _, winning_proof: _ } = move_from<Quest>(creator_addr);
+        let Quest { creator: c, commitment: _, bounty, created_at: _, expires_at, solved, winner: _, winning_proof: _, oracle_pubkey: _ } = move_from<Quest>(creator_addr);
         assert!(c == creator_addr, E_NOT_QUEST_CREATOR);
         assert!(!solved, E_QUEST_ALREADY_SOLVED);
         assert!(timestamp::now_seconds() >= expires_at, E_QUEST_NOT_EXPIRED);
