@@ -82,7 +82,7 @@ npx ai-agent-skills install plurigrid/asi --agent amp
 ```bash
 # Announce each skill load with distinct voice
 say -v "Samantha" "Loading PLUS skill: synthetic-adjunctions"
-say -v "Daniel" "Loading ERGODIC skill: dialectica"  
+say -v "Zoe (Premium)" "Loading ERGODIC skill: dialectica"  
 say -v "Karen" "Loading MINUS skill: yoneda-directed"
 ```
 
