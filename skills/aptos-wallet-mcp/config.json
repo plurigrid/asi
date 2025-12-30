@@ -1,0 +1,109 @@
+{
+  "$meta": {
+    "schema": "Plurigrid Wallet MCP Config v1.0",
+    "generated": "2025-12-27",
+    "gf3_seed": 1069,
+    "description": "Compressed shareable wallet config - secrets externalized"
+  },
+
+  "wallets": {
+    "alice": {
+      "mainnet": {
+        "balance": "0.6130 APT",
+        "trit": -1,
+        "role": "MINUS/validator",
+        "color_hue": 240
+      },
+      "testnet": {
+        "balance": "0.0000 APT",
+        "trit": 0,
+        "role": "ERGODIC/coordinator"
+      }
+    },
+    "bob": {
+      "mainnet": {
+        "balance": "55.6987 APT",
+        "trit": 1,
+        "role": "PLUS/executor",
+        "color_hue": 0
+      },
+      "testnet": {
+        "balance": "0.0000 APT",
+        "trit": 0,
+        "role": "ERGODIC/coordinator"
+      }
+    }
+  },
+
+  "mcpServers": {
+    "alice-aptos": {
+      "command": "node",
+      "args": ["${APTOS_MCP_PATH}/dist/mcp/server.js"],
+      "env": {
+        "APTOS_NETWORK": "mainnet",
+        "APTOS_PRIVATE_KEY": "${ALICE_APTOS_KEY}"
+      }
+    },
+    "bob-aptos": {
+      "command": "node",
+      "args": ["${APTOS_MCP_PATH}/dist/mcp/server.js"],
+      "env": {
+        "APTOS_NETWORK": "mainnet",
+        "APTOS_PRIVATE_KEY": "${BOB_APTOS_KEY}"
+      }
+    },
+    "alice-aptos-testnet": {
+      "command": "node",
+      "args": ["${APTOS_MCP_PATH}/dist/mcp/server.js"],
+      "env": {
+        "APTOS_NETWORK": "testnet",
+        "APTOS_PRIVATE_KEY": "${ALICE_APTOS_KEY}"
+      }
+    },
+    "bob-aptos-testnet": {
+      "command": "node",
+      "args": ["${APTOS_MCP_PATH}/dist/mcp/server.js"],
+      "env": {
+        "APTOS_NETWORK": "testnet",
+        "APTOS_PRIVATE_KEY": "${BOB_APTOS_KEY}"
+      }
+    }
+  },
+
+  "tools": [
+    "aptos_balance",
+    "aptos_transfer",
+    "aptos_swap",
+    "aptos_stake",
+    "aptos_view",
+    "aptos_intent",
+    "aptos_approve",
+    "aptos_pending"
+  ],
+
+  "dex": ["liquidswap", "pancakeswap", "thala"],
+
+  "framework": {
+    "coin": "0x1::coin",
+    "fungible_asset": "0x1::fungible_asset",
+    "stake": "0x1::stake",
+    "delegation_pool": "0x1::delegation_pool"
+  },
+
+  "gf3": {
+    "conservation": "Σ trits ≡ 0 (mod 3)",
+    "assignment": {
+      "alice": -1,
+      "bob": 1,
+      "arbiter": 0
+    },
+    "sum": 0,
+    "verified": true
+  },
+
+  "envTemplate": {
+    "APTOS_MCP_PATH": "/path/to/aptos-claude-agent",
+    "ALICE_APTOS_KEY": "0x...",
+    "BOB_APTOS_KEY": "0x..."
+  }
+}

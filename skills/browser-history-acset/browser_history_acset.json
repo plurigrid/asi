@@ -1,0 +1,201 @@
+{
+  "schema": {
+    "objects": [
+      "Browser",
+      "URL",
+      "Visit",
+      "Domain",
+      "SearchQuery",
+      "Download",
+      "Session",
+      "Cluster"
+    ],
+    "morphisms": {
+      "browser_of": [
+        "URL",
+        "Browser"
+      ],
+      "domain_of": [
+        "URL",
+        "Domain"
+      ],
+      "url_of": [
+        "Visit",
+        "URL"
+      ],
+      "session_of": [
+        "Visit",
+        "Session"
+      ],
+      "from_visit": [
+        "Visit",
+        "Visit"
+      ],
+      "cluster_of": [
+        "Visit",
+        "Cluster"
+      ],
+      "url_of_download": [
+        "Download",
+        "URL"
+      ],
+      "query_url": [
+        "SearchQuery",
+        "URL"
+      ]
+    },
+    "attributes": {
+      "Browser": [
+        "name",
+        "path",
+        "browser_type",
+        "trit"
+      ],
+      "URL": [
+        "url",
+        "title",
+        "visit_count",
+        "typed_count",
+        "last_visit_time",
+        "hidden"
+      ],
+      "Visit": [
+        "visit_time",
+        "transition",
+        "duration",
+        "trit"
+      ],
+      "Domain": [
+        "domain",
+        "tld",
+        "visit_total",
+        "trit"
+      ],
+      "SearchQuery": [
+        "term",
+        "normalized_term",
+        "count"
+      ],
+      "Download": [
+        "path",
+        "filename",
+        "mime_type",
+        "size",
+        "start_time",
+        "end_time"
+      ],
+      "Session": [
+        "start_time",
+        "end_time",
+        "visit_count"
+      ],
+      "Cluster": [
+        "label",
+        "should_show"
+      ]
+    }
+  },
+  "counts": {
+    "browsers": 3,
+    "urls": 4529,
+    "visits": 8569,
+    "domains": 511,
+    "searches": 36,
+    "downloads": 41
+  },
+  "gf3_sum": 13,
+  "trit_distribution": {
+    "domains": {
+      "-1": 0,
+      "0": 498,
+      "1": 13
+    },
+    "visits": {
+      "-1": 0,
+      "0": 6230,
+      "1": 2339
+    }
+  },
+  "top_domains": [
+    [
+      "github.com",
+      1066
+    ],
+    [
+      "mermaid.live",
+      655
+    ],
+    [
+      "ampcode.com",
+      453
+    ],
+    [
+      "www.mermaidchart.com",
+      320
+    ],
+    [
+      "accounts.google.com",
+      283
+    ],
+    [
+      "bmorphism.github.io",
+      281
+    ],
+    [
+      "elevenlabs.io",
+      268
+    ],
+    [
+      "x.com",
+      229
+    ],
+    [
+      "www.youtube.com",
+      226
+    ],
+    [
+      "huggingface.co",
+      188
+    ],
+    [
+      "latent.toys",
+      169
+    ],
+    [
+      "mermaidchart.com",
+      151
+    ],
+    [
+      "chatgpt.com",
+      135
+    ],
+    [
+      "share.unison-lang.org",
+      120
+    ],
+    [
+      "arxiv.org",
+      114
+    ],
+    [
+      "deepwiki.com",
+      108
+    ],
+    [
+      "photos.google.com",
+      92
+    ],
+    [
+      "developer.apple.com",
+      84
+    ],
+    [
+      "accounts.mathpix.com",
+      77
+    ],
+    [
+      "mail.google.com",
+      74
+    ]
+  ]
+}
