@@ -123,3 +123,78 @@ try {
 - [ ] No obvious performance issues
 - [ ] Code is readable and documented
 - [ ] Breaking changes documented
+- [ ] **GF(3) skill coloring present** (see below)
+
+---
+
+## 5. GF(3) Skill Conservation Review (REQUIRED)
+
+Every PR **MUST** include a GF(3) skill manifest. PRs without valid skill coloring will be rejected.
+
+### Required PR Comment Format
+
+```markdown
+## GF(3) Skill Coloring
+
+| Skill | Trit | Color | Role |
+|-------|------|-------|------|
+| skill-a | ⊕ (+1) | #FFD700 | Generator |
+| skill-b | ○ (0) | #808080 | Coordinator |
+| skill-c | ⊖ (-1) | #3541C7 | Validator |
+
+**Conservation Check**: Σ = (+1) + (0) + (-1) = 0 ✓
+
+Thread: ⟨xxxx⟩
+```
+
+### Trit Assignments
+
+| Symbol | Value | Role | Hue Range |
+|--------|-------|------|-----------|
+| ⊕ | +1 | Generator/Executor | Warm (0-60°, 300-360°) |
+| ○ | 0 | Coordinator/Synthesizer | Neutral (60-180°) |
+| ⊖ | -1 | Validator/Constrainer | Cold (180-300°) |
+
+### Conservation Rules
+
+1. **Single PR**: `Σ trits ≡ 0 (mod 3)`
+2. **Cross-PR Triad**: PRs can form triads: `PR_A⊕ ⊗ PR_B○ ⊗ PR_C⊖ ⊢ 0`
+3. **Minimum Skills**: At least 1 skill must be declared
+4. **Thread Linkage**: Include thread ID `⟨xxxx⟩` for provenance
+
+### Validation Script
+
+```bash
+# Check PR body for GF(3) conservation
+gh pr view $PR_NUM --json body | jq -r '.body' | \
+  grep -oE '[⊕○⊖]' | \
+  awk '{if($0=="⊕")sum+=1; if($0=="⊖")sum-=1} END{print "Σ="sum" (mod 3)="sum%3}'
+```
+
+### Common Skill Triads
+
+```
+# Development triad
+code-review⊖ ⊗ aptos-agent○ ⊗ gaymove⊕ ⊢ 0 ✓
+
+# Research triad
+narya-proofs⊖ ⊗ acsets○ ⊗ depth-search⊕ ⊢ 0 ✓
+
+# Infrastructure triad
+three-match⊖ ⊗ ducklake-walk○ ⊗ gay-mcp⊕ ⊢ 0 ✓
+```
+
+### Review Output for GF(3)
+
+```markdown
+### 🎨 GF(3) Conservation Status
+
+- [ ] Skill manifest present in PR body
+- [ ] At least 1 skill declared
+- [ ] All skills have valid trit (⊕/○/⊖)
+- [ ] Σ trits ≡ 0 (mod 3)
+- [ ] Thread ID linked (⟨xxxx⟩)
+- [ ] Cross-PR triad documented (if applicable)
+
+**Result**: ✅ CONSERVED / ❌ VIOLATION
+```

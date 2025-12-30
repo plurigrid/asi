@@ -181,6 +181,79 @@ jobs:
             console.log('✓ All SKILL.md files have valid frontmatter');
           "
 
+      - name: Validate GF(3) trit assignments
+        run: |
+          echo "Validating GF(3) trit conservation..."
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+
+            const skillsDir = 'skills';
+            const folders = fs.readdirSync(skillsDir).filter(f =>
+              fs.statSync(path.join(skillsDir, f)).isDirectory()
+            );
+
+            let errors = 0;
+            let warnings = 0;
+            const tritCounts = { plus: 0, zero: 0, minus: 0, missing: 0 };
+
+            folders.forEach(folder => {
+              const skillMd = path.join(skillsDir, folder, 'SKILL.md');
+              if (!fs.existsSync(skillMd)) return;
+
+              const content = fs.readFileSync(skillMd, 'utf8');
+              const endIndex = content.indexOf('---', 3);
+              if (endIndex === -1) return;
+
+              const frontmatter = content.slice(3, endIndex);
+
+              // Check for trit in metadata
+              const tritMatch = frontmatter.match(/trit:\s*(-?[0-1])/);
+              if (tritMatch) {
+                const trit = parseInt(tritMatch[1]);
+                if (trit === 1) tritCounts.plus++;
+                else if (trit === 0) tritCounts.zero++;
+                else if (trit === -1) tritCounts.minus++;
+                else {
+                  console.error('ERROR: ' + folder + ' has invalid trit value: ' + trit);
+                  errors++;
+                }
+              } else {
+                tritCounts.missing++;
+                console.warn('WARNING: ' + folder + '/SKILL.md missing trit in metadata');
+                warnings++;
+              }
+            });
+
+            // Calculate GF(3) sum
+            const sum = tritCounts.plus - tritCounts.minus;
+            const mod3 = ((sum % 3) + 3) % 3;
+
+            console.log('');
+            console.log('GF(3) Trit Distribution:');
+            console.log('  ⊕ PLUS (+1):  ' + tritCounts.plus);
+            console.log('  ○ ZERO (0):   ' + tritCounts.zero);
+            console.log('  ⊖ MINUS (-1): ' + tritCounts.minus);
+            console.log('  ? MISSING:    ' + tritCounts.missing);
+            console.log('');
+            console.log('Conservation: Σ = ' + sum + ' (mod 3) = ' + mod3);
+
+            if (mod3 !== 0) {
+              console.warn('WARNING: GF(3) not conserved globally (Σ ≠ 0 mod 3)');
+              console.warn('  Need ' + (3 - mod3) + ' more ⊖ or ' + mod3 + ' more ⊕ skills');
+              // Don't fail - just warn, as cross-PR triads can balance
+            } else {
+              console.log('✓ GF(3) conserved globally');
+            }
+
+            if (errors > 0) {
+              process.exit(1);
+            }
+
+            console.log('');
+            console.log('✓ GF(3) validation complete (' + warnings + ' warnings)');
+          "
+
       - name: Run tests
         run: node test.js
 
