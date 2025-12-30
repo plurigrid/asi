@@ -9,8 +9,8 @@
 | `~/.agents/scripts/` | Bootstrap + event indexer |
 | `~/.agents/skills/` | Agent skills |
 | `~/.claude/skills/` | Claude-specific skills |
-| `~/.topos/GayMove/` | Move contract sources |
-| `~/agent-o-rama/` | Core agent system (Clojure) |
+| `~/.aptos/GayMove/` | Move contract sources |
+| `~/.aptos/agent-o-rama/` | Core agent system (Clojure) |
 
 ## 28 Wallets (GF(3) Balanced)
 
@@ -33,7 +33,7 @@ Each wallet exposes via MCP:
 
 Run the triadic agent system:
 ```bash
-cd ~/agent-o-rama
+cd ~/.aptos/agent-o-rama
 clj -M:run
 ```
 
@@ -73,7 +73,7 @@ bb ~/.agents/scripts/generate-mcp-config.bb
 
 **Verify GF(3)?**
 ```bash
-cd ~/agent-o-rama && clj -M:verify
+cd ~/.aptos/agent-o-rama && clj -M:verify
 ```
 
 ## Run 26 Agents
@@ -85,7 +85,7 @@ just agents
 
 Or directly:
 ```bash
-bb ~/agent-o-rama/run-26-agents.bb
+bb ~/.aptos/agent-o-rama/run-26-agents.bb
 ```
 
 Each agent connects to OpenRouter Devstral and has its own wallet.

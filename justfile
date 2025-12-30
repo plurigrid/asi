@@ -9,20 +9,16 @@ society:
     if [ -d "/tmp/asi-install" ]; then rm -rf /tmp/asi-install; fi
     git clone --depth 1 -b aptos-society-bundle https://github.com/plurigrid/asi.git /tmp/asi-install
     
-    mkdir -p ~/.agents/genesis ~/.agents/scripts
+    mkdir -p ~/.agents/genesis ~/.agents/scripts ~/.agents/skills ~/.claude/skills
     cp /tmp/asi-install/society/genesis/* ~/.agents/genesis/
     cp /tmp/asi-install/society/scripts/* ~/.agents/scripts/
     chmod +x ~/.agents/scripts/*.bb
     
-    mkdir -p ~/.topos/GayMove
-    cp -r /tmp/asi-install/society/GayMove/* ~/.topos/GayMove/
+    mkdir -p ~/.aptos/GayMove ~/.aptos/agent-o-rama
+    cp -r /tmp/asi-install/society/GayMove/* ~/.aptos/GayMove/
+    cp -r /tmp/asi-install/society/agent-o-rama/* ~/.aptos/agent-o-rama/
+    chmod +x ~/.aptos/agent-o-rama/*.bb 2>/dev/null || true
     
-    echo "🤖 Installing Agent-O-Rama..."
-    mkdir -p ~/agent-o-rama/src/clj/agent_o_rama
-    cp -r /tmp/asi-install/society/agent-o-rama/* ~/agent-o-rama/
-    chmod +x ~/agent-o-rama/*.bb 2>/dev/null || true
-    
-    mkdir -p ~/.agents/skills ~/.claude/skills
     cp -r /tmp/asi-install/ies/* ~/.agents/skills/ 2>/dev/null || true
     cp -r /tmp/asi-install/skills/* ~/.claude/skills/ 2>/dev/null || true
     
@@ -39,7 +35,7 @@ society:
     echo "⚙️  Configuring MCP servers..."
     bb ~/.agents/scripts/generate-mcp-config.bb
     
-    cp /tmp/asi-install/society/APTOS_SOCIETY_README.md ~/.agents/APTOS_SOCIETY_README.md
+    cp /tmp/asi-install/society/APTOS_SOCIETY_README.md ~/.aptos/README.md
     rm -rf /tmp/asi-install
     
     echo ""
@@ -47,18 +43,17 @@ society:
     echo "✅ APTOS SOCIETY INSTALLED"
     echo "═══════════════════════════════════════════════════════════════"
     echo ""
-    cat ~/.agents/APTOS_SOCIETY_README.md
+    cat ~/.aptos/README.md
     echo ""
     echo "═══════════════════════════════════════════════════════════════"
-    echo "To view this README again:  cat ~/.agents/APTOS_SOCIETY_README.md"
-    echo "To run 26 agents:           just agents"
+    echo "README:      cat ~/.aptos/README.md"
+    echo "Run agents:  just agents"
     echo "═══════════════════════════════════════════════════════════════"
 
 # Run 26 agents
 agents:
-    #!/usr/bin/env bash
-    bb ~/agent-o-rama/run-26-agents.bb
+    bb ~/.aptos/agent-o-rama/run-26-agents.bb
 
 # Show README
 readme:
-    cat ~/.agents/APTOS_SOCIETY_README.md
+    cat ~/.aptos/README.md
