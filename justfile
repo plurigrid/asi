@@ -14,20 +14,26 @@ society:
     mkdir -p ~/.agents/genesis ~/.agents/scripts
     cp /tmp/asi-install/society/genesis/* ~/.agents/genesis/
     cp /tmp/asi-install/society/scripts/* ~/.agents/scripts/
+    chmod +x ~/.agents/scripts/*.bb
     
     # Install GayMove
     mkdir -p ~/.topos/GayMove
     cp -r /tmp/asi-install/society/GayMove/* ~/.topos/GayMove/
     
-    # Install skills from ies/
+    # Install skills
     mkdir -p ~/.agents/skills ~/.claude/skills
     cp -r /tmp/asi-install/ies/* ~/.agents/skills/ 2>/dev/null || true
     cp -r /tmp/asi-install/skills/* ~/.claude/skills/ 2>/dev/null || true
     
-    # Generate fresh keys + MCP config
+    # Generate fresh wallets
     echo "🔑 Generating fresh Aptos wallets..."
     bb ~/.agents/scripts/create-aptos-worlds.bb
     
+    # Initialize genesis DB
+    echo "📦 Initializing genesis database..."
+    bb ~/.agents/genesis/populate_genesis.bb
+    
+    # Configure MCP servers
     echo "⚙️  Configuring MCP servers..."
     bb ~/.agents/scripts/generate-mcp-config.bb
     
@@ -36,7 +42,7 @@ society:
     
     echo ""
     echo "✅ Aptos Society installed!"
-    echo "   28 wallets in ~/.aptos/worlds/"
-    echo "   Genesis DB: bb ~/.agents/genesis/populate_genesis.bb"
-    echo "   Skills in ~/.agents/skills/ + ~/.claude/skills/"
-    echo "   GayMove contracts in ~/.topos/GayMove/"
+    echo "   28 wallets: ~/.aptos/worlds/"
+    echo "   Genesis DB: ~/.agents/genesis/world_genesis.duckdb"
+    echo "   Skills: ~/.agents/skills/ + ~/.claude/skills/"
+    echo "   GayMove: ~/.topos/GayMove/ (already deployed on mainnet)"
