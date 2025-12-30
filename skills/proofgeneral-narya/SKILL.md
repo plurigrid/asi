@@ -13,6 +13,20 @@ metadata:
 
 > *"Observational type theory: where equality is what you can observe, not what you can prove."*
 
+## bmorphism Contributions
+
+> *"universal topos construction for social cognition and democratization of mathematical approach to problem-solving to all"*
+> — [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
+
+**Active Inference via String Diagrams**: Narya's observational bridge types connect to the [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) framework where perception and action form bidirectional loops. The bridge types implement:
+- **Reafference** (self-caused) → observationally equivalent paths
+- **Exafference** (externally-caused) → bridge types with non-trivial structure
+
+**Narya Reference** (from hatchery-papers):
+- GitHub: https://github.com/mikeshulman/narya (225+ stars)
+- Higher observational type theory proof assistant
+- Interval-free, dimension-aware type checking
+
 ## Overview
 
 This skill combines:

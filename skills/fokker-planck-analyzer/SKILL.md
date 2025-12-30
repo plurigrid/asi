@@ -9,6 +9,15 @@ metadata:
 
 > Layer 5: Convergence to Equilibrium Analysis
 
+## bmorphism Contributions
+
+> *"what would it mean to become the Fokker-Planck equation—identity as probability flow?"*
+> — [bmorphism gist](https://gist.github.com/bmorphism/a02cc1d1431d4e8b847fdc6276bc3614)
+
+**Philosophical Frame**: The Fokker-Planck equation describes how probability distributions evolve over time. bmorphism's question about "becoming" the equation points to the deep connection between identity and probability flow — the self as a dynamical system converging to equilibrium.
+
+**Active Inference Connection**: Fokker-Planck dynamics underlie [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) (Tull, Kleiner, Smithe) where free energy minimization drives probabilistic belief updates.
+
 **Version**: 1.0.0
 **Trit**: -1 (Validator - verifies steady state)
 **Bundle**: analysis
