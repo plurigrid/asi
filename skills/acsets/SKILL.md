@@ -1,6 +1,7 @@
 ---
 name: acsets-algebraic-databases
-description: "ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional navigation. Category-theoretic formalism for relational databases."
+description: 'ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional
+  navigation. Category-theoretic formalism for relational databases.'
 license: MIT
 metadata:
   source: AlgebraicJulia/ACSets.jl + music-topos + Specter CPS patterns
@@ -8,8 +9,10 @@ metadata:
   ironic_detachment: 0.73
   trit: 0
   version: 1.3.0
+  interface_ports:
+  - Commands
+  - Integration with
 ---
-
 # ACSets: Algebraic Databases Skill
 
 > *"The category of simple graphs does not even have a terminal object!"*
@@ -265,19 +268,6 @@ select([acset_field(:E, :src)], g)  # → [1, 2, 3]
 # Transform: shift all targets (same path!)
 g2 = transform([acset_field(:E, :tgt)], t -> mod1(t+1, 4), g)
 select([acset_field(:E, :tgt)], g2)  # → [3, 4, 1]
-```
-
-### Integration with ∫G (Category of Elements)
-
-Navigate the category of elements using paths:
-
-```julia
-# ∫G objects: (Ob, part_id) pairs
-# Navigate to all elements
-select([elements_of(:V)], g)  # → [(V,1), (V,2), (V,3), (V,4)]
-
-# Navigate morphism structure
-select([elements_of(:E), incident_to(:src, 1)], g)  # Edges from vertex 1
 ```
 
 ### Cross-Domain Bridge (Sexp ↔ ACSet)
@@ -1074,15 +1064,6 @@ detachment          engagement
       (both ironic AND sincere)
 ```
 
-## Commands
-
-```bash
-just acset-demo          # Run ACSet demonstration
-just acset-graph         # Create and visualize graph
-just acset-symmetric     # Symmetric graph example
-just acset-gf3           # Check GF(3) conservation
-```
-
 ---
 
 ## Ramanujan Spectral Integration (NEW 2025-12-22)
@@ -1247,37 +1228,42 @@ sheaf-cohomology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [ACSet Navigation
 - **moebius-inversion**: Poset inversion, chromatic polynomials, μ(3) = -1
 - **deepwiki-mcp**: Repository documentation (trit 0, substitutes in triads)
 
+---
 
+## r2con Speaker Resources
 
-## Scientific Skill Interleaving
+Zignature and categorical database repositories from r2con speakers:
 
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+| Speaker | Repository | Relevance |
+|---------|-----------|-----------|
+| bmorphism | [bmorphism/r2-zignatures](https://github.com/bmorphism/r2-zignatures) | Function zigs as ACSet parts |
+| bmorphism | [bmorphism/Gay.jl](https://github.com/bmorphism/Gay.jl) | Deterministic coloring for ACSet viz |
+| pancake | [radare2/radare2](https://github.com/radare2/radare2) | CFG schema as C-Set functor |
+| swoops | [swoops/libc_zignatures](https://github.com/swoops/libc_zignatures) | Signature database (ACSet rows) |
+| condret | [radareorg/r2ghidra](https://github.com/radareorg/r2ghidra) | ESIL → ACSet morphism |
 
-### Annotated Data
-- **anndata** [○] via bicomodule
-  - Both represent annotated data matrices with schema
+---
 
-### Bibliography References
+## End-of-Skill Interface
 
-- `general`: 734 citations in bib.duckdb
+## Commands
 
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
+```bash
+just acset-demo          # Run ACSet demonstration
+just acset-graph         # Create and visualize graph
+just acset-symmetric     # Symmetric graph example
+just acset-gf3           # Check GF(3) conservation
 ```
 
-This ensures compositional coherence in the Cat# equipment structure.
+### Integration with ∫G (Category of Elements)
+
+Navigate the category of elements using paths:
+
+```julia
+# ∫G objects: (Ob, part_id) pairs
+# Navigate to all elements
+select([elements_of(:V)], g)  # → [(V,1), (V,2), (V,3), (V,4)]
+
+# Navigate morphism structure
+select([elements_of(:E), incident_to(:src, 1)], g)  # Edges from vertex 1
+```

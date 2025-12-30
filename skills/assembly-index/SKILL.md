@@ -6,8 +6,14 @@ license: UNLICENSED
 metadata:
   trit: 1
   source: local
+  skill_type: Complexity Validator
+  interface_ports:
+  - Commands
+  - Integration with
+  - Related Skills
+trit: -1
+color: '#2626D8'
 ---
-
 # Assembly Index Skill: Molecular Complexity Validation
 
 **Status**: ✅ Production Ready
@@ -83,6 +89,10 @@ def ma_from_ms2(spectrum: MS2Spectrum) -> float:
     return dag.longest_path()
 ```
 
+---
+
+## End-of-Skill Interface
+
 ## Commands
 
 ```bash
@@ -108,44 +118,17 @@ assembly-index (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓  [Mol
 - **crn-topology** (+1): Generate reaction network topologies
 - **kolmogorov-compression** (-1): Algorithmic complexity baseline
 
+## r2con Speaker Resources
+
+| Speaker | Relevance | Repository/Talk |
+|---------|-----------|-----------------|
+| **oddcoder** | RAIR assembly analysis | [rair-core](https://github.com/rair-project/rair-core) |
+| **mr_phrazer** | MBA complexity (msynth) | [msynth](https://github.com/mrphrazer/msynth) |
+| **pancake** | Core r2 assembly | [radare2](https://github.com/radareorg/radare2) |
+
 ---
 
 **Skill Name**: assembly-index
 **Type**: Complexity Validator
 **Trit**: -1 (MINUS)
 **Color**: #2626D8 (Blue)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

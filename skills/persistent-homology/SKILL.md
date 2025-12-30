@@ -5,8 +5,14 @@ description: Topological data analysis for stable feature verification across fi
 license: UNLICENSED
 metadata:
   source: local
+  skill_type: Topological Data Analysis / Stable Feature Verification
+  interface_ports:
+  - Commands
+  - Integration with
+  - API
+trit: -1
+color: '#2626D8'
 ---
-
 # Persistent Homology Skill: Stable Feature Verification
 
 **Status**: ✅ Production Ready
@@ -142,57 +148,6 @@ result[:lost_stable_features]    # => disappeared features
 result[:gf3_conserved]           # => triad conservation
 ```
 
-## Commands
-
-```bash
-# Compute persistent features
-just homology-persist
-
-# Analyze specific codebase
-just homology-filter src/
-
-# Binary analysis with radare2
-just homology-binary /path/to/binary
-
-# Compare versions
-just homology-diff v1 v2
-```
-
-## API
-
-```ruby
-require 'persistent_homology'
-
-# Create analyzer
-analyzer = PersistentHomology::Analyzer.new(
-  trit: -1,
-  filtration_metric: :complexity
-)
-
-# Build filtration
-analyzer.add_codebase("src/")
-filtration = analyzer.build_filtration!
-
-# Compute persistence
-diagram = analyzer.compute_persistence!
-
-# Get stable features
-stable = diagram.stable_features(threshold: 5)
-stable.each do |feature|
-  puts "#{feature.dimension}-dim: born=#{feature.birth}, died=#{feature.death}"
-end
-```
-
-## Integration with GF(3) Triads
-
-Forms valid triads with ERGODIC (0) and PLUS (+1) skills:
-
-```
-persistent-homology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓
-persistent-homology (-1) ⊗ unworld (0) ⊗ cider-clojure (+1) = 0 ✓
-persistent-homology (-1) ⊗ glass-bead-game (0) ⊗ rubato-composer (+1) = 0 ✓
-```
-
 ## Mathematical Foundation
 
 ### Simplicial Homology
@@ -271,37 +226,69 @@ GF(3) Trit: -1 (MINUS/Analyzer)
 **GF(3)**: Forms valid triads with ERGODIC + PLUS skills
 **Stability**: Bottleneck distance bounds feature perturbation
 
+---
 
+## End-of-Skill Interface
 
-## Scientific Skill Interleaving
+## Commands
 
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+```bash
+# Compute persistent features
+just homology-persist
 
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
+# Analyze specific codebase
+just homology-filter src/
 
-### Bibliography References
+# Binary analysis with radare2
+just homology-binary /path/to/binary
 
-- `general`: 734 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
+# Compare versions
+just homology-diff v1 v2
 ```
 
-### GF(3) Naturality
+## API
 
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
+```ruby
+require 'persistent_homology'
+
+# Create analyzer
+analyzer = PersistentHomology::Analyzer.new(
+  trit: -1,
+  filtration_metric: :complexity
+)
+
+# Build filtration
+analyzer.add_codebase("src/")
+filtration = analyzer.build_filtration!
+
+# Compute persistence
+diagram = analyzer.compute_persistence!
+
+# Get stable features
+stable = diagram.stable_features(threshold: 5)
+stable.each do |feature|
+  puts "#{feature.dimension}-dim: born=#{feature.birth}, died=#{feature.death}"
+end
 ```
 
-This ensures compositional coherence in the Cat# equipment structure.
+## Integration with GF(3) Triads
+
+Forms valid triads with ERGODIC (0) and PLUS (+1) skills:
+
+```
+persistent-homology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓
+persistent-homology (-1) ⊗ unworld (0) ⊗ cider-clojure (+1) = 0 ✓
+persistent-homology (-1) ⊗ glass-bead-game (0) ⊗ rubato-composer (+1) = 0 ✓
+```
+
+## r2con Speaker Resources
+
+Binary analysis repositories from r2con speakers for Radare2Analyzer integration:
+
+| Speaker | Repository | Relevance |
+|---------|-----------|-----------|
+| oddcoder | [oddcoder/rair](https://github.com/oddcoder/rair) | RAIR Rust port for persistent CFG analysis |
+| mr_phrazer | [mrphrazer/msynth](https://github.com/mrphrazer/msynth) | MBA deobfuscation for complexity filtration |
+| alkalinesec | [aemmitt-ns/ESILSolve](https://github.com/aemmitt-ns/ESILSolve) | Symbolic exec for structural hole detection |
+| Pelissier_S | ESIL side-channel | Side-channel simulation for homology persistence |
+| condret | [radareorg/r2ghidra](https://github.com/radareorg/r2ghidra) | ESIL core for binary Betti numbers |

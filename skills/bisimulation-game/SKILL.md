@@ -7,8 +7,13 @@ metadata:
   source: music-topos + DiscoHy + DisCoPy
   xenomodern: true
   ironic_detachment: 0.42
+  interface_ports:
+  - References
+  - Commands
+  - Skill Dispersal Protocol
+  - Integration with
+  - MCP Tasks Integration
 ---
-
 # Bisimulation Game Skill
 
 > *"Two systems are bisimilar if they cannot be distinguished by any observation."*
@@ -20,6 +25,33 @@ The bisimulation game provides a framework for:
 2. **GF(3) conservation** during state transitions
 3. **Observational bridge types** for version-aware synchronization
 4. **Self-rewriting capabilities** via MCP Tasks protocol
+
+## Narya's `isBisim` Foundation
+
+This skill implements the game-theoretic interpretation of Narya's `isBisim` coinductive type:
+
+```narya
+def isBisim (A B : Type) (R : A → B → Type) : Type ≔ codata [
+| x .trr : A → B                              -- Attacker: transition A→B
+| x .liftr : (a : A) → R a (x .trr a)         -- Defender: lift preserves R
+| x .trl : B → A                              -- Attacker: transition B→A
+| x .liftl : (b : B) → R (x .trl b) b         -- Defender: lift preserves R
+| x .id.e                                      -- Arbiter: higher coherence
+  : (a0 : A.0) (b0 : B.0) (r0 : R.0 a0 b0) (a1 : A.1) (b1 : B.1) (r1 : R.1 a1 b1)
+    → isBisim (A.2 a0 a1) (B.2 b0 b1) (a2 b2 ↦ R.2 a0 a1 a2 b0 b1 b2 r0 r1) ]
+```
+
+### Game-Theoretic Interpretation
+
+| Narya Field | Game Role | Trit | Description |
+|-------------|-----------|------|-------------|
+| `.trr` | Attacker move | -1 | Forward transition challenge |
+| `.liftr` | Defender response | +1 | Prove relation preserved |
+| `.trl` | Attacker move | -1 | Backward transition challenge |
+| `.liftl` | Defender response | +1 | Prove relation preserved |
+| `.id.e` | Arbiter | 0 | Recursive coherence at identity types |
+
+**Univalence**: If Defender can always respond → `glue A B R Rb : Id Type A B`
 
 ## Game Rules
 
@@ -122,87 +154,6 @@ game.register("defend", Ty("S1'"), Ty("S2'"), lambda: +1)
 game.register("verify", Ty("S1'", "S2'"), Ty("Result"), lambda: 0)
 ```
 
-## Skill Dispersal Protocol
-
-### 1. Fork Phase (Attacker)
-
-```yaml
-fork:
-  targets:
-    - agent: codex
-      path: ~/.codex/skills/
-      trit: -1
-    - agent: claude
-      path: ~/.claude/skills/
-      trit: 0
-    - agent: cursor
-      path: ~/.cursor/skills/
-      trit: +1
-  gf3_check: true
-```
-
-### 2. Sync Phase (Defender)
-
-```yaml
-sync:
-  strategy: observational-bridge
-  bridge_type:
-    source: skills@v1
-    target: skills@v2
-    dimension: 1
-  conflict_resolution: 2d-cubical
-```
-
-### 3. Verify Phase (Arbiter)
-
-```yaml
-verify:
-  conservation: gf3
-  equivalence: bisimulation
-  timeout: 60s
-  fallback: last-known-good
-```
-
-## MCP Tasks Integration
-
-### Self-Rewriting Task
-
-```json
-{
-  "task": "skill-dispersal",
-  "objective": "Propagate skill updates to all agents",
-  "constraints": {
-    "gf3_conservation": true,
-    "bisimulation_equivalence": true,
-    "max_divergence": 0.1
-  },
-  "steps": [
-    {"action": "fork", "trit": -1},
-    {"action": "propagate", "trit": 0},
-    {"action": "verify", "trit": +1}
-  ]
-}
-```
-
-### Firecrawl Integration
-
-```json
-{
-  "task": "skill-discovery",
-  "objective": "Discover new skills from web resources",
-  "tools": ["firecrawl", "exa"],
-  "sources": [
-    "https://github.com/topics/ai-agent-skills",
-    "https://modelcontextprotocol.io/",
-    "https://agentclientprotocol.com/"
-  ],
-  "output": {
-    "format": "skill-yaml",
-    "destination": ".ruler/skills/"
-  }
-}
-```
-
 ## Resilience Patterns
 
 ### Redundant Storage
@@ -242,83 +193,6 @@ The bisimulation game embodies xenomodernity by:
          │
    bisimulation
    (both/neither)
-```
-
-## Integration with LocalSend-MCP for Skill Dispersal
-
-Use LocalSend peer discovery for resilient skill propagation:
-
-```python
-# localsend_bisim.py
-import asyncio
-from localsend_mcp import LocalSendClient
-
-class BisimulationDispersalProtocol:
-    """Disperse skills via LocalSend with bisimulation verification."""
-    
-    def __init__(self, skill_path, seed=1069):
-        self.skill_path = skill_path
-        self.client = LocalSendClient()
-        self.rng = SplitMixTernary(seed)
-        self.game_log = []
-        
-    async def discover_peers(self):
-        """Find all agents on local network."""
-        peers = await self.client.list_peers(source="all")
-        return [p for p in peers if p.get("capabilities", []).count("skill-sync")]
-    
-    async def disperse_with_bisim(self, skill_file):
-        """Disperse skill to all peers with bisimulation verification."""
-        peers = await self.discover_peers()
-        
-        for i, peer in enumerate(peers):
-            trit = (i % 3) - 1  # Assign trits: -1, 0, +1, -1, ...
-            
-            # Negotiate transfer session
-            session = await self.client.negotiate(
-                peer_id=peer["id"],
-                preferred_transport="tailscale"  # Or localsend, nats
-            )
-            
-            # Send skill (Attacker move)
-            self.game_log.append({
-                "round": len(self.game_log),
-                "role": "attacker",
-                "action": f"send:{skill_file}",
-                "peer": peer["id"],
-                "trit": trit
-            })
-            
-            result = await self.client.send(
-                session_id=session["sessionId"],
-                file_path=skill_file
-            )
-            
-            # Verify receipt (Defender move)
-            defender_trit = await self.verify_peer_receipt(peer, skill_file)
-            self.game_log.append({
-                "round": len(self.game_log),
-                "role": "defender",
-                "action": f"ack:{result['status']}",
-                "peer": peer["id"],
-                "trit": defender_trit
-            })
-            
-        # Arbiter verifies GF(3) conservation
-        return self.verify_gf3_conservation()
-    
-    def verify_gf3_conservation(self):
-        """Check that sum of trits ≡ 0 (mod 3)."""
-        total = sum(entry["trit"] for entry in self.game_log)
-        conserved = (total % 3) == 0
-        self.game_log.append({
-            "round": len(self.game_log),
-            "role": "arbiter",
-            "conserved": conserved,
-            "total_trit": total,
-            "trit": 0
-        })
-        return conserved
 ```
 
 ## Temporal vs Derivational Learning Comparison (NEW)
@@ -449,6 +323,85 @@ ROUND 3:
 }
 ```
 
+## Starred Gists: Fixpoint & Type Theory Resources
+
+### zanzix: Fixpoints of Indexed Functors
+[Fix.idr](https://gist.github.com/zanzix/02641d6a6e61f3757e3b703059619e90) - Idris indexed functor fixpoints. Bisimulation as fixpoint of observable equivalence.
+
+```idris
+-- Bisimulation relation as greatest fixpoint
+data Bisim : (s1 -> s2 -> Type) where
+  Step : (forall a. trans1 s1 a s1' -> (s2' ** (trans2 s2 a s2', Bisim s1' s2')))
+       -> Bisim s1 s2
+```
+
+### VictorTaelin: ITT-Flavored CoC Type Checker
+[itt-coc.ts](https://gist.github.com/VictorTaelin/dd291148ee59376873374aab0fd3dd78) - Observational equivalence for type-checked skill dispersal.
+
+### VictorTaelin: Affine Types
+[Affine.lean](https://gist.github.com/VictorTaelin/5584036b0ea12507b78ef883c6ae5acd) - Linear types for resource-safe skill transfer.
+
+### rdivyanshu: Streams & Unique Fixed Points
+[Nats.dfy](https://gist.github.com/rdivyanshu/2042085421d5f0762184dd7fe7cfb4cb) - Dafny streams. Bisimulation as unique fixpoint of coalgebraic behavior.
+
+### Keno: Abstract Lattice
+[abstractlattice.jl](https://gist.github.com/Keno/fa6117ae0bf9eea3f041c0cf1f33d675) - Julia abstract lattice for skill state ordering. Comment: "a quantum of abstract solace ∞"
+
+### norabelrose: Fast Kronecker Decomposition
+[kronecker_decompose.py](https://gist.github.com/norabelrose/3f7a553f4d69de3cf5bda93e2264a9c9) - Matrix decomposition for parallel game execution.
+
+### borkdude: UUID v1 in Babashka
+[uuidv1.clj](https://gist.github.com/borkdude/18b18232c00c2e2af2286d8bd36082d7) - Deterministic UUIDs for skill versioning.
+
+## QuickCheck ↔ Bisimulation Bridge
+
+Property-based testing for **game correctness**:
+
+```python
+# Generator: Random game moves
+def arbitrary_move(seed: int, player: str) -> Move:
+    rng = SplitMixTernary(seed)
+    trit = (rng.next() % 3) - 1
+    return Move(
+        player=player,
+        action=random.choice(["fork", "sync", "verify"]),
+        trit=trit
+    )
+
+# Shrinking: Find minimal distinguishing trace
+def shrink_game_trace(trace: List[Move]) -> List[List[Move]]:
+    """Adhesive complement: find minimal distinguisher."""
+    shrunk = []
+    for i in range(len(trace)):
+        candidate = trace[:i] + trace[i+1:]
+        if still_distinguishes(candidate):
+            shrunk.append(candidate)
+    return shrunk
+
+# Property: GF(3) Conservation
+def prop_gf3_conserved(game: BisimulationGame) -> bool:
+    return sum(m.trit for m in game.history) % 3 == 0
+```
+
+## Incremental Query Updating in Bisimulation
+
+From [Kris Brown's Adhesive Categories](https://topos.institute/blog/2025-08-15-incremental-adhesive/):
+
+```
+Game state G   = current skill configurations across agents
+Query Q        = "are S₁ and S₂ bisimilar?"
+Rule f: L ↣ R = skill update (version bump)
+
+Incremental update: When we apply skill update,
+new distinguishing moves = rooted search from changed states
+
+Q ≅ Q_G +_{Q_L} Q_R  (decomposition of bisimulation game)
+```
+
+---
+
+## End-of-Skill Interface
+
 ## Commands
 
 ```bash
@@ -462,37 +415,174 @@ just bisim-transcript     # Show attacker/defender transcript
 just bisim-json           # Output verification as JSON
 ```
 
+## MCP Tasks Integration
 
+### Self-Rewriting Task
 
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Simulation
-- **simpy** [○] via bicomodule
-  - Hub for discrete event simulation
-
-### Bibliography References
-
-- `game-theory`: 21 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
+```json
+{
+  "task": "skill-dispersal",
+  "objective": "Propagate skill updates to all agents",
+  "constraints": {
+    "gf3_conservation": true,
+    "bisimulation_equivalence": true,
+    "max_divergence": 0.1
+  },
+  "steps": [
+    {"action": "fork", "trit": -1},
+    {"action": "propagate", "trit": 0},
+    {"action": "verify", "trit": +1}
+  ]
+}
 ```
 
-### GF(3) Naturality
+### Firecrawl Integration
 
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
+```json
+{
+  "task": "skill-discovery",
+  "objective": "Discover new skills from web resources",
+  "tools": ["firecrawl", "exa"],
+  "sources": [
+    "https://github.com/topics/ai-agent-skills",
+    "https://modelcontextprotocol.io/",
+    "https://agentclientprotocol.com/"
+  ],
+  "output": {
+    "format": "skill-yaml",
+    "destination": ".ruler/skills/"
+  }
+}
 ```
 
-This ensures compositional coherence in the Cat# equipment structure.
+## Integration with LocalSend-MCP for Skill Dispersal
+
+Use LocalSend peer discovery for resilient skill propagation:
+
+```python
+# localsend_bisim.py
+import asyncio
+from localsend_mcp import LocalSendClient
+
+class BisimulationDispersalProtocol:
+    """Disperse skills via LocalSend with bisimulation verification."""
+    
+    def __init__(self, skill_path, seed=1069):
+        self.skill_path = skill_path
+        self.client = LocalSendClient()
+        self.rng = SplitMixTernary(seed)
+        self.game_log = []
+        
+    async def discover_peers(self):
+        """Find all agents on local network."""
+        peers = await self.client.list_peers(source="all")
+        return [p for p in peers if p.get("capabilities", []).count("skill-sync")]
+    
+    async def disperse_with_bisim(self, skill_file):
+        """Disperse skill to all peers with bisimulation verification."""
+        peers = await self.discover_peers()
+        
+        for i, peer in enumerate(peers):
+            trit = (i % 3) - 1  # Assign trits: -1, 0, +1, -1, ...
+            
+            # Negotiate transfer session
+            session = await self.client.negotiate(
+                peer_id=peer["id"],
+                preferred_transport="tailscale"  # Or localsend, nats
+            )
+            
+            # Send skill (Attacker move)
+            self.game_log.append({
+                "round": len(self.game_log),
+                "role": "attacker",
+                "action": f"send:{skill_file}",
+                "peer": peer["id"],
+                "trit": trit
+            })
+            
+            result = await self.client.send(
+                session_id=session["sessionId"],
+                file_path=skill_file
+            )
+            
+            # Verify receipt (Defender move)
+            defender_trit = await self.verify_peer_receipt(peer, skill_file)
+            self.game_log.append({
+                "round": len(self.game_log),
+                "role": "defender",
+                "action": f"ack:{result['status']}",
+                "peer": peer["id"],
+                "trit": defender_trit
+            })
+            
+        # Arbiter verifies GF(3) conservation
+        return self.verify_gf3_conservation()
+    
+    def verify_gf3_conservation(self):
+        """Check that sum of trits ≡ 0 (mod 3)."""
+        total = sum(entry["trit"] for entry in self.game_log)
+        conserved = (total % 3) == 0
+        self.game_log.append({
+            "round": len(self.game_log),
+            "role": "arbiter",
+            "conserved": conserved,
+            "total_trit": total,
+            "trit": 0
+        })
+        return conserved
+```
+
+## Skill Dispersal Protocol
+
+### 1. Fork Phase (Attacker)
+
+```yaml
+fork:
+  targets:
+    - agent: codex
+      path: ~/.codex/skills/
+      trit: -1
+    - agent: claude
+      path: ~/.claude/skills/
+      trit: 0
+    - agent: cursor
+      path: ~/.cursor/skills/
+      trit: +1
+  gf3_check: true
+```
+
+### 2. Sync Phase (Defender)
+
+```yaml
+sync:
+  strategy: observational-bridge
+  bridge_type:
+    source: skills@v1
+    target: skills@v2
+    dimension: 1
+  conflict_resolution: 2d-cubical
+```
+
+### 3. Verify Phase (Arbiter)
+
+```yaml
+verify:
+  conservation: gf3
+  equivalence: bisimulation
+  timeout: 60s
+  fallback: last-known-good
+```
+
+## References
+
+- [Towards Foundations of Categorical Cybernetics](https://arxiv.org/abs/2105.06332) - Capucci, Gavranović, Hedges, Rischel
+- [Bicategories of Automata, Automata in Bicategories](https://arxiv.org/pdf/2303.03865) - Boccali, Laretto, Loregian, Luneia (ACT 2023)
+
+## r2con Speaker Resources
+
+| Speaker | Handle | Repository | Relevance |
+|---------|--------|------------|-----------|
+| swoops | swoops | [libc_zignatures](https://github.com/swoops/libc_zignatures) | Signature similarity for bisimulation equivalence of binary functions |
+| bmorphism | bmorphism | [r2zignatures](https://github.com/bmorphism/r2zignatures) | Zignature-based observational equivalence testing |
+| condret | condret | [r2ghidra](https://github.com/radareorg/r2ghidra) | Decompilation for semantic equivalence in bisim games |
+| alkalinesec | alkalinesec | [ESILSolve](https://github.com/aemmitt-ns/esilsolve) | Symbolic execution for state equivalence verification |

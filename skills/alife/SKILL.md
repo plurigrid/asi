@@ -1,8 +1,14 @@
 ---
 name: alife
-description: Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelrod, Epstein-Axtell), ALIEN simulation, Lenia, NCA, swarm intelligence, and evolutionary computation. 337 pages extracted, 80+ papers, 153 figures.
+description: Comprehensive Artificial Life skill combining ALIFE2025 proceedings,
+  classic texts (Axelrod, Epstein-Axtell), ALIEN simulation, Lenia, NCA, swarm intelligence,
+  and evolutionary computation. 337 pages extracted, 80+ papers, 153 figures.
+metadata:
+  skill_type: Research Reference / Algorithm Library / Simulation Toolkit
+  interface_ports:
+  - Commands
+trit: 1
 ---
-
 # ALIFE: Artificial Life Comprehensive Skill
 
 **Status**: ✅ Production Ready
@@ -306,67 +312,6 @@ ALIFE_THEMES = Dict(
 # +1: Emergence (patterns, behaviors)
 ```
 
-## Commands
-
-```bash
-just alife-toc                    # Full table of contents
-just alife-paper 42               # Get paper at page 42
-just alife-equation "lenia"       # Find Lenia equations
-just alife-axelrod                # Axelrod summary
-just alife-sugarscape             # Sugarscape patterns
-just alife-alien                  # ALIEN simulation info
-just alife-lenia "orbium"         # Lenia creature lookup
-```
-
-### Executable Commands (bash/python)
-
-```bash
-# Run Lenia simulation (via leniax)
-python -c "
-import jax.numpy as jnp
-from leniax import Lenia
-lenia = Lenia.from_name('orbium')
-state = lenia.init_state(jax.random.PRNGKey(42))
-for _ in range(100): state = lenia.step(state)
-print(f'Final mass: {state.sum():.2f}')
-"
-
-# Run NCA step (via cax)
-python -c "
-from cax import NCA
-import jax
-nca = NCA(hidden_channels=12)
-params = nca.init(jax.random.PRNGKey(0), jnp.zeros((64, 64, 16)))
-grid = jax.random.uniform(jax.random.PRNGKey(1), (64, 64, 16))
-new_grid = nca.apply(params, grid)
-print(f'Grid shape: {new_grid.shape}')
-"
-
-# TIT-FOR-TAT simulation
-python -c "
-import axelrod as axl
-players = [axl.TitForTat(), axl.Defector(), axl.Cooperator(), axl.Random()]
-tournament = axl.Tournament(players, turns=200, repetitions=10)
-results = tournament.play()
-print(results.ranked_names[:3])
-"
-
-# Sugarscape-style agent (simplified)
-python -c "
-import numpy as np
-class Agent:
-    def __init__(self): self.x, self.y, self.sugar = 0, 0, 10
-    def move(self, grid): 
-        neighbors = [(self.x+dx, self.y+dy) for dx,dy in [(-1,0),(1,0),(0,-1),(0,1)]]
-        best = max(neighbors, key=lambda p: grid[p[0]%50, p[1]%50])
-        self.x, self.y = best[0]%50, best[1]%50
-        self.sugar += grid[self.x, self.y]
-grid = np.random.rand(50, 50) * 4
-agent = Agent(); [agent.move(grid) for _ in range(100)]
-print(f'Final sugar: {agent.sugar:.1f}')
-"
-```
-
 ## External Libraries
 
 | Library | Purpose | Install |
@@ -440,6 +385,18 @@ graph TB
 - `bisimulation-game` - Skill dispersal with GF(3) conservation
 
 **See**: [INTEROP.md](./INTEROP.md) for full integration patterns
+
+## r2con Speaker Resources
+
+Malware evolution and binary analysis from r2con speakers relevant to ALife:
+
+| Speaker | Repository | Relevance |
+|---------|-----------|-----------|
+| cryptax | [cryptax/droidlysis](https://github.com/cryptax/droidlysis) | Malware taxonomy as ALife evolution |
+| cryptax | [rednaga/APKiD](https://github.com/rednaga/APKiD) | Android packer detection (fitness landscape) |
+| iGio90 | [iGio90/Dwarf](https://github.com/iGio90/Dwarf) | Runtime agent as organism observer |
+| swoops | [swoops/libc_zignatures](https://github.com/swoops/libc_zignatures) | Function signature evolution |
+| oleavr | [frida/frida](https://github.com/frida/frida) | Dynamic instrumentation for agent behavior |
 
 ## Citations
 
@@ -522,37 +479,67 @@ p(g) = \text{softmax}(\theta_g) \quad g \in \{\text{AND}, \text{OR}, \text{XOR},
 
 **Exa Index**: `/Users/bob/ies/ALIFE_EXA_REFINED_INDEX.md`
 
+---
 
+## End-of-Skill Interface
 
-## Scientific Skill Interleaving
+## Commands
 
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Bioinformatics
-- **biopython** [○] via bicomodule
-  - Biological computation
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
+```bash
+just alife-toc                    # Full table of contents
+just alife-paper 42               # Get paper at page 42
+just alife-equation "lenia"       # Find Lenia equations
+just alife-axelrod                # Axelrod summary
+just alife-sugarscape             # Sugarscape patterns
+just alife-alien                  # ALIEN simulation info
+just alife-lenia "orbium"         # Lenia creature lookup
 ```
 
-### GF(3) Naturality
+### Executable Commands (bash/python)
 
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
+```bash
+# Run Lenia simulation (via leniax)
+python -c "
+import jax.numpy as jnp
+from leniax import Lenia
+lenia = Lenia.from_name('orbium')
+state = lenia.init_state(jax.random.PRNGKey(42))
+for _ in range(100): state = lenia.step(state)
+print(f'Final mass: {state.sum():.2f}')
+"
 
-This ensures compositional coherence in the Cat# equipment structure.
+# Run NCA step (via cax)
+python -c "
+from cax import NCA
+import jax
+nca = NCA(hidden_channels=12)
+params = nca.init(jax.random.PRNGKey(0), jnp.zeros((64, 64, 16)))
+grid = jax.random.uniform(jax.random.PRNGKey(1), (64, 64, 16))
+new_grid = nca.apply(params, grid)
+print(f'Grid shape: {new_grid.shape}')
+"
+
+# TIT-FOR-TAT simulation
+python -c "
+import axelrod as axl
+players = [axl.TitForTat(), axl.Defector(), axl.Cooperator(), axl.Random()]
+tournament = axl.Tournament(players, turns=200, repetitions=10)
+results = tournament.play()
+print(results.ranked_names[:3])
+"
+
+# Sugarscape-style agent (simplified)
+python -c "
+import numpy as np
+class Agent:
+    def __init__(self): self.x, self.y, self.sugar = 0, 0, 10
+    def move(self, grid): 
+        neighbors = [(self.x+dx, self.y+dy) for dx,dy in [(-1,0),(1,0),(0,-1),(0,1)]]
+        best = max(neighbors, key=lambda p: grid[p[0]%50, p[1]%50])
+        self.x, self.y = best[0]%50, best[1]%50
+        self.sugar += grid[self.x, self.y]
+grid = np.random.rand(50, 50) * 4
+agent = Agent(); [agent.move(grid) for _ in range(100)]
+print(f'Final sugar: {agent.sugar:.1f}')
+"
+```

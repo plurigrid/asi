@@ -1,10 +1,15 @@
 ---
 name: propagators
-description: "Sussman/Radul propagator networks for constraint propagation and bidirectional dataflow."
+description: Sussman/Radul propagator networks for constraint propagation and bidirectional
+  dataflow.
 trit: 0
 bundle: strange-loops
+metadata:
+  skill_type: Constraint Propagation Generator
+  interface_ports:
+  - Related Skills
+  - GF(3) Integration
 ---
-
 # Propagators Skill
 
 > *"The Art of the Propagator" — Radul & Sussman, 2009*
@@ -157,22 +162,6 @@ struct AdhesionHoriz <: ScopedPropagator  # ↔ Beck-Chevalley
 end
 ```
 
-## GF(3) Integration
-
-```julia
-# Triadic propagator network
-struct TriadicCell
-    trit::Int  # -1, 0, +1
-    value::Any
-    neighbors::Vector{Propagator}
-end
-
-# Conservation: sum of connected cells = 0 (mod 3)
-function verify_gf3(cells::Vector{TriadicCell})
-    sum(c.trit for c in cells) % 3 == 0
-end
-```
-
 ## Dependency-Directed Backtracking
 
 When contradiction (⊤) is reached:
@@ -216,13 +205,6 @@ When contradiction (⊤) is reached:
 1. **Radul & Sussman (2009)** - "The Art of the Propagator"
 2. **Steele (1980)** - "The Definition and Implementation of Constraint Languages"
 3. **Apt (1999)** - "The Essence of Constraint Propagation"
-
-## Related Skills
-
-- `epistemic-arbitrage` - Uses scoped propagators
-- `constraint-logic` - Logical foundation
-- `dataflow` - One-way version
-- `interaction-nets` - Another "no control" model
 
 ---
 
@@ -412,37 +394,37 @@ def propagate_with_neighbors(constraints, initial_values):
 **GF(3)**: Forms valid triads with coordinators (0) and validators (-1)
 **Applications**: Bidirectional constraints, type inference, epistemic arbitrage, CAD modeling
 
+---
 
+## End-of-Skill Interface
 
-## Scientific Skill Interleaving
+## GF(3) Integration
 
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+```julia
+# Triadic propagator network
+struct TriadicCell
+    trit::Int  # -1, 0, +1
+    value::Any
+    neighbors::Vector{Propagator}
+end
 
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
+# Conservation: sum of connected cells = 0 (mod 3)
+function verify_gf3(cells::Vector{TriadicCell})
+    sum(c.trit for c in cells) % 3 == 0
+end
 ```
 
-### GF(3) Naturality
+## r2con Speaker Resources
 
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
+| Speaker | Relevance | Repository/Talk |
+|---------|-----------|-----------------|
+| **alkalinesec** | ESILSolve constraint propagation | [esilsolve](https://github.com/aemmitt-ns/esilsolve) |
+| **condret** | ESIL symbolic cells | [radare2 ESIL](https://github.com/radareorg/radare2) |
+| **Pelissier_S** | Symbolic execution | r2con 2020 talk |
 
-This ensures compositional coherence in the Cat# equipment structure.
+## Related Skills
+
+- `epistemic-arbitrage` - Uses scoped propagators
+- `constraint-logic` - Logical foundation
+- `dataflow` - One-way version
+- `interaction-nets` - Another "no control" model

@@ -361,37 +361,14 @@ SSL_CERT_FILE="$FLOX_ENV/etc/ssl/certs/ca-bundle.crt"
 - **Info manuals**: 97
 - **Total documentation**: ~280K lines
 
+## r2con Speaker Resources
 
+radare2 ecosystem repositories from r2con speakers relevant to effective-topos:
 
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `category-theory`: 139 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.
+| Speaker | Repository | Relevance |
+|---------|-----------|-----------|
+| pancake (trufae) | [radare2/radare2](https://github.com/radare2/radare2) | Core r2 included in flox env |
+| pancake | [radare2/r2pipe](https://github.com/radare2/r2pipe) | Scripting bindings (Guile/OCaml) |
+| xvilka | [radareorg/awesome-decompilation](https://github.com/radareorg/awesome-decompilation) | Decompiler reference |
+| condret | [radareorg/r2ghidra](https://github.com/radareorg/r2ghidra) | ESIL + Ghidra bridge |
+| bmorphism | [bmorphism/Gay.jl](https://github.com/bmorphism/Gay.jl) | Deterministic colors for all tools |

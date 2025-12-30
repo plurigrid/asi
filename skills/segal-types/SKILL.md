@@ -11,8 +11,9 @@ metadata:
   - Lean4
   - Agda
   - InfinityCosmos
+  interface_ports:
+  - References
 ---
-
 # Segal Types Skill
 
 > *"A Segal type is a type where binary composites exist uniquely up to homotopy."*
@@ -124,43 +125,20 @@ end
 
 3. **2-out-of-3**: If two of f, g, g∘f are equivalences, so is the third.
 
+---
+
+## End-of-Skill Interface
+
+## r2con Speaker Resources
+
+| Speaker | Relevance | Repository/Talk |
+|---------|-----------|-----------------|
+| **bmorphism** | Category theory signatures | [libc_zignatures](https://github.com/bmorphism/libc_zignatures) |
+| **condret** | ESIL semantics (∞-cat structure) | [radare2 ESIL](https://github.com/radareorg/radare2) |
+| **thestr4ng3r** | CFG as ∞-groupoid | [r2ghidra](https://github.com/radareorg/r2ghidra) |
+
 ## References
 
 - Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories." *Higher Structures* 1(1):116-193.
 - [Rzk repository](https://github.com/rzk-lang/rzk)
 - [InfinityCosmos](https://github.com/emilyriehl/infinity-cosmos)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `homotopy-theory`: 29 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

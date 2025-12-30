@@ -1,6 +1,7 @@
 ---
 name: discopy
-description: "DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum circuits, QNLP, operads, and tensor networks."
+description: 'DisCoPy: Python library for computing with string diagrams - monoidal
+  categories, quantum circuits, QNLP, operads, and tensor networks.'
 license: BSD-3-Clause
 metadata:
   source: discopy/discopy + DeepWiki (8 interactions 2025-12-22)
@@ -9,8 +10,11 @@ metadata:
   trit: 0
   version: 2.0.0
   triangulated: 2025-12-22
+  interface_ports:
+  - Commands
+  - Related Skills
+trit: 0
 ---
-
 # DisCoPy: String Diagrams in Python
 
 > *"String diagrams are the syntax, functors are the semantics."*
@@ -441,26 +445,7 @@ boxes = [gay_colored_box(f'f{i}', x, x, 0x42D, i) for i in range(5)]
 
 ---
 
-## Commands
-
-```bash
-just discopy-demo           # Run DisCoPy demonstration
-just discopy-quantum        # Quantum circuit examples
-just discopy-qnlp          # QNLP parsing examples
-just discopy-zx            # ZX-calculus optimization
-just discopy-tensor        # Tensor network contraction
-just discopy-operad        # Operad composition examples
-```
-
 ---
-
-## Related Skills
-
-- **operad-compose**: Operadic composition patterns (+1)
-- **gay-mcp**: Deterministic colors for diagram elements (+1)
-- **proofgeneral-narya**: Type-theoretic diagram verification (-1)
-- **rubato-composer**: Musical diagram applications (+1)
-- **three-match**: 3-coloring for diagram validation (-1)
 
 ---
 
@@ -486,37 +471,36 @@ just discopy-operad        # Operad composition examples
 **GF(3)**: Substitutes for other ERGODIC skills in triads
 **Qualified**: 2025-12-22 (8 DeepWiki interactions)
 
+---
 
+## End-of-Skill Interface
 
-## Scientific Skill Interleaving
+## Commands
 
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
+```bash
+just discopy-demo           # Run DisCoPy demonstration
+just discopy-quantum        # Quantum circuit examples
+just discopy-qnlp          # QNLP parsing examples
+just discopy-zx            # ZX-calculus optimization
+just discopy-tensor        # Tensor network contraction
+just discopy-operad        # Operad composition examples
 ```
 
-### GF(3) Naturality
+## Related Skills
 
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
+- **operad-compose**: Operadic composition patterns (+1)
+- **gay-mcp**: Deterministic colors for diagram elements (+1)
+- **proofgeneral-narya**: Type-theoretic diagram verification (-1)
+- **rubato-composer**: Musical diagram applications (+1)
+- **three-match**: 3-coloring for diagram validation (-1)
 
-This ensures compositional coherence in the Cat# equipment structure.
+## r2con Speaker Resources
+
+Color and diagram repositories from r2con speakers relevant to DisCoPy:
+
+| Speaker | Repository | Relevance |
+|---------|-----------|-----------|
+| bmorphism | [bmorphism/Gay.jl](https://github.com/bmorphism/Gay.jl) | Deterministic diagram coloring |
+| bmorphism | [bmorphism/r2-zignatures](https://github.com/bmorphism/r2-zignatures) | Function signatures as categorical objects |
+| pancake | [radare2/radare2](https://github.com/radare2/radare2) | CFG as monoidal diagrams |
+| thestr4ng3r | [rizinorg/cutter](https://github.com/rizinorg/cutter) | Graph visualization backend |

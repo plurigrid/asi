@@ -708,37 +708,12 @@ plurigrid/asi/skills/blackhat-go/SKILL.md   # This skill (AAIF-enhanced)
 
 *"For AI agents to reach their full potential, developers and enterprises need trustworthy infrastructure and accessible tools to build on."* — Nick Cooper, OpenAI
 
+## r2con Speaker Resources
 
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.
+| Speaker | Handle | Repository | Relevance |
+|---------|--------|------------|-----------|
+| oleavr | oleavr | [frida-core](https://github.com/frida/frida-core) | Dynamic instrumentation for mobile/desktop security |
+| oleavr | oleavr | [cryptoshark](https://github.com/nicknisi/cryptoshark) | Self-modifying code analysis |
+| cryptax | cryptax | [droidlysis](https://github.com/cryptax/droidlysis) | Android malware automated analysis |
+| cryptax | cryptax | [APKiD](https://github.com/rednaga/APKiD) | Android application identifier (packers, protectors) |
+| iGio90 | iGio90 | [Dwarf](https://github.com/iGio90/Dwarf) | Full-featured Frida GUI debugger |
