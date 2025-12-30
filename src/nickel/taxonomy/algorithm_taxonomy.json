@@ -1,0 +1,321 @@
+{
+  "title" : "Aperiodic Tiling Algorithm Taxonomy",
+  "version" : "1.0",
+  "date" : "2025-12-29",
+  "classes" : [ {
+    "name" : "Substitution / Inflation-Deflation",
+    "id" : "substitution",
+    "description" : "Replace larger tiles with smaller tiles via fixed rules",
+    "variants" : [ {
+      "name" : "Robinson Triangle",
+      "tiling" : [ "penrose-p2", "penrose-p3" ],
+      "method" : "Divide rhombs into isosceles triangles, subdivide recursively",
+      "subdivision-factor" : "φ (golden ratio)",
+      "complexity" : "O(φ^n) tiles after n iterations",
+      "source" : "Preshing 2011, Robinson 1971"
+    }, {
+      "name" : "Kite-Dart Subdivision",
+      "tiling" : [ "penrose-p2" ],
+      "method" : "Acute triangles → 3 children, Obtuse → 2 children",
+      "colors" : [ "red", "blue" ],
+      "source" : "Tatham 2023"
+    }, {
+      "name" : "Metatile Expansion",
+      "tiling" : [ "hat", "spectre" ],
+      "method" : "4 metatiles (H, T, P, F) expand into 7-13 children each",
+      "children-per-tile" : {
+        "H" : 13,
+        "T" : 7,
+        "P" : 10,
+        "F" : 10
+      },
+      "distorting?" : true,
+      "source" : "Smith et al. 2023, Tatham 2023"
+    }, {
+      "name" : "Spectre 9-Hexagon System",
+      "tiling" : [ "spectre" ],
+      "method" : "9 hex types (G,D,J,L,X,P,S,F,Y) with 7-8 children",
+      "chiral?" : true,
+      "source" : "Smith et al. 2023"
+    } ],
+    "advantages" : [ "Straightforward implementation", "Natural hierarchy for zooming", "Provably covers entire plane" ],
+    "disadvantages" : [ "Exponential blowup requires pruning", "Non-uniform probability distribution", "Hat/Spectre has geometric distortion" ]
+  }, {
+    "name" : "Combinatorial Coordinates",
+    "id" : "combinatorial",
+    "description" : "Address tiles by hierarchical path, navigate via coordinate manipulation",
+    "structure" : {
+      "coordinate-format" : "Sequence of (type, child-index) pairs",
+      "example" : "[A [D 3] [H 7] [P 2]]",
+      "interpretation" : "Tile of type A, 3rd child of D, 7th child of H, 2nd child of P"
+    },
+    "operations" : [ {
+      "name" : "step-to-neighbor",
+      "input" : "(coords, edge-index)",
+      "output" : "(new-coords, incoming-edge)",
+      "method" : "Lookup table based on tile type and edge"
+    }, {
+      "name" : "extend-lazily",
+      "input" : "(coords, depth)",
+      "output" : "extended-coords",
+      "method" : "Random choice of parent when crossing boundary"
+    }, {
+      "name" : "geometric-position",
+      "input" : "coords",
+      "output" : "(x, y, angle)",
+      "method" : "Accumulate transformations down the hierarchy"
+    } ],
+    "advantages" : [ "Uniform probability distribution (exact!)", "Infinite tiling without pre-expansion", "O(1) amortized neighbor lookup", "Works identically for all tiling types", "No geometric distortion concerns" ],
+    "disadvantages" : [ "More complex implementation", "Requires adjacency lookup tables", "Random extension means non-deterministic (unless seeded)" ],
+    "source" : "Simon Tatham 2023"
+  }, {
+    "description" : "Project n-dimensional lattice onto 2D via irrational slope",
+    "properties" : {
+      "always-produces" : "Rhombus tiles only",
+      "aperiodic-for" : "n ≠ 3, 4, 6",
+      "symmetry" : "n-fold rotational around center",
+      "color-patterns" : "Natural from 5D coordinates"
+    },
+    "algorithm" : [ "1. Create n families of parallel lines (grid)", "2. Space lines by irrational distances", "3. Find intersection points", "4. Dual to intersections gives tile vertices", "5. Shift vector determines local patch" ],
+    "disadvantages" : [ "Only works for rhombus tilings", "Not applicable to Hat/Spectre", "Complex math (linear algebra in n dimensions)" ],
+    "name" : "De Bruijn Multigrid / Projection Method",
+    "implementations" : [ {
+      "name" : "Krita Multigrid Generator",
+      "language" : "cpp",
+      "features" : [ "Interactive parameters", "Real-time preview" ]
+    }, {
+      "name" : "byewokko/penrose",
+      "language" : "python",
+      "source" : "github.com/byewokko/penrose"
+    } ],
+    "source" : "N.G. de Bruijn 1981",
+    "advantages" : [ "Mathematically elegant", "Natural quasicrystal connection", "Produces beautiful color patterns from high-D coords", "Deterministic given shift vector" ],
+    "id" : "projection",
+    "parameters" : {
+      "dimensions" : "n (5 for Penrose, 7 for some others)",
+      "shift-vector" : "γ ∈ [0,1)^n (determines which tiles appear)",
+      "projection-matrix" : "Maps R^n → R^2"
+    }
+  }, {
+    "description" : "Local edge/vertex constraints force global aperiodicity",
+    "theorem" : "Goodman-Strauss 1998: Any substitution tiling has equivalent matching rules",
+    "disadvantages" : [ "Backtracking can be slow", "Finding matching rules is non-trivial", "Not all aperiodic sets have local rules" ],
+    "name" : "Matching Rules / Constraint Propagation",
+    "source" : "Chaim Goodman-Strauss 1998",
+    "advantages" : [ "Local rules, global structure emerges", "Natural for constraint programming", "Connects to decidability theory" ],
+    "algorithms" : [ {
+      "name" : "Greedy Placement",
+      "method" : "Place tiles one at a time, backtrack on conflict",
+      "complexity" : "Exponential worst case"
+    }, {
+      "name" : "SAT Solver",
+      "method" : "Encode constraints as boolean satisfiability",
+      "source" : "nhatcher 2024 - Hat/Spectre via SAT"
+    }, {
+      "name" : "Wave Function Collapse",
+      "method" : "Iteratively constrain possibilities based on neighbors",
+      "related" : "Sudoku solving"
+    } ],
+    "id" : "matching-rules",
+    "constraint-types" : [ {
+      "name" : "Edge Matching",
+      "description" : "Colored/shaped edges must match neighbors",
+      "example" : "Penrose arrow decorations",
+      "enforcement" : "Jigsaw-piece protrusions or color rules"
+    }, {
+      "name" : "Vertex Rules",
+      "description" : "Only certain tile configurations around vertices",
+      "example" : "Penrose has 7 legal vertex types",
+      "count" : {
+        "penrose-p3" : 7,
+        "hat" : "~20"
+      }
+    }, {
+      "name" : "Conway Worms",
+      "description" : "Forced patterns that propagate across tiling",
+      "property" : "Create long-range order from local rules"
+    } ]
+  }, {
+    "description" : "Traverse tiles, derive walk direction from position/coords",
+    "replacement-policies" : [ {
+      "name" : "With Replacement",
+      "property" : "Can revisit tiles",
+      "effect" : "Periodic potential in walk",
+      "use-case" : "Brownian motion simulation"
+    }, {
+      "name" : "Without Replacement",
+      "property" : "Never revisit (self-avoiding walk)",
+      "effect" : "Aperiodic trajectory",
+      "use-case" : "Space-filling exploration"
+    } ],
+    "disadvantages" : [ "Walk properties depend on angle derivation", "May not cover all tiles uniformly" ],
+    "name" : "Random Walk on Tile Positions",
+    "source" : "Ben-Edwards44/Aperiodic-Monotile-Walk",
+    "advantages" : [ "Simple to implement", "Natural visualization", "Connects tilings to dynamical systems" ],
+    "angle-derivation-methods" : [ {
+      "name" : "Position Modular",
+      "formula" : "angle = (x * y) mod 360",
+      "source" : "Ben-Edwards44"
+    }, {
+      "name" : "Coordinate Product",
+      "formula" : "angle = (idx+1) * (batch_sum+1) * (triad_sum+1) * 17 mod 360",
+      "source" : "triad_spectre_unified.clj"
+    }, {
+      "name" : "Hash-Based",
+      "formula" : "angle = hash(tile_id) mod 360",
+      "property" : "Deterministic but unpredictable"
+    }, {
+      "name" : "Edge-Indexed",
+      "formula" : "angle = edge_crossed * 120 + tile_type * 30",
+      "property" : "Reflects local geometry"
+    } ],
+    "locality-constraints" : [ {
+      "name" : "P-adic Locality",
+      "formula" : "distance = p^(-level_difference)",
+      "property" : "Nearby in hierarchy = close in metric",
+      "threshold" : "Stay within batch if dist ≤ threshold"
+    }, {
+      "name" : "Euclidean Radius",
+      "formula" : "Must stay within R of current position",
+      "use-case" : "Bounded exploration"
+    } ],
+    "id" : "random-walk"
+  }, {
+    "description" : "Automata that transform coordinate strings for neighbor lookup",
+    "properties" : [ "Constant memory (finite states)", "Linear time in coordinate length", "Composable (chain lookups)", "Deterministic" ],
+    "disadvantages" : [ "Complex to derive transducers", "Not intuitive to understand" ],
+    "name" : "Finite-State Transducers",
+    "source" : "Tatham 2023 - aperiodic-transducers",
+    "advantages" : [ "Very efficient neighbor lookup", "Formally verifiable", "Hardware implementable" ],
+    "structure" : {
+      "input" : "Coordinate string (tile address)",
+      "output" : "Neighbor coordinate string",
+      "states" : "Represent 'carry' during string processing",
+      "transitions" : "Based on tile type and edge index"
+    },
+    "id" : "transducers",
+    "implementation" : {
+      "penrose" : "~20 states per edge type",
+      "hat" : "~100 states (more complex metatiles)"
+    }
+  }, {
+    "description" : "Flood-fill from seed tile, adding neighbors until region covered",
+    "algorithm" : [ "1. Start with seed tile in queue", "2. Pop tile, add to output if in bounds", "3. For each edge, compute neighbor coords", "4. Add unvisited neighbors to queue", "5. Repeat until queue empty or region filled" ],
+    "disadvantages" : [ "Requires efficient neighbor computation", "Order of tile generation may vary" ],
+    "neighbor-methods" : [ "combinatorial-coords", "substitution-reverse", "geometric-adjacency" ],
+    "name" : "BFS/DFS Patch Generation",
+    "pruning-strategies" : [ {
+      "name" : "Bounding Box",
+      "method" : "Skip tiles entirely outside target rectangle"
+    }, {
+      "name" : "Distance Limit",
+      "method" : "Stop when too far from seed"
+    }, {
+      "name" : "Tile Count",
+      "method" : "Stop after N tiles generated"
+    } ],
+    "source" : "Tatham spectre.c",
+    "advantages" : [ "Generates exactly the needed region", "No wasted tiles", "Natural for interactive exploration" ],
+    "id" : "bfs-patch"
+  } ],
+  "comparison" : {
+    "columns" : [ "substitution", "combinatorial", "projection", "matching-rules", "random-walk", "transducers", "bfs-patch" ],
+    "rows" : [ {
+      "property" : "Supports Penrose P2/P3",
+      "values" : [ true, true, true, true, true, true, true ]
+    }, {
+      "property" : "Supports Hat",
+      "values" : [ true, true, false, true, true, true, true ]
+    }, {
+      "property" : "Supports Spectre",
+      "values" : [ true, true, false, true, true, true, true ]
+    }, {
+      "property" : "Uniform probability",
+      "values" : [ false, true, true, true, false, true, true ]
+    }, {
+      "property" : "Infinite tiling",
+      "values" : [ true, true, true, false, true, true, true ]
+    }, {
+      "property" : "O(1) neighbor lookup",
+      "values" : [ false, true, false, false, true, true, true ]
+    }, {
+      "property" : "Deterministic (seeded)",
+      "values" : [ true, true, true, false, true, true, true ]
+    }, {
+      "property" : "Simple implementation",
+      "values" : [ true, false, false, true, true, false, false ]
+    }, {
+      "property" : "Memory efficient",
+      "values" : [ false, true, false, true, true, true, true ]
+    }, {
+      "property" : "Natural for coloring",
+      "values" : [ true, true, true, false, true, false, true ]
+    } ]
+  },
+  "tiling-types" : {
+    "penrose-p2" : {
+      "name" : "Penrose P2 (Kite-Dart)",
+      "tiles" : 2,
+      "angles" : [ 36, 72 ],
+      "symmetry" : 5,
+      "algorithms" : [ "substitution", "combinatorial", "projection", "matching-rules", "random-walk", "transducers", "bfs-patch" ]
+    },
+    "penrose-p3" : {
+      "name" : "Penrose P3 (Rhombs)",
+      "tiles" : 2,
+      "angles" : [ 36, 72 ],
+      "symmetry" : 5,
+      "algorithms" : [ "substitution", "combinatorial", "projection", "matching-rules", "random-walk", "transducers", "bfs-patch" ]
+    },
+    "hat" : {
+      "name" : "Hat Monotile (Smith 2023)",
+      "tiles" : 1,
+      "requires-reflection" : true,
+      "angles" : [ 60, 90, 120 ],
+      "metatiles" : [ "H", "T", "P", "F" ],
+      "algorithms" : [ "substitution", "combinatorial", "matching-rules", "random-walk", "transducers", "bfs-patch" ]
+    },
+    "spectre" : {
+      "name" : "Spectre Chiral Monotile (Smith 2023)",
+      "tiles" : 1,
+      "requires-reflection" : false,
+      "angles" : [ 60, 90, 120 ],
+      "metatiles" : [ "G", "D", "J", "L", "X", "P", "S", "F", "Y" ],
+      "vertices" : 14,
+      "algorithms" : [ "substitution", "combinatorial", "matching-rules", "random-walk", "transducers", "bfs-patch" ]
+    },
+    "ammann-beenker" : {
+      "name" : "Ammann-Beenker (Octagonal)",
+      "tiles" : 2,
+      "symmetry" : 8,
+      "algorithms" : [ "substitution", "projection", "matching-rules" ]
+    },
+    "socolar-taylor" : {
+      "name" : "Socolar-Taylor Hexagonal",
+      "tiles" : 1,
+      "requires-decoration" : true,
+      "algorithms" : [ "substitution", "matching-rules" ]
+    }
+  },
+  "gf3-integration" : {
+    "description" : "Map algorithm classes to GF(3) triads",
+    "triads" : [ {
+      "minus" : "matching-rules",
+      "ergodic" : "combinatorial",
+      "plus" : "substitution",
+      "role" : "Core generation pipeline"
+    }, {
+      "minus" : "transducers",
+      "ergodic" : "random-walk",
+      "plus" : "bfs-patch",
+      "role" : "Traversal methods"
+    }, {
+      "minus" : "projection",
+      "ergodic" : "combinatorial",
+      "plus" : "substitution",
+      "role" : "Mathematical foundations"
+    } ],
+    "conservation" : "Each triad sums to 0 mod 3"
+  },
+  "sources" : [ "Simon Tatham 2023", "Ben-Edwards44", "Chaim Goodman-Strauss 1998", "N.G. de Bruijn 1981", "Smith, Myers, Kaplan, Goodman-Strauss 2023", "Jeff Preshing 2011", "Boris Solomyak 2015" ]
+}

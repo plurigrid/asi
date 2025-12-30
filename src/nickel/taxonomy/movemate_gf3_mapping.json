@@ -1,0 +1,245 @@
+{
+  "title": "Movemate GF(3) Module Mapping",
+  "version": "1.0",
+  "date": "2025-12-29",
+  "source": "pentagonxyz/movemate",
+  "modules": [
+    {
+      "name": "acl",
+      "file": "acl.move",
+      "trit": -1,
+      "role": "VALIDATOR",
+      "purpose": "Multi-role access control list",
+      "dependencies": []
+    },
+    {
+      "name": "bcd",
+      "file": "bcd.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Binary canonical deserialization (vector<u8> to u64/u128)",
+      "dependencies": []
+    },
+    {
+      "name": "bloom_filter",
+      "file": "bloom_filter.move",
+      "trit": -1,
+      "role": "VALIDATOR",
+      "purpose": "Space-efficient probabilistic set membership",
+      "dependencies": []
+    },
+    {
+      "name": "box",
+      "file": "box.move",
+      "trit": 1,
+      "role": "GENERATOR",
+      "purpose": "Send objects without recipient pre-setup",
+      "dependencies": []
+    },
+    {
+      "name": "crit_bit",
+      "file": "crit_bit.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Crit-bit trees ordered map data structure",
+      "dependencies": [],
+      "credit": "Econia"
+    },
+    {
+      "name": "date",
+      "file": "date.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Date conversion utilities",
+      "dependencies": []
+    },
+    {
+      "name": "governance",
+      "file": "governance.move",
+      "trit": 1,
+      "role": "GENERATOR",
+      "purpose": "On-chain coinholder governance with signer retrieval",
+      "dependencies": ["acl"]
+    },
+    {
+      "name": "i64",
+      "file": "i64.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Signed 64-bit integers",
+      "dependencies": []
+    },
+    {
+      "name": "i128",
+      "file": "i128.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Signed 128-bit integers",
+      "dependencies": []
+    },
+    {
+      "name": "linear_vesting",
+      "file": "linear_vesting.move",
+      "trit": 1,
+      "role": "GENERATOR",
+      "purpose": "Linear vesting of coins for beneficiary",
+      "dependencies": ["math"]
+    },
+    {
+      "name": "math",
+      "file": "math.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Standard math utilities for u64",
+      "dependencies": []
+    },
+    {
+      "name": "math_safe_precise",
+      "file": "math_safe_precise.move",
+      "trit": -1,
+      "role": "VALIDATOR",
+      "purpose": "Overflow-safe mul_div and precise quadratic",
+      "dependencies": ["math"]
+    },
+    {
+      "name": "math_u128",
+      "file": "math_u128.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Standard math utilities for u128",
+      "dependencies": []
+    },
+    {
+      "name": "merkle_proof",
+      "file": "merkle_proof.move",
+      "trit": -1,
+      "role": "VALIDATOR",
+      "purpose": "Merkle proof verification utilities",
+      "dependencies": []
+    },
+    {
+      "name": "pseudorandom",
+      "file": "pseudorandom.move",
+      "trit": 1,
+      "role": "GENERATOR",
+      "purpose": "Pseudorandom number generator",
+      "dependencies": []
+    },
+    {
+      "name": "quadratic_vesting",
+      "file": "quadratic_vesting.move",
+      "trit": 1,
+      "role": "GENERATOR",
+      "purpose": "Quadratic vesting schedule",
+      "dependencies": ["math"]
+    },
+    {
+      "name": "to_string",
+      "file": "to_string.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "u128 to String conversion",
+      "dependencies": []
+    },
+    {
+      "name": "u256",
+      "file": "u256.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Unsigned 256-bit integers with bitwise ops",
+      "dependencies": [],
+      "credit": "Pontem"
+    },
+    {
+      "name": "vectors",
+      "file": "vectors.move",
+      "trit": 0,
+      "role": "COORDINATOR",
+      "purpose": "Vector utilities and binary search",
+      "dependencies": []
+    },
+    {
+      "name": "virtual_block",
+      "file": "virtual_block.move",
+      "trit": -1,
+      "role": "VALIDATOR",
+      "purpose": "Replace latency auctions with gas auctions (MEV control)",
+      "dependencies": []
+    }
+  ],
+  "triads": [
+    {
+      "name": "Access Control",
+      "minus": "acl",
+      "ergodic": "crit_bit",
+      "plus": "governance",
+      "sum": 0,
+      "use_case": "Society membership with role-based permissions"
+    },
+    {
+      "name": "Vesting & Distribution",
+      "minus": "math_safe_precise",
+      "ergodic": "math",
+      "plus": "linear_vesting",
+      "sum": 0,
+      "use_case": "Token distribution with overflow protection"
+    },
+    {
+      "name": "Verification Pipeline",
+      "minus": "merkle_proof",
+      "ergodic": "bcd",
+      "plus": "box",
+      "sum": 0,
+      "use_case": "Airdrop verification with proof-of-inclusion"
+    },
+    {
+      "name": "MEV Protection",
+      "minus": "virtual_block",
+      "ergodic": "vectors",
+      "plus": "pseudorandom",
+      "sum": 0,
+      "use_case": "Fair ordering with randomized batch processing"
+    },
+    {
+      "name": "Membership Verification",
+      "minus": "bloom_filter",
+      "ergodic": "u256",
+      "plus": "quadratic_vesting",
+      "sum": 0,
+      "use_case": "Efficient membership checks with quadratic rewards"
+    }
+  ],
+  "statistics": {
+    "total_modules": 20,
+    "by_trit": {
+      "minus": 5,
+      "ergodic": 10,
+      "plus": 5
+    },
+    "gf3_balance": 0
+  },
+  "related_repos": [
+    {
+      "name": "plurigrid/aptos-networks",
+      "purpose": "Network configurations (devnet, testnet, mainnet)",
+      "fork_of": "aptos-labs/aptos-networks"
+    },
+    {
+      "name": "plurigrid/asi",
+      "purpose": "GF(3)-balanced PSI skills framework",
+      "contributor": "zubyul"
+    },
+    {
+      "name": "pentagonxyz/multisig-wallet-move",
+      "purpose": "Multisignature wallet for coins and objects"
+    },
+    {
+      "name": "pentagonxyz/move-oracles",
+      "purpose": "Custom oracles aggregating validator data (Sui only)"
+    },
+    {
+      "name": "pentagonxyz/xyk-amm-move",
+      "purpose": "Constant product AMM (XY=K)"
+    }
+  ]
+}
