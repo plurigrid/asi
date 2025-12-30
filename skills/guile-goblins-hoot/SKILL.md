@@ -9,8 +9,22 @@ metadata:
 
 # Guile Goblins Hoot Skill
 
-**Trit**: +1 (PLUS - generative distributed computation)  
-**Foundation**: Goblins + Hoot WASM + ocaps  
+**Trit**: +1 (PLUS - generative distributed computation)
+**Foundation**: Goblins + Hoot WASM + ocaps
+
+## bmorphism Contributions
+
+> *"all is bidirectional"*
+> — [@bmorphism](https://gist.github.com/bmorphism/ead83aec97dab7f581d49ddcb34a46d4), Play/Coplay gist
+
+**Portable Cognitive Agents**: Hoot compiles Goblins actors to WebAssembly, enabling the same cognitive agent to run anywhere — browser, server, embedded, blockchain. This portability embodies the "next trillion minds" vision.
+
+**Bidirectional Actor Communication**: The Goblins `<-` operator implements bidirectional promise pipelining — the caller becomes a listener for the response. This aligns with bmorphism's Play/Coplay pattern where every action generates perception.
+
+**Active Inference Actors**: Each Goblins actor implements [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) at the micro level:
+- **bcom** (become) → update internal model (belief)
+- **methods** → available actions
+- **vat** → Markov blanket (perceptual boundary)
 
 ## Core Concept
 

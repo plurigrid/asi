@@ -19,6 +19,20 @@ trit: 0
 
 > *"String diagrams are the syntax, functors are the semantics."*
 
+## bmorphism Contributions
+
+> *"all is bidirectional"*
+> — [@bmorphism](https://gist.github.com/bmorphism/ead83aec97dab7f581d49ddcb34a46d4), Play/Coplay gist
+
+**Active Inference Implementation**: DisCoPy provides the foundation for implementing [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) (Tull, Kleiner, Smithe). The paper's core insight — that perception and action form a bidirectional loop — maps directly to DisCoPy's composition operators:
+- **Sequential** (`>>`) → temporal flow (action → perception → action)
+- **Parallel** (`@`) → concurrent sensory channels
+- **Dagger** (`[::-1]`) → time reversal (perception as action's adjoint)
+
+**Categorical Cybernetics**: DisCoPy's parametrised optics implement the cybernetic lens pattern from [Towards Foundations of Categorical Cybernetics](https://arxiv.org/abs/2105.06332), enabling the Play/Coplay duality bmorphism references.
+
+**String Diagram Coloring**: Gay.jl colors can be applied to DisCoPy diagrams for deterministic visualization — each wire type gets a consistent color from the splittable RNG.
+
 ## Overview
 
 DisCoPy is a Python library for computing with **string diagrams** - the graphical language of monoidal categories. It provides:
