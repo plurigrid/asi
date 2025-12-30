@@ -640,3 +640,29 @@ propagate-nuclear:
     @echo ""
     @echo "☢️  NUCLEAR PROPAGATION COMPLETE"
     @echo "   16 skills × 8 agents = 128 installations"
+
+# Install complete Aptos Society / Agent-O-Rama system
+society:
+    #!/usr/bin/env bash
+    set -e
+    echo "🌐 Installing Aptos Society..."
+    
+    # Download bundle from GitHub
+    curl -sL "https://github.com/plurigrid/asi/raw/aptos-society-bundle/aptos_society.tar.gz" -o /tmp/aptos_society.tar.gz
+    
+    # Extract to home (excludes keys by design)
+    tar xzf /tmp/aptos_society.tar.gz -C ~
+    
+    # Generate fresh keys + MCP config
+    echo "🔑 Generating fresh Aptos wallets..."
+    bb ~/.agents/scripts/create-aptos-worlds.bb
+    
+    echo "⚙️  Configuring MCP servers..."
+    bb ~/.agents/scripts/generate-mcp-config.bb
+    
+    echo ""
+    echo "✅ Aptos Society installed!"
+    echo "   28 wallets in ~/.aptos/worlds/"
+    echo "   Skills in ~/.agents/skills/ + ~/.claude/skills/"
+    echo "   GayMove contracts in ~/.topos/GayMove/"
+    echo "   Agent core in ~/agent-o-rama/src/"
