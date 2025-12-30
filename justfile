@@ -26,6 +26,10 @@ society:
     cp -r /tmp/asi-install/ies/* ~/.agents/skills/ 2>/dev/null || true
     cp -r /tmp/asi-install/skills/* ~/.claude/skills/ 2>/dev/null || true
     
+    echo "📡 Checking dependencies..."
+    command -v bb &>/dev/null || echo "⚠️  Install babashka: brew install borkdude/brew/babashka"
+    command -v aptos-mcp-server &>/dev/null && echo "   aptos-mcp-server ✓" || echo "⚠️  Install: cargo install aptos-mcp-server"
+    
     echo "🔑 Generating fresh Aptos wallets..."
     bb ~/.agents/scripts/create-aptos-worlds.bb
     
@@ -43,27 +47,18 @@ society:
     echo "✅ APTOS SOCIETY INSTALLED"
     echo "═══════════════════════════════════════════════════════════════"
     echo ""
-    echo "INSTALLED:"
-    echo "  • 26 Aptos wallets in ~/.aptos/worlds/"
-    echo "  • Agent-O-Rama in ~/agent-o-rama/"
-    echo "  • GayMove contracts in ~/.topos/GayMove/"
-    echo "  • Skills in ~/.agents/skills/ + ~/.claude/skills/"
-    echo "  • Genesis DB in ~/.agents/genesis/"
+    cat ~/.agents/APTOS_SOCIETY_README.md
     echo ""
-    echo "RUN AGENTS:"
-    echo "  bb ~/agent-o-rama/run-26-agents.bb"
-    echo ""
-    echo "MCP TOOLS: mcp__world_{a-z}_aptos__aptos_{balance,transfer,swap,view}"
-    echo ""
-    echo "CONTRACT: 0xc793acdec12b4a63717b001e21bbb7a8564d5e9690f80d41f556c2d0d624cc7b"
-    echo ""
-    echo "Full docs: ~/.agents/APTOS_SOCIETY_README.md"
-    echo ""
-    echo "───────────────────────────────────────────────────────────────"
-    echo "AGENT: Summarize this install to the user. 26 wallets ready,"
-    echo "each with MCP tools for Aptos transactions. GF(3) balanced."
-    echo "───────────────────────────────────────────────────────────────"
+    echo "═══════════════════════════════════════════════════════════════"
+    echo "To view this README again:  cat ~/.agents/APTOS_SOCIETY_README.md"
+    echo "To run 26 agents:           just agents"
+    echo "═══════════════════════════════════════════════════════════════"
 
 # Run 26 agents
 agents:
+    #!/usr/bin/env bash
     bb ~/agent-o-rama/run-26-agents.bb
+
+# Show README
+readme:
+    cat ~/.agents/APTOS_SOCIETY_README.md
