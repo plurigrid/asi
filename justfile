@@ -9,17 +9,20 @@ society:
     if [ -d "/tmp/asi-install" ]; then rm -rf /tmp/asi-install; fi
     git clone --depth 1 -b aptos-society-bundle https://github.com/plurigrid/asi.git /tmp/asi-install
     
-    mkdir -p ~/.agents/genesis ~/.agents/scripts ~/.agents/skills ~/.claude/skills
+    # Genesis + scripts
+    mkdir -p ~/.agents/genesis ~/.agents/scripts
     cp /tmp/asi-install/society/genesis/* ~/.agents/genesis/
     cp /tmp/asi-install/society/scripts/* ~/.agents/scripts/
     chmod +x ~/.agents/scripts/*.bb
     
+    # Aptos: wallets, GayMove, agent-o-rama
     mkdir -p ~/.aptos/GayMove ~/.aptos/agent-o-rama
     cp -r /tmp/asi-install/society/GayMove/* ~/.aptos/GayMove/
     cp -r /tmp/asi-install/society/agent-o-rama/* ~/.aptos/agent-o-rama/
     chmod +x ~/.aptos/agent-o-rama/*.bb 2>/dev/null || true
     
-    cp -r /tmp/asi-install/ies/* ~/.agents/skills/ 2>/dev/null || true
+    # Skills: only from skills/ directory (not ies/)
+    mkdir -p ~/.claude/skills
     cp -r /tmp/asi-install/skills/* ~/.claude/skills/ 2>/dev/null || true
     
     echo "📡 Checking dependencies..."
