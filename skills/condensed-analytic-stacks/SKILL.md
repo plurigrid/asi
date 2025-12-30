@@ -356,6 +356,19 @@ just sheaf-bridge-demo        # Demo condensed→sheaf NN bridge
 - `LISPSYNTAX_ACSET_BRIDGE_COMPLETE.md` - Integration summary
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

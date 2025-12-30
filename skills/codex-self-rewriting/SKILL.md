@@ -172,6 +172,19 @@ Each skill exists in 3 parallel states for resilient dispersal.
 - [MCP Tasks Spec](https://modelcontextprotocol.io/specification/draft/basic/utilities/tasks)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

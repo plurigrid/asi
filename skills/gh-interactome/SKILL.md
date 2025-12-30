@@ -118,6 +118,18 @@ temporal-coalgebra (-1) ⊗ open-games (0) ⊗ gh-interactome (+1) = 0 ✓
 - `dev/MOVE_INTERACTOME.md` - move file interaction analysis
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

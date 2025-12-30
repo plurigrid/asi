@@ -109,6 +109,19 @@ end
 - `gay-mcp`: Deterministic color generation
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Annotated Data
+- **anndata** [○] via bicomodule
+  - Hub for annotated matrices
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

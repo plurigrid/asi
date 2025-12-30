@@ -200,6 +200,18 @@ The fusion is not additive but **multiplicative** — concepts don't just accumu
 **Walk**: Derivational, deterministic, bidirectional
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Stochastic
+- **simpy** [○] via bicomodule
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

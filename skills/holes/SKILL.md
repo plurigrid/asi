@@ -16,6 +16,19 @@ Interactive proof development using typed holes in Narya proof assistant.
 
 See [HOLES_GUIDE.md](./HOLES_GUIDE.md) for detailed usage.
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule:

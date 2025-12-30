@@ -455,6 +455,19 @@ Rather than asking "which protocol should I use?", ask "what properties do I nee
 
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Annotated Data
+- **anndata** [○] via bicomodule
+  - Hub for annotated matrices
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

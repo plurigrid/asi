@@ -82,6 +82,20 @@ spi-parallel-verify (-1) ⊗ tailscale-mesh (0) ⊗ tailscale-file-transfer (+1)
 - `localsend-mcp` - P2P transfer via LocalSend
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+- `distributed-systems`: 3 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

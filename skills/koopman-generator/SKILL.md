@@ -53,6 +53,23 @@ temporal-coalgebra (-1) ⊗ acsets (0) ⊗ koopman-generator (+1) = 0 ✓
 - PyDMD: https://github.com/mathLab/PyDMD
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Bioinformatics
+- **biopython** [○] via bicomodule
+  - Hub for biological sequences
+
+### Scientific Computing
+- **scipy** [+] via Lan_K
+  - Generator/free structure
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

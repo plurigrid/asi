@@ -80,6 +80,19 @@ analyze_complexity(project="my-project", path="src/main.py")
 Python, JavaScript, TypeScript, Go, Rust, C, C++, Swift, Java, Kotlin, Julia, APL, and many more via tree-sitter-language-pack.
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Tree Structures
+- **etetoolkit** [○] via bicomodule
+  - Tree parsing and traversal
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

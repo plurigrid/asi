@@ -337,6 +337,22 @@ geohash-coloring (+1) ⊗ acsets (0) ⊗ three-match (-1) = 0 ✓
 - S2 geometry (Google)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Geospatial
+- **geopandas** [○] via bicomodule
+
+### Visualization
+- **matplotlib** [○] via bicomodule
+  - Hub for all visualization
+
+### Bibliography References
+
+- `cryptography`: 1 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

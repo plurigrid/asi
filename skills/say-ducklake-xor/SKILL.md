@@ -155,6 +155,19 @@ async def parallel_xor_discovery(seed: int, bound: int):
 - [SUBOBJECT_CLASSIFIER_RECURRENCES.md](file:///Users/bob/ies/SUBOBJECT_CLASSIFIER_RECURRENCES.md) - Recurrence types
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

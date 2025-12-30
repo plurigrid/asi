@@ -53,6 +53,19 @@ tailscale status --json | jq '.Peer | keys'
 ```
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Hub for all graph/network skills
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

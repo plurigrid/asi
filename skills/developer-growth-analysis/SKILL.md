@@ -327,6 +327,19 @@ This skill:
 - Prioritizes areas that will have the most impact on your development velocity
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Eda
+- **exploratory-data-analysis** [○] via bicomodule
+  - Exploratory analysis
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

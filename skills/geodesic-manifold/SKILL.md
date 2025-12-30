@@ -189,6 +189,19 @@ route = color_flight_route(
 - Geodesy and Map Projections
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Geospatial
+- **geopandas** [○] via bicomodule
+  - Hub for spatial data
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

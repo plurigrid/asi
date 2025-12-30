@@ -261,6 +261,19 @@ just knet-verify nodes="0 4 7" arrows="T4 T3 T7"
 - Cohn, R. "Neo-Riemannian Operations, Parsimonious Trichords"
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

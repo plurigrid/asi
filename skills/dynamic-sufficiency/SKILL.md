@@ -876,6 +876,19 @@ epsilon_machine.add_observation(action, loaded, success=False)
 **Status**: ✅ ADMITTED (all 7 MUST requirements satisfied)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Scientific Computing
+- **scipy** [○] via bicomodule
+  - Hub for numerical/scientific computation
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

@@ -165,6 +165,18 @@ end
 - Nathan Marz: Specter inline caching patterns
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Tree Decomposition
+- **etetoolkit** [○] via bicomodule
+
+### Bibliography References
+
+- `algorithms`: 19 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

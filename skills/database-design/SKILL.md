@@ -181,6 +181,19 @@ ALTER TABLE reservations ADD CONSTRAINT excl_no_overlap
 - Test migrations on production-size data before deploying
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Dataframes
+- **polars** [○] via bicomodule
+  - High-performance dataframes
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

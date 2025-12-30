@@ -199,6 +199,20 @@ just lhott-full-export
 - [nLab: Cohesive HoTT](https://ncatlab.org/nlab/show/cohesive+homotopy+type+theory)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `linear-algebra`: 112 citations in bib.duckdb
+- `homotopy-theory`: 29 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

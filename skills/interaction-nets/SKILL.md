@@ -174,6 +174,19 @@ interaction-nets (0) ⊗ hvm-runtime (+1) ⊗ type-checker (-1) = 0 ✓
 **Trit**: 0 (ERGODIC - COORDINATOR)
 **GF(3)**: Coordinates node interactions
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

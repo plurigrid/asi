@@ -192,6 +192,19 @@ just gestalt-verify         # Check attack stats
 - [cohesive sonification thread](https://ampcode.com/threads/T-019b43e6-3692-7390-af9a-e2da68fed856)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

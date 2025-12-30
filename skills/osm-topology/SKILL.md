@@ -295,6 +295,18 @@ osm-topology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓
 - NetworkX documentation
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

@@ -399,6 +399,19 @@ tenderloin (+1) ⊗ prediction-markets (0) ⊗ olmoearth-mlx (-1) = 0 ✓
 - [Filecoin Data Portal](https://filecoindataportal.xyz)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Autodiff
+- **jax** [○] via bicomodule
+  - Hub for autodiff/ML
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

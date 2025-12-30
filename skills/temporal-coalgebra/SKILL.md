@@ -254,6 +254,19 @@ GF(3) conserved: true
 **Dual**: Algebra (construction) ↔ Coalgebra (observation)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Time Series
+- **aeon** [−] via Ran_K
+  - Temporal/coalgebraic time series
+
+### Bibliography References
+
+- `linear-algebra`: 112 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

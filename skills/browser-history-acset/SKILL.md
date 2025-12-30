@@ -144,6 +144,18 @@ py-acset (0) ⊗ ACSets.jl (+1) ⊗ DuckDB (-1) = 0 ✓
 - [zip_acset_skill/extract_agent_o_rama.py](file:///Users/bob/ies/zip_acset_skill/extract_agent_o_rama.py)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Annotated Data
+- **anndata** [○] via bicomodule
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

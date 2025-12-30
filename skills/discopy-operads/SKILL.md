@@ -361,6 +361,20 @@ inner = Hypergraph(
 *Chromatic seed: `0x128b6ef4564e3a00` | Color: `#64e3ec`*
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+- `operads`: 5 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

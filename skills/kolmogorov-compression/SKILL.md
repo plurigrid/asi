@@ -126,6 +126,19 @@ Gödel: Some true statements have K(T) = ∞ (unprovable)
 4. Fan et al. (2025). "The KoLMogorov-Test: Compression-Based Intelligence Evaluation."
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

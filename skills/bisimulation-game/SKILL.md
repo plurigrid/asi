@@ -463,6 +463,19 @@ just bisim-json           # Output verification as JSON
 ```
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Simulation
+- **simpy** [○] via bicomodule
+  - Hub for discrete event simulation
+
+### Bibliography References
+
+- `game-theory`: 21 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

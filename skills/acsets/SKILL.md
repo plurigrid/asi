@@ -1248,6 +1248,19 @@ sheaf-cohomology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [ACSet Navigation
 - **deepwiki-mcp**: Repository documentation (trit 0, substitutes in triads)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Annotated Data
+- **anndata** [○] via bicomodule
+  - Both represent annotated data matrices with schema
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

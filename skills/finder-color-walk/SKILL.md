@@ -312,6 +312,22 @@ GF(3) Sum: 0 ≡ 0 (mod 3) ✓ Conserved
 **Platform**: macOS only (uses Finder AppleScript)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Stochastic
+- **simpy** [○] via bicomodule
+
+### Visualization
+- **matplotlib** [○] via bicomodule
+  - Hub for all visualization
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

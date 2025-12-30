@@ -174,6 +174,19 @@ See [scripts/triadic_skill_orchestrator.bb](file:///Users/alice/agent-o-rama/age
 **GF(3)**: Enforced via third-trit correction
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

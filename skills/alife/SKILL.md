@@ -523,6 +523,19 @@ p(g) = \text{softmax}(\theta_g) \quad g \in \{\text{AND}, \text{OR}, \text{XOR},
 **Exa Index**: `/Users/bob/ies/ALIFE_EXA_REFINED_INDEX.md`
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Bioinformatics
+- **biopython** [○] via bicomodule
+  - Biological computation
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

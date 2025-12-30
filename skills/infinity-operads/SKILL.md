@@ -421,3 +421,16 @@ class LazyACSetMaterializer:
 - `kinetic-block` — Dendroidal stratification patterns
 - `segal-types` — ∞-category Segal conditions
 - `rezk-types` — Complete Segal spaces
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+- `operads`: 5 citations in bib.duckdb

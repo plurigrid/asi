@@ -82,6 +82,19 @@ python3 -c "import duckdb; c=duckdb.connect('culture_evolution.duckdb'); print(c
 | +1 | Generator | Red | Genovese, sarahzrf, ModalNoah |
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

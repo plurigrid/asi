@@ -226,6 +226,19 @@ For a triad (s₋₁, s₀, s₊₁):
 - `acsets` — ACSet schema and navigation
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Category Theory
+- **networkx** [○] via bicomodule
+  - Cat# is the home for all graph morphisms
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
@@ -322,3 +335,79 @@ PLUS (+1): free, lan, colimit, generator, producer, create, build, compose
 ### JSON Export
 
 The complete mapping is available at `skills/catsharp/skill_mapping.json`.
+
+## Scientific Skills Interleaving Registry (2025-12-30)
+
+### Morphism Summary
+
+| Statistic | Value |
+|-----------|-------|
+| Total morphisms | 113 |
+| Curated morphisms | 40 |
+| Hierarchical morphisms | 73 |
+| Scientific skills | 137 |
+| ASI skills updated | 362 |
+| Bibliography themes | 16 |
+
+### Domain Coverage
+
+| Domain | Description |
+|--------|-------------|
+| annotated-data | AnnData-style annotated matrices |
+| autodiff | JAX/MLX autodifferentiation |
+| bioinformatics | BioPython sequence analysis |
+| cheminformatics | RDKit chemical computation |
+| dataframes | Polars high-performance frames |
+| eda | Exploratory data analysis |
+| geospatial | GeoPandas spatial data |
+| graph-theory | NetworkX graph algorithms (hub) |
+| scientific-computing | SciPy numerical methods |
+| simulation | SimPy discrete event sim |
+| time-series | Aeon temporal analysis |
+| tree-structures | ETE tree traversal |
+| visualization | Matplotlib plotting (hub) |
+
+### Hub Scientific Skills
+
+High-centrality skills that connect to many ASI skills:
+
+```
+networkx     → 362 ASI skills (universal graph hub)
+matplotlib   → 11 visualization skills
+scipy        → 6 scientific computing skills
+polars       → 8 dataframe skills
+jax          → 7 autodiff skills
+anndata      → 13 annotated data skills
+geopandas    → 4 geospatial skills
+simpy        → 4 simulation skills
+biopython    → 6 bioinformatics skills
+rdkit        → 3 cheminformatics skills
+```
+
+### Bibliography Integration
+
+From bib.duckdb (1192 citations):
+
+| Theme | Count | Key Authors |
+|-------|-------|-------------|
+| category-theory | 139 | Spivak, Riehl, Myers, Fong |
+| linear-algebra | 112 | Strang, Axler |
+| dynamical-systems | 41 | Strogatz, Guckenheimer |
+| graph-theory | 38 | Bondy, Diestel |
+| homotopy-theory | 29 | Lurie, Riehl |
+| abstract-interpretation | 26 | Cousot |
+| game-theory | 21 | Nash, von Neumann |
+
+### Interleaving Structure
+
+The interleaving follows Cat# bicomodule structure:
+
+```
+ASI Skill ←[bicomodule]→ Scientific Skill
+    ↓                          ↓
+  domain                    domain
+    ↓                          ↓
+Bibliography Theme ←→ Bibliography Theme
+```
+
+All morphisms preserve GF(3) trit classification.

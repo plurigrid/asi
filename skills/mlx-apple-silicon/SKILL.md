@@ -643,6 +643,19 @@ def free_energy(model, x, prior_mean, prior_var):
 **Active Inference**: Supports latent space extraction + free energy minimization
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Autodiff
+- **jax** [○] via bicomodule
+  - Automatic differentiation
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

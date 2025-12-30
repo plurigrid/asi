@@ -308,6 +308,19 @@ unwiring-arena (0) ⊗ voice-channel-uwd (0) ⊗ bisimulation-game (0) = 0 ✓
 **Principle**: Voice as categorical composition with GF(3) conservation
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

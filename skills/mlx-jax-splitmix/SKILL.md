@@ -306,6 +306,18 @@ temporal-coalgebra (-1) ⊗ mlx-jax-splitmix (0) ⊗ koopman-generator (+1) = 0 
 - [`spi-parallel-verify`](../spi-parallel-verify/SKILL.md) — Parallelism invariance
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Autodiff
+- **jax** [○] via bicomodule
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

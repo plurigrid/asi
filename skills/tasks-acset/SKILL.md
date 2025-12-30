@@ -262,6 +262,18 @@ get_task (-1) ⊗ move_task (0) ⊗ delete_task (+1) = 0 ✓
 **ANIMA**: Task Zero = Condensed Equilibrium State
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Annotated Data
+- **anndata** [○] via bicomodule
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

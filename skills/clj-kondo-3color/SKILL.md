@@ -206,6 +206,19 @@ just clj-kondo-asi-check          # Run with ASI safety hooks
 - [Plurigrid PolicyGrid](https://resources.aigr.id/16.3_PolicyGridxAIGrid/)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Visualization
+- **matplotlib** [○] via bicomodule
+  - Hub for all visualization
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

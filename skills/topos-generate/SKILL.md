@@ -175,6 +175,19 @@ just topos-internal formula
 - nLab: https://ncatlab.org/nlab/show/forcing
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Bioinformatics
+- **biopython** [○] via bicomodule
+  - Hub for biological sequences
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

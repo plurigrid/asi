@@ -271,6 +271,19 @@ lispsyntax-acset (-1) ⊗ specter-acset (0) ⊗ cider-clojure (+1) = 0 ✓
 - [Lens laws](https://hackage.haskell.org/package/lens) (Haskell perspective)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Annotated Data
+- **anndata** [○] via bicomodule
+  - Hub for annotated matrices
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

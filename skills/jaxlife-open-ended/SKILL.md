@@ -406,6 +406,23 @@ From JaxLife paper:
 ```
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Autodiff
+- **jax** [○] via bicomodule
+  - Hub for autodiff/ML
+
+### Bioinformatics
+- **biopython** [○] via bicomodule
+  - Hub for biological sequences
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

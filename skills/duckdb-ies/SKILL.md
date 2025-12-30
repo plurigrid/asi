@@ -266,6 +266,19 @@ SELECT * FROM simultaneity_surfaces ORDER BY density DESC LIMIT 5;"
 - `bisimulation-game` - Cross-agent skill dispersal
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Dataframes
+- **polars** [○] via bicomodule
+  - High-performance dataframes
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

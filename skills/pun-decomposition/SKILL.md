@@ -227,6 +227,19 @@ just pun-attack closure             # Test gestalt attack
 - [chromatic verifier thread](https://ampcode.com/threads/T-019b0ce1-815d-773b-b2ce-f5ef9b26e48d)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `algorithms`: 19 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

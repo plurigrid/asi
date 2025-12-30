@@ -382,6 +382,18 @@ just fokker-solver-comparison
 **Theory**: Fokker-Planck PDE, Gibbs distribution, mixing time estimation
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Scientific Computing
+- **scipy** [○] via bicomodule
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

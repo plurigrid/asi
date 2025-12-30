@@ -221,6 +221,19 @@ racket -l malt
 - [The Pie Language](https://github.com/the-little-typer/pie)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Cheminformatics
+- **rdkit** [○] via bicomodule
+  - Hub for chemistry
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

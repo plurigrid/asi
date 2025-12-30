@@ -190,6 +190,19 @@ iecsat-storage (0) ⊗ plus-codes (+1) ⊗ content-addressing (-1) = 0 ✓
 **Trit**: 0 (ERGODIC - COORDINATOR)
 **GF(3)**: Mediates between tile generation and validation
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

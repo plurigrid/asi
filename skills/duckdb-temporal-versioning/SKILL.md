@@ -634,6 +634,21 @@ db.close()
 **Applications**: Data acquisition, feature storage, training trace logging, audit trails
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Dataframes
+- **polars** [○] via bicomodule
+
+### Time Series
+- **aeon** [○] via bicomodule
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

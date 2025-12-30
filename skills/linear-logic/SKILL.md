@@ -242,6 +242,19 @@ just linear-to-inet proof.net -o output.inet
 **Trit**: -1 (MINUS - VALIDATOR)
 **GF(3)**: Validates resource usage constraints
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `linear-algebra`: 112 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

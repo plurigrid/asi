@@ -196,6 +196,19 @@ Step 3: #EE55F2 (hot pink)       ○ Navigate
 **Backtracking**: Forbidden (composites are p-adically imprecise)
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Stochastic
+- **simpy** [○] via bicomodule
+  - Stochastic processes
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

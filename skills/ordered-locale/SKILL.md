@@ -160,6 +160,19 @@ This approximation property connects point-free topology to domain theory and pr
 The bridge type formalization captures ≪ as a directed homotopy: paths that flow from U toward V through the directed interval 𝟚 = {0 → 1}.
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

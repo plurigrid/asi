@@ -77,6 +77,19 @@ spi-parallel-verify (-1) ⊗ triad-interleave (0) ⊗ julia-gay (+1) = 0 ✓
 - `world-hopping` - Badiou possible world navigation
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Visualization
+- **matplotlib** [○] via bicomodule
+  - Hub for all visualization
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

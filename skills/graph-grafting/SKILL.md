@@ -87,6 +87,19 @@ sum: (0) + (-1) + (+1) = 0 ✓ CONSERVED
 - Topos Institute, Observational Bridge Types
 
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Graph manipulation and algorithms
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
