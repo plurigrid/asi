@@ -106,6 +106,26 @@ Works with **Claude Code**, **Cursor**, **Amp**, **VS Code**, **GitHub Copilot**
 | `domain-name-brainstormer` | Generate and check domain availability |
 | `lead-research-assistant` | Identify and qualify leads |
 
+### Meta / Autopoiesis
+| Skill | Description |
+|-------|-------------|
+| `autopoiesis` | Self-modifying agent configuration via ruler + MCP + DuckDB |
+
+### Category Theory & ACSets
+| Skill | Description |
+|-------|-------------|
+| `topos-catcolab` | Collaborative category theory with Automerge CRDT |
+| `acsets` | Core Attributed C-Set schemas (AlgebraicJulia) |
+| `acsets-relational-thinking` | Categorical database patterns |
+| `structured-decomp` | Sheaves on tree decompositions |
+| `compositional-acset-comparison` | DuckDB ↔ LanceDB ACSet bridge |
+| `sheaf-cohomology` | Čech cohomology for consistency verification |
+| `kan-extensions` | Universal constructions in ∞-categories |
+
+> 📚 See [docs/CATCOLAB_INTEGRATION.md](docs/CATCOLAB_INTEGRATION.md) for CatColab usage patterns
+> 📚 See [docs/ACSET_SKILLS.md](docs/ACSET_SKILLS.md) for the full 15-skill ACSet ecosystem
+> 📚 See [docs/PADIC_EMBEDDINGS.md](docs/PADIC_EMBEDDINGS.md) for p-adic ultrametric skill discovery
+
 ### Productivity
 | Skill | Description |
 |-------|-------------|
