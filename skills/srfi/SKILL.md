@@ -246,3 +246,25 @@ srfi list --status final
 - [docs.scheme.org/srfi/support](https://docs.scheme.org/srfi/support/) - Implementation matrix
 - [R7RS-Large](https://github.com/johnwcowan/r7rs-work/blob/master/R7RSHomePage.md) - Standard incorporation
 - [Practical Scheme SRFI Cross-Reference](https://practical-scheme.net/wiliki/schemexref.cgi?SRFI)
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -140,3 +140,25 @@ A seed "resonates" when its decomposition yields balanced composition:
 - [Clojure](file:///Users/bob/ies/music-topos/src/agents/reflow_nats.clj)
 - [XIP](file:///Users/bob/ies/music-topos/proposals/XIP-6728DB-information-reflow.md)
 - [Etymology](file:///Users/bob/ies/music-topos/lib/etymological_resonance.rb)
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

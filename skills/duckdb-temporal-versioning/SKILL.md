@@ -632,3 +632,25 @@ db.close()
 **GF(3)**: Balanced with clj-kondo-3color (-1) + acsets (0)
 **SPI**: Guaranteed (same schema + data → same results)
 **Applications**: Data acquisition, feature storage, training trace logging, audit trails
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

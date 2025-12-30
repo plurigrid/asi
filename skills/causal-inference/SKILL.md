@@ -240,3 +240,25 @@ end
 2. Schölkopf, B. et al. (2021). "Toward Causal Representation Learning."
 3. Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*.
 4. Bengio, Y. (2017). "The Consciousness Prior."
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

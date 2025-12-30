@@ -204,3 +204,25 @@ just clj-kondo-asi-check          # Run with ASI safety hooks
 - [clj-kondo GitHub](https://github.com/clj-kondo/clj-kondo) (1.8k ⭐)
 - [clj-kondo Configuration](https://cljdoc.org/d/clj-kondo/clj-kondo/2025.10.23/doc/configuration)
 - [Plurigrid PolicyGrid](https://resources.aigr.id/16.3_PolicyGridxAIGrid/)
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -333,3 +333,25 @@ $ bb -e '(reassemble-duckdb "/tmp/received-partitions" "analytics.duckdb")'
 The trit values form a field under modular arithmetic:
 - Addition: `(a + b) mod 3` with values mapped as {-1, 0, 1}
 - Useful for: consensus quorum, error detection, load balancing index
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: -1 (MINUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Ran_K
+Color: #FF6B6B
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

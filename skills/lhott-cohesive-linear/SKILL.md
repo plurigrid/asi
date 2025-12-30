@@ -197,3 +197,25 @@ just lhott-full-export
 - Schreiber, U. (2014). "Quantization via Linear Homotopy Types"
 - Riley, M. (2022). "A Bunched Homotopy Type Theory for Synthetic Stable Homotopy Theory"
 - [nLab: Cohesive HoTT](https://ncatlab.org/nlab/show/cohesive+homotopy+type+theory)
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -56,3 +56,25 @@ Use `read_mcp_resource` to interact with Signal:
 - Check logs: `RUST_LOG=signal_mcp=debug`
 - Verify Signal account is registered/linked
 - Restart Amp after config changes
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

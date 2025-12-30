@@ -380,3 +380,25 @@ just fokker-solver-comparison
 **Key Property**: Verifies that Langevin training has reached Gibbs equilibrium
 **Status**: ✅ Production Ready
 **Theory**: Fokker-Planck PDE, Gibbs distribution, mixing time estimation
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 1 (PLUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Lan_K
+Color: #4ECDC4
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

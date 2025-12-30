@@ -237,3 +237,25 @@ WEV extraction = pull_up after favorable verse resolution.
 - [open-games](../open-games/SKILL.md) - Nash equilibrium
 - [glass-bead-game](../glass-bead-game/SKILL.md) - World-hopping
 - [influence-propagation](../influence-propagation/SKILL.md) - Network effects
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

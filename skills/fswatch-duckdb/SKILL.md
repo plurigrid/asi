@@ -381,3 +381,25 @@ SELECT input_path, trit, frame_count FROM recording_processing WHERE trit = -1;
 **Auto-Start**: Yes - runs daemon on every Amp session
 **Watch Paths**: /tmp, ~/Desktop, ~/Movies (configurable)
 **DuckLake**: /tmp/ducklake/
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

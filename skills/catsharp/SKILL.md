@@ -224,3 +224,101 @@ For a triad (s₋₁, s₀, s₊₁):
 - `operad-compose` — Operadic composition
 - `structured-decomp` — Bumpus tree decompositions
 - `acsets` — ACSet schema and navigation
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.
+
+## Complete Skill ↔ Cat# Mapping (360 skills, 2025-12-30)
+
+All 360 skills are mapped to Cat# structure:
+
+### Distribution Summary
+
+| Trit | Role | Count | Poly Op | Kan Role | Home |
+|------|------|-------|---------|----------|------|
+| -1 | MINUS | 9 | × (product) | Ran_K | Span |
+| 0 | ERGODIC | 340 | ⊗ (parallel) | Adj | Prof |
+| +1 | PLUS | 11 | ◁ (substitution) | Lan_K | Presheaves |
+
+### Semantic Derivation Rules
+
+```
+MINUS (-1): coalgebra, cofree, ran, cohomology, sheaf, limit, observe, consume
+ERGODIC (0): default bridge/coordinator (bicomodule equilibrium)
+PLUS (+1): free, lan, colimit, generator, producer, create, build, compose
+```
+
+### Three Homes Distribution
+
+| Home | Count | Description |
+|------|-------|-------------|
+| Prof | 345 | Profunctors/bimodules (default) |
+| Span | 10 | Comodules in cartesian |
+| Presheaves | 5 | Right modules/cofunctors |
+
+### Sample Mappings (first 30)
+
+| Skill | Trit | Home | Poly Op | Kan Role |
+|-------|------|------|---------|----------|
+┌────────────────────────────────────────────────────────┐
+│                          row                           │
+│                        varchar                         │
+├────────────────────────────────────────────────────────┤
+│ | _integrated | 0 | Prof | ⊗ | Adj |                   │
+│ | abductive-repl | 0 | Prof | ⊗ | Adj |                │
+│ | academic-research | 0 | Prof | ⊗ | Adj |             │
+│ | acsets | 0 | Prof | ⊗ | Adj |                        │
+│ | acsets-relational-thinking | 0 | Span | ⊗ | Adj |    │
+│ | active-interleave | 0 | Prof | ⊗ | Adj |             │
+│ | agent-o-rama | 0 | Prof | ⊗ | Adj |                  │
+│ | algorithmic-art | 0 | Prof | ⊗ | Adj |               │
+│ | alice | 0 | Prof | ⊗ | Adj |                         │
+│ | alife | 0 | Prof | ⊗ | Adj |                         │
+│ | amp-team-usage | 0 | Prof | ⊗ | Adj |                │
+│ | anima-theory | 0 | Prof | ⊗ | Adj |                  │
+│ | anoma-intents | 0 | Prof | ⊗ | Adj |                 │
+│ | aptos-agent | 0 | Prof | ⊗ | Adj |                   │
+│ | aptos-gf3-society | 0 | Prof | ⊗ | Adj |             │
+│ | aptos-society | 0 | Prof | ⊗ | Adj |                 │
+│ | aptos-trading | 0 | Prof | ⊗ | Adj |                 │
+│ | aptos-wallet-mcp | 0 | Prof | ⊗ | Adj |              │
+│ | aqua-voice-malleability | 0 | Prof | ⊗ | Adj |       │
+│ | artifacts-builder | 1 | Prof | ⊗ | Adj |             │
+│ | asi-agent-orama | 0 | Prof | ⊗ | Adj |               │
+│ | asi-polynomial-operads | 0 | Prof | ⊗ | Adj |        │
+│ | assembly-index | 0 | Prof | ⊗ | Adj |                │
+│ | atproto-ingest | 0 | Prof | ⊗ | Adj |                │
+│ | autopoiesis | 0 | Prof | ⊗ | Adj |                   │
+│ | babashka | 0 | Prof | ⊗ | Adj |                      │
+│ | babashka-clj | 0 | Prof | ⊗ | Adj |                  │
+│ | backend-development | 0 | Prof | ⊗ | Adj |           │
+│ | bafishka | 0 | Prof | ⊗ | Adj |                      │
+│ | bdd-mathematical-verification | 0 | Prof | ⊗ | Adj | │
+├────────────────────────────────────────────────────────┤
+│                        30 rows                         │
+└────────────────────────────────────────────────────────┘
+| ... | ... | ... | ... | ... |
+| *360 total* | | | | |
+
+### JSON Export
+
+The complete mapping is available at `skills/catsharp/skill_mapping.json`.

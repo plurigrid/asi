@@ -132,3 +132,25 @@ Store snapshots per run and query later with existing DuckDB time-travel command
 - Avoid assuming LocalSend has a stable CLI; verify with `jocalsend --help` if installed.
 - If multicast discovery fails (Tailscale), use NATS to exchange `target_ip` + `port`.
 - Keep tool outputs structured; avoid dumping large blobs through MCP.
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

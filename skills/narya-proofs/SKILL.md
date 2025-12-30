@@ -341,3 +341,25 @@ just narya-gf3-report events.jsonl
 **Trit**: -1 (MINUS - overall validator role)  
 **GF(3)**: Conserved via meta-trit balancing  
 **Proof Hash**: SHA-256 Merkle root over all proof objects
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

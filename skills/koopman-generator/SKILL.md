@@ -51,3 +51,25 @@ temporal-coalgebra (-1) ⊗ acsets (0) ⊗ koopman-generator (+1) = 0 ✓
 - Brunton et al. "Modern Koopman Theory" (2021)
 - Mezić "Spectral Properties of Dynamical Systems" (2005)
 - PyDMD: https://github.com/mathLab/PyDMD
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 1 (PLUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #4ECDC4
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

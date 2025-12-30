@@ -68,3 +68,25 @@ find_thread query="after:1d" limit=50
 | Local sessions | `ps aux \| grep 'amp.*main.js' \| grep -v grep \| wc -l` |
 | Org members | `gh api orgs/ORG/members \| jq '.[].login'` |
 | Member count | `gh api graphql -f query='{organization(login:"ORG"){membersWithRole{totalCount}}}'` |
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -411,3 +411,25 @@ def propagate_with_neighbors(constraints, initial_values):
 **Trit**: +1 (PLUS - Generator)
 **GF(3)**: Forms valid triads with coordinators (0) and validators (-1)
 **Applications**: Bidirectional constraints, type inference, epistemic arbitrage, CAD modeling
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

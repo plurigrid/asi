@@ -121,3 +121,25 @@ h1 {
 3. **Hierarchy**: Use size and weight to establish importance
 4. **Whitespace**: Generous spacing feels premium
 5. **Logo usage**: Maintain clear space around logo
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: -1 (MINUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Ran_K
+Color: #FF6B6B
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -589,3 +589,25 @@ def rebalance_defect(slide_skills: list, target_gf3: int = 0) -> list:
 **Trit**: 0 (ERGODIC - Coordinator)  
 **Tsao Integration**: V1→V2→IT→Prefrontal hierarchy  
 **SAW Verification**: Effective topos self-coloring
+
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.
