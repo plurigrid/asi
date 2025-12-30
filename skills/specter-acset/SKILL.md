@@ -13,6 +13,14 @@ metadata:
 
 > Inline-cached bidirectional navigation for Julia data structures
 
+## bmorphism Contributions
+
+> *"all is bidirectional"*
+> — [@bmorphism](https://gist.github.com/bmorphism/ead83aec97dab7f581d49ddcb34a46d4), Plurigrid Play/Coplay gist
+
+> *"The purpose of the Coplay section is to evaluate the impact of the work done according to our preferences about how the world needs to be versus how it actually turned out. Focus on a bidirectional view of feedback."*
+> — [all is bidirectional](https://gist.github.com/bmorphism/ead83aec97dab7f581d49ddcb34a46d4)
+
 **Version**: 1.0.0
 **Trit**: 0 (Ergodic - coordinates navigation)
 
@@ -263,6 +271,44 @@ lispsyntax-acset (-1) ⊗ specter-acset (0) ⊗ cider-clojure (+1) = 0 ✓
 - **Implementation**: `lib/specter_acset.jl`
 - **Babashka comparison**: `lib/specter_comparison.bb`
 
+## Julia Scientific Package Integration
+
+From `julia-scientific` skill - related Julia packages:
+
+| Package | Category | Specter Integration |
+|---------|----------|---------------------|
+| **Catlab.jl** | ACSets | Primary navigation target |
+| **DataFrames.jl** | Data | Tabular navigation |
+| **Graphs.jl** | Networks | Graph traversal |
+| **BioSequences.jl** | Bioinformatics | Sequence navigation |
+| **MolecularGraph.jl** | Chemistry | Molecular graph traversal |
+| **StructuredDecompositions.jl** | Sheaves | Decomposition navigation |
+| **AlgebraicRewriting.jl** | Rewriting | Rule application paths |
+
+### Cross-Domain Navigation Patterns
+
+```julia
+# Navigate DataFrame (polars → DataFrames.jl)
+using DataFrames
+df = DataFrame(a=[1,2,3], b=[4,5,6])
+select([keypath(:a), ALL], df)  # All values in column :a
+
+# Navigate molecular graph (rdkit → MolecularGraph.jl)
+using MolecularGraph
+mol = smilestomol("CCO")
+select([atoms, pred(a -> a.symbol == :O)], mol)
+
+# Navigate protein structure (biopython → BioStructures.jl)
+using BioStructures
+pdb = read("1CRN.pdb", PDB)
+select([chains, residues, pred(is_hydrophobic)], pdb)
+
+# Navigate genomic features (pysam → XAM.jl)
+using XAM
+bam = BAM.Reader("aligned.bam")
+select([records, pred(r -> r.mapq > 30)], bam)
+```
+
 ## References
 
 - [Specter GitHub](https://github.com/redplanetlabs/specter)
@@ -270,6 +316,9 @@ lispsyntax-acset (-1) ⊗ specter-acset (0) ⊗ cider-clojure (+1) = 0 ✓
 - Nathan Marz: "Specter: Powerful and Simple Data Structure Manipulation"
 - [Lens laws](https://hackage.haskell.org/package/lens) (Haskell perspective)
 
+## See Also
+
+- `julia-scientific` - Full Julia package mapping (137 skills)
 
 
 ## Scientific Skill Interleaving

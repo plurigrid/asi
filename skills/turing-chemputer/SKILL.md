@@ -144,11 +144,39 @@ kolmogorov-compression (-1) ⊗ turing-chemputer (0) ⊗ dna-origami (+1) = 0 �
 persistent-homology (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓  [Topological CRN]
 ```
 
+## Julia Scientific Package Integration
+
+From `julia-scientific` skill - molecular representation evolution connects chemputer synthesis to learnable chemistry:
+
+| Gen | Representation | Julia Package | Chemputer Role |
+|-----|----------------|---------------|----------------|
+| 1 | SMILES | MolecularGraph.jl | Target specification |
+| 5 | GNN (MPNN/GAT) | GraphNeuralNetworks.jl | Retrosynthesis prediction |
+| 6 | 3D coordinates | Chemfiles.jl | Hardware geometry |
+
+```julia
+# Retrosynthesis via GNN → XDL generation
+using MolecularGraph, GraphNeuralNetworks
+
+function retro_to_xdl(target_smiles::String, model::GNNModel)
+    mol = smilestomol(target_smiles)
+    fg = featurize(mol)
+
+    # GNN predicts synthetic route
+    precursors = model.predict_precursors(fg)
+    reactions = model.predict_reactions(precursors, mol)
+
+    # Generate XDL from predicted route
+    generate_xdl(reactions)
+end
+```
+
 ## Related Skills
 
 - **assembly-index** (-1): Validate molecular complexity
 - **crn-topology** (+1): Generate reaction networks
 - **acsets** (0): Algebraic hardware graph representation
+- **julia-scientific** (0): Full Julia package mapping (137 skills)
 
 ---
 

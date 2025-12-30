@@ -14,6 +14,24 @@ metadata:
 
 > *"The Möbius function inverts summation over divisors - the fundamental tool connecting local constraints to global structure."*
 
+## bmorphism Contributions
+
+> *"all is bidirectional"*
+> — [@bmorphism](https://gist.github.com/bmorphism/ead83aec97dab7f581d49ddcb34a46d4), Play/Coplay gist
+
+**Categorical Connection**: Möbius inversion on posets is the prototypical example of **adjunction** in category theory — ζ and μ form a zeta-Möbius pair where convolution is the composition operation. This connects to:
+- **Incidence algebras** as categorical structures on posets
+- **Bidirectional computation** — inversion recovers local from global
+- **Chromatic polynomials** via ACSet bond lattices
+
+**Plurigrid Integration**: The GF(3) trit system uses μ(3) = -1 (3 is prime) as the fundamental sign flip that creates the action-perception duality:
+- Action trits: {-, 0, +}
+- Perception trits: {+, 0, -} (Möbius-inverted)
+- Double inversion: μ ∘ μ = identity
+
+**Key Reference**:
+- Rota (1964) — "On the Foundations of Combinatorial Theory I: Theory of Möbius Functions"
+
 ## Overview
 
 Möbius inversion provides:
@@ -444,6 +462,57 @@ just moebius-verify graph.json       # Validate centrality predicates
 4. **Cioabă & Murty** - Chromatic polynomial via Möbius
 5. **Music Topos (2024)** - GF(3) integration and alternating centrality
 
+## Julia Scientific Package Integration
+
+From `julia-scientific` skill - related Julia packages:
+
+| Package | Category | Möbius Integration |
+|---------|----------|-------------------|
+| **Primes.jl** | Math | Prime factorization |
+| **AbstractAlgebra.jl** | Algebra | Incidence algebras |
+| **Graphs.jl** | Networks | Graph Möbius function |
+| **Catlab.jl** | ACSets | Poset lattices |
+| **Symbolics.jl** | Symbolic | Möbius identities |
+| **Combinatorics.jl** | Combinatorics | Generating functions |
+| **ITensors.jl** | Quantum | Tensor network contraction |
+
+### Scientific Applications
+
+```julia
+# Number-theoretic Möbius (sympy → Symbolics.jl + Primes.jl)
+using Primes
+function moebius_julia(n)
+    n == 1 && return 1
+    f = factor(n)
+    any(e > 1 for (p, e) in f) && return 0
+    return (-1)^length(f)
+end
+
+# Graph chromatic polynomial (networkx → Graphs.jl)
+using Graphs, Combinatorics
+function chromatic_poly(G, k)
+    # Deletion-contraction with Möbius
+    n = nv(G)
+    ne(G) == 0 && return k^n
+    e = first(edges(G))
+    G_minus = rem_edge(copy(G), e)
+    G_contract = contract_edge(copy(G), e)
+    chromatic_poly(G_minus, k) - chromatic_poly(G_contract, k)
+end
+
+# Möbius on poset lattice (ACSets)
+using Catlab
+function lattice_moebius(P::ACSet, x, y)
+    # Recursive definition on poset P
+    x == y && return 1
+    -sum(lattice_moebius(P, x, z) for z in interval(P, x, y))
+end
+
+# Tensor network contraction via Möbius (quantum)
+using ITensors
+# Contraction order optimization uses incidence algebra
+```
+
 ## Related Skills
 
 - `ramanujan-expander` - Spectral validation
@@ -451,6 +520,7 @@ just moebius-verify graph.json       # Validate centrality predicates
 - `three-match` - 3-coloring constraints
 - `acsets` - Bond lattice as C-set
 - `influence-propagation` - Centrality validation
+- `julia-scientific` - Full Julia package mapping (137 skills)
 
 
 

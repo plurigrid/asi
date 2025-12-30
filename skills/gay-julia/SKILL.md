@@ -10,8 +10,23 @@ metadata:
 
 Wide-gamut color sampling with splittable determinism using Pigeons.jl SPI pattern and LispSyntax integration.
 
+## bmorphism Contributions
+
+> *"We are building cognitive infrastructure for the next trillion minds"*
+> — [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
+
+**Author**: [@bmorphism](https://github.com/bmorphism) (Barton Rhodes)
+
+Gay.jl embodies the Plurigrid principle of **autopoietic ergodicity** — self-sustaining systems that explore all accessible states. The deterministic color generation from seeds mirrors the broader pattern of reproducible, verifiable computation across distributed systems.
+
+**Related bmorphism projects**:
+- [bmorphism/slowtime-mcp-server](https://github.com/bmorphism/slowtime-mcp-server) - MCP server for time intervals
+- [plurigrid/act](https://github.com/plurigrid/act) - cognitive category theory building blocks
+- Parametrised optics for cybernetic systems
+
 ## Repository
 - **Source**: https://github.com/bmorphism/Gay.jl
+- **Author**: [@bmorphism](https://github.com/bmorphism)
 - **Language**: Julia
 - **Pattern**: SplitMix64 → GF(3) trits → LCH colors
 
@@ -93,11 +108,46 @@ schedule = interleave(
 3. **CRDT conflict resolution** - Trit-based merge ordering
 4. **Terminal session coloring** - vterm integration via crdt-vterm-bridge
 
+## Julia Scientific Package Integration
+
+From `julia-scientific` skill - related Julia packages:
+
+| Package | Category | Use with Gay.jl |
+|---------|----------|-----------------|
+| **Catlab.jl** | ACSets | Colored schema parts |
+| **AlgebraicRewriting.jl** | Rewriting | Colored rule application |
+| **StructuredDecompositions.jl** | Sheaves | Colored adhesions |
+| **GraphNeuralNetworks.jl** | ML | Node/edge coloring |
+| **Makie.jl** | Visualization | Deterministic plot colors |
+| **Graphs.jl** | Networks | Colored graph analysis |
+| **Flux.jl** | Deep Learning | Layer coloring for debug |
+
+### Scientific Domain Coloring
+
+```julia
+# Protein structure coloring
+using Gay, BioStructures
+pdb = read("1CRN.pdb", PDB)
+chain_colors = Gay.palette(seed, nchains(pdb))
+visualize_structure(pdb, colors=chain_colors)
+
+# Quantum circuit coloring
+using Gay, Yao
+circuit = chain(4, put(1=>H), control(1, 2=>X))
+gate_colors = [Gay.color_at(seed, i) for i in 1:length(circuit)]
+
+# Graph neural network visualization
+using Gay, GraphNeuralNetworks, GraphMakie
+node_colors = Gay.palette(seed, nv(graph))
+graphplot(graph, node_color=node_colors)
+```
+
 ## Related Skills
 - `gay-mcp` - MCP server with Gay.jl colors
 - `spi-parallel-verify` - Strong Parallelism Invariance verification
 - `triad-interleave` - Three-stream scheduling
 - `bisimulation-game` - GF(3) conservation in game semantics
+- `julia-scientific` - Full Julia package mapping (137 skills)
 
 
 

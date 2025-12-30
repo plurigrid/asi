@@ -16,6 +16,22 @@ metadata:
 **Version**: 1.1.0
 **Trit**: 0 (Ergodic - coordinates decomposition)
 
+## bmorphism Contributions
+
+> *"Compositional Algorithms on Compositional Data: Deciding Sheaves on Presheaves"*
+> — [ACT 2023](https://act2023.github.io/papers/paper45.pdf), Benjamin Merlin Bumpus et al.
+
+> *"any computational problem which can be represented as a sheaf with respect to these topologies can be decided in linear time on classes of inputs which admit decompositions of bounded width"*
+> — [arXiv:2302.05575](https://arxiv.org/abs/2302.05575)
+
+**Key Insight**: Structured decompositions define **Grothendieck topologies** on categories of data (adhesive categories). This leads to algorithms on objects of any C-set category - structures such as: symmetric graphs, directed graphs, hypergraphs, databases, simplicial complexes, port graphs.
+
+**Implementation**: Concrete implementations in the [AlgebraicJulia](https://algebraicjulia.github.io/StructuredDecompositions.jl) ecosystem.
+
+Related to bmorphism's work on:
+- [plurigrid/act](https://github.com/plurigrid/act) - cognitive category theory building blocks
+- [Towards Foundations of Categorical Cybernetics](https://arxiv.org/abs/2105.06332) - cybernetic systems via parametrised optics
+
 ## Core Concept
 
 **StrDecomp** = Functor `d: ∫G → C` where:
@@ -158,12 +174,53 @@ end
 # DMD = colimit of snapshot diagram over intervals
 ```
 
+## Julia Scientific Package Integration
+
+From `julia-scientific` skill - related Julia packages:
+
+| Package | Category | Integration |
+|---------|----------|-------------|
+| **StructuredDecompositions.jl** | Core | Sheaves on tree decomps |
+| **Catlab.jl** | ACSets | Schema definitions |
+| **AlgebraicRewriting.jl** | Rewriting | Local transformations |
+| **Graphs.jl** | Networks | Graph decomposition |
+| **MetaGraphs.jl** | Networks | Attributed graphs |
+| **ITensors.jl** | Quantum | Tensor network decomp |
+| **COBREXA.jl** | Bioinformatics | Metabolic network decomp |
+| **GraphNeuralNetworks.jl** | ML | Message passing on decomps |
+
+### Cross-Domain Decomposition Patterns
+
+```julia
+# Metabolic network decomposition
+using StructuredDecompositions, COBREXA
+model = load_model("ecoli.json")
+decomp = tree_decomposition(reaction_graph(model))
+local_fba = [fba(submodel) for submodel in bags(decomp)]
+
+# Molecular graph decomposition for ML
+using StructuredDecompositions, MolecularGraph, AtomicGraphNets
+mol = smilestomol("c1ccccc1")  # benzene
+mol_decomp = tree_decomposition(mol)
+features = [featurize(bag) for bag in bags(mol_decomp)]
+
+# Quantum tensor network
+using StructuredDecompositions, ITensors
+tn = tensor_network(circuit)
+decomp = mps_decomposition(tn)
+```
+
 ## References
 
 - Bumpus et al. "Structured Decompositions" arXiv:2207.06091
 - algebraicjulia.github.io/StructuredDecompositions.jl
 - Nathan Marz: Specter inline caching patterns
 
+## See Also
+
+- `julia-scientific` - Full Julia package mapping (137 skills)
+- `acsets` - Algebraic databases foundation
+- `specter-acset` - Bidirectional navigation
 
 
 ## Scientific Skill Interleaving
