@@ -1,15 +1,5 @@
 # Aptos Society - Installed
 
-## Quick Start
-
-```bash
-# Check your wallets
-cat ~/.aptos/worlds/manifest.json | jq '.wallets[].name'
-
-# Check balances (requires MCP)
-# Use any world wallet via mcp__world_a_aptos__aptos_balance, etc.
-```
-
 ## What's Installed
 
 | Location | Contents |
@@ -20,6 +10,7 @@ cat ~/.aptos/worlds/manifest.json | jq '.wallets[].name'
 | `~/.agents/skills/` | Agent skills |
 | `~/.claude/skills/` | Claude-specific skills |
 | `~/.topos/GayMove/` | Move contract sources |
+| `~/agent-o-rama/` | Core agent system (Clojure) |
 
 ## 28 Wallets (GF(3) Balanced)
 
@@ -27,35 +18,40 @@ cat ~/.aptos/worlds/manifest.json | jq '.wallets[].name'
 - **ERGODIC (0)**: bob, world_b, world_e, world_h, world_k, world_n, world_q, world_t, world_w, world_z
 - **MINUS (-1)**: world_a, world_d, world_g, world_j, world_m, world_p, world_s, world_v, world_y
 
-Sum: 9(+1) + 10(0) + 9(-1) = 0 ✓
+Conservation: 9(+1) + 10(0) + 9(-1) = 0 ✓
 
-## MCP Tools Available
+## MCP Tools
 
-Each wallet exposes these tools:
+Each wallet exposes via MCP:
 - `mcp__world_X_aptos__aptos_balance` - check balance
-- `mcp__world_X_aptos__aptos_transfer` - send APT
-- `mcp__world_X_aptos__aptos_swap` - DEX swap
+- `mcp__world_X_aptos__aptos_transfer` - send APT (requires approval)
+- `mcp__world_X_aptos__aptos_swap` - DEX swap (requires approval)
 - `mcp__world_X_aptos__aptos_stake` - stake with validator
-- `mcp__world_X_aptos__aptos_view` - call view functions
+- `mcp__world_X_aptos__aptos_view` - call view functions (read-only)
 
-## Fund Wallets
+## Agent-O-Rama
 
-Wallets start with 0 APT. Fund from alice or external:
+Run the triadic agent system:
 ```bash
-# Get alice's address
-cat ~/.aptos/worlds/manifest.json | jq -r '.wallets[] | select(.name=="alice") | .address'
+cd ~/agent-o-rama
+clj -M:run
 ```
+
+Core namespaces:
+- `agent-o-rama.core` - Agent lifecycle (init→observe→decide→act→claim)
+- `agent-o-rama.triadic` - GF(3) parallel scheduler
+- `agent-o-rama.aptos` - MCP wallet integration
 
 ## Event Indexer
 
-Watch mainnet events:
+Watch mainnet for partition/merge/settle events:
 ```bash
 bb ~/.agents/scripts/event-indexer.bb run
 ```
 
 ## GayMove Contracts (Mainnet)
 
-Already deployed at: `0xc793acdec12b4a63717b001e21bbb7a8564d5e9690f80d41f556c2d0d624cc7b`
+Deployed: `0xc793acdec12b4a63717b001e21bbb7a8564d5e9690f80d41f556c2d0d624cc7b`
 
 - `gay_colors.move` - SplitMix64 deterministic colors
 - `multiverse.move` - Partition/merge/settle belief tokens
@@ -68,9 +64,14 @@ bb ~/.agents/scripts/generate-mcp-config.bb
 # Restart your AI assistant
 ```
 
-**Need fresh wallets?**
+**Regenerate wallets?**
 ```bash
 rm -rf ~/.aptos/worlds/
 bb ~/.agents/scripts/create-aptos-worlds.bb
 bb ~/.agents/scripts/generate-mcp-config.bb
+```
+
+**Verify GF(3)?**
+```bash
+cd ~/agent-o-rama && clj -M:verify
 ```

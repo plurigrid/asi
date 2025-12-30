@@ -20,10 +20,29 @@ society:
     mkdir -p ~/.topos/GayMove
     cp -r /tmp/asi-install/society/GayMove/* ~/.topos/GayMove/
     
+    # Install agent-o-rama
+    echo "🤖 Installing Agent-O-Rama..."
+    mkdir -p ~/agent-o-rama/src/clj/agent_o_rama
+    cp -r /tmp/asi-install/society/agent-o-rama/* ~/agent-o-rama/
+    
     # Install skills
     mkdir -p ~/.agents/skills ~/.claude/skills
     cp -r /tmp/asi-install/ies/* ~/.agents/skills/ 2>/dev/null || true
     cp -r /tmp/asi-install/skills/* ~/.claude/skills/ 2>/dev/null || true
+    
+    # Install aptos-mcp-server if not present
+    echo "📡 Installing Aptos MCP server..."
+    if ! command -v aptos-mcp-server &> /dev/null; then
+        if command -v cargo &> /dev/null; then
+            cargo install aptos-mcp-server 2>/dev/null || echo "⚠️  Install manually: cargo install aptos-mcp-server"
+        elif command -v npm &> /dev/null; then
+            npm install -g @anthropics/aptos-mcp-server 2>/dev/null || echo "⚠️  Install manually from npm or cargo"
+        else
+            echo "⚠️  Install aptos-mcp-server: cargo install aptos-mcp-server"
+        fi
+    else
+        echo "   aptos-mcp-server already installed"
+    fi
     
     # Generate fresh wallets
     echo "🔑 Generating fresh Aptos wallets..."

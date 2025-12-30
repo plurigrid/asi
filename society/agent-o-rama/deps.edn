@@ -1,0 +1,32 @@
+{:paths ["clj"]
+ 
+ :deps {org.clojure/clojure {:mvn/version "1.12.0"}
+        
+        ;; HTTP client for MCP calls
+        http-kit/http-kit {:mvn/version "2.8.0"}
+        
+        ;; JSON parsing
+        cheshire/cheshire {:mvn/version "5.13.0"}
+        
+        ;; Async utilities
+        org.clojure/core.async {:mvn/version "1.6.681"}
+        
+        ;; Transit for data serialization
+        com.cognitect/transit-clj {:mvn/version "1.0.333"}}
+ 
+ :aliases
+ {:dev {:extra-paths ["../dev"]
+        :extra-deps {nrepl/nrepl {:mvn/version "1.3.0"}}}
+  
+  :test {:extra-paths ["../test/clj"]
+         :extra-deps {lambdaisland/kaocha {:mvn/version "1.91.1392"}}}
+  
+  :repl {:main-opts ["-m" "nrepl.cmdline"
+                     "--middleware" "[cider.nrepl/cider-middleware]"]
+         :extra-deps {cider/cider-nrepl {:mvn/version "0.50.2"}}}
+  
+  ;; Run core agent loop
+  :run {:main-opts ["-m" "agent-o-rama.core"]}
+  
+  ;; GF(3) verification
+  :verify {:main-opts ["-e" "(require '[agent-o-rama.aptos :as a]) (println (a/verify-gf3))"]}}}
