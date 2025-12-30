@@ -75,3 +75,17 @@ bb ~/.agents/scripts/generate-mcp-config.bb
 ```bash
 cd ~/agent-o-rama && clj -M:verify
 ```
+
+## Run 26 Agents
+
+```bash
+export OPENROUTER_API_KEY=your-key
+just agents
+```
+
+Or directly:
+```bash
+bb ~/agent-o-rama/run-26-agents.bb
+```
+
+Each agent connects to OpenRouter Devstral and has its own wallet.
