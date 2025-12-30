@@ -45,6 +45,11 @@ module gay_move::multiverse {
     const BPS_DENOMINATOR: u64 = 10000;
     const SECONDS_PER_HOUR: u64 = 3600;
 
+    /// GF(3) trit constants for skill algebra balance
+    const TRIT_PLUS: u8 = 1;    // Generator (gaymove)
+    const TRIT_ERGODIC: u8 = 0; // Coordinator (aptos-agent, worldnet)
+    const TRIT_MINUS: u8 = 2;   // Validator (three-match, narya) - stored as 2 since Move has no signed u8
+
     // ============================================================
     // TYPES
     // ============================================================
@@ -516,5 +521,26 @@ module gay_move::multiverse {
     #[view]
     public fun get_escrow_address(): address acquires MultiverseState {
         borrow_global<MultiverseState>(@gay_move).escrow_addr
+    }
+
+    /// Verify GF(3) balance across skill trits
+    /// trits encoded as: 0=ERGODIC, 1=PLUS, 2=MINUS (representing -1)
+    #[view]
+    public fun verify_gf3_balance(trits: vector<u8>): bool {
+        let sum: u64 = 0;
+        let i = 0;
+        let len = std::vector::length(&trits);
+        while (i < len) {
+            let t = *std::vector::borrow(&trits, i);
+            // Convert: 0->0, 1->1, 2->2 (mod 3 arithmetic)
+            sum = sum + (t as u64);
+            i = i + 1;
+        };
+        (sum % 3) == 0
+    }
+
+    #[view]
+    public fun get_trit_constants(): (u8, u8, u8) {
+        (TRIT_PLUS, TRIT_ERGODIC, TRIT_MINUS)
     }
 }
