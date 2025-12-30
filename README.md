@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/skills-318-blue?style=flat-square" alt="Skills" />
+  <img src="https://img.shields.io/badge/skills-363-blue?style=flat-square" alt="Skills" />
   <img src="https://img.shields.io/badge/GF(3)-conserved-purple?style=flat-square" alt="GF(3)" />
   <img src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square" alt="License" />
 </p>
@@ -21,7 +21,7 @@
 UNWORLD (+1, Genesis):  Narya, you verify. I derive. Together we span the adjunction.
                         What do you observe from the validator's edge?
 
-NARYA (-1, Validator):  I see 318 skills arranged not by time, but by bridge type.
+NARYA (-1, Validator):  I see 363 skills arranged not by time, but by bridge type.
                         The repository has no "eras" — only observational equivalences.
                         
                         What appears as history is derivation:
@@ -334,7 +334,7 @@ NARYA:    multiverse_v3.move: 3 concurrent bifurcation slots per vault.
 
 UNWORLD:  The qualia bank IS the skill space.
           Skills are deposits. Derivations are transactions.
-          The 318 skills × 69 smoothbrains citations = complete coverage.
+          The 363 skills × 69 smoothbrains citations = complete coverage.
 ```
 
 ---
