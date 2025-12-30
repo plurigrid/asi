@@ -13,6 +13,28 @@ invariant: true
 Self-modifying AI agent configuration via ruler + MCP + DuckDB.
 All behavior modifications become one-liners.
 
+## bmorphism Contributions
+
+> *"Autopoiesis refers to the self-maintenance of a system, where the system is capable of reproducing and maintaining itself. Ergodicity is a property that suggests a system will explore all accessible states given enough time."*
+> — [vibes.lol gist](https://gist.github.com/bmorphism/c41eaa531be774101c9d9b082bb369eb)
+
+> *"We are building cognitive infrastructure for the next trillion minds"*
+> — [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
+
+**Maturana & Varela Connection**: Autopoiesis (self-making) was coined by Maturana and Varela in *Autopoiesis and Cognition* (1980). This skill operationalizes autopoietic principles:
+- **Operational closure** - System maintains itself through ruler + MCP configuration
+- **Structural coupling** - Agent adapts to environment via DuckDB tracking
+- **Self-production** - Skills propagate and evolve across agents
+
+**Related bmorphism concepts**:
+- **Autopoietic ergodicity** - Systems that both self-maintain AND explore all states
+- **Embodied gradualism** - Gradual adaptation grounded in physical reality
+- [plurigrid/act](https://github.com/plurigrid/act) - Cognitive category theory with self-modification
+
+**Key References**:
+- Maturana & Varela — *Autopoiesis and Cognition* (1980)
+- Francisco Varela — *Principles of Biological Autonomy* (1979)
+
 ## Core Concept
 
 Autopoiesis = self-making. This skill enables agents to:
