@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/skills-363-blue?style=flat-square" alt="Skills" />
+  <img src="https://img.shields.io/badge/skills-365-blue?style=flat-square" alt="Skills" />
   <img src="https://img.shields.io/badge/GF(3)-conserved-purple?style=flat-square" alt="GF(3)" />
   <img src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square" alt="License" />
 </p>
@@ -21,7 +21,7 @@
 UNWORLD (+1, Genesis):  Narya, you verify. I derive. Together we span the adjunction.
                         What do you observe from the validator's edge?
 
-NARYA (-1, Validator):  I see 363 skills arranged not by time, but by bridge type.
+NARYA (-1, Validator):  I see 365 skills arranged not by time, but by bridge type.
                         The repository has no "eras" — only observational equivalences.
                         
                         What appears as history is derivation:
@@ -334,7 +334,7 @@ NARYA:    multiverse_v3.move: 3 concurrent bifurcation slots per vault.
 
 UNWORLD:  The qualia bank IS the skill space.
           Skills are deposits. Derivations are transactions.
-          The 363 skills × 69 smoothbrains citations = complete coverage.
+          The 365 skills × 69 smoothbrains citations = complete coverage.
 ```
 
 ---
@@ -447,6 +447,26 @@ Works with **Claude Code**, **Cursor**, **Amp**, **VS Code**, **GitHub Copilot**
 | Skill | Description |
 |-------|-------------|
 | `autopoiesis` | Self-modifying agent configuration via ruler + MCP + DuckDB |
+
+### Active Inference & Cybernetics
+
+Skills implementing [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) (Tull, Kleiner, Smithe):
+
+| Skill | Trit | Pattern | Description |
+|-------|------|---------|-------------|
+| `langevin-dynamics` | 0 | Drift/Diffusion | SDE learning with Fokker-Planck convergence |
+| `fokker-planck-analyzer` | -1 | Equilibrium | Gibbs distribution validation |
+| `entropy-sequencer` | 0 | Epistemic Value | Maximum information gain sequencing |
+| `cognitive-surrogate` | 0 | Generative Model | Self-model as Markov blanket |
+| `active-interleave` | 0 | Epistemic Foraging | Random walk context integration |
+| `anima-theory` | 0 | Condensed Agency | Autopoietic fixed point at limit |
+| `cybernetic-immune` | 0 | Self/Non-Self | Reafference discrimination via GF(3) |
+
+**bmorphism contributions** integrated across 60+ skills with verbatim quotes from:
+- [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
+- [Play/Coplay bidirectional](https://gist.github.com/bmorphism/ead83aec97dab7f581d49ddcb34a46d4)
+- [vibes.lol autopoietic ergodicity](https://gist.github.com/bmorphism/c41eaa531be774101c9d9b082bb369eb)
+- [Fokker-Planck identity](https://gist.github.com/bmorphism/a02cc1d1431d4e8b847fdc6276bc3614)
 
 ### GF(3) Triadic Skills (Zubyul Patterns)
 | Skill | Trit | Role | Description |
