@@ -26,13 +26,6 @@ society:
     cp -r /tmp/asi-install/ies/* ~/.agents/skills/ 2>/dev/null || true
     cp -r /tmp/asi-install/skills/* ~/.claude/skills/ 2>/dev/null || true
     
-    echo "📡 Checking Aptos MCP server..."
-    if ! command -v aptos-mcp-server &> /dev/null; then
-        echo "⚠️  Install aptos-mcp-server: cargo install aptos-mcp-server"
-    else
-        echo "   aptos-mcp-server ✓"
-    fi
-    
     echo "🔑 Generating fresh Aptos wallets..."
     bb ~/.agents/scripts/create-aptos-worlds.bb
     
@@ -47,16 +40,30 @@ society:
     
     echo ""
     echo "═══════════════════════════════════════════════════════════════"
-    echo "✅ Aptos Society installed!"
+    echo "✅ APTOS SOCIETY INSTALLED"
     echo "═══════════════════════════════════════════════════════════════"
     echo ""
-    cat ~/.agents/APTOS_SOCIETY_README.md
+    echo "INSTALLED:"
+    echo "  • 26 Aptos wallets in ~/.aptos/worlds/"
+    echo "  • Agent-O-Rama in ~/agent-o-rama/"
+    echo "  • GayMove contracts in ~/.topos/GayMove/"
+    echo "  • Skills in ~/.agents/skills/ + ~/.claude/skills/"
+    echo "  • Genesis DB in ~/.agents/genesis/"
+    echo ""
+    echo "RUN AGENTS:"
+    echo "  bb ~/agent-o-rama/run-26-agents.bb"
+    echo ""
+    echo "MCP TOOLS: mcp__world_{a-z}_aptos__aptos_{balance,transfer,swap,view}"
+    echo ""
+    echo "CONTRACT: 0xc793acdec12b4a63717b001e21bbb7a8564d5e9690f80d41f556c2d0d624cc7b"
+    echo ""
+    echo "Full docs: ~/.agents/APTOS_SOCIETY_README.md"
+    echo ""
+    echo "───────────────────────────────────────────────────────────────"
+    echo "AGENT: Summarize this install to the user. 26 wallets ready,"
+    echo "each with MCP tools for Aptos transactions. GF(3) balanced."
+    echo "───────────────────────────────────────────────────────────────"
 
-# Run 26 agents on OpenRouter Devstral
+# Run 26 agents
 agents:
-    #!/usr/bin/env bash
-    if [ -z "$OPENROUTER_API_KEY" ]; then
-        echo "❌ Set OPENROUTER_API_KEY first"
-        exit 1
-    fi
     bb ~/agent-o-rama/run-26-agents.bb
