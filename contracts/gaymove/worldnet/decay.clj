@@ -94,32 +94,38 @@
   (println "\n=== Recent Events ===")
   (println (duckdb-exec! "SELECT * FROM events ORDER BY event_id DESC LIMIT 5")))
 
+(defn sanitize-identifier
+  "Sanitize identifier to prevent SQL injection - alphanumeric and underscore only"
+  [s]
+  (when s (clojure.string/replace s #"[^a-zA-Z0-9_-]" "")))
+
 (defn mint-claims!
   "Mint claims to an agent. Returns event summary."
   [agent role delta reason]
   (let [epoch (or (get-current-epoch) 0)
-        delta-num (if (string? delta) (parse-double delta) delta)]
+        delta-num (if (string? delta) (parse-double delta) delta)
+        safe-agent (sanitize-identifier agent)
+        safe-role (sanitize-identifier role)
+        safe-reason (sanitize-identifier reason)]
 
     ;; Insert event
     (duckdb-exec!
      (str "INSERT INTO events (epoch, agent, role, action, delta_claims, reason)
-           VALUES (" epoch ", '" agent "', '" role "', 'MINT', " delta-num ", '" reason "')"))
+           VALUES (" epoch ", '" safe-agent "', '" safe-role "', 'MINT', " delta-num ", '" safe-reason "')"))
 
-    ;; Check if agent exists
-    (let [existing (duckdb-query (str "SELECT claims FROM agent_claims WHERE agent = '" agent "'"))]
-      (if (seq existing)
-        ;; Update existing
-        (duckdb-exec!
-         (str "UPDATE agent_claims SET claims = claims + " delta-num ", last_epoch = " epoch " WHERE agent = '" agent "'"))
-        ;; Insert new
-        (duckdb-exec!
-         (str "INSERT INTO agent_claims (agent, claims, role, last_epoch) VALUES ('" agent "', " delta-num ", '" role "', " epoch ")"))))
+    ;; Upsert agent_claims
+    (duckdb-exec!
+     (str "INSERT INTO agent_claims (agent, claims, role, last_epoch)
+           VALUES ('" safe-agent "', " delta-num ", '" safe-role "', " epoch ")
+           ON CONFLICT (agent) DO UPDATE SET
+             claims = agent_claims.claims + " delta-num ",
+             last_epoch = " epoch))
 
     ;; Update total_claims
     (duckdb-exec!
      (str "UPDATE worldnet_state SET total_claims = total_claims + " delta-num " WHERE id = 1"))
 
-    {:agent agent :role role :delta delta-num :reason reason :epoch epoch}))
+    {:agent safe-agent :role safe-role :delta delta-num :reason safe-reason :epoch epoch}))
 
 (defn freeze-ledger!
   "Freeze ledger before collapse. No more writes allowed."

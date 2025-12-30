@@ -193,12 +193,13 @@ module gay_move::multiverse {
         let verse_b_constructor = object::create_named_object(&object_signer, b"verse_b");
         let verse_b_metadata = create_verse_fa(&verse_b_constructor, belief_b, string::utf8(b"VB"));
 
-        // Each verse gets half as initial stake
-        let stake_each = apt_amount / 2;
+        // Each verse gets half as initial stake (remainder goes to A)
+        let stake_a = (apt_amount + 1) / 2;
+        let stake_b = apt_amount / 2;
 
         // Mint claim tokens to creator (they can trade these!)
-        mint_verse_tokens(verse_a_metadata, sender, stake_each);
-        mint_verse_tokens(verse_b_metadata, sender, stake_each);
+        mint_verse_tokens(verse_a_metadata, sender, stake_a);
+        mint_verse_tokens(verse_b_metadata, sender, stake_b);
 
         // Store bifurcation
         move_to(&object_signer, Bifurcation {
@@ -209,8 +210,8 @@ module gay_move::multiverse {
             verse_a_metadata,
             verse_b_metadata,
             total_apt_locked: apt_amount,
-            stake_a: stake_each,
-            stake_b: stake_each,
+            stake_a,
+            stake_b,
             accumulated_decay: 0,
             last_decay_time: now,
             decay_rate: DEFAULT_DECAY_RATE,
@@ -355,6 +356,9 @@ module gay_move::multiverse {
         // Apply decay first
         apply_decay(bif);
 
+        // Validate amount doesn't exceed available stakes
+        assert!(amount <= bif.stake_a && amount <= bif.stake_b, E_INSUFFICIENT_STAKE);
+
         // Burn equal amounts of both tokens
         burn_verse_tokens(bif.verse_a_metadata, sender, amount);
         burn_verse_tokens(bif.verse_b_metadata, sender, amount);
@@ -445,24 +449,26 @@ module gay_move::multiverse {
 
         assert!(bif.resolved, E_NOT_RESOLVED);
 
-        // Determine winning token
-        let winning_metadata = if (bif.winner_is_a) {
-            bif.verse_a_metadata
+        // Determine winning token and stake
+        let (winning_metadata, winning_stake) = if (bif.winner_is_a) {
+            (bif.verse_a_metadata, bif.stake_a)
         } else {
-            bif.verse_b_metadata
+            (bif.verse_b_metadata, bif.stake_b)
         };
+
+        // Validate amount doesn't exceed stake
+        assert!(amount <= winning_stake, E_INSUFFICIENT_STAKE);
 
         // Burn winner tokens
         burn_verse_tokens(winning_metadata, sender, amount);
 
-        // Calculate payout: winner gets proportional share of remaining APT
-        let winning_stake = if (bif.winner_is_a) { bif.stake_a } else { bif.stake_b };
-        let _total_winner_value = winning_stake + bif.accumulated_decay;
+        // Calculate payout: winner gets proportional share including accumulated decay
+        let total_winner_value = winning_stake + bif.accumulated_decay;
 
-        let apt_payout = if (winning_stake == 0) {
+        let apt_payout = if (total_winner_value == 0) {
             0
         } else {
-            ((amount as u128) * (bif.total_apt_locked as u128) / (winning_stake as u128)) as u64
+            ((amount as u128) * (bif.total_apt_locked as u128) / (total_winner_value as u128)) as u64
         };
 
         // Clamp to available

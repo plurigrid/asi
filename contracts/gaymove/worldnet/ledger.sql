@@ -39,8 +39,9 @@ CREATE TABLE IF NOT EXISTS worldnet_state (
 );
 
 -- Initialize singleton
-INSERT OR IGNORE INTO worldnet_state (id, current_epoch, total_claims, unallocated_claims)
-VALUES (1, 0, 0, 0);
+INSERT INTO worldnet_state (id, current_epoch, total_claims, unallocated_claims)
+VALUES (1, 0, 0, 0)
+ON CONFLICT DO NOTHING;
 
 -- Bifurcation tracking (mirrors on-chain state for reference)
 CREATE TABLE IF NOT EXISTS bifurcations (
