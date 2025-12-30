@@ -8,7 +8,7 @@
 | `~/.agents/genesis/` | Genesis DB + schemas |
 | `~/.agents/scripts/` | Bootstrap + event indexer |
 | `~/.agents/skills/` | Agent skills |
-| `~/.claude/skills/` | Claude-specific skills |
+| `~/.agents/skills/` | Claude-specific skills |
 | `~/.aptos/GayMove/` | Move contract sources |
 | `~/.aptos/agent-o-rama/` | Core agent system (Clojure) |
 
