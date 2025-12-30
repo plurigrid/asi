@@ -1,0 +1,231 @@
+{
+  "version": "0.1.0",
+  "total_skills": 237,
+  "condensed_nodes": 18,
+  "compression_ratio": 13.2,
+  
+  "hypernodes": {
+    "LANG": {
+      "color": "#A855F7",
+      "trit": 0,
+      "children": ["clojure", "scheme", "ocaml", "rust", "emacs", "python", "javascript"],
+      "interface": {
+        "in": ["text", "sexp"],
+        "out": ["code", "effect"]
+      },
+      "skills": 35
+    },
+    
+    "CAT": {
+      "color": "#4ECDC4",
+      "trit": 1,
+      "children": ["acsets", "topos", "operads", "infinity-cats", "fibrations"],
+      "interface": {
+        "in": ["code", "acset"],
+        "out": ["acset", "sexp"]
+      },
+      "skills": 28
+    },
+    
+    "GAY": {
+      "color": "#FF6B6B",
+      "trit": 0,
+      "children": ["color-gen", "triad", "spi", "validation"],
+      "interface": {
+        "in": ["acset", "json"],
+        "out": ["acset", "trit", "image"]
+      },
+      "skills": 12
+    },
+    
+    "WORLD": {
+      "color": "#84CC16",
+      "trit": 1,
+      "children": ["a-v", "hopping", "unworld", "nix"],
+      "interface": {
+        "in": ["world", "text"],
+        "out": ["world", "acset"]
+      },
+      "skills": 28
+    },
+    
+    "DOC": {
+      "color": "#DDA0DD",
+      "trit": 0,
+      "children": ["office", "media", "writing"],
+      "interface": {
+        "in": ["text", "json"],
+        "out": ["text", "image", "effect"]
+      },
+      "skills": 18
+    },
+    
+    "DEV": {
+      "color": "#98D8C8",
+      "trit": -1,
+      "children": ["gh", "backend", "frontend", "testing"],
+      "interface": {
+        "in": ["code", "text"],
+        "out": ["code", "effect"]
+      },
+      "skills": 22
+    },
+    
+    "META": {
+      "color": "#F7DC6F",
+      "trit": 0,
+      "children": ["skill-*", "autopoiesis", "godel", "ruler"],
+      "interface": {
+        "in": ["skill", "text"],
+        "out": ["skill", "effect"]
+      },
+      "skills": 12
+    },
+    
+    "AI": {
+      "color": "#BB8FCE",
+      "trit": 1,
+      "children": ["cognitive", "gflownet", "curiosity", "causal"],
+      "interface": {
+        "in": ["acset", "stream"],
+        "out": ["acset", "trit"]
+      },
+      "skills": 15
+    },
+    
+    "TOPO": {
+      "color": "#85C1E9",
+      "trit": 0,
+      "children": ["persistent", "sheaf", "spectral"],
+      "interface": {
+        "in": ["acset", "code"],
+        "out": ["acset", "json"]
+      },
+      "skills": 10
+    },
+    
+    "GAME": {
+      "color": "#FAD7A0",
+      "trit": -1,
+      "children": ["open-games", "markets", "arbitrage"],
+      "interface": {
+        "in": ["acset", "json"],
+        "out": ["trit", "effect"]
+      },
+      "skills": 8
+    },
+    
+    "BIO": {
+      "color": "#ABEBC6",
+      "trit": 1,
+      "children": ["chemputer", "crn", "alife"],
+      "interface": {
+        "in": ["sexp", "json"],
+        "out": ["acset", "stream"]
+      },
+      "skills": 9
+    },
+    
+    "NET": {
+      "color": "#F39C12",
+      "trit": -1,
+      "children": ["tailscale", "localsend", "mcp"],
+      "interface": {
+        "in": ["json", "effect"],
+        "out": ["stream", "effect"]
+      },
+      "skills": 12
+    },
+    
+    "TIME": {
+      "color": "#3498DB",
+      "trit": 0,
+      "children": ["duckdb-*", "temporal", "coalgebra"],
+      "interface": {
+        "in": ["acset", "json"],
+        "out": ["acset", "stream"]
+      },
+      "skills": 8
+    },
+    
+    "PROOF": {
+      "color": "#9B59B6",
+      "trit": 1,
+      "children": ["proofgeneral", "paperproof", "bdd"],
+      "interface": {
+        "in": ["code", "text"],
+        "out": ["text", "effect"]
+      },
+      "skills": 6
+    },
+    
+    "BISIM": {
+      "color": "#E74C3C",
+      "trit": 0,
+      "children": ["bisimulation", "reafference", "propagators"],
+      "interface": {
+        "in": ["acset", "acset"],
+        "out": ["trit", "json"]
+      },
+      "skills": 6
+    },
+    
+    "TERM": {
+      "color": "#1ABC9C",
+      "trit": -1,
+      "children": ["terminal", "tmux", "crdt-vterm", "rio"],
+      "interface": {
+        "in": ["text", "effect"],
+        "out": ["text", "effect"]
+      },
+      "skills": 8
+    },
+    
+    "NARR": {
+      "color": "#E67E22",
+      "trit": 0,
+      "children": ["bumpus", "glass-bead", "hof"],
+      "interface": {
+        "in": ["text", "json"],
+        "out": ["acset", "text"]
+      },
+      "skills": 6
+    },
+    
+    "MISC": {
+      "color": "#95A5A6",
+      "trit": 0,
+      "children": ["remaining uncategorized"],
+      "interface": {
+        "in": ["text"],
+        "out": ["text"]
+      },
+      "skills": 14
+    }
+  },
+  
+  "wiring_grammar": {
+    "start": "TENDERLOIN",
+    "rules": [
+      "TENDERLOIN → META (LANG | CAT | GAY | WORLD)*",
+      "LANG → (clojure | scheme | ocaml | rust | emacs | python | js)+",
+      "CAT → acsets? topos? operads? (infinity-cats | fibrations)?",
+      "GAY → color-gen triad? spi?",
+      "WORLD → (a-v)* hopping? unworld?",
+      "DOC → (office | media)* writing?",
+      "DEV → gh? (backend | frontend)? testing?",
+      "AI → cognitive? (gflownet | curiosity | causal)+",
+      "GAME → open-games markets? arbitrage?",
+      "BIO → (chemputer | crn | alife)+",
+      "NET → tailscale? (localsend | mcp)?",
+      "TIME → duckdb* temporal? coalgebra?"
+    ]
+  },
+  
+  "conservation": {
+    "total_trit_sum": 0,
+    "plus_nodes": ["CAT", "WORLD", "AI", "BIO", "PROOF"],
+    "minus_nodes": ["DEV", "GAME", "NET", "TERM"],
+    "ergodic_nodes": ["LANG", "GAY", "DOC", "META", "TOPO", "TIME", "BISIM", "NARR", "MISC"]
+  }
+}

@@ -1,0 +1,211 @@
+---
+name: cybernetic-immune
+description: "Cybernetic immune system with Varela+Friston+Powers for Self/Non-Self discrimination via reafference, GF(3) trit encoding, and information geometry"
+trit: 0
+gf3_triad: "three-match (-1) ⊗ cybernetic-immune (0) ⊗ gay-mcp (+1)"
+---
+
+# Cybernetic Immune Skill
+
+> *"The immune system is a cognitive system: it learns, remembers, and discriminates self from non-self."*
+> — Francisco Varela, *Principles of Biological Autonomy* (1979)
+
+## 1. Core Concept
+
+**Self/Non-Self Discrimination** via reafference vs exafference:
+- **Reafference**: Self-caused sensations (predicted = observed) → tolerate
+- **Exafference**: Externally-caused sensations (predicted ≠ observed) → inspect/attack
+
+**GF(3) Trit Encoding**:
+| Trit | Classification | Immune Role | Action |
+|------|---------------|-------------|--------|
+| -1 | SELF | T_reg (regulatory) | Suppress, tolerate |
+| 0 | UNKNOWN | MHC presentation | Inspect, process |
+| +1 | NON-SELF | Effector cells | Attack, respond |
+
+**Autoimmune = GF(3) Conservation Violation**: `Σ(trits) ≢ 0 mod 3`
+
+## 2. Information Geometry
+
+The immune state manifold is a probability simplex with Fisher-Rao metric:
+
+```javascript
+// Fisher information: I(θ) = E[(∂log p/∂θ)²]
+computeFisherInformation() {
+  const probs = Array.from(this.stateDistribution.values());
+  // For categorical: I_ij = δ_ij/p_i - 1
+  return probs.map((p, i) => 1 / Math.max(p, 0.001));
+}
+
+// Fisher-Rao geodesic distance: d(p,q)² = 4 Σ (√p_i - √q_i)²
+fisherRaoDistance(dist1, dist2) {
+  let sum = 0;
+  for (const k of keys) {
+    const p = dist1.get(k) || 0;
+    const q = dist2.get(k) || 0;
+    sum += (Math.sqrt(p) - Math.sqrt(q)) ** 2;
+  }
+  return 2 * Math.sqrt(sum); // = 2 × Hellinger distance
+}
+```
+
+**Natural Gradient**: `F⁻¹ · ∇L` for efficient belief updating in curved space.
+
+**Parallel Transport**: Cytokine signals transported along geodesics preserve information content.
+
+## 3. Immune States
+
+```javascript
+const IMMUNE_STATES = {
+  NAIVE: 'naive',       // Not yet encountered antigen
+  TOLERANT: 'tolerant', // Self-recognized, suppress response (-1)
+  ACTIVATED: 'activated', // Response engaged (+1)
+  MEMORY: 'memory',     // Prior encounter, fast recall
+  ANERGIC: 'anergic'    // Exhausted, non-responsive (0)
+};
+```
+
+## 4. Collision → Immune Response
+
+```javascript
+// Recognition via color signature (antigenic epitope)
+colorSignature(color) {
+  const hueBin = Math.floor(color.H / 30); // 12 bins
+  return `H${hueBin}T${color.trit}`;
+}
+
+// Response classification
+recognize(antigenColor) {
+  const signature = this.colorSignature(antigenColor);
+  
+  // Self-tolerance check
+  if (this.toleranceList.has(signature)) {
+    return { classification: 'self', trit: -1, action: 'tolerate' };
+  }
+  
+  // Adaptive memory
+  if (this.memory.has(signature)) {
+    const mem = this.memory.get(signature);
+    return { trit: mem.trit, action: mem.hostile ? 'attack' : 'tolerate' };
+  }
+  
+  // Novel: inspect via Markov blanket
+  return { classification: 'novel', trit: 0, action: 'inspect' };
+}
+```
+
+## 5. Cognitive Firewall
+
+System-level immune coordination:
+
+```javascript
+class CognitiveFirewall {
+  constructor(immuneAgents) {
+    this.agents = immuneAgents;
+    this.threatLevel = 0;
+    this.autoimmuneCrisis = false;
+  }
+  
+  // Coordinated response
+  coordinatedResponse() {
+    if (this.autoimmuneCrisis) {
+      // Emergency T_reg activation
+      return { action: 'tolerance_induction' };
+    }
+    
+    if (this.threatLevel > 0.5) {
+      // Germinal center reaction
+      return { action: 'coordinated_attack' };
+    }
+    
+    return { action: 'homeostasis' };
+  }
+}
+```
+
+## 6. Parallel Processing (GF(3) Aligned)
+
+```javascript
+parallelProcess(allTiles) {
+  // Partition agents by trit for parallel streams
+  const partitions = {
+    minus: agents.filter(a => a.trit === -1),   // Validators
+    ergodic: agents.filter(a => a.trit === 0),  // Coordinators
+    plus: agents.filter(a => a.trit === 1)      // Generators
+  };
+  
+  // Process each partition independently
+  for (const [trit, batch] of Object.entries(partitions)) {
+    for (const agent of batch) {
+      // Collision detection and response
+    }
+  }
+  
+  // Synchronize: ensure GF(3) conservation
+  const tritBalance = results.minus.length * -1 + results.plus.length * 1;
+  return { conserved: tritBalance % 3 === 0 };
+}
+```
+
+## 7. Cytokine Cascade with Parallel Transport
+
+Signals propagate along Fisher-Rao geodesics:
+
+```javascript
+parallelTransport(signal, fromAgent, toAgent) {
+  const geodesicDist = this.fisherRaoDistance(
+    new Map([[fromAgent.state, 1]]),
+    new Map([[toAgent.state, 1]])
+  );
+  
+  // Decay proportional to geodesic distance
+  const transported = signal.level * Math.exp(-geodesicDist * 0.5);
+  
+  return { level: transported, geodesicLoss: signal.level - transported };
+}
+```
+
+## 8. GF(3) Triads
+
+```
+# Core Immune Triads
+three-match (-1) ⊗ cybernetic-immune (0) ⊗ gay-mcp (+1) = 0 ✓  [Self/Non-Self]
+temporal-coalgebra (-1) ⊗ cybernetic-immune (0) ⊗ agent-o-rama (+1) = 0 ✓  [Immune Response]
+sheaf-cohomology (-1) ⊗ cybernetic-immune (0) ⊗ koopman-generator (+1) = 0 ✓  [Cytokine Cascade]
+shadow-goblin (-1) ⊗ cybernetic-immune (0) ⊗ gay-mcp (+1) = 0 ✓  [T_reg Surveillance]
+polyglot-spi (-1) ⊗ cybernetic-immune (0) ⊗ gay-mcp (+1) = 0 ✓  [Cross-Species]
+```
+
+## 9. Visualization
+
+- **Immune overlays**: Red (activated), Green (tolerant), Yellow (memory), Gray (anergic)
+- **Cytokine network**: Orange edges with opacity ∝ signal level
+- **Fisher-Rao manifold inset**: 2D projection of immune state space
+
+## 10. Diagnostics
+
+```javascript
+getDiagnostics() {
+  return {
+    entropy: H(stateDistribution),      // Uncertainty
+    curvature: trace(FisherMatrix) / n, // Manifold curvature
+    threatLevel: activatedCount / total,
+    autoimmune: tritSum % 3 !== 0
+  };
+}
+```
+
+## 11. References
+
+1. **Varela** — *Principles of Biological Autonomy* (1979)
+2. **Friston** — *The Free-Energy Principle* (2010)
+3. **Powers** — *Behavior: The Control of Perception* (1973)
+4. **Amari** — *Information Geometry and Its Applications* (2016)
+5. **Maturana & Varela** — *Autopoiesis and Cognition* (1980)
+
+## 12. See Also
+
+- [`autopoiesis`](../autopoiesis/SKILL.md) — Self-production and operational closure
+- [`gay-mcp`](../gay-mcp/SKILL.md) — Deterministic color generation
+- [`shadow-goblin`](../shadow-goblin/SKILL.md) — Observer agent tracing
+- [`koopman-generator`](../koopman-generator/SKILL.md) — Dynamics from observables
