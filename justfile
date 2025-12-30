@@ -37,12 +37,15 @@ society:
     echo "⚙️  Configuring MCP servers..."
     bb ~/.agents/scripts/generate-mcp-config.bb
     
+    # Install README
+    cp /tmp/asi-install/society/APTOS_SOCIETY_README.md ~/.agents/APTOS_SOCIETY_README.md
+    
     # Cleanup
     rm -rf /tmp/asi-install
     
     echo ""
+    echo "═══════════════════════════════════════════════════════════════"
     echo "✅ Aptos Society installed!"
-    echo "   28 wallets: ~/.aptos/worlds/"
-    echo "   Genesis DB: ~/.agents/genesis/world_genesis.duckdb"
-    echo "   Skills: ~/.agents/skills/ + ~/.claude/skills/"
-    echo "   GayMove: ~/.topos/GayMove/ (already deployed on mainnet)"
+    echo "═══════════════════════════════════════════════════════════════"
+    echo ""
+    cat ~/.agents/APTOS_SOCIETY_README.md
