@@ -777,3 +777,11 @@ We believe in open source and giving credit where it's due. If you see your work
 <p align="center">
   <sub>Built with care by <a href="https://skillcreator.ai">SkillCreator.ai</a></sub>
 </p>
+
+---
+
+## MC Sweep Results (Seed: 137508)
+
+```json
+{"n_workers":1,"spi":"Strong Parallelism Invariance: same seeds = same colors regardless of execution order","workers":{"worker_1":{"sweeps":[{"hex":"#8A60CB","sweep":1},{"hex":"#64E87E","sweep":2},{"hex":"#68EFD4","sweep":3},{"hex":"#2339B9","sweep":4},{"hex":"#5D93D9","sweep":5},{"hex":"#AF330E","sweep":6},{"hex":"#18CAD9","sweep":7},{"hex":"#F28B4B","sweep":8},{"hex":"#8F2CA6","sweep":9}],"seed":11400714819323061553}},"base_seed":137508,"n_sweeps":9}
+```
