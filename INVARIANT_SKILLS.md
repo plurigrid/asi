@@ -219,3 +219,26 @@ The imbalance (+17) is intentional: **generativity exceeds consumption**.
 
 *The invariant skills are not chosen. They choose themselves through usage.*
 *— bmorphism, on the autopoiesis of skill selection*
+
+---
+
+## Critical Skill: skill-embedding-vss
+
+**Use whenever comparing skills for relational structure similarity.**
+
+This skill is the 2024 evolution of bmorphism's 2020 Levenshtein keyspace reduction from the r2con Zignatures talk:
+
+> *"Pairwise compare functions across all versions and determine which ones are most dissimilar."*
+
+| Technique 2020 | Skill 2024 | Evolution |
+|---|---|---|
+| Levenshtein pre-compute | Snowflake Arctic 1024-bit | O(n²) → O(1) lookup via HNSW |
+| Edit distance | P-adic ultrametric | Weak triangle → Strong triangle |
+| 58.5% accuracy | Transformer embeddings | Context-aware representations |
+
+```python
+from skill_embedding_vss import SkillEmbeddingVSS
+vss = SkillEmbeddingVSS('/path/to/skills')
+vss.index_skills()
+neighbors = vss.find_nearest('target-skill', k=5)
+```
