@@ -25,11 +25,14 @@ curl "https://api.dune.com/api/v1/query/{query_id}" \
 
 ## pyUSD Queries
 
-| Query ID | Description |
-|----------|-------------|
-| 3456789 | pyUSD daily transfers (Ethereum) |
-| 3456790 | pyUSD holder distribution |
-| 3456791 | pyUSD DEX volume by protocol |
+Configure query IDs via environment variables:
+
+| Env Variable | Description |
+|--------------|-------------|
+| `DUNE_PYUSD_DAILY_TRANSFERS` | pyUSD daily transfers query ID |
+| `DUNE_PYUSD_HOLDERS` | pyUSD holder distribution query ID |
+| `DUNE_PYUSD_DEX_VOLUME` | pyUSD DEX volume by protocol query ID |
+| `DUNE_PYUSD_BRIDGE_FLOWS` | pyUSD bridge flows query ID |
 
 ## Python Client
 
@@ -39,8 +42,9 @@ from dune_client.query import QueryBase
 
 dune = DuneClient(api_key=os.environ["DUNE_API_KEY"])
 
-# Execute and fetch
-query = QueryBase(query_id=3456789)
+# Execute and fetch (use your actual query ID)
+query_id = int(os.environ.get("DUNE_PYUSD_DAILY_TRANSFERS", 0))
+query = QueryBase(query_id=query_id)
 results = dune.run_query(query)
 ```
 

@@ -15,12 +15,13 @@ try:
 except ImportError:
     DUNE_AVAILABLE = False
 
-# Known pyUSD query IDs
+# pyUSD query IDs - update with valid Dune query IDs
+# See: https://dune.com/queries for available queries
 PYUSD_QUERIES = {
-    "daily_transfers": 3456789,
-    "holder_distribution": 3456790,
-    "dex_volume": 3456791,
-    "bridge_flows": 3456792,
+    "daily_transfers": int(os.environ.get("DUNE_PYUSD_DAILY_TRANSFERS", 0)),
+    "holder_distribution": int(os.environ.get("DUNE_PYUSD_HOLDERS", 0)),
+    "dex_volume": int(os.environ.get("DUNE_PYUSD_DEX_VOLUME", 0)),
+    "bridge_flows": int(os.environ.get("DUNE_PYUSD_BRIDGE_FLOWS", 0)),
 }
 
 def get_dune_client() -> Optional["DuneClient"]:

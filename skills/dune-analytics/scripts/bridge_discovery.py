@@ -4,8 +4,12 @@ Bridge Dune Analytics to pyUSD Discovery Engine
 GF(3) Trit: 0 (ERGODIC - synthesis)
 """
 
+import os
 import sys
-sys.path.insert(0, "/Users/barton/ies")
+
+# Use environment variable or fall back to script's directory
+IES_PATH = os.environ.get("IES_PATH", os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, IES_PATH)
 
 from typing import Dict, List, Any
 from dataclasses import dataclass
@@ -51,7 +55,7 @@ def integrate_pyusd_discovery():
         
         return enriched
     except ImportError as e:
-        return {"error": str(e), "hint": "Run from /Users/barton/ies directory"}
+        return {"error": str(e), "hint": "Set IES_PATH environment variable or run from ies directory"}
 
 if __name__ == "__main__":
     import json
