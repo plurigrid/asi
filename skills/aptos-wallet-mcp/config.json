@@ -1,9 +1,10 @@
 {
   "$meta": {
-    "schema": "Plurigrid Wallet MCP Config v1.0",
-    "generated": "2025-12-27",
+    "schema": "Plurigrid Wallet MCP Config v2.0",
+    "generated": "2026-01-01",
     "gf3_seed": 1069,
-    "description": "Compressed shareable wallet config - secrets externalized"
+    "description": "Wallet config with AIP-61 keyless/ephemeral key support",
+    "keyless_support": true
   },
 
   "wallets": {
@@ -12,12 +13,14 @@
         "balance": "0.6130 APT",
         "trit": -1,
         "role": "MINUS/validator",
-        "color_hue": 240
+        "color_hue": 240,
+        "auth_mode": "keyless"
       },
       "testnet": {
         "balance": "0.0000 APT",
         "trit": 0,
-        "role": "ERGODIC/coordinator"
+        "role": "ERGODIC/coordinator",
+        "auth_mode": "keyless"
       }
     },
     "bob": {
@@ -25,14 +28,26 @@
         "balance": "55.6987 APT",
         "trit": 1,
         "role": "PLUS/executor",
-        "color_hue": 0
+        "color_hue": 0,
+        "auth_mode": "keyless"
       },
       "testnet": {
         "balance": "0.0000 APT",
         "trit": 0,
-        "role": "ERGODIC/coordinator"
+        "role": "ERGODIC/coordinator",
+        "auth_mode": "keyless"
       }
     }
+  },
+
+  "keylessConfig": {
+    "jwtSource": {
+      "type": "env",
+      "value": "APTOS_OIDC_JWT"
+    },
+    "autoGenerateEphemeralKeys": true,
+    "ephemeralKeyExpirySecs": 86400,
+    "rotateBeforeExpirySecs": 3600
   },
 
   "mcpServers": {
@@ -41,6 +56,11 @@
       "args": ["${APTOS_MCP_PATH}/dist/mcp/server.js"],
       "env": {
         "APTOS_NETWORK": "mainnet",
+        "APTOS_KEYLESS_JWT_SOURCE": "env:ALICE_OIDC_JWT",
+        "APTOS_KEYLESS_AUTO_EPK": "true",
+        "APTOS_WORLD_ID": "alice"
+      },
+      "legacyEnv": {
         "APTOS_PRIVATE_KEY": "${ALICE_APTOS_KEY}"
       }
     },
@@ -49,6 +69,11 @@
       "args": ["${APTOS_MCP_PATH}/dist/mcp/server.js"],
       "env": {
         "APTOS_NETWORK": "mainnet",
+        "APTOS_KEYLESS_JWT_SOURCE": "env:BOB_OIDC_JWT",
+        "APTOS_KEYLESS_AUTO_EPK": "true",
+        "APTOS_WORLD_ID": "bob"
+      },
+      "legacyEnv": {
         "APTOS_PRIVATE_KEY": "${BOB_APTOS_KEY}"
       }
     },
@@ -57,6 +82,11 @@
       "args": ["${APTOS_MCP_PATH}/dist/mcp/server.js"],
       "env": {
         "APTOS_NETWORK": "testnet",
+        "APTOS_KEYLESS_JWT_SOURCE": "env:ALICE_OIDC_JWT",
+        "APTOS_KEYLESS_AUTO_EPK": "true",
+        "APTOS_WORLD_ID": "alice"
+      },
+      "legacyEnv": {
         "APTOS_PRIVATE_KEY": "${ALICE_APTOS_KEY}"
       }
     },
@@ -65,6 +95,11 @@
       "args": ["${APTOS_MCP_PATH}/dist/mcp/server.js"],
       "env": {
         "APTOS_NETWORK": "testnet",
+        "APTOS_KEYLESS_JWT_SOURCE": "env:BOB_OIDC_JWT",
+        "APTOS_KEYLESS_AUTO_EPK": "true",
+        "APTOS_WORLD_ID": "bob"
+      },
+      "legacyEnv": {
         "APTOS_PRIVATE_KEY": "${BOB_APTOS_KEY}"
       }
     }
