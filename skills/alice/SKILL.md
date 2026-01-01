@@ -1,3 +1,10 @@
+---
+name: alice
+description: Primary Aptos testnet wallet for transaction origination. Use when initiating test transactions.
+metadata:
+  trit: -1
+---
+
 # World ALICE Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

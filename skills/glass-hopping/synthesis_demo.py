@@ -15,9 +15,11 @@ With triadic voice narration (Anna, Amélie, Luca).
 import subprocess
 import sys
 import time
+import os
 
-sys.path.insert(0, '/Users/alice/.agents/skills/ordered-locale')
-sys.path.insert(0, '/Users/alice/.agents/skills/glass-hopping')
+_skill_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.environ.get("ORDERED_LOCALE_PATH", os.path.join(_skill_dir, "..", "ordered-locale")))
+sys.path.insert(0, os.environ.get("GLASS_HOPPING_PATH", _skill_dir))
 
 from ordered_locale import (
     OrderedLocale, Frame, triadic_gf3, directed_interval,

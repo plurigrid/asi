@@ -2,6 +2,11 @@
 name: unison
 description: Unison language - content-addressed functional programming with abilities for effects, distributed computing, and structural types. Use for pure functional code, effect management, distributed systems, and refactoring-safe codebases.
 trit: 0
+seed: 1069
+seed_hex: "0x42D"
+seed_name: "zubuyul"
+acset_schema: "unison-acset"
+spi_verified: true
 ---
 
 # Unison

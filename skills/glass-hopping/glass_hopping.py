@@ -17,8 +17,9 @@ from dataclasses import dataclass, field
 from typing import FrozenSet, Dict, List, Optional, Callable, Any, Tuple
 from enum import IntEnum
 from functools import reduce
+import os
 
-sys.path.insert(0, '/Users/alice/.agents/skills/ordered-locale')
+sys.path.insert(0, os.environ.get("ORDERED_LOCALE_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "ordered-locale")))
 from ordered_locale import (
     OrderedLocale, Frame, triadic_gf3, directed_interval,
     cone, cocone, points_functor

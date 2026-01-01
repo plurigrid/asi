@@ -1,11 +1,12 @@
-# Algebraic Rewriting
-
 ---
 name: algebraic-rewriting
 description: Category-theoretic graph rewriting with DPO, SPO, and SqPO pushouts for C-Sets. Declarative transformation of acset data structures.
-trit: -1
-color: "#0BAD20"
+metadata:
+  trit: -1
+  color: "#0BAD20"
 ---
+
+# Algebraic Rewriting
 
 ## Overview
 

@@ -1,3 +1,10 @@
+---
+name: active-interleave
+description: Interleaves context from recently active Claude/Amp threads into current activity via random walk.
+metadata:
+  trit: 0
+---
+
 # Active Interleave Skill
 
 Interleaves context from recently active Claude/Amp threads into current activity via random walk.
