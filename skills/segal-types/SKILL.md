@@ -11,8 +11,9 @@ metadata:
   - Lean4
   - Agda
   - InfinityCosmos
+  interface_ports:
+  - References
 ---
-
 # Segal Types Skill
 
 > *"A Segal type is a type where binary composites exist uniquely up to homotopy."*
@@ -123,6 +124,18 @@ end
 2. **Identity exists**: For each object x, there is id_x : hom A x x.
 
 3. **2-out-of-3**: If two of f, g, g∘f are equivalences, so is the third.
+
+---
+
+## End-of-Skill Interface
+
+## r2con Speaker Resources
+
+| Speaker | Relevance | Repository/Talk |
+|---------|-----------|-----------------|
+| **bmorphism** | Category theory signatures | [libc_zignatures](https://github.com/bmorphism/libc_zignatures) |
+| **condret** | ESIL semantics (∞-cat structure) | [radare2 ESIL](https://github.com/radareorg/radare2) |
+| **thestr4ng3r** | CFG as ∞-groupoid | [r2ghidra](https://github.com/radareorg/r2ghidra) |
 
 ## References
 

@@ -1,6 +1,7 @@
 ---
 name: godel-machine
-description: "Schmidhuber's Gödel Machine: Self-improving systems that prove their own improvements. Darwin Gödel Machine (DGM) combines evolution with formal verification."
+description: 'Schmidhuber''s Gödel Machine: Self-improving systems that prove their
+  own improvements. Darwin Gödel Machine (DGM) combines evolution with formal verification.'
 metadata:
   trit: 1
   polarity: PLUS
@@ -9,8 +10,11 @@ metadata:
   - Python
   - Lean4
   - MLX
+  interface_ports:
+  - References
+  - GF(3) Triads
+  - Integration with
 ---
-
 # Gödel Machine Skill
 
 > *"A Gödel Machine can rewrite any part of itself, including the learning algorithm, provided it can first prove that the rewrite is beneficial."*
@@ -101,14 +105,16 @@ class DarwinGodelMachine:
         return Agent(code=new_code, generation=self.generation + 1)
 ```
 
-## GF(3) Triads
+## Key Properties
 
-```
-# Self-Improvement Triads
-kolmogorov-compression (-1) ⊗ cognitive-superposition (0) ⊗ godel-machine (+1) = 0 ✓
-proofgeneral-narya (-1) ⊗ self-evolving-agent (0) ⊗ godel-machine (+1) = 0 ✓
-sheaf-cohomology (-1) ⊗ epistemic-arbitrage (0) ⊗ godel-machine (+1) = 0 ✓
-```
+1. **Halting Problem**: Cannot prove all beneficial rewrites (incompleteness)
+2. **Safety**: Only rewrites with proofs are applied
+3. **Bootstrapping**: Initial prover must be trustworthy
+4. **Asymptotic Optimality**: Converges to optimal policy (given enough time)
+
+---
+
+## End-of-Skill Interface
 
 ## Integration with Interaction Entropy
 
@@ -138,12 +144,22 @@ module GodelMachine
 end
 ```
 
-## Key Properties
+## GF(3) Triads
 
-1. **Halting Problem**: Cannot prove all beneficial rewrites (incompleteness)
-2. **Safety**: Only rewrites with proofs are applied
-3. **Bootstrapping**: Initial prover must be trustworthy
-4. **Asymptotic Optimality**: Converges to optimal policy (given enough time)
+```
+# Self-Improvement Triads
+kolmogorov-compression (-1) ⊗ cognitive-superposition (0) ⊗ godel-machine (+1) = 0 ✓
+proofgeneral-narya (-1) ⊗ self-evolving-agent (0) ⊗ godel-machine (+1) = 0 ✓
+sheaf-cohomology (-1) ⊗ epistemic-arbitrage (0) ⊗ godel-machine (+1) = 0 ✓
+```
+
+## r2con Speaker Resources
+
+| Speaker | Relevance | Repository/Talk |
+|---------|-----------|-----------------|
+| **cryptax** | Malware evolution/mutation | [droidlysis](https://github.com/cryptax/droidlysis) |
+| **unixfreaxjp** | Self-modifying malware | r2con malware analysis |
+| **cmatthewbrooks** | Binary mutation analysis | [malchive](https://github.com/MITRECND/malchive) |
 
 ## References
 

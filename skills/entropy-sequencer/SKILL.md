@@ -9,6 +9,24 @@ metadata:
 
 > Layer 5: Interaction Interleaving for Maximum Information Gain
 
+## bmorphism Contributions
+
+> *"universal topos construction for social cognition and democratization of mathematical approach to problem-solving to all"*
+> — [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
+
+**Active Inference as Information Maximization**: The entropy-sequencer implements the core Active Inference principle from [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861): agents select actions that maximize expected information gain (epistemic value) while minimizing surprise (pragmatic value).
+
+**String Diagram Pattern**:
+```
+Perception ─┬→ Entropy Estimation ──┐
+            │                        ↓
+Action ←────┴─ Max Information ←─ Sequence Optimizer
+```
+
+This bidirectional loop embodies bmorphism's principle that **"all is bidirectional"** — perception informs action, action generates new percepts.
+
+**Temperature-Aware Sequencing**: When T→0 (low temperature), favor exploitation of known high-information patterns. When T→∞ (high temperature), explore uniformly. This mirrors the Langevin dynamics exploration-exploitation trade-off.
+
 **Version**: 1.0.0  
 **Trit**: 0 (Ergodic - coordinates information flow)  
 **Bundle**: core  
@@ -241,3 +259,38 @@ just entropy-export optimized_sequence.json
 - `agent-o-rama` (Layer 4) - Consumes optimized sequences
 - `gay-mcp` - Deterministic seeding
 - `three-match` - Constraint validation
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Scientific Computing
+- **scipy** [○] via bicomodule
+  - Hub for numerical/scientific computation
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ◁
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

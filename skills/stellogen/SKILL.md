@@ -1,231 +1,284 @@
 # Stellogen Skill
 
-> *"Computation and types from the same mechanism: term unification."*
-> — Boris Music, engboris/stellogen
+**Trit**: 0 (ERGODIC - logic-agnostic mediation)  
+**Source**: [engboris/stellogen](https://github.com/engboris/stellogen) + [bmorphism/stellogen](https://github.com/bmorphism/stellogen)  
+**License**: MIT
 
-**Trit**: +1 (PLUS - generative)
-**Color**: #D04158 (from seed 137508, index 22)
-**Language**: OCaml (core), S-expression syntax
-**Foundation**: Girard's Transcendental Syntax
+---
 
 ## Overview
 
-**Stellogen** is an experimental language where:
-- **Stars** are atomic interaction units with polarized rays (+/-)
-- **Constellations** are multisets of stars that compute via unification
-- **Types are tests** - defined as sets of interactive probes
-- **No primitive types** - you build your own logic
+**Stellogen** is a logic-agnostic programming language based on term unification, designed from Girard's transcendental syntax. It provides:
 
-```
-Prolog unification + Linear Logic polarity + Term rewriting = Stellogen
-```
+1. **Constellations** - Logic programs as elementary computation bricks
+2. **Galaxies** - Structured collections of constellations
+3. **Interaction Nets** - Lafont-style parallel graph rewriting
+4. **Proof-as-Program** - Coq-like tactics without fixed type system
 
-## Core Concepts
+## Key Characteristics
 
-### Stars and Rays
+- **Logic-agnostic typing**: No primitive types; uses assert-like expressions
+- **Term unification**: Everything reduces to unification
+- **Multi-paradigm**: Logic, functional, imperative, object-oriented
 
-```stellogen
-' A star is a block of rays
-' Rays have polarity: + (positive) or - (negative)
-(def my_star [(+hello X) (-world Y)])
+## Syntax
 
-' Stars interact when opposite polarities unify
-' (+hello a) with (-hello X) → X := a
-```
-
-### Constellations
+### Polarized Rays
 
 ```stellogen
-' A constellation is a collection of stars
-(def query [(+find X) (-database X)])
-(def database [(-find "result")])
+' Positive ray (output/producer)
++output(term)
 
-' Execution: stars interact along matching rays
-(def result (exec #query @#database))
-' → [("result")]
+' Negative ray (input/consumer)  
+-input(term)
+
+' Constellation (logic program)
+spec nat =
+  -i(z) ok;
+  -i(s(X)) +i(X).
 ```
 
-### Polarity = GF(3) Trit Mapping
+### Galaxies (Structured Constellations)
 
-| Stellogen | GF(3) | Role |
-|-----------|-------|------|
-| `+` ray | +1 | PLUS (emitter) |
-| `-` ray | -1 | MINUS (absorber) |
-| neutral | 0 | ERGODIC (coordinator) |
-
-## Integration with Loaded Skills
-
-### Stellogen ↔ interaction-nets
-
-Both models share:
-- **No global control flow** - local interactions only
-- **Polarity matching** - principal ports = +/- rays
-- **Annihilation** - matching polarity → reduction
-
-```
-Stellogen:          Interaction Net:
-(+f X) (-f a)   ≅   ●─f─● (principal ports)
-    ↓                   ↓
-  X := a            wire surgery
-```
-
-### Stellogen ↔ propagators
-
-Both share bidirectional information flow:
-
-```julia
-# Propagator cell = Stellogen constellation
-cell = Constellation([
-    Star([("+value", x)]),      # Emit value
-    Star([("-constraint", x)])   # Absorb constraint
-])
-```
-
-### Stellogen ↔ geb
-
-Both use S-expressions for categorical semantics:
-
-```lisp
-;; Geb morphism as Stellogen constellation
-(def geb_inject_left
-  [(+coprod X Y)
-   (-left X)
-   (+result (left X))])
-```
-
-### Stellogen ↔ lispsyntax-acset
-
-Stars map to ACSet parts, rays to morphisms:
-
-```julia
-@present ConstellationSchema(FreeSchema) begin
-    Star::Ob
-    Ray::Ob
-    Constellation::Ob
-    
-    star_of::Hom(Ray, Star)
-    in_constellation::Hom(Star, Constellation)
-    polarity::Attr(Ray, GF3)
-    symbol::Attr(Ray, Symbol)
+```stellogen
+fsm = galaxy
+  initial = -i(W) +state(W q0).
+  final = -state(e qf) accept.
+  transitions =
+    -state(0:W q0) +state(W q1);
+    -state(1:W q1) +state(W q0).
 end
 ```
 
-### Stellogen ↔ lambda-calculus
-
-Lambda abstraction = positive star, application = negative:
+### Process Execution
 
 ```stellogen
-' λx.M encoded as constellation
-(def lambda_x_M [(+lambda X Body) (-apply X)])
-
-' (λx.x) y → y
-(def identity [(+lambda X X)])
-(def apply_y [(-lambda Y Y) (+arg y)])
-(exec #identity @#apply_y)  ' → y
+show process #input. #galaxy. &kill. end
 ```
 
-### Stellogen ↔ topos-of-music
+## GF(3) Integration
 
-Musical forms as constellations:
+Stellogen rays map naturally to GF(3) trits:
+
+| Ray | Trit | Semantic |
+|-----|------|----------|
+| `+ray(X)` | +1 | Production/Generation |
+| `-ray(X)` | -1 | Consumption/Verification |
+| `ok` / neutral | 0 | Balance/Success |
+
+### Conservation in Constellations
 
 ```stellogen
-' NoteForm as constellation
-(def note_star 
-  [(+pitch P) (+onset O) (+duration D) (+loudness L)
-   (-note P O D L)])
+' GF(3) conserved: (-1) + (+1) = 0
+spec balanced =
+  -input(X) +output(f(X)).
 
-' PLR operation as star interaction
-(def parallel_op
-  [(-triad Root Third Fifth)
-   (+triad Root (shift Third -1) Fifth)])  ' P: major→minor
+' Verification via interaction
+show process #data. #balanced. &kill. end
+```
+
+## Quantum Operads Extension
+
+From [bmorphism/stellogen-quantum-operads](https://github.com/bmorphism/stellogen-quantum-operads):
+
+```stellogen
+' Operad structure
+(:= (operad-structure P) {
+  [(+arity P N) (== N (num-inputs P))]
+  [(+composition P Q R) (== R (compose-ops P Q))]
+  [(+associativity P Q R) 
+    (== (compose-ops P (compose-ops Q R)) 
+        (compose-ops (compose-ops P Q) R))]
+})
+
+' ZX-calculus spiders
+(:= (qubit-op Type Phase) {
+  [(+z-spider Phase) (== Type z-op)]
+  [(+x-spider Phase) (== Type x-op)]
+  [(+hadamard) (== Type h-op)]
+})
+
+' Bell state preparation
+(:= bell-state-prep {
+  [(+bell-prep) (== Circuit
+    (compose-ops
+      (h-op 0)
+      (cnot 0 1)))]
+})
+```
+
+## Interaction Nets Foundation
+
+Stellogen implements Lafont's interaction nets:
+
+```
+    ┌───────┐
+    │ Agent │ ← Principal port
+    └───┬───┘
+   ╱    │    ╲
+  p₁   p₂   p₃  ← Auxiliary ports
+```
+
+**Interaction rules**: When two principal ports connect, rewrite fires.
+
+```stellogen
+' Addition via interaction
+spec add =
+  -add(z Y) +result(Y);
+  -add(s(X) Y) +add(X s(Y)).
+```
+
+## Installation
+
+### Via Nix
+
+```bash
+cd /path/to/stellogen
+nix develop
+dune build
+```
+
+### Via OPAM
+
+```bash
+opam pin tsyntax https://github.com/engboris/stellogen.git
 ```
 
 ## Commands
 
 ```bash
-# Install via opam
-opam pin stellogen https://github.com/engboris/stellogen.git
+# Run stellogen file
+dune exec sgen -- examples/nat.sg
 
-# Run program
-sgen run examples/hello.sg
+# Interactive mode
+dune exec sgen -- --interactive
 
-# Trace execution (step by step)
-sgen trace program.sg
+# Just commands (if available)
+just stellogen-run file.sg
+just stellogen-test
+```
 
-# Preprocess (expand macros)
-sgen preprocess program.sg
+## Examples
 
-# Watch mode (auto-rerun on save)
-sgen watch program.sg
+### Lambda Calculus
+
+```stellogen
+' Church encoding
+spec church =
+  -lam(V B A) +app(lam(V B) A);
+  -app(lam(V B) A) +subst(V A B).
+
+zero = +lam(f +lam(x +var(x))).
+succ = +lam(n +lam(f +lam(x +app(var(f) +app(app(var(n) var(f)) var(x)))))).
+```
+
+### Linear Lambda Calculus
+
+```stellogen
+' Linear logic: each variable used exactly once
+spec linear_lambda =
+  -lam!(V B) +lin_abs(V B);
+  -app!(F A) +lin_app(F A);
+  -var!(X) +lin_var(X).
+```
+
+### Turing Machine
+
+```stellogen
+tm = galaxy
+  tape = -read(S Pos) +write(S' Pos' State').
+  halt = -state(halt) done.
+end
+```
+
+## Integration with Gay.jl
+
+From [GAY.md](https://github.com/bmorphism/stellogen/blob/main/GAY.md):
+
+```julia
+using Gay
+
+# Stellogen repo color
+gay_seed!(0x7d202e3bf2aafbb0)
+color = color_at(427)  # => #c22851
+
+# Verify SPI across stellogen examples
+chain = [next_color() for _ in 1:69]
+fp = reduce(⊻, [color_to_u64(c) for c in chain])
 ```
 
 ## GF(3) Triads
 
 ```
-stellogen (+1) ⊗ interaction-nets (0) ⊗ linear-logic (-1) = 0 ✓
-stellogen (+1) ⊗ lispsyntax-acset (0) ⊗ slime-lisp (-1) = 0 ✓
-stellogen (+1) ⊗ propagators (0) ⊗ sheaf-cohomology (-1) = 0 ✓
-stellogen (+1) ⊗ geb (0) ⊗ intent-sink (-1) = 0 ✓
+interaction-nets (-1) ⊗ stellogen (0) ⊗ operad-compose (+1) = 0 ✓
+bisimulation-game (-1) ⊗ stellogen (0) ⊗ gay-mcp (+1) = 0 ✓
+proofgeneral-narya (-1) ⊗ stellogen (0) ⊗ discopy (+1) = 0 ✓
 ```
 
-## Paradigm Mapping
+## Influences
 
-| Paradigm | Stellogen Equivalent |
-|----------|---------------------|
-| Logic Programming | Raw constellations |
-| Functional | Layered constellations (ordered) |
-| Imperative | Iterative recipes |
-| Object-Oriented | Structured constellations |
-
-## Example: Boolean Logic
-
-```stellogen
-' Define true and false as constellations
-(def true [(+bool t) (-if t Then Else) (+result Then)])
-(def false [(+bool f) (-if f Then Else) (+result Else)])
-
-' if-then-else uses the constellation
-(def my_if
-  [(-bool B)
-   (+if B "yes" "no")
-   (-result R)
-   (+output R)])
-
-(show (exec #true @#my_if))  ' → "yes"
-(show (exec #false @#my_if)) ' → "no"
-```
-
-## Theoretical Foundation
-
-Based on Girard's **Transcendental Syntax**:
-
-1. **Stars** = Addresses in the ludics sense
-2. **Rays** = Focused propositions with polarity
-3. **Execution** = Cut elimination / proof search
-4. **Types as tests** = Realizability interpretation
-
-## Related Skills
-
-| Skill | Trit | Bridge |
-|-------|------|--------|
-| interaction-nets | 0 | Optimal reduction model |
-| propagators | 0 | Bidirectional cells |
-| geb | +1 | Categorical S-exp semantics |
-| linear-logic | -1 | Polarity foundation |
-| lispsyntax-acset | 0 | Sexp ↔ ACSet |
-| scheme | -1 | Execution runtime |
+| Source | Contribution |
+|--------|--------------|
+| Prolog/Datalog | Unification-based computation |
+| Smalltalk | Message-passing, minimalism |
+| Coq | Proof-as-program, tactics |
+| Scheme/Racket | Metaprogramming |
+| Girard | Transcendental syntax, linear logic |
 
 ## References
 
-- [Stellogen GitHub](https://github.com/engboris/stellogen)
-- [try.stellogen.org](https://try.stellogen.org) - Web playground
-- Girard, J.-Y. "Transcendental Syntax I-IV"
-- Lafont, Y. "Interaction Nets" (1990)
+- [Girard's Transcendental Syntax](https://girard.perso.math.cnrs.fr/trsy1.pdf)
+- [Lafont's Interaction Nets (1990)](https://www.sciencedirect.com/science/article/pii/089054019090191H)
+- [French Guide](https://tsguide.refl.fr/)
+- [English Guide](https://tsguide.refl.fr/en/)
+
+## See Also
+
+- `interaction-nets` - Lafont's parallel λ-reduction
+- `operad-compose` - Colored operad composition
+- `discopy` - DisCoPy string diagrams
+- `gay-mcp` - Deterministic color generation
+- `proofgeneral-narya` - Proof assistant integration
 
 ---
 
-**Skill Name**: stellogen
-**Type**: Constellation Logic / Term Unification
-**Trit**: +1 (PLUS - GENERATOR)
-**GF(3)**: Generates constellations and star interactions
-**Sonification**: B4 sine (hue 330°, warm)
+**Skill Name**: stellogen  
+**Type**: Logic-Agnostic Programming / Interaction Nets  
+**Trit**: 0 (ERGODIC - mediates between proof and computation)  
+**Repo Color**: #c22851  
+**Status**: ✅ Available
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

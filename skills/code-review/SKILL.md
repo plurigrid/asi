@@ -123,3 +123,38 @@ try {
 - [ ] No obvious performance issues
 - [ ] Code is readable and documented
 - [ ] Breaking changes documented
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: -1 (MINUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #FF6B6B
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

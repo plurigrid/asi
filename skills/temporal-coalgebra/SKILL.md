@@ -252,3 +252,38 @@ GF(3) conserved: true
 **Color**: #2626D8 (Blue)
 **GF(3)**: Forms valid triads with ERGODIC + PLUS skills
 **Dual**: Algebra (construction) ↔ Coalgebra (observation)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Time Series
+- **aeon** [−] via Ran_K
+  - Temporal/coalgebraic time series
+
+### Bibliography References
+
+- `linear-algebra`: 112 citations in bib.duckdb
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: -1 (MINUS)
+Home: Span
+Poly Op: ×
+Kan Role: Adj
+Color: #FF6B6B
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -1,6 +1,7 @@
 ---
 name: acsets-algebraic-databases
-description: "ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional navigation. Category-theoretic formalism for relational databases."
+description: 'ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional
+  navigation. Category-theoretic formalism for relational databases.'
 license: MIT
 metadata:
   source: AlgebraicJulia/ACSets.jl + music-topos + Specter CPS patterns
@@ -8,12 +9,26 @@ metadata:
   ironic_detachment: 0.73
   trit: 0
   version: 1.3.0
+  interface_ports:
+  - Commands
+  - Integration with
 ---
-
 # ACSets: Algebraic Databases Skill
 
 > *"The category of simple graphs does not even have a terminal object!"*
 > — AlgebraicJulia Blog, with characteristic ironic detachment
+
+## bmorphism Contributions
+
+> *"Parametrised optics model cybernetic systems, namely dynamical systems steered by one or more agents. Then ⊛ represents agency being exerted on systems"*
+> — [@bmorphism](https://github.com/bmorphism), GitHub bio
+
+> *"universal topos construction for social cognition and democratization of mathematical approach to problem-solving to all"*
+> — [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
+
+**Related repos**:
+- [plurigrid/act](https://github.com/plurigrid/act) - "building blocks for cognitive category theory" (active inference + ACT + enacted cognition)
+- [bmorphism/awesome-applied-category-theory](https://github.com/bmorphism/awesome-applied-category-theory) - ACT community resources
 
 ## What Are ACSets?
 
@@ -265,19 +280,6 @@ select([acset_field(:E, :src)], g)  # → [1, 2, 3]
 # Transform: shift all targets (same path!)
 g2 = transform([acset_field(:E, :tgt)], t -> mod1(t+1, 4), g)
 select([acset_field(:E, :tgt)], g2)  # → [3, 4, 1]
-```
-
-### Integration with ∫G (Category of Elements)
-
-Navigate the category of elements using paths:
-
-```julia
-# ∫G objects: (Ob, part_id) pairs
-# Navigate to all elements
-select([elements_of(:V)], g)  # → [(V,1), (V,2), (V,3), (V,4)]
-
-# Navigate morphism structure
-select([elements_of(:E), incident_to(:src, 1)], g)  # Edges from vertex 1
 ```
 
 ### Cross-Domain Bridge (Sexp ↔ ACSet)
@@ -1074,15 +1076,6 @@ detachment          engagement
       (both ironic AND sincere)
 ```
 
-## Commands
-
-```bash
-just acset-demo          # Run ACSet demonstration
-just acset-graph         # Create and visualize graph
-just acset-symmetric     # Symmetric graph example
-just acset-gf3           # Check GF(3) conservation
-```
-
 ---
 
 ## Ramanujan Spectral Integration (NEW 2025-12-22)
@@ -1231,6 +1224,90 @@ gc!(G)                # Compact: removes gaps
 
 ---
 
+## Julia Scientific Package Integration
+
+From `julia-scientific` skill - the full Julia package ecosystem that builds on ACSets:
+
+| Package | Category | ACSet Integration |
+|---------|----------|-------------------|
+| **Catlab.jl** | Core | Schema definitions, morphisms |
+| **AlgebraicRewriting.jl** | Rewriting | Double-pushout rewriting |
+| **StructuredDecompositions.jl** | Sheaves | Tree decomposition sheaves |
+| **AlgebraicDynamics.jl** | Dynamics | Compositional ODEs |
+| **DataFrames.jl** | Data | Tabular data (special case) |
+| **Graphs.jl** | Networks | Graph ACSet instances |
+| **MolecularGraph.jl** | Chemistry | Molecular graphs |
+| **BioStructures.jl** | Bioinformatics | Protein structure graphs |
+| **GraphNeuralNetworks.jl** | ML | GNN on ACSet graphs |
+
+### The Homoiconic Bridge: Scheme ↔ SMILES ↔ ACSet
+
+**Deep structural insight**: S-expressions (Scheme), SMILES strings (chemistry), and ACSets share the same foundation — **trees/graphs with recursive self-reference**:
+
+```
+S-expression:  (+ (* 2 3) (- 4 1))    → AST tree
+SMILES:        CC(=O)Oc1ccccc1C(=O)O  → Molecular graph
+ACSet:         Graph{V,E,src,tgt}      → Typed graph functor
+
+All three: linearized representations of graph structure
+```
+
+```julia
+# The bridge in code
+using LispSyntax, MolecularGraph, Catlab
+
+# Scheme → AST graph
+sexp = @lisp (defun factorial (n) (if (<= n 1) 1 (* n (factorial (- n 1)))))
+ast_graph = ast_to_acset(sexp)
+
+# SMILES → Molecular graph
+mol = smilestomol("CC(=O)Oc1ccccc1C(=O)O")  # Aspirin
+mol_graph = mol_to_acset(mol)
+
+# Both are ACSets! Same navigation works:
+select([ALL, pred(is_branch_node)], ast_graph)
+select([ALL, pred(is_ring_atom)], mol_graph)
+```
+
+### What Comes After SMILES: Learnable Chemical Structure
+
+The evolution: **7 parallel streams** colored via Gay.jl (seed=137):
+
+| Gen | Color | Representation | Julia Package | Learnable? |
+|-----|-------|----------------|---------------|------------|
+| 1 | `#43D9E1` | SMILES | MolecularGraph.jl | No |
+| 2 | `#18CDEF` | SELFIES | *PyCall+selfies* | No |
+| 3 | `#18D6D0` | Fingerprints | MolecularGraph.jl | Partially |
+| 4 | `#C70D22` | Graph features | ChemistryFeaturization.jl | Partially |
+| 5 | `#E44ABB` | GNN (MPNN/GAT/SchNet) | GraphNeuralNetworks.jl | **Yes** |
+| 6 | `#58A021` | 3D coordinates | Chemfiles.jl, DFTK.jl | Yes |
+| 7 | `#BDB223` | Foundation | GraphNeuralNetworks.jl | **Fully** |
+
+**Parallel streams evolve independently** — each generation has its own color trajectory:
+
+```
+Stream 1 (SMILES):      #43D9E1 → #B78225 → #D54E82
+Stream 5 (GNN):         #E44ABB → #50CD2E → #942B89  (MPNN → GAT → SchNet)
+Stream 7 (Foundation):  #BDB223 → #88ECA7 → #5CDA99
+```
+
+```julia
+# From SMILES to learnable representation
+using MolecularGraph, ChemistryFeaturization, AtomicGraphNets
+
+mol = smilestomol("CCO")  # ethanol
+
+# 1. Featurize (handcrafted → learnable)
+fg = featurize(mol, GraphNodeFeaturization())
+
+# 2. GNN embedding (fully learnable)
+model = CGCGNModel(fg)
+embedding = model(fg)  # 64-dim learned vector
+
+# 3. This embedding captures chemical meaning
+# similar molecules → similar embeddings
+```
+
 ## Spectral Bundle Triads (GF(3) Conserved)
 
 ```
@@ -1238,6 +1315,7 @@ ramanujan-expander (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [Graph Coloring
 ramanujan-expander (-1) ⊗ acsets (0) ⊗ moebius-inversion (+1) = 0 ✓  [Edge Growth]
 ihara-zeta (-1) ⊗ acsets (0) ⊗ moebius-inversion (+1) = 0 ✓  [Prime Cycles]
 sheaf-cohomology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [ACSet Navigation]
+scheme-lisp (-1) ⊗ acsets (0) ⊗ molecular-gnn (+1) = 0 ✓  [Homoiconic Bridge]
 ```
 
 ### Related Spectral Skills
@@ -1246,3 +1324,43 @@ sheaf-cohomology (-1) ⊗ acsets (0) ⊗ gay-mcp (+1) = 0 ✓  [ACSet Navigation
 - **ihara-zeta**: Non-backtracking walks, prime cycles, Graph RH
 - **moebius-inversion**: Poset inversion, chromatic polynomials, μ(3) = -1
 - **deepwiki-mcp**: Repository documentation (trit 0, substitutes in triads)
+
+---
+
+## r2con Speaker Resources
+
+Zignature and categorical database repositories from r2con speakers:
+
+| Speaker | Repository | Relevance |
+|---------|-----------|-----------|
+| bmorphism | [bmorphism/r2-zignatures](https://github.com/bmorphism/r2-zignatures) | Function zigs as ACSet parts |
+| bmorphism | [bmorphism/Gay.jl](https://github.com/bmorphism/Gay.jl) | Deterministic coloring for ACSet viz |
+| pancake | [radare2/radare2](https://github.com/radare2/radare2) | CFG schema as C-Set functor |
+| swoops | [swoops/libc_zignatures](https://github.com/swoops/libc_zignatures) | Signature database (ACSet rows) |
+| condret | [radareorg/r2ghidra](https://github.com/radareorg/r2ghidra) | ESIL → ACSet morphism |
+
+---
+
+## End-of-Skill Interface
+
+## Commands
+
+```bash
+just acset-demo          # Run ACSet demonstration
+just acset-graph         # Create and visualize graph
+just acset-symmetric     # Symmetric graph example
+just acset-gf3           # Check GF(3) conservation
+```
+
+### Integration with ∫G (Category of Elements)
+
+Navigate the category of elements using paths:
+
+```julia
+# ∫G objects: (Ob, part_id) pairs
+# Navigate to all elements
+select([elements_of(:V)], g)  # → [(V,1), (V,2), (V,3), (V,4)]
+
+# Navigate morphism structure
+select([elements_of(:E), incident_to(:src, 1)], g)  # Edges from vertex 1
+```

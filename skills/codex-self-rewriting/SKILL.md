@@ -170,3 +170,38 @@ Each skill exists in 3 parallel states for resilient dispersal.
 - `narya_observational_bridge.el` - 3×3×3 hierarchical agents
 - `gay-crdt.el` - Diamond-types CRDT integration
 - [MCP Tasks Spec](https://modelcontextprotocol.io/specification/draft/basic/utilities/tasks)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

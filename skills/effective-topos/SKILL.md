@@ -360,3 +360,15 @@ SSL_CERT_FILE="$FLOX_ENV/etc/ssl/certs/ca-bundle.crt"
 - **Man pages**: 606
 - **Info manuals**: 97
 - **Total documentation**: ~280K lines
+
+## r2con Speaker Resources
+
+radare2 ecosystem repositories from r2con speakers relevant to effective-topos:
+
+| Speaker | Repository | Relevance |
+|---------|-----------|-----------|
+| pancake (trufae) | [radare2/radare2](https://github.com/radare2/radare2) | Core r2 included in flox env |
+| pancake | [radare2/r2pipe](https://github.com/radare2/r2pipe) | Scripting bindings (Guile/OCaml) |
+| xvilka | [radareorg/awesome-decompilation](https://github.com/radareorg/awesome-decompilation) | Decompiler reference |
+| condret | [radareorg/r2ghidra](https://github.com/radareorg/r2ghidra) | ESIL + Ghidra bridge |
+| bmorphism | [bmorphism/Gay.jl](https://github.com/bmorphism/Gay.jl) | Deterministic colors for all tools |

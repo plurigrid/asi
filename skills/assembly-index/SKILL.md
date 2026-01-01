@@ -6,8 +6,14 @@ license: UNLICENSED
 metadata:
   trit: 1
   source: local
+  skill_type: Complexity Validator
+  interface_ports:
+  - Commands
+  - Integration with
+  - Related Skills
+trit: -1
+color: '#2626D8'
 ---
-
 # Assembly Index Skill: Molecular Complexity Validation
 
 **Status**: ✅ Production Ready
@@ -83,6 +89,10 @@ def ma_from_ms2(spectrum: MS2Spectrum) -> float:
     return dag.longest_path()
 ```
 
+---
+
+## End-of-Skill Interface
+
 ## Commands
 
 ```bash
@@ -107,6 +117,14 @@ assembly-index (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓  [Mol
 - **turing-chemputer** (0): Execute chemical synthesis programs
 - **crn-topology** (+1): Generate reaction network topologies
 - **kolmogorov-compression** (-1): Algorithmic complexity baseline
+
+## r2con Speaker Resources
+
+| Speaker | Relevance | Repository/Talk |
+|---------|-----------|-----------------|
+| **oddcoder** | RAIR assembly analysis | [rair-core](https://github.com/rair-project/rair-core) |
+| **mr_phrazer** | MBA complexity (msynth) | [msynth](https://github.com/mrphrazer/msynth) |
+| **pancake** | Core r2 assembly | [radare2](https://github.com/radareorg/radare2) |
 
 ---
 

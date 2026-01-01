@@ -1,8 +1,27 @@
 {
-  "version": "1.5.0",
-  "updated": "2025-12-24T16:00:00Z",
-  "total": 63,
+  "version": "1.6.0",
+  "updated": "2025-12-27T08:55:56.805799Z",
+  "total": 70,
   "skills": [
+    {
+      "name": "autopoiesis",
+      "description": "Self-modifying AI agent configuration via ruler + MCP + DuckDB. All behavior mods become one-liners.",
+      "category": "meta",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/autopoiesis",
+      "stars": 0,
+      "downloads": 0,
+      "featured": true,
+      "verified": true,
+      "dependencies": [
+        "nbb",
+        "ai-agent-skills",
+        "duckdb",
+        "ruler"
+      ]
+    },
     {
       "name": "frontend-design",
       "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use for building web components, pages, dashboards, React components, HTML/CSS layouts, or styling any web UI.",
@@ -275,6 +294,19 @@
       "downloads": 180,
       "featured": false,
       "verified": false
+    },
+    {
+      "name": "jira-issues",
+      "description": "Create, update, and manage Jira issues from natural language. Use when logging bugs, creating tickets, updating issue status, or managing your Jira backlog.",
+      "category": "productivity",
+      "author": "skillcreatorai",
+      "source": "skillcreatorai/Ai-Agent-Skills",
+      "license": "MIT",
+      "path": "skills/jira-issues",
+      "stars": 100,
+      "downloads": 50,
+      "featured": true,
+      "verified": true
     },
     {
       "name": "qa-regression",
@@ -840,32 +872,147 @@
       "agent": "plus"
     },
     {
-      "name": "bumpus-narratives",
-      "description": "Sheaves on time categories for compositional temporal reasoning. Bumpus et al. narrative framework with Gay.jl color integration.",
-      "category": "mathematics",
-      "author": "bmorphism",
+      "name": "world-memory-worlding",
+      "description": "World memory and temporal versioning for agent federation. Tracks world states across time with point-in-time snapshots and reafference loops.",
+      "category": "infrastructure",
+      "author": "plurigrid",
       "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/bumpus-narratives",
+      "license": "MIT",
+      "path": "skills/world-memory-worlding",
       "stars": 0,
       "downloads": 0,
-      "featured": false,
-      "verified": false,
-      "trit": 0
+      "featured": true,
+      "verified": true,
+      "dependencies": [
+        "duckdb",
+        "numpy",
+        "python-dateutil"
+      ]
     },
     {
-      "name": "nix-acset-worlding",
-      "description": "Nix store modeled as Attributed C-Set for dependency verification and world management.",
+      "name": "duck-agent",
+      "description": "DuckDB agent for parallel temporal queries and multi-table analysis. Core infrastructure for UNWORLD federation coordination.",
       "category": "infrastructure",
-      "author": "bmorphism",
+      "author": "plurigrid",
       "source": "plurigrid/asi",
-      "license": "Apache-2.0",
-      "path": "skills/nix-acset-worlding",
+      "license": "MIT",
+      "path": "skills/duck-agent",
+      "stars": 0,
+      "downloads": 0,
+      "featured": true,
+      "verified": true,
+      "dependencies": [
+        "duckdb",
+        "pandas",
+        "duckdb-engine"
+      ]
+    },
+    {
+      "name": "tenderloin",
+      "description": "Funding cycle and prediction market management for distributed incentive systems. Tracks WEV (Weighted Economic Value) and orchestrates resource allocation.",
+      "category": "finance",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/tenderloin",
       "stars": 0,
       "downloads": 0,
       "featured": false,
       "verified": false,
-      "trit": -1
+      "dependencies": [
+        "duckdb",
+        "python-dateutil",
+        "edn"
+      ]
+    },
+    {
+      "name": "stellogen",
+      "description": "Stellar generation and cosmic coordinate system mapping. Maps high-dimensional spaces to navigable topologies for world-hopping.",
+      "category": "mathematics",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/stellogen",
+      "stars": 0,
+      "downloads": 0,
+      "featured": false,
+      "verified": false,
+      "dependencies": [
+        "numpy",
+        "scipy",
+        "matplotlib"
+      ]
+    },
+    {
+      "name": "browser-history-acset",
+      "description": "ACSet model of browser history as categorical structure. Tracks navigation paths as morphisms in a category of web states.",
+      "category": "acsets",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/browser-history-acset",
+      "stars": 0,
+      "downloads": 0,
+      "featured": false,
+      "verified": false,
+      "dependencies": [
+        "duckdb",
+        "catlab"
+      ]
+    },
+    {
+      "name": "hyperbolic-bulk",
+      "description": "Hyperbolic geometry for latency-optimized information routing. Uses bulk actions to compress recursive structures.",
+      "category": "mathematics",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/hyperbolic-bulk",
+      "stars": 0,
+      "downloads": 0,
+      "featured": false,
+      "verified": false,
+      "dependencies": [
+        "numpy",
+        "networkx",
+        "scipy"
+      ]
+    },
+    {
+      "name": "latent-latency",
+      "description": "Latency analysis and optimization for distributed systems. Models communication delays as latent variables in world states.",
+      "category": "infrastructure",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/latent-latency",
+      "stars": 0,
+      "downloads": 0,
+      "featured": false,
+      "verified": false,
+      "dependencies": [
+        "duckdb",
+        "numpy",
+        "statsmodels"
+      ]
+    },
+    {
+      "name": "olmoearth-mlx",
+      "description": "OlmoEarth ML acceleration using MLX framework. Embeds geographical and ecological data via deterministic coloring.",
+      "category": "machine-learning",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/olmoearth-mlx",
+      "stars": 0,
+      "downloads": 0,
+      "featured": false,
+      "verified": false,
+      "dependencies": [
+        "mlx",
+        "mlx-lm",
+        "numpy"
+      ]
     }
   ],
   "categories": [

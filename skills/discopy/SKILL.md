@@ -1,6 +1,7 @@
 ---
 name: discopy
-description: "DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum circuits, QNLP, operads, and tensor networks."
+description: 'DisCoPy: Python library for computing with string diagrams - monoidal
+  categories, quantum circuits, QNLP, operads, and tensor networks.'
 license: BSD-3-Clause
 metadata:
   source: discopy/discopy + DeepWiki (8 interactions 2025-12-22)
@@ -9,11 +10,28 @@ metadata:
   trit: 0
   version: 2.0.0
   triangulated: 2025-12-22
+  interface_ports:
+  - Commands
+  - Related Skills
+trit: 0
 ---
-
 # DisCoPy: String Diagrams in Python
 
 > *"String diagrams are the syntax, functors are the semantics."*
+
+## bmorphism Contributions
+
+> *"all is bidirectional"*
+> — [@bmorphism](https://gist.github.com/bmorphism/ead83aec97dab7f581d49ddcb34a46d4), Play/Coplay gist
+
+**Active Inference Implementation**: DisCoPy provides the foundation for implementing [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) (Tull, Kleiner, Smithe). The paper's core insight — that perception and action form a bidirectional loop — maps directly to DisCoPy's composition operators:
+- **Sequential** (`>>`) → temporal flow (action → perception → action)
+- **Parallel** (`@`) → concurrent sensory channels
+- **Dagger** (`[::-1]`) → time reversal (perception as action's adjoint)
+
+**Categorical Cybernetics**: DisCoPy's parametrised optics implement the cybernetic lens pattern from [Towards Foundations of Categorical Cybernetics](https://arxiv.org/abs/2105.06332), enabling the Play/Coplay duality bmorphism references.
+
+**String Diagram Coloring**: Gay.jl colors can be applied to DisCoPy diagrams for deterministic visualization — each wire type gets a consistent color from the splittable RNG.
 
 ## Overview
 
@@ -441,26 +459,7 @@ boxes = [gay_colored_box(f'f{i}', x, x, 0x42D, i) for i in range(5)]
 
 ---
 
-## Commands
-
-```bash
-just discopy-demo           # Run DisCoPy demonstration
-just discopy-quantum        # Quantum circuit examples
-just discopy-qnlp          # QNLP parsing examples
-just discopy-zx            # ZX-calculus optimization
-just discopy-tensor        # Tensor network contraction
-just discopy-operad        # Operad composition examples
-```
-
 ---
-
-## Related Skills
-
-- **operad-compose**: Operadic composition patterns (+1)
-- **gay-mcp**: Deterministic colors for diagram elements (+1)
-- **proofgeneral-narya**: Type-theoretic diagram verification (-1)
-- **rubato-composer**: Musical diagram applications (+1)
-- **three-match**: 3-coloring for diagram validation (-1)
 
 ---
 
@@ -485,3 +484,37 @@ just discopy-operad        # Operad composition examples
 **Trit**: 0 (ERGODIC - coordinates categorical computation)
 **GF(3)**: Substitutes for other ERGODIC skills in triads
 **Qualified**: 2025-12-22 (8 DeepWiki interactions)
+
+---
+
+## End-of-Skill Interface
+
+## Commands
+
+```bash
+just discopy-demo           # Run DisCoPy demonstration
+just discopy-quantum        # Quantum circuit examples
+just discopy-qnlp          # QNLP parsing examples
+just discopy-zx            # ZX-calculus optimization
+just discopy-tensor        # Tensor network contraction
+just discopy-operad        # Operad composition examples
+```
+
+## Related Skills
+
+- **operad-compose**: Operadic composition patterns (+1)
+- **gay-mcp**: Deterministic colors for diagram elements (+1)
+- **proofgeneral-narya**: Type-theoretic diagram verification (-1)
+- **rubato-composer**: Musical diagram applications (+1)
+- **three-match**: 3-coloring for diagram validation (-1)
+
+## r2con Speaker Resources
+
+Color and diagram repositories from r2con speakers relevant to DisCoPy:
+
+| Speaker | Repository | Relevance |
+|---------|-----------|-----------|
+| bmorphism | [bmorphism/Gay.jl](https://github.com/bmorphism/Gay.jl) | Deterministic diagram coloring |
+| bmorphism | [bmorphism/r2-zignatures](https://github.com/bmorphism/r2-zignatures) | Function signatures as categorical objects |
+| pancake | [radare2/radare2](https://github.com/radare2/radare2) | CFG as monoidal diagrams |
+| thestr4ng3r | [rizinorg/cutter](https://github.com/rizinorg/cutter) | Graph visualization backend |

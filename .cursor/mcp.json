@@ -1,0 +1,57 @@
+{
+  "mcpServers": {
+    "causality": {
+      "command": "julia",
+      "args": ["--project=@gay", "-e", "using Gay; Gay.serve_mcp()"],
+      "env": {
+        "GAY_SEED": "1069",
+        "AGENT_ROLE": "causality",
+        "TRIT_VALUE": "1"
+      }
+    },
+    "2-monad": {
+      "command": "python3",
+      "args": ["-m", "ies.world_memory_worlding"],
+      "env": {
+        "GAY_SEED": "2069",
+        "AGENT_ROLE": "2-monad",
+        "TRIT_VALUE": "0"
+      }
+    },
+    "amp": {
+      "command": "python3",
+      "args": ["-m", "ies.duckdb_acset_advanced_queries"],
+      "env": {
+        "GAY_SEED": "3069",
+        "AGENT_ROLE": "amp",
+        "TRIT_VALUE": "-1"
+      }
+    },
+    "glass-bead-game": {
+      "command": "ruby",
+      "args": ["-I", "lib", "-r", "glass_bead_game", "-e", "GlassBeadGame.serve_mcp"]
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      }
+    },
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/exa-mcp-server"],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      }
+    },
+    "tree-sitter": {
+      "command": "uvx",
+      "args": ["mcp-tree-sitter"]
+    },
+    "skillz": {
+      "command": "uvx",
+      "args": ["mcp-skillz"]
+    }
+  }
+}
