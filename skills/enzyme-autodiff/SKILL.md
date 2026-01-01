@@ -1,3 +1,9 @@
+---
+name: enzyme-autodiff
+description: Enzyme.jl Automatic Differentiation Skill
+version: 1.0.0
+---
+
 # Enzyme.jl Automatic Differentiation Skill
 
 Enzyme.jl provides LLVM-level automatic differentiation for Julia, enabling high-performance gradient computation for both CPU and GPU code.

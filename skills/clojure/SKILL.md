@@ -1,9 +1,9 @@
 ---
 name: clojure
 description: Clojure ecosystem = babashka + clj + lein + shadow-cljs.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # clojure
 

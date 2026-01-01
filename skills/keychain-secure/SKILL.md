@@ -1,7 +1,9 @@
 ---
 name: keychain-secure
 description: macOS Keychain credential management with GF(3) balanced operations
+version: 1.0.0
 ---
+
 
 # Keychain Secure Skill: GF(3) Balanced Credential Management
 

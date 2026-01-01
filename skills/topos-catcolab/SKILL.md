@@ -1,9 +1,9 @@
 ---
 name: topos-catcolab
 description: Topos Institute's CatColab for collaborative category theory - community model building, double theories, stock and flow epidemiology, and real-time collaborative diagramming via Automerge CRDT.
-trit: 0
-color: "#4A90D9"
+version: 1.0.0
 ---
+
 
 # CatColab: Collaborative Category Theory
 

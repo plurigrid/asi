@@ -1,12 +1,9 @@
 ---
 name: synthetic-adjunctions
 description: Synthetic adjunctions in directed type theory for ∞-categorical universal
-  constructions.
-license: UNLICENSED
-metadata:
-  trit: -1
-  source: local
+version: 1.0.0
 ---
+
 
 # Synthetic Adjunctions Skill: Universal Construction Generation
 

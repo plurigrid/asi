@@ -1,3 +1,9 @@
+---
+name: gesture-hypergestures
+description: Gesture Hypergestures Skill
+version: 1.0.0
+---
+
 # Gesture Hypergestures Skill
 
 > *"A gesture is a continuous curve in a topological category."*

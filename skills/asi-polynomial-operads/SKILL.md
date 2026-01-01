@@ -1,14 +1,9 @@
 ---
 name: asi-polynomial-operads
 description: ASI skill integrating polynomial functors, free monad/cofree comonad
-  module action, operadic decomposition, and open games for compositional intelligence.
-license: MIT
-metadata:
-  source: Spivak, Libkind, Bumpus, Swan, Hedges
-  trit: 0
-  gf3_triad: cohomology-obstruction (-1) ⊗ asi-polynomial-operads (0) ⊗ pattern-runs-on-matter
-    (+1)
+version: 1.0.0
 ---
+
 
 # ASI Polynomial Operads Skill
 

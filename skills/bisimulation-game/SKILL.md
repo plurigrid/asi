@@ -1,19 +1,9 @@
 ---
 name: bisimulation-game
 description: Bisimulation game for resilient skill dispersal across AI agents with
-  GF(3) conservation and observational bridge types.
-license: MIT
-metadata:
-  source: music-topos + DiscoHy + DisCoPy
-  xenomodern: true
-  ironic_detachment: 0.42
-  interface_ports:
-  - References
-  - Commands
-  - Skill Dispersal Protocol
-  - Integration with
-  - MCP Tasks Integration
+version: 1.0.0
 ---
+
 # Bisimulation Game Skill
 
 > *"Two systems are bisimilar if they cannot be distinguished by any observation."*

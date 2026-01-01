@@ -1,8 +1,9 @@
 ---
 name: tailscale-file-transfer
 description: Tailscale mesh VPN file transfer with open games semantics (play/coplay)
-  and bidirectional lens optics
+version: 1.0.0
 ---
+
 
 <!-- Propagated to amp | Trit: +1 | Source: .ruler/skills/tailscale-file-transfer -->
 

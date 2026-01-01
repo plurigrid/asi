@@ -1,3 +1,9 @@
+---
+name: behaviour-surprisal-analysis
+description: Behaviour Surprisal Analysis
+version: 1.0.0
+---
+
 # Behaviour Surprisal Analysis
 
 **Status**: Production Ready (v3.0 - Cat# Integration)

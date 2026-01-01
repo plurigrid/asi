@@ -1,12 +1,9 @@
 ---
 name: gh-interactome
 description: GitHub author interaction network discovery. Maps cobordisms between
-  research groups via shared contributors.
-trit: 0
-metadata:
-  interface_ports:
-  - Commands
+version: 1.0.0
 ---
+
 # gh-interactome - GitHub Author Interaction Network
 
 ## Overview

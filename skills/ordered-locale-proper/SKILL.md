@@ -1,11 +1,9 @@
 ---
 name: ordered-locale
-description: "Ordered Locales (Heunen-van der Schaaf 2024): Point-free topology with direction. Frame + compatible preorder with open cone conditions."
-trit: 0
-polarity: ERGODIC
-source: "Heunen & van der Schaaf, J. Pure Appl. Algebra 228 (2024) 107654"
-technologies: [Julia, Catlab.jl, ACSets.jl, GATlab.jl, MLX]
+description: Ordered Locales (Heunen-van der Schaaf 2024): Point-free topology with direction. Frame + compatible preorder with open cone conditions.
+version: 1.0.0
 ---
+
 
 # Ordered Locale Skill
 

@@ -1,3 +1,9 @@
+---
+name: bob
+description: World BOB Skill
+version: 1.0.0
+---
+
 # World BOB Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

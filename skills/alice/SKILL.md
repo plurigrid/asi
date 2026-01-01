@@ -1,3 +1,9 @@
+---
+name: alice
+description: World ALICE Skill
+version: 1.0.0
+---
+
 # World ALICE Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

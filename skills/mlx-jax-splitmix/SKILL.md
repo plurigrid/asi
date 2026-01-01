@@ -1,9 +1,9 @@
 ---
 name: mlx-jax-splitmix
-description: "MLX on Apple Silicon with JAX-style SplitMix64 PRNG. Deterministic color generation with GPU acceleration."
-trit: 0
-gf3_triad: "three-match (-1) ⊗ mlx-jax-splitmix (0) ⊗ gay-mcp (+1)"
+description: MLX on Apple Silicon with JAX-style SplitMix64 PRNG. Deterministic color generation with GPU acceleration.
+version: 1.0.0
 ---
+
 
 # MLX + JAX SplitMix64 Skill
 

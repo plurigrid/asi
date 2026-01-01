@@ -1,3 +1,9 @@
+---
+name: ward-identity-checker
+description: Ward Identity Checker
+version: 1.0.0
+---
+
 # Ward Identity Checker
 
 Verify GF(3) conservation as Ward identities across RG flow with Markov blanket separation.

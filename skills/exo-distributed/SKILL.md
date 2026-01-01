@@ -1,8 +1,9 @@
 ---
 name: exo-distributed
-description: "Distributed LLM inference across Apple Silicon clusters with exo. Run models across Mac Studios via Thunderbolt RDMA, auto peer discovery, and MLX sharding. Use for multi-device inference, model parallelism, or building LLM clusters."
-trit: 0
+description: Distributed LLM inference across Apple Silicon clusters with exo. Run models across Mac Studios via Thunderbolt RDMA, auto peer discovery, and MLX sharding. Use for multi-device inference, model parallelism, or building LLM clusters.
+version: 1.0.0
 ---
+
 
 # exo-distributed Skill
 

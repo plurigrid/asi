@@ -1,13 +1,9 @@
 ---
 name: llm-application-dev
 description: Building applications with Large Language Models - prompt engineering,
-  RAG patterns, and LLM integration. Use for AI-powered features, chatbots, or LLM-based
-  automation.
-license: MIT
-metadata:
-  trit: 0
-  source: wshobson/agents
+version: 1.0.0
 ---
+
 
 # LLM Application Development
 

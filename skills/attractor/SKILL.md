@@ -1,10 +1,9 @@
 ---
 name: attractor
 description: Invariant set attracting nearby trajectories
-trit: -1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Attractor
 

@@ -1,9 +1,9 @@
 ---
 name: media
 description: Media processing = ffmpeg + imagemagick + sox.
-metadata:
-  trit: 1
+version: 1.0.0
 ---
+
 
 # media
 

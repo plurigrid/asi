@@ -1,9 +1,9 @@
 ---
 name: atproto-ingest
 description: Layer 1 - Data Acquisition for Bluesky/AT Protocol social graph and content.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # AT Protocol Data Ingestion
 

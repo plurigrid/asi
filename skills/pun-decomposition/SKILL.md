@@ -1,10 +1,9 @@
 ---
 name: pun-decomposition
-trit: -1
-neighbors:
-  left: gestalt-hacking
-  right: acsets
+description: Pun Decomposition Skill (MINUS -1)
+version: 1.0.0
 ---
+
 
 # Pun Decomposition Skill (MINUS -1)
 

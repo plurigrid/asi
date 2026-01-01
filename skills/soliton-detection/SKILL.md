@@ -1,22 +1,9 @@
 ---
 name: soliton-detection
-description: "Topological soliton detection and agency bridge with anyonic fusion algebra for concept composition"
-license: MIT
-metadata:
-  source: music-topos/lib/soliton_skill_bridge.jl + topological_solitons_anyons.jl
-  xenomodern: true
-  ironic_detachment: 0.88
-  trit: -1
-  version: 1.0.0
-  tags:
-  - topology
-  - consciousness
-  - anyonic-algebra
-  - self-reference
-  - hofstadter
-  - von-holst
-  - plurigrid-asi
+description: Topological soliton detection and agency bridge with anyonic fusion algebra for concept composition
+version: 1.0.0
 ---
+
 
 # Soliton-Detection & Agency Bridge Skill
 

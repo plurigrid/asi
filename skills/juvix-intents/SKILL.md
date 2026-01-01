@@ -1,12 +1,9 @@
 ---
 name: juvix-intents
-description: "Juvix intent-centric language for Anoma with Geb compilation and GF(3) typed resources"
-source: anoma/juvix (504 stars)
-license: GPL-3.0
-trit: +1
-gf3_conserved: true
-repo: hatchery_repos/plurigrid__juvix
+description: Juvix intent-centric language for Anoma with Geb compilation and GF(3) typed resources
+version: 1.0.0
 ---
+
 
 # Juvix Intents (+1)
 

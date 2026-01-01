@@ -1,10 +1,9 @@
 ---
 name: implicit-coordination
-description: "Stigmergic agent coordination through environment modification, not messages. Vehicle semantics where carrier encodes meaning."
-trit: 0
-polarity: ERGODIC
-source: "Grassé (1959) + Susi & Ziemke (2001) + Paradigm Multiverse (2025)"
+description: Stigmergic agent coordination through environment modification, not messages. Vehicle semantics where carrier encodes meaning.
+version: 1.0.0
 ---
+
 
 # Implicit Coordination Skill
 

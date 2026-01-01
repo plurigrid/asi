@@ -1,7 +1,9 @@
 ---
 name: exa-search
 description: Use Exa for semantic/neural web search. Exa understands context and returns high-quality results. Use this skill when you need to search the web for documentation, research, or any information that requires understanding meaning rather than just keyword matching. NEVER substitute web_search for Exa - they serve completely different purposes.
+version: 1.0.0
 ---
+
 
 # Exa Semantic Search
 

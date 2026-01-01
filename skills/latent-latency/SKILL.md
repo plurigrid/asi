@@ -1,3 +1,9 @@
+---
+name: latent-latency
+description: Latent-Latency Skill
+version: 1.0.0
+---
+
 # Latent-Latency Skill
 
 **Trit**: 0 (ERGODIC - mediates space ↔ time)  

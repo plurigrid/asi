@@ -1,11 +1,9 @@
 ---
 name: deepwiki-mcp
 description: DeepWiki MCP server for AI-powered GitHub repository documentation and
-  Q&A
-metadata:
-  trit: 0
-  bundle: research
+version: 1.0.0
 ---
+
 
 # DeepWiki MCP Skill
 

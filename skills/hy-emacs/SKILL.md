@@ -1,9 +1,9 @@
 ---
 name: hy-emacs
 description: Hylang Emacs integration with hy-mode, Hyuga LSP, and DisCoPy sexp coloring
-trit: 0
-polarity: ERGODIC
+version: 1.0.0
 ---
+
 
 # hy-emacs - Hylang Emacs Integration
 

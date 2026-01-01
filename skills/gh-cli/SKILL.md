@@ -1,11 +1,9 @@
 ---
 name: gh-cli
-description: "GitHub CLI for repository management. Issues, PRs, releases, and API queries from the command line."
-metadata:
-  trit: 0
-  version: "1.0.0"
-  bundle: tooling
+description: GitHub CLI for repository management. Issues, PRs, releases, and API queries from the command line.
+version: 1.0.0
 ---
+
 
 # GitHub CLI Skill
 

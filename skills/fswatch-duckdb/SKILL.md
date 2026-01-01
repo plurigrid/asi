@@ -1,7 +1,9 @@
 ---
 name: fswatch-duckdb
 description: FileSystemWatcher over /tmp with DuckDB/DuckLake persistence. Auto-starts on Amp sessions for resilient file monitoring with temporal queries.
+version: 1.0.0
 ---
+
 
 # FileSystemWatcher + DuckDB Skill
 

@@ -1,16 +1,9 @@
 ---
 name: cantordust-viz
 description: Binary visualization for human pattern recognition - Ghidra plugin by Chris Domas (xoreaxeaxeax)
-metadata:
-  trit: -1
-  color: '#E54951'
-  gf3_role: MINUS
-  version: 1.0.0
-  repo: Battelle/cantordust
-  author: Chris Domas (xoreaxeaxeax)
-  interface_ports:
-  - References
+version: 1.0.0
 ---
+
 # Cantordust Binary Visualization
 
 > **Use when embeddings fail: humans see patterns algorithms miss.**

@@ -1,14 +1,9 @@
 ---
 name: iecsat-storage
 description: IECsat Storage Skill
-trit: 0
-color: "#26D826"
-catsharp:
-  home: Prof
-  poly_op: ⊗ (parallel)
-  kan_role: Adj
-  bicomodule: true
+version: 1.0.0
 ---
+
 
 # iecsat-storage Skill
 

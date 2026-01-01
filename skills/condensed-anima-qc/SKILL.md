@@ -1,10 +1,9 @@
 ---
 name: condensed-anima-qc
 description: Condensed ANIMA on quantum-classical and classical-quantum networks. All skill compositions materialized as s-expressions across the polyglot substrate.
-trit: 0
-seed: 1069
-license: MIT
+version: 1.0.0
 ---
+
 
 # Condensed ANIMA: Quantum-Classical Network
 

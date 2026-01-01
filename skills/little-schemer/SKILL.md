@@ -1,3 +1,9 @@
+---
+name: little-schemer
+description: Little Schemer Skill
+version: 1.0.0
+---
+
 # Little Schemer Skill
 
 > *"The Law of Car: The primitive car is defined only for non-empty lists."*

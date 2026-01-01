@@ -1,9 +1,9 @@
 ---
 name: topos-adhesive-rewriting
 description: Adhesive categories for incremental query updating and pattern rewriting
-source: local
-license: UNLICENSED
+version: 1.0.0
 ---
+
 
 # SKILL: Topos Adhesive Rewriting
 

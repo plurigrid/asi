@@ -1,11 +1,9 @@
 ---
 name: anoma-intents
-description: "Anoma intent-centric architecture for cross-chain obstruction passing with Geb semantics and Juvix compilation"
-source: anoma/anoma + anoma/geb + anoma/juvix
-license: MIT
-trit: 0
-gf3_conserved: true
+description: Anoma intent-centric architecture for cross-chain obstruction passing with Geb semantics and Juvix compilation
+version: 1.0.0
 ---
+
 
 # Anoma Intents (0)
 

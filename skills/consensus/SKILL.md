@@ -1,10 +1,9 @@
 ---
 name: consensus
 description: Agreement protocol in multi-agent systems
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Consensus
 

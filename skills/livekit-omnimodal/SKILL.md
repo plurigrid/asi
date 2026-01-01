@@ -1,21 +1,9 @@
 ---
 name: livekit-omnimodal
 description: LiveKit omni-modal continuous coaching with stick-breaking color selection,
-  dynamic sufficiency gating, and symbolic expression output. The Queen's voice guides
-  through Poisson-Dirichlet weighted modality selection.
-license: MIT
-metadata:
-  source: LiveKit + Gay.jl WorldStickBreaking + Dynamic Sufficiency ε-machine
-  trit: 0
-  color: '#9E37D8'
-  world: gay-mcp
-  coworld: dynamic-sufficiency
-  gf3_role: COORDINATOR
-  version: 1.0.0
-  omnimodal: true
-  continuous_listening: true
-  continuous_coaching: true
+version: 1.0.0
 ---
+
 
 # LiveKit Omni-Modal Coaching
 

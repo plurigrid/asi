@@ -1,12 +1,9 @@
 ---
 name: epistemic-arbitrage
 description: Propagator-based parallel structure for exploiting knowledge differentials
-  across domains using local scoped propagators and SplitMixTernary RNG.
-license: MIT
-metadata:
-  trit: 1
-  source: music-topos/skills
+version: 1.0.0
 ---
+
 
 # Epistemic Arbitrage: Propagator-Based Knowledge Synthesis
 

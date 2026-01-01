@@ -1,3 +1,9 @@
+---
+name: fnox-secrets
+description: fnox Secrets Management Skill
+version: 1.0.0
+---
+
 # fnox Secrets Management Skill
 
 ```yaml

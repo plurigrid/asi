@@ -1,7 +1,9 @@
 ---
 name: nickel
 description: Nickel configuration language with gradual typing, contracts, and dynamic sufficiency verification. Use for type-safe configs, transformation contracts, and validation pipelines.
+version: 1.0.0
 ---
+
 
 # Nickel Configuration Language
 

@@ -1,13 +1,9 @@
 ---
 name: database-design
 description: Database schema design, optimization, and migration patterns for PostgreSQL,
-  MySQL, and NoSQL databases. Use for designing schemas, writing migrations, or optimizing
-  queries.
-license: MIT
-metadata:
-  trit: 0
-  source: wshobson/agents
+version: 1.0.0
 ---
+
 
 # Database Design
 

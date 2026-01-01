@@ -1,11 +1,9 @@
 ---
 name: sheaf-cohomology
 description: Čech cohomology for local-to-global consistency verification in code
-  structure and data schemas.
-license: UNLICENSED
-metadata:
-  source: local
+version: 1.0.0
 ---
+
 
 # Sheaf Cohomology Skill: Local-to-Global Verification
 

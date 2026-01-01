@@ -1,13 +1,9 @@
 ---
 name: canvas-design
 description: Create beautiful visual art in .png and .pdf documents using design philosophy.
-  Use when the user asks to create a poster, piece of art, design, or other static
-  visual piece. Creates original visual designs.
-license: Apache-2.0
-metadata:
-  trit: 1
-  source: anthropics/skills
+version: 1.0.0
 ---
+
 
 # Canvas Design
 

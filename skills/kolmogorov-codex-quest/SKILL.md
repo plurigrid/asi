@@ -1,3 +1,9 @@
+---
+name: kolmogorov-codex-quest
+description: Kolmogorov Codex Quest
+version: 1.0.0
+---
+
 # Kolmogorov Codex Quest
 
 **Type:** Quest / Puzzle  

@@ -1,10 +1,9 @@
 ---
 name: periodic-orbit
 description: Closed trajectory in phase space
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Periodic Orbit
 

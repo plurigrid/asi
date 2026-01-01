@@ -1,9 +1,9 @@
 ---
 name: external
 description: External skill interface for integration with external systems
-source: local
-license: UNLICENSED
+version: 1.0.0
 ---
+
 
 # External Skill
 

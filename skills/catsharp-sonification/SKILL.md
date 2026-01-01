@@ -1,14 +1,9 @@
 ---
 name: catsharp-sonification
 description: Sonify GF(3) color streams via CatSharp scale. Maps Gay.jl colors to pitch classes and plays through sox. No voice synthesis.
-trit: 0
-triggers:
-  - sonification
-  - catsharp
-  - play colors
-  - audio gf3
-  - topos of music
+version: 1.0.0
 ---
+
 
 # CatSharp Sonification
 

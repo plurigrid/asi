@@ -1,16 +1,9 @@
 ---
 name: gflownet
-description: "Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward. Diversity over maximization for causal discovery and molecule design."
-metadata:
-  trit: 1
-  polarity: PLUS
-  source: 'Bengio et al. 2021: Flow Network Based Generative Models'
-  technologies:
-  - Python
-  - JAX
-  - PyTorch
-  - torchgfn
+description: Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward. Diversity over maximization for causal discovery and molecule design.
+version: 1.0.0
 ---
+
 
 # GFlowNet Skill
 

@@ -1,10 +1,9 @@
 ---
 name: lyapunov-stability
 description: Stability via Lyapunov's direct method
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Lyapunov Stability
 

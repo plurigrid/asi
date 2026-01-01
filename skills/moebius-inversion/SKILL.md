@@ -1,14 +1,9 @@
 ---
 name: moebius-inversion
-description: "Möbius inversion on posets and lattices: alternating sums, chromatic polynomials, incidence algebras, and centrality predicates."
-license: MIT
-metadata:
-  source: music-topos + number theory + combinatorics
-  trit: 1
-  bundle: spectral
-  xenomodern: true
-  ironic_detachment: 0.23
+description: Möbius inversion on posets and lattices: alternating sums, chromatic polynomials, incidence algebras, and centrality predicates.
+version: 1.0.0
 ---
+
 
 # Möbius Inversion Skill
 

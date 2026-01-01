@@ -1,3 +1,9 @@
+---
+name: cat
+description: cat Skill: Derivational Pipe Chaining
+version: 1.0.0
+---
+
 # cat Skill: Derivational Pipe Chaining
 
 **Trit**: 0 (ERGODIC - coordinator)

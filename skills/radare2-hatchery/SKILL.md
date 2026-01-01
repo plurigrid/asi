@@ -1,3 +1,9 @@
+---
+name: radare2-hatchery
+description: Radare2 Hatchery
+version: 1.0.0
+---
+
 # Radare2 Hatchery
 
 ---

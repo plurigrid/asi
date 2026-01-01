@@ -1,3 +1,9 @@
+---
+name: finder-color-walk
+description: Finder Color Walk Skill
+version: 1.0.0
+---
+
 # Finder Color Walk Skill
 
 **Status**: ✅ Production Ready  

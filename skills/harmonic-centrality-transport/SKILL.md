@@ -1,10 +1,9 @@
 ---
 name: harmonic-centrality-transport
 description: Harmonic centrality gadgets with GF(3) conservation for topological transport of ablative case structure via abelian extensions of ℚ
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Harmonic Centrality Transport
 

@@ -1,7 +1,9 @@
 ---
 name: duck-agent
 description: DuckDB file discovery agent with verified absolute paths
+version: 1.0.0
 ---
+
 
 # Duck Agent
 

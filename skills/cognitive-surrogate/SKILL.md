@@ -1,19 +1,9 @@
 ---
 name: cognitive-surrogate
-description: '```yaml
-
-  name: cognitive-surrogate
-
-  description: Layer 6 Barton Cognitive Surrogate System - build, train, and validate
-  psychological models that predict and generate authentic responses matching a subject''s
-  cognitive patterns
-
-  version: 1.0.0
-
-  trit: 0  # Ergodic/coordinator role in GF(3) triadic system
-
-  ```'
+description: ```yaml
+version: 1.0.0
 ---
+
 
 # Cognitive Surrogate
 

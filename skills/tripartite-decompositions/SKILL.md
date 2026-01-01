@@ -1,11 +1,9 @@
 ---
 name: tripartite-decompositions
 description: GF(3)-balanced structured decompositions for parallel computation. Decomposes problems into MINUS/ERGODIC/PLUS components with sheaf-theoretic gluing. Use for FPT algorithms, skill allocation, or any 3-way parallel workload.
-metadata:
-  trit: 0
-  version: "1.0.0"
-  bundle: core
+version: 1.0.0
 ---
+
 
 # Tripartite Decompositions
 

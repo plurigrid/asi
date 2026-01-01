@@ -1,9 +1,9 @@
 ---
 name: random-walk-fusion
 description: Navigate skill graphs via deterministic random walks. Fuses derivational chains, algebraic structure, color determinism, and bidirectional flow for skill recombination.
-source: skill-random-walk-fusion
-license: UNLICENSED
+version: 1.0.0
 ---
+
 
 # Random Walk Fusion: Skill Graph Navigation
 

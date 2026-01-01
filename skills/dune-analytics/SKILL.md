@@ -1,7 +1,9 @@
 ---
 name: dune-analytics
 description: Query Dune Analytics API for blockchain data, pyUSD flows, stablecoin metrics, and on-chain analytics. Use when analyzing DeFi protocols, token flows, or building dashboards.
+version: 1.0.0
 ---
+
 
 # Dune Analytics
 

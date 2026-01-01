@@ -1,3 +1,9 @@
+---
+name: wev-tesseract
+description: WEV Tesseract Skill
+version: 1.0.0
+---
+
 # WEV Tesseract Skill
 
 **Trit**: 0 (ERGODIC - coordinator)

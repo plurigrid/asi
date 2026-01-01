@@ -1,10 +1,9 @@
 ---
 name: moth-actias
-description: "Moth's Actias quantum synth for qubit sonification with Bloch sphere visualization and MIDI control"
-trit: +1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+description: Moth's Actias quantum synth for qubit sonification with Bloch sphere visualization and MIDI control
+version: 1.0.0
 ---
+
 
 # Moth Actias Quantum Synth
 

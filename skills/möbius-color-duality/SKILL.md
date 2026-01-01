@@ -1,15 +1,9 @@
 ---
 name: möbius-color-duality
 description: Möbius inversion for Gay.jl color duality - closes sparsification spine gap
-metadata:
-  trit: 1
-  polarity: PLUS
-  source: 'Amp thread corpus analysis - fills critical Inversion layer'
-  technologies:
-  - Python
-  - Number theory
-  - Category theory (contravariant functors)
+version: 1.0.0
 ---
+
 
 # Möbius Color Duality Skill
 
@@ -55,4 +49,3 @@ Key classes:
 **Tier**: Layer 5 - INVERSION (Duality/Reversal)  
 **Trit**: +1 (PLUS/Generator)  
 **Coverage**: Begins to fill 1.6% → expand to 10%+ target
-

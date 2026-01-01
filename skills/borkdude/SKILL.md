@@ -1,9 +1,9 @@
 ---
 name: borkdude
 description: Babashka and ClojureScript runtime selection guidance by @borkdude
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 <!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/borkdude -->
 

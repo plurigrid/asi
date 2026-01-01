@@ -1,13 +1,9 @@
 ---
 name: glass-bead-game
 description: Hesse-inspired interdisciplinary synthesis game with Badiou triangle
-  inequality for possible world hopping across mathematical, musical, and philosophical
-  domains.
-license: MIT
-metadata:
-  trit: 1
-  source: music-topos/skills
+version: 1.0.0
 ---
+
 
 # Glass Bead Game: Topos of Music
 

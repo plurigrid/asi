@@ -1,14 +1,9 @@
 ---
 name: alife
 description: Comprehensive Artificial Life skill combining ALIFE2025 proceedings,
-  classic texts (Axelrod, Epstein-Axtell), ALIEN simulation, Lenia, NCA, swarm intelligence,
-  and evolutionary computation. 337 pages extracted, 80+ papers, 153 figures.
-metadata:
-  skill_type: Research Reference / Algorithm Library / Simulation Toolkit
-  interface_ports:
-  - Commands
-trit: 1
+version: 1.0.0
 ---
+
 # ALIFE: Artificial Life Comprehensive Skill
 
 **Status**: ✅ Production Ready

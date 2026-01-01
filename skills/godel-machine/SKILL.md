@@ -1,20 +1,9 @@
 ---
 name: godel-machine
-description: 'Schmidhuber''s Gödel Machine: Self-improving systems that prove their
-  own improvements. Darwin Gödel Machine (DGM) combines evolution with formal verification.'
-metadata:
-  trit: 1
-  polarity: PLUS
-  source: Schmidhuber 2003 + Zhang et al. 2025 (Darwin Gödel Machine)
-  technologies:
-  - Python
-  - Lean4
-  - MLX
-  interface_ports:
-  - References
-  - GF(3) Triads
-  - Integration with
+description: Schmidhuber''s Gödel Machine: Self-improving systems that prove their
+version: 1.0.0
 ---
+
 # Gödel Machine Skill
 
 > *"A Gödel Machine can rewrite any part of itself, including the learning algorithm, provided it can first prove that the rewrite is beneficial."*

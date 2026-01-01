@@ -1,12 +1,9 @@
 ---
 name: load-skills
 description: Bootstrap skill loader for instance startup. Pulls fresh skills from plurigrid/asi and loads GF(3)-balanced startup triads. MUST run at beginning of every new instance.
-metadata:
-  trit: 0
-allowed-tools:
-  - Bash
-  - Task
+version: 1.0.0
 ---
+
 
 # Load Skills (Instance Bootstrap)
 

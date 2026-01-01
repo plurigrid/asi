@@ -1,3 +1,9 @@
+---
+name: geohash-coloring
+description: Geohash Coloring Skill
+version: 1.0.0
+---
+
 # Geohash Coloring Skill
 
 GF(3) colored geohashes for hierarchical spatial indexing with deterministic color derivation.

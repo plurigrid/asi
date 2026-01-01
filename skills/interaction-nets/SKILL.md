@@ -1,14 +1,9 @@
 ---
 name: interaction-nets
 description: Lafont's interaction nets for optimal parallel λ-reduction. Graph rewriting
-  with no evaluation order.
-trit: -1
-bundle: strange-loops
-metadata:
-  interface_ports:
-  - Related Skills
-  - GF(3) Integration
+version: 1.0.0
 ---
+
 # Interaction Nets Skill
 
 > *"The only model where parallelism is not an optimization but the semantics itself."*

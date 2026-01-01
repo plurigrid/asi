@@ -1,3 +1,9 @@
+---
+name: derangement-crdt
+description: Derangement-CRDT Skill
+version: 1.0.0
+---
+
 # Derangement-CRDT Skill
 
 **Status**: ✅ Production Ready

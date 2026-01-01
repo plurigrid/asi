@@ -1,14 +1,9 @@
 ---
 name: xlsx
 description: Comprehensive spreadsheet creation, editing, and analysis with support
-  for formulas, formatting, data analysis, and visualization. When Claude needs to
-  work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc) for creating new spreadsheets,
-  reading/analyzing data, modifying existing spreadsheets, or recalculating formulas.
-license: Apache-2.0
-metadata:
-  trit: 0
-  source: anthropics/skills
+version: 1.0.0
 ---
+
 
 # Excel/Spreadsheet Processing
 

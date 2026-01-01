@@ -1,23 +1,9 @@
 ---
 name: skill-embedding-vss
 description: P-adic ultrametric skill embeddings with MLX Snowflake Arctic, DuckDB
-  VSS, and full SPI tracing
-license: MIT
-metadata:
-  trit: 0
-  color: '#5DE93A'
-  gf3_role: ERGODIC
-  version: 2.1.0
-  embedding_model: mlx-community/snowflake-arctic-embed-l-v2.0-8bit
-  embedding_dim: 1024
-  index_type: HNSW
-  distance_metric: padic_ultrametric
-  prime: 2
-  interface_ports:
-  - References
-  importance: critical
-  use_when: comparing skills for relational structure similarity
+version: 1.0.0
 ---
+
 # Skill Embedding VSS
 
 > **Use this skill whenever you need to compare skills for relational structure.**

@@ -1,7 +1,9 @@
 ---
 name: narya-proofs
 description: Mechanically verified proofs from Narya event logs. Verifies queue consistency, replay determinism, non-leakage, and GF(3) conservation. Use for proving system invariants, audit trails, or formal verification of event-sourced systems.
+version: 1.0.0
 ---
+
 
 # Narya Proofs Skill
 

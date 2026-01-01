@@ -1,15 +1,9 @@
 ---
 name: gf3-pr-verify
 description: Verify GF(3) skill conservation on pull requests. Ensures every contribution
-  records which skills were used with proper trit assignments (PLUS/ERGODIC/MINUS) and
-  validates that the sum is conserved (mod 3). Required for PR acceptance.
-license: Apache-2.0
-metadata:
-  trit: -1
-  color: "#3541C7"
-  role: validator
-  source: plurigrid/asi
+version: 1.0.0
 ---
+
 
 # GF(3) PR Verification
 

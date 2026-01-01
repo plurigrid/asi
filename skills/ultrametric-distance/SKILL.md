@@ -1,10 +1,9 @@
 ---
 name: ultrametric-distance
 description: Non-Archimedean distance metrics for hierarchical clustering and p-adic analysis
-metadata:
-  trit: -1
-  source: local
+version: 1.0.0
 ---
+
 
 # Ultrametric Distance Skill
 

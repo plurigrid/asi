@@ -1,10 +1,9 @@
 ---
 name: delta-derivation
 description: Extract information delta between Claude.ai conversation exports using ACSets morphisms and bisimulation verification
-trit: -1
-color: "#007FFF"
-license: MIT
+version: 1.0.0
 ---
+
 
 # Delta Derivation Skill
 

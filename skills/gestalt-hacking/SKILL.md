@@ -1,10 +1,9 @@
 ---
 name: gestalt-hacking
-trit: 0
-neighbors:
-  left: pun-decomposition
-  right: reflow
+description: Gestalt Hacking Skill (ERGODIC 0)
+version: 1.0.0
 ---
+
 
 # Gestalt Hacking Skill (ERGODIC 0)
 

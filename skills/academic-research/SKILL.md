@@ -1,7 +1,9 @@
 ---
 name: academic-research
 description: Search academic papers across arXiv, PubMed, Semantic Scholar, bioRxiv, medRxiv, Google Scholar, and more. Get BibTeX citations, download PDFs, analyze citation networks. Use for literature reviews, finding papers, and academic research.
+version: 1.0.0
 ---
+
 
 # Academic Research Papers
 

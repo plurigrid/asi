@@ -1,10 +1,9 @@
 ---
 name: center-manifold
 description: Invariant manifold tangent to center eigenspace
-trit: -1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Center Manifold
 

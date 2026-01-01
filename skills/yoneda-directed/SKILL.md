@@ -1,16 +1,9 @@
 ---
 name: yoneda-directed
 description: Directed Yoneda lemma as directed path induction. Riehl-Shulman's key
-  insight for synthetic ∞-categories.
-metadata:
-  trit: -1
-  polarity: MINUS
-  source: 'Riehl-Shulman 2017: A type theory for synthetic ∞-categories'
-  technologies:
-  - Rzk
-  - Lean4
-  - Agda
+version: 1.0.0
 ---
+
 
 # Directed Yoneda Skill
 

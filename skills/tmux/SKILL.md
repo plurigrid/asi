@@ -1,9 +1,9 @@
 ---
 name: tmux
 description: Terminal multiplexer.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # tmux
 

@@ -1,11 +1,9 @@
 ---
 name: emacs-info
-description: "Emacs Info documentation system. Navigate and query Info manuals for Emacs, Elisp, and GNU tools."
-metadata:
-  trit: 0
-  version: "1.0.0"
-  bundle: documentation
+description: Emacs Info documentation system. Navigate and query Info manuals for Emacs, Elisp, and GNU tools.
+version: 1.0.0
 ---
+
 
 # Emacs Info Skill
 

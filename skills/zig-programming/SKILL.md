@@ -1,11 +1,9 @@
 ---
 name: zig-programming
 description: >
-  Provides comprehensive Zig programming language expertise including syntax, standard library,
-  build system, memory management, error handling, and C interoperability. Use this skill when
-  working with Zig code, learning Zig concepts, debugging compilation errors, or building
-  Zig applications across multiple versions (0.2.0 through master).
+version: 1.0.0
 ---
+
 
 # Zig Programming Language Skill
 

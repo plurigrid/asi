@@ -1,9 +1,9 @@
 ---
-metadata:
-  interface_ports:
-  - Related Skills
-  - Integration with
+name: reverse-engineering
+description: Reverse Engineering Skill
+version: 1.0.0
 ---
+
 # Reverse Engineering Skill
 
 Binary analysis and reverse engineering via MCP servers for Ghidra, IDA Pro, radare2, and angr.

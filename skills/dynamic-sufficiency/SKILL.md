@@ -1,21 +1,9 @@
 ---
 name: dynamic-sufficiency
 description: Causal state gating via ε-machine. Coworld observer that prevents action
-  without verified minimal sufficient skill coverage. Post-rigorous globally.
-license: MIT
-metadata:
-  source: SFI Computational Mechanics + Autopoiesis + Darwin Gödel Machine
-  trit: -1
-  color: '#2626D8'
-  world: gay-mcp
-  coworld: self  # This IS the coworld
-  gf3_role: VALIDATOR
-  version: 2.0.0
-  causal_states: true
-  epsilon_machine: true
-  world_generating: true
-  post_rigorous: true
+version: 1.0.0
 ---
+
 
 # Dynamic Sufficiency Skill
 

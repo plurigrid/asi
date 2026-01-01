@@ -1,14 +1,9 @@
 ---
 name: protocol-acset
 description: Model decentralized protocols as attributed C-sets for compositional analysis, interoperability design, and protocol evolution. Apply categorical mathematics to P2P infrastructure.
-category: development
-author: bmorphism
-license: MIT
-metadata:
-  trit: 0
-  source: custom
-  tags: [acset, protocols, category-theory, p2p, composition, interoperability]
+version: 1.0.0
 ---
+
 
 # Protocol ACSet: Compositional P2P Protocol Design
 

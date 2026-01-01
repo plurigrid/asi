@@ -1,7 +1,9 @@
 ---
 name: workspace-unified
 description: Unified Google Workspace management via WorkspaceACSet. Transforms operations into GF(3)-typed Interactions across Gmail, Drive, Calendar, Tasks, Docs with cross-skill morphisms and MCP↔API equivalence. Use for multi-service workflows or applying ACSet principles to workspace automation.
+version: 1.0.0
 ---
+
 
 # Workspace Unified Skill
 

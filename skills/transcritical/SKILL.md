@@ -1,10 +1,9 @@
 ---
 name: transcritical
 description: Bifurcation exchanging stability between equilibria
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Transcritical
 

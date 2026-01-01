@@ -1,3 +1,9 @@
+---
+name: scum-resource
+description: SCUM Resource Skill
+version: 1.0.0
+---
+
 # SCUM Resource Skill
 
 **System Consumption Utilization Monitor** - Libkind-style compositional resource management.

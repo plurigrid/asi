@@ -1,9 +1,9 @@
 ---
 name: pkg-memory-bridge
-description: "Bridge to PKG systems (Mem0, Graphiti, Solid PODs, Logseq) for individuated information indices"
-trit: 0
-polarity: ERGODIC
+description: Bridge to PKG systems (Mem0, Graphiti, Solid PODs, Logseq) for individuated information indices
+version: 1.0.0
 ---
+
 
 # PKG Memory Bridge Skill
 

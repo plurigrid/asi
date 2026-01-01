@@ -1,9 +1,9 @@
 ---
 name: babashka
 description: Clojure scripting without JVM startup.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # babashka
 

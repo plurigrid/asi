@@ -1,7 +1,9 @@
 ---
 name: three-match
 description: 3-MATCH colored subgraph isomorphism gadget for 3-SAT reduction
+version: 1.0.0
 ---
+
 
 <!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/three-match -->
 
