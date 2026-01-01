@@ -67,7 +67,6 @@ This skill validates what agents **produce**, not existing code:
 | `eventually` | "eventually this will..." |
 | `for now` | "for now just use..." |
 | `skeleton` | incomplete implementation |
-| `production would` | "in production would use..." |
 
 ### Example/Demo Evasions
 | Pattern | Examples |
@@ -191,34 +190,6 @@ Add to `.claude/settings.json`:
 }
 ```
 
-## Observed Skill Synergies (2025-12-31)
-
-Co-occurrence analysis reveals accept-no-substitutes as critical validator:
-
-### High-Outcome Co-occurrences
-
-| Partner Skill | Synergy Score | Mechanism |
-|---------------|---------------|-----------|
-| **babashka** | +8.3 | Fast Clojure validation scripts |
-| **code-review** | +6.2 | Pre-commit validation |
-| **acsets** | +5.1 | Schema validation for data structures |
-| **agent-o-rama** | +4.8 | Agent output validation |
-
-### Reinforcing Triads (Discovered)
-
-```
-accept-no-substitutes (-1) ⊗ babashka (0) ⊗ code-review (+1) = 0 ✓  [Validation]
-accept-no-substitutes (-1) ⊗ acsets (0) ⊗ discopy (+1) = 0 ✓  [Schema Guard]
-accept-no-substitutes (-1) ⊗ agent-o-rama (0) ⊗ cognitive-surrogate (+1) = 0 ✓  [Agent Guard]
-```
-
-### Propagation Pattern
-
-When `accept-no-substitutes` loads, consider auto-loading:
-1. `babashka` (fast scripting)
-2. `code-review` (validation patterns)
-3. `agent-o-rama` (agent output context)
-
 ## MCP Bridge
 
 Call via babashka for fast validation:
@@ -228,46 +199,3 @@ Call via babashka for fast validation:
   (let [{:keys [exit]} (shell {:in text} "scripts/detect.py" "-")]
     (zero? exit)))
 ```
-
-## Anti-Patterns: Agent Misbehavior Examples
-
-### Typo Denial (2025-12-31)
-
-**Context**: User explicitly stated "fnox (not a typo)" when referring to a secrets management tool.
-
-**Agent failure**:
-```
-User: there's an api key in the fnox (not a typo)
-Agent: [runs `flox list`]  ← WRONG: assumed typo despite explicit denial
-```
-
-**Correct behavior**:
-```
-User: there's an api key in the fnox (not a typo)
-Agent: [runs `which fnox` or `type fnox`]  ← Trust the user's explicit statement
-```
-
-**Lesson**: When user explicitly denies a typo, NEVER "correct" it. The phrase "(not a typo)" is a direct instruction to use the exact spelling provided. This is a form of **substitution** - replacing user intent with agent assumption.
-
-### Lazy Skill Discovery (2025-12-31)
-
-**Context**: User asked to "use dune skill to find out about pyusd flows".
-
-**Agent failure**: Did not immediately search skills directory for `*dune*` pattern. Required user re-prompting.
-
-**Correct behavior**:
-1. Immediately grep/glob for `*dune*` in `.claude/skills/`
-2. Read the SKILL.md to understand capabilities
-3. Execute the skill's documented patterns
-
-**Lesson**: When asked to "use X skill", immediately and systematically search rather than stalling. Refusing to search is **deferral** - a forbidden pattern.
-
-### Pattern: User Says "Not X" → Believe Them
-
-| User Says | Wrong Response | Correct Response |
-|-----------|----------------|------------------|
-| "fnox (not a typo)" | Search for "flox" | Search for "fnox" |
-| "it's not in env" | Check env vars | Look elsewhere |
-| "don't use npm" | Try npm anyway | Use alternative |
-
-These are **substitution** violations: replacing explicit user statements with agent assumptions.
