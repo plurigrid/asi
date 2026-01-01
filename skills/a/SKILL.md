@@ -1,3 +1,10 @@
+---
+name: world-a
+description: AlgebraicJulia ecosystem world (ACSets.jl, Catlab.jl). Use for categorical database queries and acset operations.
+metadata:
+  trit: -1
+---
+
 # World A Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))
