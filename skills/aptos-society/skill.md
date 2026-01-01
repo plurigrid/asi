@@ -261,6 +261,189 @@ bb decay.clj payout <VAULT_APT>
 | **AIP-27** (Time) | `timestamp::now_seconds()` for decay |
 | **AIP-41** (Signatures) | Oracle-gated resolution |
 
+## Goblins Integration (Maximal Collision)
+
+### Architecture
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    GOBLINS RUNTIME                           │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  Vat: 26 World Actors (A-Z)                           │  │
+│  │  ^world-agent → produce-artifact / verify / coordinate │  │
+│  └───────────────────────┬────────────────────────────────┘  │
+│                          │ CapTP/OCapN                       │
+│                          │ (explicit capabilities)           │
+└──────────────────────────┼───────────────────────────────────┘
+                           ▼
+┌──────────────────────────────────────────────────────────────┐
+│               SOCIETY KERNEL (TypeScript)                    │
+│                    *** AUTHORITATIVE ***                     │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  Event Bus (single-writer, append-only)                │  │
+│  │  Capability Registry (explicit, not implicit)          │  │
+│  │  GF(3) Enforcer (conservation invariant)               │  │
+│  │  run_manifest (gaymcp_root_hex, skills_hash, sha256)   │  │
+│  │  mint↔proof↔manifest link verification                 │  │
+│  │  Payout Distribution (receipts)                        │  │
+│  └───────────────────────┬────────────────────────────────┘  │
+└──────────────────────────┼───────────────────────────────────┘
+                           ▼
+┌──────────────────────────────────────────────────────────────┐
+│                 WORLDNET (DuckDB Ledger)                     │
+│  events | agent_claims | worldnet_state | artifacts          │
+└───────────────────────────┬──────────────────────────────────┘
+                            │ COLLAPSE (once)
+                            ▼
+┌──────────────────────────────────────────────────────────────┐
+│                  APTOS MAINNET (Move)                        │
+│  GayMove Contract | Escrow | FA Claims                       │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### Non-Negotiables
+
+1. **Everything is an actor**: Goblins `^world-agent` actors, not imperative code
+2. **Event log = single source of truth**: Society kernel appends, Goblins observes
+3. **Capabilities explicit**: CapTP/OCapN, not implicit imports
+4. **GF(3) enforced**: Kernel validates conservation before appending
+
+### Files
+
+| File | Purpose |
+|------|---------|
+| `~/.topos/GayMove/goblins-society-bridge.scm` | Goblins actor definitions |
+| `~/.topos/GayMove/society-kernel.ts` | TypeScript authoritative kernel |
+
+### Goblins Actor Protocol
+
+```scheme
+;; World actor produces artifact (PLUS role)
+(<- world-a produce-artifact "sha256:abc123")
+
+;; World actor verifies (MINUS role)
+(<- world-b verify-artifact "sha256:abc123" "world-a")
+
+;; World actor coordinates (ERGODIC role)
+(<- world-c coordinate "canonical-form-hash")
+```
+
+### Capability Flow
+
+```
+1. Goblins actor requests capability from kernel
+2. Kernel mints cap with scope + expiry
+3. Actor includes cap-hash in event submission
+4. Kernel validates cap before appending
+5. Invalid cap → event rejected (no implicit trust)
+```
+
+### run_manifest Links
+
+```typescript
+interface RunManifest {
+  gaymcp_root_hex: string;       // SplitMix seed
+  skills_snapshot_hash: string;  // Skills state
+  manifest_sha256: string;       // Self-reference
+  goblins_runtime?: string;      // "guile-goblins-0.14"
+}
+
+// Verify: mint_tx ↔ proof ↔ manifest
+kernel.verifyMintProofManifestLink(mintTx, proof, manifest)
+```
+
+## World-Letter Cross-Prediction Lattice
+
+### 26-World Balance Census (Live)
+
+```
+╔══════════════════════════════════════════════════════════════════╗
+║                  WORLD BALANCE DISTRIBUTION                       ║
+╠══════════════════════════════════════════════════════════════════╣
+║  🔴 RICH (0.138 APT)    │ a, f, n          │ Hub dispersers      ║
+║  🟢 MEDIUM (0.038 APT)  │ b,c,d,e,g,h,i,   │ Collective nodes    ║
+║                         │ j,k,l,m,r,s,t,   │                     ║
+║                         │ u,v,w,x,y        │                     ║
+║  🔵 SPARSE (0.005-0.025)│ o, p, q, z       │ Frontier worlds     ║
+╚══════════════════════════════════════════════════════════════════╝
+```
+
+### Cross-Prediction Rules
+
+1. **Same-class bisimilarity**: Worlds in same wealth tier predict each other accurately
+2. **Wealth gap distortion**: Rich worlds overestimate others by ~2.5x
+3. **Hub competition**: Rich-to-rich predictions fail due to mutual overestimation
+4. **GF(3) phase**: Determines prediction direction (LEADS/LAGS/SAME)
+
+### Triad Conservation
+
+```sql
+-- All 8 letter triads conserve GF(3)
+SELECT triad, letters, trit_sum, conserved FROM (
+  VALUES ('0', 'abc', 0, '✓'), ('1', 'def', 0, '✓'),
+         ('2', 'ghi', 0, '✓'), ('3', 'jkl', 0, '✓'),
+         ('4', 'mno', 0, '✓'), ('5', 'pqr', 0, '✓'),
+         ('6', 'stu', 0, '✓'), ('7', 'vwx', 0, '✓')
+) AS t(triad, letters, trit_sum, conserved);
+```
+
+### Bisimulation Game Protocol
+
+```python
+def bisim_round(attacker: str, defender: str, arbiter: str):
+    """
+    Attacker (MINUS): Claims prediction about defender
+    Defender (PLUS): Reveals actual state
+    Arbiter (ERGODIC): Judges bisimilarity
+
+    Verdicts:
+    - BISIMILAR: Error < 0.05 (same operational class)
+    - SIMILAR: Error < 0.15 (compatible)
+    - DISTINCT: Error >= 0.15 (different behavior)
+    """
+    pass
+```
+
+## QUIC Channel Grading Integration
+
+### Channel Quality by World Pair
+
+| From | To | RTT | BW | Loss | Grade | Trit |
+|------|-----|-----|-----|------|-------|------|
+| a | f | 12ms | 250Mbps | 0.01% | PLUS | +1 |
+| a | n | 15ms | 180Mbps | 0.02% | PLUS | +1 |
+| a | b | 45ms | 85Mbps | 0.2% | ERGODIC | 0 |
+| a | z | 180ms | 5Mbps | 2.5% | MINUS | -1 |
+| o | p | 220ms | 3Mbps | 3.0% | MINUS | -1 |
+
+### BBRv3 Congestion Control
+
+```
+States: STARTUP → DRAIN → PROBE_BW → PROBE_RTT
+
+Pacing gains:
+- STARTUP: 2.89x (fill pipe)
+- DRAIN: 0.35x (reduce queue)
+- PROBE_BW: 1.0/0.75/1.25x (oscillate)
+- PROBE_RTT: 1.0x (maintain)
+```
+
+### Channel Grading Algorithm
+
+```clojure
+(defn grade-channel [{:keys [rtt-ms bandwidth-mbps loss-rate]}]
+  (let [score (atom 0)]
+    (cond (< rtt-ms 20) (swap! score inc)
+          (> rtt-ms 100) (swap! score dec))
+    (cond (> bandwidth-mbps 100) (swap! score inc)
+          (< bandwidth-mbps 10) (swap! score dec))
+    (cond (< loss-rate 0.001) (swap! score inc)
+          (> loss-rate 0.01) (swap! score dec))
+    (cond (>= @score 2) {:grade :PLUS :trit 1}
+          (<= @score -2) {:grade :MINUS :trit -1}
+          :else {:grade :ERGODIC :trit 0})))
+```
+
 ## Related Skills
 
 - `aptos-agent` - MCP tools for Aptos interaction
@@ -270,6 +453,11 @@ bb decay.clj payout <VAULT_APT>
 - `gay-mcp` - GF(3) color protocol
 - `bisimulation-game` - Equivalence verification
 - `world-a` through `world-z` - 26 participating worlds
+- `goblins` - Distributed object capability system
+- `guile-goblins-hoot` - Guile Goblins + Hoot WASM
+- `quic-channel-grading` - QUIC channel quality with BBRv3
+- `iroh-p2p` - QUIC-based P2P networking
+- `protocol-acset` - Compositional protocol design
 
 ## Quick Reference
 
