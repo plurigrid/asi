@@ -1,9 +1,9 @@
 ---
 name: cargo
 description: Rust package manager (36 subcommands).
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # cargo
 

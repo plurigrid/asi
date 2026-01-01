@@ -1,10 +1,9 @@
 ---
 name: phase-space-transformation
 description: Coordinate changes preserving dynamics
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Phase Space Transformation
 

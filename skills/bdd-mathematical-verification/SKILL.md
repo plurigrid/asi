@@ -1,60 +1,9 @@
 ---
 name: bdd-mathematical-verification
-description: 'BDD-Driven Mathematical Content Verification Skill
-
-
-  Combines Behavior-Driven Development with mathematical formula extraction,
-
-  verification, and transformation using:
-
-  - Cucumber/Gherkin for specification
-
-  - RSpec for implementation verification
-
-  - mathpix-gem for LaTeX/mathematical content extraction
-
-  - Pattern matching on syntax trees for formula validation
-
-
-  Enables iterative discovery and verification of mathematical properties
-
-  through executable specifications.
-
-  '
-metadata:
-  trit: 0
-  version: 1.0.0
-  author: Claude Code + TegLon Labs mathpix-gem integration
-  tags:
-  - bdd
-  - mathematics
-  - gherkin
-  - rspec
-  - mathpix
-  - verification
-  - pattern-matching
-  dependencies:
-  - rspec: ~> 3.12
-  - cucumber: ~> 8.0
-  - mathpix: ~> 0.1.2
-  - parslet: ~> 2.0
-  - mathn: ~> 0.1.0
-  features:
-  - extract_mathematics: "Transform mathematical images/documents to LaTeX via Mathpix\
-      \ API\nFeatures:\n  • Image to LaTeX conversion\n  • Document to Markdown parsing\n\
-      \  • Chemistry structure to SMILES\n  • Batch processing with caching\n"
-  - verify_formulas: "BDD-driven mathematical formula verification\nFeatures:\n  •\
-      \ Syntax tree pattern matching\n  • Algebraic equivalence checking\n  • Form\
-      \ verification (expanded/factored/simplified)\n  • Symbolic simplification validation\n"
-  - scenario_driven_discovery: "Use Gherkin scenarios to discover mathematical properties\
-      \ iteratively\nFeatures:\n  • Given-When-Then mathematical steps\n  • Parameterized\
-      \ examples for multiple test cases\n  • Property-based testing integration\n\
-      \  • Scenario outlines for formula families\n"
-  - integration_with_content: "Connect extracted formulas to Music-Topos system\n\
-      Features:\n  • Register verified formulas as artifacts\n  • Map formulas to\
-      \ GaySeed colors\n  • Create provenance records in DuckDB\n  • Enable formula\
-      \ search via retromap\n"
+description: BDD-Driven Mathematical Content Verification Skill
+version: 1.0.0
 ---
+
 
 # BDD Mathematical Verification Skill
 

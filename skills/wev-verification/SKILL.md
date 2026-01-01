@@ -1,3 +1,9 @@
+---
+name: wev-verification
+description: WEV Verification Skill
+version: 1.0.0
+---
+
 # WEV Verification Skill
 
 **Trit**: -1 (MINUS - Validator)

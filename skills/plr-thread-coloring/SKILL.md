@@ -1,10 +1,9 @@
 ---
 name: plr-thread-coloring
 description: PLR (Parallel/Leading-tone/Relative) transitions for thread coloring. One-hot keyspace reduction to GF(3) trits for behavior indexing. Grows perception/action information field capacity through efficient user illusion.
-trit: 0
-seed: 1069
-license: MIT
+version: 1.0.0
 ---
+
 
 # PLR Thread Coloring
 

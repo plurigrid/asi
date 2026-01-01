@@ -1,9 +1,9 @@
 ---
 name: slime-lisp
 description: SLIME integration for Common Lisp development
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # SLIME Lisp Skill
 

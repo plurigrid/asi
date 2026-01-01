@@ -1,10 +1,9 @@
 ---
 name: limit-set
 description: Asymptotic behavior of trajectories (ω/α-limit sets)
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Limit Set
 

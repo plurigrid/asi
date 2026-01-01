@@ -1,8 +1,9 @@
 ---
 name: shadow-goblin
-trit: -1
-auto-generated: true
+description: shadow-goblin
+version: 1.0.0
 ---
+
 
 # shadow-goblin
 

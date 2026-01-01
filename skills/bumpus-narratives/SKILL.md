@@ -1,12 +1,9 @@
 ---
 name: bumpus-narratives
 description: Sheaves on time categories for compositional temporal reasoning. Bumpus
-  et al. narrative framework with adhesion filter FPT algorithms and Gay.jl color
-  integration.
-metadata:
-  trit: 0
-  short-description: Temporal narratives via sheaves
+version: 1.0.0
 ---
+
 
 # Bumpus Narratives Skill
 

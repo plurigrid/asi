@@ -1,10 +1,9 @@
 ---
 name: discrete-backprop
 description: Gradient-free optimization via discrete perturbations and trit-based learning
-metadata:
-  trit: +1
-  source: local
+version: 1.0.0
 ---
+
 
 # Discrete Backprop Skill
 

@@ -1,13 +1,9 @@
 ---
 name: algorithmic-art
 description: Creating algorithmic art using p5.js with seeded randomness and interactive
-  parameter exploration. Use when users request creating art using code, generative
-  art, algorithmic art, flow fields, or particle systems.
-license: Apache-2.0
-metadata:
-  trit: 1
-  source: anthropics/skills
+version: 1.0.0
 ---
+
 
 # Algorithmic Art
 

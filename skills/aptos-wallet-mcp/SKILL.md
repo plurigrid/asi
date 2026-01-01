@@ -1,3 +1,9 @@
+---
+name: aptos-wallet-mcp
+description: Aptos Wallet MCP Skill
+version: 1.0.0
+---
+
 # Aptos Wallet MCP Skill
 
 **Trit**: 0 (ERGODIC)

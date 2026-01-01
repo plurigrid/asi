@@ -1,11 +1,9 @@
 ---
 name: bifurcation
 description: Hopf bifurcation detection for dynamical system state transitions with GF(3) phase portraits
-metadata:
-  trit: 0
-  color: "#9966FF"
-  role: ERGODIC (Coordinator)
+version: 1.0.0
 ---
+
 
 # Bifurcation
 

@@ -1,9 +1,9 @@
 ---
 name: braindance-worlds
 description: GF(3)-conserved distribution of Claude threads across Aptos worlds
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # Braindance Worlds
 

@@ -1,11 +1,9 @@
 ---
 name: tailscale-mesh
-description: "Tailscale mesh VPN for secure peer-to-peer networking. WireGuard-based overlay network with MagicDNS and ACLs."
-metadata:
-  trit: 0
-  version: "1.0.0"
-  bundle: networking
+description: Tailscale mesh VPN for secure peer-to-peer networking. WireGuard-based overlay network with MagicDNS and ACLs.
+version: 1.0.0
 ---
+
 
 # Tailscale Mesh Skill
 

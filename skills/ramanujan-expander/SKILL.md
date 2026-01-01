@@ -1,15 +1,9 @@
 ---
 name: ramanujan-expander
 description: Ramanujan graphs and Alon-Boppana spectral optimality for edge growth
-  rules. Optimal expanders with λ₂ ≤ 2√(d-1) bound.
-license: MIT
-metadata:
-  source: music-topos + LPS construction
-  trit: -1
-  bundle: spectral
-  xenomodern: true
-  ironic_detachment: 0.31
+version: 1.0.0
 ---
+
 
 # Ramanujan Expander Skill
 

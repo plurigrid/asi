@@ -1,9 +1,9 @@
 ---
 name: topos-of-music
 description: Guerino Mazzola's mathematical music theory - Forms, Denotators, Morphisms, and Neo-Riemannian PLR operations with Gay.jl color integration
-trit: +1
-color: "#D82626"
+version: 1.0.0
 ---
+
 
 # Topos of Music Skill
 

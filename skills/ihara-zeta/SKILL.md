@@ -1,14 +1,9 @@
 ---
 name: ihara-zeta
-description: "Ihara zeta function for graphs: non-backtracking walks, prime cycles, and spectral analysis via det(I - uB)."
-license: MIT
-metadata:
-  source: music-topos + graph theory
-  trit: 0
-  bundle: spectral
-  xenomodern: true
-  ironic_detachment: 0.27
+description: Ihara zeta function for graphs: non-backtracking walks, prime cycles, and spectral analysis via det(I - uB).
+version: 1.0.0
 ---
+
 
 # Ihara Zeta Function Skill
 

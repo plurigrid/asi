@@ -1,18 +1,9 @@
 ---
 name: gay-mcp
 description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP
-  tools for palettes and threads.
-license: UNLICENSED
-metadata:
-  source: local
-  skill_type: Deterministic Color Generation
-  interface_ports:
-  - Tripartite Streams
-  - Commands
-  - Integration with
-  - API
-trit: 1
+version: 1.0.0
 ---
+
 <!-- Propagated to codex | Trit: 0 | Source: .ruler/skills/gay-mcp -->
 
 # Gay-MCP Skill: Deterministic Color Generation

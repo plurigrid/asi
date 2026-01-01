@@ -1,3 +1,9 @@
+---
+name: amp-team-usage
+description: Amp Team Usage
+version: 1.0.0
+---
+
 # Amp Team Usage
 
 Check concurrent users and team members on an Amp account.

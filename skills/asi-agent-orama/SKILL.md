@@ -1,3 +1,9 @@
+---
+name: asi-agent-orama
+description: ASI Agent-O-Rama Skill
+version: 1.0.0
+---
+
 # ASI Agent-O-Rama Skill
 
 **Status**: ✅ Production Ready

@@ -1,10 +1,9 @@
 ---
 name: terminal
 description: Terminal emulation = libghostty-vt + tmux + zsh + fzf + ripgrep.
-metadata:
-  trit: 0
-  libghostty: true
+version: 1.0.0
 ---
+
 
 # terminal
 

@@ -1,14 +1,9 @@
 ---
 name: linear-logic
 description: Linear Logic Skill
-trit: 0
-color: "#26D826"
-catsharp:
-  home: Prof
-  poly_op: ⊗ (parallel)
-  kan_role: Adj
-  bicomodule: true
+version: 1.0.0
 ---
+
 
 # linear-logic Skill
 

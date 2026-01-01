@@ -1,14 +1,9 @@
 ---
 name: aptos-gf3-society
 description: Aptos GF(3) Society Skill
-trit: 0
-color: "#26D826"
-catsharp:
-  home: Prof
-  poly_op: ⊗ (parallel)
-  kan_role: Adj
-  bicomodule: true
+version: 1.0.0
 ---
+
 
 # aptos-gf3-society Skill
 

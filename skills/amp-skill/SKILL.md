@@ -1,10 +1,9 @@
 ---
 name: amp-skill
 description: Interruption pattern detection and retrieval from Amp thread history. Use for analyzing tool rejection patterns and improving agent behavior.
-metadata:
-  trit: 0
-  color: "#26D826"
+version: 1.0.0
 ---
+
 
 # Amp-Skill: Interruption Pattern Detection and Retrieval
 

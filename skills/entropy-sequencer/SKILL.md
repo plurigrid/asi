@@ -1,9 +1,9 @@
 ---
 name: entropy-sequencer
-description: "' Layer 5: Interaction Interleaving for Maximum Information Gain'"
-metadata:
-  trit: 0
+description: ' Layer 5: Interaction Interleaving for Maximum Information Gain'
+version: 1.0.0
 ---
+
 
 # entropy-sequencer
 

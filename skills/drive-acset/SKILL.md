@@ -1,7 +1,9 @@
 ---
 name: drive-acset
 description: Google Drive management via DriveACSet schema with GF(3) triadic routing. Transforms files/folders into typed Interactions, routes to queue fibers, detects saturation for organized-drive-as-condensed-state.
+version: 1.0.0
 ---
+
 
 # Drive ACSet Skill
 

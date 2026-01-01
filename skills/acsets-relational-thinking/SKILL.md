@@ -1,11 +1,9 @@
 ---
 name: acsets-relational-thinking
 description: ACSets (Attributed C-Sets) for categorical database design and DPO rewriting
-license: UNLICENSED
-metadata:
-  trit: 0
-  source: local
+version: 1.0.0
 ---
+
 
 # SKILL: ACSets Relational Thinking
 

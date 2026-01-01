@@ -1,9 +1,9 @@
 ---
 name: gay-integration
 description: Gay.jl integration for bisimulation games with proper hue-based trit derivation and GF(3) conservation
-trit: -1
-color: "#2626D8"
+version: 1.0.0
 ---
+
 
 # Gay Integration Skill
 

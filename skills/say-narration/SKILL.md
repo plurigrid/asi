@@ -1,8 +1,9 @@
 ---
 name: say-narration
 description: Use macOS text-to-speech for agent narration and announcements. Sub-agents announce themselves using different language voices speaking English. Use for multi-agent workflows where each agent has a distinct voice identity.
-compatibility: macOS only. Uses built-in `say` command.
+version: 1.0.0
 ---
+
 
 # Say Narration (macOS TTS)
 

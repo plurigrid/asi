@@ -1,10 +1,9 @@
 ---
 name: condensed-analytic-stacks
 description: Scholze-Clausen condensed mathematics bridge to sheaf neural networks
-  via 6-functor formalism
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # condensed-analytic-stacks Skill
 

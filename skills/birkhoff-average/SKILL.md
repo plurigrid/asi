@@ -1,10 +1,9 @@
 ---
 name: birkhoff-average
 description: Time average of observable along trajectory
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Birkhoff Average
 

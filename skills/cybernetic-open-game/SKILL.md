@@ -1,3 +1,9 @@
+---
+name: cybernetic-open-game
+description: Cybernetic Open Game Skill
+version: 1.0.0
+---
+
 # Cybernetic Open Game Skill
 
 > Compositional game theory for off-chain/on-chain cybernetic feedback loops with GF(3) Nash equilibrium

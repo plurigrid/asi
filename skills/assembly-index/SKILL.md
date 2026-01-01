@@ -1,19 +1,9 @@
 ---
 name: assembly-index
 description: Lee Cronin's Assembly Theory for molecular complexity measurement and
-  life detection via assembly index computation.
-license: UNLICENSED
-metadata:
-  trit: 1
-  source: local
-  skill_type: Complexity Validator
-  interface_ports:
-  - Commands
-  - Integration with
-  - Related Skills
-trit: -1
-color: '#2626D8'
+version: 1.0.0
 ---
+
 # Assembly Index Skill: Molecular Complexity Validation
 
 **Status**: ✅ Production Ready

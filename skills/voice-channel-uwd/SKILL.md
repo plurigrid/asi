@@ -1,3 +1,9 @@
+---
+name: voice-channel-uwd
+description: Voice Channel UWD Skill
+version: 1.0.0
+---
+
 # Voice Channel UWD Skill
 
 **Status**: ✅ Production Ready  

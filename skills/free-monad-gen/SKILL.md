@@ -1,11 +1,9 @@
 ---
 name: free-monad-gen
 description: Free Monad Generation Skill (PLUS +1)
-license: UNLICENSED
-metadata:
-  trit: 1
-  source: local
+version: 1.0.0
 ---
+
 
 # Free Monad Generation Skill (PLUS +1)
 

@@ -1,7 +1,9 @@
 ---
 name: mermaid-reverse-attempt
 description: Mermaid URL codec - encodes/decodes #base64: (amp CLI) and #pako: (mermaid.live) formats
+version: 1.0.0
 ---
+
 
 # Mermaid Reverse Attempt
 

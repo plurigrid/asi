@@ -1,10 +1,9 @@
 ---
 name: whitehole-audio
 description: Modern macOS + tripos audio loopback driver for inter-application audio
-  routing with minimal latency.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # WhiteHole - Zero-Latency Audio Loopback
 

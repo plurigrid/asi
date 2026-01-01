@@ -1,9 +1,9 @@
 ---
 name: influence-propagation
-description: "' Layer 7: Interperspectival Network Analysis and Influence Flow'"
-metadata:
-  trit: 0
+description: ' Layer 7: Interperspectival Network Analysis and Influence Flow'
+version: 1.0.0
 ---
+
 
 # influence-propagation
 

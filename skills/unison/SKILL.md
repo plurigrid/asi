@@ -1,8 +1,9 @@
 ---
 name: unison
 description: Unison language - content-addressed functional programming with abilities for effects, distributed computing, and structural types. Use for pure functional code, effect management, distributed systems, and refactoring-safe codebases.
-trit: 0
+version: 1.0.0
 ---
+
 
 # Unison
 

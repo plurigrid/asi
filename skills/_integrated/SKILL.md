@@ -1,7 +1,9 @@
 ---
 name: asi-integrated
 description: Unified ASI skill combining ACSets, Gay-MCP colors, bisimulation games, world-hopping, glass-bead synthesis, and triad interleaving for autonomous skill dispersal.
+version: 1.0.0
 ---
+
 
 # ASI Integrated Skill
 

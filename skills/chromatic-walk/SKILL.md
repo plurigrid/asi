@@ -1,10 +1,9 @@
 ---
 name: chromatic-walk
-trit: 0
 description: 3 parallel agents explore codebase improvements via GF(3) balanced prime geodesics
-color: "#D06546"
-seed: 1069
+version: 1.0.0
 ---
+
 
 # Chromatic Walk Skill
 

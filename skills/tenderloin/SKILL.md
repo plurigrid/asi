@@ -1,3 +1,9 @@
+---
+name: tenderloin
+description: Tenderloin: Manifest Destiny Fund for Protocol Labs
+version: 1.0.0
+---
+
 # Tenderloin: Manifest Destiny Fund for Protocol Labs
 
 > The largest compositional investment vehicle targeting Protocol Labs ecosystem

@@ -1,11 +1,9 @@
 ---
 name: quantum-guitar
-description: "Coecke's Quantum Guitar: quantising guitar strings via qubit association, ZX-calculus notation, Moth Actias synth integration"
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
-arxiv: "2509.04526"
+description: Coecke's Quantum Guitar: quantising guitar strings via qubit association, ZX-calculus notation, Moth Actias synth integration
+version: 1.0.0
 ---
+
 
 # Quantum Guitar
 

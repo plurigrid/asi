@@ -1,14 +1,9 @@
 ---
 name: gay-fokker-planck-staging
 description: Two Fokker-Plancks per staging gate, conditioned on (rama OR goblins)
-  with accessible counterfactual worlds for each skill load.
-license: MIT
-metadata:
-  trit: 0
-  gf3_triad: fokker-planck-analyzer (-1) ⊗ gay-fokker-planck-staging (0) ⊗ agent-o-rama (+1)
-  condition: "(rama OR goblins)"
-  status: NOT_IN_PLURIGRID_ASI
+version: 1.0.0
 ---
+
 
 # Gay Fokker-Planck Staging
 

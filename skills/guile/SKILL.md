@@ -1,9 +1,9 @@
 ---
 name: guile
 description: GNU Scheme interpreter (67K lines info).
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # guile
 

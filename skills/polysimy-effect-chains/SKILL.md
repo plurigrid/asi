@@ -1,13 +1,9 @@
 ---
 name: polysimy-effect-chains
 description: Verify multiple effect interpretations through propagator networks with temporal coalgebra bisimulation and common fixpoint solutions.
-license: MIT
-metadata:
-  source: local
-  trit: 0
-  gf3_triad: propagators (+1) ⊗ polysimy-effect-chains (0) ⊗ temporal-coalgebra (-1)
-  status: NOT_IN_PLURIGRID_ASI
+version: 1.0.0
 ---
+
 
 # Polysimy Effect Chains Skill
 

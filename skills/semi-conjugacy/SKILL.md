@@ -1,10 +1,9 @@
 ---
 name: semi-conjugacy
 description: Surjective map intertwining two dynamical systems
-trit: 1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Semi-conjugacy
 

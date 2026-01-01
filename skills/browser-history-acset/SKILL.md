@@ -1,3 +1,9 @@
+---
+name: browser-history-acset
+description: Browser History ACSet
+version: 1.0.0
+---
+
 # Browser History ACSet
 
 **Trit**: 0 (ERGODIC - information coordination)  

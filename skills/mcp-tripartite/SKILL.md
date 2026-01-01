@@ -1,10 +1,9 @@
 ---
 name: mcp-tripartite
-description: "MCP tripartite integration for orchestrating distributed tool protocols"
-license: UNLICENSED
-metadata:
-  trit: 1
+description: MCP tripartite integration for orchestrating distributed tool protocols
+version: 1.0.0
 ---
+
 
 # SKILL: MCP Tripartite Integration
 

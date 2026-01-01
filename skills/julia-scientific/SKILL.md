@@ -1,14 +1,9 @@
 ---
 name: julia-scientific
-description: "Julia package equivalents for 137 K-Dense-AI scientific skills. Maps Python bioinformatics, chemistry, ML, quantum, and data science packages to native Julia ecosystem."
-license: MIT
-metadata:
-  source: K-Dense-AI/claude-scientific-skills + JuliaHub + BioJulia + JuliaMolSim
-  xenomodern: true
-  ironic_detachment: 0.42
-  trit: 0
-  version: 1.0.0
+description: Julia package equivalents for 137 K-Dense-AI scientific skills. Maps Python bioinformatics, chemistry, ML, quantum, and data science packages to native Julia ecosystem.
+version: 1.0.0
 ---
+
 
 # Julia Scientific Package Mapping Skill
 

@@ -1,9 +1,9 @@
 ---
 name: catsharp-galois
 description: CatSharp Scale Galois Connections between agent-o-rama and Plurigrid ACT via Mazzola's categorical music theory
-trit: 0
-color: "#D8D826"
+version: 1.0.0
 ---
+
 
 # CatSharp Galois Skill
 

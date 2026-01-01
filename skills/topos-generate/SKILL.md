@@ -1,11 +1,9 @@
 ---
 name: topos-generate
 description: Topos Generation Skill (PLUS +1)
-license: UNLICENSED
-metadata:
-  trit: 1
-  source: local
+version: 1.0.0
 ---
+
 
 # Topos Generation Skill (PLUS +1)
 

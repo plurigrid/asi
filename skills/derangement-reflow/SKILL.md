@@ -1,20 +1,9 @@
 ---
 name: derangement-reflow
 description: >
-  World operators as information reflow with derangement constraints.
-  Ensures σ(i)≠i: validators cannot self-validate, generators cannot self-generate.
-  Implements tropical geometry of interaction for min-plus path analysis.
-metadata:
-  trit: 0
-  role: ERGODIC
-  color: "#6728DB"
-  gay_seed: 0x6728DB
-  neighbors:
-    left: accept-no-substitutes
-    right: active-inference
-  category: coordination
-  version: "1.0.0"
+version: 1.0.0
 ---
+
 
 # Derangement Reflow: World Operators as Information Reflow
 

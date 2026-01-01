@@ -1,10 +1,9 @@
 ---
 name: bafishka
 description: 🐟 Rust-native Fish shell-friendly file operations with Steel-backed SCI
-  Clojure evaluation.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # Bafishka - Fish Shell + Clojure File Operations
 

@@ -1,7 +1,9 @@
 ---
 name: mcp-spec-checker
 description: Predicate-level semantic diff for MCP protocol specs. Compares 0618 vs 1125 specs via Narya types, GF(3) evaluators, and Unison-style effects. Use for protocol verification, spec migration, or detecting breaking changes.
+version: 1.0.0
 ---
+
 
 # MCP Spec Checker
 

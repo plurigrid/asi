@@ -1,3 +1,9 @@
+---
+name: gay-monte-carlo
+description: Gay Monte Carlo Measurements
+version: 1.0.0
+---
+
 # Gay Monte Carlo Measurements
 
 ---

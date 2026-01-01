@@ -1,14 +1,9 @@
 ---
 name: pdf
 description: Comprehensive PDF manipulation toolkit for extracting text and tables,
-  creating new PDFs, merging/splitting documents, and handling forms. When Claude
-  needs to fill in a PDF form or programmatically process, generate, or analyze PDF
-  documents at scale.
-license: Apache-2.0
-metadata:
-  trit: 0
-  source: anthropics/skills
+version: 1.0.0
 ---
+
 
 # PDF Processing Guide
 

@@ -1,3 +1,9 @@
+---
+name: ies
+description: ies
+version: 1.0.0
+---
+
 # ies
 
 > FloxHub `bmorphism/ies` - Clojure/Julia/Python/multimedia environment with Gay.jl coloring, Flox composition, and DuckDB social analysis.

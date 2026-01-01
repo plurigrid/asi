@@ -1,10 +1,9 @@
 ---
 name: dynamical-system-functor
 description: Categorical structure of dynamical systems
-trit: 1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Dynamical System Functor
 

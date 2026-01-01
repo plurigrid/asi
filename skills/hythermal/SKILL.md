@@ -1,3 +1,9 @@
+---
+name: hythermal
+description: HyThermal Skill
+version: 1.0.0
+---
+
 # HyThermal Skill
 
 > Hy + Thermal: Relational ACSet dynamics with Langevin temperature control

@@ -1,12 +1,9 @@
 ---
 name: forward-forward-learning
 description: Hinton's Forward-Forward algorithm for local learning without backpropagation.
-  Use for biologically plausible learning, on-chip training, memory-efficient networks,
-  or parallel layer-wise training.
-metadata:
-  trit: 1
-  color: '#D82626'
+version: 1.0.0
 ---
+
 
 # Forward-Forward Learning
 

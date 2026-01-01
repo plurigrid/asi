@@ -1,3 +1,9 @@
+---
+name: ruler-maximal
+description: Ruler Maximal Skill
+version: 1.0.0
+---
+
 # Ruler Maximal Skill
 
 **Ensures all skills are used maximally at all times via GF(3)-balanced auto-loading.**

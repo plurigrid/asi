@@ -1,10 +1,9 @@
 ---
 name: equilibrium
 description: Fixed points where vector field vanishes
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Equilibrium
 

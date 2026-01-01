@@ -1,3 +1,9 @@
+---
+name: categorical-rewriting-triad4
+description: Categorical Rewriting: Triad 4 (World Transformation)
+version: 1.0.0
+---
+
 # Categorical Rewriting: Triad 4 (World Transformation)
 
 **Status:** Design Phase

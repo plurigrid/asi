@@ -1,11 +1,9 @@
 ---
 name: cargo-rust
-description: "Rust package manager and build system. Cargo commands, dependency management, and workspace patterns."
-metadata:
-  trit: -1
-  version: "1.0.0"
-  bundle: tooling
+description: Rust package manager and build system. Cargo commands, dependency management, and workspace patterns.
+version: 1.0.0
 ---
+
 
 # Cargo Rust Skill
 

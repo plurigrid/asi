@@ -1,8 +1,9 @@
 ---
 name: aptos-agent
 description: Interact with Aptos blockchain - check balances, transfer APT, swap tokens, stake, and execute Move view functions. Features game-theoretic decision analysis with Nash equilibrium detection. All transactions require explicit approval.
-compatibility: Requires Node.js, aptos-claude-agent built. Wallet keys in environment.
+version: 1.0.0
 ---
+
 
 # Aptos Claude Agent
 

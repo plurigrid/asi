@@ -1,3 +1,9 @@
+---
+name: proof-of-frog
+description: Proof-of-Frog Skill 🐸
+version: 1.0.0
+---
+
 # Proof-of-Frog Skill 🐸
 
 **Trit**: 0 (ERGODIC - Coordinator)

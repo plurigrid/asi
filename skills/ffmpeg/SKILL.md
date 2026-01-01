@@ -1,9 +1,9 @@
 ---
 name: ffmpeg
 description: Media processing (10 man pages).
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # ffmpeg
 

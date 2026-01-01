@@ -1,14 +1,9 @@
 ---
 name: datalog-fixpoint
 description: Datalog bottom-up fixpoint iteration for recursive queries
-trit: 0
-color: "#26D826"
-catsharp:
-  home: Prof
-  poly_op: ⊗ (parallel)
-  kan_role: Adj
-  bicomodule: true
+version: 1.0.0
 ---
+
 
 # Datalog Fixpoint Skill
 

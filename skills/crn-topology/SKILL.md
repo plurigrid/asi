@@ -1,12 +1,9 @@
 ---
 name: crn-topology
 description: Chemical Reaction Network topology for generating and analyzing reaction
-  graph structures.
-license: UNLICENSED
-metadata:
-  trit: 1
-  source: local
+version: 1.0.0
 ---
+
 
 # CRN Topology Skill: Reaction Network Generation
 

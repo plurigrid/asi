@@ -1,13 +1,9 @@
 ---
 name: python-development
 description: Modern Python development with Python 3.12+, Django, FastAPI, async patterns,
-  and production best practices. Use for Python projects, APIs, data processing, or
-  automation scripts.
-license: MIT
-metadata:
-  trit: 0
-  source: wshobson/agents
+version: 1.0.0
 ---
+
 
 # Python Development
 

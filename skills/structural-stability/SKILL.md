@@ -1,10 +1,9 @@
 ---
 name: structural-stability
 description: Robustness of qualitative dynamics under perturbation
-trit: -1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Structural Stability
 

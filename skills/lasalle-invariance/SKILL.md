@@ -1,10 +1,9 @@
 ---
 name: lasalle-invariance
 description: Invariance principle for asymptotic stability
-trit: 1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # LaSalle Invariance
 

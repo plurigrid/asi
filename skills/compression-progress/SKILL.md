@@ -1,12 +1,9 @@
 ---
 name: compression-progress
 description: Schmidhuber's compression progress as intrinsic curiosity reward for
-  learning systems.
-license: UNLICENSED
-metadata:
-  trit: 0
-  source: local
+version: 1.0.0
 ---
+
 
 # Compression Progress Skill: Curiosity-Driven Learning
 

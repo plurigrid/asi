@@ -1,14 +1,9 @@
 ---
 name: docx
 description: Comprehensive document creation, editing, and analysis with support for
-  tracked changes, comments, formatting preservation, and text extraction. When Claude
-  needs to work with professional documents (.docx files) for creating new documents,
-  modifying content, working with tracked changes, or adding comments.
-license: Apache-2.0
-metadata:
-  trit: 0
-  source: anthropics/skills
+version: 1.0.0
 ---
+
 
 # DOCX Processing
 

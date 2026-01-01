@@ -1,18 +1,9 @@
 ---
 name: signal-isolated-auth
 description: Maximally isolated Signal authentication via colored operad security boundaries. VM→Container→Process enclosure with GF(3) conservation for Agent-O-Rama pathways.
-license: MIT
-metadata:
-  source: WorldColoredOperads.jl + SignalIsolationManager
-  trit: -1
-  color: '#E12A4E'
-  world: gay-mcp
-  coworld: dynamic-sufficiency
-  gf3_role: VALIDATOR
-  version: 1.0.0
-  isolation_depth: 5
-  max_security_score: 100
+version: 1.0.0
 ---
+
 
 # Signal Isolated Authentication
 

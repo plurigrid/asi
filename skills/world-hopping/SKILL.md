@@ -1,12 +1,9 @@
 ---
 name: world-hopping
 description: Badiou-inspired possible world navigation using triangle inequality constraints,
-  event ontology, and truth procedures for traversing mathematical possibility space.
-license: MIT
-metadata:
-  trit: 1
-  source: music-topos/skills
+version: 1.0.0
 ---
+
 
 # World Hopping: Possible World Navigation
 

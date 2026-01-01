@@ -1,3 +1,9 @@
+---
+name: triangle-metrics
+description: Triangle Metrics Skill
+version: 1.0.0
+---
+
 # Triangle Metrics Skill
 
 **Trit**: 0 (ERGODIC - synthesizer/coordinator)

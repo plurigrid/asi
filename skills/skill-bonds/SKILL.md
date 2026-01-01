@@ -1,3 +1,9 @@
+---
+name: skill-bonds
+description: Skill Bonds Registry
+version: 1.0.0
+---
+
 # Skill Bonds Registry
 
 > Discovered via 3× triadic random walk across **467 skills**

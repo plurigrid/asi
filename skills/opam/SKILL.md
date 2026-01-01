@@ -1,9 +1,9 @@
 ---
 name: opam
 description: OCaml package manager (45 subcommands).
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # opam
 

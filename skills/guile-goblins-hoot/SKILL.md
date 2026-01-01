@@ -1,11 +1,9 @@
 ---
 name: guile-goblins-hoot
-description: "Spritely Goblins distributed actor system with Hoot WebAssembly compiler. Secure capability-based programming in Guile Scheme."
-metadata:
-  trit: +1
-  version: "1.0.0"
-  bundle: distributed
+description: Spritely Goblins distributed actor system with Hoot WebAssembly compiler. Secure capability-based programming in Guile Scheme.
+version: 1.0.0
 ---
+
 
 # Guile Goblins Hoot Skill
 

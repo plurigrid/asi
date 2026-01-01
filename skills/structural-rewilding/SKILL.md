@@ -1,11 +1,9 @@
 ---
 name: structural-rewilding
-description: "Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs). Three orthogonal directions: Behavioral (→), Structural (↓), Bridge (↘) with Narya interaction-time verification."
-trit: 0
-polarity: ERGODIC
-source: "zubyul synthesis + ALIFE2025 + Narya bridge types"
-gf3_triad: "alife (-1) ⊗ structural-rewilding (0) ⊗ unified-continuations (+1)"
+description: Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs). Three orthogonal directions: Behavioral (→), Structural (↓), Bridge (↘) with Narya interaction-time verification.
+version: 1.0.0
 ---
+
 
 # Structural Rewilding: Homotopical Artificial Life
 

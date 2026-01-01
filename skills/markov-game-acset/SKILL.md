@@ -1,21 +1,9 @@
 ---
 name: markov-game-acset
 description: >
-  Markov games as ACSets with state-dependent strategy spaces.
-  Fills the "Markov games will be soon" gap from open-games-engine.
-  Derangement-reflow ensures no self-observation in state transitions.
-license: MIT
-metadata:
-  trit: -1
-  role: VALIDATOR
-  color: "#6B26D8"
-  gay_seed: 0x6B26D8
-  neighbors:
-    left: open-games
-    right: acsets
-  category: game-theory
-  version: "1.0.0"
+version: 1.0.0
 ---
+
 
 # Markov Game ACSet: State-Dependent Open Games
 

@@ -1,10 +1,9 @@
 ---
 name: koopman-generator
-description: "Koopman operator theory for infinite-dimensional linear lifting of nonlinear dynamics. Generates dynamics from observables."
-source: Brunton+Kutz+Mezić + music-topos
-license: MIT
-trit: +1
+description: Koopman operator theory for infinite-dimensional linear lifting of nonlinear dynamics. Generates dynamics from observables.
+version: 1.0.0
 ---
+
 
 # Koopman Generator Skill
 

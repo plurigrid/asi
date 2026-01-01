@@ -1,3 +1,9 @@
+---
+name: stellogen
+description: Stellogen Skill
+version: 1.0.0
+---
+
 # Stellogen Skill
 
 **Trit**: 0 (ERGODIC - logic-agnostic mediation)  

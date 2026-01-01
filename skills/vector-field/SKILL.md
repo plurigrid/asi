@@ -1,10 +1,9 @@
 ---
 name: vector-field
 description: Assignment of vectors to points in phase space defining dynamics
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Vector Field
 

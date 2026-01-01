@@ -1,8 +1,9 @@
 ---
 name: hatchery-index
 description: Index of 1057 hatchery repos with GAY.md color assignments. Maps plurigrid/bmorphism/TeglonLabs ecosystem to skills.
-trit: 0
+version: 1.0.0
 ---
+
 
 # Hatchery Index
 

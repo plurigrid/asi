@@ -1,8 +1,9 @@
 ---
 name: uv-discohy
 description: UV/UVX/Ruff toolchain for DiscoHy Thread Operad with Python packaging and linting
-trit: 0
+version: 1.0.0
 ---
+
 
 # UV-DiscoHy Skill: Modern Python Tooling for Thread Operads
 

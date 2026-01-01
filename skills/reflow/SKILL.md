@@ -1,13 +1,9 @@
 ---
 name: reflow
-trit: 0
-xip: 6728DB
-gay_seed: 2025
-gay_index: 43
-neighbors:
-  left: gestalt-hacking
-  right: gay-mcp
+description: Information Reflow Skill (ERGODIC 0)
+version: 1.0.0
 ---
+
 
 # Information Reflow Skill (ERGODIC 0)
 

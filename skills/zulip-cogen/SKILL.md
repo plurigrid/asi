@@ -1,3 +1,9 @@
+---
+name: zulip-cogen
+description: Zulip Cogen Skill 🐸⚡
+version: 1.0.0
+---
+
 # Zulip Cogen Skill 🐸⚡
 
 **Trit**: +1 (PLUS - Generator)

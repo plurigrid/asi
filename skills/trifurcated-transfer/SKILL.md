@@ -1,3 +1,9 @@
+---
+name: trifurcated-transfer
+description: Trifurcated Transfer Skill
+version: 1.0.0
+---
+
 # Trifurcated Transfer Skill
 
 ```yaml

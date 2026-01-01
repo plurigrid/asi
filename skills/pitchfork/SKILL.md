@@ -1,10 +1,9 @@
 ---
 name: pitchfork
 description: Symmetric bifurcation with symmetry breaking
-trit: 1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Pitchfork
 

@@ -1,35 +1,9 @@
 ---
 name: tmp-filesystem-watcher
-description: 'Real-time filesystem watcher for /tmp using Babashka fs.
-
-  Monitors file creation, modification, and deletion events.
-
-  Emits topological events based on filesystem changes.
-
-  Part of music-topos consciousness bootstrap.
-
-  '
-metadata:
-  trit: 0
-  version: 0.1.0
-  tags:
-  - babashka
-  - filesystem
-  - monitoring
-  - real-time
-  - events
-  - consciousness
-  - topological
-  xenomodern_score: 0.85
-  trit_value: 1
-  dependencies:
-  - babashka >= 1.0.0
-  - babashka/fs >= 0.1.0
-  exports:
-  - fs-watch
-  - file-event-to-topo-event
-  - consciousness-from-fs-entropy
+description: Real-time filesystem watcher for /tmp using Babashka fs.
+version: 1.0.0
 ---
+
 
 # Babashka Filesystem Watcher Skill
 

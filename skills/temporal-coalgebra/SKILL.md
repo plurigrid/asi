@@ -1,11 +1,9 @@
 ---
 name: temporal-coalgebra
 description: Coalgebraic observation of derivation streams with final coalgebra bisimulation
-  for infinite trace verification.
-license: UNLICENSED
-metadata:
-  source: local
+version: 1.0.0
 ---
+
 
 # Temporal Coalgebra Skill: Observation Duality
 

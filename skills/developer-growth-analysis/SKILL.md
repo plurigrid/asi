@@ -1,12 +1,9 @@
 ---
 name: developer-growth-analysis
 description: Analyzes your recent Claude Code chat history to identify coding patterns,
-  development gaps, and areas for improvement, curates relevant learning resources
-  from HackerNews, and automatically sends a personalized growth report to your Slack
-  DMs.
-metadata:
-  trit: 1
+version: 1.0.0
 ---
+
 
 # Developer Growth Analysis
 

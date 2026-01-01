@@ -1,3 +1,9 @@
+---
+name: universal-captp-derivation
+description: Universal CapTP Derivation Skill
+version: 1.0.0
+---
+
 # Universal CapTP Derivation Skill
 
 Traces capability derivation chains through 3×3 expert poset with GF(3) conservation.

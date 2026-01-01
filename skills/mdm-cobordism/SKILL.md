@@ -1,7 +1,9 @@
 ---
 name: mdm-cobordism
 description: macOS MDM with auth manifolds as cobordisms for credential derivation
+version: 1.0.0
 ---
+
 
 # MDM Cobordism Skill: Auth Manifolds as State Transitions
 

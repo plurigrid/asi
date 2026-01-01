@@ -1,15 +1,9 @@
 ---
 name: propagators
 description: Sussman/Radul propagator networks for constraint propagation and bidirectional
-  dataflow.
-trit: 0
-bundle: strange-loops
-metadata:
-  skill_type: Constraint Propagation Generator
-  interface_ports:
-  - Related Skills
-  - GF(3) Integration
+version: 1.0.0
 ---
+
 # Propagators Skill
 
 > *"The Art of the Propagator" — Radul & Sussman, 2009*

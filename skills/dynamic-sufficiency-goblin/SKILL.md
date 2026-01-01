@@ -1,9 +1,9 @@
 ---
 name: dynamic-sufficiency-goblin
 description: Self-regulating Goblins actor implementing Ivan Illich's dynamic sufficiency
-metadata:
-  trit: +1
+version: 1.0.0
 ---
+
 
 # Dynamic Sufficiency Goblin
 

@@ -1,10 +1,9 @@
 ---
 name: aqua-voice-malleability
-description: "Adversarial malleability analysis of Aqua Voice Electron app with IPC injection, WebSocket interception, and braided monoidal skill interleaving"
-trit: 0
-polarity: ERGODIC
-source_thread: T-019b5346-9d12-778d-9ca2-4c55a96951f2
+description: Adversarial malleability analysis of Aqua Voice Electron app with IPC injection, WebSocket interception, and braided monoidal skill interleaving
+version: 1.0.0
 ---
+
 
 # Aqua Voice Malleability Skill
 

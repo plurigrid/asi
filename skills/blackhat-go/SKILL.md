@@ -1,11 +1,9 @@
 ---
 name: blackhat-go
 description: Go-based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT, Supply Chain, API, Web3, AI/ML, Red Team, ATT&CK, and LLM chapters. 186 techniques, 36 tools, 33 defenses across 37 chapters. Includes adversarial bisimulation games with Ungar (order-dependent) and join-semilattice structures. AAIF-compatible multiplayer agent games for human-agent security exercises.
-source: music-topos/blackhat_knowledge.go
-license: UNLICENSED
-aaif-compatible: true
-mcp-version: "2025.1"
+version: 1.0.0
 ---
+
 
 # BlackHat Go Skill: Security Techniques Knowledge Base
 

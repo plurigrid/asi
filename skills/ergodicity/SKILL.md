@@ -1,10 +1,9 @@
 ---
 name: ergodicity
 description: Time averages equal space averages
-trit: 0
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Ergodicity
 

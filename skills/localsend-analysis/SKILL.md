@@ -1,9 +1,9 @@
 ---
 name: localsend-analysis
-# IMPORTANT: Keep description on ONE line for Claude Code compatibility
-# prettier-ignore
 description: Analyze LocalSend repos with tree-sitter tags, gh GraphQL contributor snapshots, and protocol safety notes.
+version: 1.0.0
 ---
+
 
 # Localsend Analysis
 

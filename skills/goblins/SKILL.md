@@ -1,9 +1,9 @@
 ---
 name: goblins
 description: Distributed object capability system (6.5K lines info).
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # goblins
 

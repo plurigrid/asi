@@ -1,7 +1,9 @@
 ---
 name: depth-search
 description: Deep multi-source research combining academic MCPs (arxiv, semantic-scholar, paper-search, deepwiki), Exa semantic search, and local ~/.topos knowledge base. Use for comprehensive research requiring multiple sources. NEVER fall back to web_search - ask user for help instead.
+version: 1.0.0
 ---
+
 
 # Depth Search
 

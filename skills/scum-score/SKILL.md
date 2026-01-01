@@ -1,3 +1,9 @@
+---
+name: scum-score
+description: SCUM Score Skill
+version: 1.0.0
+---
+
 # SCUM Score Skill
 
 > **S**ystem **C**onsumer **U**tilization **M**etrics - Identify and terminate resource-hogging processes
