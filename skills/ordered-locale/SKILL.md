@@ -1,3 +1,8 @@
+---
+name: ordered-locale-skill
+description: Ordered Locale Skill
+---
+
 # Ordered Locale Skill
 
 **Trit**: +1 (PLUS/GENERATOR)

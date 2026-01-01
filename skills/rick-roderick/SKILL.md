@@ -1,10 +1,3 @@
-# Rick Roderick: Philosophy Under Siege
-
-**Status**: ✅ Production Ready  
-**Trit**: 0 (ERGODIC - critical inquiry as neutral ground)  
-**Principle**: "Philosophy does not run from desolation but tarries with it awhile and looks it in its face" — Hegel via Roderick  
-**Frame**: Critical theory as antidote to the society of the spectacle
-
 ---
 
 ## Overview
@@ -30,6 +23,13 @@ Dr. Rick Roderick (1949-2002) was a philosophy professor at Duke University whos
 **Key insight**: "The way we describe and understand our lives is inextricably connected to the way we live them."
 
 ---
+
+# Rick Roderick: Philosophy Under Siege
+
+**Status**: ✅ Production Ready  
+**Trit**: 0 (ERGODIC - critical inquiry as neutral ground)  
+**Principle**: "Philosophy does not run from desolation but tarries with it awhile and looks it in its face" — Hegel via Roderick  
+**Frame**: Critical theory as antidote to the society of the spectacle
 
 ### 200: Nietzsche and the Postmodern Condition (1991)
 *The thinker who ended philosophy's childhood*

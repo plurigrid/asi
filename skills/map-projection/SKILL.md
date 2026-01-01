@@ -1,3 +1,8 @@
+---
+name: map-projection-skill
+description: Map Projection Skill
+---
+
 # Map Projection Skill
 
 Category theory of map projections: functors between manifolds with distortion analysis.

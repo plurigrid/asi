@@ -1,29 +1,3 @@
-# Kinetic Block Skill
-
-> **Seed Approach List for Stratification × Fabrication via GF(3) Conservation**
-
-## Overview
-
-The **kinetic block** is the atomic unit of ASI skill orchestration—a seed-determined triplet of operations that:
-1. **Stratifies** (layers structure hierarchically)
-2. **Fabricates** (composes components into wholes)
-3. **Conserves** (maintains GF(3) = 0 invariant)
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│  KINETIC BLOCK = Stratification ⊗ Fabrication ⊗ Conservation       │
-│                                                                     │
-│  ┌──────────┐    ┌──────────┐    ┌──────────┐                      │
-│  │ STRATUM  │───▶│ FABRIC   │───▶│ CONSERVE │                      │
-│  │ (layer)  │    │ (weave)  │    │ (verify) │                      │
-│  └──────────┘    └──────────┘    └──────────┘                      │
-│       ⊖              ○              ⊕                               │
-│     (-1)            (0)           (+1)                              │
-│                                                                     │
-│  Σ trits = (-1) + 0 + 1 = 0 ≡ 0 (mod 3) ✓                          │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
 ---
 
 ## Rules for Stratificating
@@ -54,6 +28,32 @@ layer_trit(layer::Int) = (layer % 3) - 1  # Maps to {-1, 0, +1}
 ```
 
 ---
+
+# Kinetic Block Skill
+
+> **Seed Approach List for Stratification × Fabrication via GF(3) Conservation**
+
+## Overview
+
+The **kinetic block** is the atomic unit of ASI skill orchestration—a seed-determined triplet of operations that:
+1. **Stratifies** (layers structure hierarchically)
+2. **Fabricates** (composes components into wholes)
+3. **Conserves** (maintains GF(3) = 0 invariant)
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  KINETIC BLOCK = Stratification ⊗ Fabrication ⊗ Conservation       │
+│                                                                     │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐                      │
+│  │ STRATUM  │───▶│ FABRIC   │───▶│ CONSERVE │                      │
+│  │ (layer)  │    │ (weave)  │    │ (verify) │                      │
+│  └──────────┘    └──────────┘    └──────────┘                      │
+│       ⊖              ○              ⊕                               │
+│     (-1)            (0)           (+1)                              │
+│                                                                     │
+│  Σ trits = (-1) + 0 + 1 = 0 ≡ 0 (mod 3) ✓                          │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
 ## Rules for Fabricating
 

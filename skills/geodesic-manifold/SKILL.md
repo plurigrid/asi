@@ -1,3 +1,8 @@
+---
+name: geodesic-manifold-skill
+description: Geodesic Manifold Skill
+---
+
 # Geodesic Manifold Skill
 
 Spherical geometry, great circles, and Riemannian manifolds with Gay.jl coloring.

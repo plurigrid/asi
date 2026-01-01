@@ -1,12 +1,3 @@
-# HyThermal Skill
-
-> Hy + Thermal: Relational ACSet dynamics with Langevin temperature control
-
-**Version**: 1.0.0
-**Trit**: 0 (ERGODIC - bridges relational structure and thermal flow)
-**Bundle**: dynamics
-**Fusion of**: `hyjax-relational` + `langevin-dynamics`
-
 ---
 
 ## Overview
@@ -337,6 +328,15 @@ At low temperature, concepts crystallize into tight semantic clusters. At high t
 - `gay-mcp` - Deterministic coloring
 
 ---
+
+# HyThermal Skill
+
+> Hy + Thermal: Relational ACSet dynamics with Langevin temperature control
+
+**Version**: 1.0.0
+**Trit**: 0 (ERGODIC - bridges relational structure and thermal flow)
+**Bundle**: dynamics
+**Fusion of**: `hyjax-relational` + `langevin-dynamics`
 
 **Skill Name**: hythermal
 **Type**: Analysis + Dynamics

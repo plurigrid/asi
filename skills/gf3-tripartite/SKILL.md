@@ -1,3 +1,8 @@
+---
+name: gf3-tripartite-orchestration
+description: GF(3) Tripartite Orchestration
+---
+
 # GF(3) Tripartite Orchestration
 
 A skill for coordinating multi-agent systems using GF(3) (Galois Field of 3 elements) conservation. Implements the core pattern: **local choice χ ∈ {-1, 0, +1} determines all state transitions**.

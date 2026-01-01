@@ -1,3 +1,8 @@
+---
+name: obstruction-learning-skill
+description: Obstruction Learning Skill
+---
+
 # Obstruction Learning Skill
 
 Learn topological ASI via random walk obstruction detection and Čech H⁰ cohomology.

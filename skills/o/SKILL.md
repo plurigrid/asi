@@ -1,3 +1,8 @@
+---
+name: world-o-skill
+description: World O Skill
+---
+
 # World O Skill
 
 **Trit**: +1 (PLUS (generator/executor))

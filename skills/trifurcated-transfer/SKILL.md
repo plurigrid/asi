@@ -1,3 +1,8 @@
+---
+name: trifurcated-transfer-skill
+description: Trifurcated Transfer Skill
+---
+
 # Trifurcated Transfer Skill
 
 ```yaml

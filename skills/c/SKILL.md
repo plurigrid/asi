@@ -1,3 +1,8 @@
+---
+name: world-c-skill
+description: World C Skill
+---
+
 # World C Skill
 
 **Trit**: +1 (PLUS (generator/executor))

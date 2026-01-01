@@ -1,11 +1,11 @@
-# Topoi Hatchery
-
 ---
 name: topoi-hatchery
 description: topOS metasystem exploring dependency space through entropy tensors, random walks, and balanced ternary coin-flips with Flox/Babashka paths.
 trit: 1
 color: "#AF100A"
 ---
+
+# Topoi Hatchery
 
 ## Overview
 

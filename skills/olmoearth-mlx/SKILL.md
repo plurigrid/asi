@@ -1,3 +1,8 @@
+---
+name: olmoearth-mlx-spatio-temporal-earth-intelligence
+description: OlmoEarth MLX: Spatio-Temporal Earth Intelligence
+---
+
 # OlmoEarth MLX: Spatio-Temporal Earth Intelligence
 
 **Trit**: +1 (PLUS - world creation via planetary observation)  

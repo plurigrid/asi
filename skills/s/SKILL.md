@@ -1,3 +1,8 @@
+---
+name: world-s-skill
+description: World S Skill
+---
+
 # World S Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

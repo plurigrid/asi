@@ -1,10 +1,3 @@
-# Playwright-Unworld Skill: Deterministic Web Automation
-
-**Status**: 🚀 Production Ready
-**Trit**: +1 (PLUS - generative/automation)
-**Principle**: Browser state derived from seed chains, not external timing
-**Foundation**: Unworld derivation + Playwright API
-
 ---
 
 ## Overview
@@ -20,6 +13,13 @@ Genesis Seed → Browser Context Seed → Navigation → Selector Path → Scree
 No external clocks, no flaky waits, no race conditions. All derived deterministically.
 
 ---
+
+# Playwright-Unworld Skill: Deterministic Web Automation
+
+**Status**: 🚀 Production Ready
+**Trit**: +1 (PLUS - generative/automation)
+**Principle**: Browser state derived from seed chains, not external timing
+**Foundation**: Unworld derivation + Playwright API
 
 ## Core Architecture
 

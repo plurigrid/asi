@@ -1,3 +1,8 @@
+---
+name: kolmogorov-codex-quest
+description: Kolmogorov Codex Quest
+---
+
 # Kolmogorov Codex Quest
 
 **Type:** Quest / Puzzle  

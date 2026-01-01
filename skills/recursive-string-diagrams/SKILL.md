@@ -1,3 +1,8 @@
+---
+name: recursive-string-diagrams
+description: recursive-string-diagrams
+---
+
 # recursive-string-diagrams
 
 Recursive random string diagram generation with white trapezoid as the atomic skill primitive.

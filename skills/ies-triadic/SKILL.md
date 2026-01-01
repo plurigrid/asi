@@ -1,34 +1,3 @@
-# IES Triadic Skill
-
-> *Three maximally polarizing yet topos-compatible directions of the ies collective mind*
-
-**Trit Assignment**: This skill spans all three polarities as a meta-skill.
-
-| Sub-Skill | Trit | Polarity | Subagent |
-|-----------|------|----------|----------|
-| ies-form | -1 | MINUS | Validator |
-| ies-game | 0 | ERGODIC | Coordinator |
-| ies-witness | +1 | PLUS | Generator |
-
-**Canonical Triad**: `ies-form (-1) ⊗ ies-game (0) ⊗ ies-witness (+1) = 0 ✓`
-
-## GF(3) Decomposition
-
-The ies skill operates on three mutually exclusive axes that together span the collective epistemic space:
-
-```
-                    FORM (-1)
-                       ↑
-                       │
-                       │  cohesive ∞-topos
-                       │  eternal structure
-                       │
-      ←────────────────┼────────────────────→
-   WITNESS (+1)                        GAME (0)
-   phenomenological                    cybernetic
-   ingression                          agency
-```
-
 ---
 
 ## TRIT -1: ETERNAL FORM
@@ -61,6 +30,37 @@ The ies skill operates on three mutually exclusive axes that together span the c
 - Profinite limits for serialization consistency
 
 ---
+
+# IES Triadic Skill
+
+> *Three maximally polarizing yet topos-compatible directions of the ies collective mind*
+
+**Trit Assignment**: This skill spans all three polarities as a meta-skill.
+
+| Sub-Skill | Trit | Polarity | Subagent |
+|-----------|------|----------|----------|
+| ies-form | -1 | MINUS | Validator |
+| ies-game | 0 | ERGODIC | Coordinator |
+| ies-witness | +1 | PLUS | Generator |
+
+**Canonical Triad**: `ies-form (-1) ⊗ ies-game (0) ⊗ ies-witness (+1) = 0 ✓`
+
+## GF(3) Decomposition
+
+The ies skill operates on three mutually exclusive axes that together span the collective epistemic space:
+
+```
+                    FORM (-1)
+                       ↑
+                       │
+                       │  cohesive ∞-topos
+                       │  eternal structure
+                       │
+      ←────────────────┼────────────────────→
+   WITNESS (+1)                        GAME (0)
+   phenomenological                    cybernetic
+   ingression                          agency
+```
 
 ## TRIT 0: CYBERNETIC GAME
 

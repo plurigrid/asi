@@ -1,3 +1,8 @@
+---
+name: world-p-skill
+description: World P Skill
+---
+
 # World P Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

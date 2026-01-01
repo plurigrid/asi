@@ -1,3 +1,8 @@
+---
+name: osm-topology-skill
+description: OSM Topology Skill
+---
+
 # OSM Topology Skill
 
 OpenStreetMap graph analysis: road networks, routing, and topological structure with GF(3) coloring.

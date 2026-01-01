@@ -1,3 +1,8 @@
+---
+name: world-t-skill
+description: World T Skill
+---
+
 # World T Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

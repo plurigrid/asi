@@ -1,3 +1,8 @@
+---
+name: wev-verification-skill
+description: WEV Verification Skill
+---
+
 # WEV Verification Skill
 
 **Trit**: -1 (MINUS - Validator)

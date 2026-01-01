@@ -1,3 +1,8 @@
+---
+name: fnox-secrets-management-skill
+description: fnox Secrets Management Skill
+---
+
 # fnox Secrets Management Skill
 
 ```yaml

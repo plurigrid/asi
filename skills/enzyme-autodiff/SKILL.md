@@ -1,3 +1,8 @@
+---
+name: enzymejl-automatic-differentiation-skill
+description: Enzyme.jl Automatic Differentiation Skill
+---
+
 # Enzyme.jl Automatic Differentiation Skill
 
 Enzyme.jl provides LLVM-level automatic differentiation for Julia, enabling high-performance gradient computation for both CPU and GPU code.

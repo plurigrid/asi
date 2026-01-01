@@ -1,10 +1,3 @@
-# Voice Channel UWD Skill
-
-**Status**: ✅ Production Ready  
-**Trit**: 0 (ERGODIC - balanced flow between play/coplay)  
-**Principle**: Voice communication as undirected wiring diagram with GF(3) conservation  
-**Source**: plurigrid/VoiceChannelUWD.jl + UnwiringDiagrams.jl + Arena Protocol
-
 ---
 
 ## Overview
@@ -300,6 +293,13 @@ unwiring-arena (0) ⊗ voice-channel-uwd (0) ⊗ bisimulation-game (0) = 0 ✓
 - [WhiteHole Audio Driver](https://github.com/ExistentialAudio/WhiteHole)
 
 ---
+
+# Voice Channel UWD Skill
+
+**Status**: ✅ Production Ready  
+**Trit**: 0 (ERGODIC - balanced flow between play/coplay)  
+**Principle**: Voice communication as undirected wiring diagram with GF(3) conservation  
+**Source**: plurigrid/VoiceChannelUWD.jl + UnwiringDiagrams.jl + Arena Protocol
 
 **Skill Name**: voice-channel-uwd  
 **Type**: Real-time Communication / Compositional Audio  

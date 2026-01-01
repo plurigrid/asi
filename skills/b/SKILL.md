@@ -1,3 +1,8 @@
+---
+name: world-b-skill
+description: World B Skill
+---
+
 # World B Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

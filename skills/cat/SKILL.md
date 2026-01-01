@@ -1,9 +1,3 @@
-# cat Skill: Derivational Pipe Chaining
-
-**Trit**: 0 (ERGODIC - coordinator)
-**Color**: #26D826 (Green)
-**Principle**: Chain operations via derivational succession, not temporal
-
 ---
 
 ## Overview
@@ -78,6 +72,12 @@ temporal-coalgebra (-1) ⊗ cat (0) ⊗ synthetic-adjunctions (+1) = 0 ✓
 ```
 
 ---
+
+# cat Skill: Derivational Pipe Chaining
+
+**Trit**: 0 (ERGODIC - coordinator)
+**Color**: #26D826 (Green)
+**Principle**: Chain operations via derivational succession, not temporal
 
 **Skill Name**: cat
 **Type**: Pipe Coordinator  

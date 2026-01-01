@@ -1,3 +1,8 @@
+---
+name: frustration-eradication-skill
+description: Frustration Eradication Skill
+---
+
 # Frustration Eradication Skill
 
 > Layer 0: Pre-Response Validation for Persistent User Preferences

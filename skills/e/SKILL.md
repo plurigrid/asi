@@ -1,3 +1,8 @@
+---
+name: world-e-skill
+description: World E Skill
+---
+
 # World E Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

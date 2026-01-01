@@ -1,3 +1,8 @@
+---
+name: derangement-crdt-skill
+description: Derangement-CRDT Skill
+---
+
 # Derangement-CRDT Skill
 
 **Status**: ✅ Production Ready

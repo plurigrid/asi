@@ -1,3 +1,8 @@
+---
+name: bluesky-jetstream-firehose-skill
+description: Bluesky Jetstream Firehose Skill
+---
+
 # Bluesky Jetstream Firehose Skill
 
 **GF(3) Trit**: -1 (MINUS - validator/filter on incoming data stream)

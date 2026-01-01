@@ -1,3 +1,8 @@
+---
+name: planar-isotopy-screen-mapping
+description: Planar Isotopy Screen Mapping
+---
+
 # Planar Isotopy Screen Mapping
 
 Maps thread states and observations to screen positions using planar isotopy principles.

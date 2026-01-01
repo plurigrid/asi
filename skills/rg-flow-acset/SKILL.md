@@ -1,3 +1,8 @@
+---
+name: rg-flow-acset-skill
+description: RG Flow ACSet Skill
+---
+
 # RG Flow ACSet Skill
 
 Renormalization Group flow with ACSet categorical semantics, XY model topological defects, and Powers PCT hierarchical control.

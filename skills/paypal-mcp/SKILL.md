@@ -1,3 +1,8 @@
+---
+name: paypal-mcp-skill
+description: paypal-mcp Skill
+---
+
 # paypal-mcp Skill
 
 PayPal MCP server integration for invoices, payments, subscriptions, disputes, and transaction reporting via @paypal/mcp.

@@ -1,3 +1,8 @@
+---
+name: world-r-skill
+description: World R Skill
+---
+
 # World R Skill
 
 **Trit**: +1 (PLUS (generator/executor))

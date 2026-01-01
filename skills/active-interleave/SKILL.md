@@ -1,3 +1,8 @@
+---
+name: active-interleave-skill
+description: Active Interleave Skill
+---
+
 # Active Interleave Skill
 
 Interleaves context from recently active Claude/Amp threads into current activity via random walk.

@@ -1,3 +1,8 @@
+---
+name: topos-unified-skill
+description: Topos Unified Skill
+---
+
 # Topos Unified Skill
 
 **Trit**: +1 (PLUS/Generator) | **Color**: #D82626 | **Subagent**: Generator

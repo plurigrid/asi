@@ -1,10 +1,3 @@
-# Behaviour Surprisal Analysis
-
-**Status**: Production Ready (v3.0 - Cat# Integration)
-**Trit**: 0 (ERGODIC - measurement/observation)
-**Principle**: S(x) = -log₂(P(x|attention_mode))
-**Frame**: Tri-channel prediction evaluation with AGM belief revision + Cat# bicomodule structure
-
 ---
 
 ## Overview
@@ -262,6 +255,13 @@ For a triad (s₋₁, s₀, s₊₁):
 ```
 
 ---
+
+# Behaviour Surprisal Analysis
+
+**Status**: Production Ready (v3.0 - Cat# Integration)
+**Trit**: 0 (ERGODIC - measurement/observation)
+**Principle**: S(x) = -log₂(P(x|attention_mode))
+**Frame**: Tri-channel prediction evaluation with AGM belief revision + Cat# bicomodule structure
 
 **Skill Name**: behaviour-surprisal-analysis
 **Version**: 3.0.0 (Cat# Integration)

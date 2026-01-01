@@ -1,3 +1,8 @@
+---
+name: duckdb-spatial-skill
+description: DuckDB Spatial Skill
+---
+
 # DuckDB Spatial Skill
 
 H3 hexagonal indexing, PostGIS-compatible spatial queries, and geographic analysis with GF(3) coloring.

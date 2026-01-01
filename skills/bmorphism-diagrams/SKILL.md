@@ -1,3 +1,8 @@
+---
+name: bmorphism-diagrams
+description: bmorphism Diagrams
+---
+
 # bmorphism Diagrams
 
 Interleave bmorphism's mermaid diagrams into interactions using GF(3) triadic selection.

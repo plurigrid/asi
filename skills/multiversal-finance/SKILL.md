@@ -1,9 +1,3 @@
-# Multiversal Finance: Prediction Markets for Interesting Observations
-
-**Trit**: +1 (PLUS - generative, creates value from attention)
-**Color**: #E7B367 (Agent-O-Rama stream, seed 1069)
-**Source**: color_at determinism + Schmidhuber compression progress
-
 ---
 
 ## Core Principle
@@ -14,6 +8,12 @@ Predictions are bets on which `(seed, index)` paths yield "interesting" observat
 Rewards flow to observers who correctly predict or discover surprising patterns.
 
 ---
+
+# Multiversal Finance: Prediction Markets for Interesting Observations
+
+**Trit**: +1 (PLUS - generative, creates value from attention)
+**Color**: #E7B367 (Agent-O-Rama stream, seed 1069)
+**Source**: color_at determinism + Schmidhuber compression progress
 
 ## Interestingness Metric (Compression Progress)
 

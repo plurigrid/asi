@@ -1,10 +1,3 @@
-# Finder Color Walk Skill
-
-**Status**: ✅ Production Ready  
-**Trit**: 0 (ERGODIC - coordination)  
-**Principle**: Random walk over files → deterministic Finder colors  
-**Integration**: Gay.jl colors → macOS Finder labels
-
 ---
 
 ## Overview
@@ -304,6 +297,13 @@ GF(3) Sum: 0 ≡ 0 (mod 3) ✓ Conserved
 ```
 
 ---
+
+# Finder Color Walk Skill
+
+**Status**: ✅ Production Ready  
+**Trit**: 0 (ERGODIC - coordination)  
+**Principle**: Random walk over files → deterministic Finder colors  
+**Integration**: Gay.jl colors → macOS Finder labels
 
 **Skill Name**: finder-color-walk  
 **Type**: File System / Visual Organization  

@@ -1,8 +1,3 @@
-# Cheapskate Skill
-
-**Trit**: -1 (MINUS - validator/constrainer)
-**Purpose**: Minimize Amp thread costs through token efficiency
-
 ---
 
 ## Core Principles
@@ -32,6 +27,11 @@
 - **Avoid re-reading**: Cache file contents mentally
 
 ---
+
+# Cheapskate Skill
+
+**Trit**: -1 (MINUS - validator/constrainer)
+**Purpose**: Minimize Amp thread costs through token efficiency
 
 ## Anti-Patterns (Token Wasters)
 

@@ -1,3 +1,8 @@
+---
+name: world-i-skill
+description: World I Skill
+---
+
 # World I Skill
 
 **Trit**: +1 (PLUS (generator/executor))

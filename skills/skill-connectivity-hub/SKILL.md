@@ -1,3 +1,8 @@
+---
+name: skill-connectivity-hub
+description: Skill Connectivity Hub
+---
+
 # Skill Connectivity Hub
 
 **Trit**: 0 (ERGODIC - coordinator)  

@@ -1,3 +1,8 @@
+---
+name: world-g-skill
+description: World G Skill
+---
+
 # World G Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

@@ -1,3 +1,8 @@
+---
+name: catsfor-categories-for-ai
+description: cats.for" (Categories for AI)
+---
+
 # cats.for" (Categories for AI)
 
 > "Category theory is compositionality made formal"

@@ -1,3 +1,8 @@
+---
+name: nerv-rapid-localsend-test-with-voice
+description: NERV - Rapid LocalSend Test with Voice
+---
+
 # NERV - Rapid LocalSend Test with Voice
 
 Rapid peer discovery and LocalSend connectivity testing with Italian voice announcements.

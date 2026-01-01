@@ -1,3 +1,8 @@
+---
+name: world-z-skill
+description: World Z Skill
+---
+
 # World Z Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

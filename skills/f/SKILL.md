@@ -1,3 +1,8 @@
+---
+name: world-f-skill
+description: World F Skill
+---
+
 # World F Skill
 
 **Trit**: +1 (PLUS (generator/executor))

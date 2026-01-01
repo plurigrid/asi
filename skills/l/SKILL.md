@@ -1,3 +1,8 @@
+---
+name: world-l-skill
+description: World L Skill
+---
+
 # World L Skill
 
 **Trit**: +1 (PLUS (generator/executor))

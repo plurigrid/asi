@@ -1,3 +1,8 @@
+---
+name: world-u-skill
+description: World U Skill
+---
+
 # World U Skill
 
 **Trit**: +1 (PLUS (generator/executor))

@@ -1,9 +1,3 @@
-# CapTP: Capability Transfer Protocol
-
-**Trit**: 0 (ERGODIC - transports capabilities without amplification)
-**Color**: #46F27F (Coordinator stream)
-**Source**: Spritely Goblins (codeberg.org/spritely/goblins)
-
 ---
 
 ## Overview
@@ -13,6 +7,12 @@ CapTP (Capability Transfer Protocol) enables distributed object programming with
 **Core principle**: Capabilities are unforgeable references. You can only invoke what you've been given.
 
 ---
+
+# CapTP: Capability Transfer Protocol
+
+**Trit**: 0 (ERGODIC - transports capabilities without amplification)
+**Color**: #46F27F (Coordinator stream)
+**Source**: Spritely Goblins (codeberg.org/spritely/goblins)
 
 ## Key Concepts
 

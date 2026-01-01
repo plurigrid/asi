@@ -1,11 +1,11 @@
-# Radare2 Hatchery
-
 ---
 name: radare2-hatchery
 description: MCP server for radare2 binary analysis integration with AI assistants. Decompilation, disassembly, and reverse engineering via MCP protocol.
 trit: -1
 color: "#D6DB4C"
 ---
+
+# Radare2 Hatchery
 
 ## Overview
 

@@ -1,3 +1,8 @@
+---
+name: world-alice-skill
+description: World ALICE Skill
+---
+
 # World ALICE Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

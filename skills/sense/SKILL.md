@@ -1,3 +1,66 @@
+---
+
+## Tsao Visual Hierarchy Integration
+
+Sense is maximally informed by **Doris Tsao's visual neuroscience**. See [DORIS_TSAO_VISUAL_NEUROSCIENCE_BRIDGE.md](file:///Users/bob/ies/music-topos/DORIS_TSAO_VISUAL_NEUROSCIENCE_BRIDGE.md).
+
+### Tsao Hierarchy → Sense Components
+
+| Tsao Level | Visual Region | Sense Component | Function |
+|------------|---------------|-----------------|----------|
+| **Level 0** | V1 simple cells | Subtitle Parser (-1) | Edge detection, timestamp boundaries |
+| **Level 1** | V2/V4 complex | Diagram Extractor (0) | Feature integration, OCR |
+| **Level 2** | IT face patches | Skill Mapper (+1) | Pattern recognition, skill assignment |
+| **Level 3** | Prefrontal | GF(3) Balancer | Behavioral goal, conservation |
+
+### Self-Avoiding Walks via Self-Coloring
+
+From chromatic-walk insight: SAWs don't intersect **by definition**, but in an effective topos we verify through **self-coloring**:
+
+```python
+def saw_verified_by_self_coloring(walk: list) -> bool:
+    """
+    In effective topos, self-intersection is decidable.
+    
+    The reafference equation:
+      Generate(seed, i) = Observe(seed, i) ⟺ self ≡ self
+    
+    If walk revisits (seed, index), it generates the SAME color
+    at two walk positions — contradiction detected.
+    """
+    colors = [Gay.color_at(step.seed, step.index) for step in walk]
+    return len(colors) == len(set(colors))  # No repeated colors ⟺ SAW
+```
+
+### Connection to Frontier Lab Circuits
+
+Sense extraction parallels mechanistic interpretability:
+
+| Sense | Circuits Research | Tsao |
+|-------|-------------------|------|
+| Subtitle segments | Attention heads | V1 edges |
+| Diagram features | Activation patterns | V2 shapes |
+| Skill mapping | Circuit identification | IT patches |
+| GF(3) balance | Superposition control | Prefrontal |
+
+See: [FRONTIER_LAB_CIRCUITS_INTERACTOME.md](file:///Users/bob/ies/music-topos/FRONTIER_LAB_CIRCUITS_INTERACTOME.md)
+
+### Chang-Tsao 50D Face Space → Skill Space
+
+```
+Face Space (Tsao):
+  25 shape axes + 25 appearance axes = 50D
+  Each neuron encodes ONE axis
+  Population decodes via linear combination
+
+Skill Space (Sense):
+  N skills with trit assignments (-1, 0, +1)
+  Each slide maps to skill subset
+  GF(3) conservation ensures balance
+```
+
+---
+
 # sense - Diagrammatic Video Extraction with Subtitle Alignment
 
 > **Trit**: 0 (ERGODIC - Coordinator)
@@ -493,69 +556,6 @@ persistent-homology (-1) ⊗ sense (0) ⊗ topos-generate (+1) = 0 ✓  [Topolog
 - `parallel-fanout` - Triadic parallel dispatch
 - `duckdb-temporal-versioning` - Time-travel queries
 - Cat# treatment examples: `complete_catsharp_index.py`, `complete_bumpus_index.py`
-
----
-
-## Tsao Visual Hierarchy Integration
-
-Sense is maximally informed by **Doris Tsao's visual neuroscience**. See [DORIS_TSAO_VISUAL_NEUROSCIENCE_BRIDGE.md](file:///Users/bob/ies/music-topos/DORIS_TSAO_VISUAL_NEUROSCIENCE_BRIDGE.md).
-
-### Tsao Hierarchy → Sense Components
-
-| Tsao Level | Visual Region | Sense Component | Function |
-|------------|---------------|-----------------|----------|
-| **Level 0** | V1 simple cells | Subtitle Parser (-1) | Edge detection, timestamp boundaries |
-| **Level 1** | V2/V4 complex | Diagram Extractor (0) | Feature integration, OCR |
-| **Level 2** | IT face patches | Skill Mapper (+1) | Pattern recognition, skill assignment |
-| **Level 3** | Prefrontal | GF(3) Balancer | Behavioral goal, conservation |
-
-### Self-Avoiding Walks via Self-Coloring
-
-From chromatic-walk insight: SAWs don't intersect **by definition**, but in an effective topos we verify through **self-coloring**:
-
-```python
-def saw_verified_by_self_coloring(walk: list) -> bool:
-    """
-    In effective topos, self-intersection is decidable.
-    
-    The reafference equation:
-      Generate(seed, i) = Observe(seed, i) ⟺ self ≡ self
-    
-    If walk revisits (seed, index), it generates the SAME color
-    at two walk positions — contradiction detected.
-    """
-    colors = [Gay.color_at(step.seed, step.index) for step in walk]
-    return len(colors) == len(set(colors))  # No repeated colors ⟺ SAW
-```
-
-### Connection to Frontier Lab Circuits
-
-Sense extraction parallels mechanistic interpretability:
-
-| Sense | Circuits Research | Tsao |
-|-------|-------------------|------|
-| Subtitle segments | Attention heads | V1 edges |
-| Diagram features | Activation patterns | V2 shapes |
-| Skill mapping | Circuit identification | IT patches |
-| GF(3) balance | Superposition control | Prefrontal |
-
-See: [FRONTIER_LAB_CIRCUITS_INTERACTOME.md](file:///Users/bob/ies/music-topos/FRONTIER_LAB_CIRCUITS_INTERACTOME.md)
-
-### Chang-Tsao 50D Face Space → Skill Space
-
-```
-Face Space (Tsao):
-  25 shape axes + 25 appearance axes = 50D
-  Each neuron encodes ONE axis
-  Population decodes via linear combination
-
-Skill Space (Sense):
-  N skills with trit assignments (-1, 0, +1)
-  Each slide maps to skill subset
-  GF(3) conservation ensures balance
-```
-
----
 
 ## Phenomenal Topology
 

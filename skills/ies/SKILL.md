@@ -1,16 +1,3 @@
-# ies
-
-> FloxHub `bmorphism/ies` - Clojure/Julia/Python/multimedia environment with Gay.jl coloring, Flox composition, and DuckDB social analysis.
-
-**Trit Assignment**: 0 (ERGODIC) - Coordinator role for environment orchestration.
-
-**Canonical Triads**:
-```
-polyglot-spi (-1) ⊗ ies (0) ⊗ gay-mcp (+1) = 0 ✓  [Environment]
-three-match (-1) ⊗ ies (0) ⊗ pulse-mcp-stream (+1) = 0 ✓  [Social Analysis]
-influence-propagation (-1) ⊗ ies (0) ⊗ agent-o-rama (+1) = 0 ✓  [Cognitive Surrogate]
-```
-
 ---
 
 ## Quick Start
@@ -29,6 +16,19 @@ echo $GAY_PORT      # 42069
 ```
 
 ---
+
+# ies
+
+> FloxHub `bmorphism/ies` - Clojure/Julia/Python/multimedia environment with Gay.jl coloring, Flox composition, and DuckDB social analysis.
+
+**Trit Assignment**: 0 (ERGODIC) - Coordinator role for environment orchestration.
+
+**Canonical Triads**:
+```
+polyglot-spi (-1) ⊗ ies (0) ⊗ gay-mcp (+1) = 0 ✓  [Environment]
+three-match (-1) ⊗ ies (0) ⊗ pulse-mcp-stream (+1) = 0 ✓  [Social Analysis]
+influence-propagation (-1) ⊗ ies (0) ⊗ agent-o-rama (+1) = 0 ✓  [Cognitive Surrogate]
+```
 
 ## Installed Packages (10)
 

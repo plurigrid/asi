@@ -1,11 +1,11 @@
-# Gay Monte Carlo Measurements
-
 ---
 name: gay-monte-carlo
 description: Monte Carlo uncertainty propagation with Gay.jl deterministic coloring and Enzyme.jl autodiff for gamut-aware probability distributions.
 trit: 1
 color: "#77DEB1"
 ---
+
+# Gay Monte Carlo Measurements
 
 ## Overview
 

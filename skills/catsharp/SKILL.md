@@ -1,3 +1,8 @@
+---
+name: cat-skill-ergodic-0
+description: Cat# Skill (ERGODIC 0)
+---
+
 # Cat# Skill (ERGODIC 0)
 
 > "All Concepts are Cat#" — Spivak (ACT 2023)

@@ -1,3 +1,8 @@
+---
+name: asi-agent-o-rama-skill
+description: ASI Agent-O-Rama Skill
+---
+
 # ASI Agent-O-Rama Skill
 
 **Status**: ✅ Production Ready

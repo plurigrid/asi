@@ -1,3 +1,8 @@
+---
+name: tidar-thread-probe-skill
+description: TIDAR Thread Probe Skill
+---
+
 # TIDAR Thread Probe Skill
 
 Tree-structured Iterative Decomposition And Recombination for cross-system thread pattern discovery across AMP, Claude, Codex, and Warp.

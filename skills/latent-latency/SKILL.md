@@ -1,9 +1,3 @@
-# Latent-Latency Skill
-
-**Trit**: 0 (ERGODIC - mediates space ↔ time)  
-**Bundle**: core  
-**Status**: ✅ New
-
 ---
 
 ## The Fundamental Duality
@@ -289,6 +283,12 @@ spi-parallel-verify (-1) ⊗ latent-latency (0) ⊗ gay-mcp (+1) = 0 ✓
 - `mcp-tripartite` - Energy-latency tradeoffs
 
 ---
+
+# Latent-Latency Skill
+
+**Trit**: 0 (ERGODIC - mediates space ↔ time)  
+**Bundle**: core  
+**Status**: ✅ New
 
 **Skill Name**: latent-latency  
 **Type**: Theoretical Bridge  

@@ -1,8 +1,3 @@
-# Triangle Metrics Skill
-
-**Trit**: 0 (ERGODIC - synthesizer/coordinator)
-**Purpose**: Unify all triangle inequality skills into a coherent metric space
-
 ---
 
 ## Cross-Referenced Skills
@@ -17,6 +12,11 @@
 | **open-games** | Play/coplay equilibrium | `equilibrium ⟺ d(a,c) ≤ d(a,b) + d(b,c)` |
 
 ---
+
+# Triangle Metrics Skill
+
+**Trit**: 0 (ERGODIC - synthesizer/coordinator)
+**Purpose**: Unify all triangle inequality skills into a coherent metric space
 
 ## Unified Interface
 

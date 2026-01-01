@@ -1,3 +1,8 @@
+---
+name: ctp-yoneda-skill
+description: CTP-Yoneda Skill
+---
+
 # CTP-Yoneda Skill
 
 > *"The Yoneda lemma is arguably the most important result in category theory."*

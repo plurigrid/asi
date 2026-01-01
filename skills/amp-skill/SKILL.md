@@ -1,3 +1,8 @@
+---
+name: amp-skill-interruption-pattern-detection-and-retrieval
+description: Amp-Skill: Interruption Pattern Detection and Retrieval
+---
+
 # Amp-Skill: Interruption Pattern Detection and Retrieval
 
 **GF(3) Trit**: 0 (ERGODIC - coordination layer)

@@ -1,9 +1,3 @@
-# L-Space Skill: The Library of All Libraries
-
-**Status**: ✅ Production Ready  
-**Trit**: 0 (ERGODIC - the Library itself is the coordinator)  
-**Color**: #8B4513 (Leather brown - the color of infinite shelves)
-
 ---
 
 ## What This Skill Actually Does
@@ -30,6 +24,12 @@ python causality_graph.py file.py --lang python
 In sufficiently large libraries, information becomes autonomous.
 
 ---
+
+# L-Space Skill: The Library of All Libraries
+
+**Status**: ✅ Production Ready  
+**Trit**: 0 (ERGODIC - the Library itself is the coordinator)  
+**Color**: #8B4513 (Leather brown - the color of infinite shelves)
 
 ## Triadic Balance (2024-12-24 Review)
 

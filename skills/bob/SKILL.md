@@ -1,3 +1,8 @@
+---
+name: world-bob-skill
+description: World BOB Skill
+---
+
 # World BOB Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

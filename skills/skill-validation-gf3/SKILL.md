@@ -1,3 +1,8 @@
+---
+name: skill-validation-gf3-slave-1
+description: Skill Validation GF(3) - SLAVE (-1)
+---
+
 # Skill Validation GF(3) - SLAVE (-1)
 
 > *"The validator constrains and verifies."*

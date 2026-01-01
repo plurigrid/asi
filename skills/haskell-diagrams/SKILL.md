@@ -1,3 +1,8 @@
+---
+name: haskell-diagrams-declarative-vector-graphics-with-diagrams-dsl
+description: haskell-diagrams - Declarative Vector Graphics with Diagrams DSL
+---
+
 # haskell-diagrams - Declarative Vector Graphics with Diagrams DSL
 
 ## Overview

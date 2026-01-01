@@ -1,3 +1,8 @@
+---
+name: world-j-skill
+description: World J Skill
+---
+
 # World J Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

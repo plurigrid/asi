@@ -1,3 +1,8 @@
+---
+name: buberian-relations-skill
+description: Buberian Relations Skill
+---
+
 # Buberian Relations Skill
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+name: gworkspace-mcp-google-workspace-mcp-integration-with-temporal-co
+description: gworkspace-mcp - Google Workspace MCP Integration with Temporal Consistency
+---
+
 # gworkspace-mcp - Google Workspace MCP Integration with Temporal Consistency
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+name: discopy-operads-skill
+description: DiscoPy Operads Skill
+---
+
 # DiscoPy Operads Skill
 
 > **Repo Color:** `#64e3ec` | **Seed:** `0x128b6ef4564e3a00` | **Index:** 224/1055

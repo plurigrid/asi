@@ -1,3 +1,8 @@
+---
+name: srfi-skill
+description: SRFI Skill
+---
+
 # SRFI Skill
 
 > *"SRFIs extend the Scheme programming language. You can help."*

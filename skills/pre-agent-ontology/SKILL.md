@@ -1,15 +1,3 @@
-# Pre-Agent Ontology Skill
-
-**Trit**: 0 (ERGODIC - coordinates the ontology)
-
-Foundational 5-layer ontology for agent-o-rama. Agents are not primitives—they emerge from derivations, stalks, and sections when gluing succeeds.
-
-## Related Skills
-- **unworld**: Derivational succession (Layer 1)
-- **sheaf-cohomology**: Gluing verification (Layer 2)
-- **bisimulation-game**: Observational equivalence (Layer 2)
-- **acsets**: Categorical database structure (Layer 2)
-
 ---
 
 ## 5-Layer Hierarchy
@@ -80,6 +68,18 @@ Verification: 2(-1) + 3(0) + 2(+1) = 0 ✓
 **Key**: `Agent = Observation(Bundle(Stalk₋₁, Stalk₀, Stalk₊₁))`
 
 ---
+
+# Pre-Agent Ontology Skill
+
+**Trit**: 0 (ERGODIC - coordinates the ontology)
+
+Foundational 5-layer ontology for agent-o-rama. Agents are not primitives—they emerge from derivations, stalks, and sections when gluing succeeds.
+
+## Related Skills
+- **unworld**: Derivational succession (Layer 1)
+- **sheaf-cohomology**: Gluing verification (Layer 2)
+- **bisimulation-game**: Observational equivalence (Layer 2)
+- **acsets**: Categorical database structure (Layer 2)
 
 ## 5 Stability Invariants
 

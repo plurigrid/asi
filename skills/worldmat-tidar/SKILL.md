@@ -1,3 +1,8 @@
+---
+name: worldmat-tidar
+description: worldmat-tidar
+---
+
 # worldmat-tidar
 
 > World Matrices via TiDAR Executions: 3×3×3 Parallel Triadic Computation

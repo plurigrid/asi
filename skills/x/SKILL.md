@@ -1,3 +1,8 @@
+---
+name: world-x-skill
+description: World X Skill
+---
+
 # World X Skill
 
 **Trit**: +1 (PLUS (generator/executor))

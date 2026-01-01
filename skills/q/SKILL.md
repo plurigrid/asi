@@ -1,3 +1,8 @@
+---
+name: world-q-skill
+description: World Q Skill
+---
+
 # World Q Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

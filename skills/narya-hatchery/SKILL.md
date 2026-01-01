@@ -1,11 +1,11 @@
-# Narya Hatchery
-
 ---
 name: narya-hatchery
 description: Higher-dimensional type theory proof assistant with observational Id/Bridge types, parametricity, and ProofGeneral integration.
 trit: 0
 color: "#3A71C0"
 ---
+
+# Narya Hatchery
 
 ## Overview
 

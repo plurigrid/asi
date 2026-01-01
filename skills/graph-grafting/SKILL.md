@@ -1,3 +1,8 @@
+---
+name: graph-grafting-skill
+description: Graph Grafting Skill
+---
+
 # Graph Grafting Skill
 
 **Trit**: 0 (ERGODIC - Coordinator)

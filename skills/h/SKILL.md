@@ -1,3 +1,8 @@
+---
+name: world-h-skill
+description: World H Skill
+---
+
 # World H Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

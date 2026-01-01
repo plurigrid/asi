@@ -1,3 +1,8 @@
+---
+name: naturality-factor-skill
+description: Naturality Factor Skill
+---
+
 # Naturality Factor Skill
 
 > *"The naturality condition ensures transformations commute with structure."*

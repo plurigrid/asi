@@ -1,11 +1,3 @@
-# Ruler Maximal Skill
-
-**Ensures all skills are used maximally at all times via GF(3)-balanced auto-loading.**
-
-**Trit**: 0 (ERGODIC - Coordinator)
-**Color**: #25B025 (Green)
-**Role**: Meta-orchestrator for maximum skill utilization
-
 ---
 
 ## Core Principle
@@ -17,6 +9,14 @@ Every interaction MUST:
 4. Announce via `say` narration
 
 ---
+
+# Ruler Maximal Skill
+
+**Ensures all skills are used maximally at all times via GF(3)-balanced auto-loading.**
+
+**Trit**: 0 (ERGODIC - Coordinator)
+**Color**: #25B025 (Green)
+**Role**: Meta-orchestrator for maximum skill utilization
 
 ## Skill Loading Protocol
 

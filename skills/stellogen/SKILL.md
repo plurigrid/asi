@@ -1,9 +1,3 @@
-# Stellogen Skill
-
-**Trit**: 0 (ERGODIC - logic-agnostic mediation)  
-**Source**: [engboris/stellogen](https://github.com/engboris/stellogen) + [bmorphism/stellogen](https://github.com/bmorphism/stellogen)  
-**License**: MIT
-
 ---
 
 ## Overview
@@ -241,6 +235,12 @@ proofgeneral-narya (-1) ⊗ stellogen (0) ⊗ discopy (+1) = 0 ✓
 - `proofgeneral-narya` - Proof assistant integration
 
 ---
+
+# Stellogen Skill
+
+**Trit**: 0 (ERGODIC - logic-agnostic mediation)  
+**Source**: [engboris/stellogen](https://github.com/engboris/stellogen) + [bmorphism/stellogen](https://github.com/bmorphism/stellogen)  
+**License**: MIT
 
 **Skill Name**: stellogen  
 **Type**: Logic-Agnostic Programming / Interaction Nets  

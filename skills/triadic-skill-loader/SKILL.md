@@ -1,3 +1,8 @@
+---
+name: triadic-skill-loader
+description: Triadic Skill Loader
+---
+
 # Triadic Skill Loader
 
 > **Trit**: 0 (ERGODIC) - Coordinates balanced skill loading

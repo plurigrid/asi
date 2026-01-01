@@ -1,3 +1,8 @@
+---
+name: amp-team-usage
+description: Amp Team Usage
+---
+
 # Amp Team Usage
 
 Check concurrent users and team members on an Amp account.

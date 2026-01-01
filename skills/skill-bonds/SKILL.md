@@ -1,3 +1,8 @@
+---
+name: skill-bonds-registry
+description: Skill Bonds Registry
+---
+
 # Skill Bonds Registry
 
 > Discovered via 3× triadic random walk across **467 skills**
