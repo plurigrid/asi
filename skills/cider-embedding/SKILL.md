@@ -1,6 +1,7 @@
 ---
 name: cider-embedding
 description: Semantic embeddings for Clojure code navigation via CIDER
+version: 1.0.0
 metadata:
   trit: 0
 ---

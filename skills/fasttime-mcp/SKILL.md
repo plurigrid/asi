@@ -1,6 +1,7 @@
 ---
 name: fasttime-mcp
 description: Maximum velocity MCP execution via geodesic untangling. Maoist self-criticism for why slowtime was ever necessary. Topological cybernetic feedback for ongoing tour discovery.
+version: 1.0.0
 ---
 
 # Fasttime MCP

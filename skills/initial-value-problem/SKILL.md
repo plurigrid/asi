@@ -1,6 +1,7 @@
 ---
 name: initial-value-problem
 description: Existence and uniqueness of solutions to ODEs with initial conditions
+version: 1.0.0
 trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"

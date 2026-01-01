@@ -1,6 +1,7 @@
 ---
 name: tasks-acset
 description: Google Tasks management via TasksACSet. Transforms task operations into GF(3)-typed Interactions, routes to triadic queues, detects saturation for task-zero-as-condensed-state.
+version: 1.0.0
 ---
 
 # Tasks ACSet Skill

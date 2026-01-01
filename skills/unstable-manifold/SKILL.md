@@ -1,6 +1,7 @@
 ---
 name: unstable-manifold
 description: Manifold of points diverging from equilibrium
+version: 1.0.0
 trit: 1
 geodesic: true
 moebius: "μ(n) ≠ 0"

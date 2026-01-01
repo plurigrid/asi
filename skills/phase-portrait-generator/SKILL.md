@@ -1,6 +1,7 @@
 ---
 name: phase-portrait-generator
 description: Generate phase portraits for 2D dynamical systems. Use when visualizing vector fields, nullclines, and trajectories.
+version: 1.0.0
 metadata:
   trit: 1
   created_with: amp

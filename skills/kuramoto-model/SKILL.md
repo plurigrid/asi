@@ -1,6 +1,7 @@
 ---
 name: kuramoto-model
 description: Coupled oscillators with sinusoidal coupling
+version: 1.0.0
 trit: 1
 geodesic: true
 moebius: "μ(n) ≠ 0"

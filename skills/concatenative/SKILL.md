@@ -1,6 +1,7 @@
 ---
 name: concatenative
 description: "Forth/Factor/Joy: stack-based concatenative programming where composition replaces application."
+version: 1.0.0
 trit: -1
 bundle: strange-loops
 ---

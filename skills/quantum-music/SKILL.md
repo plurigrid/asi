@@ -1,6 +1,7 @@
 ---
 name: quantum-music
 description: "Quantum computer music composition and performance using quantum circuits, ZX-calculus notation, and quantum instruments"
+version: 1.0.0
 trit: 0
 geodesic: true
 moebius: "μ(n) ≠ 0"

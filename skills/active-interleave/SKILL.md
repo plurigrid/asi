@@ -1,6 +1,7 @@
 ---
 name: active-interleave
 description: Interleaves context from recently active Claude/Amp threads into current activity via random walk.
+version: 1.0.0
 metadata:
   trit: 0
 ---

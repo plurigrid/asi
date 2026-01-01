@@ -1,6 +1,7 @@
 ---
 name: unwiring-arena
 description: "Play/Coplay arena theory for autopoietic closure with GF(3) conservation"
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 0

@@ -1,6 +1,7 @@
 ---
 name: defillama-api
 description: DefiLlama API integration for DeFi analytics - TVL, prices, yields, volumes, fees, bridges, and DAT data. Use for blockchain/DeFi research, protocol analysis, and market data queries.
+version: 1.0.0
 trit: -1
 color: "#4A90D9"
 ---

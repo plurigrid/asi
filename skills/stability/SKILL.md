@@ -1,6 +1,7 @@
 ---
 name: stability
 description: Qualitative behavior of solutions near equilibria
+version: 1.0.0
 trit: 1
 geodesic: true
 moebius: "μ(n) ≠ 0"

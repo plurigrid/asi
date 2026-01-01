@@ -2,6 +2,7 @@
 name: skill-embedding-vss
 description: P-adic ultrametric skill embeddings with MLX Snowflake Arctic, DuckDB
   VSS, and full SPI tracing
+version: 1.0.0
 license: MIT
 metadata:
   trit: 0

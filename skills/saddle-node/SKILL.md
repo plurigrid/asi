@@ -1,6 +1,7 @@
 ---
 name: saddle-node
 description: Bifurcation creating/destroying equilibrium pair
+version: 1.0.0
 trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"

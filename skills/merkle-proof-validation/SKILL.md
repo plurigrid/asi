@@ -1,6 +1,7 @@
 ---
 name: merkle-proof-validation
 description: Merkle Proof Validation Skill
+version: 1.0.0
 trit: 0
 color: "#26D826"
 catsharp:

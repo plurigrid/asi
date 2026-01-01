@@ -1,6 +1,7 @@
 ---
 name: sicmutils
 description: SICMUtils/Emmy - Clojure library for symbolic mathematics, automatic differentiation, and classical mechanics. Bridges SICM concepts to executable computation via SRFI-compatible abstractions.
+version: 1.0.0
 ---
 
 # SICMUtils (Emmy)

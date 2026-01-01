@@ -1,6 +1,7 @@
 ---
 name: tmp-filesystem-watcher
 description: 'Real-time filesystem watcher for /tmp using Babashka fs.
+version: 1.0.0
 
   Monitors file creation, modification, and deletion events.
 

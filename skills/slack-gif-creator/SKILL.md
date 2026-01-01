@@ -4,6 +4,7 @@ description: Toolkit for creating animated GIFs optimized for Slack, with valida
   for size constraints and composable animation primitives. This skill applies when
   users request animated GIFs or emoji animations for Slack from descriptions like
   "make me a GIF for Slack of X doing Y".
+version: 1.0.0
 license: Complete terms in LICENSE.txt
 metadata:
   trit: 0

@@ -1,6 +1,7 @@
 ---
 name: mathpix-ocr
 description: Mathpix OCR for LaTeX extraction with balanced ternary checkpoints
+version: 1.0.0
 metadata:
   trit: 0
 ---

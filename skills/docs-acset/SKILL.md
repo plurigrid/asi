@@ -1,6 +1,7 @@
 ---
 name: docs-acset
 description: Google Docs/Sheets management via ACSet condensation. Transforms documents into GF(3)-typed Interactions, tracks comments/cells, detects saturation when all comments resolved. Use for document workflows, spreadsheet automation, or applying ANIMA principles to Workspace documents.
+version: 1.0.0
 ---
 
 # Docs ACSet Skill

@@ -1,6 +1,7 @@
 ---
 name: duck-time-travel
 description: "DuckDB time-travel queries for temporal versioning and causality tracking"
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 0

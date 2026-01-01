@@ -2,6 +2,7 @@
 name: bisimulation-game
 description: Bisimulation game for resilient skill dispersal across AI agents with
   GF(3) conservation and observational bridge types.
+version: 1.0.0
 license: MIT
 metadata:
   source: music-topos + DiscoHy + DisCoPy

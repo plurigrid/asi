@@ -2,6 +2,7 @@
 name: duckdb-temporal-versioning
 description: Temporal versioning and interaction history with time-travel queries,
   causality tracking, and deterministic replay
+version: 1.0.0
 metadata:
   trit: 0
 ---

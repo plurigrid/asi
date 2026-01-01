@@ -3,6 +3,7 @@ name: jaxlife-open-ended
 description: JaxLife open-ended agentic simulator for emergent behavior, tool use,
   and cultural accumulation. Use for artificial life simulations, emergent agent behavior,
   and open-ended evolution research.
+version: 1.0.0
 metadata:
   trit: 1
   color: '#D82626'

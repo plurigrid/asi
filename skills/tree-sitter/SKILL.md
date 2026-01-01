@@ -1,6 +1,7 @@
 ---
 name: tree-sitter
 description: AST-based code analysis using tree-sitter. Use for parsing code structure, extracting symbols, finding patterns with tree-sitter queries, analyzing complexity, and understanding code architecture. Supports Python, JavaScript, TypeScript, Go, Rust, C, C++, Swift, Java, Kotlin, Julia, and more.
+version: 1.0.0
 compatibility: Requires Python 3.10+, mcp-server-tree-sitter package installed.
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: uv-discohy
 description: UV/UVX/Ruff toolchain for DiscoHy Thread Operad with Python packaging and linting
+version: 1.0.0
 trit: 0
 ---
 

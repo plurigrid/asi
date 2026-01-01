@@ -2,6 +2,7 @@
 name: directed-interval
 description: Directed interval type 2 axiomatizing (0 → 1). Time-directed homotopy
   for reactions.
+version: 1.0.0
 metadata:
   trit: 0
   polarity: ERGODIC

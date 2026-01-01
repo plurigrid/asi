@@ -2,6 +2,7 @@
 name: hatchery-papers
 description: Chicken Scheme Hatchery eggs and academic papers for color logic, 2TDX,
   colored operads, and higher observational type theory.
+version: 1.0.0
 license: MIT
 metadata:
   trit: -1

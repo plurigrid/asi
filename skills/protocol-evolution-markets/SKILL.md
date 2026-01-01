@@ -1,6 +1,7 @@
 ---
 name: protocol-evolution-markets
 description: "Prediction markets for protocol standard evolution. Bet on which specs survive, fork, or merge using multiverse finance and GF(3) fitness signals."
+version: 1.0.0
 metadata:
   trit: 0
   version: "1.0.0"

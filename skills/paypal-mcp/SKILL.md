@@ -1,6 +1,7 @@
 ---
 name: paypal-mcp
 description: PayPal MCP server integration for invoices, payments, subscriptions, disputes, and transaction reporting via @paypal/mcp.
+version: 1.0.0
 metadata:
   trit: 0
   color: "#26D826"

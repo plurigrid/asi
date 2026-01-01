@@ -1,6 +1,7 @@
 ---
 name: bdd-mathematical-verification
 description: 'BDD-Driven Mathematical Content Verification Skill
+version: 1.0.0
 
 
   Combines Behavior-Driven Development with mathematical formula extraction,

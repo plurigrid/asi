@@ -1,6 +1,7 @@
 ---
 name: alice
 description: Primary Aptos testnet wallet for transaction origination. Use when initiating test transactions.
+version: 1.0.0
 metadata:
   trit: -1
 ---

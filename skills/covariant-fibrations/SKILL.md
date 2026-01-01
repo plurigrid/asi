@@ -2,6 +2,7 @@
 name: covariant-fibrations
 description: Riehl-Shulman covariant fibrations for dependent types over directed
   intervals in synthetic ∞-categories.
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: -1

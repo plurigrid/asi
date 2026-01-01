@@ -1,6 +1,7 @@
 ---
 name: emacs
 description: Emacs ecosystem = elisp + org + gnus + tramp + eglot.
+version: 1.0.0
 metadata:
   trit: 0
 ---

@@ -4,6 +4,7 @@ description: >
   World operators as information reflow with derangement constraints.
   Ensures σ(i)≠i: validators cannot self-validate, generators cannot self-generate.
   Implements tropical geometry of interaction for min-plus path analysis.
+version: 1.0.0
 metadata:
   trit: 0
   role: ERGODIC

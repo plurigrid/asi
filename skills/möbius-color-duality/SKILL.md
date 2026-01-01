@@ -1,6 +1,7 @@
 ---
 name: möbius-color-duality
 description: Möbius inversion for Gay.jl color duality - closes sparsification spine gap
+version: 1.0.0
 metadata:
   trit: 1
   polarity: PLUS

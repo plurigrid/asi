@@ -1,6 +1,7 @@
 ---
 name: chaotic-attractor
 description: Strange attractor with sensitive dependence on initial conditions
+version: 1.0.0
 trit: 1
 geodesic: true
 moebius: "μ(n) ≠ 0"

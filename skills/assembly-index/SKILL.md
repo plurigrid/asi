@@ -2,6 +2,7 @@
 name: assembly-index
 description: Lee Cronin's Assembly Theory for molecular complexity measurement and
   life detection via assembly index computation.
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 1

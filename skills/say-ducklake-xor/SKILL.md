@@ -1,6 +1,7 @@
 ---
 name: say-ducklake-xor
 description: Parallel thread/DuckLake discovery with XOR uniqueness from gay_seed. Finds "say" or MCP usage, cross-refs with all DuckDB sources, launches bounded parallel ops.
+version: 1.0.0
 trit: 0
 ---
 

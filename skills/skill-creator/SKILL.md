@@ -3,6 +3,7 @@ name: skill-creator
 description: Guide for creating effective skills. Use when users want to create a
   new skill (or update an existing skill) that extends Claude's capabilities with
   specialized knowledge, workflows, or tool integrations.
+version: 1.0.0
 license: Apache-2.0
 metadata:
   trit: 0

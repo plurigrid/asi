@@ -2,6 +2,7 @@
 name: segal-types
 description: Segal types for synthetic ∞-categories. Binary composites exist uniquely
   up to homotopy. Foundation for topological chemputer.
+version: 1.0.0
 metadata:
   trit: -1
   polarity: MINUS

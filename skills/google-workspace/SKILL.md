@@ -1,6 +1,7 @@
 ---
 name: google-workspace
 description: Google Workspace MCP integration for Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms, Tasks, and Chat. Use when the user wants to read/send emails, manage files, create/edit documents, schedule events, or interact with any Google Workspace service.
+version: 1.0.0
 trit: 0  # ERGODIC - coordinator role
 ---
 

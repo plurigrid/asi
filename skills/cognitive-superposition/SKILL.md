@@ -3,6 +3,7 @@ name: cognitive-superposition
 description: Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
   (compression), Schmidhuber (curiosity-driven), and Bengio (GFlowNets) into unified
   ASI framework with quantum-inspired measurement collapse.
+version: 1.0.0
 metadata:
   trit: 0
   polarity: ERGODIC

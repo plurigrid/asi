@@ -2,6 +2,7 @@
 name: turing-chemputer
 description: Cronin's Turing-complete chemputer for programmable chemical synthesis
   via XDL.
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 1

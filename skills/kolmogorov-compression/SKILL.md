@@ -2,6 +2,7 @@
 name: kolmogorov-compression
 description: Kolmogorov complexity as the ultimate intelligence measure. Shortest
   program that outputs data.
+version: 1.0.0
 metadata:
   trit: -1
   polarity: MINUS

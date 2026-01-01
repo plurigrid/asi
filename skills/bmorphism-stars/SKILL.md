@@ -2,6 +2,7 @@
 name: bmorphism-stars
 description: bmorphism's GitHub stars (2155 repos) and created repos - a curated index
   of applied category theory, MCP servers, and xenomodern tooling.
+version: 1.0.0
 license: MIT
 metadata:
   trit: 0

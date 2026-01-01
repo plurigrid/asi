@@ -1,6 +1,7 @@
 ---
 name: world-memory-worlding
 description: World memory is world remembering is world worlding - the autopoietic loop where memory enables remembering enables worlding enables memory
+version: 1.0.0
 metadata:
   trit: 0
   author: bmorphism

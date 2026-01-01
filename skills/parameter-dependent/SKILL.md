@@ -1,6 +1,7 @@
 ---
 name: parameter-dependent
 description: Systems varying with external parameters
+version: 1.0.0
 trit: 0
 geodesic: true
 moebius: "μ(n) ≠ 0"

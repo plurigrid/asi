@@ -1,6 +1,7 @@
 ---
 name: world-runtime
 description: "Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution. Entities branch/snapshot in <250ms."
+version: 1.0.0
 trit: +1
 polarity: PLUS
 source: "AWS Firecracker (2018) + Morph Labs Infinibranch (2025) + Paradigm Multiverse Finance (2025)"

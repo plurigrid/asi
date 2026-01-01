@@ -1,6 +1,7 @@
 ---
 name: scheme
 description: GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+version: 1.0.0
 metadata:
   trit: 0
 ---

@@ -1,6 +1,7 @@
 ---
 name: world-a
 description: AlgebraicJulia ecosystem world (ACSets.jl, Catlab.jl). Use for categorical database queries and acset operations.
+version: 1.0.0
 metadata:
   trit: -1
 ---

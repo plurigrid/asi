@@ -1,6 +1,7 @@
 ---
 name: iroh-p2p
 description: Build modern peer-to-peer applications with Iroh. QUIC-based P2P networking, hole punching, content distribution, and decentralized data synchronization.
+version: 1.0.0
 category: development
 author: bmorphism
 license: MIT

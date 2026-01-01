@@ -2,6 +2,7 @@
 name: asi-polynomial-operads
 description: ASI skill integrating polynomial functors, free monad/cofree comonad
   module action, operadic decomposition, and open games for compositional intelligence.
+version: 1.0.0
 license: MIT
 metadata:
   source: Spivak, Libkind, Bumpus, Swan, Hedges

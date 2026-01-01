@@ -1,6 +1,7 @@
 ---
 name: time-parameterization
 description: Reparameterization of time in flows
+version: 1.0.0
 trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"

@@ -1,6 +1,7 @@
 ---
 name: rubato-composer
 description: Rubato Composer integration for Mazzola's mathematical music theory
+version: 1.0.0
 metadata:
   trit: 1
 ---

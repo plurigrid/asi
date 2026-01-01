@@ -1,6 +1,7 @@
 ---
 name: skill-specification
 description: Agent Skills formal specification for cross-platform compatibility. Ensures skills are evolutionarily robust across Claude, Codex, Cursor, Amp, and future agents.
+version: 1.0.0
 metadata:
   short-description: SKILL.md format specification
   spec-url: https://agentskills.io/specification

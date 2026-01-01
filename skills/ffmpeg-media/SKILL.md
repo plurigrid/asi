@@ -1,6 +1,7 @@
 ---
 name: ffmpeg-media
 description: "FFmpeg media processing. Video/audio transcoding, stream manipulation, and filter graphs."
+version: 1.0.0
 metadata:
   trit: +1
   version: "1.0.0"

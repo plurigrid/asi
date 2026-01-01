@@ -1,6 +1,7 @@
 ---
 name: cantordust-viz
 description: Binary visualization for human pattern recognition - Ghidra plugin by Chris Domas (xoreaxeaxeax)
+version: 1.0.0
 metadata:
   trit: -1
   color: '#E54951'

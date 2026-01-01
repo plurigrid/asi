@@ -2,6 +2,7 @@
 name: triad-interleave
 description: Interleave three deterministic color streams into balanced schedules
   for parallel execution and evaluation.
+version: 1.0.0
 metadata:
   trit: 1
 ---

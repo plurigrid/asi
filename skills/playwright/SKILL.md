@@ -1,6 +1,7 @@
 ---
 name: playwright
 description: Browser automation via Playwright MCP. Use for web scraping, taking screenshots, interacting with web pages, testing web UIs, and automating browser tasks. Headless browser support.
+version: 1.0.0
 compatibility: Requires npx and @anthropic-ai/mcp-server-playwright package.
 ---
 

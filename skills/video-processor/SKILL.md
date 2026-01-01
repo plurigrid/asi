@@ -1,6 +1,7 @@
 ---
 name: video-processor
 description: "Automated video processing: metadata extraction, thumbnails, transcoding, audio extraction with DuckDB tracking"
+version: 1.0.0
 metadata:
   trit: 0
   version: "1.0.0"

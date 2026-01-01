@@ -1,6 +1,7 @@
 ---
 name: jacobian
 description: Matrix of partial derivatives for linearization
+version: 1.0.0
 trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"

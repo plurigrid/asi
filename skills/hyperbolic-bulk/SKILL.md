@@ -1,6 +1,7 @@
 ---
 name: hyperbolic-bulk
 description: On-chain GF(3) entropy storage via Aptos Move - bulk-boundary correspondence where entropy lives in the interior and observables project to agents
+version: 1.0.0
 metadata:
   trit: 0
   author: bmorphism

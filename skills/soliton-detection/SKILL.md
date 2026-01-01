@@ -1,6 +1,7 @@
 ---
 name: soliton-detection
 description: "Topological soliton detection and agency bridge with anyonic fusion algebra for concept composition"
+version: 1.0.0
 license: MIT
 metadata:
   source: music-topos/lib/soliton_skill_bridge.jl + topological_solitons_anyons.jl

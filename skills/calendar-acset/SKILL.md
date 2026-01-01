@@ -1,6 +1,7 @@
 ---
 name: calendar-acset
 description: Google Calendar management via CalendarACSet. Transforms scheduling operations into GF(3)-typed Interactions, routes to triadic queues, detects saturation for balanced-calendar-as-condensed-state.
+version: 1.0.0
 ---
 
 # Calendar ACSet Skill

@@ -1,6 +1,7 @@
 ---
 name: aptos-gf3-society
 description: Aptos GF(3) Society Skill
+version: 1.0.0
 trit: 0
 color: "#26D826"
 catsharp:

@@ -1,6 +1,7 @@
 ---
 name: cybernetic-immune
 description: "Cybernetic immune system with Varela+Friston+Powers for Self/Non-Self discrimination via reafference, GF(3) trit encoding, and information geometry"
+version: 1.0.0
 trit: 0
 gf3_triad: "three-match (-1) ⊗ cybernetic-immune (0) ⊗ gay-mcp (+1)"
 ---

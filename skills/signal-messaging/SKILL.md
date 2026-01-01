@@ -1,6 +1,7 @@
 ---
 name: signal-messaging
 description: Send and receive Signal messages via MCP. Use this skill when you need to interact with Signal messenger - sending messages, reading conversations, or automating Signal-based workflows.
+version: 1.0.0
 compatibility: Requires signal-mcp server built with Cargo. Signal account must be registered.
 ---
 

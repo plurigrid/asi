@@ -1,6 +1,7 @@
 ---
 name: elisp
 description: Emacs Lisp reference (106K lines info).
+version: 1.0.0
 metadata:
   trit: 0
 ---

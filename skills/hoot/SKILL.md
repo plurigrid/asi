@@ -1,6 +1,7 @@
 ---
 name: hoot
 description: Scheme→WebAssembly compiler (4K lines info).
+version: 1.0.0
 metadata:
   trit: 0
 ---

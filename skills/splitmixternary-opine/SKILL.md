@@ -1,6 +1,7 @@
 ---
 name: splitmixternary-opine
 description: Political Repetition as Hyperrealpolitik - deterministic opinion formation via SplitMixTernary across all encountered languages. The eternal return of the trit.
+version: 1.0.0
 trit: 0
 seed: 1069
 license: MIT

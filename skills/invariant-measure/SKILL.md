@@ -1,6 +1,7 @@
 ---
 name: invariant-measure
 description: Measure preserved by the flow
+version: 1.0.0
 trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"

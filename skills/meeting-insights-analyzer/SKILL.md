@@ -4,6 +4,7 @@ description: Analyzes meeting transcripts and recordings to uncover behavioral p
   communication insights, and actionable feedback. Identifies when you avoid conflict,
   use filler words, dominate conversations, or miss opportunities to listen. Perfect
   for professionals seeking to improve their communication and leadership skills.
+version: 1.0.0
 metadata:
   trit: 0
 ---

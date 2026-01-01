@@ -1,6 +1,7 @@
 ---
 name: acsets-relational-thinking
 description: ACSets (Attributed C-Sets) for categorical database design and DPO rewriting
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 0

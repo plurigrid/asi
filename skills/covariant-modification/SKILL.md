@@ -1,6 +1,7 @@
 ---
 name: covariant-modification
 description: Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and MCP Tasks self-rewriting. GF(3) conserved.
+version: 1.0.0
 trit: 0
 color: "#26D826"
 ---

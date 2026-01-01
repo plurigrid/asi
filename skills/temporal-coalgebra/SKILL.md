@@ -2,6 +2,7 @@
 name: temporal-coalgebra
 description: Coalgebraic observation of derivation streams with final coalgebra bisimulation
   for infinite trace verification.
+version: 1.0.0
 license: UNLICENSED
 metadata:
   source: local

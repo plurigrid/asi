@@ -1,6 +1,7 @@
 ---
 name: slowtime-mcp
 description: Asymmetric time dilation for MCP operations - deliberate slow paths enable capability accumulation through Cat# bicomodule composition.
+version: 1.0.0
 ---
 
 # Slowtime MCP

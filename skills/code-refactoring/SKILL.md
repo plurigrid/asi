@@ -3,6 +3,7 @@ name: code-refactoring
 description: Code refactoring patterns and techniques for improving code quality without
   changing behavior. Use for cleaning up legacy code, reducing complexity, or improving
   maintainability.
+version: 1.0.0
 license: MIT
 metadata:
   trit: 0

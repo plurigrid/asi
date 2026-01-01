@@ -1,6 +1,7 @@
 ---
 name: compositional-acset-comparison
 description: "Compositional algorithm and data analysis via algebraic databases"
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 0

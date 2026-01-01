@@ -1,6 +1,7 @@
 ---
 name: pitchfork
 description: Symmetric bifurcation with symmetry breaking
+version: 1.0.0
 trit: 1
 geodesic: true
 moebius: "μ(n) ≠ 0"

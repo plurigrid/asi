@@ -1,6 +1,7 @@
 ---
 name: excellence-gradient
 description: "Measure quality. Descend toward excellence. No binary gates—only vectors."
+version: 1.0.0
 trit: -1
 polarity: MINUS
 ---

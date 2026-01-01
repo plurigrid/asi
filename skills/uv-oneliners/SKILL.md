@@ -2,6 +2,7 @@
 name: uv-oneliners
 description: UV/UVX awesome one-liners for ephemeral Python environments with multi-package
   stacks
+version: 1.0.0
 metadata:
   source: astral-sh/uv + gemini-cookbook patterns
   trit: +1 (PLUS - generative)

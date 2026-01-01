@@ -2,6 +2,7 @@
 name: gay-fokker-planck-staging
 description: Two Fokker-Plancks per staging gate, conditioned on (rama OR goblins)
   with accessible counterfactual worlds for each skill load.
+version: 1.0.0
 license: MIT
 metadata:
   trit: 0

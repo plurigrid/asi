@@ -1,6 +1,7 @@
 ---
 name: mlx-apple-silicon
 description: "Run LLMs on Apple Silicon with MLX/mlx_lm - unified memory, 4-bit quantization, streaming generation, prompt caching. Optimal for M-series chips."
+version: 1.0.0
 compatibility: Requires macOS with Apple Silicon (M1/M2/M3/M4), Python 3.10+, mlx, mlx-lm packages.
 trit: +1
 ---

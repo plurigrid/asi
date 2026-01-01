@@ -1,6 +1,7 @@
 ---
 name: specter-acset
 description: "Specter-style bidirectional navigation for Julia Collections, S-expressions, and ACSets with inline caching"
+version: 1.0.0
 license: MIT
 metadata:
   source: music-topos + Specter CPS patterns (Nathan Marz)

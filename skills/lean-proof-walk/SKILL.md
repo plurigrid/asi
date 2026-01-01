@@ -1,6 +1,7 @@
 ---
 name: lean-proof-walk
 description: GF(3)-balanced random walk through Lean proof states. Use when generating formal proof chains with parallel triad verification. Invokes 3 agents (Generator +1, Coordinator 0, Validator -1) to traverse proof space via prime geodesics.
+version: 1.0.0
 ---
 
 # Lean Proof Walk

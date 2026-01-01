@@ -1,6 +1,7 @@
 ---
 name: anima-theory
 description: ANIMA as limit construction over condensed skill applications. Formalizes prediction markets as belief ANIMAs, structure dishes as condensation media, and impact as equivalence class change. Use for understanding agency at maximum entropy, compositional world modeling, or applying Scholze-Clausen condensed mathematics to AI.
+version: 1.0.0
 ---
 
 # ANIMA Theory

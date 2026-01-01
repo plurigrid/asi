@@ -1,6 +1,7 @@
 ---
 name: babashka-clj
 description: "Babashka scripting for fast Clojure execution. JVM-less scripting with GraalVM native compilation and sci interpreter."
+version: 1.0.0
 metadata:
   trit: 0
   version: "1.0.0"

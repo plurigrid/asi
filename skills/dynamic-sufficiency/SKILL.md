@@ -2,6 +2,7 @@
 name: dynamic-sufficiency
 description: Causal state gating via ε-machine. Coworld observer that prevents action
   without verified minimal sufficient skill coverage. Post-rigorous globally.
+version: 1.0.0
 license: MIT
 metadata:
   source: SFI Computational Mechanics + Autopoiesis + Darwin Gödel Machine

@@ -1,6 +1,7 @@
 ---
 name: bifurcation
 description: Hopf bifurcation detection for dynamical system state transitions with GF(3) phase portraits
+version: 1.0.0
 metadata:
   trit: 0
   color: "#9966FF"

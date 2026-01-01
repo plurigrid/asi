@@ -4,6 +4,7 @@ description: >
   Markov games as ACSets with state-dependent strategy spaces.
   Fills the "Markov games will be soon" gap from open-games-engine.
   Derangement-reflow ensures no self-observation in state transitions.
+version: 1.0.0
 license: MIT
 metadata:
   trit: -1

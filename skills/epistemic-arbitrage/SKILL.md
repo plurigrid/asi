@@ -2,6 +2,7 @@
 name: epistemic-arbitrage
 description: Propagator-based parallel structure for exploiting knowledge differentials
   across domains using local scoped propagators and SplitMixTernary RNG.
+version: 1.0.0
 license: MIT
 metadata:
   trit: 1

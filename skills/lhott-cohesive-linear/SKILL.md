@@ -1,6 +1,7 @@
 ---
 name: lhott-cohesive-linear
 description: "Cohesive Linear HoTT patterns for interaction entropy with diagram generation. Implements Schreiber's cohesive modalities (♯,♭,ʃ) and Riley's linear modality (♮) for quantum-classical bridging."
+version: 1.0.0
 trit: 0
 polarity: ERGODIC
 ---

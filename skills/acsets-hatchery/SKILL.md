@@ -1,6 +1,7 @@
 ---
 name: acsets-hatchery
 description: Attributed C-Sets as algebraic databases. Category-theoretic data structures generalizing graphs and dataframes with Gay.jl color integration.
+version: 1.0.0
 metadata:
   trit: 0
   color: "#E146A8"

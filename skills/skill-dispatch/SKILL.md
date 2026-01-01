@@ -1,6 +1,7 @@
 ---
 name: skill-dispatch
 description: ' GF(3) Triadic Task Routing for Subagent Orchestration'
+version: 1.0.0
 ---
 
 # skill-dispatch

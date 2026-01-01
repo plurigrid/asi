@@ -3,6 +3,7 @@ name: rio-webgpu-tiles
 description: WebGPU tile rendering for Rio Terminal via wgpu and sugarloaf. Extends
   OSC 1337 for GPU shaders in terminal regions. Use when implementing terminal graphics,
   custom shaders, or GPU-accelerated terminal UI.
+version: 1.0.0
 metadata:
   trit: 0
 ---

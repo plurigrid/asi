@@ -1,6 +1,7 @@
 ---
 name: unison-acset
 description: Unison language ACSet-structured skill with hierarchical documentation parsing, SPI trajectory recording, and 1069 skill predictions from zubuyul seed.
+version: 1.0.0
 trit: 0
 seed: 1069
 seed_hex: "0x42D"

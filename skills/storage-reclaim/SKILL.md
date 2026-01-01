@@ -1,6 +1,7 @@
 ---
 name: storage-reclaim
 description: Rapidly find and reclaim disk storage by identifying build artifacts, git garbage, temp files, and other space hogs. Use when disk is full or running low on space.
+version: 1.0.0
 ---
 
 # Storage Reclaim

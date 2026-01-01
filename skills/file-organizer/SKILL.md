@@ -4,6 +4,7 @@ description: Intelligently organizes your files and folders across your computer
   understanding context, finding duplicates, suggesting better structures, and automating
   cleanup tasks. Reduces cognitive load and keeps your digital workspace tidy without
   manual effort.
+version: 1.0.0
 metadata:
   trit: 0
 ---

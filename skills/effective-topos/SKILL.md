@@ -4,6 +4,7 @@ description: FloxHub publication `bmorphism/effective-topos` - a comprehensive d
   environment with 606 man pages, 97 Emacs info manuals, and deep integration across
   Scheme (Guile/Goblins/Hoot), functional languages (OCaml, Haskell, Racket), systems
   tools (Rust, Go), and Gay.jl deterministic coloring.
+version: 1.0.0
 metadata:
   trit: 0
 ---

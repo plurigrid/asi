@@ -1,6 +1,7 @@
 ---
 name: trajectory
 description: Path traced by solution through phase space
+version: 1.0.0
 trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"

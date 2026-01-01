@@ -1,6 +1,7 @@
 ---
 name: langevin-dynamics
 description: "' Layer 5: SDE-Based Learning Analysis via Langevin Dynamics'"
+version: 1.0.0
 metadata:
   trit: 0
 ---

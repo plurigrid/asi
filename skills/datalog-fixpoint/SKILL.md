@@ -1,6 +1,7 @@
 ---
 name: datalog-fixpoint
 description: Datalog bottom-up fixpoint iteration for recursive queries
+version: 1.0.0
 trit: 0
 color: "#26D826"
 catsharp:

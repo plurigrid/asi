@@ -1,6 +1,7 @@
 ---
 name: duckdb-timetravel
 description: "' Layer 3: Temporal Versioning and ACSet Schema Generation for DuckDB'"
+version: 1.0.0
 metadata:
   trit: 0
 ---

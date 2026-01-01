@@ -1,6 +1,7 @@
 ---
 name: phase-locking
 description: Fixed phase relationship in oscillators
+version: 1.0.0
 trit: 1
 geodesic: true
 moebius: "μ(n) ≠ 0"

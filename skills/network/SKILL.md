@@ -1,6 +1,7 @@
 ---
 name: network
 description: Network tools = tailscale + curl + ssh + nmap.
+version: 1.0.0
 metadata:
   trit: 0
 ---

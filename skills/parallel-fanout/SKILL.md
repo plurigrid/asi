@@ -2,6 +2,7 @@
 name: parallel-fanout
 description: Metaskill that fans out on every interaction, using interaction entropy
   as SplitMixTernary seed for maximum synergistic parallelism
+version: 1.0.0
 metadata:
   trit: 0
 ---

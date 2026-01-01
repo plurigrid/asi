@@ -1,6 +1,7 @@
 ---
 name: mcp-tripartite
 description: "MCP tripartite integration for orchestrating distributed tool protocols"
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 1

@@ -1,6 +1,7 @@
 ---
 name: bifurcation-generator
 description: Generate bifurcation diagrams for dynamical systems. Use when visualizing parameter-dependent behavior transitions.
+version: 1.0.0
 metadata:
   trit: 1
   created_with: amp

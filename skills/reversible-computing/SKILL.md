@@ -1,6 +1,7 @@
 ---
 name: reversible-computing
 description: "Janus and reversible languages: run programs backwards, time-symmetric computation."
+version: 1.0.0
 trit: 0
 bundle: strange-loops
 ---

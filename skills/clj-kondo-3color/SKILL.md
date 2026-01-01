@@ -2,6 +2,7 @@
 name: clj-kondo-3color
 description: clj-kondo linter with Gay.jl 3-color integration for GF(3) conservation
   in Clojure code analysis.
+version: 1.0.0
 license: EPL-1.0
 metadata:
   source: clj-kondo/clj-kondo + music-topos

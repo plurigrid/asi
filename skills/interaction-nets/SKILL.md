@@ -2,6 +2,7 @@
 name: interaction-nets
 description: Lafont's interaction nets for optimal parallel λ-reduction. Graph rewriting
   with no evaluation order.
+version: 1.0.0
 trit: -1
 bundle: strange-loops
 metadata:

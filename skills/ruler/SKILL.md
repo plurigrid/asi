@@ -1,6 +1,7 @@
 ---
 name: ruler
 description: Unified AI agent configuration propagation across 18+ coding assistants.
+version: 1.0.0
 metadata:
   trit: 0
 ---

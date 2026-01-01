@@ -2,6 +2,7 @@
 name: system2-attention
 description: System 2 attention mechanisms for deliberate, slow reasoning in transformer
   architectures.
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 0

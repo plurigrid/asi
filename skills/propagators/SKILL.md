@@ -2,6 +2,7 @@
 name: propagators
 description: Sussman/Radul propagator networks for constraint propagation and bidirectional
   dataflow.
+version: 1.0.0
 trit: 0
 bundle: strange-loops
 metadata:

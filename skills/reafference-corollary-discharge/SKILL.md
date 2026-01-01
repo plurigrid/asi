@@ -1,6 +1,7 @@
 ---
 name: reafference-corollary-discharge
 description: "Von Holst reafference and corollary discharge for behavioral verification and signal processing"
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 0

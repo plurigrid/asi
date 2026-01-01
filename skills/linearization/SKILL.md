@@ -1,6 +1,7 @@
 ---
 name: linearization
 description: Local approximation of nonlinear dynamics
+version: 1.0.0
 trit: 0
 geodesic: true
 moebius: "μ(n) ≠ 0"

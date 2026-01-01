@@ -1,6 +1,7 @@
 ---
 name: paperproof-validator
 description: "Formal Proof Visualization and Verification for Lean 4"
+version: 1.0.0
 metadata:
   trit: -1
   version: "1.0.0"

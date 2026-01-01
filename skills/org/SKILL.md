@@ -1,6 +1,7 @@
 ---
 name: org
 description: Org-mode manual (25K lines info).
+version: 1.0.0
 metadata:
   trit: 0
 ---

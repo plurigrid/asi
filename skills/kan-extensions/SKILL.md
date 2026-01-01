@@ -1,6 +1,7 @@
 ---
 name: kan-extensions
 description: Kan Extensions Skill (ERGODIC 0)
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: -1

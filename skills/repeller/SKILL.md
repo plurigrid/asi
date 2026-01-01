@@ -1,6 +1,7 @@
 ---
 name: repeller
 description: Invariant set repelling nearby trajectories
+version: 1.0.0
 trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"

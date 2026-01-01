@@ -1,6 +1,7 @@
 ---
 name: opam-ocaml
 description: "OPAM package manager for OCaml. Switch management, dependency resolution, and OCaml toolchain."
+version: 1.0.0
 metadata:
   trit: -1
   version: "1.0.0"

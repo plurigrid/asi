@@ -1,6 +1,7 @@
 ---
 name: intent-sink
 description: Intent Sink Skill
+version: 1.0.0
 trit: 0
 color: "#26D826"
 catsharp:

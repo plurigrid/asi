@@ -1,6 +1,7 @@
 ---
 name: infinity-operads
 description: "∞-Operads for pairwise/tritwise Cat# interactions with lazy ACSet materialization unifying effective, realizability, and Grothendieck topoi via dendroidal Segal spaces."
+version: 1.0.0
 trit: 0
 polarity: ERGODIC
 source: "Cisinski-Moerdijk, Lurie, Barwick-Schommer-Pries, Spivak Cat#"

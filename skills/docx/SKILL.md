@@ -4,6 +4,7 @@ description: Comprehensive document creation, editing, and analysis with support
   tracked changes, comments, formatting preservation, and text extraction. When Claude
   needs to work with professional documents (.docx files) for creating new documents,
   modifying content, working with tracked changes, or adding comments.
+version: 1.0.0
 license: Apache-2.0
 metadata:
   trit: 0

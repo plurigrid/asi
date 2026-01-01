@@ -4,6 +4,7 @@ description: Comprehensive spreadsheet creation, editing, and analysis with supp
   for formulas, formatting, data analysis, and visualization. When Claude needs to
   work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc) for creating new spreadsheets,
   reading/analyzing data, modifying existing spreadsheets, or recalculating formulas.
+version: 1.0.0
 license: Apache-2.0
 metadata:
   trit: 0

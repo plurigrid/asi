@@ -1,6 +1,7 @@
 ---
 name: bmorphism-interactome
 description: GitHub interactome explorer for bmorphism/plurigrid ecosystem. Maps collaborations across AlgebraicJulia, Topos Institute, Anthropic, and MCP servers. Use for discovering cobordisms between research communities.
+version: 1.0.0
 ---
 
 # bmorphism-interactome Skill

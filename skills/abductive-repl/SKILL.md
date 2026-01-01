@@ -1,6 +1,7 @@
 ---
 name: abductive-repl
 description: ' Hypothesis-Test Loops via REPL for Exploratory Abductive Inference'
+version: 1.0.0
 metadata:
   trit: 0
 ---

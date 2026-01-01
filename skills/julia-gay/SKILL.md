@@ -1,6 +1,7 @@
 ---
 name: julia-gay
 description: "Gay.jl integration for deterministic color generation. SplitMix64 RNG, GF(3) trits, and SPI-compliant fingerprints in Julia."
+version: 1.0.0
 metadata:
   trit: +1
   version: "1.0.0"

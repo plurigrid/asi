@@ -3,6 +3,7 @@ name: qa-regression
 description: Automate QA regression testing with reusable test skills. Create login
   flows, dashboard checks, user creation, and other common test scenarios that run
   consistently.
+version: 1.0.0
 license: MIT
 metadata:
   trit: -1

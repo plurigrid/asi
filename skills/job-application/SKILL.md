@@ -2,6 +2,7 @@
 name: job-application
 description: Write tailored cover letters and job applications using your CV and preferred
   style
+version: 1.0.0
 metadata:
   trit: 0
   version: 1.0.0

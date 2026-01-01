@@ -1,6 +1,7 @@
 ---
 name: spotify
 description: Control Spotify playback and manage playlists. Play music, pause, skip tracks, search for songs/albums/artists, create playlists, add tracks, check what's playing, and manage your library. Requires Spotify Premium.
+version: 1.0.0
 compatibility: Requires Node.js, Spotify Premium account, and OAuth tokens configured in spotify-config.json.
 ---
 

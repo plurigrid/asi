@@ -1,6 +1,7 @@
 ---
 name: eigenvalue-stability
 description: Stability classification via Jacobian eigenvalues
+version: 1.0.0
 trit: 1
 geodesic: true
 moebius: "μ(n) ≠ 0"

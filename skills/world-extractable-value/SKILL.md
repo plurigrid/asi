@@ -1,6 +1,7 @@
 ---
 name: world-extractable-value
 description: "Extract value from world transitions via Markov blanket arbitrage. WEV = PoA - 1. Paradigm Multiverse Finance integration."
+version: 1.0.0
 trit: 0
 polarity: ERGODIC
 source: "Friston (2010) + Roughgarden (2002) + Paradigm/Dave White (2025)"

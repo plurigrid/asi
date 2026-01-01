@@ -2,6 +2,7 @@
 name: localsend-mcp
 description: LocalSend-based P2P transfer with MCP server design for NATS/Tailscale
   discovery and throughput tuning.
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: 0

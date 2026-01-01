@@ -1,6 +1,7 @@
 ---
 name: squint-runtime
 description: Squint ClojureScript runtime for minimal JS output compilation
+version: 1.0.0
 metadata:
   trit: 0
 ---

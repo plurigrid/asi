@@ -3,6 +3,7 @@ name: internal-comms
 description: Write internal communications using company formats. Use when writing
   status reports, leadership updates, company newsletters, FAQs, incident reports,
   project updates, or any internal communications.
+version: 1.0.0
 license: Apache-2.0
 metadata:
   trit: 0

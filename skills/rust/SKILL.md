@@ -1,6 +1,7 @@
 ---
 name: rust
 description: Rust ecosystem = cargo + rustc + clippy + rustfmt.
+version: 1.0.0
 metadata:
   trit: 0
 ---

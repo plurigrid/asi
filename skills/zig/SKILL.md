@@ -4,6 +4,7 @@ description: >
   Zig ecosystem = zig build + zig test + zig fmt + zls. Systems programming
   without hidden control flow. Comptime metaprogramming, explicit allocators,
   C interop. Use for low-level code, game engines, embedded, WASM.
+version: 1.0.0
 metadata:
   trit: -1
   version: 0.15.2

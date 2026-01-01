@@ -1,6 +1,7 @@
 ---
 name: aptos-trading
 description: Execute trades on Aptos mainnet with price-triggered profit-taking and dip-buying strategies. Includes wallet management, transaction signing, and DEX swaps via Liquidswap. Use when automating APT trading, checking balances, or executing swaps.
+version: 1.0.0
 compatibility: Requires Python 3.8+, aiohttp, pyyaml, cryptography. Mainnet access via REST API.
 ---
 

@@ -3,6 +3,7 @@ name: llm-application-dev
 description: Building applications with Large Language Models - prompt engineering,
   RAG patterns, and LLM integration. Use for AI-powered features, chatbots, or LLM-based
   automation.
+version: 1.0.0
 license: MIT
 metadata:
   trit: 0

@@ -2,6 +2,7 @@
 name: lispsyntax-acset
 description: LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv-style
   deriving and Specter-style navigation
+version: 1.0.0
 license: MIT
 metadata:
   source: music-topos + Specter CPS patterns

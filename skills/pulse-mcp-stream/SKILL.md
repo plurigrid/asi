@@ -1,6 +1,7 @@
 ---
 name: pulse-mcp-stream
 description: "' Layer 1: Real-Time Social Stream Monitoring via MCP'"
+version: 1.0.0
 metadata:
   trit: 0
 ---

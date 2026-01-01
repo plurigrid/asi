@@ -1,6 +1,7 @@
 ---
 name: geiser-chicken
 description: Geiser REPL integration for Chicken Scheme with SplitMixTernary 3-coloring and crdt.el sexp patterns.
+version: 1.0.0
 source: music-topos/skills
 license: MIT
 ---

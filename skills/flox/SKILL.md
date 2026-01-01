@@ -1,6 +1,7 @@
 ---
 name: flox
 description: Reproducible development environments powered by Nix.
+version: 1.0.0
 metadata:
   trit: 0
 ---

@@ -1,6 +1,7 @@
 ---
 name: vector-field
 description: Assignment of vectors to points in phase space defining dynamics
+version: 1.0.0
 trit: 0
 geodesic: true
 moebius: "μ(n) ≠ 0"

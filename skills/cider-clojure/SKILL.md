@@ -1,6 +1,7 @@
 ---
 name: cider-clojure
 description: CIDER integration for Clojure development with nREPL
+version: 1.0.0
 metadata:
   trit: 0
 ---

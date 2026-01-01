@@ -1,6 +1,7 @@
 ---
 name: oapply-colimit
 description: "oapply operad algebra evaluation via colimits with Specter-style composition patterns"
+version: 1.0.0
 license: MIT
 metadata:
   source: AlgebraicJulia/AlgebraicDynamics.jl + music-topos

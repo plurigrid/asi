@@ -1,6 +1,7 @@
 ---
 name: gmail-anima
 description: Gmail inbox management via ANIMA condensation. Transforms messages into GF(3)-typed Interactions, routes to triadic queues, detects saturation for inbox-zero-as-condensed-state. Use for email triage, workflow automation, or applying ANIMA principles to Gmail.
+version: 1.0.0
 ---
 
 # Gmail ANIMA Skill

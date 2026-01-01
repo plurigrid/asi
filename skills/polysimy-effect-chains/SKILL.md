@@ -1,6 +1,7 @@
 ---
 name: polysimy-effect-chains
 description: Verify multiple effect interpretations through propagator networks with temporal coalgebra bisimulation and common fixpoint solutions.
+version: 1.0.0
 license: MIT
 metadata:
   source: local

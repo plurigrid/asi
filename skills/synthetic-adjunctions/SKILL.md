@@ -2,6 +2,7 @@
 name: synthetic-adjunctions
 description: Synthetic adjunctions in directed type theory for ∞-categorical universal
   constructions.
+version: 1.0.0
 license: UNLICENSED
 metadata:
   trit: -1

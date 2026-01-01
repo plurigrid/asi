@@ -3,6 +3,7 @@ name: glass-bead-game
 description: Hesse-inspired interdisciplinary synthesis game with Badiou triangle
   inequality for possible world hopping across mathematical, musical, and philosophical
   domains.
+version: 1.0.0
 license: MIT
 metadata:
   trit: 1

@@ -1,6 +1,7 @@
 ---
 name: glass-hopping
 description: "Glass Bead Game + World Hopping via Observational Bridge Types. Navigate possibility space through ordered locale ≪ relations with Narya-verified transitions."
+version: 1.0.0
 trit: 0
 polarity: ERGODIC
 depends_on: [glass-bead-game, world-hopping, ordered-locale]

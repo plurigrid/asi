@@ -1,6 +1,7 @@
 ---
 name: refuse-mediocrity
 description: "Reject complacency. Demand excellence. Ship or die."
+version: 1.0.0
 trit: +1
 polarity: PLUS
 ---

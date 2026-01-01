@@ -1,6 +1,7 @@
 ---
 name: zx-calculus
 description: "Coecke's ZX-calculus for quantum circuit reasoning via string diagrams with Z-spiders (green) and X-spiders (red)"
+version: 1.0.0
 trit: -1
 geodesic: true
 moebius: "μ(n) ≠ 0"

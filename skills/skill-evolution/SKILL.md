@@ -1,6 +1,7 @@
 ---
 name: skill-evolution
 description: Patterns for evolutionarily robust skills that adapt across agent generations. Darwin-Godel machine principles for self-improving skill ecosystems.
+version: 1.0.0
 metadata:
   short-description: Evolutionary skill robustness
   trit: 0

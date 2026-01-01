@@ -4,6 +4,7 @@ description: Comprehensive PDF manipulation toolkit for extracting text and tabl
   creating new PDFs, merging/splitting documents, and handling forms. When Claude
   needs to fill in a PDF form or programmatically process, generate, or analyze PDF
   documents at scale.
+version: 1.0.0
 license: Apache-2.0
 metadata:
   trit: 0

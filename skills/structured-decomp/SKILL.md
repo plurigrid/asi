@@ -1,6 +1,7 @@
 ---
 name: structured-decomp
 description: "StructuredDecompositions.jl sheaves on tree decompositions for FPT algorithms with bidirectional navigation"
+version: 1.0.0
 license: MIT
 metadata:
   source: AlgebraicJulia/StructuredDecompositions.jl + music-topos

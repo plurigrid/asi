@@ -2,6 +2,7 @@
 name: yoneda-directed
 description: Directed Yoneda lemma as directed path induction. Riehl-Shulman's key
   insight for synthetic ∞-categories.
+version: 1.0.0
 metadata:
   trit: -1
   polarity: MINUS
