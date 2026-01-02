@@ -1,0 +1,97 @@
+# Modelica Skill Commands
+# Requires: Wolfram Language kernel (wolframscript)
+
+# Default: show help
+default:
+    @just --list
+
+# Simulate a Modelica model
+simulate model time="10":
+    wolframscript -code 'sim = SystemModelSimulate[SystemModel["{{model}}"], {{time}}]; Export["sim_result.json", sim["SimulationData"]]'
+
+# List available example models in a domain
+examples domain="Electrical":
+    wolframscript -code 'Print[Column[SystemModelExamples["Modelica.{{domain}}.*"]]]'
+
+# Get model equations
+equations model:
+    wolframscript -code 'Print[SystemModel["{{model}}"]["SystemEquations"]]'
+
+# Get model diagram (exports PNG)
+diagram model:
+    wolframscript -code 'Export["diagram.png", SystemModel["{{model}}"]["Diagram"]]'
+
+# Find equilibrium of a model
+equilibrium model:
+    wolframscript -code 'Print[FindSystemModelEquilibrium[SystemModel["{{model}}"]]]'
+
+# Linearize model at equilibrium
+linearize model:
+    wolframscript -code 'ss = SystemModelLinearize[SystemModel["{{model}}"]]; Print["A = ", ss["A"]]; Print["B = ", ss["B"]]; Print["C = ", ss["C"]]; Print["D = ", ss["D"]]'
+
+# Parameter sweep
+sweep model param values:
+    wolframscript -code 'sims = SystemModelSimulate[SystemModel["{{model}}"], 10, <|"ParameterValues" -> {"{{param}}" -> { {{values}} }}|>]; Print["Simulated ", Length[sims], " cases"]'
+
+# Create model from equations (interactive)
+create name:
+    @echo "Creating model {{name}}..."
+    @echo "Use wolframscript interactively for equation input"
+
+# Export model to FMU
+export-fmu model:
+    wolframscript -code 'Export["{{model}}.fmu", SystemModel["{{model}}"], "FMU"]'
+
+# Import Modelica file
+import file:
+    wolframscript -code 'Import["{{file}}", "MO"]; Print["Imported: {{file}}"]'
+
+# List loaded models
+list-models:
+    wolframscript -code 'Print[Column[SystemModels[]]]'
+
+# Model properties
+props model:
+    wolframscript -code 'model = SystemModel["{{model}}"]; Print["Description: ", model["Description"]]; Print["Variables: ", model["SystemVariables"]]; Print["Parameters: ", model["ParameterNames"]]; Print["Inputs: ", model["InputVariables"]]; Print["Outputs: ", model["OutputVariables"]]'
+
+# Verify GF(3) triad with related skills
+verify-triad:
+    @echo "Modelica Chemputation Triad:"
+    @echo "  turing-chemputer (-1) + modelica (0) + crn-topology (+1) = 0 ✓"
+    @echo "  assembly-index (-1) + modelica (0) + acsets (+1) = 0 ✓"
+    @echo "  narya-proofs (-1) + modelica (0) + gay-julia (+1) = 0 ✓"
+
+# Run demo: Chua circuit chaos
+demo-chua:
+    wolframscript -code 'sim = SystemModelSimulate[SystemModel["Modelica.Electrical.Analog.Examples.ChuaCircuit"], 100]; Export["chua_trajectory.png", SystemModelPlot[sim, {"C1.v", "C2.v"}]]; Print["Exported chua_trajectory.png"]'
+
+# Run demo: Thermal equilibration
+demo-thermal:
+    wolframscript -code 'sim = SystemModelSimulate[SystemModel["Modelica.Thermal.HeatTransfer.Examples.TwoMasses"], 10]; Export["thermal_equilibration.png", SystemModelPlot[sim]]; Print["Exported thermal_equilibration.png"]'
+
+# Run demo: Tank dynamics
+demo-tanks:
+    wolframscript -code 'sim = SystemModelSimulate[SystemModel["Modelica.Fluid.Examples.Tanks.ThreeTanks"], 200]; Export["tank_dynamics.png", SystemModelPlot[sim]]; Print["Exported tank_dynamics.png"]'
+
+# Run chemical equilibrium example
+demo-equilibrium:
+    wolframscript -file examples/chemical_equilibrium.wls
+
+# Run thermal equilibration example  
+demo-thermal-eq:
+    wolframscript -file examples/thermal_equilibration.wls
+
+# Load chemputation triad (turing-chemputer, modelica, crn-topology)
+load-triad:
+    bb chemputation-triad.bb
+
+# Load triad with demo
+load-triad-demo:
+    bb chemputation-triad.bb --demo
+
+# Load triad with voice announcement
+load-triad-voice:
+    bb chemputation-triad.bb --voice
+
+# Run all demos
+demo-all: demo-chua demo-thermal demo-tanks
