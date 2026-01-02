@@ -1,3 +1,9 @@
+---
+name: kinetic-block
+description: 'Kinetic Block Skill'
+version: 1.0.0
+---
+
 # Kinetic Block Skill
 
 > **Seed Approach List for Stratification × Fabrication via GF(3) Conservation**

@@ -1,3 +1,9 @@
+---
+name: local-compositionality-gadget
+description: 'Local Compositionality Gadget'
+version: 1.0.0
+---
+
 # Local Compositionality Gadget
 
 ERGODIC local update step gadget via Blume-Capel dynamics with GF(3) conservation.

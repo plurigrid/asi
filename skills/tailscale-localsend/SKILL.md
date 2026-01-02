@@ -1,3 +1,9 @@
+---
+name: tailscale-localsend
+description: 'Tailscale + LocalSend Peer Discovery'
+version: 1.0.0
+---
+
 # Tailscale + LocalSend Peer Discovery
 
 Discover peers via Tailscale mesh and exchange files via LocalSend protocol.

@@ -1,3 +1,9 @@
+---
+name: worldmat-tidar
+description: 'worldmat-tidar'
+version: 1.0.0
+---
+
 # worldmat-tidar
 
 > World Matrices via TiDAR Executions: 3×3×3 Parallel Triadic Computation

@@ -1,3 +1,9 @@
+---
+name: hyjax-relational
+description: 'HyJAX Relational Thinking Skill'
+version: 1.0.0
+---
+
 # HyJAX Relational Thinking Skill
 
 Apply relational thinking (ACSets/C-Sets) to Amp thread analysis using HyJAX patterns.

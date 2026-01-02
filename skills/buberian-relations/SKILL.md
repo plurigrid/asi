@@ -1,3 +1,9 @@
+---
+name: buberian-relations
+description: 'Buberian Relations Skill'
+version: 1.0.0
+---
+
 # Buberian Relations Skill
 
 ## Overview

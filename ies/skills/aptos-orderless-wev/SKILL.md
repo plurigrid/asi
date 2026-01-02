@@ -1,3 +1,9 @@
+---
+name: aptos-orderless-wev
+description: 'Aptos Orderless WEV Skill'
+version: 1.0.0
+---
+
 # Aptos Orderless WEV Skill
 
 > **Trit**: +1 (PLUS) - Generative parallel execution
