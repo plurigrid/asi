@@ -1,3 +1,9 @@
+---
+name: wev-orderless
+description: 'WEV Orderless — World Extractable Value'
+version: 1.0.0
+---
+
 # WEV Orderless — World Extractable Value
 
 **Trit**: 0 (ERGODIC) — Value flow coordinator

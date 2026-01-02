@@ -1,3 +1,9 @@
+---
+name: playwright-unworld
+description: 'Playwright-Unworld Skill: Deterministic Web Automation'
+version: 1.0.0
+---
+
 # Playwright-Unworld Skill: Deterministic Web Automation
 
 **Status**: 🚀 Production Ready

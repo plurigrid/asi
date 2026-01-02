@@ -1,3 +1,9 @@
+---
+name: mruler
+description: 'mruler - Meta-Ruler Skill Governance'
+version: 1.0.0
+---
+
 # mruler - Meta-Ruler Skill Governance
 
 **Trit: 0 (ERGODIC - Coordinator)**

@@ -1,3 +1,9 @@
+---
+name: criticality-detector
+description: 'Criticality Detector Skill'
+version: 1.0.0
+---
+
 # Criticality Detector Skill
 
 Measures distance to fixed point via comparator error and detects self-loop closure for phase classification in dynamical systems.

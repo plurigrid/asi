@@ -1,3 +1,9 @@
+---
+name: rick-roderick
+description: 'Rick Roderick: Philosophy Under Siege'
+version: 1.0.0
+---
+
 # Rick Roderick: Philosophy Under Siege
 
 **Status**: ✅ Production Ready  

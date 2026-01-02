@@ -1,3 +1,9 @@
+---
+name: ruler-maximal
+description: 'Ruler Maximal Skill'
+version: 1.0.0
+---
+
 # Ruler Maximal Skill
 
 **Ensures all skills are used maximally at all times via GF(3)-balanced auto-loading.**
@@ -82,7 +88,7 @@ npx ai-agent-skills install plurigrid/asi --agent amp
 ```bash
 # Announce each skill load with distinct voice
 say -v "Samantha" "Loading PLUS skill: synthetic-adjunctions"
-say -v "Daniel" "Loading ERGODIC skill: dialectica"  
+say -v "Zoe (Premium)" "Loading ERGODIC skill: dialectica"  
 say -v "Karen" "Loading MINUS skill: yoneda-directed"
 ```
 
@@ -228,12 +234,55 @@ ruler-gf3-check:
 
 ---
 
+## Required Skills
+
+These skills MUST be loaded as part of ruler-maximal initialization:
+
+| Skill | Trit | Purpose |
+|-------|------|---------|
+| `babashka` | 0 | Clojure scripting runtime for all bb.edn tasks |
+| `asi-integrated` | 0 | Unified skill orchestration |
+| `parallel-fanout` | +1 | Maximum parallelism |
+| `bisimulation-game` | 0 | Skill dispersal protocol |
+| `triad-interleave` | 0 | Balanced triplet execution |
+| `bifurcation` | 0 | Hopf bifurcation detection for state transitions |
+
+### Babashka Integration
+
+All ruler-maximal scripts require babashka for execution:
+
+```clojure
+#!/usr/bin/env bb
+;; ruler-maximal scripts use bb natively
+
+(require '[babashka.fs :as fs])
+(require '[babashka.process :as p])
+(require '[cheshire.core :as json])
+
+;; Load skills from ~/.claude/skills/
+(defn load-skill-registry []
+  (let [skill-dirs (fs/glob (fs/expand-home "~/.claude/skills") "**/SKILL.md")]
+    (into {} (for [path skill-dirs]
+               [(fs/file-name (fs/parent path))
+                (slurp (str path))]))))
+
+;; Execute skill triplet
+(defn execute-triplet [plus ergodic minus]
+  (let [skills [plus ergodic minus]]
+    (assert (zero? (reduce + (map :trit skills))) "GF(3) violated!")
+    (pmap #(p/shell "bb" "-e" (format "(load-skill \"%s\")" (:name %))) skills)))
+```
+
+---
+
 ## Related Skills
 
 - `asi-integrated` (0): Unified skill orchestration
 - `parallel-fanout` (+1): Maximum parallelism
 - `bisimulation-game` (0): Skill dispersal protocol
 - `triad-interleave` (0): Balanced triplet execution
+- `babashka` (0): Clojure scripting without JVM
+- `bifurcation` (0): State transition detection
 
 ---
 

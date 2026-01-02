@@ -1,3 +1,9 @@
+---
+name: multiversal-finance
+description: 'Multiversal Finance: Prediction Markets for Interesting Observations'
+version: 1.0.0
+---
+
 # Multiversal Finance: Prediction Markets for Interesting Observations
 
 **Trit**: +1 (PLUS - generative, creates value from attention)
