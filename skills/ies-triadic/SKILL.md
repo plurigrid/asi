@@ -1,3 +1,9 @@
+---
+name: ies-triadic
+description: 'IES Triadic Skill'
+version: 1.0.0
+---
+
 # IES Triadic Skill
 
 > *Three maximally polarizing yet topos-compatible directions of the ies collective mind*

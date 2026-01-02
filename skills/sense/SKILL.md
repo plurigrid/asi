@@ -1,3 +1,9 @@
+---
+name: sense
+description: 'sense - Diagrammatic Video Extraction with Subtitle Alignment'
+version: 1.0.0
+---
+
 # sense - Diagrammatic Video Extraction with Subtitle Alignment
 
 > **Trit**: 0 (ERGODIC - Coordinator)

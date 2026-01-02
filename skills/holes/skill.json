@@ -1,0 +1,178 @@
+{
+  "name": "holes",
+  "version": "1.0.0",
+  "category": "verification",
+  "trit": "minus",
+  "description": "Narya interactive proof holes - mechanism for stepwise proof development",
+
+  "long_description": "The 'holes' skill centralizes knowledge about Narya's hole mechanism - the fundamental tool for interactive proof development. Holes enable stepwise refinement of proofs, constraint visualization, and iterative proof construction.",
+
+  "capabilities": [
+    "Interactive hole syntax (? and ¿...ʔ regions)",
+    "Hole context and type display",
+    "Solving holes with C-c SPC in ProofGeneral",
+    "Splitting on holes with C-c C-y",
+    "Multiple hole subdivisions with ! delimiter",
+    "Hole-driven proof development workflow",
+    "Case trees and case tree holes",
+    "Constraint postponement patterns"
+  ],
+
+  "dependencies": [
+    "narya-core",
+    "proof-assistant-patterns",
+    "interactive-development"
+  ],
+
+  "key_theorems": [
+    "hole_preserves_typechecking",
+    "hole_as_axiom_generalized",
+    "constraint_dependent_arguments_fail",
+    "case_tree_holes_dont_reduce"
+  ],
+
+  "documentation": {
+    "quick_start": "Use ? or ¿...ʔ to mark places in proofs where you want to fill in terms later. Narya will display hole types and contexts.",
+
+    "hole_syntax": {
+      "simple": "? - Single character hole, its own token",
+      "region": "¿...ʔ - Region hole, preserves interior text, supports nested holes"
+    },
+
+    "hole_properties": {
+      "does_not_synthesize": "Holes check against any type but don't infer types",
+      "treated_as_axioms": "Holes generalized over their context",
+      "equality_constraints": "Holes fail if there are equality constraints on their fillers",
+      "dependent_argument_restriction": "Cannot place holes in dependent positions (where output type depends on hole value)"
+    },
+
+    "interactive_solving": {
+      "emacs_commands": {
+        "C-c_C-j": "Jump to next hole",
+        "C-c_C-k": "Jump to previous hole",
+        "C-c_comma": "Display hole context and type",
+        "C-c_SPC": "Solve current hole with term in region",
+        "C-c_C-y": "Split on hole (generate structure from type)",
+        "C-c_colon": "Synthesize type of term in hole",
+        "C-c_semicolon": "Normalize term in hole"
+      },
+
+      "text_mode_solving": {
+        "command": "solve N ≔ TERM",
+        "show_hole": "show hole N",
+        "show_all": "show holes"
+      }
+    },
+
+    "multiple_subdivisions": {
+      "delimiter": "!",
+      "use_case": "Work on multiple parts of a term simultaneously",
+      "example": "¿ f ! a ! b ʔ subdivides into [f], [a], [b]",
+      "nesting": "Nested holes preserve their subdivisions independently"
+    },
+
+    "splitting_on_holes": {
+      "command": "C-c C-y (ProofGeneral) or split N ≔ M (text)",
+      "generates_structures": [
+        "Match expressions from datatypes",
+        "Abstractions from function types",
+        "Tuples from record types",
+        "Comatches from codata types",
+        "Constructor applications for single-constructor types"
+      ]
+    },
+
+    "case_tree_holes": {
+      "definition": "Holes in positions where case trees are valid",
+      "behavior": "Evaluation stops at case tree holes (don't reduce)",
+      "display": "Shows function name and arguments clearly",
+      "reparseable": "Shows as function rather than ?N{...}"
+    },
+
+    "hole_solving_side_effects": {
+      "cannot_undo": "Hole solving is 'outside the timestream'",
+      "alters_previously_executed_command": "Changes executed command retroactively",
+      "persists_through_command_undo": "Hole solutions remain even if command undone",
+      "emacs_undo_retracts_to_hole": "Emacs undo C-/ retracts past hole-containing command"
+    }
+  },
+
+  "patterns": {
+    "proof_development_workflow": [
+      "1. Write theorem statement with hole ?",
+      "2. Check hole type and context (C-c ,)",
+      "3. Split on hole (C-c C-y) to generate structure",
+      "4. Fill subgoals iteratively",
+      "5. Verify complete proof (C-c C-n on next command)"
+    ],
+
+    "avoiding_dependent_argument_failures": [
+      "Cannot use holes in positions affecting output type",
+      "Example FAIL: concat A ? ? ? ? ? (result type has ?'s)",
+      "Example OK: concat A a ? b ? ? (others don't affect output type)",
+      "Strategy: Provide non-dependent arguments explicitly, use ? for rest"
+    ],
+
+    "multiple_hole_management": [
+      "Use ! delimiter for related subterms",
+      "Emacs highlights multiple subdivisions",
+      "C-c SPC prompts which to use",
+      "Can concatenate (f ! a ! b → f a b)",
+      "Useful for function + arguments discovery"
+    ]
+  },
+
+  "examples": {
+    "basic_hole": "def my_proof : P := ?",
+
+    "region_hole": "def my_proof : P := ¿ something here ʔ",
+
+    "multiple_holes": "def f (a : A) : B := ?, def g := ?",
+
+    "hole_with_subdivisions": "def proof := ¿ function_name ! arg1 ! arg2 ʔ",
+
+    "split_example": "-- At hole ?, press C-c C-y to split on datatype",
+
+    "dependent_restriction_fail": [
+      "-- FAIL: Cannot use hole in dependent position",
+      "concat A ? ? ? ? ?  -- Type is Id A ? ? (has ?'s)",
+      "-- OK: Provide non-dependent arguments",
+      "concat A a ? b ? ?  -- Type is Id A a b (known)"
+    ]
+  },
+
+  "references": {
+    "narya_documentation": "https://arb.site/narya/",
+    "holes_section": "https://arb.site/narya/interactive.html#holes",
+    "solving_holes": "https://arb.site/narya/interactive.html#solving-holes",
+    "splitting": "https://arb.site/narya/interactive.html#splitting-in-holes",
+    "github": "https://github.com/RedPRL/narya"
+  },
+
+  "phase_integration": {
+    "phase_a1": "Used extensively in BridgeType.lean and EcosystemBridgeType.lean (11 holes for proof stubs)",
+    "phase_a2": "Used in ValveMechanism.lean, FilterMechanism.lean, ResurrectorMechanism.lean",
+    "phase_a3": "Mechanism composition proofs will use holes for proof structure",
+    "phase_b": "Music-topos instantiation - harmonic constraint proofs use holes",
+    "phase_c": "Emmy-SICM instantiation - mechanical constraint proofs use holes"
+  },
+
+  "proof_stubs_in_ecosystem": {
+    "total_holes": 11,
+    "by_file": {
+      "BridgeType.lean": 6,
+      "EcosystemBridgeType.lean": 4,
+      "ValveMechanism.lean": 1
+    },
+    "next_round": {
+      "FilterMechanism.lean": "5 holes ready",
+      "ResurrectorMechanism.lean": "5 holes ready"
+    }
+  },
+
+  "workflow_commands": {
+    "check_all_holes": "grep -n 'sorry' formalization/*.lean",
+    "view_hole_structure": "cat formalization/BridgeType.lean | grep -A3 'sorry'",
+    "solve_hole_sequence": "Start with simplest holes first (arithmetic proofs), work toward complex ones"
+  }
+}

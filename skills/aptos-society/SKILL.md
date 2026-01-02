@@ -1,3 +1,9 @@
+---
+name: aptos-society
+description: 'Aptos Society Scale'
+version: 1.0.0
+---
+
 # Aptos Society Scale
 
 **Trit**: 0 (ERGODIC - coordinator)

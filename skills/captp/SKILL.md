@@ -1,3 +1,9 @@
+---
+name: captp
+description: 'CapTP: Capability Transfer Protocol'
+version: 1.0.0
+---
+
 # CapTP: Capability Transfer Protocol
 
 **Trit**: 0 (ERGODIC - transports capabilities without amplification)

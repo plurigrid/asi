@@ -1,3 +1,9 @@
+---
+name: boneh-roughgarden-wev
+description: 'Boneh-Roughgarden WEV Skill'
+version: 1.0.0
+---
+
 # Boneh-Roughgarden WEV Skill
 
 > **Trit**: 0 (ERGODIC) - Mechanism design at equilibrium

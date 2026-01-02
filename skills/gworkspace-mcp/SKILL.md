@@ -1,3 +1,9 @@
+---
+name: gworkspace-mcp
+description: 'gworkspace-mcp - Google Workspace MCP Integration with Temporal Consistency'
+version: 1.0.0
+---
+
 # gworkspace-mcp - Google Workspace MCP Integration with Temporal Consistency
 
 ## Overview

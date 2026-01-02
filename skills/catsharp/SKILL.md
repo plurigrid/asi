@@ -1,3 +1,9 @@
+---
+name: catsharp
+description: 'Cat# Skill (ERGODIC 0)'
+version: 1.0.0
+---
+
 # Cat# Skill (ERGODIC 0)
 
 > "All Concepts are Cat#" — Spivak (ACT 2023)

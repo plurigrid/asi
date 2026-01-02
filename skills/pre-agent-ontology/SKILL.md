@@ -1,3 +1,9 @@
+---
+name: pre-agent-ontology
+description: 'Pre-Agent Ontology Skill'
+version: 1.0.0
+---
+
 # Pre-Agent Ontology Skill
 
 **Trit**: 0 (ERGODIC - coordinates the ontology)

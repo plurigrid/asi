@@ -1,3 +1,9 @@
+---
+name: resource-sharing
+description: 'Resource Sharing Skill'
+version: 1.0.0
+---
+
 # Resource Sharing Skill
 
 > Distribute computational load across machines using GF(3) balanced allocation

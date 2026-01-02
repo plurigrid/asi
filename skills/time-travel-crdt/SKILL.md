@@ -1,3 +1,9 @@
+---
+name: time-travel-crdt
+description: 'Time Travel CRDT Skill'
+version: 1.0.0
+---
+
 # Time Travel CRDT Skill
 
 > *"Time is of the essence — but the essence is not time."*
