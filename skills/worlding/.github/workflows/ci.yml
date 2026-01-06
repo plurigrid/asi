@@ -1,0 +1,56 @@
+name: Worlding Skill CI
+
+on:
+  push:
+    paths:
+      - 'skills/worlding/**'
+  pull_request:
+    paths:
+      - 'skills/worlding/**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+      
+      - name: Run Worlding Skill Tests
+        working-directory: skills/worlding
+        run: julia test/runtests.jl
+      
+      - name: Verify GF(3) Conservation
+        working-directory: skills/worlding
+        run: |
+          # Check that trit: 0 is set in SKILL.md
+          grep -q "trit: 0" SKILL.md && echo "✅ GF(3) trit verified"
+      
+      - name: Check world_ Pattern Compliance
+        working-directory: skills/worlding
+        run: |
+          # Verify no demo_ functions in Julia files
+          ! grep -r "function demo_" *.jl && echo "✅ No demo_ functions found"
+      
+      - name: Validate Narya Syntax
+        working-directory: skills/worlding
+        run: |
+          # Basic syntax check for .ny files
+          for f in *.ny; do
+            if [ -f "$f" ]; then
+              # Check balanced braces
+              OPEN=$(grep -o '{' "$f" | wc -l)
+              CLOSE=$(grep -o '}' "$f" | wc -l)
+              if [ "$OPEN" -eq "$CLOSE" ]; then
+                echo "✅ $f: balanced braces ($OPEN pairs)"
+              else
+                echo "❌ $f: unbalanced braces (open=$OPEN, close=$CLOSE)"
+                exit 1
+              fi
+            fi
+          done

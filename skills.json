@@ -1,7 +1,7 @@
 {
   "version": "1.6.0",
-  "updated": "2025-12-27T08:55:56.805799Z",
-  "total": 70,
+  "updated": "2026-01-02T00:17:43Z",
+  "total": 71,
   "skills": [
     {
       "name": "autopoiesis",
@@ -697,7 +697,7 @@
     },
     {
       "name": "gay-mcp",
-      "description": "Deterministic color generation with SplitMix64, GF(3) trits, and MCP tools for palettes and threads. Same seed \u2192 Same colors (SPI guarantee).",
+      "description": "Deterministic color generation with SplitMix64, GF(3) trits, and MCP tools for palettes and threads. Same seed → Same colors (SPI guarantee).",
       "category": "ai-agents",
       "author": "plurigrid",
       "source": "plurigrid/asi",
@@ -1013,6 +1013,22 @@
         "mlx-lm",
         "numpy"
       ]
+    },
+    {
+      "name": "mitm",
+      "description": "Track and summarize man-in-the-middle mentions across local corpora and history; use for audits, searches, and reporting.",
+      "category": "infrastructure",
+      "author": "plurigrid",
+      "source": "plurigrid/asi",
+      "license": "MIT",
+      "path": "skills/mitm",
+      "stars": 0,
+      "downloads": 0,
+      "featured": false,
+      "verified": false,
+      "dependencies": [
+        "duckdb"
+      ]
     }
   ],
   "categories": [
@@ -1095,6 +1111,6 @@
         ]
       }
     ],
-    "gf3_conservation": "sum(agent.trit for agent in agents) \u2261 0 (mod 3)"
+    "gf3_conservation": "sum(agent.trit for agent in agents) ≡ 0 (mod 3)"
   }
 }

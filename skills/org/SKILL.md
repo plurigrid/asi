@@ -48,6 +48,17 @@ C-c '     Edit src block
 (org-export-dispatch)  ; C-c C-e
 ```
 
+## Conceptual distinction and mapping
+
+The logical leap is from the concrete org-mode syntax to the abstract Org category: org-mode is an Emacs implementation, while Org is the categorical structure the syntax realizes.
+
+- Org (Category): abstract category of outline structures.
+- org-mode (Emacs): concrete implementation and interaction layer.
+- Analogy: org-mode : Org :: justfile : just (Just monad as execution context).
+- Structure / Outliner: headings define a tree; links add cross-edges.
+- Cat-enriched operad: headings act as operations; nesting composes operations.
+- Morphisms: links between headings; Poly(p₁⊗...⊗pₘ, q) types a heading from m inputs to one output.
+
 
 
 ## Scientific Skill Interleaving
