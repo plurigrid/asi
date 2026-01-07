@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>69 Candidates • Hydra Flow Grokking</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <style>
+    body { margin: 0; background: #050508; overflow: hidden; font-family: monospace; }
+    #info { position: fixed; top: 10px; left: 10px; color: #888; font-size: 11px; z-index: 100; max-width: 350px; }
+    #temp { position: fixed; top: 10px; right: 10px; color: #c850c0; font-size: 14px; z-index: 100; text-align: right; }
+    #legend { position: fixed; bottom: 10px; left: 10px; color: #666; font-size: 10px; z-index: 100; }
+    input[type=range] { width: 200px; }
+  </style>
+</head>
+<body>
+  <div id="info">
+    <div style="color:#c850c0; font-size:14px; margin-bottom:8px;">69 CANDIDATES • HYDRA FLOW GROKKING</div>
+    <div style="margin-bottom:5px;">Temperature: <input type="range" id="tempSlider" min="0.01" max="2" step="0.01" value="0.69" oninput="updateTemp(this.value)"></div>
+    <div id="tempValue" style="color:#ff6b6b;">τ = 0.69</div>
+    <div style="margin-top:10px; color:#555; font-size:9px;">
+      Information × Agency × Energy = Distance<br>
+      Click candidates to hear their trit signature
+    </div>
+  </div>
+  <div id="temp">
+    <div id="clustering"></div>
+    <div id="entropy" style="font-size:11px; color:#666;"></div>
+  </div>
+  <div id="legend">
+    🔴 SOURCE (+1) &nbsp; 🟢 TRANSFORM (0) &nbsp; 🔵 BLEND/MOD (-1)<br>
+    Size = Energy | Orbit = Agency | Color = Information
+  </div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// HYDRA FUNCTION TAXONOMY → 69 CANDIDATES
+// ═══════════════════════════════════════════════════════════════════════════
+
+const HYDRA_FUNCTIONS = {
+  // SOURCES (+1) - Generate information, high agency, create energy
+  source: {
+    trit: 1,
+    functions: ['noise', 'voronoi', 'osc', 'shape', 'gradient', 'src', 'solid', 'prev'],
+    energy: 1.0,
+    agency: 0.9,
+    information: 0.8
+  },
+  
+  // GEOMETRY (0) - Transform, moderate agency, conserve energy
+  geometry: {
+    trit: 0,
+    functions: ['rotate', 'scale', 'pixelate', 'repeat', 'repeatX', 'repeatY', 'kaleid', 'scroll', 'scrollX', 'scrollY'],
+    energy: 0.6,
+    agency: 0.5,
+    information: 0.5
+  },
+  
+  // COLOR (0) - Transform color space, low agency, conserve energy
+  color: {
+    trit: 0,
+    functions: ['posterize', 'shift', 'invert', 'contrast', 'brightness', 'luma', 'thresh', 'color', 'saturate', 'hue', 'colorama', 'sum', 'r', 'g', 'b', 'a'],
+    energy: 0.4,
+    agency: 0.3,
+    information: 0.7
+  },
+  
+  // BLEND (-1) - Consume/combine, reduce agency, dissipate energy
+  blend: {
+    trit: -1,
+    functions: ['add', 'sub', 'layer', 'blend', 'mult', 'diff', 'mask'],
+    energy: 0.7,
+    agency: 0.2,
+    information: 0.6
+  },
+  
+  // MODULATE (-1) - Feedback loops, complex agency, transform energy
+  modulate: {
+    trit: -1,
+    functions: ['modulateRepeat', 'modulateRepeatX', 'modulateRepeatY', 'modulateKaleid', 
+                'modulateScrollX', 'modulateScrollY', 'modulate', 'modulateScale', 
+                'modulatePixelate', 'modulateRotate', 'modulateHue'],
+    energy: 0.8,
+    agency: 0.7,
+    information: 0.9
+  },
+  
+  // EXTERNAL (-1) - Input from outside, receive information
+  external: {
+    trit: -1,
+    functions: ['initCam', 'initImage', 'initVideo', 'init', 'initStream', 'initScreen'],
+    energy: 0.5,
+    agency: 0.1,
+    information: 1.0
+  },
+  
+  // SYNTH (+1) - Control outputs, high agency
+  synth: {
+    trit: 1,
+    functions: ['render', 'update', 'setResolution', 'hush', 'setFunction', 'speed', 'bpm', 'out'],
+    energy: 0.3,
+    agency: 1.0,
+    information: 0.4
+  },
+  
+  // ARRAY (0) - Temporal modulation
+  array: {
+    trit: 0,
+    functions: ['fast', 'smooth', 'ease', 'offset', 'fit'],
+    energy: 0.5,
+    agency: 0.4,
+    information: 0.3
+  },
+  
+  // AUDIO (-1) - External signal input
+  audio: {
+    trit: -1,
+    functions: ['fft', 'setSmooth', 'setCutoff', 'setBins', 'setScale', 'hide', 'show'],
+    energy: 0.6,
+    agency: 0.2,
+    information: 0.8
+  }
+};
+
+// Build 69 candidates from Hydra functions
+let candidates = [];
+let candidateIndex = 0;
+
+for (let category in HYDRA_FUNCTIONS) {
+  let cat = HYDRA_FUNCTIONS[category];
+  for (let func of cat.functions) {
+    if (candidateIndex >= 69) break;
+    candidates.push({
+      id: candidateIndex,
+      name: func,
+      category: category,
+      trit: cat.trit,
+      energy: cat.energy + Math.random() * 0.2 - 0.1,
+      agency: cat.agency + Math.random() * 0.2 - 0.1,
+      information: cat.information + Math.random() * 0.2 - 0.1,
+      x: 0, y: 0, vx: 0, vy: 0,
+      targetX: 0, targetY: 0,
+      cluster: -1
+    });
+    candidateIndex++;
+  }
+}
+
+// Pad to 69 if needed
+while (candidates.length < 69) {
+  let i = candidates.length;
+  candidates.push({
+    id: i,
+    name: `φ${i}`,  // Golden candidates
+    category: 'phi',
+    trit: [1, 0, -1][i % 3],
+    energy: Math.random(),
+    agency: Math.random(),
+    information: Math.random(),
+    x: 0, y: 0, vx: 0, vy: 0,
+    targetX: 0, targetY: 0,
+    cluster: -1
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DISTANCE METRICS (69 possible ways to measure)
+// ═══════════════════════════════════════════════════════════════════════════
+
+const DISTANCE_METRICS = [
+  // Information-theoretic
+  (a, b) => Math.abs(a.information - b.information),
+  (a, b) => -a.information * Math.log2(b.information + 0.01),  // KL-like
+  (a, b) => Math.abs(a.information * a.agency - b.information * b.agency),
+  
+  // Agency-based
+  (a, b) => Math.abs(a.agency - b.agency),
+  (a, b) => 1 - Math.min(a.agency, b.agency) / Math.max(a.agency, b.agency),
+  (a, b) => Math.abs(a.agency * a.trit - b.agency * b.trit),
+  
+  // Energy-based
+  (a, b) => Math.abs(a.energy - b.energy),
+  (a, b) => Math.abs(a.energy ** 2 - b.energy ** 2),
+  (a, b) => Math.abs(Math.sqrt(a.energy) - Math.sqrt(b.energy)),
+  
+  // Trit-based (GF(3))
+  (a, b) => Math.abs(a.trit - b.trit),
+  (a, b) => ((a.trit - b.trit + 3) % 3),  // GF(3) distance
+  (a, b) => a.trit === b.trit ? 0 : 1,  // Discrete
+  
+  // Combined
+  (a, b) => Math.sqrt((a.information - b.information)**2 + (a.agency - b.agency)**2 + (a.energy - b.energy)**2),
+  (a, b) => Math.abs(a.information + a.agency + a.energy - b.information - b.agency - b.energy) / 3,
+  (a, b) => Math.max(Math.abs(a.information - b.information), Math.abs(a.agency - b.agency), Math.abs(a.energy - b.energy)),
+  
+  // Thermodynamic
+  (a, b) => Math.abs(a.energy * a.information - b.energy * b.information),  // Free energy
+  (a, b) => Math.abs(-a.information * Math.log2(a.agency + 0.01) + b.information * Math.log2(b.agency + 0.01)),  // Entropy-like
+  
+  // Spectral gap inspired
+  (a, b) => 1 - Math.exp(-Math.abs(a.information - b.information) / temperature),
+  
+  // PLR-inspired (triadic)
+  (a, b) => (Math.abs(a.trit - b.trit) + Math.abs(a.information - b.information)) / 2,
+  
+  // Categorical
+  (a, b) => a.category === b.category ? 0 : 1,
+];
+
+// Fill to 69 metrics with variations
+while (DISTANCE_METRICS.length < 69) {
+  let i = DISTANCE_METRICS.length;
+  let base = DISTANCE_METRICS[i % 20];
+  DISTANCE_METRICS.push((a, b) => {
+    let d = base(a, b);
+    return d * (1 + 0.1 * Math.sin(i));  // Variation
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// TEMPERATURE & CLUSTERING
+// ═══════════════════════════════════════════════════════════════════════════
+
+let temperature = 0.69;  // τ = 0.69 (nice)
+let currentMetricIndex = 0;
+let clusters = [];
+let clusterCenters = [];
+
+function updateTemp(val) {
+  temperature = parseFloat(val);
+  document.getElementById('tempValue').innerText = `τ = ${temperature.toFixed(2)}`;
+  recluster();
+}
+
+function distance(a, b) {
+  // Temperature-weighted ensemble of metrics
+  let d = 0;
+  let weights = 0;
+  
+  for (let i = 0; i < Math.min(7, DISTANCE_METRICS.length); i++) {
+    let w = Math.exp(-i / (temperature * 10));
+    d += w * DISTANCE_METRICS[(currentMetricIndex + i) % 69](a, b);
+    weights += w;
+  }
+  
+  return d / weights;
+}
+
+function softmax(distances, tau) {
+  let exps = distances.map(d => Math.exp(-d / tau));
+  let sum = exps.reduce((a, b) => a + b, 0);
+  return exps.map(e => e / sum);
+}
+
+function recluster() {
+  // Number of clusters based on temperature (low temp = more clusters)
+  let k = Math.floor(3 + (1 - temperature) * 6);
+  k = Math.max(2, Math.min(9, k));
+  
+  // Initialize cluster centers
+  clusterCenters = [];
+  for (let i = 0; i < k; i++) {
+    clusterCenters.push(candidates[Math.floor(Math.random() * 69)]);
+  }
+  
+  // K-means with temperature-softened assignment
+  for (let iter = 0; iter < 10; iter++) {
+    // Assign candidates to clusters
+    for (let c of candidates) {
+      let distances = clusterCenters.map(center => distance(c, center));
+      let probs = softmax(distances, temperature);
+      
+      // Stochastic assignment at high temp, deterministic at low temp
+      if (temperature > 0.5) {
+        let r = Math.random();
+        let cumsum = 0;
+        for (let i = 0; i < probs.length; i++) {
+          cumsum += probs[i];
+          if (r < cumsum) {
+            c.cluster = i;
+            break;
+          }
+        }
+      } else {
+        c.cluster = distances.indexOf(Math.min(...distances));
+      }
+    }
+    
+    // Update centers (take mean of each dimension)
+    for (let i = 0; i < k; i++) {
+      let members = candidates.filter(c => c.cluster === i);
+      if (members.length > 0) {
+        clusterCenters[i] = {
+          information: members.reduce((s, m) => s + m.information, 0) / members.length,
+          agency: members.reduce((s, m) => s + m.agency, 0) / members.length,
+          energy: members.reduce((s, m) => s + m.energy, 0) / members.length,
+          trit: Math.round(members.reduce((s, m) => s + m.trit, 0) / members.length)
+        };
+      }
+    }
+  }
+  
+  // Calculate cluster entropy
+  let clusterSizes = [];
+  for (let i = 0; i < k; i++) {
+    clusterSizes.push(candidates.filter(c => c.cluster === i).length);
+  }
+  let entropy = 0;
+  for (let size of clusterSizes) {
+    if (size > 0) {
+      let p = size / 69;
+      entropy -= p * Math.log2(p);
+    }
+  }
+  
+  document.getElementById('clustering').innerText = `${k} clusters`;
+  document.getElementById('entropy').innerText = `H = ${entropy.toFixed(2)} bits`;
+  
+  // Update target positions based on clusters
+  updatePositions();
+}
+
+function updatePositions() {
+  let clusterPositions = [];
+  let k = clusterCenters.length;
+  
+  for (let i = 0; i < k; i++) {
+    let angle = (i / k) * TWO_PI - PI / 2;
+    let radius = min(width, height) * 0.3;
+    clusterPositions.push({
+      x: width / 2 + cos(angle) * radius,
+      y: height / 2 + sin(angle) * radius
+    });
+  }
+  
+  for (let c of candidates) {
+    if (c.cluster >= 0 && c.cluster < clusterPositions.length) {
+      let cp = clusterPositions[c.cluster];
+      // Spread within cluster based on energy/agency
+      let spread = 50 + c.energy * 50;
+      let angle = c.id * 0.5;
+      c.targetX = cp.x + cos(angle) * spread * c.agency;
+      c.targetY = cp.y + sin(angle) * spread * c.agency;
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// AUDIO
+// ═══════════════════════════════════════════════════════════════════════════
+
+let audioCtx;
+
+function initAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+
+function playCandidate(c) {
+  initAudio();
+  
+  // Frequency based on information
+  let baseFreq = 200 + c.information * 400;
+  
+  // Duration based on energy
+  let duration = 0.1 + c.energy * 0.3;
+  
+  // Waveform based on trit
+  let type = c.trit === 1 ? 'sine' : (c.trit === 0 ? 'triangle' : 'square');
+  
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  
+  osc.type = type;
+  osc.frequency.value = baseFreq;
+  
+  // Agency affects volume
+  gain.gain.setValueAtTime(0.1 + c.agency * 0.15, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+  
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(audioCtx.currentTime + duration);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// p5.js VISUALIZATION
+// ═══════════════════════════════════════════════════════════════════════════
+
+let hovered = null;
+let time = 0;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  textFont('monospace');
+  
+  // Initialize positions
+  for (let c of candidates) {
+    c.x = random(width);
+    c.y = random(height);
+    c.targetX = c.x;
+    c.targetY = c.y;
+  }
+  
+  recluster();
+}
+
+function draw() {
+  background(5, 5, 8, 50);
+  time += 0.01;
+  
+  // Cycle through metrics slowly
+  if (frameCount % 300 === 0) {
+    currentMetricIndex = (currentMetricIndex + 1) % 69;
+    recluster();
+  }
+  
+  // Draw connections between nearby candidates
+  stroke(30, 30, 40, 100);
+  strokeWeight(0.5);
+  for (let i = 0; i < candidates.length; i++) {
+    for (let j = i + 1; j < candidates.length; j++) {
+      let d = distance(candidates[i], candidates[j]);
+      if (d < temperature * 0.5) {
+        let alpha = map(d, 0, temperature * 0.5, 80, 0);
+        stroke(100, 100, 150, alpha);
+        line(candidates[i].x, candidates[i].y, candidates[j].x, candidates[j].y);
+      }
+    }
+  }
+  
+  // Update and draw candidates
+  hovered = null;
+  
+  for (let c of candidates) {
+    // Physics: move toward target with temperature-based jitter
+    let dx = c.targetX - c.x;
+    let dy = c.targetY - c.y;
+    c.vx += dx * 0.02;
+    c.vy += dy * 0.02;
+    
+    // Temperature adds jitter
+    c.vx += (Math.random() - 0.5) * temperature * 2;
+    c.vy += (Math.random() - 0.5) * temperature * 2;
+    
+    // Damping
+    c.vx *= 0.95;
+    c.vy *= 0.95;
+    
+    c.x += c.vx;
+    c.y += c.vy;
+    
+    // Agency affects orbit radius
+    let orbitRadius = c.agency * 20;
+    let orbitX = c.x + cos(time * (1 + c.id * 0.1)) * orbitRadius;
+    let orbitY = c.y + sin(time * (1 + c.id * 0.1)) * orbitRadius;
+    
+    // Size based on energy
+    let size = 8 + c.energy * 20;
+    
+    // Color based on trit and information
+    let col;
+    if (c.trit === 1) {
+      col = color(255, 80 + c.information * 100, 80);  // Red/orange
+    } else if (c.trit === 0) {
+      col = color(80, 255, 120 + c.information * 50);  // Green
+    } else {
+      col = color(80 + c.information * 50, 120, 255);  // Blue
+    }
+    
+    // Check hover
+    let d = dist(mouseX, mouseY, orbitX, orbitY);
+    if (d < size / 2 + 5) {
+      hovered = c;
+      size *= 1.5;
+    }
+    
+    // Draw candidate
+    noStroke();
+    fill(col);
+    
+    if (c.trit === 1) {
+      ellipse(orbitX, orbitY, size);
+    } else if (c.trit === 0) {
+      push();
+      translate(orbitX, orbitY);
+      rotate(time + c.id);
+      triangle(0, -size/2, -size/2, size/2, size/2, size/2);
+      pop();
+    } else {
+      push();
+      translate(orbitX, orbitY);
+      rotate(time * 0.5 + c.id);
+      rectMode(CENTER);
+      rect(0, 0, size * 0.7, size * 0.7);
+      pop();
+    }
+    
+    // Cluster ring
+    if (c.cluster >= 0) {
+      noFill();
+      stroke(col._getRed(), col._getGreen(), col._getBlue(), 50);
+      strokeWeight(1);
+      ellipse(orbitX, orbitY, size + 10);
+    }
+  }
+  
+  // Draw hover info
+  if (hovered) {
+    fill(20, 20, 30, 240);
+    stroke(100, 100, 150);
+    strokeWeight(1);
+    let boxW = 180;
+    let boxH = 90;
+    let boxX = mouseX + 15;
+    let boxY = mouseY - 45;
+    if (boxX + boxW > width) boxX = mouseX - boxW - 15;
+    if (boxY < 0) boxY = mouseY + 15;
+    
+    rect(boxX, boxY, boxW, boxH, 5);
+    
+    noStroke();
+    fill(200);
+    textSize(12);
+    textAlign(LEFT);
+    text(hovered.name, boxX + 10, boxY + 20);
+    
+    fill(120);
+    textSize(10);
+    text(`Category: ${hovered.category}`, boxX + 10, boxY + 35);
+    text(`Trit: ${hovered.trit > 0 ? '+1' : hovered.trit}`, boxX + 10, boxY + 48);
+    text(`I: ${hovered.information.toFixed(2)} | A: ${hovered.agency.toFixed(2)} | E: ${hovered.energy.toFixed(2)}`, boxX + 10, boxY + 61);
+    text(`Cluster: ${hovered.cluster}`, boxX + 10, boxY + 74);
+    
+    // Trit symbol
+    let sym = hovered.trit === 1 ? '🔴' : (hovered.trit === 0 ? '🟢' : '🔵');
+    textSize(16);
+    text(sym, boxX + boxW - 30, boxY + 22);
+  }
+  
+  // Draw center mandala
+  push();
+  translate(width/2, height/2);
+  noFill();
+  for (let i = 0; i < 3; i++) {
+    let r = 50 + i * 30;
+    let col = [color(255, 100, 100, 30), color(100, 255, 120, 30), color(100, 120, 255, 30)][i];
+    stroke(col);
+    strokeWeight(2);
+    ellipse(0, 0, r * 2 * (1 + sin(time + i) * 0.1));
+  }
+  
+  // GF(3) conservation indicator
+  let gf3Sum = candidates.reduce((s, c) => s + c.trit, 0);
+  let conserved = gf3Sum % 3 === 0;
+  fill(conserved ? color(100, 255, 150) : color(255, 100, 100));
+  textAlign(CENTER);
+  textSize(10);
+  text(`Σ = ${gf3Sum} ≡ ${((gf3Sum % 3) + 3) % 3}`, 0, 5);
+  pop();
+  
+  // Draw current metric indicator
+  fill(80);
+  textSize(10);
+  textAlign(LEFT);
+  text(`Metric ${currentMetricIndex + 1}/69`, 10, height - 50);
+}
+
+function mousePressed() {
+  initAudio();
+  if (hovered) {
+    playCandidate(hovered);
+  }
+}
+
+function keyPressed() {
+  if (key === ' ') {
+    currentMetricIndex = (currentMetricIndex + 1) % 69;
+    recluster();
+  }
+  if (key === 'r' || key === 'R') {
+    recluster();
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  updatePositions();
+}
+</script>
+</body>
+</html>

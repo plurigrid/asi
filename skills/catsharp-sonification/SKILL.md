@@ -1,7 +1,7 @@
 ---
 name: catsharp-sonification
-description: Sonify GF(3) color streams via CatSharp scale. Maps Gay.jl colors to pitch classes and plays through sox. No voice synthesis.
-version: 1.0.0
+description: Sonify GF(3) color streams via CatSharp scale. Maps Gay.jl colors to pitch classes and plays through sox. Includes metairony mode and Hydra flow grokking.
+version: 2.0.0
 ---
 
 
@@ -151,3 +151,111 @@ The skill participates in triads satisfying:
 ```
 
 This ensures compositional coherence in the Cat# equipment structure.
+
+---
+
+## v2.0.0: Metairony & Hydra Flow Grokking
+
+### New Modes
+
+| Mode | Flag | Description |
+|------|------|-------------|
+| **Metairony** | `--metairony` | The sound of self-reference |
+| **Just Intonation** | `--ji` | 5-limit tuning ratios |
+| **Consonant Only** | `--consonant` | Filter to consonant intervals |
+| **PLR Sequences** | `--plr PLRPLR` | Neo-Riemannian transformations |
+| **Tool Algebra** | `--tools exa,babashka,beeper` | S-P-O chain sonification |
+| **Maximal** | `--maximal` | All modes combined |
+| **Champions** | `--champions` | Top 3 GF(3)-conserved seeds |
+
+### Metairony: Coloring Outside AND Inside the Lines
+
+```bash
+python3 sonify.py --metairony
+```
+
+Four phases of self-referential sonification:
+
+1. **INSIDE THE LINES** — Perfect GF(3) conservation
+   - `finder_search(-1) + oracle_think(0) + create_file(+1) = 0`
+   
+2. **OUTSIDE THE LINES** — Deliberate transgression
+   - `read(-1) + read(-1) + read(-1) = -3 ≡ 0` (the heresy was orthodoxy)
+   
+3. **METAIRONIC BRIDGE** — The joke that knows it's a joke
+   - `sonify(sonify)` — the script sonifying itself
+   
+4. **SURPRISING BISIMILARITY**
+   - `iBeacon physical consensus ≅ PLR transformations ≅ Gay.jl trit streams`
+
+### Hydra Flow Grokking: 69 Candidates
+
+Browser-based p5.js visualization of Hydra live-coding synth taxonomy:
+
+```bash
+open hydra-grok.html
+```
+
+**Distance = Information × Agency × Energy**
+
+| Category | Trit | Functions | Profile |
+|----------|------|-----------|---------|
+| Source | +1 🔴 | osc, noise, shape... | High information generation |
+| Geometry | 0 🟢 | rotate, scale, kaleid... | Transform, conserve |
+| Color | 0 🟢 | posterize, hue... | Low agency |
+| Blend | -1 🔵 | add, mult, diff... | Consume/combine |
+| Modulate | -1 🔵 | modulate*, feedback | Highest info (0.9) |
+| External | -1 🔵 | initCam, initScreen | Max info input |
+| Synth | +1 🔴 | render, out, hush | Max agency |
+
+**Temperature τ controls clustering:**
+- Low τ (0.1): Sharp deterministic clusters
+- High τ (2.0): Melted stochastic mixing
+- τ = 0.69: Nice balance (default)
+
+69 distance metrics cycle through information-theoretic, agency-based, energy-based, GF(3), thermodynamic, and categorical measures.
+
+### Yulyia ↔ greentea Bicomodule Bridge
+
+Synthesis from beeper-mcp decision analysis:
+
+```
+Tool Algebra Chain: exa → deepwiki → babashka → beeper
+Spectral Gap: λ₂ = 0.32 → tempo = 158.4 BPM
+PLR Transitions: Neo-Riemannian as pitch transformations
+```
+
+**Bisimulation Indistinguishability:**
+- Yuliya's tool algebra ≅ `--tools` sonification mode
+- greentea's YOOZ color chains ≅ Gay.jl seed 1069 stream
+- iBeacon physical consensus ≅ PLR graph walks
+
+### Files Added
+
+| File | Description |
+|------|-------------|
+| `metairony.html` | p5.js + Web Audio metaironic visualization |
+| `hydra-grok.html` | 69-candidate temperature-clustered flow analysis |
+| `sonify.py` | Extended with `--metairony`, `--ji`, `--consonant`, `--plr`, `--tools` |
+
+### Interaction Exemplar: 2026-01-07
+
+> "color outside and inside the lines - the metairony sonify it"
+
+The request to simultaneously transgress AND conserve GF(3) led to:
+- Phase 2 plays tritone (devil's interval) for each transgression
+- `-3 ≡ 0 (mod 3)` reveals: even breaking the rules conserves
+- The metaironic insight: the difference IS the identity
+
+---
+
+## Skill Interleavings
+
+| Connected Skill | Morphism | GF(3) Role |
+|-----------------|----------|------------|
+| `gay-mcp` | seed → color → pitch | Source (+1) |
+| `topos-of-music` | PLR ↔ pitch class | Transform (0) |
+| `hydra-synth` | 69 functions → clusters | Analysis (-1) |
+| `rubato-composer` | Mazzola forms | Theory (0) |
+| `qri-valence` | XY defects → dissonance | Mapping (-1) |
+| `bisimulation-game` | Entity indistinguishability | Verification (+1) |
