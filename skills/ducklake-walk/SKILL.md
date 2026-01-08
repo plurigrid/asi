@@ -194,3 +194,8 @@ The skill participates in triads satisfying:
 ```
 
 This ensures compositional coherence in the Cat# equipment structure.
+
+
+## Forward Reference
+
+- unified-reafference (canonical cross-agent DuckDB schema)
