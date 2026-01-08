@@ -92,3 +92,7 @@ algebraic-rewriting (-1) ⊗ acsets-hatchery (0) ⊗ gay-monte-carlo (+1) = 0 �
 - `acsets-algebraic-databases` - Full ACSet guide
 - `specter-acset` - Bidirectional navigation
 - `world-a` - AlgebraicJulia ecosystem
+
+## Forward Reference
+
+- unified-reafference (ACSet schema consumer)
