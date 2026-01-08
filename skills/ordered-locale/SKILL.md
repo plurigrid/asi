@@ -148,6 +148,7 @@ def GF3Conserved (a b c : Trit) : Type :=
 - `segal-types` - Synthetic ∞-categories
 - `unworld` - Derivational chains
 - `triad-interleave` - Parallel triadic scheduling
+- `coequalizers` (0) - Sheaf gluing as dual of coequalizer
 
 ## References
 

@@ -568,6 +568,12 @@ verify:
 - [Towards Foundations of Categorical Cybernetics](https://arxiv.org/abs/2105.06332) - Capucci, Gavranović, Hedges, Rischel
 - [Bicategories of Automata, Automata in Bicategories](https://arxiv.org/pdf/2303.03865) - Boccali, Laretto, Loregian, Luneia (ACT 2023)
 
+## Related Skills
+
+- `coequalizers` (0) - Uses bisimulation to establish equivalence relations before quotienting
+- `temporal-coalgebra` (-1) - Coalgebraic bisimulation foundation
+- `oapply-colimit` (+1) - Composition via colimits
+
 ## r2con Speaker Resources
 
 | Speaker | Handle | Repository | Relevance |
