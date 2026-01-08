@@ -513,3 +513,7 @@ The skill participates in triads satisfying:
 ```
 
 This ensures compositional coherence in the Cat# equipment structure.
+
+## Forward Reference
+
+- unified-reafference (goose↔claude↔amp world transitions)

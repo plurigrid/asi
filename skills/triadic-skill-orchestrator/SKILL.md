@@ -209,3 +209,7 @@ The skill participates in triads satisfying:
 ```
 
 This ensures compositional coherence in the Cat# equipment structure.
+
+## Forward Reference
+
+- unified-reafference (B3 Poset triadic structure)
