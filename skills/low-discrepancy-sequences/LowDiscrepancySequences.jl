@@ -15,10 +15,11 @@ All sequences are bijective: (color, seed) → index n
 """
 module LowDiscrepancySequences
 
-export golden_angle_color, plastic_color, halton_color, r_sequence_color
+export golden_angle_color, plastic_color, halton_color, halton_hsl_color, r_sequence_color
 export kronecker_color, sobol_color, pisot_color, continued_fraction_color
 export invert_color, phi, phi2, plastic_constant
-export halton, van_der_corput, gray_code
+export halton, van_der_corput, gray_code, sobol_point, r_sequence_root
+export golden_ratio_cf, continued_fraction_convergent
 
 using Colors
 
