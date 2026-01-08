@@ -1,0 +1,298 @@
+#!/usr/bin/env julia
+
+# analyze_pairs_and_triplets.jl
+# Deep analysis of persistent pairs and relationship to 22 triplets
+
+using Printf
+
+struct Skill
+    name::String
+    trit::Int
+    role::String
+end
+
+function load_skills()::Vector{Skill}
+    csv_path = "/Users/bob/i/asi/skills/coequalizers/all_skill_trits.csv"
+    skills = Skill[]
+    
+    open(csv_path, "r") do f
+        readline(f)
+        for line in eachline(f)
+            parts = split(line, ',')
+            if length(parts) >= 3
+                push!(skills, Skill(String(parts[1]), parse(Int, parts[2]), String(parts[3])))
+            end
+        end
+    end
+    
+    return skills
+end
+
+function classify_meta_category(skill_name::String)::Symbol
+    if any(contains(skill_name, p) for p in ["topos", "catsharp", "cat", "sheaf", "yoneda", 
+                                               "adjunction", "kan", "operad", "monad", "comonad",
+                                               "fibration", "cohomology"])
+        return :CATEGORICAL
+    elseif any(contains(skill_name, p) for p in ["acset", "browser-history", "calendar", "drive",
+                                                   "protocol", "tasks", "docs"])
+        return :ACSETS
+    elseif any(contains(skill_name, p) for p in ["attractor", "bifurcation", "lyapunov", "hopf",
+                                                   "phase", "trajectory", "stability", "ergodic",
+                                                   "fokker-planck", "langevin", "koopman", "jacobian",
+                                                   "periodic", "chaotic", "saddle"])
+        return :DYNAMICAL
+    elseif any(contains(skill_name, p) for p in ["rewriting", "dpo", "adhesive", "pushout",
+                                                   "colimit", "coequalizer", "bisimulation", "graph-grafting"])
+        return :REWRITING
+    elseif any(contains(skill_name, p) for p in ["aptos", "anoma", "move", "goblins", "captp",
+                                                   "crdt", "consensus", "merkle", "iroh"])
+        return :BLOCKCHAIN
+    elseif any(contains(skill_name, p) for p in ["mcp", "beeper", "gay", "firecrawl", "deepwiki",
+                                                   "slack", "gmail", "google-workspace", "github",
+                                                   "tailscale", "signal"])
+        return :MCP_INTEGRATION
+    elseif any(contains(skill_name, p) for p in ["agent-o-rama", "skill", "triadic", "autopoiesis",
+                                                   "self-evolving", "orchestrator", "dispatch", "loader"])
+        return :META_ORCHESTRATION
+    else
+        return :OTHER
+    end
+end
+
+# Analyze all pairs (C(7,2) = 21 pairs)
+function analyze_pairs()
+    skills = load_skills()
+    
+    bundles = Dict{Symbol, Vector{Skill}}()
+    for skill in skills
+        category = classify_meta_category(skill.name)
+        if !haskey(bundles, category)
+            bundles[category] = Skill[]
+        end
+        push!(bundles[category], skill)
+    end
+    
+    sorted_categories = sort(collect(bundles), by=x->length(x[2]), rev=true)
+    core_7 = sorted_categories[1:7]
+    
+    println("=" ^ 70)
+    println("PAIR ANALYSIS: C(7,2) = 21 Pairwise Relationships")
+    println("=" ^ 70)
+    println()
+    
+    pair_count = 0
+    persistent_pairs = []
+    
+    n = length(core_7)
+    for i in 1:n
+        for j in (i+1):n
+            pair_count += 1
+            
+            cat_i, skills_i = core_7[i]
+            cat_j, skills_j = core_7[j]
+            
+            sum_i = sum(s.trit for s in skills_i)
+            sum_j = sum(s.trit for s in skills_j)
+            total_sum = sum_i + sum_j
+            mod3 = mod(total_sum, 3)
+            
+            # Check if agent-o-rama appears in either bundle
+            has_agent_i = any(s -> s.name == "agent-o-rama", skills_i)
+            has_agent_j = any(s -> s.name == "agent-o-rama", skills_j)
+            has_agent = has_agent_i || has_agent_j
+            
+            agent_marker = has_agent ? "🎯" : "  "
+            
+            @printf("%2d. %s %-22s ⊗ %-22s | Sum=%4d | Mod3=%d\n",
+                    pair_count, agent_marker,
+                    string(cat_i)[1:min(22,end)], string(cat_j)[1:min(22,end)],
+                    total_sum, mod3)
+            
+            # Track pairs with agent-o-rama
+            if has_agent
+                push!(persistent_pairs, (cat_i, cat_j, total_sum, mod3))
+            end
+        end
+    end
+    
+    println()
+    println("Total pairs: $pair_count")
+    println("Pairs containing agent-o-rama: $(length(persistent_pairs))")
+    println()
+    
+    if length(persistent_pairs) > 0
+        println("Persistent pairs (with agent-o-rama):")
+        for (i, (cat_i, cat_j, sum, mod3)) in enumerate(persistent_pairs)
+            @printf("  %d. %s ⊗ %s (sum=%d, mod3=%d)\n", 
+                    i, string(cat_i), string(cat_j), sum, mod3)
+        end
+        println()
+    end
+    
+    return core_7, persistent_pairs
+end
+
+# Generate expanded triplet space via composition
+function analyze_composition_triplets(core_7, persistent_pairs)
+    println("=" ^ 70)
+    println("COMPOSITIONAL TRIPLET GENERATION")
+    println("=" ^ 70)
+    println()
+    
+    println("Hypothesis: 22 triplets arise from composing 7 persistent pairs")
+    println()
+    
+    # For each persistent pair, find which third category balances it
+    balanced_triplets = []
+    
+    for (i, (cat_i, cat_j, pair_sum, pair_mod)) in enumerate(persistent_pairs)
+        println("Pair $i: $cat_i ⊗ $cat_j (sum=$pair_sum, mod3=$pair_mod)")
+        println("  Looking for third category to balance...")
+        
+        # Find which categories can balance this pair
+        for (cat_k, skills_k) in core_7
+            if cat_k != cat_i && cat_k != cat_j
+                sum_k = sum(s.trit for s in skills_k)
+                total = pair_sum + sum_k
+                mod3 = mod(total, 3)
+                
+                if mod3 == 0
+                    balanced = "✓"
+                    push!(balanced_triplets, (cat_i, cat_j, cat_k, total))
+                else
+                    balanced = "✗"
+                end
+                
+                @printf("    + %-22s (sum=%4d) → total=%4d, mod3=%d %s\n",
+                        string(cat_k)[1:min(22,end)], sum_k, total, mod3, balanced)
+            end
+        end
+        println()
+    end
+    
+    println("Generated $(length(balanced_triplets)) balanced triplets via composition")
+    println()
+    
+    return balanced_triplets
+end
+
+# Check for 22 via different construction
+function check_22_hypothesis(core_7)
+    println("=" ^ 70)
+    println("SEARCHING FOR 22-STRUCTURE")
+    println("=" ^ 70)
+    println()
+    
+    # Hypothesis 1: 22 = 7 base + 15 derived
+    println("Hypothesis 1: 22 = 7 (singletons) + 15 (pairwise products)")
+    println("  7 base meta-categories")
+    println("  C(7,2) = 21 pairs, but need only 15 with special property")
+    println()
+    
+    # Hypothesis 2: 22 = vertices of specific polytope
+    println("Hypothesis 2: 22 = vertices of hemi-icosahedron or Klein configuration")
+    println("  22 is uncommon in combinatorics unless:")
+    println("  - 22 = 2 × 11 (binary × prime)")
+    println("  - 22 = edges of dodecahedron (Platonic solid)")
+    println("  - 22 = points in specific projective configuration")
+    println()
+    
+    # Hypothesis 3: 22 from Kan filling
+    println("Hypothesis 3: 22 from 9 Kan horn fillings")
+    println("  9 Kan fillings → 9 × 2 = 18 + 4 extra")
+    println("  Or: 9 horns × (2 faces + 1 completion) = 27, reduced to 22")
+    println()
+    
+    # Count actual balanced structures
+    all_balanced = []
+    
+    # Singletons (7)
+    for (cat, skills) in core_7
+        sum_val = sum(s.trit for s in skills)
+        if mod(sum_val, 3) == 0
+            push!(all_balanced, (cat,))
+        end
+    end
+    
+    # Pairs (C(7,2) = 21)
+    n = length(core_7)
+    for i in 1:n
+        for j in (i+1):n
+            cat_i, skills_i = core_7[i]
+            cat_j, skills_j = core_7[j]
+            sum_val = sum(s.trit for s in skills_i) + sum(s.trit for s in skills_j)
+            if mod(sum_val, 3) == 0
+                push!(all_balanced, (cat_i, cat_j))
+            end
+        end
+    end
+    
+    # Triplets (C(7,3) = 35)
+    for i in 1:n
+        for j in (i+1):n
+            for k in (j+1):n
+                cat_i, skills_i = core_7[i]
+                cat_j, skills_j = core_7[j]
+                cat_k, skills_k = core_7[k]
+                sum_val = sum(s.trit for s in skills_i) + 
+                          sum(s.trit for s in skills_j) + 
+                          sum(s.trit for s in skills_k)
+                if mod(sum_val, 3) == 0
+                    push!(all_balanced, (cat_i, cat_j, cat_k))
+                end
+            end
+        end
+    end
+    
+    println("All GF(3)-balanced structures:")
+    println("  Singletons (k=1): $(count(x -> length(x) == 1, all_balanced))")
+    println("  Pairs (k=2): $(count(x -> length(x) == 2, all_balanced))")
+    println("  Triplets (k=3): $(count(x -> length(x) == 3, all_balanced))")
+    println("  Total: $(length(all_balanced))")
+    println()
+    
+    # Check specific totals
+    if count(x -> length(x) == 3, all_balanced) == 11
+        println("🎯 Found 11 balanced triplets (not 22)")
+        println("   Need to look beyond static GF(3) balance...")
+        println()
+        
+        println("Alternative: 22 = 11 triplets × 2 orientations")
+        println("  Each triplet has 2 canonical orderings?")
+        println("  Or: Each triplet has 2 Kan filling directions?")
+        println()
+    end
+    
+    return all_balanced
+end
+
+# Main
+function main()
+    println("🔄 COEQUALIZERS: PAIRS ↔ TRIPLETS ANALYSIS")
+    println()
+    
+    core_7, persistent_pairs = analyze_pairs()
+    
+    balanced_triplets = analyze_composition_triplets(core_7, persistent_pairs)
+    
+    all_balanced = check_22_hypothesis(core_7)
+    
+    println("=" ^ 70)
+    println("SUMMARY")
+    println("=" ^ 70)
+    println()
+    println("Meta-structure found:")
+    println("  • 7 core meta-bundles (categories)")
+    println("  • $(length(persistent_pairs)) pairs with agent-o-rama")
+    println("  • 11 GF(3)-balanced triplets")
+    println("  • 22 = ??? (still seeking)")
+    println()
+    println("Next steps:")
+    println("  1. Implement dynamic oscillation (not static count)")
+    println("  2. Track temporal evolution of skill relationships")
+    println("  3. Measure compositional patterns over application sequences")
+    println("  4. Check for 22 as emergent property, not structural property")
+    println()
+end
+
+main()

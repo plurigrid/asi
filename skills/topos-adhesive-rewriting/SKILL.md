@@ -381,6 +381,7 @@ just adhesive-benchmark QUERY STATE   # Compare incremental vs naive
 - `duckdb-temporal-versioning` (0) - Incremental updates in time-travel queries
 - `glass-bead-game` (0) - World hopping via pattern decomposition
 - `julia-gpu-kernels` (+1) - Parallel batch match finding
+- `coequalizers` (0) - Quotient redundant paths via pushout decomposition
 
 ---
 

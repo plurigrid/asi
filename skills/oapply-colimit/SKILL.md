@@ -119,7 +119,14 @@ diagram2 = wiring_diagram_of_sexp(sexp)
 ```
 schema-validation (-1) ⊗ acsets (0) ⊗ oapply-colimit (+1) = 0 ✓
 interval-presheaf (-1) ⊗ algebraic-dynamics (0) ⊗ oapply-colimit (+1) = 0 ✓
+bisimulation-game (-1) ⊗ coequalizers (0) ⊗ oapply-colimit (+1) = 0 ✓
 ```
+
+## Related Skills
+
+- `coequalizers` (0) - Uses pushout = coproduct + coequalizer decomposition
+- `bisimulation-game` (-1) - Behavioral equivalence for skill paths
+- `topos-adhesive-rewriting` (+1) - Incremental updates via coequalizers
 
 ## Koopman Integration
 

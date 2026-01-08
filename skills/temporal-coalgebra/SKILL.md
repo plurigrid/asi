@@ -171,10 +171,17 @@ game_result = obs.verify_game(three_match_gadget)
 Forms valid triads with ERGODIC (0) and PLUS (+1) skills:
 
 ```
+temporal-coalgebra (-1) ⊗ coequalizers (0) ⊗ topos-adhesive-rewriting (+1) = 0 ✓
 temporal-coalgebra (-1) ⊗ unworld (0) ⊗ gay-mcp (+1) = 0 ✓
 temporal-coalgebra (-1) ⊗ glass-bead-game (0) ⊗ cider-clojure (+1) = 0 ✓
 temporal-coalgebra (-1) ⊗ acsets (0) ⊗ rubato-composer (+1) = 0 ✓
 ```
+
+## Related Skills
+
+- `coequalizers` (0) - Uses coalgebraic bisimulation to establish behavioral equivalence before quotienting
+- `bisimulation-game` (-1) - Game-theoretic bisimulation testing
+- `topos-adhesive-rewriting` (+1) - Rewriting preserves observational equivalence
 
 ## Mathematical Foundation
 

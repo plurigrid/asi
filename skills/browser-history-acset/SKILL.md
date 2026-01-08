@@ -151,6 +151,12 @@ py-acset (0) ⊗ ACSets.jl (+1) ⊗ DuckDB (-1) = 0 ✓
 
 
 
+## Related Skills
+
+- `coequalizers` (0) - Path equivalence via coequalizer quotients
+- `acsets` (0) - ACSet foundations
+- `temporal-coalgebra` (-1) - Time-based path analysis
+
 ## Scientific Skill Interleaving
 
 This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
