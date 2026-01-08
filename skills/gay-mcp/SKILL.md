@@ -335,3 +335,14 @@ triplet = streams.next_triplet
 | pancake | trufae | [r2pipe](https://github.com/radareorg/r2pipe) | Scripted access to radare2 for color pipeline integration |
 | swoops | swoops | [libc_zignatures](https://github.com/swoops/libc_zignatures) | Signature similarity patterns inform color fingerprinting |
 ```
+
+## Patterns That Work
+
+- Deterministic color via SplitMix64
+- GF(3) trit derivation from hue
+- Cross-session fingerprint verification
+
+## Patterns to Avoid
+
+- Non-deterministic color generation
+- Ignoring seed provenance

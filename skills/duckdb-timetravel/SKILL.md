@@ -274,3 +274,15 @@ This ensures compositional coherence in the Cat# equipment structure.
 ## Forward Reference
 
 - unified-reafference (cross-universe coordination)
+
+
+## Patterns That Work
+
+- Temporal versioning with Bumpus sheaves
+- ACSet schema generation from categories
+- Cross-universe session alignment
+
+## Patterns to Avoid
+
+- Timestamp mixing without epoch conversion
+- Queries without GF(3) conservation checks

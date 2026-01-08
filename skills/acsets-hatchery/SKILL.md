@@ -96,3 +96,15 @@ algebraic-rewriting (-1) ⊗ acsets-hatchery (0) ⊗ gay-monte-carlo (+1) = 0 �
 ## Forward Reference
 
 - unified-reafference (ACSet schema consumer)
+
+
+## Patterns That Work
+
+- Schema-first database design
+- Morphism-based foreign keys
+- Integration with unified-reafference
+
+## Patterns to Avoid
+
+- Ad-hoc schema changes
+- Missing attribute type annotations
