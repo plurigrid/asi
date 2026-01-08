@@ -130,3 +130,15 @@ When Amp-Skill detects a high-rejection pattern:
 ## Forward Reference
 
 - unified-reafference (amp universe source)
+
+
+## Patterns That Work
+
+- Interruption pattern detection via file-changes
+- Cross-universe coordination with goose/claude
+- GF(3) role assignment (+1 PLUS generator)
+
+## Patterns to Avoid
+
+- Ignoring two-lock cascades
+- Missing revert tracking
