@@ -419,3 +419,7 @@ When `duckdb-quadruple-interleave` loads, consider auto-loading:
 **Trit**: 0 (ERGODIC - coordinates between pendula)
 **Dependencies**: duckdb, babashka, cheshire
 **Databases**: 12 DuckDB files across 4 clusters
+
+## Forward Reference
+
+- unified-reafference (interleaved session queries)
