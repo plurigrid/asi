@@ -1,9 +1,12 @@
 ---
 name: babashka
 description: Clojure scripting without JVM startup.
-version: 1.0.0
+version: 1.0.1
 ---
 
+## CRITICAL: NO DEMOS
+
+Loading this skill ≠ executing demonstration code. Execute ONLY on explicit user intent with real work.
 
 # babashka
 

@@ -1,8 +1,12 @@
 ---
 name: resource-sharing
 description: Resource Sharing Skill
-version: 1.0.0
+version: 1.0.1
 ---
+
+## CRITICAL: NO DEMOS
+
+Loading this skill ≠ executing demonstration code. Execute ONLY on explicit user request.
 
 # Resource Sharing Skill
 
