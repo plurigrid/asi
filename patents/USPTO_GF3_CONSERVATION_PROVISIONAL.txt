@@ -1,0 +1,154 @@
+PROVISIONAL APPLICATION FOR PATENT COVER SHEET
+
+Application Type: Provisional
+Title of Invention: Method and System for Triadic Conservation-Constrained Parallel Task Dispatch in Multi-Agent Systems
+
+INVENTOR(S):
+Inventor 1: ________________________________
+Residence: ________________________________
+Citizenship: ________________________________
+
+Inventor 2: ________________________________
+Residence: ________________________________
+Citizenship: ________________________________
+
+CORRESPONDENCE ADDRESS:
+________________________________
+________________________________
+________________________________
+
+ENTITY STATUS: [ ] Large [ ] Small [X] Micro
+
+FILING FEE: $320.00 (Micro Entity - 37 CFR 1.29)
+
+================================================================================
+SPECIFICATION
+================================================================================
+
+TITLE OF THE INVENTION
+
+Method and System for Triadic Conservation-Constrained Parallel Task Dispatch in Multi-Agent Systems
+
+CROSS-REFERENCE TO RELATED APPLICATIONS
+
+None.
+
+FIELD OF THE INVENTION
+
+[0001] The present invention relates to distributed computing systems, and more particularly to methods and systems for dispatching parallel tasks in multi-agent artificial intelligence systems using finite field conservation constraints.
+
+BACKGROUND OF THE INVENTION
+
+[0002] Multi-agent artificial intelligence (AI) systems increasingly require dispatching tasks across multiple parallel execution streams. Such systems include autonomous agent frameworks, distributed language model deployments, and cooperative robotics systems.
+
+[0003] Existing approaches to parallel task dispatch include round-robin scheduling, load-balancing algorithms, and stochastic allocation methods. However, these approaches lack mathematical invariants that guarantee system-wide coherence. Without such invariants, systems may experience:
+
+[0004] (a) Resource runaway, where execution streams proliferate without bound;
+[0005] (b) Role imbalance, where certain functional roles (e.g., validation) are underrepresented;
+[0006] (c) State inconsistency, where parallel streams produce conflicting outputs.
+
+[0007] There exists a need for a dispatch mechanism that enforces global invariants while permitting flexible local allocation.
+
+SUMMARY OF THE INVENTION
+
+[0008] The present invention provides a method and system for parallel task dispatch using a conservation law derived from the finite field GF(3). Each execution stream is assigned a trit value from the set {-1, 0, +1}, and dispatch is conditioned on maintaining a sum of zero modulo 3 across all active streams.
+
+[0009] In one embodiment, trit values encode semantic roles: validators (-1) check outputs and enforce invariants; coordinators (0) merge results and manage state; generators (+1) produce outputs and execute transformations.
+
+[0010] The conservation constraint ensures balanced resource utilization, prevents runaway allocation, and provides a verifiable mathematical invariant for system coherence.
+
+DETAILED DESCRIPTION OF THE INVENTION
+
+Trit Value Assignment
+
+[0011] Each parallel execution stream s is assigned a trit value trit(s) from the finite field GF(3), represented as the set {-1, 0, +1} with arithmetic performed modulo 3.
+
+[0012] In one embodiment, trit values carry semantic meaning:
+- MINUS (-1): Validator/constrainer stream that checks outputs and enforces invariants
+- ERGODIC (0): Coordinator/synthesizer stream that merges results and manages state
+- PLUS (+1): Generator/executor stream that produces outputs and executes transformations
+
+Conservation Law Enforcement
+
+[0013] At any dispatch time t, for the set of active streams S_t, the system maintains the invariant:
+
+    SUM(trit(s)) = 0 (mod 3) for all s in S_t
+
+[0014] When a request arrives to dispatch a new stream s_new with trit value trit(s_new):
+
+[0015] (a) If the current sum plus trit(s_new) equals 0 (mod 3), dispatch proceeds immediately.
+
+[0016] (b) If the current sum plus trit(s_new) does not equal 0 (mod 3), the dispatch controller either:
+    (i) Co-dispatches one or more compensating streams whose trit values restore conservation; or
+    (ii) Queues s_new until other stream terminations restore conservation.
+
+Deterministic Trit Derivation
+
+[0017] In one embodiment, stream trit values are derived deterministically from interaction context using the following method:
+
+    seed = HASH(interaction_context)
+    raw_trit = SplitMixTernary(seed) mod 3
+    trit = raw_trit - 1
+
+[0018] The SplitMixTernary function is a variant of the SplitMix pseudorandom generator adapted for ternary output. The HASH function may be any cryptographic hash function such as SHA-256 or BLAKE3.
+
+Resource Gating Integration
+
+[0019] In one embodiment, dispatch is further conditioned on a resource availability score computed as:
+
+    SCUM = w1*S + w2*C + w3*U + w4*M
+
+[0020] Where S represents system load, C represents context size, U represents user priority, M represents memory pressure, and w1 through w4 are configurable weights.
+
+[0021] Dispatch proceeds only if SCUM is below a configured threshold AND the conservation invariant holds.
+
+CLAIMS
+
+What is claimed is:
+
+1. A computer-implemented method for dispatching tasks to parallel execution streams in a multi-agent system, comprising:
+   (a) assigning each execution stream a trit value from the finite field GF(3), wherein GF(3) comprises the values {-1, 0, +1};
+   (b) maintaining an invariant that the sum of trit values across all active streams equals zero modulo 3; and
+   (c) conditioning task dispatch on preservation of said invariant.
+
+2. A system for parallel task execution comprising:
+   (a) a plurality of execution streams, each labeled with a trit value from the finite field GF(3);
+   (b) a dispatch controller configured to enforce triadic conservation across active streams by maintaining a sum of zero modulo 3; and
+   (c) a queue for tasks whose dispatch would violate conservation.
+
+3. A computer-implemented method for deterministic stream assignment comprising:
+   (a) deriving a seed from interaction context via a cryptographic hash function;
+   (b) applying a SplitMix-variant pseudorandom generator to said seed to produce a trit value; and
+   (c) using said trit value to assign a semantic role selected from the group consisting of validator, coordinator, and generator to the stream.
+
+4. The method of claim 1, wherein the trit values semantically encode stream roles as validator (-1), coordinator (0), or generator (+1).
+
+5. The method of claim 1, further comprising computing a resource availability score prior to dispatch and gating dispatch on both conservation and resource availability.
+
+6. The system of claim 2, wherein the dispatch controller is further configured to co-dispatch compensating streams to maintain conservation when required.
+
+7. The method of claim 1, wherein maintaining the invariant comprises:
+   (a) computing a current sum of trit values across active streams;
+   (b) upon receiving a dispatch request for a new stream, computing a prospective sum including the new stream's trit value; and
+   (c) permitting dispatch only if the prospective sum equals zero modulo 3.
+
+8. The method of claim 7, further comprising queuing dispatch requests that would violate conservation until stream terminations restore a zero sum.
+
+ABSTRACT
+
+A method and system for dispatching parallel tasks in multi-agent artificial intelligence systems using a conservation law derived from the finite field GF(3). Each execution stream is assigned a trit value (-1, 0, or +1), and dispatch is conditioned on maintaining a sum of zero modulo 3 across all active streams. This conservation constraint ensures balanced resource utilization, prevents runaway allocation, and provides a verifiable mathematical invariant for system coherence. Trit values encode semantic roles: validators constrain, coordinators synthesize, generators execute. The invention may be combined with resource gating to further condition dispatch on system availability.
+
+================================================================================
+END OF SPECIFICATION
+================================================================================
+
+MICRO ENTITY CERTIFICATION (37 CFR 1.29)
+
+The undersigned certifies:
+(1) The applicant qualifies as a small entity as defined in 37 CFR 1.27;
+(2) Neither the applicant nor any inventor nor any other individual who owns rights in the invention has been named as an inventor on more than four previously filed patent applications;
+(3) Neither the applicant nor any inventor nor any other individual who owns rights in the invention has a gross income exceeding 3x the median household income for the preceding calendar year; and
+(4) The applicant has not assigned, granted, or conveyed rights in the invention to an entity that does not meet the requirements of 37 CFR 1.29(a)(4).
+
+Signature: ________________________________
+Date: ________________________________
