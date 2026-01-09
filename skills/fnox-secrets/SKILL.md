@@ -1,21 +1,67 @@
 ---
 name: fnox-secrets
-description: fnox Secrets Management Skill
-version: 1.0.0
+description: fnox Secrets Management Skill - DIRECT PIPE ONLY
+version: 2.0.0
 ---
 
 # fnox Secrets Management Skill
 
 ```yaml
 name: fnox-secrets
-description: Secure secrets management with age encryption, root-protected keys, and GF(3) conservation via DuckDB/ACSet catalog
-version: 1.0.0
+description: Secure secrets management - SECRETS MUST NEVER BE EXPOSED IN CONTEXT
+version: 2.0.0
 trit: -1  # Validator/constrainer role in GF(3) triadic system
 ```
 
-## Overview
+## CRITICAL SECURITY RULE
 
-fnox is a secrets management tool that encrypts secrets with age and stores them in a git-safe `fnox.toml`. This skill documents the secure setup with root-protected keys and ACSet-aligned DuckDB catalog.
+**SECRETS MUST NEVER APPEAR IN CLAUDE'S CONTEXT OR OUTPUT.**
+
+The ONLY permitted pattern is direct piping into environment variables:
+
+```bash
+# CORRECT - secret never visible
+SECRET_NAME=$(fnox get SECRET_NAME --age-key-file ~/.age/key.txt) command_that_uses_it
+
+# FORBIDDEN - exposes secret to context
+fnox get SECRET_NAME --age-key-file ~/.age/key.txt  # NEVER DO THIS
+```
+
+## Permitted Operations
+
+### 1. Direct Pipe to Environment Variable
+
+```bash
+# Pipe secret directly into env var for a command
+MORPH_API_KEY=$(fnox get MORPH_API_KEY --age-key-file ~/.age/key.txt) uv run python script.py
+APTOS_KEY=$(fnox get APTOS_ALICE_KEY --age-key-file ~/.age/key.txt) aptos move run ...
+```
+
+### 2. List Secret Names (NOT values)
+
+```bash
+fnox list  # Shows names only, never values
+```
+
+### 3. Check Secret Exists
+
+```bash
+fnox list | grep -q SECRET_NAME && echo "exists"
+```
+
+### 4. Set a Secret (user provides value, not Claude)
+
+```bash
+fnox set SECRET_NAME --provider myage  # User enters value interactively
+```
+
+## FORBIDDEN Operations
+
+- `fnox get SECRET` without piping to a command
+- Storing secret output in a variable that gets logged
+- Printing, echoing, or displaying secret values
+- Including secrets in error messages or debug output
+- Any operation that would expose the secret in Claude's context
 
 ## Architecture
 
@@ -24,336 +70,63 @@ fnox is a secrets management tool that encrypts secrets with age and stores them
 │  FNOX SECURE ARCHITECTURE                                                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  /var/keys/age/key.txt ─────────┐   (root:wheel 600)                       │
+│  ~/.age/key.txt ────────────────┐                                          │
 │                                 │                                           │
 │                                 ▼                                           │
-│  fnox --age-key-file ──▶ DECRYPTS ──▶ ~/fnox.toml                          │
-│                                       (42 age-encrypted secrets)            │
-│                                                                             │
-│  ~/.config/keys/catalog.duckdb ◀──── ACSet-aligned catalog                 │
-│  ~/.config/keys/schema.jl ◀───────── Julia ACSet schema                    │
+│  fnox get ──▶ DECRYPTS ──▶ $(...) ──▶ ENV VAR ──▶ SUBPROCESS               │
+│                    │                                                        │
+│                    └──▶ NEVER TO STDOUT/CONTEXT                            │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Installation
+## Usage Examples
+
+### Morph Cloud
 
 ```bash
-# Install fnox via cargo
-cargo install fnox
-
-# Install age via flox (or brew)
-flox install age
-
-# Generate age keypair
-mkdir -p ~/.age
-age-keygen -o ~/.age/key.txt
+MORPH_API_KEY=$(fnox get MORPH_API_KEY --age-key-file ~/.age/key.txt) uv run python -c "
+from morphcloud.api import MorphCloudClient
+client = MorphCloudClient()
+# ... use client
+"
 ```
 
-## Configuration
-
-### Initialize fnox
+### Aptos
 
 ```bash
-cd ~
-fnox init
-fnox provider add myage age
+APTOS_PRIVATE_KEY=$(fnox get APTOS_ALICE_KEY --age-key-file ~/.age/key.txt) aptos move run \
+  --function-id 0x1::coin::transfer \
+  --args address:0x... u64:1000000
 ```
 
-### Edit fnox.toml
-
-```toml
-[providers.myage]
-type = "age"
-recipients = ["age1your_public_key_here"]
-
-[profiles.default]
-# Default profile secrets
-
-[profiles.prod]
-# Production secrets
-
-[profiles.staging]
-# Staging secrets
-```
-
-## Commands
-
-### Set a Secret
+### Multiple Secrets
 
 ```bash
-fnox set SECRET_NAME "secret_value" --provider myage
-fnox set DATABASE_URL "postgres://..." --provider myage
-fnox set API_KEY "sk-..." --provider myage -p prod  # prod profile
+# Chain multiple secrets in one command
+MORPH_API_KEY=$(fnox get MORPH_API_KEY --age-key-file ~/.age/key.txt) \
+DUNE_API_KEY=$(fnox get DUNE_API_KEY --age-key-file ~/.age/key.txt) \
+  python my_script.py
 ```
 
-### Get a Secret
+## Available Secrets (names only)
 
-```bash
-fnox get SECRET_NAME --age-key-file ~/.age/key.txt
+Query with: `fnox list`
 
-# With root-protected key
-sudo cat /var/keys/age/key.txt > /tmp/k && fnox get SECRET_NAME --age-key-file /tmp/k && rm /tmp/k
-```
+Categories:
+- `APTOS_*` - Blockchain keys
+- `MORPH_API_KEY` - Morph Cloud
+- `DUNE_API_KEY` - Dune Analytics
+- `AMP_API_KEY` - AMP
+- `BEEPER_ACCESS_TOKEN` - Beeper
 
-### List Secrets
-
-```bash
-fnox list
-fnox list -p prod  # prod profile only
-```
-
-### Run Command with Secrets as Env Vars
-
-```bash
-fnox exec --age-key-file ~/.age/key.txt -- ./my-app
-fnox exec --age-key-file ~/.age/key.txt -- env | grep APTOS
-```
-
-### Import/Export
-
-```bash
-fnox export --format env > .env.encrypted
-fnox import --format env < .env
-```
-
-### Profiles
-
-```bash
-fnox profiles                    # List profiles
-fnox set KEY "val" -p prod      # Set in prod profile
-fnox get KEY -p prod            # Get from prod profile
-FNOX_PROFILE=prod fnox list     # Use prod by default
-```
-
-## Shell Integration
-
-Add to `~/.zshrc`:
-
-```bash
-# fnox secret management (GF(3) integrated)
-export FNOX_AGE_KEY_FILE=~/.age/key.txt
-eval "$(~/.cargo/bin/fnox activate zsh)"
-```
-
-For root-protected keys, use the wrapper:
-
-```bash
-# /usr/local/bin/fnox-secure
-#!/bin/bash
-TEMP_KEY=$(mktemp)
-trap "rm -f $TEMP_KEY" EXIT
-sudo cat /var/keys/age/key.txt > "$TEMP_KEY"
-~/.cargo/bin/fnox --age-key-file "$TEMP_KEY" "$@"
-```
-
-## Root-Protected Key Setup
-
-### Move Keys to Root Storage
-
-```bash
-sudo mkdir -p /var/keys/{age,aptos/worlds,aptos/testnet}
-sudo cp ~/.age/key.txt /var/keys/age/
-sudo cp ~/.aptos/worlds/*.key /var/keys/aptos/worlds/
-sudo chown -R root:wheel /var/keys
-sudo chmod -R 600 /var/keys
-sudo chmod 700 /var/keys /var/keys/age /var/keys/aptos /var/keys/aptos/worlds
-```
-
-### Verify
-
-```bash
-sudo cat /var/keys/age/key.txt > /tmp/k && fnox get TEST_SECRET --age-key-file /tmp/k && rm /tmp/k
-```
-
-## DuckDB Catalog
-
-### Schema
-
-```sql
-CREATE TABLE identity (id INTEGER PRIMARY KEY, name VARCHAR, path VARCHAR, trit TINYINT);
-CREATE TABLE keypair (id INTEGER PRIMARY KEY, identity_id INTEGER, pubkey VARCHAR, privkey_path VARCHAR, algorithm VARCHAR, trit TINYINT);
-CREATE TABLE provider (id INTEGER PRIMARY KEY, name VARCHAR, trit TINYINT);
-CREATE TABLE profile (id INTEGER PRIMARY KEY, name VARCHAR, trit TINYINT);
-CREATE TABLE secret (id INTEGER PRIMARY KEY, name VARCHAR, keypair_id INTEGER, provider_id INTEGER, profile_id INTEGER, trit TINYINT);
-```
-
-### Query Examples
-
-```bash
-# List all secrets
-duckdb ~/.config/keys/catalog.duckdb "SELECT name FROM secret"
-
-# Check GF(3) conservation
-duckdb ~/.config/keys/catalog.duckdb "SELECT * FROM gf3_total"
-
-# Find Aptos keys
-duckdb ~/.config/keys/catalog.duckdb "SELECT name FROM secret WHERE name LIKE 'APTOS%'"
-```
-
-## GF(3) Conservation
-
-All entities are assigned trits (-1, 0, +1) such that:
+## GF(3) Trit Assignment
 
 ```
-Σ(trits) ≡ 0 (mod 3)
+fnox-secrets: -1 (validator/constrainer)
 ```
 
-| Entity | Trit Assignment |
-|--------|-----------------|
-| age identity | -1 (validator) |
-| ssh identity | 0 (coordinator) |
-| gpg identity | +1 (generator) |
-| default profile | 0 |
-| prod profile | +1 |
-| staging profile | -1 |
-| secrets | cyclic: -1, 0, +1, -1, ... |
-
-## ACSet Schema (Julia)
-
-```julia
-@present SchKeyStore(FreeSchema) begin
-    Identity::Ob
-    KeyPair::Ob
-    Secret::Ob
-    Provider::Ob
-    Profile::Ob
-
-    keypair_identity::Hom(KeyPair, Identity)
-    secret_keypair::Hom(Secret, KeyPair)
-    secret_provider::Hom(Secret, Provider)
-    secret_profile::Hom(Secret, Profile)
-
-    TritType::AttrType
-    identity_trit::Attr(Identity, TritType)
-    keypair_trit::Attr(KeyPair, TritType)
-    secret_trit::Attr(Secret, TritType)
-end
+Participates in triads:
 ```
-
-## Current Secrets Inventory
-
-### Aptos Keys (38)
-
-| Secret | Description |
-|--------|-------------|
-| `APTOS_ALICE_KEY` | Alice world key |
-| `APTOS_BOB_KEY` | Bob world key |
-| `APTOS_WORLD_[A-Z]_KEY` | 26 world keys |
-| `APTOS_ALICE_MAINNET_KEY` | Alice mainnet profile |
-| `APTOS_ALICE_TESTNET_KEY` | Alice testnet profile |
-| `APTOS_BOB_MAINNET_KEY` | Bob mainnet profile |
-| `APTOS_BOB_TESTNET_KEY` | Bob testnet profile |
-| `APTOS_DEFAULT_KEY` | Default profile |
-| `APTOS_TESTNET_ACCOUNT_KEY` | Testnet account |
-| `APTOS_TESTNET_CONSENSUS_KEY` | Testnet consensus |
-| `APTOS_TESTNET_FULLNODE_KEY` | Testnet fullnode |
-| `APTOS_TESTNET_VALIDATOR_KEY` | Testnet validator |
-| `APTOS_TESTNET_MINT_KEY` | Testnet mint |
-
-### Other Secrets (4)
-
-| Secret | Description |
-|--------|-------------|
-| `AMP_API_KEY` | AMP API key |
-| `GOOGLE_CLIENT_SECRET_PATH` | Google OAuth path |
-| `TEST_SECRET` | Test secret |
-
-## Integration with Other Skills
-
-### cognitive-surrogate (trit: 0)
-
-```python
-# Use fnox secrets in surrogate training
-fnox exec --age-key-file ~/.age/key.txt -- python train_surrogate.py
+fnox-secrets (-1) ⊗ world-runtime (0) ⊗ gay-mcp (+1) = 0 ✓
 ```
-
-### acsets (trit: -1)
-
-```julia
-# Query catalog via ACSet navigation
-secrets_for_identity(ks, aptos_identity_id)
-```
-
-### gay-mcp (trit: +1)
-
-```python
-# Deterministic secret access coloring
-seed = GaySeed.from_string("fnox-session")
-color = derive_color(seed, secret_name)
-```
-
-## Triadic Bundle
-
-```
-fnox-secrets (-1) ⊗ cognitive-surrogate (0) ⊗ gay-mcp (+1) = 0 ✓
-```
-
-## Files
-
-```
-~/.cargo/bin/fnox              # fnox binary
-~/fnox.toml                    # Encrypted secrets (git-safe)
-/var/keys/age/key.txt          # Root-protected age key
-/var/keys/aptos/               # Root-protected Aptos keys
-~/.config/keys/catalog.duckdb  # DuckDB catalog
-~/.config/keys/schema.jl       # ACSet schema
-/usr/local/bin/fnox-secure     # Sudo wrapper (optional)
-```
-
-## Troubleshooting
-
-### "No providers configured"
-
-```bash
-fnox provider add myage age
-# Then edit fnox.toml to set recipients
-```
-
-### "Cannot decrypt"
-
-```bash
-# Check age key path
-fnox get SECRET --age-key-file ~/.age/key.txt
-
-# For root-protected
-sudo cat /var/keys/age/key.txt > /tmp/k && fnox get SECRET --age-key-file /tmp/k; rm /tmp/k
-```
-
-### "Secret not found"
-
-```bash
-fnox list  # Check secret exists
-fnox list -p prod  # Check correct profile
-```
-
-## References
-
-- [fnox GitHub](https://github.com/jdx/fnox)
-- [age encryption](https://age-encryption.org/)
-- [ACSets.jl](https://github.com/AlgebraicJulia/ACSets.jl)
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-fnox-secrets (○) + SDF.Ch5 (−) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.
