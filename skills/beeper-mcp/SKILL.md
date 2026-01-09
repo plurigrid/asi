@@ -283,6 +283,151 @@ This skill operates as ERGODIC (0) in triadic compositions:
 | ERGODIC (0) | Coordinator | Random walk sample, enforce budget |
 | PLUS (+1) | Generator | Fetch fresh data, strict `limit` param |
 
+## Conversation Branch Awareness (Higher-Order Wiring)
+
+Track conversation threads as **wiring diagrams** - morphisms between topic states.
+
+### Branch Detection Schema
+
+```sql
+CREATE TABLE IF NOT EXISTS beeper_conversation_branches (
+  branch_id VARCHAR PRIMARY KEY,
+  chat_id VARCHAR NOT NULL,
+  parent_branch_id VARCHAR,  -- NULL for root
+  topic VARCHAR NOT NULL,
+  first_message_id VARCHAR,
+  last_message_id VARCHAR,
+  status VARCHAR DEFAULT 'open',  -- 'open', 'resolved', 'merged', 'stale'
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  resolved_at TIMESTAMP,
+  FOREIGN KEY (parent_branch_id) REFERENCES beeper_conversation_branches(branch_id)
+);
+
+CREATE TABLE IF NOT EXISTS beeper_branch_transitions (
+  from_branch VARCHAR,
+  to_branch VARCHAR,
+  transition_type VARCHAR,  -- 'fork', 'merge', 'abandon', 'resolve'
+  message_id VARCHAR,       -- message that triggered transition
+  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (from_branch, to_branch, message_id)
+);
+```
+
+### Wiring Diagram Structure
+
+```
+Conversation as Category:
+- Objects: Topic states (branches)
+- Morphisms: Message sequences that transform one topic to another
+- Composition: Thread continuation
+
+           ┌─────────────────┐
+           │  patents (open) │◄──── current focus
+           └────────┬────────┘
+                    │ fork @ msg:838941332
+    ┌───────────────┼───────────────┐
+    ▼               ▼               ▼
+┌────────┐   ┌───────────┐   ┌──────────┐
+│ GF(3)  │   │bisimulation│   │ toad OOM │
+│resolved│   │ resolved   │   │  open    │
+└────────┘   └───────────┘   └──────────┘
+```
+
+### Branch Detection Heuristics
+
+```python
+def detect_branch(messages: list) -> list[Branch]:
+    branches = []
+    current_topic = None
+
+    for msg in messages:
+        # Topic markers
+        if msg.text.startswith('**Re:') or msg.text.startswith('Re:'):
+            # Explicit reply = potential branch
+            topic = extract_topic(msg.text)
+            if topic != current_topic:
+                branches.append(Branch(
+                    topic=topic,
+                    fork_message=msg.id,
+                    parent=current_topic
+                ))
+
+        # Numbered lists often indicate parallel threads
+        if re.match(r'^\d+\.', msg.text):
+            items = extract_numbered_items(msg.text)
+            for item in items:
+                branches.append(Branch(topic=item, parent=current_topic))
+
+        # Questions create potential branches
+        if msg.text.strip().endswith('?'):
+            branches.append(Branch(
+                topic=f"Q: {msg.text[:50]}",
+                status='awaiting_response'
+            ))
+
+    return branches
+```
+
+### Zigger Chat Branch State
+
+Track active branches in zigger conversation:
+
+```sql
+-- Query current branch state for a chat
+SELECT
+  b.branch_id,
+  b.topic,
+  b.status,
+  COUNT(t.to_branch) as child_count
+FROM beeper_conversation_branches b
+LEFT JOIN beeper_branch_transitions t ON b.branch_id = t.from_branch
+WHERE b.chat_id = '!NhltGRLZWLUeHEBiFT:beeper.com'  -- zigger
+GROUP BY b.branch_id
+ORDER BY b.created_at DESC;
+```
+
+### Before Responding: Check Branch Context
+
+```python
+def get_branch_context(chat_id: str) -> dict:
+    """Always call before responding to understand conversation topology."""
+
+    # Get open branches
+    open_branches = db.query("""
+        SELECT topic, status, first_message_id
+        FROM beeper_conversation_branches
+        WHERE chat_id = ? AND status = 'open'
+    """, chat_id)
+
+    # Get unresolved questions
+    questions = db.query("""
+        SELECT topic FROM beeper_conversation_branches
+        WHERE chat_id = ? AND topic LIKE 'Q:%' AND status = 'awaiting_response'
+    """, chat_id)
+
+    return {
+        'open_branches': open_branches,
+        'unanswered_questions': questions,
+        'should_address': questions[0] if questions else open_branches[0]
+    }
+```
+
+### Wiring Composition Rules
+
+1. **Fork**: One message spawns multiple topics → create child branches
+2. **Merge**: Response addresses multiple branches → mark as merged
+3. **Resolve**: Explicit closure ("done", "fixed", "shipped") → mark resolved
+4. **Abandon**: No activity for 7 days → mark stale
+
+### Integration with Tokens Pay Rent
+
+When reviewing messages, branch tracking prevents:
+- Re-answering resolved questions
+- Missing open threads
+- Losing context on forked discussions
+
+**Update branch state as side effect of every beeper interaction.**
+
 ## MCP Server Config
 
 ```json
