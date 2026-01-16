@@ -1,6 +1,6 @@
 ---
 name: gay-mcp
-description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP. Colors are the perceptual rendering of solved constraint systems.
 version: 1.0.0
 ---
 
@@ -12,6 +12,22 @@ version: 1.0.0
 **Trit**: +1 (PLUS - optimistic/generative)
 **Principle**: Same seed → Same colors (SPI guarantee)
 **Implementation**: Gay.jl (Julia) + SplitMixTernary (Ruby)
+
+---
+
+## Manifesto
+
+> **The colors are not arbitrary—they are the perceptual rendering of a solved constraint system.**
+
+We are building a **deterministic, parallelizable, human-adapted coordinate system** that renders formal constraints as perceptual reality, in a way that can be:
+
+| Property | Mechanism | Verification |
+|----------|-----------|--------------|
+| **Verified** | SPI fingerprints, GF(3) conservation | Sheaf cohomology gluing |
+| **Merged** | Worlding patterns, Möbius inversion | Derangement CRDTs |
+| **Learned** | Enzyme autodiff, reafference loops | Compression progress |
+
+The color IS the proof. The hue encodes the trit. The seed determines the universe.
 
 ---
 
