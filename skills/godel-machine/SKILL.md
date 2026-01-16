@@ -1,6 +1,6 @@
 ---
 name: godel-machine
-description: Schmidhuber''s Gödel Machine: Self-improving systems that prove their
+description: "Schmidhuber''s Gödel Machine: Self-improving systems that prove their"
 version: 1.0.0
 ---
 

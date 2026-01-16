@@ -1,6 +1,6 @@
 ---
 name: cat
-description: cat Skill: Derivational Pipe Chaining
+description: "cat Skill: Derivational Pipe Chaining"
 version: 1.0.0
 ---
 

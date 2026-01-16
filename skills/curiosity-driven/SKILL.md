@@ -1,6 +1,6 @@
 ---
 name: curiosity-driven
-description: Schmidhuber's curiosity-driven learning: Intrinsic motivation via compression progress. Seek states that improve world model.
+description: "Schmidhuber's curiosity-driven learning: Intrinsic motivation via compression progress. Seek states that improve world model."
 version: 1.0.0
 ---
 

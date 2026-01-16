@@ -1,6 +1,6 @@
 ---
 name: rick-roderick
-description: Rick Roderick: Philosophy Under Siege
+description: "Rick Roderick: Philosophy Under Siege"
 version: 1.0.0
 ---
 

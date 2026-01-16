@@ -1,6 +1,6 @@
 ---
 name: ordered-locale-fanout
-description: UPDATED: Now uses proper ordered-locale (Heunen-van der Schaaf 2024). Cocone construction over triadic ordered locale with open cone condition.
+description: "UPDATED: Now uses proper ordered-locale (Heunen-van der Schaaf 2024). Cocone construction over triadic ordered locale with open cone condition."
 version: 1.0.0
 ---
 

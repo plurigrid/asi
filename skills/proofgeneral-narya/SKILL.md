@@ -1,6 +1,6 @@
 ---
 name: proofgeneral-narya
-description: Proof General + Narya: Higher-dimensional type theory proof assistant with observational bridge types for version control.
+description: "Proof General + Narya: Higher-dimensional type theory proof assistant with observational bridge types for version control."
 version: 1.0.0
 ---
 

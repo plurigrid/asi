@@ -1,6 +1,6 @@
 ---
 name: multiversal-finance
-description: Multiversal Finance: Prediction Markets for Interesting Observations
+description: "Multiversal Finance: Prediction Markets for Interesting Observations"
 version: 1.0.0
 ---
 

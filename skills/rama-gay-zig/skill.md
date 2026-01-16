@@ -1,3 +1,9 @@
+---
+name: rama-gay-zig
+description: "rama-gay-zig skill"
+version: 1.0.0
+---
+
 # rama-gay-zig
 
 Interleaved skill combining Rama distributed semantics, Gay.jl GF(3) color logic, and Zig package management for ASI coordination.

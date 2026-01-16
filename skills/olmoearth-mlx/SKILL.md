@@ -1,6 +1,6 @@
 ---
 name: olmoearth-mlx
-description: OlmoEarth MLX: Spatio-Temporal Earth Intelligence
+description: "OlmoEarth MLX: Spatio-Temporal Earth Intelligence"
 version: 1.0.0
 ---
 

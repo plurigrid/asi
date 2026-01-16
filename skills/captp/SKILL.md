@@ -1,6 +1,6 @@
 ---
 name: captp
-description: CapTP: Capability Transfer Protocol
+description: "CapTP: Capability Transfer Protocol"
 version: 1.0.0
 ---
 

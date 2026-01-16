@@ -1,3 +1,9 @@
+---
+name: low-discrepancy-sequences
+description: "low-discrepancy-sequences skill"
+version: 1.0.0
+---
+
 # Low-Discrepancy Sequences
 
 Deterministic color generation via low-discrepancy sequences with bijective index recovery.

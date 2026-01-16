@@ -1,6 +1,6 @@
 ---
 name: acsets-algebraic-databases
-description: ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional
+description: "ACSets (Attributed C-Sets): Algebraic databases with Specter-style bidirectional"
 version: 1.0.0
 ---
 
