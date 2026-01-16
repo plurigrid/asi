@@ -1,6 +1,6 @@
 ---
 name: reversible-computing
-description: Janus and reversible languages: run programs backwards, time-symmetric computation.
+description: "Janus and reversible languages: run programs backwards, time-symmetric computation."
 version: 1.0.0
 ---
 

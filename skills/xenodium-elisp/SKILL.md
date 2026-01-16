@@ -1,6 +1,6 @@
 ---
 name: xenodium-elisp
-description: Xenodium's Emacs packages: chatgpt-shell, agent-shell, dwim-shell-command, and ACP integration for modern Emacs development.
+description: "Xenodium's Emacs packages: chatgpt-shell, agent-shell, dwim-shell-command, and ACP integration for modern Emacs development."
 version: 1.0.0
 ---
 

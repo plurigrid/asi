@@ -1,6 +1,6 @@
 ---
 name: cognitive-surrogate
-description: ```yaml
+description: "cognitive-surrogate skill"
 version: 1.0.0
 ---
 

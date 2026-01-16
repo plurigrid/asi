@@ -1,6 +1,6 @@
 ---
 name: zig
-description: >
+description: "zig skill"
 version: 1.0.0
 ---
 

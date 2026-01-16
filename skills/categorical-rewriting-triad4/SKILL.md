@@ -1,6 +1,6 @@
 ---
 name: categorical-rewriting-triad4
-description: Categorical Rewriting: Triad 4 (World Transformation)
+description: "Categorical Rewriting: Triad 4 (World Transformation)"
 version: 1.0.0
 ---
 

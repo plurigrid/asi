@@ -1,6 +1,6 @@
 ---
 name: tenderloin
-description: Tenderloin: Manifest Destiny Fund for Protocol Labs
+description: "Tenderloin: Manifest Destiny Fund for Protocol Labs"
 version: 1.0.0
 ---
 

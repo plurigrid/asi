@@ -1,6 +1,6 @@
 ---
 name: video-processor
-description: Automated video processing: metadata extraction, thumbnails, transcoding, audio extraction with DuckDB tracking
+description: "Automated video processing: metadata extraction, thumbnails, transcoding, audio extraction with DuckDB tracking"
 version: 1.0.0
 ---
 

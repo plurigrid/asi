@@ -1,6 +1,6 @@
 ---
 name: l-space
-description: L-Space Skill: The Library of All Libraries
+description: "L-Space Skill: The Library of All Libraries"
 version: 1.0.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: derangement-reflow
-description: >
+description: "derangement-reflow skill"
 version: 1.0.0
 ---
 

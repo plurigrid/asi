@@ -1,6 +1,6 @@
 ---
 name: sicp
-description: SICP: Structure and Interpretation of Computer Programs - computational processes, abstraction, and metalinguistic design
+description: "SICP: Structure and Interpretation of Computer Programs - computational processes, abstraction, and metalinguistic design"
 version: 1.0.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: gflownet
-description: Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward. Diversity over maximization for causal discovery and molecule design.
+description: "Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward. Diversity over maximization for causal discovery and molecule design."
 version: 1.0.0
 ---
 

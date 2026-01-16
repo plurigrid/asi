@@ -1,6 +1,6 @@
 ---
 name: markov-game-acset
-description: >
+description: "markov-game-acset skill"
 version: 1.0.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: discopy
-description: DisCoPy: Python library for computing with string diagrams - monoidal
+description: "DisCoPy: Python library for computing with string diagrams - monoidal"
 version: 1.0.0
 ---
 

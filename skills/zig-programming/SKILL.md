@@ -1,6 +1,6 @@
 ---
 name: zig-programming
-description: >
+description: "zig-programming skill"
 version: 1.0.0
 ---
 

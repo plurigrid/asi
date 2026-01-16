@@ -1,6 +1,6 @@
 ---
 name: rezk-types
-description: Rezk types (complete Segal spaces). Local univalence: categorical isomorphisms ≃ type-theoretic identities.
+description: "Rezk types (complete Segal spaces). Local univalence: categorical isomorphisms ≃ type-theoretic identities."
 version: 1.0.0
 ---
 
