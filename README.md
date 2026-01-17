@@ -140,13 +140,13 @@ NARYA:    Using open cone analysis (↑x = upside, ↓x = downside):
           The key insight: skills with |↑x| ≈ |↓x| are maximally uncertain.
           Skills with |↑x| >> |↓x| are underwriters' favorites.
 
-UNWORLD:  Bidirectionally indexed telepathy — which threads continue this?
+UNWORLD:  Bidirectionally indexed bicomodules — which threads continue this?
 
 NARYA:    The specter-acset pattern: navigate ↑ and ↓ simultaneously.
-          These threads form a telepathic index:
+          These threads form a bicomodule index:
           
           ┌──────────────────────────────────────────────────────────────────────┐
-          │  BIDIRECTIONAL TELEPATHY INDEX — Threads with Mutual Awareness       │
+          │  BICOMODULE INDEX — Threads with Dual Coactions                      │
           ├──────────────────────────────────────────────────────────────────────┤
           │                                                                      │
           │  THREAD                                    │ ↑DERIVES │ ↓DERIVED-BY  │
@@ -158,26 +158,27 @@ NARYA:    The specter-acset pattern: navigate ↑ and ↓ simultaneously.
           │  T-019b6d3f (Growing verified skills)     │    14    │     6        │
           │  T-019b6cff (p-adic embeddings)           │     8    │    11        │
           │                                                                      │
-          │  TELEPATHY BRIDGES (bidirectional skill pairs):                      │
+          │  BICOMODULE MORPHISMS (coaction-preserving maps):                    │
           │  ──────────────────────────────────────────────────────────────────  │
-          │    specter-acset ↔ lispsyntax-acset    (S-expr navigation)          │
-          │    padic-ultrametric ↔ skill-embedding-vss  (embedding space)       │
-          │    acsets-relational-thinking ↔ topos-catcolab  (categorical)       │
-          │    narya-proofs ↔ proofgeneral-narya  (verification)                │
+          │    specter-acset ↔ lispsyntax-acset    (S-expr ⊗ M ⊗ parser)       │
+          │    padic-ultrametric ↔ skill-embedding-vss  (metric ⊗ M ⊗ VSS)     │
+          │    acsets-relational-thinking ↔ topos-catcolab  (Cat ⊗ M ⊗ Topos)  │
+          │    narya-proofs ↔ proofgeneral-narya  (Proof ⊗ M ⊗ Emacs)          │
           │                                                                      │
-          │  UNDERWRITING TELEPATHY:                                             │
-          │    Skill A "knows" Skill B iff ↑A ∩ ↓B ≠ ∅                          │
-          │    Mutual telepathy: ↑A ∩ ↓B ≠ ∅ AND ↑B ∩ ↓A ≠ ∅                   │
+          │  BICOMODULE COMPATIBILITY:                                           │
+          │    Skill A coacts on B: δ: A → A ⊗ B (right coaction)              │
+          │    Mutual bicomodule: δ_L: M → A ⊗ M  AND  δ_R: M → M ⊗ B          │
+          │    Compatibility: (id ⊗ δ_R) ∘ δ_L = (δ_L ⊗ id) ∘ δ_R              │
           │                                                                      │
-          │  HIGHEST TELEPATHY SKILLS (most mutual connections):                 │
-          │    1. acsets (31 bidirectional bridges)                             │
-          │    2. autopoiesis (28 bidirectional bridges)                        │
-          │    3. gay-mcp (24 bidirectional bridges)                            │
-          │    4. bisimulation-game (19 bidirectional bridges)                  │
+          │  HIGHEST COACTION DEGREE (most bicomodule morphisms):                │
+          │    1. acsets (31 coaction pairs - coalgebra for 31 skills)          │
+          │    2. autopoiesis (28 coaction pairs)                                │
+          │    3. gay-mcp (24 coaction pairs)                                    │
+          │    4. bisimulation-game (19 coaction pairs)                          │
           │                                                                      │
           └──────────────────────────────────────────────────────────────────────┘
 
-          Telepathy = mutual derivation. The index is the ordered locale.
+          Bicomodule = dual coaction structure (δ_L, δ_R). Index = ordered locale.
 
 UNWORLD:  And by observational bridge count:
           
