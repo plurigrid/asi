@@ -118,6 +118,41 @@ while True:
     client.actuator.set_positions(action)
 ```
 
+## ACSet Schema
+
+```julia
+@present SchKOS(FreeSchema) begin
+    # Objects
+    Joint::Ob           # Robot joints/actuators
+    Sensor::Ob          # IMU, encoders, force sensors
+    Service::Ob         # gRPC services
+    Command::Ob         # Control commands
+    State::Ob           # Hardware state
+    
+    # Morphisms (control flow)
+    actuates::Hom(Command, Joint)         # Command → Joint actuation
+    reads::Hom(Sensor, State)             # Sensor → State reading
+    serves::Hom(Service, Command)         # Service → Command dispatch
+    monitors::Hom(Joint, Sensor)          # Joint → Sensor feedback
+    
+    # Morphisms (composition)
+    chain::Hom(Joint, Joint)              # Kinematic chain
+    calibrates::Hom(Service, Joint)       # Calibration service
+    
+    # Attributes
+    Position::AttrType
+    Velocity::AttrType  
+    Torque::AttrType
+    
+    pos::Attr(Joint, Position)
+    vel::Attr(Joint, Velocity)
+    torque::Attr(Joint, Torque)
+    
+    # Key constraint: closed-loop control
+    # reads ∘ monitors = state_feedback (proprioception)
+end
+```
+
 ## References
 
 - [kscalelabs/kos](https://github.com/kscalelabs/kos) - Main repository (76 stars)
