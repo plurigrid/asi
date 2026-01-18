@@ -138,6 +138,40 @@ loop {
 }
 ```
 
+## ACSet Schema
+
+```julia
+@present SchKinfer(FreeSchema) begin
+    # Objects
+    Model::Ob           # ONNX model
+    Tensor::Ob          # Input/output tensors
+    Runtime::Ob         # ONNX Runtime session
+    LogEntry::Ob        # Telemetry records
+    
+    # Morphisms (inference pipeline)
+    load::Hom(Model, Runtime)             # Model → Runtime loading
+    input::Hom(Tensor, Runtime)           # Observation → Runtime
+    output::Hom(Runtime, Tensor)          # Runtime → Action
+    step::Hom(Tensor, Tensor)             # obs → action (composition)
+    
+    # Morphisms (logging)
+    log::Hom(Runtime, LogEntry)           # Runtime → Telemetry
+    
+    # Attributes
+    Shape::AttrType
+    Dtype::AttrType
+    Latency::AttrType
+    
+    shape::Attr(Tensor, Shape)
+    dtype::Attr(Tensor, Dtype)
+    latency::Attr(Runtime, Latency)
+    
+    # Key constraint: deterministic inference
+    # step = output ∘ input (functorial)
+    # Same input → same output (reproducibility)
+end
+```
+
 ## References
 
 - [kscalelabs/kinfer](https://github.com/kscalelabs/kinfer) - Main repository (17 stars)

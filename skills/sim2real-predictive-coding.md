@@ -143,17 +143,19 @@ class DelayedJointPositionObservation(StatefulObservation):
 ## GF(3) Trit Assignment
 
 ```
-Trit: 0 (ERGODIC)
-Role: Coordination/Infrastructure
-Color: #4A90D9
-URI: skill://sim2real-predictive-coding#4A90D9
+Trit: +1 (PLUS)
+Role: Generation (predictive transfer synthesis)
+Color: #A1BE3C
+URI: skill://sim2real-predictive-coding#A1BE3C
 
-Balanced with:
-  sim2real-predictive-coding (0) ⊗ 
-  active-inference-robotics (0) ⊗ 
-  domain-randomization (+1) = +1
+Balanced quad:
+  sim2real-predictive-coding (+1) ⊗ 
+  active-inference-robotics (+1) ⊗ 
+  kscale-kos (-1) ⊗ 
+  kscale-kinfer (-1) = 0 ✓
 
-Need verification skill (-1) to complete quad.
+Both second-order skills are generative (+1), balanced by
+verification skills that validate on real hardware (-1).
 ```
 
 ## Practical Implications

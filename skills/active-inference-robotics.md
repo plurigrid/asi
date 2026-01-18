@@ -138,25 +138,33 @@ Level 1: Reflexive Execution (fulfill proprio predictions)
 Level 0: Motor Primitives (PD control, actuator dynamics)
 ```
 
-## GF(3) Balanced Quad
+## GF(3) Trit Assignment
 
 ```
-active-inference (0) ⊗ kscale-ksim (0) ⊗ mujoco-playground (0) = 0 ✓
+Trit: +1 (PLUS)
+Role: Generation (theory→practice synthesis)
+Color: #A1BE3C
+URI: skill://active-inference-robotics#A1BE3C
+```
 
-All three are ERGODIC — coordination/infrastructure skills.
-This is a "resonant triad" where all components coordinate.
+### Balanced Quad
 
-For generation (+1), add: skill-creator, algorithmic-art
-For verification (-1), add: sheaf-cohomology, code-review
+```
+active-inference-robotics (+1) ⊗ kscale-ksim (0) ⊗ 
+kscale-kos (-1) ⊗ mujoco-playground (0) = 0 ✓
+
+Generation (+1): This skill synthesizes theory into practice
+Coordination (0): ksim and mujoco-playground bridge implementations
+Verification (-1): kos validates on real hardware
 ```
 
 ### Skill Colors (drand seed 12005093902789493003)
 
 | Skill | Trit | Color | Role |
 |-------|------|-------|------|
-| `active-inference` | 0 | `#DF8D0F` | Coordination (theory) |
+| `active-inference-robotics` | +1 | `#A1BE3C` | Generation (synthesis) |
 | `kscale-ksim` | 0 | `#25BC3D` | Coordination (simulation) |
-| `mujoco-playground` | 0 | `#93DBDA` | Coordination (framework) |
+| `kscale-kos` | -1 | `#E85A71` | Verification (hardware) |
 
 ## 2-3-5-7 Prime Sieve Experts
 

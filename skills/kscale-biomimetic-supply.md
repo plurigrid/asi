@@ -215,17 +215,21 @@ No optimization needed. No GPU needed. Domestic MCU sufficient.
 ## GF(3) Trit Assignment
 
 ```
-Trit: -1 (MINUS)
-Role: Verification/Validation (supply chain risk assessment)
-Color: #8B4513 (earth tone - grounded in physical reality)
-URI: skill://kscale-biomimetic-supply#8B4513
+Trit: 0 (ERGODIC)
+Role: Coordination (bio-supply bridge)
+Color: #25BC3D
+URI: skill://kscale-biomimetic-supply#25BC3D
 ```
 
 ### Balanced Quad
 
 ```
-kscale-biomimetic-supply (-1) ⊗ kscale-ksim (0) ⊗ 
-active-inference-robotics (+1) ⊗ entropy-regularized-inference (0) = 0 ✓
+kscale-biomimetic-supply (0) ⊗ kscale-ksim (0) ⊗ 
+active-inference-robotics (+1) ⊗ kscale-kos (-1) = 0 ✓
+
+Coordination (0): This skill bridges biological principles to supply chain
+Generation (+1): active-inference-robotics synthesizes theory→practice
+Verification (-1): kos validates hardware deployment
 ```
 
 ## Practical Recommendations for K-Scale
