@@ -325,7 +325,16 @@ def train_step(
     }
 ```
 
-## GF(3) Balanced Quad
+## GF(3) Trit Assignment
+
+```
+Trit: 0 (ERGODIC)
+Role: Coordination (third-order meta-synthesis)
+Color: #E3136C
+URI: skill://entropy-regularized-inference#E3136C
+```
+
+### Balanced Quad
 
 ```
 entropy-regularized-inference (0) ⊗ 
