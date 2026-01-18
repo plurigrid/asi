@@ -405,6 +405,104 @@ Where c_2 = entropy_coef = 0.01 (empirically optimal)
 - [Ben Bolte - RL Papers Collection](https://ben.bolte.cc/posts/2025-10-08-rl-papers)
 - [MuJoCo Playground Technical Report](https://playground.mujoco.org/)
 
+## Narya Compatibility (Structure-Aware Diffing)
+
+| Field | Definition |
+|-------|------------|
+| `before` | Inference state: (beliefs Q, policy π, entropy H[π]) |
+| `after` | Updated state after gradient step or belief revision |
+| `delta` | Free energy change ΔF with entropy regularization term |
+| `birth` | Maximum entropy prior (uniform beliefs, random policy) |
+| `impact` | 1 if entropy collapsed (H[π] < threshold), 0 otherwise |
+
+### Third-Order Synthesis Event Structure
+
+```python
+@dataclass  
+class EntropyRegularizedNaryaEvent:
+    """Structure-aware diff tracking entropy regularization across frameworks."""
+    event_id: str
+    before: InferenceState    # (Q, π, H[π], F)
+    after: InferenceState     # Updated state
+    delta: EntropyDelta       # Change with regularization decomposition
+    trit: int                 # GF(3): -1=entropy_decrease, 0=stable, +1=entropy_increase
+    framework: str            # "kenny_pad" | "friston_rgm" | "kidger_jpc" | "bolte_ppo"
+    
+    @property
+    def impact(self) -> int:
+        """1 if entropy collapsed below safe threshold."""
+        return 1 if self.after.entropy < ENTROPY_FLOOR else 0
+
+@dataclass
+class EntropyDelta:
+    free_energy_change: float   # ΔF (raw)
+    entropy_change: float       # ΔH[π]
+    regularized_change: float   # ΔF - entropy_coef * ΔH
+    entropy_coef: float         # The universal constant (≈0.01)
+```
+
+### Cross-Framework Unification
+
+```python
+def unify_inference_events(
+    kenny_events: list[ActiveInferenceNaryaEvent],
+    ksim_events: list[KsimNaryaEvent],
+    entropy_coef: float = 0.01
+) -> list[EntropyRegularizedNaryaEvent]:
+    """Map diverse frameworks to common entropy-regularized structure."""
+    unified = []
+    
+    for kenny, ksim in zip(kenny_events, ksim_events):
+        # Kenny's PAD already includes entropy via divergence
+        kenny_entropy = -kenny.delta.kl_future  # Entropy ≈ -KL from uniform
+        
+        # Bolte's PPO explicitly tracks entropy bonus
+        ksim_entropy = compute_policy_entropy(ksim.delta.action_distribution)
+        
+        unified.append(EntropyRegularizedNaryaEvent(
+            event_id=f"unified_{kenny.event_id}",
+            before=InferenceState(
+                beliefs=kenny.before,
+                policy=ksim.before.policy,
+                entropy=kenny_entropy,
+                free_energy=kenny.delta.vfe
+            ),
+            after=InferenceState(
+                beliefs=kenny.after,
+                policy=ksim.after.policy,
+                entropy=ksim_entropy,
+                free_energy=kenny.delta.vfe - kenny.delta.vfe  # Post-update
+            ),
+            delta=EntropyDelta(
+                free_energy_change=kenny.delta.vfe,
+                entropy_change=ksim_entropy - kenny_entropy,
+                regularized_change=kenny.delta.vfe - entropy_coef * (ksim_entropy - kenny_entropy),
+                entropy_coef=entropy_coef
+            ),
+            trit=sign(ksim_entropy - kenny_entropy),  # Entropy direction
+            framework="unified"
+        ))
+    
+    return unified
+```
+
+### Entropy Conservation Verification
+
+```python
+def verify_entropy_health(events: list[EntropyRegularizedNaryaEvent]) -> ProofBundle:
+    """Verify entropy regularization prevents policy collapse."""
+    return ProofBundle(
+        verifiers={
+            "entropy_floor": all(e.after.entropy > ENTROPY_FLOOR for e in events),
+            "entropy_ceiling": all(e.after.entropy < ENTROPY_CEILING for e in events),
+            "regularization_active": all(e.delta.entropy_coef > 0 for e in events),
+            "gf3_conservation": sum(e.trit for e in events) % 3 == 0
+        },
+        overall="VERIFIED" if all_pass else "FAILED",
+        proof_hash=sha256(json.dumps([e.to_dict() for e in events]))
+    )
+```
+
 ## ACSet Schema
 
 ```julia

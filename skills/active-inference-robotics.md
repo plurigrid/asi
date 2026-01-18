@@ -245,6 +245,75 @@ class ActiveInferenceTrainer:
 - [MuJoCo Playground](https://playground.mujoco.org/)
 - [Ben Bolte's Blog](https://ben.bolte.cc/)
 
+## Narya Compatibility (Structure-Aware Diffing)
+
+| Field | Definition |
+|-------|------------|
+| `before` | Belief state Q(s) before perception update |
+| `after` | Belief state Q(s') after action and new observation |
+| `delta` | Free energy gradient: VFE reduction from belief update |
+| `birth` | Prior distribution P(s) from generative model |
+| `impact` | 1 if belief significantly revised (KL > threshold), 0 otherwise |
+
+### Active Inference Event Structure
+
+```python
+@dataclass
+class ActiveInferenceNaryaEvent:
+    """Structure-aware diff for active inference belief updates."""
+    event_id: str
+    before: BeliefState       # Q(s_t) prior to observation
+    after: BeliefState        # Q(s_t) posterior after observation
+    delta: FreeEnergyDelta    # VFE change + action taken
+    trit: int                 # GF(3): -1=surprise, 0=expected, +1=info_gain
+    
+    @property
+    def impact(self) -> int:
+        """1 if belief revision exceeds threshold."""
+        kl = kl_divergence(self.before, self.after)
+        return 1 if kl > REVISION_THRESHOLD else 0
+    
+    def perception_action_divergence(self) -> float:
+        """Kenny's PAD = VFE(past) + KL(future)"""
+        return self.delta.vfe + self.delta.kl_future
+
+@dataclass
+class FreeEnergyDelta:
+    vfe: float           # Variational free energy change
+    kl_future: float     # KL divergence of predictive distribution
+    action: Array        # Action taken
+    entropy_bonus: float # Regularization term (Kenny's contribution)
+```
+
+### Mapping to ksim Training Loop
+
+```python
+# Active inference interpretation of PPO update
+def ppo_as_active_inference(trajectory: Trajectory) -> list[ActiveInferenceNaryaEvent]:
+    events = []
+    for t, (obs, action, reward, next_obs) in enumerate(trajectory):
+        # Perception: update Q(s) given observation
+        before_belief = critic.get_value_distribution(obs)
+        after_belief = critic.get_value_distribution(next_obs)
+        
+        # Action: policy selected action to minimize EFE
+        vfe_change = compute_vfe(before_belief, obs) - compute_vfe(after_belief, next_obs)
+        
+        events.append(ActiveInferenceNaryaEvent(
+            event_id=f"infer_{t}",
+            before=before_belief,
+            after=after_belief,
+            delta=FreeEnergyDelta(
+                vfe=vfe_change,
+                kl_future=kl_divergence(policy(obs), hmm_prediction(obs)),
+                action=action,
+                entropy_bonus=entropy(policy(obs)) * 0.01  # entropy_coef
+            ),
+            trit=sign(reward)  # Reward as surprise reduction
+        ))
+    return events
+```
+
 ## ACSet Schema
 
 ```julia

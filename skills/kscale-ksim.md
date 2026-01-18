@@ -240,6 +240,75 @@ python -m ksim.vis --checkpoint path/to/model.ckpt
 - [MuJoCo Playground](https://arxiv.org/html/2502.08844v1) - Design influences
 - [docs.kscale.dev](https://docs.kscale.dev) - Official documentation
 
+## Narya Compatibility (Structure-Aware Diffing)
+
+| Field | Definition |
+|-------|------------|
+| `before` | `PhysicsState` at timestep t (qpos, qvel, control) |
+| `after` | `PhysicsState` at timestep t+1 after action execution |
+| `delta` | `Trajectory` segment: the action taken + reward received |
+| `birth` | Initial `PhysicsState` from `reset()` with domain randomization |
+| `impact` | 1 if episode terminated (fall, out-of-bounds), 0 otherwise |
+
+### Behavior Type Diffing
+
+```python
+@dataclass
+class KsimNaryaEvent:
+    """Structure-aware diff for ksim state transitions."""
+    event_id: str
+    before: PhysicsState      # State before action
+    after: PhysicsState       # State after action
+    delta: TrajectorySegment  # Action + reward + info
+    trit: int                 # GF(3): -1=penalty, 0=neutral, +1=reward
+    
+    @property
+    def impact(self) -> int:
+        """1 if state change is significant (termination/reset)."""
+        return 1 if self.delta.done else 0
+    
+    def to_jsonl(self) -> str:
+        return json.dumps({
+            "event_id": self.event_id,
+            "before_hash": hash_state(self.before),
+            "after_hash": hash_state(self.after),
+            "delta": {"action": self.delta.action.tolist(),
+                      "reward": float(self.delta.reward)},
+            "trit": self.trit,
+            "impact": self.impact
+        })
+```
+
+### Replay Determinism
+
+```python
+# Same seed → same trajectory (critical for sim2real debugging)
+def replay_episode(seed: int, policy: Model) -> list[KsimNaryaEvent]:
+    rng = jax.random.PRNGKey(seed)
+    state = env.reset(rng)  # birth
+    events = []
+    
+    for t in range(max_steps):
+        rng, action_rng = jax.random.split(rng)
+        action = policy.sample(state.obs, action_rng)
+        
+        before = state
+        state, reward, done, info = env.step(action)
+        
+        events.append(KsimNaryaEvent(
+            event_id=f"step_{t}",
+            before=before,
+            after=state,
+            delta=TrajectorySegment(action, reward, done, info),
+            trit=sign(reward)  # -1, 0, +1
+        ))
+        
+        if done:
+            break
+    
+    return events
+```
+
 ## ACSet Schema
 
 ```julia

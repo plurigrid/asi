@@ -232,6 +232,93 @@ enables:
 | 5 | Pieter Abbeel | Domain randomization pioneer |
 | 7 | Josh Tobin | OpenAI sim2real work |
 
+## Narya Compatibility (Structure-Aware Diffing)
+
+| Field | Definition |
+|-------|------------|
+| `before` | Policy π trained in simulation (weights + predictive distribution) |
+| `after` | Policy π deployed on real hardware (same weights, different observations) |
+| `delta` | Transfer gap: KL(P_real ∥ P_sim) measured during deployment |
+| `birth` | Randomly initialized policy before any training |
+| `impact` | 1 if transfer fails (reward < threshold on real), 0 if successful |
+
+### Sim2Real Transfer Event Structure
+
+```python
+@dataclass
+class Sim2RealNaryaEvent:
+    """Structure-aware diff for sim2real transfer validation."""
+    event_id: str
+    before: SimulationState   # Observation in sim
+    after: RealWorldState     # Corresponding observation on hardware
+    delta: TransferDelta      # Prediction error between sim and real
+    trit: int                 # GF(3): -1=mismatch, 0=within_tolerance, +1=exact_match
+    
+    @property
+    def impact(self) -> int:
+        """1 if transfer gap exceeds acceptable threshold."""
+        return 1 if self.delta.kl_gap > TRANSFER_THRESHOLD else 0
+
+@dataclass
+class TransferDelta:
+    kl_gap: float             # KL(P_real || P_sim) for this transition
+    observation_error: float  # ||obs_real - obs_sim||
+    dynamics_error: float     # ||s'_real - s'_predicted||
+    latency_delta: float      # Timing difference (ms)
+```
+
+### Domain Randomization as Uncertainty Modeling
+
+```python
+def domain_randomization_narya_log(
+    policy: Policy,
+    sim_envs: list[Environment],  # Randomized ensemble
+    real_env: Environment
+) -> list[Sim2RealNaryaEvent]:
+    """Log transfer events for each domain randomization sample."""
+    events = []
+    
+    for i, sim_env in enumerate(sim_envs):
+        # Run same action sequence in sim and real
+        sim_traj = rollout(policy, sim_env)
+        real_traj = rollout(policy, real_env)
+        
+        for t, (sim_step, real_step) in enumerate(zip(sim_traj, real_traj)):
+            kl_gap = compute_observation_kl(sim_step.obs, real_step.obs)
+            
+            events.append(Sim2RealNaryaEvent(
+                event_id=f"transfer_{i}_{t}",
+                before=sim_step,
+                after=real_step,
+                delta=TransferDelta(
+                    kl_gap=kl_gap,
+                    observation_error=np.linalg.norm(sim_step.obs - real_step.obs),
+                    dynamics_error=np.linalg.norm(sim_step.next_state - real_step.next_state),
+                    latency_delta=real_step.timestamp - sim_step.timestamp
+                ),
+                trit=0 if kl_gap < 0.1 else (-1 if kl_gap > 0.5 else 1)
+            ))
+    
+    return events
+```
+
+### Transfer Success Verification
+
+```python
+def verify_transfer_success(events: list[Sim2RealNaryaEvent]) -> ProofBundle:
+    """Narya-compatible verification of sim2real transfer."""
+    return ProofBundle(
+        verifiers={
+            "observation_consistency": all(e.delta.observation_error < OBS_THRESHOLD for e in events),
+            "dynamics_fidelity": all(e.delta.dynamics_error < DYN_THRESHOLD for e in events),
+            "latency_bounds": all(e.delta.latency_delta < LAT_THRESHOLD for e in events),
+            "gf3_conservation": sum(e.trit for e in events) % 3 == 0
+        },
+        overall="VERIFIED" if all_pass else "FAILED",
+        proof_hash=sha256(json.dumps([e.to_dict() for e in events]))
+    )
+```
+
 ## ACSet Schema
 
 ```julia
