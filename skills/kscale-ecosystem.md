@@ -68,7 +68,16 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## GF(3) Balanced Triads
+## GF(3) Trit Assignment
+
+```
+Trit: 0 (ERGODIC)
+Role: Coordination (ecosystem meta-skill)
+Color: #86E3BE
+URI: skill://kscale-ecosystem#86E3BE
+```
+
+### Balanced Triads
 
 ```
 # Corrected trit assignments from share3_hash:
