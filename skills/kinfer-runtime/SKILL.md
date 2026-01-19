@@ -1,3 +1,8 @@
+---
+name: kinfer-runtime
+description: "K-Scale kinfer model inference engine for deploying trained RL policies to real robots via ONNX Runtime in Rust"
+---
+
 # K-Scale kinfer Skill
 
 > *"The K-Scale model export and inference tool"*
