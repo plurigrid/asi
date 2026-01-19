@@ -258,43 +258,53 @@
   (pr-str @acset))
 
 ;; ============================================================
-;; Demo
+;; Worlds (A-Z Agent-O-Rama)
 ;; ============================================================
 
-(defn demo []
+(def worlds
+  "26 worlds for event distribution"
+  (mapv #(keyword (str "world-" (char %))) (range 65 91)))
+
+(defn world-event
+  "Create event in world W"
+  [world-key]
+  {:id (str (name world-key) "-event")
+   :name (str "Gathering in " (name world-key))
+   :date "2026-01-25T19:00:00"
+   :location (name world-key)})
+
+(defn populate-worlds!
+  "Populate ACSet with world events and cross-world invites"
+  [acset]
+  ;; Create events in each world
+  (doseq [w worlds]
+    (import-event! acset (world-event w)))
+  ;; Cross-world invites: each world invites next 2 worlds
+  (doseq [[i w] (map-indexed vector worlds)]
+    (let [next-1 (nth worlds (mod (inc i) 26))
+          next-2 (nth worlds (mod (+ i 2) 26))]
+      (import-invite! acset {:event (str (name w) "-event")
+                             :user {:id (str (name next-1) "-agent")
+                                    :name (str "Agent " (name next-1))}
+                             :status "GOING"})
+      (import-invite! acset {:event (str (name w) "-event")
+                             :user {:id (str (name next-2) "-agent")
+                                    :name (str "Agent " (name next-2))}
+                             :status "MAYBE"})))
+  acset)
+
+(defn -main []
   (let [acset (atom (make-acset))]
-    ;; Import sample data
-    (import-event! acset {:id "abc123"
-                          :name "Music Show at Avalon"
-                          :date "2026-01-25T19:00:00"
-                          :location "Avalon"
-                          :host {:id "user1" :name "Jonathan Wallis"}})
-    
-    (import-invite! acset {:event "abc123"
-                           :user {:id "user2" :name "Alice"}
-                           :status "GOING"})
-    
-    (import-invite! acset {:event "abc123"
-                           :user {:id "user3" :name "Bob"}
-                           :status "MAYBE"})
-    
-    ;; Query
-    (println "Event guests:")
-    (doseq [guest (event-guests acset 0)]
-      (println "  -" (:name guest)))
-    
-    (println "\nRSVPs:")
-    (doseq [{:keys [user status]} (event-rsvps acset 0)]
-      (println "  -" (:name user) "->" status))
-    
-    (println "\nColored parts (seed=1069):")
-    (doseq [p (color-acset-parts acset 1069)]
-      (println "  " (:_obj p) (:_idx p) 
-               (:name p (:status p)) 
+    (populate-worlds! acset)
+    (println "Worlds populated:" (count worlds))
+    (println "Events:" (count (get-parts acset :Event)))
+    (println "Invites:" (count (get-parts acset :Invite)))
+    (println "\nGF(3) colored parts:")
+    (doseq [p (take 9 (color-acset-parts acset 1069))]
+      (println "  " (:_obj p) (:name p (:status p))
                "→" (get-in p [:_color :hex])
                "trit:" (get-in p [:_color :trit])))
-    
     acset))
 
 (when (= *file* (System/getProperty "babashka.file"))
-  (demo))
+  (-main))
