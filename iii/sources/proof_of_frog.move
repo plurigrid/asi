@@ -24,7 +24,7 @@ module zubyul::proof_of_frog {
     use aptos_framework::randomness;
     use aptos_framework::event;
     use aptos_framework::timestamp;
-    use aptos_framework::hash;
+    use aptos_std::hash;
     
     /// Error codes (frog-themed)
     const E_NOT_INITIALIZED: u64 = 1;          // Tadpole not hatched
@@ -34,6 +34,8 @@ module zubyul::proof_of_frog {
     const E_RID_MISMATCH: u64 = 5;             // Reference ID hop failed
     const E_SOCIETY_INCOMPATIBLE: u64 = 6;     // Can't merge lily pads
     const E_ALREADY_LEAPED: u64 = 7;           // Double hop detected
+    const E_NOT_ADMIN: u64 = 8;                // Only admin can spawn pond
+    const E_POND_ALREADY_EXISTS: u64 = 9;      // Pond already spawned
     
     /// Trit values (the three stages of frog life)
     const TADPOLE: i8 = -1;    // MINUS: Learning, absorbing
@@ -151,7 +153,14 @@ module zubyul::proof_of_frog {
     // ════════════════════════════════════════════════════════════════════════
     
     /// Initialize the pond with starter frogs
+    /// Only the module publisher (zubyul) can spawn the pond
     public entry fun spawn_pond(account: &signer) {
+        let caller = std::signer::address_of(account);
+        // Only module publisher can initialize
+        assert!(caller == @zubyul, E_NOT_ADMIN);
+        // Prevent double initialization
+        assert!(!exists<PondState>(@zubyul), E_POND_ALREADY_EXISTS);
+        
         let societies = vector::empty<Society>();
         
         // Create the two Aptos Societies that will merge
@@ -361,7 +370,7 @@ module zubyul::proof_of_frog {
             new_society: merged.name,
             total_frogs: merged.frog_count,
             total_lily_pads: merged.lily_pad_count,
-            ribbit_message: string::utf8(b"Toadally merged! Two ponds, one dream. 🐸"),
+            ribbit_message: string::utf8(b"Toadally merged! Two ponds, one dream."),
         });
         
         event::emit(LeapEvent {
@@ -389,7 +398,7 @@ module zubyul::proof_of_frog {
         
         event::emit(RibbitEvent {
             croaker: std::signer::address_of(account),
-            message: string::utf8(b"RIBBIT! I approve this merge! 🐸"),
+            message: string::utf8(b"RIBBIT! I approve this merge!"),
             volume,
         });
     }
@@ -529,7 +538,7 @@ module zubyul::proof_of_frog {
         let state = borrow_global<PondState>(@zubyul);
         let balanced = (state.pond_gf3_sum % 3) == 0;
         let msg = if (balanced) {
-            string::utf8(b"Toadally balanced! GF(3) conserved. 🐸")
+            string::utf8(b"Toadally balanced! GF(3) conserved.")
         } else {
             string::utf8(b"Unbalanced! Needs more tadpoles or mature frogs!")
         };
