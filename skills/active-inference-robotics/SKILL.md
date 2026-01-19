@@ -1,3 +1,8 @@
+---
+name: active-inference-robotics
+description: "Second-order skill synthesizing Patrick Kenny's discrete active inference framework with K-Scale's JAX/MuJoCo robotics stack for predictive coding in robot locomotion"
+---
+
 # Active Inference Robotics Skill (Second-Order)
 
 > *"The agent's job is to predict its actions by predicting its sensations."* — Patrick Kenny
