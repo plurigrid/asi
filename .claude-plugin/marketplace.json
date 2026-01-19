@@ -1,59 +1,39 @@
 {
-  "name": "asi-skills",
-  "owner": {
+  "name": "asi",
+  "version": "2.0.0",
+  "description": "Topological Superintelligence: 583 skills with GF(3) triadic balance for compositional AI development",
+  "repository": "https://github.com/plurigrid/asi",
+  "author": {
     "name": "Plurigrid",
     "email": "barton@topos.institute"
   },
-  "metadata": {
-    "description": "ASI Skills: Arena Protocol, GF(3) Color Generation, Compositional Game Theory",
-    "version": "1.4.0",
-    "repository": "https://github.com/plurigrid/asi"
-  },
-  "plugins": [
-    {
-      "name": "asi-skills",
-      "description": "Tripartite agent skills with GF(3) conservation for parallel execution",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/unwiring-arena",
-        "./skills/gay-mcp",
-        "./skills/triad-interleave",
-        "./skills/bisimulation-game",
-        "./skills/acsets",
-        "./skills/world-hopping",
-        "./skills/spi-parallel-verify",
-        "./skills/skill-dispatch",
-        "./skills/cognitive-surrogate",
-        "./skills/agent-o-rama",
-        "./skills/atproto-ingest",
-        "./skills/entropy-sequencer",
-        "./skills/influence-propagation",
-        "./skills/duckdb-timetravel",
-        "./skills/polyglot-spi",
-        "./skills/pulse-mcp-stream",
-        "./skills/abductive-repl",
-        "./skills/duckdb-ies",
-        "./skills/uv-oneliners",
-        "./skills/og"
-      ]
-    }
+  "license": "MIT",
+  "keywords": [
+    "topological",
+    "superintelligence", 
+    "gf3",
+    "triadic",
+    "category-theory",
+    "acsets",
+    "bicomodule"
   ],
-  "tripartite_agents": {
-    "minus": {
-      "trit": -1,
-      "hue": 270,
-      "skills": ["bisimulation-game", "spi-parallel-verify", "polyglot-spi"]
+  "plugins": ["asi-plugin"],
+  "categories": {
+    "plus": {
+      "trit": 1,
+      "description": "Generation, creation, synthesis skills",
+      "count": 194
     },
     "ergodic": {
       "trit": 0,
-      "hue": 180,
-      "skills": ["unwiring-arena", "acsets", "skill-dispatch", "entropy-sequencer"]
+      "description": "Coordination, balance, infrastructure skills",
+      "count": 195
     },
-    "plus": {
-      "trit": 1,
-      "hue": 30,
-      "skills": ["gay-mcp", "triad-interleave", "world-hopping", "agent-o-rama"]
+    "minus": {
+      "trit": -1,
+      "description": "Verification, validation, analysis skills",
+      "count": 194
     }
-  }
+  },
+  "conservation_law": "inject(+1) + bridge(0) + emit(-1) ≡ 0 (mod 3)"
 }
