@@ -162,23 +162,34 @@ module zubyul::swarm_bootstrap {
     // SplitMix64 Implementation
     // ════════════════════════════════════════════════════════════════════════
 
-    /// Initialize SplitMix64 from 128-bit seed
+    /// Initialize SplitMix64 from 128-bit seed (uses lower 64 bits)
     public fun splitmix64_new(seed: u128): SplitMix64 {
         SplitMix64 { state: seed }
     }
 
-    /// Next value from SplitMix64 (128-bit output)
+    /// Wrapping multiply for u64 (Move doesn't have built-in wrapping)
+    fun wrapping_mul_u64(a: u64, b: u64): u64 {
+        let result = (a as u128) * (b as u128);
+        (result & 0xFFFFFFFFFFFFFFFFu128) as u64
+    }
+
+    /// Next value from SplitMix64 (64-bit core, extended to 128-bit output)
+    /// Uses standard SplitMix64 algorithm with wrapping arithmetic
     public fun splitmix64_next(rng: &mut SplitMix64): u128 {
-        let z = rng.state;
-        let z = ((z ^ (z >> 30)) * 13787048220638806659u128);  // 0xbf58476d1ce4e5b9
-        let z = ((z ^ (z >> 27)) * 10724366251223527343u128);  // 0x94d049bb133111eb
-        rng.state = z ^ (z >> 31);
-        rng.state
+        let z = (rng.state & 0xFFFFFFFFFFFFFFFFu128) as u64;
+        z = z + 0x9e3779b97f4a7c15u64;  // Golden ratio constant
+        rng.state = (z as u128);
+        
+        z = wrapping_mul_u64(z ^ (z >> 30), 0xbf58476d1ce4e5b9u64);
+        z = wrapping_mul_u64(z ^ (z >> 27), 0x94d049bb133111ebu64);
+        z = z ^ (z >> 31);
+        
+        (z as u128)
     }
 
     /// Next 64-bit value from SplitMix64
     public fun splitmix64_next_u64(rng: &mut SplitMix64): u64 {
-        (splitmix64_next(rng) >> 64) as u64
+        (splitmix64_next(rng) & 0xFFFFFFFFFFFFFFFFu128) as u64
     }
 
     // ════════════════════════════════════════════════════════════════════════
