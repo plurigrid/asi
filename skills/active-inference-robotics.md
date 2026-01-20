@@ -1,0 +1,343 @@
+# Active Inference Robotics Skill (Second-Order)
+
+> *"The agent's job is to predict its actions by predicting its sensations."* — Patrick Kenny
+
+## Trigger Conditions
+
+- User asks about bridging active inference with robot control
+- Questions about predictive coding in locomotion policies
+- Connecting KL divergence minimization to RL training
+- Mean field approximation in robotics state estimation
+- Sim2Real as inference about future observations
+
+## Overview
+
+**Second-order skill** synthesizing Patrick Kenny's discrete active inference framework with K-Scale's JAX/MuJoCo robotics stack. This skill emerges from the **constructive collision** between:
+
+1. **Active Inference Institute** (ActInf ModelStream 019.1, Jan 2025)
+2. **K-Scale Labs** (ksim, kos, kinfer ecosystem)
+3. **MuJoCo Playground** (DeepMind's sim2real framework)
+
+## The Constructive Collision
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  CONSTRUCTIVE COLLISION: Two Threads Converging                              │
+│                                                                              │
+│  Thread A: Patrick Kenny (Nov 2025)                                          │
+│  ════════════════════════════════════                                        │
+│  "Active inference can be formulated as constrained KL divergence           │
+│   minimization solved by standard mean field methods"                        │
+│                                                                              │
+│  Key insight: Expected Free Energy ≈ KL Divergence + Entropy Regularizer    │
+│                                                                              │
+│  Thread B: K-Scale Labs (2024-2025)                                          │
+│  ═══════════════════════════════════                                         │
+│  "RL-based closed-loop control using policies trained in simulation         │
+│   has firmly won as the best way of achieving real-time control"            │
+│                                                                              │
+│  Key insight: Stateless vs Stateful behaviors as pure/coalgebraic semantics │
+│                                                                              │
+│  COLLISION POINT: Both minimize surprise about future observations          │
+│  ══════════════════════════════════════════════════════════════════         │
+│                                                                              │
+│       Active Inference              Robotics RL                              │
+│       ────────────────              ──────────                               │
+│       Predictive Distribution  ←→   Policy π(a|s)                           │
+│       Hidden Markov Model      ←→   MDP/POMDP                                │
+│       Mean Field Updates       ←→   PPO Gradient Steps                       │
+│       Variational Free Energy  ←→   Policy Loss                              │
+│       Expected Free Energy     ←→   Value Function + Entropy                 │
+│       Perception/Action Loop   ←→   Observation/Action Loop                  │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Kenny's Key Contribution
+
+From [arXiv:2511.20321](https://arxiv.org/abs/2511.20321):
+
+```
+Perception/Action Divergence = VFE(past) + KL(future states)
+
+Where:
+- VFE(past) = Standard variational free energy on observed history
+- KL(future) = Divergence of predictive distribution from HMM
+
+This differs from Expected Free Energy by an ENTROPY REGULARIZER:
+  EFE ≈ Pragmatic Value + Mutual Information
+  PAD ≈ Pragmatic Value + Entropy(Q)
+```
+
+### Why Entropy Regularization Matters for Robotics
+
+```python
+# In ksim PPO training, entropy bonus prevents policy collapse:
+loss = policy_loss + value_loss - entropy_coef * entropy
+
+# Kenny's formulation shows this is NOT ad-hoc but principled:
+# Entropy regularizer = not being overconfident about predictions
+# Biological rationale: know limitations of future predictions
+```
+
+## Mapping to ksim Architecture
+
+| Active Inference Concept | ksim Implementation |
+|--------------------------|---------------------|
+| Hidden Markov Model | `PhysicsEngine` (MJX/MuJoCo) |
+| Observation distribution | `Observation.observe(state)` |
+| State inference Q(s) | `Critic.forward(obs, carry)` |
+| Action inference Q(a) | `Actor.forward(obs, carry)` |
+| Mean field factorization | Independent Q(s_t) per timestep |
+| Predictive distribution | Policy rollout trajectory |
+| VFE minimization | PPO policy gradient |
+| EFE/PAD minimization | Value function + entropy bonus |
+
+## Second-Order Behavior Types
+
+### 1. Reflexive Control (Kenny's "Sufficient" Model)
+
+```python
+# Agent predicts proprioceptive sensations → fulfills reflexively
+class ReflexiveController:
+    """
+    Kenny: "If the agent can successfully predict its future sensations,
+    it can fulfill them unconsciously via motor reflexes."
+    """
+    def step(self, predicted_proprio: Array) -> Action:
+        # Low-level PD control fulfills proprioceptive predictions
+        return self.pd_controller(predicted_proprio, self.current_state)
+```
+
+### 2. Deliberative Planning (EFE Extension)
+
+```python
+# When reflexive prediction fails, engage deliberative inference
+class DeliberativeController:
+    """
+    Extends reflexive control with policy search over trajectories.
+    This is where EFE differs from Kenny's PAD formulation.
+    """
+    def plan(self, beliefs: Distribution, horizon: int) -> Policy:
+        # Tree search over policies weighted by expected free energy
+        for policy in self.policy_space:
+            efe = self.expected_free_energy(beliefs, policy, horizon)
+            # EFE includes mutual information (curiosity/exploration)
+            # PAD would use entropy instead (uncertainty awareness)
+```
+
+### 3. Hierarchical Composition
+
+```
+Level 3: Goal Selection (minimize long-horizon EFE)
+    ↓ sets reference for
+Level 2: Trajectory Planning (predictive distribution)
+    ↓ sets reference for  
+Level 1: Reflexive Execution (fulfill proprio predictions)
+    ↓ actuates
+Level 0: Motor Primitives (PD control, actuator dynamics)
+```
+
+## GF(3) Trit Assignment
+
+```
+Trit: +1 (PLUS)
+Role: Generation (theory→practice synthesis)
+Color: #A1BE3C
+URI: skill://active-inference-robotics#A1BE3C
+```
+
+### Balanced Quad
+
+```
+active-inference-robotics (+1) ⊗ kscale-ksim (0) ⊗ 
+kscale-kos (-1) ⊗ mujoco-playground (0) = 0 ✓
+
+Generation (+1): This skill synthesizes theory into practice
+Coordination (0): ksim and mujoco-playground bridge implementations
+Verification (-1): kos validates on real hardware
+```
+
+### Skill Colors (drand seed 12005093902789493003)
+
+| Skill | Trit | Color | Role |
+|-------|------|-------|------|
+| `active-inference-robotics` | +1 | `#A1BE3C` | Generation (synthesis) |
+| `kscale-ksim` | 0 | `#25BC3D` | Coordination (simulation) |
+| `kscale-kos` | -1 | `#E85A71` | Verification (hardware) |
+
+## 2-3-5-7 Prime Sieve Experts
+
+Applying prime-indexed refinement to identify domain experts:
+
+| Prime | Expert | Domain | Key Contribution |
+|-------|--------|--------|------------------|
+| 2 | Patrick Kenny | Active Inference | Mean field formulation, PAD criterion |
+| 3 | Thomas Parr | Active Inference | 2022 textbook, EFE derivation |
+| 5 | Ben Bolte | K-Scale | ksim architecture, open-source humanoids |
+| 7 | Karl Friston | Free Energy Principle | FEP foundations, continuous formulation |
+| 11 | (DeepMind team) | MuJoCo Playground | MJX, sim2real zero-shot |
+| 13 | Wesley Maa | K-Scale | Tooling, visualization |
+
+## Mutual Awareness
+
+This skill references and is referenced by:
+
+```yaml
+depends_on:
+  - kscale-ksim        # Simulation implementation
+  - kscale-ecosystem   # Hardware context
+  - mujoco-playground  # Framework foundation
+  
+referenced_by:
+  - cognitive-superposition  # Team mental models
+  - parametrised-optics-cybernetics  # Category theory bridge
+  - reafference-corollary-discharge  # Sensorimotor prediction
+```
+
+## Implementation Pattern
+
+```python
+# Unified Active Inference + RL Training Loop
+class ActiveInferenceTrainer:
+    """
+    Combines Kenny's PAD criterion with ksim's PPO.
+    """
+    def __init__(self, hmm: PhysicsEngine, config: Config):
+        self.hmm = hmm
+        self.actor = Actor(config)
+        self.critic = Critic(config)
+        
+    def perception_action_divergence(
+        self, 
+        observations: Array,  # O_{1:t} (past)
+        q_future: Distribution  # Q(S_{t+1:T}, O_{t+1:T})
+    ) -> Scalar:
+        """
+        Kenny's PAD = VFE(past) + KL(future states from HMM)
+        """
+        # Past: standard VFE on observation history
+        vfe_past = self.variational_free_energy(observations)
+        
+        # Future: KL divergence of predicted states from HMM
+        # Note: Observable emissions cancel out in future KL
+        kl_future = self.kl_future_states(q_future, self.hmm)
+        
+        return vfe_past + kl_future
+    
+    def train_step(self, trajectory: Trajectory) -> Metrics:
+        # PPO updates approximate mean field coordinate ascent
+        # Entropy bonus provides Kenny's regularization
+        return ppo_update(
+            self.actor, 
+            self.critic, 
+            trajectory,
+            entropy_coef=0.01  # ← The regularizer!
+        )
+```
+
+## References
+
+- [Kenny (2025) Active Inference from First Principles](https://arxiv.org/abs/2511.20321)
+- [Parr, Pezzulo, Friston (2022) Active Inference Textbook](https://direct.mit.edu/books/oa-monograph/5299/Active-InferenceThe-Free-Energy-Principle-in-Mind)
+- [ActInf ModelStream 019.1](https://www.youtube.com/watch?v=...) - Jan 15, 2026
+- [K-Scale Labs GitHub](https://github.com/kscalelabs)
+- [MuJoCo Playground](https://playground.mujoco.org/)
+- [Ben Bolte's Blog](https://ben.bolte.cc/)
+
+## Narya Compatibility (Structure-Aware Diffing)
+
+| Field | Definition |
+|-------|------------|
+| `before` | Belief state Q(s) before perception update |
+| `after` | Belief state Q(s') after action and new observation |
+| `delta` | Free energy gradient: VFE reduction from belief update |
+| `birth` | Prior distribution P(s) from generative model |
+| `impact` | 1 if belief significantly revised (KL > threshold), 0 otherwise |
+
+### Active Inference Event Structure
+
+```python
+@dataclass
+class ActiveInferenceNaryaEvent:
+    """Structure-aware diff for active inference belief updates."""
+    event_id: str
+    before: BeliefState       # Q(s_t) prior to observation
+    after: BeliefState        # Q(s_t) posterior after observation
+    delta: FreeEnergyDelta    # VFE change + action taken
+    trit: int                 # GF(3): -1=surprise, 0=expected, +1=info_gain
+    
+    @property
+    def impact(self) -> int:
+        """1 if belief revision exceeds threshold."""
+        kl = kl_divergence(self.before, self.after)
+        return 1 if kl > REVISION_THRESHOLD else 0
+    
+    def perception_action_divergence(self) -> float:
+        """Kenny's PAD = VFE(past) + KL(future)"""
+        return self.delta.vfe + self.delta.kl_future
+
+@dataclass
+class FreeEnergyDelta:
+    vfe: float           # Variational free energy change
+    kl_future: float     # KL divergence of predictive distribution
+    action: Array        # Action taken
+    entropy_bonus: float # Regularization term (Kenny's contribution)
+```
+
+### Mapping to ksim Training Loop
+
+```python
+# Active inference interpretation of PPO update
+def ppo_as_active_inference(trajectory: Trajectory) -> list[ActiveInferenceNaryaEvent]:
+    events = []
+    for t, (obs, action, reward, next_obs) in enumerate(trajectory):
+        # Perception: update Q(s) given observation
+        before_belief = critic.get_value_distribution(obs)
+        after_belief = critic.get_value_distribution(next_obs)
+        
+        # Action: policy selected action to minimize EFE
+        vfe_change = compute_vfe(before_belief, obs) - compute_vfe(after_belief, next_obs)
+        
+        events.append(ActiveInferenceNaryaEvent(
+            event_id=f"infer_{t}",
+            before=before_belief,
+            after=after_belief,
+            delta=FreeEnergyDelta(
+                vfe=vfe_change,
+                kl_future=kl_divergence(policy(obs), hmm_prediction(obs)),
+                action=action,
+                entropy_bonus=entropy(policy(obs)) * 0.01  # entropy_coef
+            ),
+            trit=sign(reward)  # Reward as surprise reduction
+        ))
+    return events
+```
+
+## ACSet Schema
+
+```julia
+@present SchActiveInferenceRobotics(FreeSchema) begin
+    # Objects
+    HMM::Ob           # Hidden Markov Model (generative model)
+    State::Ob         # Latent state
+    Observation::Ob   # Sensory observation
+    Action::Ob        # Motor command
+    Policy::Ob        # Action sequence
+    
+    # Morphisms (inference)
+    perceive::Hom(Observation, State)    # Perception: O → S
+    predict::Hom(State, Observation)     # Prediction: S → O
+    act::Hom(State, Action)              # Action selection: S → A
+    transition::Hom(State × Action, State)  # Dynamics: S × A → S'
+    
+    # Attributes
+    FreeEnergy::AttrType
+    vfe::Attr(State, FreeEnergy)         # Variational free energy
+    efe::Attr(Policy, FreeEnergy)        # Expected free energy
+    pad::Attr(Policy, FreeEnergy)        # Perception/action divergence
+    
+    # The key relationship (Kenny's contribution):
+    # pad ≈ efe + entropy_regularizer
+end
+```
