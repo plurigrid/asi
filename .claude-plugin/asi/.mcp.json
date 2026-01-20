@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "gay": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/gay-colors-mcp"],
+      "description": "Deterministic color generation with SplitMix64",
+      "trit": 1
+    },
+    "duckdb": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/duckdb-mcp"],
+      "description": "DuckDB for ACSet queries and temporal versioning",
+      "trit": 0
+    },
+    "tree-sitter": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/tree-sitter-mcp"],
+      "description": "Tree-sitter for code analysis",
+      "trit": -1
+    }
+  },
+  "gf3_balance": {
+    "plus_servers": ["gay"],
+    "ergodic_servers": ["duckdb"],
+    "minus_servers": ["tree-sitter"],
+    "conservation": "sum(trits) mod 3 = 0"
+  }
+}
