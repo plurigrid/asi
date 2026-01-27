@@ -122,3 +122,28 @@ assembly-index (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓  [Mol
 **Type**: Complexity Validator
 **Trit**: -1 (MINUS)
 **Color**: #2626D8 (Blue)
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+assembly-index (○) + SDF.Ch1 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.

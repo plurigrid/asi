@@ -361,3 +361,29 @@ Output:    0    1    1    0    1    1    1    0
 ```
 
 *TRUE-ALIFE: Where computation lives, and life computes.*
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+true-alife (○) + SDF.Ch7 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.

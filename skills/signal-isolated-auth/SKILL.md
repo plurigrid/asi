@@ -300,3 +300,30 @@ print(f"Pathway trit sum: {pathway.trit_sum}")
 - `gay-mcp` - Deterministic color generation
 - `livekit-omnimodal` - Real-time coaching integration
 - `blackhat-go` - Adversarial security analysis
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+signal-isolated-auth (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch9: Generic Procedures
+- Ch5: Evaluation
+- Ch6: Layering
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

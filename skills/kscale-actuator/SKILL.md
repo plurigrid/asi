@@ -118,3 +118,25 @@ kscale-actuator (-1) ⊗ kos-firmware (+1) ⊗ mujoco-scenes (0) = 0 ✓
   url={https://github.com/kscalelabs/actuator}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 6. Layering
+
+**Concepts**: layered data, metadata, provenance, units
+
+### GF(3) Balanced Triad
+
+```
+kscale-actuator (○) + SDF.Ch6 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Layering adds metadata. This skill tracks provenance or annotations.

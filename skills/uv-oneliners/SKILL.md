@@ -116,6 +116,31 @@ uv-oneliners  │    ruff/black
 
 Needs `-1` skill to balance: `three-match`, `skill-validation-gf3`
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+uv-oneliners (○) + SDF.Ch4 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.
 ## Cat# Integration
 
 ```

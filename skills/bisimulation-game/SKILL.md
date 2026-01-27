@@ -582,3 +582,33 @@ verify:
 | bmorphism | bmorphism | [r2zignatures](https://github.com/bmorphism/r2zignatures) | Zignature-based observational equivalence testing |
 | condret | condret | [r2ghidra](https://github.com/radareorg/r2ghidra) | Decompilation for semantic equivalence in bisim games |
 | alkalinesec | alkalinesec | [ESILSolve](https://github.com/aemmitt-ns/esilsolve) | Symbolic execution for state equivalence verification |
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+bisimulation-game (○) + SDF.Ch3 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+- Ch8: Degeneracy
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch6: Layering
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

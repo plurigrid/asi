@@ -226,3 +226,29 @@ async def deploy_policy():
   url={https://github.com/kscalelabs}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+kscale (−) + SDF.Ch4 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.

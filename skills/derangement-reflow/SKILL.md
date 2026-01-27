@@ -198,3 +198,28 @@ derangement-reflow (0) ⊗ bisimulation-game (-1) ⊗ glass-bead-game (+1) = 0 �
 - Active inference: Friston's free energy principle for joint world modeling
 - AtomicDerangement3 in signal-mcp/src/loom_failures.rs
 - perception_matrix_alpha.swift: Sattolo's algorithm for guaranteed derangement
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+derangement-reflow (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

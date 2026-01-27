@@ -1355,3 +1355,35 @@ select([elements_of(:V)], g)  # → [(V,1), (V,2), (V,3), (V,4)]
 # Navigate morphism structure
 select([elements_of(:E), incident_to(:src, 1)], g)  # Edges from vertex 1
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 9. Generic Procedures
+
+**Concepts**: dispatch, multimethod, predicate dispatch, generic
+
+### GF(3) Balanced Triad
+
+```
+acsets (○) + SDF.Ch9 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch10: Adventure Game Example
+- Ch8: Degeneracy
+- Ch7: Propagators
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch6: Layering
+- Ch5: Evaluation
+
+### Connection Pattern
+
+Generic procedures dispatch on predicates. This skill selects implementations dynamically.

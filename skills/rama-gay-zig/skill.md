@@ -175,3 +175,25 @@ This skill connects:
 - Rama 0.14+ (REST API enabled)
 - Zig 0.13+ with build.zig.zon support
 - Babashka 1.4+ for Clojure scripting
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+rama-gay-zig (−) + SDF.Ch8 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

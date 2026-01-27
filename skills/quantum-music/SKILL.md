@@ -203,3 +203,24 @@ quantum_music_performance:
 **Condition**: μ(n) ≠ 0 (Möbius squarefree)
 
 This skill is qualified for non-backtracking geodesic traversal.
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+quantum-music (○) + SDF.Ch1 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.

@@ -35,3 +35,25 @@ See: https://github.com/trailofbits/skills
 - codeql
 - semgrep
 - variant-analysis
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+harness-writing (+) + SDF.Ch8 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

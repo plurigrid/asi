@@ -72,3 +72,27 @@ Color: #00FF00
 Pairs with:
 - `depth-search` (ERGODIC 0) - synthesis
 - `bioservices` (MINUS -1) - contraction
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+dune-analytics (+) + SDF.Ch5 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch6: Layering
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

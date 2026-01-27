@@ -116,3 +116,31 @@ skill sicp random-walk-fusion duck-agent  # GF(3) = 0
 ---
 **Generated**: 2026-01-01 via random-walk-fusion  
 **Seeds**: 0xDEAD (MINUS), 0xBEEF (ERGODIC), 0xCAFE (PLUS)
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+skill-bonds (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch1: Flexibility through Abstraction
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
