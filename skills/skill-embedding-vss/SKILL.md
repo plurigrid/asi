@@ -538,3 +538,30 @@ python padic_ultrametric.py /path/to/skills
 - [SplitMix64](https://dl.acm.org/doi/10.1145/2714064.2660195) - Steele et al. 2014
 - [P-adic Numbers](https://en.wikipedia.org/wiki/P-adic_number) - Non-Archimedean analysis
 - [Ultrametric Trees](https://arxiv.org/abs/1703.02287) - Hierarchical clustering
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+skill-embedding-vss (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

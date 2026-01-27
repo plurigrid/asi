@@ -422,3 +422,33 @@ end
 - `constraint-logic` - Logical foundation
 - `dataflow` - One-way version
 - `interaction-nets` - Another "no control" model
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+propagators (+) + SDF.Ch3 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch10: Adventure Game Example
+- Ch2: Domain-Specific Languages
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

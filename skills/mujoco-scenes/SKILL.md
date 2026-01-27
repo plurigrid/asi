@@ -150,3 +150,28 @@ zeroth-bot (-1) ⊗ kos-firmware (+1) ⊗ mujoco-scenes (0) = 0 ✓
   url={https://github.com/kscalelabs/mujoco-scenes}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+mujoco-scenes (○) + SDF.Ch1 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.

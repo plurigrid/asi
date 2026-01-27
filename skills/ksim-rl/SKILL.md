@@ -140,3 +140,28 @@ ksim-rl (-1) ⊗ kos-firmware (+1) ⊗ urdf2mjcf (0) = needs balancing
   url={https://github.com/kscalelabs/ksim}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+ksim-rl (○) + SDF.Ch5 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

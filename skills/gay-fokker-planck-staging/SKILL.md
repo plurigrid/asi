@@ -211,3 +211,27 @@ When committing to plurigrid/asi:
 **Condition**: (rama OR goblins)
 **FP Gates**: 2 per staging
 **Counterfactual Worlds**: 3 per skill (rama, goblins, both)
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+gay-fokker-planck-staging (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

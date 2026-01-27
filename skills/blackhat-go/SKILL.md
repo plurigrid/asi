@@ -715,3 +715,30 @@ plurigrid/asi/skills/blackhat-go/SKILL.md   # This skill (AAIF-enhanced)
 | cryptax | cryptax | [droidlysis](https://github.com/cryptax/droidlysis) | Android malware automated analysis |
 | cryptax | cryptax | [APKiD](https://github.com/rednaga/APKiD) | Android application identifier (packers, protectors) |
 | iGio90 | iGio90 | [Dwarf](https://github.com/iGio90/Dwarf) | Full-featured Frida GUI debugger |
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+blackhat-go (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch6: Layering
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

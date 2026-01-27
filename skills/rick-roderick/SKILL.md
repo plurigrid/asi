@@ -256,6 +256,34 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `dynamical-systems`: 41 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+rick-roderick (+) + SDF.Ch5 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+- Ch10: Adventure Game Example
+- Ch6: Layering
+- Ch7: Propagators
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

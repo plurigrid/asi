@@ -379,6 +379,36 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `distributed-systems`: 3 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+exo-distributed (○) + SDF.Ch8 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch6: Layering
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

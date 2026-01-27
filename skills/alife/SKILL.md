@@ -538,3 +538,34 @@ agent = Agent(); [agent.move(grid) for _ in range(100)]
 print(f'Final sugar: {agent.sugar:.1f}')
 "
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+alife (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch8: Degeneracy
+- Ch7: Propagators
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch6: Layering
+- Ch2: Domain-Specific Languages
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

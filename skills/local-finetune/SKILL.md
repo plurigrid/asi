@@ -366,3 +366,27 @@ mlx_lm.chat --model mlx-community/Qwen2.5-Coder-7B-Instruct-4bit \
 | +1 | Model output | mlx-lm inference |
 
 Conservation: (-1) + (0) + (+1) = 0 ✓
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+local-finetune (+) + SDF.Ch4 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch6: Layering
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.

@@ -181,3 +181,28 @@ ksim-rl (-1) ⊗ topos-generate (+1) ⊗ evla-vla (-1) = needs balancing
   year={2024}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+evla-vla (−) + SDF.Ch5 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

@@ -432,3 +432,31 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `category-theory`: 139 citations in bib.duckdb
 - `operads`: 5 citations in bib.duckdb
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+infinity-operads (○) + SDF.Ch8 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

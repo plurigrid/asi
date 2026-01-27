@@ -35,3 +35,25 @@ See: https://github.com/trailofbits/skills
 - codeql
 - semgrep
 - variant-analysis
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+constant-time-analysis (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
