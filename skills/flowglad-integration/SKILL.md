@@ -39,3 +39,27 @@ Resolves credit balance friction via polling-based checkout.
 - amp-skill
 - unified-reafference
 - aptos-trading
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+flowglad-integration (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

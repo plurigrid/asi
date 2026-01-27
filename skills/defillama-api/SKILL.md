@@ -164,3 +164,28 @@ This skill serves as MINUS (-1) validator in triads:
 Compose with:
 - `aptos-agent` (+1): Execute based on data
 - `exa-search` (0): Enrich with web context
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+defillama-api (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

@@ -318,3 +318,30 @@ calculus (-1) ⊗ sicmutils (0) ⊗ physics (+1) = 0 ✓
 - [SICM](https://mitpress.mit.edu/9780262028967/) - Sussman & Wisdom textbook
 - [SRFI](https://srfi.schemers.org/) - Scheme Requests for Implementation
 - [scmutils](https://groups.csail.mit.edu/mac/users/gjs/6946/installation.html) - Original MIT Scheme library
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 9. Generic Procedures
+
+**Concepts**: dispatch, multimethod, predicate dispatch, generic
+
+### GF(3) Balanced Triad
+
+```
+sicmutils (+) + SDF.Ch9 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Generic procedures dispatch on predicates. This skill selects implementations dynamically.

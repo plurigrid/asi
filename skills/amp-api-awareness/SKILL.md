@@ -301,3 +301,32 @@ Gemini 3 Pro: ~$0.70/thread (mid-tier)
 - `duckdb-ies` - IES analytics layer
 - `amp-team-usage` - Team/session tracking
 - `unified-reafference` - Cross-agent session DB
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+amp-api-awareness (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+- Ch9: Generic Procedures
+- Ch8: Degeneracy
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch6: Layering
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

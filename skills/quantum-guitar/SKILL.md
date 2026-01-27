@@ -290,3 +290,28 @@ Geodesic Invariant:
 Möbius Inversion:
   f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+quantum-guitar (+) + SDF.Ch2 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.

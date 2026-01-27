@@ -263,3 +263,31 @@ AGENT_TRITS = Dict(
 - `linear-logic` - Logical foundation
 - `graph-rewriting` - General theory
 - `propagators` - Another "no control flow" model
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+interaction-nets (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

@@ -49,3 +49,24 @@ if (hash.startsWith('base64:')) {
 
 - Trit: 0 (ERGODIC)
 - decode ∘ encode = id
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 6. Layering
+
+**Concepts**: layered data, metadata, provenance, units
+
+### GF(3) Balanced Triad
+
+```
+mermaid-reverse-attempt (−) + SDF.Ch6 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+
+### Connection Pattern
+
+Layering adds metadata. This skill tracks provenance or annotations.

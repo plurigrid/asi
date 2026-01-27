@@ -319,3 +319,24 @@ bb ~/.claude/skills/derangement-crdt/derangement_crdt.bb
 ---
 
 *Derangements ensure every element moves; GF(3) coloring ensures balance is preserved.*
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+derangement-crdt (○) + SDF.Ch1 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.

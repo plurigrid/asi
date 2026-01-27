@@ -195,3 +195,29 @@ where all projections π preserve GF(3) conservation:
 ---
 
 *"The most unlike skills are the most essential - they bridge what others cannot reach."*
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 6. Layering
+
+**Concepts**: layered data, metadata, provenance, units
+
+### GF(3) Balanced Triad
+
+```
+crossmodal-gf3 (+) + SDF.Ch6 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Layering adds metadata. This skill tracks provenance or annotations.

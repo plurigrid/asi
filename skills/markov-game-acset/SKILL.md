@@ -324,3 +324,31 @@ just markov-game-viz game.json --seed 0x6B26D8
 - [derangement-reflow](../derangement-reflow/SKILL.md) — World operators (trit 0)
 - [world-extractable-value](../world-extractable-value/SKILL.md) — WEV extraction (trit 0)
 - [bisimulation-game](../bisimulation-game/SKILL.md) — Observational equivalence (trit -1)
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+markov-game-acset (−) + SDF.Ch8 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch6: Layering
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

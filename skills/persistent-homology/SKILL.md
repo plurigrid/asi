@@ -283,3 +283,31 @@ Binary analysis repositories from r2con speakers for Radare2Analyzer integration
 | alkalinesec | [aemmitt-ns/ESILSolve](https://github.com/aemmitt-ns/ESILSolve) | Symbolic exec for structural hole detection |
 | Pelissier_S | ESIL side-channel | Side-channel simulation for homology persistence |
 | condret | [radareorg/r2ghidra](https://github.com/radareorg/r2ghidra) | ESIL core for binary Betti numbers |
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+persistent-homology (−) + SDF.Ch3 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch8: Degeneracy
+- Ch1: Flexibility through Abstraction
+- Ch5: Evaluation
+- Ch10: Adventure Game Example
+- Ch6: Layering
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

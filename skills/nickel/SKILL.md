@@ -115,3 +115,30 @@ let verify_sufficiency = fun cfg1 cfg2 =>
   then 'COMPUTATIONALLY_SUFFICIENT
   else 'NOT_SUFFICIENT
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+nickel (−) + SDF.Ch8 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

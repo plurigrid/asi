@@ -49,3 +49,27 @@ Key classes:
 **Tier**: Layer 5 - INVERSION (Duality/Reversal)  
 **Trit**: +1 (PLUS/Generator)  
 **Coverage**: Begins to fill 1.6% → expand to 10%+ target
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+möbius-color-duality (−) + SDF.Ch3 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch6: Layering
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

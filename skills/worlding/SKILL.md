@@ -263,3 +263,32 @@ compass_direction(0.20)  # => "SOUTH" (consensus)
 ---
 
 *"The world remembers itself by worlding itself."*
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+worlding (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch3: Variations on an Arithmetic Theme
+- Ch6: Layering
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

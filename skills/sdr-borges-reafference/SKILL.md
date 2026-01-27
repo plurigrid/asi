@@ -357,3 +357,30 @@ GF(3)_SUM: 0 ✓ CONSERVED
 ---
 
 *"In the Library of Babel, every signal has already been transmitted. We need only learn to tune."*
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+sdr-borges-reafference (+) + SDF.Ch5 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch6: Layering
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.
