@@ -436,6 +436,36 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `game-theory`: 21 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+cybernetic-open-game (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch8: Degeneracy
+- Ch5: Evaluation
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

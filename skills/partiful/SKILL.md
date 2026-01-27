@@ -61,6 +61,28 @@ See `scripts/partiful-acset.clj` for queries:
 - `event-guests` - All guests for an event
 - `event-rsvps` - RSVP statuses for event
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+partiful (○) + SDF.Ch5 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.
 ## Cat# Integration
 
 ```

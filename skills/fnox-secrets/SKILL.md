@@ -332,3 +332,28 @@ fnox list -p prod  # Check correct profile
 - [fnox GitHub](https://github.com/jdx/fnox)
 - [age encryption](https://age-encryption.org/)
 - [ACSets.jl](https://github.com/AlgebraicJulia/ACSets.jl)
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+fnox-secrets (○) + SDF.Ch5 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

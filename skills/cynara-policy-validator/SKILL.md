@@ -69,3 +69,29 @@ This is a Tizen security/IoT skill. Use when:
 - Samsung Security Manager: https://github.com/Samsung/security-manager
 - Samsung Cynara: https://github.com/Samsung/cynara
 - TizenRT: https://github.com/Samsung/TizenRT
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+cynara-policy-validator (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+- Ch6: Layering
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

@@ -112,6 +112,31 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `distributed-systems`: 3 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+tailscale-localsend (−) + SDF.Ch7 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

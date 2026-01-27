@@ -125,3 +125,25 @@ await controller.setJointPositions({
   url={https://github.com/kscalelabs/zeroth-bot}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+zeroth-bot (−) + SDF.Ch2 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.

@@ -148,3 +148,25 @@ loop {
 - [kscalelabs/kinfer](https://github.com/kscalelabs/kinfer) - Main repository (17 stars)
 - [kscalelabs/kinfer-sim](https://github.com/kscalelabs/kinfer-sim) - Simulation visualization
 - [ONNX Runtime](https://onnxruntime.ai/) - Inference backend
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+kinfer-runtime (+) + SDF.Ch2 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.

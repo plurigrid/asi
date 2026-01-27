@@ -234,6 +234,33 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `dynamical-systems`: 41 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+gflownet (−) + SDF.Ch1 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

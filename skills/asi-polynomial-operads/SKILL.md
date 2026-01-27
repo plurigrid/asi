@@ -322,6 +322,37 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 - `polynomial-functors`: 8 citations in bib.duckdb
 - `operads`: 5 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+asi-polynomial-operads (−) + SDF.Ch3 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch9: Generic Procedures
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch5: Evaluation
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

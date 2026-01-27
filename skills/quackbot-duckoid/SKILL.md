@@ -424,3 +424,30 @@ quackbot-duckoid (+1) ⊗ ksim-rl (-1) ⊗ mujoco-scenes (0) = 0 ✓
   year={1975}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+quackbot-duckoid (○) + SDF.Ch1 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.

@@ -48,3 +48,24 @@ end
 - `emacs` (0) - Editor integration
 - `julia-scientific` (+1) - Julia execution
 - `python-development` (+1) - Python execution
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+org-babel-execution (+) + SDF.Ch2 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.

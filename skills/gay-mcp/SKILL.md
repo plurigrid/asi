@@ -362,3 +362,29 @@ triplet = streams.next_triplet
 
 - Non-deterministic color generation
 - Ignoring seed provenance
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+gay-mcp (+) + SDF.Ch4 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch6: Layering
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.

@@ -203,6 +203,34 @@ just bx-compare term.idr
 - Ghani, Hedges et al., "Compositional Game Theory"
 - Arntzenius, unpublished work on 4-element kind lattice
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+bidirectional-lens-logic (+) + SDF.Ch5 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch6: Layering
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.
 ## Cat# Integration
 
 ```

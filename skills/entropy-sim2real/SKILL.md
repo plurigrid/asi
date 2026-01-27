@@ -478,3 +478,30 @@ ksim-rl (-1) ⊗ kos-firmware (+1) ⊗ entropy-sim2real (-1) = needs +1
   year={2020}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+entropy-sim2real (○) + SDF.Ch8 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch1: Flexibility through Abstraction
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

@@ -41,3 +41,27 @@ Forms triad with:
 - `bifurcation` (0): detects transitions
 - `bifurcation-generator` (+1): parameter space
 - `phase-portrait-generator` (+1): state space
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+phase-portrait-generator (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
