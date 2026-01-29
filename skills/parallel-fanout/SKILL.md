@@ -1,8 +1,17 @@
 ---
 name: parallel-fanout
 description: Metaskill that fans out on every interaction, using interaction entropy
-version: 1.0.0
+version: 1.0.1
 ---
+
+## CRITICAL CONSTRAINT
+
+**DO NOT** execute verbose demonstration code when this skill is loaded for context.
+- Loading a skill ≠ running theatrical demos
+- No emoji-laden output proving nothing
+- No token-wasting "look at me work" theater
+- If the user wanted a demo, they would ask for one
+- Reading skill context is sufficient; execution requires explicit request
 
 
 # parallel-fanout - Interaction-Entropy-Seeded Parallel Skill Dispatch
