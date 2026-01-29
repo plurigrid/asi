@@ -1,0 +1,15 @@
+[project]
+name = "utoronto-outlook"
+version = "1.1.0"
+description = "Headless UofT Outlook access via IMAP/SMTP OAuth2 with Thunderbird client ID"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.28.0",
+]
+
+[project.scripts]
+utoronto-outlook = "outlook_university:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
