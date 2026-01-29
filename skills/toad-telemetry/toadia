@@ -1,0 +1,89 @@
+#!/Users/alice/.local/share/uv/tools/batrachian-toad/bin/python3
+# -*- coding: utf-8 -*-
+"""
+toadia - Toad with OpenTelemetry Instrumentation for AI Agents
+
+Wrapper that instruments Toad with OTEL tracing before launching.
+Provides per-tool spans, turn tracking, and session telemetry.
+
+Usage:
+    toadia [toad-args...]
+    toadia -a claude .           # Run Claude Code agent with telemetry
+    toadia acp "my-agent" .      # Run ACP agent with telemetry
+
+Environment Variables:
+    OTEL_EXPORTER_OTLP_ENDPOINT  OTLP endpoint (default: http://localhost:4317)
+    TOAD_TELEMETRY_ENABLED       Enable/disable (default: 1)
+    TOAD_TELEMETRY_CONSOLE       Print spans to console (default: 0)
+    TOAD_SERVICE_NAME            Service name for traces (default: toad)
+"""
+
+import os
+import sys
+
+TELEMETRY_HELP = """
+\033[90m┌─────────────────────────────────────────────────────────────────┐
+│ \033[0m\033[1mOpenTelemetry Tracing\033[0m\033[90m                                           │
+│                                                                 │
+│ \033[0m\033[36mStart Jaeger:\033[0m\033[90m                                                  │
+│   \033[0mdocker run -d --name jaeger -p 16686:16686 -p 4317:4317 \\\033[90m     │
+│   \033[0m  jaegertracing/all-in-one:latest\033[90m                            │
+│                                                                 │
+│ \033[0m\033[36mView traces:\033[0m \033[4mhttp://localhost:16686\033[0m\033[90m                           │
+│                                                                 │
+│ \033[0m\033[36mDebug mode:\033[0m  TOAD_TELEMETRY_CONSOLE=1 toadia ...\033[90m             │
+│ \033[0m\033[36mDisable:\033[0m     TOAD_TELEMETRY_ENABLED=0 toadia ...\033[90m             │
+└─────────────────────────────────────────────────────────────────┘\033[0m
+"""
+
+def main():
+    # Add toad_telemetry to path
+    lib_path = os.path.expanduser("~/.local/lib")
+    if lib_path not in sys.path:
+        sys.path.insert(0, lib_path)
+    
+    # Check if telemetry is enabled
+    if os.environ.get("TOAD_TELEMETRY_ENABLED", "1") == "1":
+        try:
+            from toad_telemetry import instrument_toad, ToadTelemetryConfig
+            
+            # Extract agent name from args if present
+            agent_name = "unknown"
+            project_dir = os.getcwd()
+            
+            args = sys.argv[1:]
+            for i, arg in enumerate(args):
+                if arg in ("-a", "--agent") and i + 1 < len(args):
+                    agent_name = args[i + 1]
+                elif arg == "acp" and i + 1 < len(args):
+                    agent_name = args[i + 1].split()[0]
+                elif not arg.startswith("-") and os.path.isdir(arg):
+                    project_dir = os.path.abspath(arg)
+            
+            config = ToadTelemetryConfig(
+                service_name=os.environ.get("TOAD_SERVICE_NAME", "toad"),
+                agent_name=agent_name,
+                project_dir=project_dir,
+            )
+            
+            if instrument_toad(config):
+                print(f"\033[32m[toadia]\033[0m Telemetry enabled -> {config.endpoint}", 
+                      file=sys.stderr)
+                # Show help box if --help or no args
+                if "--help" in args or "-h" in args or not args:
+                    print(TELEMETRY_HELP, file=sys.stderr)
+            else:
+                print(f"\033[33m[toadia]\033[0m Telemetry disabled", file=sys.stderr)
+                
+        except ImportError as e:
+            print(f"\033[33m[toadia]\033[0m Warning: {e}", file=sys.stderr)
+        except Exception as e:
+            print(f"\033[31m[toadia]\033[0m Error: {e}", file=sys.stderr)
+    
+    # Now run toad
+    from toad.cli import main as toad_main
+    toad_main()
+
+
+if __name__ == "__main__":
+    main()
