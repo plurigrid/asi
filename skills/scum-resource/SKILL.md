@@ -1,8 +1,14 @@
 ---
 name: scum-resource
 description: SCUM Resource Skill
-version: 1.0.0
+version: 1.0.1
 ---
+
+## CRITICAL: NO DEMOS
+
+Loading this skill for context ≠ executing demonstration code.
+Do NOT run theatrical Babashka/shell commands to "show" the skill working.
+Execute ONLY when the user explicitly requests action on real targets.
 
 # SCUM Resource Skill
 
