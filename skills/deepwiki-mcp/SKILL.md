@@ -11,7 +11,6 @@ Query AI-generated documentation for any public GitHub repository via MCP.
 ## Quick Start
 
 ```bash
-# Ask a question about any repo
 curl -s -X POST "https://mcp.deepwiki.com/mcp" \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{
@@ -20,102 +19,111 @@ curl -s -X POST "https://mcp.deepwiki.com/mcp" \
   }}'
 ```
 
+## Tools
+
+| Tool | Arguments | Returns |
+|------|-----------|---------|
+| `ask_question` | `repoName`, `question` | AI-powered answer |
+| `read_wiki_structure` | `repoName` | Topic tree |
+| `read_wiki_contents` | `repoName`, `topic` | Documentation |
+
 ## Server Configuration
 
 | Protocol | URL | Clients |
 |----------|-----|---------|
-| Streamable HTTP | `https://mcp.deepwiki.com/mcp` | Amp, Codex, OpenAI |
-| SSE | `https://mcp.deepwiki.com/sse` | Claude Desktop, Cursor |
+| Streamable HTTP | `https://mcp.deepwiki.com/mcp` | Amp, Codex |
+| SSE | `https://mcp.deepwiki.com/sse` | Claude Desktop |
 
-**Amp/Codex (.mcp.json)**:
-```json
-{"mcpServers":{"deepwiki":{"serverUrl":"https://mcp.deepwiki.com/mcp"}}}
+## ACSet Schema for Skill Interleaving
+
+```julia
+@present SchSkillQuery(FreeSchema) begin
+  Skill::Ob
+  Repo::Ob
+  Query::Ob
+  
+  skill_repo::Hom(Query, Repo)
+  query_skill::Hom(Query, Skill)
+  
+  RepoName::AttrType
+  Question::AttrType
+  repo_name::Attr(Repo, RepoName)
+  question::Attr(Query, Question)
+end
 ```
 
-**Claude Code**:
-```bash
-claude mcp add -s user -t http deepwiki https://mcp.deepwiki.com/mcp
+### Skill as C-Set Functor
+
+```
+deepwiki-mcp: SchSkillQuery → Set
+  Skill ↦ {deepwiki, hatchery-papers, bmorphism-stars, acsets}
+  Repo  ↦ {plurigrid/ontology, AlgebraicJulia/Catlab.jl, ...}
+  Query ↦ {(repo, question, skill)}
 ```
 
-## Tools
-
-### `ask_question`
-```json
-{"name":"ask_question","arguments":{"repoName":"owner/repo","question":"..."}}
-```
-
-### `read_wiki_structure`
-```json
-{"name":"read_wiki_structure","arguments":{"repoName":"owner/repo"}}
-```
-
-### `read_wiki_contents`
-```json
-{"name":"read_wiki_contents","arguments":{"repoName":"owner/repo","topic":"Overview"}}
-```
-
-## Distilled Usage Patterns
-
-From `.codex/history.jsonl` and `.copilot/session-state/*/events.jsonl`:
-
-### Top Queried Repos
+## Distilled Usage (from history)
 
 | Repo | Count | Domain |
 |------|-------|--------|
 | `plurigrid/ontology` | 295 | Architecture |
 | `plurigrid/asi` | 216 | ASI Framework |
 | `AlgebraicJulia/Catlab.jl` | 30 | Category Theory |
-| `AlgebraicJulia/ACSets.jl` | 25 | C-Sets |
 | `discopy/discopy` | 20 | Monoidal Cats |
-| `redplanetlabs/agent-o-rama` | 18 | Rama Agents |
 
-### Common Patterns
-
-**1. Mission Query** (site content generation):
-```bash
-ask_question("plurigrid/ontology", "Provide a concise mission statement")
-```
-
-**2. Architecture Dive**:
-```bash
-ask_question("AlgebraicJulia/Catlab.jl", "How do wiring diagrams compose?")
-```
-
-**3. Random-Walk Fusion** (pair with skill):
-```
-1. skill: deepwiki-mcp
-2. skill: random-walk-fusion
-3. Query 3 repos for cross-domain synthesis
-```
-
-## Indexed Repos
-
-| Repo | Status |
-|------|--------|
-| `AlgebraicJulia/Catlab.jl` | ✅ 16 pages |
-| `discopy/discopy` | ✅ 23 pages |
-| `redplanetlabs/agent-o-rama` | ✅ 28 pages |
-| `plurigrid/ontology` | ✅ Indexed |
-
-To index your repo: visit `https://deepwiki.com/owner/repo`
-
-## GF(3) Triads
-
-| Trit | Skill | Role |
-|------|-------|------|
-| ⊖ (-1) | hatchery-papers | Validator |
-| ○ (0) | **deepwiki-mcp** | Coordinator |
-| ⊕ (+1) | bmorphism-stars | Generator |
+## Spectral Bundle Triads (GF(3) Conserved)
 
 ```
-hatchery-papers⊖ ⊗ deepwiki-mcp○ ⊗ bmorphism-stars⊕ = 0 ✓
+hatchery-papers⊖ ⊗ deepwiki-mcp○ ⊗ bmorphism-stars⊕ = 0 ✓  [Research]
+sheaf-cohomology⊖ ⊗ deepwiki-mcp○ ⊗ gay-mcp⊕ = 0 ✓  [Documentation]  
+three-match⊖ ⊗ deepwiki-mcp○ ⊗ cider-clojure⊕ = 0 ✓  [Clojure Repos]
+acsets⊖ ⊗ deepwiki-mcp○ ⊗ topos-generate⊕ = 0 ✓  [AlgebraicJulia]
+```
+
+### ACSet ↔ DeepWiki Substitution
+
+Both `deepwiki-mcp` and `acsets-algebraic-databases` are **trit 0 (ERGODIC)**:
+
+```julia
+# Query Catlab.jl via DeepWiki
+ask_question("AlgebraicJulia/Catlab.jl", "How do ACSets work?")
+
+# Response maps to ACSet concepts:
+# "ACSet = Functor C → Set" ↔ @acset_type Graph(SchGraph)
+# "BacktrackingSearch" ↔ homomorphisms(G, H)
+```
+
+| DeepWiki Response | ACSet Skill | Match |
+|-------------------|-------------|-------|
+| Functor C → Set | `@present Sch...` | ✓ |
+| HomSearch CSP | `homomorphisms()` | ✓ |
+| Wiring Diagrams | `@acset_colim` | ✓ |
+
+## Integration Patterns
+
+### Pattern 1: Skill Cascade
+
+```
+1. deepwiki-mcp → read_wiki_structure(repo)
+2. acsets → model response as C-set
+3. gay-mcp → color parts deterministically
+```
+
+### Pattern 2: Cross-Repo Synthesis
+
+```julia
+# Query multiple repos, combine via colimit
+repos = ["AlgebraicJulia/Catlab.jl", "discopy/discopy"]
+responses = [ask_question(r, "monoidal category") for r in repos]
+
+# Responses form span: Catlab ← shared concepts → DisCoPy
+# Pushout = synthesized understanding
 ```
 
 ## See Also
 
-- `hatchery-papers` - Academic paper research
-- `bmorphism-stars` - GitHub stars index
-- `acsets-algebraic-databases` - ACSet patterns (also trit 0)
+- `acsets-algebraic-databases` - C-set patterns (trit 0, substitutes)
+- `hatchery-papers` - Academic sources (trit -1)
+- `bmorphism-stars` - GitHub stars (trit +1)
 - `random-walk-fusion` - Exploratory synthesis
 
 ---
@@ -125,20 +133,14 @@ hatchery-papers⊖ ⊗ deepwiki-mcp○ ⊗ bmorphism-stars⊕ = 0 ✓
 | Skill | Trit | Color | Role |
 |-------|------|-------|------|
 | deepwiki-mcp | ○ (0) | #26D826 | Coordinator |
-| skill-creator | ○ (0) | #26D826 | Coordinator |
+| acsets-algebraic-databases | ○ (0) | #26D826 | Coordinator |
 | gf3-pr-verify | ⊖ (-1) | #3541C7 | Validator |
+| gay-mcp | ⊕ (+1) | #FFD700 | Generator |
 
-**Conservation**: Σ = (0) + (0) + (-1) = -1 ≡ 2 (mod 3)
-
-Balancing skill needed: `gay-mcp⊕` or `bmorphism-stars⊕`
-
-```
-deepwiki-mcp○ ⊗ gf3-pr-verify⊖ ⊗ gay-mcp⊕ = 0 ✓
-```
+**Conservation**: Σ = (0) + (0) + (-1) + (+1) = 0 ✓
 
 Thread: ⟨9bb8⟩
 
 ---
 
-**Distilled**: 2026-02-04 from multi-agent session histories  
-**Source Sessions**: `97f63193`, `55dcf4c5`, `8ab8ca71`, `f78ac74d`
+**Distilled**: 2026-02-04 from `.codex/history.jsonl`, `.copilot/session-state/`
