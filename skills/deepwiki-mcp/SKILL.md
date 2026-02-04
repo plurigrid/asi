@@ -1,364 +1,144 @@
 ---
 name: deepwiki-mcp
-description: DeepWiki MCP server for AI-powered GitHub repository documentation and
-version: 1.0.0
+description: DeepWiki MCP for AI-powered GitHub repo documentation. Query any public repo indexed on deepwiki.com. Distilled from usage across Codex, Copilot sessions.
+version: 2.0.0
 ---
 
+# DeepWiki MCP
 
-# DeepWiki MCP Skill
+Query AI-generated documentation for any public GitHub repository via MCP.
 
-> AI-powered documentation and Q&A for any public GitHub repository
+## Quick Start
 
-**Version**: 1.0.0
-**Trit**: 0 (Ergodic - coordinates knowledge retrieval)
-**Bundle**: research
-**Provider**: Cognition (Devin AI) - Official, Free, No Auth Required
-
-## Overview
-
-DeepWiki MCP provides programmatic access to AI-generated documentation for any public GitHub repository indexed on [DeepWiki.com](https://deepwiki.com/). It enables:
-
-1. **Wiki Structure**: Get table of contents for any repo's documentation
-2. **Wiki Contents**: Read AI-generated documentation for specific topics
-3. **Ask Questions**: Get AI-powered answers grounded in repository context
+```bash
+# Ask a question about any repo
+curl -s -X POST "https://mcp.deepwiki.com/mcp" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{
+    "name":"ask_question",
+    "arguments":{"repoName":"owner/repo","question":"How does X work?"}
+  }}'
+```
 
 ## Server Configuration
 
-### Base URL
+| Protocol | URL | Clients |
+|----------|-----|---------|
+| Streamable HTTP | `https://mcp.deepwiki.com/mcp` | Amp, Codex, OpenAI |
+| SSE | `https://mcp.deepwiki.com/sse` | Claude Desktop, Cursor |
 
-```
-https://mcp.deepwiki.com/
-```
-
-### Wire Protocols
-
-| Protocol | URL | Best For |
-|----------|-----|----------|
-| **SSE** | `https://mcp.deepwiki.com/sse` | Claude, most clients |
-| **Streamable HTTP** | `https://mcp.deepwiki.com/mcp` | OpenAI, Cloudflare, Amp |
-
-## Tools
-
-### 1. `read_wiki_structure`
-
-Get the documentation topic tree for a GitHub repository.
-
+**Amp/Codex (.mcp.json)**:
 ```json
-{
-  "tool": "read_wiki_structure",
-  "params": {
-    "repo_owner": "AlgebraicJulia",
-    "repo_name": "ACSets.jl"
-  }
-}
+{"mcpServers":{"deepwiki":{"serverUrl":"https://mcp.deepwiki.com/mcp"}}}
 ```
 
-Returns: List of documentation topics/sections
-
-### 2. `read_wiki_contents`
-
-Read documentation for a specific topic.
-
-```json
-{
-  "tool": "read_wiki_contents",
-  "params": {
-    "repo_owner": "AlgebraicJulia",
-    "repo_name": "ACSets.jl",
-    "topic": "Overview"
-  }
-}
-```
-
-Returns: AI-generated documentation content
-
-### 3. `ask_question`
-
-Ask any question about a repository with AI-powered, context-grounded response.
-
-```json
-{
-  "tool": "ask_question",
-  "params": {
-    "repo_owner": "AlgebraicJulia",
-    "repo_name": "Catlab.jl",
-    "question": "How do wiring diagrams compose?"
-  }
-}
-```
-
-Returns: AI-powered answer with repository context
-
-## Client Configuration
-
-### Amp / Codex (.mcp.json)
-
-```json
-{
-  "mcpServers": {
-    "deepwiki": {
-      "serverUrl": "https://mcp.deepwiki.com/mcp"
-    }
-  }
-}
-```
-
-### Claude Desktop
-
-```json
-{
-  "mcpServers": {
-    "deepwiki": {
-      "serverUrl": "https://mcp.deepwiki.com/sse"
-    }
-  }
-}
-```
-
-### Claude Code (CLI)
-
+**Claude Code**:
 ```bash
 claude mcp add -s user -t http deepwiki https://mcp.deepwiki.com/mcp
 ```
 
-### Cursor / Windsurf
+## Tools
 
-Add to `.cursor/mcp.json`:
-
+### `ask_question`
 ```json
-{
-  "mcpServers": {
-    "deepwiki": {
-      "serverUrl": "https://mcp.deepwiki.com/sse"
-    }
-  }
-}
+{"name":"ask_question","arguments":{"repoName":"owner/repo","question":"..."}}
 ```
 
-## GF(3) Triad Integration
+### `read_wiki_structure`
+```json
+{"name":"read_wiki_structure","arguments":{"repoName":"owner/repo"}}
+```
+
+### `read_wiki_contents`
+```json
+{"name":"read_wiki_contents","arguments":{"repoName":"owner/repo","topic":"Overview"}}
+```
+
+## Distilled Usage Patterns
+
+From `.codex/history.jsonl` and `.copilot/session-state/*/events.jsonl`:
+
+### Top Queried Repos
+
+| Repo | Count | Domain |
+|------|-------|--------|
+| `plurigrid/ontology` | 295 | Architecture |
+| `plurigrid/asi` | 216 | ASI Framework |
+| `AlgebraicJulia/Catlab.jl` | 30 | Category Theory |
+| `AlgebraicJulia/ACSets.jl` | 25 | C-Sets |
+| `discopy/discopy` | 20 | Monoidal Cats |
+| `redplanetlabs/agent-o-rama` | 18 | Rama Agents |
+
+### Common Patterns
+
+**1. Mission Query** (site content generation):
+```bash
+ask_question("plurigrid/ontology", "Provide a concise mission statement")
+```
+
+**2. Architecture Dive**:
+```bash
+ask_question("AlgebraicJulia/Catlab.jl", "How do wiring diagrams compose?")
+```
+
+**3. Random-Walk Fusion** (pair with skill):
+```
+1. skill: deepwiki-mcp
+2. skill: random-walk-fusion
+3. Query 3 repos for cross-domain synthesis
+```
+
+## Indexed Repos
+
+| Repo | Status |
+|------|--------|
+| `AlgebraicJulia/Catlab.jl` | ✅ 16 pages |
+| `discopy/discopy` | ✅ 23 pages |
+| `redplanetlabs/agent-o-rama` | ✅ 28 pages |
+| `plurigrid/ontology` | ✅ Indexed |
+
+To index your repo: visit `https://deepwiki.com/owner/repo`
+
+## GF(3) Triads
 
 | Trit | Skill | Role |
 |------|-------|------|
-| -1 | hatchery-papers | Validates academic sources |
-| 0 | **deepwiki-mcp** | Coordinates repo knowledge |
-| +1 | bmorphism-stars | Generates from starred repos |
-
-**Conservation**: (-1) + (0) + (+1) = 0 ✓
-
-### Additional Triads
+| ⊖ (-1) | hatchery-papers | Validator |
+| ○ (0) | **deepwiki-mcp** | Coordinator |
+| ⊕ (+1) | bmorphism-stars | Generator |
 
 ```
-hatchery-papers (-1) ⊗ deepwiki-mcp (0) ⊗ bmorphism-stars (+1) = 0 ✓  [Research]
-persistent-homology (-1) ⊗ deepwiki-mcp (0) ⊗ gay-mcp (+1) = 0 ✓  [Documentation]
-sheaf-cohomology (-1) ⊗ deepwiki-mcp (0) ⊗ topos-generate (+1) = 0 ✓  [Knowledge]
-three-match (-1) ⊗ deepwiki-mcp (0) ⊗ cider-clojure (+1) = 0 ✓  [Clojure Repos]
-polyglot-spi (-1) ⊗ deepwiki-mcp (0) ⊗ gay-mcp (+1) = 0 ✓  [Cross-Lang Docs]
-```
-
-## Use Cases
-
-### 1. Understand New Libraries
-
-```
-"Read the documentation structure for react/react and explain the hooks system"
-```
-
-### 2. Answer Technical Questions
-
-```
-"How does Catlab.jl implement natural transformations?"
-```
-
-### 3. Compare Implementations
-
-```
-"Compare how ACSets.jl and Catlab.jl handle graph homomorphisms"
-```
-
-### 4. Explore Category Theory Libraries
-
-```
-"What topics are covered in AlgebraicJulia/AlgebraicDynamics.jl documentation?"
-```
-
-## Indexing Your Repository
-
-To make your public GitHub repo available via DeepWiki MCP:
-
-1. Visit [DeepWiki.com](https://deepwiki.com/)
-2. Enter your repository URL
-3. Wait for indexing to complete
-4. Add the DeepWiki badge to your README:
-
-```markdown
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/owner/repo)
-```
-
-## Related Resources
-
-- [DeepWiki.com](https://deepwiki.com/) - Web interface
-- [Devin Docs](https://docs.devin.ai/work-with-devin/deepwiki-mcp) - Official documentation
-- [MCP Specification](https://modelcontextprotocol.io/) - Protocol details
-
-## ACSet Skill Integration
-
-Both `deepwiki-mcp` and `acsets-algebraic-databases` are **ERGODIC (trit 0)** — they substitute for each other in triads and coordinate knowledge transport.
-
-### Qualified Workflow
-
-| Phase | deepwiki-mcp | acsets skill | Verification |
-|-------|--------------|--------------|--------------|
-| **Discovery** | `read_wiki_structure` | Schema patterns | ✓ Catlab.jl has 16 topic pages |
-| **Q&A** | `ask_question` | Formal definitions | ✓ ACSet = Functor C → Set confirmed |
-| **Apply** | Code examples | Specter navigation | ✓ `oapply` documented in Catlab |
-| **Debug** | "Why does X fail?" | Check naturality | ✓ HomSearch uses BacktrackingSearch |
-
-### Verified DeepWiki ↔ ACSets Correspondence
-
-From DeepWiki `ask_question("AlgebraicJulia/Catlab.jl", "How do ACSets work...")`:
-
-| DeepWiki Response | ACSets Skill | Match |
-|-------------------|--------------|-------|
-| "ACSet represents a functor from schema to Set" | `C-set = Functor X: C → Set` | ✓ |
-| "ACSetFunctor wraps ACSet for functorial view" | ∫G category of elements | ✓ |
-| "BacktrackingSearch (CSP-based, MRV heuristic)" | `homomorphisms(G, complete_graph(k))` | ✓ |
-| "VMSearch (compiled virtual machine)" | Specter zero-overhead navigation | ✓ |
-
-### Repository Indexing Status (Verified 2025-12-22)
-
-| Repository | DeepWiki Status | Topics |
-|------------|-----------------|--------|
-| `AlgebraicJulia/Catlab.jl` | ✅ Indexed | 16 pages (GATs, CSets, HomSearch, WiringDiagrams...) |
-| `AlgebraicJulia/ACSets.jl` | ❌ Needs indexing | Visit https://deepwiki.com/AlgebraicJulia/ACSets.jl |
-| `AlgebraicJulia/AlgebraicDynamics.jl` | ❌ Needs indexing | Visit https://deepwiki.com/AlgebraicJulia/AlgebraicDynamics.jl |
-| `AlgebraicJulia/StructuredDecompositions.jl` | ❌ Needs indexing | Visit https://deepwiki.com/AlgebraicJulia/StructuredDecompositions.jl |
-| `redplanetlabs/agent-o-rama` | ✅ Indexed | 28 pages (Rama PStates, Agent Topologies, Tool Calling...) |
-| `discopy/discopy` | ✅ Indexed | 23 pages (Monoidal Categories, Quantum Circuits, QNLP...) |
-
-### Cross-Skill Examples
-
-**Example 1: ACSets + Catlab.jl**
-```julia
-# 1. Query DeepWiki for oapply semantics
-mcp__deepwiki__ask_question("AlgebraicJulia/Catlab.jl", 
-  "How does oapply compose undirected wiring diagrams?")
-
-# 2. Apply via ACSets skill patterns
-@present SchUWD(FreeSchema) begin
-  Box::Ob; Port::Ob; Junction::Ob; OuterPort::Ob
-  box::Hom(Port, Box)
-  junction::Hom(Port, Junction)
-  outer_junction::Hom(OuterPort, Junction)
-end
-
-# 3. oapply = colimit of component diagram (verified by DeepWiki)
-composite = oapply(wiring_diagram, components)
-```
-
-**Example 2: DisCoPy for Quantum/Categorical Diagrams**
-```python
-# Query DisCoPy documentation
-mcp__deepwiki__ask_question("discopy/discopy",
-  "How do monoidal categories compose with tensor products?")
-
-# DisCoPy has 23 pages covering:
-# - Monoidal, Rigid, Symmetric, Frobenius categories
-# - Quantum circuits and gates
-# - QNLP (Quantum Natural Language Processing)
-# - Tensor network backends
-```
-
-**Example 3: Agent-o-rama for Rama Integration**
-```clojure
-;; Query agent-o-rama patterns
-mcp__deepwiki__ask_question("redplanetlabs/agent-o-rama",
-  "How do PStates store agent invocation state?")
-
-;; 28 pages covering:
-;; - Agent Modules and Topology
-;; - PStates and Depots storage
-;; - Tool Calling Integration
-;; - Human-in-the-Loop Workflows
+hatchery-papers⊖ ⊗ deepwiki-mcp○ ⊗ bmorphism-stars⊕ = 0 ✓
 ```
 
 ## See Also
 
 - `hatchery-papers` - Academic paper research
 - `bmorphism-stars` - GitHub stars index
-- `librarian` - Codebase understanding agent
-- `exa` - Web search MCP
-- `acsets-algebraic-databases` - ACSet computational patterns (trit 0, substitutes in triads)
+- `acsets-algebraic-databases` - ACSet patterns (also trit 0)
+- `random-walk-fusion` - Exploratory synthesis
 
 ---
 
-**Skill Name**: deepwiki-mcp
-**Type**: Repository Documentation / Q&A
-**Trit**: 0 (ERGODIC)
-**GF(3)**: Coordinates knowledge flow
-**Auth**: None required (free)
-**Scope**: All public GitHub repos indexed on DeepWiki.com
-**Qualified**: 2025-12-22 (verified against acsets skill)
+## GF(3) Skill Coloring
 
+| Skill | Trit | Color | Role |
+|-------|------|-------|------|
+| deepwiki-mcp | ○ (0) | #26D826 | Coordinator |
+| skill-creator | ○ (0) | #26D826 | Coordinator |
+| gf3-pr-verify | ⊖ (-1) | #3541C7 | Validator |
 
+**Conservation**: Σ = (0) + (0) + (-1) = -1 ≡ 2 (mod 3)
 
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
+Balancing skill needed: `gay-mcp⊕` or `bmorphism-stars⊕`
 
 ```
-deepwiki-mcp (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+deepwiki-mcp○ ⊗ gf3-pr-verify⊖ ⊗ gay-mcp⊕ = 0 ✓
 ```
 
-**Skill Trit**: -1 (MINUS - verification)
+Thread: ⟨9bb8⟩
 
-### Secondary Chapters
+---
 
-- Ch5: Evaluation
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch2: Domain-Specific Languages
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.
+**Distilled**: 2026-02-04 from multi-agent session histories  
+**Source Sessions**: `97f63193`, `55dcf4c5`, `8ab8ca71`, `f78ac74d`
