@@ -1,7 +1,7 @@
 ---
 name: beeper-mcp
-description: Unified messaging via Beeper Desktop MCP. Search chats, send messages, manage conversations across all networks (iMessage, WhatsApp, Signal, Telegram, Discord, Slack, etc.)
-version: 1.1.0
+description: Unified messaging via Beeper Desktop MCP. Search chats, send messages, send files via matrix-commander CLI, manage conversations across all networks (iMessage, WhatsApp, Signal, Telegram, Discord, Slack, etc.)
+version: 1.2.0
 trit: 0
 role: ERGODIC
 color: "#6B5CE7"
@@ -428,6 +428,117 @@ When reviewing messages, branch tracking prevents:
 
 **Update branch state as side effect of every beeper interaction.**
 
+## Sending Files via CLI
+
+The MCP `send_message` tool only supports text. For file attachments, use `matrix-commander` CLI.
+
+### Prerequisites
+
+```bash
+# Install matrix-commander via nix (requires olm exception)
+mkdir -p ~/.config/nixpkgs
+echo '{ permittedInsecurePackages = [ "olm-3.2.16" ]; }' > ~/.config/nixpkgs/config.nix
+nix-env -iA nixpkgs.matrix-commander
+```
+
+### Setup Credentials (One-Time)
+
+Extract Matrix credentials from Beeper's local database:
+
+```bash
+# Get credentials from Beeper's account.db
+sqlite3 ~/Library/Application\ Support/BeeperTexts/account.db "SELECT * FROM account;"
+# Output format: user_id|device_id|access_token|homeserver
+
+# Create matrix-commander credentials
+mkdir -p ~/.config/matrix-commander/store
+cat > ~/.config/matrix-commander/credentials.json << 'EOF'
+{
+    "homeserver": "https://matrix.beeper.com",
+    "user_id": "@YOUR_USER:beeper.com",
+    "device_id": "YOUR_DEVICE_ID",
+    "access_token": "syt_YOUR_TOKEN",
+    "room_id": ""
+}
+EOF
+```
+
+### Find Chat Room ID
+
+```bash
+# Use Beeper MCP to search for chat
+BEEPER_ACCESS_TOKEN=$(/Users/alice/.cargo/bin/fnox get BEEPER_ACCESS_TOKEN --age-key-file /Users/alice/.age/key.txt) \
+  curl -s -H "Authorization: Bearer $BEEPER_ACCESS_TOKEN" \
+  "http://[::1]:23373/v1/chats?limit=100" | \
+  python3 -c "import json,sys; [print(f\"{c['title']}: {c['id']}\") for c in json.load(sys.stdin)['items'] if 'TARGET' in c.get('title','').lower()]"
+```
+
+### Send Files
+
+```bash
+# Send single file with message
+~/.nix-profile/bin/matrix-commander \
+  -c ~/.config/matrix-commander/credentials.json \
+  -s ~/.config/matrix-commander/store \
+  --room '!ROOM_ID:beeper.com' \
+  -f /path/to/file.ext \
+  -m "Description of file"
+
+# Send multiple files
+~/.nix-profile/bin/matrix-commander \
+  -c ~/.config/matrix-commander/credentials.json \
+  -s ~/.config/matrix-commander/store \
+  --room '!ROOM_ID:beeper.com' \
+  -f /path/to/file1.pdf /path/to/file2.db \
+  -m "Attached files"
+```
+
+### Quick Send Function
+
+Add to shell config (~/.bashrc or ~/.zshrc):
+
+```bash
+beeper-send-file() {
+  local room_id="$1"
+  local file="$2"
+  local message="${3:-Sent via CLI}"
+  
+  ~/.nix-profile/bin/matrix-commander \
+    -c ~/.config/matrix-commander/credentials.json \
+    -s ~/.config/matrix-commander/store \
+    --room "$room_id" \
+    -f "$file" \
+    -m "$message" 2>&1 | tail -3
+}
+
+# Usage: beeper-send-file '!NhltGRLZWLUeHEBiFT:beeper.com' /tmp/data.db "Database backup"
+```
+
+### Common Room IDs
+
+Query and cache frequently-used room IDs:
+
+```bash
+# Save to ~/.config/beeper-rooms.txt
+cat > ~/.config/beeper-rooms.txt << 'EOF'
+barton-matrix=!NhltGRLZWLUeHEBiFT:beeper.com
+# Add more as needed
+EOF
+
+# Helper to lookup
+beeper-room() {
+  grep "^$1=" ~/.config/beeper-rooms.txt | cut -d= -f2
+}
+
+# Usage: beeper-send-file "$(beeper-room barton-matrix)" /tmp/file.db
+```
+
+### Troubleshooting
+
+- **"Missing session" warnings**: Normal for encrypted rooms with many devices, file still sends
+- **E147 errors**: Check file exists and is readable
+- **M_UNKNOWN_TOKEN**: Re-extract token from Beeper's account.db (it may have rotated)
+
 ## MCP Server Config
 
 ```json
@@ -447,3 +558,4 @@ Requires:
 - Age key at `/Users/alice/.age/key.txt`
 - `npx` in PATH
 - Beeper Desktop running
+- For file sending: `matrix-commander` via nix
