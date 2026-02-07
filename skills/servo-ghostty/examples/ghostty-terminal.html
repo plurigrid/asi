@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghostty Web Terminal (Servo)</title>
+  <style>
+    :root {
+      --bg-primary: oklch(12% 0.01 240);
+      --bg-tile: oklch(15% 0.02 240);
+      --border-tile: oklch(30% 0.05 240);
+      --text-primary: oklch(90% 0.02 120);
+      --accent-blue: oklch(60% 0.15 240);
+      --accent-purple: oklch(50% 0.20 300);
+      --accent-green: oklch(55% 0.18 140);
+
+      /* BCI color states */
+      --bci-focused: oklch(40.6% 0.0956 280);   /* Low valence = purple */
+      --bci-relaxed: oklch(60% 0.05 120);       /* High valence = green */
+      --bci-active: oklch(50% 0.12 30);         /* High arousal = orange */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .ghostty-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* Tab bar */
+    .tab-bar {
+      display: flex;
+      gap: 2px;
+      padding: 4px;
+      background: oklch(10% 0.01 240);
+      border-bottom: 1px solid var(--border-tile);
+    }
+
+    .tab {
+      padding: 6px 12px;
+      background: oklch(18% 0.02 240);
+      border: 1px solid var(--border-tile);
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 12px;
+    }
+
+    .tab:hover {
+      background: oklch(25% 0.03 240);
+    }
+
+    .tab.active {
+      background: var(--bg-tile);
+      border-bottom-color: var(--bg-tile);
+    }
+
+    /* Tile grid */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px;
+      flex: 1;
+      padding: 2px;
+      background: var(--bg-primary);
+    }
+
+    /* Single tile layout */
+    .tile-grid.layout-single {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    /* Vertical split */
+    .tile-grid.layout-vsplit {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    /* Horizontal split */
+    .tile-grid.layout-hsplit {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    /* Quad layout (2x2) */
+    .tile-grid.layout-quad {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    /* Worlds/t 5-tile layout */
+    .tile-grid.layout-worlds {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .tile {
+      background: var(--bg-tile);
+      border: 1px solid var(--border-tile);
+      border-radius: 4px;
+      padding: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Worlds/t tile colors */
+    .tile.fibred  { border-color: oklch(50% 0.15 220); }  /* Blue - Julia REPL */
+    .tile.sheaf   { border-color: oklch(55% 0.10 200); }  /* Cyan - Org Timeline */
+    .tile.decomp  { border-color: oklch(60% 0.12 210); }  /* Light blue - Entity Graph */
+    .tile.rewrite { border-color: oklch(40% 0.20 300); }  /* Purple - Random Walker */
+    .tile.agents  { border-color: oklch(45% 0.18 120); }  /* Green - Babashka */
+
+    /* Agents tile spans full width in 5-tile layout */
+    .layout-worlds .tile.agents {
+      grid-column: 1 / -1;
+    }
+
+    /* BCI color feedback states */
+    .tile.bci-focused { background: var(--bci-focused); }
+    .tile.bci-relaxed { background: var(--bci-relaxed); }
+    .tile.bci-active { background: var(--bci-active); }
+
+    .tile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid oklch(25% 0.03 240);
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    canvas {
+      width: 100%;
+      height: calc(100% - 28px);
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+      background: oklch(12% 0.01 240);
+    }
+
+    /* Status bar */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 12px;
+      background: oklch(10% 0.01 240);
+      border-top: 1px solid var(--border-tile);
+      font-size: 11px;
+    }
+
+    .status-left, .status-right {
+      display: flex;
+      gap: 16px;
+    }
+
+    .status-item {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .status-dot.active { background: var(--accent-green); }
+    .status-dot.warning { background: oklch(65% 0.15 60); }
+    .status-dot.error { background: oklch(55% 0.20 20); }
+
+    /* Chartered Flights route indicator */
+    .flight-indicator {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 4px 8px;
+      background: oklch(20% 0.05 240 / 0.9);
+      border: 1px solid oklch(40% 0.08 240);
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    /* Color palette demo */
+    .color-demo {
+      display: flex;
+      gap: 4px;
+      margin-top: 8px;
+    }
+
+    .color-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      border: 1px solid oklch(50% 0.05 240);
+    }
+  </style>
+</head>
+<body>
+  <div class="ghostty-container">
+    <!-- Tab bar -->
+    <nav class="tab-bar">
+      <button class="tab active" data-tab="main">Main Terminal</button>
+      <button class="tab" data-tab="worlds">Worlds/t</button>
+      <button class="tab" data-tab="flights">Chartered Flights</button>
+      <button class="tab" data-tab="colors">Color Spaces</button>
+    </nav>
+
+    <!-- Tile grid (default: quad layout) -->
+    <div class="tile-grid layout-quad" id="tileGrid">
+      <!-- Tile 1 -->
+      <div class="tile" id="tile1" data-tile="1">
+        <div class="tile-header">
+          <span>Terminal 1</span>
+          <span id="tile1-status">Ready</span>
+        </div>
+        <canvas id="canvas1" width="640" height="480"></canvas>
+      </div>
+
+      <!-- Tile 2 -->
+      <div class="tile" id="tile2" data-tile="2">
+        <div class="tile-header">
+          <span>Terminal 2</span>
+          <span id="tile2-status">Ready</span>
+        </div>
+        <canvas id="canvas2" width="640" height="480"></canvas>
+      </div>
+
+      <!-- Tile 3 -->
+      <div class="tile" id="tile3" data-tile="3">
+        <div class="tile-header">
+          <span>Terminal 3</span>
+          <span id="tile3-status">Ready</span>
+        </div>
+        <canvas id="canvas3" width="640" height="480"></canvas>
+      </div>
+
+      <!-- Tile 4 -->
+      <div class="tile" id="tile4" data-tile="4">
+        <div class="tile-header">
+          <span>Terminal 4</span>
+          <span id="tile4-status">Ready</span>
+        </div>
+        <canvas id="canvas4" width="640" height="480"></canvas>
+      </div>
+    </div>
+
+    <!-- Status bar -->
+    <footer class="status-bar">
+      <div class="status-left">
+        <div class="status-item">
+          <div class="status-dot active" id="ws-status"></div>
+          <span id="ws-text">WebSocket: Connected</span>
+        </div>
+        <div class="status-item">
+          <span>~/code/project</span>
+        </div>
+      </div>
+      <div class="status-right">
+        <div class="status-item">
+          <span id="time">10:45:32</span>
+        </div>
+        <div class="status-item">
+          <span id="gf3-state">GF(3): +1</span>
+        </div>
+        <div class="status-item">
+          <span>CPU: 23%</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // WebSocket connection to ghostty-web
+    let ws = null;
+    const GHOSTTY_WS_URL = 'ws://localhost:7070';
+
+    // Terminal state
+    const terminals = new Map();
+
+    function initTerminal(canvasId, tileId) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+
+      terminals.set(tileId, {
+        canvas,
+        ctx,
+        width: 80,
+        height: 24,
+        screen: Array(24).fill(null).map(() => Array(80).fill(' ')),
+        colors: Array(24).fill(null).map(() => Array(80).fill('#FFFFFF')),
+        cursorX: 0,
+        cursorY: 0
+      });
+
+      // Initial render
+      renderTerminal(tileId);
+    }
+
+    function renderTerminal(tileId) {
+      const term = terminals.get(tileId);
+      if (!term) return;
+
+      const { ctx, canvas, screen, colors } = term;
+
+      // Clear canvas
+      ctx.fillStyle = 'oklch(12% 0.01 240)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Configure text rendering
+      ctx.font = '14px JetBrains Mono, monospace';
+      const charWidth = 8;
+      const charHeight = 16;
+
+      // Render each character
+      for (let y = 0; y < screen.length; y++) {
+        for (let x = 0; x < screen[y].length; x++) {
+          const char = screen[y][x];
+          const color = colors[y][x];
+
+          ctx.fillStyle = color;
+          ctx.fillText(char, x * charWidth, (y + 1) * charHeight);
+        }
+      }
+    }
+
+    function connectWebSocket() {
+      console.log('Connecting to ghostty-web:', GHOSTTY_WS_URL);
+
+      ws = new WebSocket(GHOSTTY_WS_URL);
+      ws.binaryType = 'arraybuffer';
+
+      ws.onopen = () => {
+        console.log('✓ WebSocket connected');
+        updateStatus('active', 'WebSocket: Connected');
+
+        // Send INIT frame
+        sendInitFrame();
+      };
+
+      ws.onmessage = (event) => {
+        handleWebSocketFrame(event.data);
+      };
+
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
+        updateStatus('error', 'WebSocket: Error');
+      };
+
+      ws.onclose = () => {
+        console.log('WebSocket closed');
+        updateStatus('warning', 'WebSocket: Disconnected');
+
+        // Reconnect after 2 seconds
+        setTimeout(connectWebSocket, 2000);
+      };
+    }
+
+    function sendInitFrame() {
+      // INIT frame: [u32 len][u8 type=0x00][u16 width][u16 height][u8 color_depth]
+      const buffer = new ArrayBuffer(9);
+      const view = new DataView(buffer);
+
+      view.setUint32(0, 5, true);  // Payload length
+      view.setUint8(4, 0x00);      // Type: INIT
+      view.setUint16(5, 80, true); // Width: 80 columns
+      view.setUint16(7, 24, true); // Height: 24 rows
+      view.setUint8(9, 24);        // Color depth: 24-bit
+
+      ws.send(buffer);
+      console.log('✓ Sent INIT frame');
+    }
+
+    function handleWebSocketFrame(data) {
+      const view = new DataView(data);
+
+      if (data.byteLength < 5) {
+        console.warn('Frame too small:', data.byteLength);
+        return;
+      }
+
+      const len = view.getUint32(0, true);
+      const type = view.getUint8(4);
+
+      switch (type) {
+        case 0x01:  // OUTPUT
+          handleOutputFrame(view);
+          break;
+        case 0x02:  // DIRTY_REGION
+          handleDirtyRegionFrame(view);
+          break;
+        case 0x04:  // PING
+          handlePingFrame();
+          break;
+        case 0x05:  // SPATIAL
+          handleSpatialFrame(view);
+          break;
+        default:
+          console.log('Unknown frame type:', type);
+      }
+    }
+
+    function handleOutputFrame(view) {
+      // Parse VT sequence and update terminal
+      // Simplified: just log for now
+      console.log('[OUTPUT] VT sequence received');
+
+      // In real implementation: parse ANSI/VT codes and update screen buffer
+    }
+
+    function handleDirtyRegionFrame(view) {
+      console.log('[DIRTY_REGION] Update region');
+      // Repaint specific region
+    }
+
+    function handlePingFrame() {
+      // Respond to keepalive
+      const pong = new ArrayBuffer(5);
+      const view = new DataView(pong);
+      view.setUint32(0, 0, true);  // Empty payload
+      view.setUint8(4, 0x01);      // OUTPUT type (empty = pong)
+      ws.send(pong);
+    }
+
+    function handleSpatialFrame(view) {
+      console.log('[SPATIAL] Window state update');
+      // Update focus/position indicators
+    }
+
+    function updateStatus(state, text) {
+      const dot = document.getElementById('ws-status');
+      const textEl = document.getElementById('ws-text');
+
+      dot.className = `status-dot ${state}`;
+      textEl.textContent = text;
+    }
+
+    // Initialize terminals
+    initTerminal('canvas1', 1);
+    initTerminal('canvas2', 2);
+    initTerminal('canvas3', 3);
+    initTerminal('canvas4', 4);
+
+    // Connect to ghostty-web
+    connectWebSocket();
+
+    // Update time
+    setInterval(() => {
+      const now = new Date();
+      document.getElementById('time').textContent =
+        now.toLocaleTimeString('en-US', { hour12: false });
+    }, 1000);
+
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        // Remove active class from all tabs
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+        // Add active to clicked tab
+        e.target.classList.add('active');
+
+        const tabName = e.target.dataset.tab;
+
+        // Switch layout based on tab
+        const grid = document.getElementById('tileGrid');
+
+        switch (tabName) {
+          case 'main':
+            grid.className = 'tile-grid layout-quad';
+            break;
+          case 'worlds':
+            grid.className = 'tile-grid layout-worlds';
+            // Add Worlds/t classes to tiles
+            document.getElementById('tile1').className = 'tile fibred';
+            document.getElementById('tile2').className = 'tile sheaf';
+            document.getElementById('tile3').className = 'tile decomp';
+            document.getElementById('tile4').className = 'tile rewrite';
+            break;
+          case 'flights':
+            grid.className = 'tile-grid layout-vsplit';
+            break;
+          case 'colors':
+            grid.className = 'tile-grid layout-single';
+            break;
+        }
+      });
+    });
+
+    console.log('Ghostty Web Terminal (Servo) initialized ✓');
+    console.log('CSS Color Level 4: Oklch, Display P3, Rec. 2020');
+    console.log('Tile parity: CSS Grid layouts');
+  </script>
+</body>
+</html>
