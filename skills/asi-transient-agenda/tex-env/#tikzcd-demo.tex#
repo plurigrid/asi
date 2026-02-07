@@ -1,0 +1,114 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{amsmath,amssymb};9u
+\usepackage{tikz-cd}
+;5u;5u;5un
+\begin{document}
+
+%% ═══════════════════════════════════════════════;5u5;5u5;5u5;5u5;5u
+%% tikz-cd: Modern commutative diagrams
+%% (alternative to xy-pic, exports from quiver);3u;9u;9u x;9u;3u;3u;3u;3u3;5u3;5u3;5u3;5u3;5u3;5u3;5u3;5u
+%% ═══════════════════════════════════════════════
+
+% Simple morphism
+\begin{tikzcd}
+  A \arrow[r, "f"] & B
+;10u\end{tikzcd}
+
+\vspace{1em}
+
+% Arrow zoo
+\begin{tikzcd}[row sep=large, column sep=large]
+  A \arrow[r, "f"]
+    \arrow[d, "g"']
+    \arrow[dr, dotted, "h" description]
+  & B \arrow[d, Rightarrow, "\alpha"]
+    \arrow[dl, squiggly, "\beta" description]
+  \\
+  C \arrow[r, dashed, "k"']
+    \arrow[u, hook, "\iota"]
+  & D \arrow[u, two heads, "\pi"']
+\end{tikzcd}
+
+\vspace{2em}
+
+% 2-cell (natural transformation)
+\begin{tikzcd}[column sep=huge]
+  A
+    \arrow[r, bend left=40, "f"{name=U}]
+    \arrow[r, bend right=40, "g"'{name=D}]
+  & B
+  \arrow[Rightarrow, from=U, to=D, "\alpha"]
+\end{tikzcd}
+
+\vspace{1em}
+
+% Horizontal composition of 2-cells
+\begin{tikzcd}[column sep=huge]
+  A
+    \arrow[r, bend left=40, "f"{name=U1}]
+    \arrow[r, bend right=40, "g"'{name=D1}]
+  & B
+    \arrow[r, bend left=40, "h"{name=U2}]
+    \arrow[r, bend right=40, "k"'{name=D2}]
+  & C
+  \arrow[Rightarrow, from=U1, to=D1, "\alpha"]
+  \arrow[Rightarrow, from=U2, to=D2, "\beta"]
+\end{tikzcd}
+
+\vspace{1em}
+
+% Vertical composition (whiskering)
+\begin{tikzcd}[column sep=huge, row sep=tiny]
+  {} & {}
+  \\
+  A
+    \arrow[r, bend left=60, "f"{name=T}]
+    \arrow[r, "g" description{name=M}]
+    \arrow[r, bend right=60, "h"'{name=B}]
+  & B
+  \arrow[Rightarrow, from=T, to=M, "\alpha"]
+  \arrow[Rightarrow, from=M, to=B, "\beta"]
+\end{tikzcd}
+
+\vspace{2em}
+
+% Pullback
+\begin{tikzcd}
+  P \arrow[r, "p_1"] \arrow[d, "p_2"'] \arrow[dr, phantom, "\lrcorner" very near start]
+  & A \arrow[d, "f"] \\
+  B \arrow[r, "g"'] & C
+\end{tikzcd}
+
+\vspace{1em}
+
+% Adjunction with unit/counit
+\begin{tikzcd}[column sep=huge]
+  \mathcal{C}
+    \arrow[r, bend left=20, "F"{name=F}]
+  & \mathcal{D}
+    \arrow[l, bend left=20, "G"{name=G}]
+  \arrow[phantom, from=F, to=G, "\dashv" rotate=-90]
+\end{tikzcd}
+
+\vspace{1em}
+
+% Exactness (short exact sequence)
+\begin{tikzcd}
+  0 \arrow[r]
+  & A \arrow[r, hook, "i"]
+  & B \arrow[r, two heads, "\pi"]
+  & C \arrow[r]
+  & 0
+\end{tikzcd}
+
+\vspace{1em}
+
+% Kan extension
+\begin{tikzcd}
+  A \arrow[rr, "F"] \arrow[dr, "K"']
+  & {} \arrow[d, phantom, "\Downarrow\eta" near start]
+  & C \\
+  & B \arrow[ur, dashed, "\text{Lan}_K F"']
+\end{tikzcd}
+
+\end{document}
