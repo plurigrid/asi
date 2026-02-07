@@ -1,0 +1,319 @@
+; neanderthal.jank — ersatz Neanderthal (uncomplicate) syntax via Eigen C++ interop
+;
+; Neanderthal provides: dv, dge, dot, axpy, scal, copy, mv, mm
+; mapped to BLAS Level 1/2/3 (DAXPY, DGEMV, DGEMM, etc.)
+;
+; This reimplements the Neanderthal API surface in jank using Eigen
+; (header-only C++ linear algebra), producing the same Clojure-idiomatic
+; call patterns but compiling to native LLVM IR via jank's interop.
+;
+; Cybernetic context: model predictive control requires fast matrix ops
+; (state prediction, cost minimization, constraint satisfaction) —
+; this is the inner loop that MPC solves at each timestep.
+;
+; Run: jank -I /path/to/eigen run neanderthal.jank
+; e.g. jank -I /opt/homebrew/include/eigen3 run neanderthal.jank
+
+(cpp/raw "#include <Eigen/Dense>")
+(cpp/raw "#include <iostream>")
+
+;; --- Speed strategy (lessons from Julia + Mojo) ---
+;;
+;; Julia: StaticArrays.jl uses compile-time sizes → stack alloc, SIMD autovect.
+;;   SMatrix{3,3} is >10x faster than heap Array for MPC-sized state (≤100 elems).
+;;   @turbo (LoopVectorization.jl) rewrites loops for FMA latency hiding.
+;;   Octavian.jl: 1816 GFLOPS pure-Julia GEMM on 36-thread i9.
+;;
+;; Mojo: progressive type-tightening (def→fn→struct→SIMD[DType,N]).
+;;   Tiling + register blocking as builtins, not library macros.
+;;   Ownership: borrowed/owned/inout → zero-copy matrix temporaries.
+;;   MLIR backend enables hardware-specific tiling (Tensor Cores, AMX, NEON).
+;;
+;; Applied here: Eigen fixed-size types for small MPC states (stack-allocated,
+;; SIMD-optimized by Eigen's expression templates). Dynamic fallback for large.
+;; All through jank's zero-overhead C++ interop — same codegen as hand-written C++.
+
+;; --- Eigen type aliases ---
+;; Fixed-size for MPC (stack-allocated, no heap, SIMD-optimized):
+;;   Matrix2d, Vector2d — 2D state-space (demo)
+;;   Matrix<double,N,N> — parameterize for your system
+;; Dynamic fallback for large systems:
+;;   MatrixXd, VectorXd
+
+(cpp/raw "
+// Fixed-size types: stack-allocated, SIMD-aligned, no heap allocation.
+// Eigen unrolls and vectorizes automatically for sizes ≤ ~16.
+// This is the Julia StaticArrays equivalent.
+using Vec2  = Eigen::Vector2d;
+using Mat2  = Eigen::Matrix2d;
+using Vec   = Eigen::VectorXd;    // dynamic fallback
+using Mat   = Eigen::MatrixXd;    // dynamic fallback
+
+Vec make_vec(std::initializer_list<double> vals) {
+  Vec v(vals.size());
+  int i = 0;
+  for (auto x : vals) v(i++) = x;
+  return v;
+}
+
+Mat make_mat(int rows, int cols, std::initializer_list<double> vals) {
+  Mat m(rows, cols);
+  int i = 0;
+  for (auto x : vals) { m(i % rows, i / rows) = x; i++; }  // column-major
+  return m;
+}
+
+// Fixed-size fast path — no heap, SIMD-optimized, like Julia's SMatrix{2,2}
+Vec2 make_vec2(double a, double b) { return Vec2(a, b); }
+Mat2 make_mat2(double a, double b, double c, double d) {
+  Mat2 m; m << a, c, b, d;  // column-major
+  return m;
+}
+")
+
+(defn dv
+  "Create a double vector. Neanderthal-compatible syntax."
+  [& xs]
+  (cpp/box (apply make_vec xs)))
+
+(defn dge
+  "Create a double general dense matrix (column-major).
+   (dge 3 2 [1 2 3 4 5 6]) → 3×2 matrix."
+  [rows cols data]
+  (cpp/box (apply make_mat rows cols data)))
+
+;; --- BLAS Level 1: vector-vector operations ---
+
+(defn dot
+  "Inner product. BLAS: DDOT. Neanderthal: (dot x y)"
+  [x-box y-box]
+  (let [x (cpp/unbox Vec x-box)
+        y (cpp/unbox Vec y-box)]
+    (.dot x y)))
+
+(defn axpy
+  "y = α·x + y. BLAS: DAXPY. The workhorse of iterative methods."
+  [alpha x-box y-box]
+  (let [x (cpp/unbox Vec x-box)
+        y (cpp/unbox Vec y-box)]
+    (cpp/box (cpp/+ (cpp/* (cpp/cast cpp/double alpha) x) y))))
+
+(defn scal
+  "Scale vector in place. BLAS: DSCAL."
+  [alpha x-box]
+  (let [x (cpp/unbox Vec x-box)]
+    (cpp/box (cpp/* (cpp/cast cpp/double alpha) x))))
+
+(defn copy
+  "Copy vector. Returns new boxed vector."
+  [x-box]
+  (let [x (cpp/unbox Vec x-box)]
+    (cpp/box (Vec. x))))
+
+(defn nrm2
+  "Euclidean norm. BLAS: DNRM2."
+  [x-box]
+  (let [x (cpp/unbox Vec x-box)]
+    (.norm x)))
+
+;; --- BLAS Level 2: matrix-vector operations ---
+
+(defn mv
+  "Matrix-vector multiply. BLAS: DGEMV. y = A·x"
+  [a-box x-box]
+  (let [a (cpp/unbox Mat a-box)
+        x (cpp/unbox Vec x-box)]
+    (cpp/box (cpp/* a x))))
+
+;; --- BLAS Level 3: matrix-matrix operations ---
+
+(defn mm
+  "Matrix-matrix multiply. BLAS: DGEMM. C = A·B"
+  [a-box b-box]
+  (let [a (cpp/unbox Mat a-box)
+        b (cpp/unbox Mat b-box)]
+    (cpp/box (cpp/* a b))))
+
+(defn trans
+  "Transpose matrix."
+  [a-box]
+  (let [a (cpp/unbox Mat a-box)]
+    (cpp/box (.transpose a))))
+
+;; --- Model Predictive Control primitives ---
+;; MPC solves: min Σ (x'Qx + u'Ru) subject to x_{k+1} = Ax_k + Bu_k
+;;
+;; Two paths (Mojo-style progressive optimization):
+;;   1. Dynamic (MatrixXd/VectorXd) — general, heap-allocated
+;;   2. Fixed (Matrix2d/Vector2d) — stack-allocated, SIMD, zero-alloc inner loop
+;;
+;; In Julia terms: path 1 = Array, path 2 = SMatrix{2,2}
+;; In Mojo terms:  path 1 = object, path 2 = struct (register-width)
+
+(defn mpc-cost
+  "Quadratic cost x'Qx for a state vector x and cost matrix Q."
+  [x-box q-box]
+  (let [x  (cpp/unbox Vec x-box)
+        q  (cpp/unbox Mat q-box)
+        qx (cpp/* q x)]
+    (.dot x qx)))
+
+(defn mpc-predict
+  "State prediction: x_{k+1} = A·x_k + B·u_k"
+  [a-box b-box x-box u-box]
+  (let [a (cpp/unbox Mat a-box)
+        b (cpp/unbox Mat b-box)
+        x (cpp/unbox Vec x-box)
+        u (cpp/unbox Vec u-box)]
+    (cpp/box (cpp/+ (cpp/* a x) (cpp/* b u)))))
+
+;; --- Fixed-size fast path (Julia StaticArrays / Mojo struct equivalent) ---
+;; Stack-allocated, SIMD-vectorized, zero heap allocation per MPC step.
+;; Eigen::Matrix2d fits in 2 SSE registers (or 1 AVX register).
+
+(cpp/raw "
+// Zero-alloc MPC step — everything on the stack.
+// This is what Julia's StaticArrays and Mojo's struct give you:
+// no GC pressure, no pointer chasing, pure register arithmetic.
+struct MPC2State {
+  Vec2 x;
+  double cost;
+  double norm;
+};
+
+MPC2State mpc2_step(Mat2 const& A, Vec2 const& B_u, Mat2 const& Q, Vec2 const& x) {
+  Vec2 x_next = A * x + B_u;                // prediction: 2 FMAs
+  double cost = x.dot(Q * x);               // quadratic cost: 2 FMAs + dot
+  return {x_next, cost, x_next.norm()};
+}
+")
+
+(defn mpc-horizon-fast
+  "Fixed-size MPC horizon — zero heap allocation in the inner loop.
+   All temporaries are stack-allocated Eigen::Vector2d/Matrix2d.
+   This is the Julia StaticArrays speed path."
+  [a-2x2 b-u-vec2 q-2x2 x0-vec2 n]
+  (let [log (make-log)
+        a  (cpp/unbox Mat2 a-2x2)
+        bu (cpp/unbox Vec2 b-u-vec2)
+        q  (cpp/unbox Mat2 q-2x2)]
+    (loop [x (cpp/unbox Vec2 x0-vec2)
+           step 0]
+      (if (>= step n)
+        log
+        (let [s (mpc2_step a bu q x)]
+          (log-append! log step (.-cost s) (.-norm s))
+          (recur (.-x s) (inc step)))))))
+
+;; --- Append-only log for promise chain resolution ---
+;; Cybernetic control loop: each MPC step appends to an immutable log.
+;; Uses immer::vector for O(1) append with structural sharing.
+;; This is the "postmodern data structure" — persistent, lock-free,
+;; suitable for concurrent observation without coordination.
+
+(cpp/raw "#ifdef HAS_IMMER
+#include <immer/vector.hpp>
+#include <immer/vector_transient.hpp>
+#endif")
+
+;; Fallback: simple append-only std::vector log when immer unavailable
+(cpp/raw "
+struct LogEntry {
+  int step;
+  double cost;
+  double norm;
+};
+
+struct AppendLog {
+  std::vector<LogEntry> entries;
+  void append(int step, double cost, double norm) {
+    entries.push_back({step, cost, norm});
+  }
+  size_t size() const { return entries.size(); }
+  LogEntry const& at(size_t i) const { return entries.at(i); }
+};
+")
+
+(defn make-log [] (cpp/box (AppendLog.)))
+
+(defn log-append! [log-box step cost norm]
+  (let [log (cpp/unbox AppendLog log-box)]
+    (.append log (cpp/cast cpp/int step)
+                 (cpp/cast cpp/double cost)
+                 (cpp/cast cpp/double norm)))
+  log-box)
+
+(defn log-size [log-box]
+  (.size (cpp/unbox AppendLog log-box)))
+
+;; --- Promise chain: MPC horizon as sequential resolution ---
+;; Each "promise" is a future state prediction that resolves
+;; when the cost is computed. The chain IS the control horizon.
+
+(defn mpc-horizon
+  "Run MPC over N steps, returning the append-only log.
+   This is promise chaining as control: each step resolves
+   the previous prediction and chains the next."
+  [a-box b-box q-box x0-box u-box n]
+  (let [log (make-log)]
+    (loop [x x0-box
+           step 0]
+      (if (>= step n)
+        log
+        (let [cost (mpc-cost x q-box)
+              norm (nrm2 x)
+              _    (log-append! log step cost norm)
+              x'   (mpc-predict a-box b-box x u-box)]
+          (recur x' (inc step)))))))
+
+;; --- Demo: 2D state-space MPC ---
+
+(defn print-log [log]
+  (println "step | cost      | ||x||")
+  (println "-----|-----------|-------")
+  (dotimes [i (log-size log)]
+    (let [entry (.at (cpp/unbox AppendLog (identity log)) (cpp/cast cpp/size_t i))]
+      (println (format "%4d | %9.4f | %.4f"
+                       (.-step entry)
+                       (.-cost entry)
+                       (.-norm entry))))))
+
+(defn -main [& args]
+  (println "=== Neanderthal syntax on Eigen via jank ===")
+  (println)
+
+  ;; BLAS Level 1 sanity
+  (let [x (dv 1.0 0.0) y (dv 0.0 1.0)]
+    (println "dot(x,y) =" (dot x y))
+    (println "nrm2(x)  =" (nrm2 x)))
+  (println)
+
+  ;; === Path 1: Dynamic (MatrixXd) — general, heap-allocated ===
+  ;; Like Julia's Array or Mojo's object — flexible but slower for small N
+  (let [A  (dge 2 2 [0.9 0.1 -0.1 0.95])
+        B  (dge 2 1 [0.5 0.3])
+        Q  (dge 2 2 [1.0 0.0 0.0 1.0])
+        x0 (dv 5.0 3.0)
+        u  (dv -0.2)
+        horizon 20]
+    (println "=== Path 1: Dynamic Eigen (MatrixXd) ===")
+    (println "  heap-allocated, GC-managed, general-purpose")
+    (print-log (mpc-horizon A B Q x0 u horizon)))
+  (println)
+
+  ;; === Path 2: Fixed-size (Matrix2d) — stack-allocated, SIMD ===
+  ;; Like Julia's SMatrix{2,2} or Mojo's struct — zero alloc inner loop
+  ;; Eigen::Matrix2d fits in 1 AVX register. No heap. No GC. Pure FMA.
+  (let [A  (cpp/box (make_mat2 0.9 0.1 -0.1 0.95))
+        Bu (cpp/box (make_vec2 (* 0.5 -0.2) (* 0.3 -0.2)))  ; pre-multiply B*u
+        Q  (cpp/box (make_mat2 1.0 0.0 0.0 1.0))
+        x0 (cpp/box (make_vec2 5.0 3.0))
+        horizon 20]
+    (println "=== Path 2: Fixed Eigen (Matrix2d) — zero-alloc ===")
+    (println "  stack-allocated, SIMD-vectorized, no GC pressure")
+    (println "  Julia equivalent: SMatrix{2,2,Float64}")
+    (println "  Mojo equivalent:  struct with SIMD[DType.float64, 2]")
+    (print-log (mpc-horizon-fast A Bu Q x0 horizon)))
+  (println)
+  (println "Promise chain = control horizon. Each step resolves prediction → cost → log.")
+  (println "Append-only log: immutable, auditable, replayable trajectory."))

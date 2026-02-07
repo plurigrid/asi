@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://algebraicjulia.org/schemas/acset-ocr-v1.json",
+  "title": "ACSet OCR Universal Format",
+  "description": "Universal interchange format for categorical diagrams extracted via OCR. Compatible with ACSets.jl JSON serialization, OLMoOCR Markdown output, and Mistral OCR interleaved format.",
+  "type": "object",
+  "required": ["schema", "instance"],
+  "properties": {
+    "schema": {
+      "type": "object",
+      "description": "ACSet schema declaration (ACSets.jl compatible)",
+      "required": ["version", "Ob", "Hom", "AttrType", "Attr"],
+      "properties": {
+        "version": {
+          "type": "object",
+          "properties": {
+            "ACSetSchema": { "type": "string", "const": "0.0.1" },
+            "ACSets": { "type": "string" },
+            "asi-ocr": { "type": "string" }
+          }
+        },
+        "Ob": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": { "name": { "type": "string" } }
+          }
+        },
+        "Hom": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "dom", "codom"],
+            "properties": {
+              "name": { "type": "string" },
+              "dom": { "type": "string" },
+              "codom": { "type": "string" }
+            }
+          }
+        },
+        "AttrType": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": { "name": { "type": "string" } }
+          }
+        },
+        "Attr": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "dom", "codom"],
+            "properties": {
+              "name": { "type": "string" },
+              "dom": { "type": "string" },
+              "codom": { "type": "string" }
+            }
+          }
+        },
+        "equations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dom": { "type": "string" },
+              "codom": { "type": "string" },
+              "paths": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "instance": {
+      "type": "object",
+      "description": "ACSet instance data. Each key is an Ob name mapping to an array of records with _id and subpart fields.",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["_id"],
+          "properties": {
+            "_id": { "type": "integer", "minimum": 1 }
+          },
+          "additionalProperties": true
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "OCR extraction metadata (extension, not part of ACSets.jl spec)",
+      "properties": {
+        "ocr_engine": {
+          "type": "string",
+          "enum": ["mathpix", "olmocr", "mistral-ocr", "texify", "manual", null]
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source_format": {
+          "type": "string",
+          "enum": ["tikz-cd", "xy-pic", "quiver-json", "markdown-ocr", "image", "pdf", "manual", "unknown"]
+        },
+        "source_url": { "type": ["string", "null"] },
+        "raw_latex": { "type": ["string", "null"] },
+        "raw_text": { "type": ["string", "null"] },
+        "mathml": { "type": ["string", "null"] },
+        "extraction_ts": { "type": "string", "format": "date-time" },
+        "seed": { "type": "integer", "description": "SplitMix64 seed for color assignment" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "$comment": "Commutative square: A->B, A->C, B->D, C->D",
+      "schema": {
+        "version": { "ACSetSchema": "0.0.1", "ACSets": "0.2.0", "asi-ocr": "1.0.0" },
+        "Ob": [{ "name": "Ob" }, { "name": "Hom" }],
+        "Hom": [
+          { "name": "src", "dom": "Hom", "codom": "Ob" },
+          { "name": "tgt", "dom": "Hom", "codom": "Ob" }
+        ],
+        "AttrType": [{ "name": "Label" }],
+        "Attr": [
+          { "name": "ob_label", "dom": "Ob", "codom": "Label" },
+          { "name": "hom_label", "dom": "Hom", "codom": "Label" }
+        ],
+        "equations": [
+          {
+            "dom": "Hom",
+            "codom": "Ob",
+            "paths": [["src:1,tgt:2", "src:3,tgt:4"], ["src:1,tgt:3", "src:2,tgt:4"]],
+            "$comment": "f;h = g;k (commutativity)"
+          }
+        ]
+      },
+      "instance": {
+        "Ob": [
+          { "_id": 1, "ob_label": "A" },
+          { "_id": 2, "ob_label": "B" },
+          { "_id": 3, "ob_label": "C" },
+          { "_id": 4, "ob_label": "D" }
+        ],
+        "Hom": [
+          { "_id": 1, "src": 1, "tgt": 2, "hom_label": "f" },
+          { "_id": 2, "src": 1, "tgt": 3, "hom_label": "g" },
+          { "_id": 3, "src": 2, "tgt": 4, "hom_label": "h" },
+          { "_id": 4, "src": 3, "tgt": 4, "hom_label": "k" }
+        ]
+      },
+      "provenance": {
+        "ocr_engine": "mathpix",
+        "confidence": 0.97,
+        "source_format": "tikz-cd",
+        "raw_latex": "\\begin{tikzcd} A \\arrow[r, \"f\"] \\arrow[d, \"g\"'] & B \\arrow[d, \"h\"] \\\\ C \\arrow[r, \"k\"'] & D \\end{tikzcd}",
+        "extraction_ts": "2026-02-05T00:00:00Z",
+        "seed": 1069
+      }
+    }
+  ]
+}
