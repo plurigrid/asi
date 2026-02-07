@@ -369,3 +369,29 @@ radare2 ecosystem repositories from r2con speakers relevant to effective-topos:
 | xvilka | [radareorg/awesome-decompilation](https://github.com/radareorg/awesome-decompilation) | Decompiler reference |
 | condret | [radareorg/r2ghidra](https://github.com/radareorg/r2ghidra) | ESIL + Ghidra bridge |
 | bmorphism | [bmorphism/Gay.jl](https://github.com/bmorphism/Gay.jl) | Deterministic colors for all tools |
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+effective-topos (+) + SDF.Ch5 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

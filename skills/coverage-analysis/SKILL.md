@@ -35,3 +35,25 @@ See: https://github.com/trailofbits/skills
 - codeql
 - semgrep
 - variant-analysis
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+coverage-analysis (○) + SDF.Ch1 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.

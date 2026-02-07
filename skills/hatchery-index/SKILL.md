@@ -128,3 +128,28 @@ Index % 3 = 2 → MINUS (validator)
 Seed: 137508
 Fingerprint: 0x21924
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+hatchery-index (○) + SDF.Ch3 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

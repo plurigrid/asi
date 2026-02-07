@@ -197,3 +197,29 @@ SOURCE: https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl
 | **turing-chemputer** | Chemical computation ↔ biological computation | ⊖ |
 
 Cross-comparison: All three skills explore the code↔chemistry↔life boundary that yb-translator maps via ontologies.
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+yb-translator (○) + SDF.Ch7 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.

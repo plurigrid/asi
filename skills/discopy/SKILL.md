@@ -507,3 +507,32 @@ Color and diagram repositories from r2con speakers relevant to DisCoPy:
 | bmorphism | [bmorphism/r2-zignatures](https://github.com/bmorphism/r2-zignatures) | Function signatures as categorical objects |
 | pancake | [radare2/radare2](https://github.com/radare2/radare2) | CFG as monoidal diagrams |
 | thestr4ng3r | [rizinorg/cutter](https://github.com/rizinorg/cutter) | Graph visualization backend |
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+discopy (○) + SDF.Ch5 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch6: Layering
+- Ch7: Propagators
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

@@ -310,3 +310,27 @@ Measuring H from data is computing a limit (right Kan extension).
 ```
 
 Analyzes time series for scaling properties and regime classification.
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+kolmogorov-onsager-hurst (+) + SDF.Ch8 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch6: Layering
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

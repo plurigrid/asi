@@ -129,3 +129,24 @@ As **Validator (-1)**, kolmogorov-compression:
 | mr_phrazer | mrphrazer | [Monocle](https://github.com/mrphrazer/Monocle) | LLM-assisted binary analysis for complexity reduction |
 | oddcoder | oddcoder | [rair-core](https://github.com/rair-project/rair-core) | RAIR - Radare in Rust for minimal description programs |
 | condret | condret | [r2ghidra](https://github.com/radareorg/r2ghidra) | Decompilation as compression (binary → source) |
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+kolmogorov-compression (○) + SDF.Ch5 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

@@ -140,3 +140,29 @@ Emits rejection signal when scan finds violations above threshold.
 ### Scripts
 - **`scripts/scan.py`** - Main scanning script
 - **`scripts/report.py`** - Report generation
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+substitute-eraser (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch6: Layering
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

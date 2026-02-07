@@ -279,3 +279,30 @@ pijul-sparse-skills (0) + pijul (-1) + skill-creator (+1) = 0 ✓
 ```
 
 This skill coordinates the projection decision while `pijul` validates patches and `skill-creator` generates new content.
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+pijul-sparse-skills (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch6: Layering
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

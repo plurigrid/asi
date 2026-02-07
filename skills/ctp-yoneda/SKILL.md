@@ -168,6 +168,28 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `category-theory`: 139 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+ctp-yoneda (○) + SDF.Ch2 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

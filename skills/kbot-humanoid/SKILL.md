@@ -149,3 +149,25 @@ kbot-humanoid (-1) ⊗ topos-generate (+1) ⊗ ksim-gym (0) = 0 ✓
   url={https://github.com/kscalelabs/kbot}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+kbot-humanoid (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

@@ -98,3 +98,25 @@ urdf2mjcf (-1) ⊗ kos-firmware (+1) ⊗ mujoco-scenes (0) = 0 ✓
   url={https://github.com/kscalelabs/urdf2mjcf}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+urdf2mjcf (+) + SDF.Ch7 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.

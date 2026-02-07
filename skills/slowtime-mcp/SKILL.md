@@ -195,3 +195,30 @@ Home: Prof (bicomodule coordinator)
 Poly Op: ⊗ (parallel composition during deliberation)
 Color: #FFFF00 (yellow - caution/deliberation)
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+slowtime-mcp (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch6: Layering
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

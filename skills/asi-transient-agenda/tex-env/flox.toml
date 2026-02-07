@@ -1,0 +1,26 @@
+# ASI Categorical Diagram Environment
+# xy-pic, tikz-cd, 2-cells, 1-cells, arrows
+# Storage-aware: texliveSmall (~800MB) not texliveFull (~7GB)
+
+[install]
+texliveSmall.pkg-path = "texliveSmall"
+ghostscript.pkg-path = "ghostscript_headless"
+imagemagick.pkg-path = "imagemagick"
+
+[options]
+systems = ["aarch64-darwin"]
+
+[vars]
+TEXENV = "asi-categorical"
+
+[hook]
+on-activate = """
+  echo "ASI Categorical Diagram Environment"
+  echo "  texlive: $(pdflatex --version 2>/dev/null | head -1)"
+  echo "  gs: $(gs --version 2>/dev/null)"
+  echo "  Storage: texliveSmall (~800MB vs 7GB full)"
+  echo ""
+  echo "  Packages: xypic, tikz-cd, amsmath, latexmk"
+  echo "  Usage: pdflatex diagram.tex / latexmk -pdf diagram.tex"
+  echo "  Emacs: M-x TeX-command-master (C-c C-c)"
+"""

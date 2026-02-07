@@ -155,3 +155,28 @@ sheaf-cohomology (-1) ⊗ epistemic-arbitrage (0) ⊗ godel-machine (+1) = 0 ✓
 1. Schmidhuber, J. (2003). "Gödel Machines: Self-Referential Universal Problem Solvers."
 2. Zhang, J. et al. (2025). "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents."
 3. Schmidhuber, J. (2007). "New Millennium AI and the Convergence of History."
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+godel-machine (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

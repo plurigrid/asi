@@ -120,3 +120,29 @@ Visualization: `scripts/gay_stream.py --threads`
 - `duckdb` for AMP queries
 - `jq` for Claude JSONL parsing
 - Python 3.10+ with dataclasses
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+tidar-thread-probe (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+- Ch8: Degeneracy
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

@@ -91,3 +91,25 @@ Geodesic Invariant:
 Möbius Inversion:
   f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+aristotle-lean (−) + SDF.Ch4 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.

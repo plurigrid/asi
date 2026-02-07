@@ -231,3 +231,30 @@ WEV_MIXING_BADGE: τ_market < τ_proof → extractable
 ---
 
 *"In the mutual ingression of minds, the shortest proof finds itself."*
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+levin-levity (+) + SDF.Ch8 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch6: Layering
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

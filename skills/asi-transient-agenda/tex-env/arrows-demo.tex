@@ -1,0 +1,104 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage[all,2cell,cmtip]{xy}
+\UseAllTwocells
+
+\begin{document}
+
+%% ═══════════════════════════════════════════════
+%% 1-CELLS (morphisms / arrows)
+%% ═══════════════════════════════════════════════
+
+% Simple arrow
+\xymatrix{
+  A \ar[r]^{f} & B
+}
+
+\vspace{1em}
+
+% All arrow types
+\xymatrix@R=3pc@C=4pc{
+  A \ar[r]^{f}              % plain arrow
+    \ar@{->}[d]_{g}         % explicit arrow
+    \ar@{.>}[dr]|{h}        % dotted arrow
+  & B \ar@{=>}[d]^{\alpha}  % double arrow (2-cell notation)
+    \ar@{~>}[dl]|{\beta}    % squiggly arrow
+  \\
+  C \ar@{-->}[r]_{k}        % dashed arrow
+    \ar@{^{(}->}[u]^{\iota} % hook (mono)
+  & D \ar@{->>}[u]_{\pi}    % two-headed (epi)
+}
+
+\vspace{2em}
+
+%% ═══════════════════════════════════════════════
+%% 2-CELLS (natural transformations)
+%% ═══════════════════════════════════════════════
+
+% Vertical 2-cell
+\xymatrix@R=4pc@C=5pc{
+  A \rtwocell^{f}_{g}{\alpha} & B
+}
+
+\vspace{1em}
+
+% Horizontal composition of 2-cells
+\xymatrix@R=4pc@C=5pc{
+  A \rtwocell^{f}_{g}{\alpha}
+  & B \rtwocell^{h}_{k}{\beta}
+  & C
+}
+
+\vspace{1em}
+
+% Vertical composition
+\xymatrix@R=3pc@C=5pc{
+  A \ruppertwocell^{f}{\alpha}
+    \rlowertwocell_{h}{\beta}
+    \ar[r]|{g}
+  & B
+}
+
+\vspace{2em}
+
+%% ═══════════════════════════════════════════════
+%% COMMUTATIVE DIAGRAMS
+%% ═══════════════════════════════════════════════
+
+% Pullback square
+\xymatrix{
+  P \ar[r]^{p_1} \ar[d]_{p_2}
+    \ar@{}[dr]|{\lrcorner}   % pullback symbol
+  & A \ar[d]^{f} \\
+  B \ar[r]_{g} & C
+}
+
+\vspace{1em}
+
+% Triangle (functoriality)
+\xymatrix@R=3pc@C=3pc{
+  A \ar[rr]^{g \circ f} \ar[dr]_{f} & & C \\
+  & B \ar[ur]_{g}
+}
+
+\vspace{1em}
+
+% Adjunction
+\xymatrix@R=4pc@C=5pc{
+  \mathcal{C}
+    \ar@/^1.5pc/[r]^{F}
+    \ar@{}[r]|{\bot}
+  & \mathcal{D}
+    \ar@/^1.5pc/[l]^{G}
+}
+
+\vspace{1em}
+
+% Monad diagram (unit + multiplication)
+\xymatrix@R=3pc@C=3pc{
+  T^2 \ar[r]^{\mu} \ar[d]_{T\mu}
+  & T \ar[d]^{\mu} \\
+  T \ar[r]_{\mu} & \mathrm{Id}
+}
+
+\end{document}

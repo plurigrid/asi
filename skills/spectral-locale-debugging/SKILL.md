@@ -26,3 +26,28 @@ Combine ordered locale theory with agent-based modeling to create a framework fo
 - zig-programming
 - alife
 - ordered-locale
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+spectral-locale-debugging (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

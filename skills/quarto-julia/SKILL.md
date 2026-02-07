@@ -350,3 +350,29 @@ Pkg.activate(expanduser("~/worlds/a"))  # AlgebraicJulia world
 **Type**: Documentation / Publishing
 **Trit**: 0 (ERGODIC)
 **Dependencies**: Julia 1.10+, IJulia, Quarto CLI 1.6+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+quarto-julia (○) + SDF.Ch7 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.

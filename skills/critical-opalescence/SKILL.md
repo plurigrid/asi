@@ -278,3 +278,29 @@ Colloid stability, emulsion breakdown, crystallization.
 ```
 
 Analyze systems for critical behavior via scattering signatures.
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 6. Layering
+
+**Concepts**: layered data, metadata, provenance, units
+
+### GF(3) Balanced Triad
+
+```
+critical-opalescence (○) + SDF.Ch6 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Layering adds metadata. This skill tracks provenance or annotations.

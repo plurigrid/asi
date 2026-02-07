@@ -286,3 +286,30 @@ just coequalizer-pushout SKILL1 SKILL2   # Compose with overlap
 **Type**: Category-Theoretic Skill Composition  
 **Trit**: 0 (ERGODIC - coordinates equivalences)  
 **GF(3)**: Conserved via triadic composition
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+coequalizers (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch8: Degeneracy
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

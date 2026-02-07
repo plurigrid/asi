@@ -88,3 +88,27 @@ next_color() → visited check
 - `gay-julia` - Core Gay.jl integration
 - `spi-parallel-verify` - Fingerprint verification
 - `fokker-planck-analyzer` - Equilibrium analysis
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+gay-monte-carlo (○) + SDF.Ch4 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.

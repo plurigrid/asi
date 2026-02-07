@@ -86,6 +86,31 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `algorithms`: 19 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 6. Layering
+
+**Concepts**: layered data, metadata, provenance, units
+
+### GF(3) Balanced Triad
+
+```
+academic-research (−) + SDF.Ch6 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Layering adds metadata. This skill tracks provenance or annotations.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
