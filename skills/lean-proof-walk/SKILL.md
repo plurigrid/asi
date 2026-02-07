@@ -116,3 +116,27 @@ lean-proof-walk (0) ⊗ bdd-mathematical-verification (+1) ⊗ chromatic-walk (-
 ⟦No Goals⟧ = proof complete
 ⟦Σ trits⟧ ≡ 0 (mod 3) always
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+lean-proof-walk (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

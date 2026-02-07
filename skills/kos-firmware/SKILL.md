@@ -156,3 +156,28 @@ kos-firmware (+1) ⊗ evla-vla (-1) ⊗ ktune-sim2real (0) = 0 ✓
   url={https://github.com/kscalelabs/kos}
 }
 ```
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 6. Layering
+
+**Concepts**: layered data, metadata, provenance, units
+
+### GF(3) Balanced Triad
+
+```
+kos-firmware (−) + SDF.Ch6 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Layering adds metadata. This skill tracks provenance or annotations.

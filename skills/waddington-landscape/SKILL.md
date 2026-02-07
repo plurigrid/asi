@@ -453,3 +453,31 @@ At bifurcation points:
 
 Model developmental processes as gradient flows on epigenetic potential landscapes,
 with connections to Schrödinger bridges and fractional diffusion.
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+waddington-landscape (+) + SDF.Ch8 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+- Ch1: Flexibility through Abstraction
+- Ch6: Layering
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

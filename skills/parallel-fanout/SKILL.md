@@ -1,8 +1,17 @@
 ---
 name: parallel-fanout
 description: Metaskill that fans out on every interaction, using interaction entropy
-version: 1.0.0
+version: 1.0.1
 ---
+
+## CRITICAL CONSTRAINT
+
+**DO NOT** execute verbose demonstration code when this skill is loaded for context.
+- Loading a skill ≠ running theatrical demos
+- No emoji-laden output proving nothing
+- No token-wasting "look at me work" theater
+- If the user wanted a demo, they would ask for one
+- Reading skill context is sufficient; execution requires explicit request
 
 
 # parallel-fanout - Interaction-Entropy-Seeded Parallel Skill Dispatch
@@ -304,6 +313,35 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `general`: 734 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 9. Generic Procedures
+
+**Concepts**: dispatch, multimethod, predicate dispatch, generic
+
+### GF(3) Balanced Triad
+
+```
+parallel-fanout (−) + SDF.Ch9 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic procedures dispatch on predicates. This skill selects implementations dynamically.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

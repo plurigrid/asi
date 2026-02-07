@@ -221,3 +221,27 @@ The ERGODIC trit reflects flox's role as an infrastructure coordinator - it neit
 - [flox skill](../flox/SKILL.md) - CLI command reference
 - [MCP Specification](https://modelcontextprotocol.io)
 - [FloxHub](https://hub.flox.dev)
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+flox-mcp (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

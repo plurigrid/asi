@@ -177,3 +177,24 @@ See [all implementations](references/IMPLEMENTATIONS.md) for:
 **Conservation**: GF(3) verified
 
 > "In the desert of the Real, the trit is the only compass."
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+splitmixternary-opine (−) + SDF.Ch2 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.

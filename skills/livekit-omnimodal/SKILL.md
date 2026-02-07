@@ -310,3 +310,30 @@ The "local sand" might be mishearing "locale" + "sans" (French) from multi-local
 - `gay-mcp` - Color generation
 - `iroh-p2p` - P2P data sync
 - `signal-messaging` - Fallback messaging
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+livekit-omnimodal (+) + SDF.Ch3 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+- Ch8: Degeneracy
+- Ch2: Domain-Specific Languages
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

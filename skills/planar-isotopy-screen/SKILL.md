@@ -99,3 +99,27 @@ Then use `mcp__macos-use__macos-use_click_and_traverse` at those coordinates.
 - `gay-mcp` - Deterministic color from seed
 - `acsets-algebraic-databases` - Schema modeling
 - `bisimulation-game` - Observational equivalence
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+planar-isotopy-screen (○) + SDF.Ch3 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

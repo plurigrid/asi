@@ -134,6 +134,32 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `dynamical-systems`: 41 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+code-review (○) + SDF.Ch4 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch6: Layering
+- Ch7: Propagators
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
