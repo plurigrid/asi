@@ -1,9 +1,14 @@
 ---
 name: datalog-fixpoint
 description: Datalog bottom-up fixpoint iteration for recursive queries
-version: 1.0.0
+trit: 0
+color: "#26D826"
+catsharp:
+  home: Prof
+  poly_op: ⊗ (parallel)
+  kan_role: Adj
+  bicomodule: true
 ---
-
 
 # Datalog Fixpoint Skill
 
@@ -18,41 +23,6 @@ T^0(∅) → T^1 → T^2 → ... → T^ω (fixpoint)
 
 Where T is the immediate consequence operator.
 
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Dataframes
-- **polars** [○] via bicomodule
-  - High-performance dataframes
-
-### Bibliography References
-
-- `algorithms`: 19 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-datalog-fixpoint (+) + SDF.Ch3 (○) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
 ## Cat# Integration
 
 Fixpoint computation maps to Cat# via coalgebraic semantics:

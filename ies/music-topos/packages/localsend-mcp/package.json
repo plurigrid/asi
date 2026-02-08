@@ -1,0 +1,47 @@
+{
+  "name": "@topos/localsend-mcp",
+  "version": "0.1.0",
+  "description": "LocalSend P2P file transfer MCP server with Tailscale/NATS discovery and Gay.jl colors",
+  "type": "module",
+  "bin": {
+    "localsend-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "npx -y @modelcontextprotocol/inspector tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "localsend",
+    "p2p",
+    "file-transfer",
+    "tailscale",
+    "nats",
+    "model-context-protocol"
+  ],
+  "author": "topos",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "tsx": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmorphism/music-topos"
+  }
+}

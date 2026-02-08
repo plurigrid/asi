@@ -71,6 +71,63 @@ Stop tuning when `spectral_gap <= 0.25`.
 - Tailscale patterns: `lib/tailscale_file_transfer_skill.rb`
 - MCP server reference: `mcp_unified_server.py`
 
+<<<<<<< HEAD
+=======
+## GitHub GraphQL (GH CLI) Reference
+
+Use `gh api graphql` for contributor snapshots (limit: `history(first: 100)`):
+
+```bash
+gh api graphql \
+  -F owner=localsend \
+  -F name=localsend \
+  -F history=100 \
+  -f query='query($owner:String!,$name:String!,$history:Int!){
+    repository(owner:$owner,name:$name){
+      defaultBranchRef{name target{
+        ... on Commit{
+          history(first:$history){
+            nodes{author{user{login} name}}
+          }
+        }
+      }}
+    }
+  }'
+```
+
+Aggregate top contributors:
+```bash
+gh api graphql -F owner=localsend -F name=localsend -F history=100 -f query='query($owner:String!,$name:String!,$history:Int!){repository(owner:$owner,name:$name){defaultBranchRef{name target{... on Commit{history(first:$history){nodes{author{user{login} name}}}}}}}}' \
+  | jq -r '.data.repository.defaultBranchRef.target.history.nodes[].author | if .user then .user.login else .name end' \
+  | sort | uniq -c | sort -nr | head -20
+```
+
+## Duck Lake Snapshots (Feedback + Bidirectional Flow)
+
+Persist LocalSend sessions and GitHub snapshots into DuckDB for time travel:
+
+```sql
+CREATE TABLE IF NOT EXISTS localsend_sessions (
+  session_id TEXT,
+  peer_id TEXT,
+  direction TEXT, -- send|receive
+  bytes BIGINT,
+  throughput_bps DOUBLE,
+  spectral_gap DOUBLE,
+  created_at TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS localsend_contributors_snapshot (
+  snapshot_at TIMESTAMP,
+  repo TEXT,
+  contributor TEXT,
+  commit_count INT
+);
+```
+
+Store snapshots per run and query later with existing DuckDB time-travel commands.
+
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 ## Implementation Notes
 - Avoid assuming LocalSend has a stable CLI; verify with `jocalsend --help` if installed.
 - If multicast discovery fails (Tailscale), use NATS to exchange `target_ip` + `port`.

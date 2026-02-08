@@ -1,3 +1,10 @@
+---
+name: reafference-corollary-discharge
+description: Skill: Reafference & Corollary Discharge (von Holst Neuroscience)
+source: local
+license: UNLICENSED
+---
+
 # Skill: Reafference & Corollary Discharge (von Holst Neuroscience)
 
 **Category**: Behavioral Verification | Neural Mechanism Implementation

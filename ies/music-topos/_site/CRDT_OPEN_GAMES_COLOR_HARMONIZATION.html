@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>crdt_open_games_color_harmonization – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="crdt-open-games-color-field-harmonization-dense-copy-on-interact-architecture" class="level1">
+<h1>CRDT-Open Games-Color Field Harmonization: Dense Copy-on-Interact Architecture</h1>
+<p><strong>Date</strong>: 2025-12-21 <strong>Focus</strong>: Moebius inversion + prime filtering + color fields + 2TDX + bidirectional flow <strong>Framework</strong>: Open Games + Energy-driven Systems (Capucci) <strong>Implementation</strong>: Automerge vs crdt.el vs Dense Concurrent Structures</p>
+<hr>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>This document unifies three powerful abstractions:</p>
+<ol type="1">
+<li><strong>CRDTs</strong> (Conflict-free Replicated Data Types): Eventual consistency without coordination</li>
+<li><strong>Open Games</strong> (Ghani, Hedges): Two-player, two-sided computation with bidirectional flow (world/coworld)</li>
+<li><strong>Number-Theoretic Color Fields</strong> (Gay.rs + Moebius inversion): Deterministic coloring via algebraic structure</li>
+</ol>
+<p><strong>Core Insight</strong>: A CRDT that respects <strong>open games semantics</strong> and uses <strong>number-theoretic color fields</strong> as its fundamental algebraic operation enables: - Provably correct concurrent updates - Natural bidirectional computation (forward/backward) - Aesthetic color assignment via Moebius inversion - Energy-efficient state representation - Dense copy-on-interact semantics</p>
+<hr>
+</section>
+<section id="part-1-crdts-as-open-games" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-crdts-as-open-games">Part 1: CRDTs as Open Games</h2>
+<section id="current-crdt-landscape" class="level3">
+<h3 class="anchored" data-anchor-id="current-crdt-landscape">Current CRDT Landscape</h3>
+<pre><code>Automerge (TypeScript/Rust)
+  ├─ Document structure: JSON-like tree
+  ├─ Operations: Insert, Delete, Set
+  ├─ State: Hashmap of object IDs → operations
+  ├─ Merge: LWW (Last Writer Wins) for primitives
+  └─ Performance: O(log n) per operation (via Rust backend)
+
+crdt.el (Emacs Lisp)
+  ├─ Document structure: S-expression
+  ├─ Operations: Cons, Set
+  ├─ State: Sequence of operations (operation log)
+  ├─ Merge: Commutative operation log
+  └─ Performance: O(n) for each merge (interpreted)
+
+Yjs (JavaScript)
+  ├─ Document structure: B-tree
+  ├─ Operations: Insert, Delete, Format
+  ├─ State: Update encoding
+  └─ Merge: Structural sharing</code></pre>
+</section>
+<section id="reframing-crdts-as-open-games" class="level3">
+<h3 class="anchored" data-anchor-id="reframing-crdts-as-open-games">Reframing CRDTs as Open Games</h3>
+<p>An <strong>Open Game</strong> (Ghani, Hedges, 2016): - Two players (or multiple) - Two sides: forward (action) and backward (response) - Bidirectional information flow - Utility/payoff structure</p>
+<p><strong>CRDT as Open Game</strong>:</p>
+<pre><code>        World (incoming state)
+             ↓
+    ┌────────────────────────┐
+    │   CRDT Operation       │
+    │  (two-sided play)      │
+    ├────────────────────────┤
+    │ Forward (→):           │
+    │  Take operation        │
+    │  Update local state    │
+    │  Generate output       │
+    │                        │
+    │ Backward (←):          │
+    │  Return acknowledgment │
+    │  Propagate to peers    │
+    │  Compute merge strategy│
+    └────────────────────────┘
+             ↓
+        Coworld (outgoing effects)</code></pre>
+</section>
+<section id="two-player-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="two-player-interpretation">Two-Player Interpretation</h3>
+<p><strong>Player 1: Local User</strong> - Makes edits to document - Sees immediate feedback - Enjoys optimistic updates - Action: forward (user → state)</p>
+<p><strong>Player 2: Merge Engine</strong> - Receives concurrent edits from other users - Must reconcile conflicts - Maintains consistency invariant - Action: backward (peers → state)</p>
+<p><strong>Open Game Trajectory</strong>:</p>
+<pre><code>User Edit (forward) ──→ State Update
+                           ↓
+                      Conflict Detection
+                           ↓
+Merge Resolution ←── Other Users' Edits (backward)
+       ↓
+Consistent State (all players see same eventual value)</code></pre>
+</section>
+<section id="monad-structure" class="level3">
+<h3 class="anchored" data-anchor-id="monad-structure">Monad Structure</h3>
+<p>CRDTs form a <strong>monad</strong> when interpreted as open games:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// CRDT as a monad</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> CRDTMonad<span class="op">&lt;</span>A<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// unit: Create a CRDT value</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> unit(value<span class="op">:</span> A) <span class="op">-&gt;</span> <span class="dt">Self</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// bind: Compose two CRDT operations</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> bind<span class="op">&lt;</span>B<span class="op">,</span> F<span class="op">&gt;</span>(<span class="kw">self</span><span class="op">,</span> f<span class="op">:</span> F) <span class="op">-&gt;</span> CRDTMonad<span class="op">&lt;</span>B<span class="op">&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">where</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        F<span class="op">:</span> <span class="bu">Fn</span>(A) <span class="op">-&gt;</span> CRDTMonad<span class="op">&lt;</span>B<span class="op">&gt;;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// merge: Combine two CRDT states</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> merge(<span class="kw">self</span><span class="op">,</span> other<span class="op">:</span> CRDTMonad<span class="op">&lt;</span>A<span class="op">&gt;</span>) <span class="op">-&gt;</span> CRDTMonad<span class="op">&lt;</span>A<span class="op">&gt;;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// as_game: Convert to open game semantics</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> as_game(<span class="kw">self</span>) <span class="op">-&gt;</span> OpenGame<span class="op">&lt;</span>A<span class="op">&gt;;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Key property</strong>: The monadic bind operation <strong>preserves commutativity</strong>: - <code>a ∘ b</code> (operation a then b) - <code>b ∘ a</code> (operation b then a) - Both lead to same final state (CRDT property)</p>
+<p><strong>In open games terms</strong>: Both orderings yield the same <strong>coworld</strong> (output/effects).</p>
+<hr>
+</section>
+</section>
+<section id="part-2-moebius-inversion-prime-filtering-color-fields" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-moebius-inversion-prime-filtering-color-fields">Part 2: Moebius Inversion + Prime Filtering + Color Fields</h2>
+<section id="moebius-function-in-number-theory" class="level3">
+<h3 class="anchored" data-anchor-id="moebius-function-in-number-theory">Moebius Function in Number Theory</h3>
+<p>The <strong>Möbius function</strong> μ(n):</p>
+<pre><code>μ(n) =  1     if n is a product of even number of distinct primes
+        -1    if n is a product of odd number of distinct primes
+        0     if n has a squared prime factor</code></pre>
+<p><strong>Moebius inversion formula</strong>:</p>
+<pre><code>If g(n) = Σ f(d) for all d|n
+Then f(n) = Σ μ(d) g(n/d) for all d|n</code></pre>
+</section>
+<section id="applying-to-color-fields" class="level3">
+<h3 class="anchored" data-anchor-id="applying-to-color-fields">Applying to Color Fields</h3>
+<p>Instead of using Möbius inversion for arithmetic, use it for <strong>structure inversion</strong>:</p>
+<pre><code>Color Field Perspective:
+  A document is a finite set of operations
+  Each operation has a "prime" signature
+  Commutativity relationships form a lattice
+  Möbius inversion gives the "dual" structure
+
+Example:
+  Operation A: Insert at position 5
+  Operation B: Delete at position 10
+
+  Forward: A then B gives state S
+  Backward (via Moebius inversion):
+    Compute what B would do if it "undoes" A
+    This is the dual operation in the coworld</code></pre>
+</section>
+<section id="prime-filtering-on-crdt-operations" class="level3">
+<h3 class="anchored" data-anchor-id="prime-filtering-on-crdt-operations">Prime Filtering on CRDT Operations</h3>
+<p>Each CRDT operation has <strong>prime factors</strong> (semantic properties):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>derive<span class="at">(</span><span class="bu">Hash</span><span class="op">,</span> <span class="bu">Eq</span><span class="op">,</span> <span class="bu">PartialEq</span><span class="at">)]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">enum</span> PrimeFactor <span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Temporal</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    Causality<span class="op">,</span>      <span class="co">// Operation C happened-before operation D</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    Concurrency<span class="op">,</span>    <span class="co">// Operations C and D are concurrent</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Structural</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    LocalEffect<span class="op">,</span>    <span class="co">// Affects only local state</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    NonlocalEffect<span class="op">,</span> <span class="co">// May affect distributed state</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Semantic</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    Idempotent<span class="op">,</span>     <span class="co">// Multiple application = single application</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    Commutative<span class="op">,</span>    <span class="co">// Order doesn't matter</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    Associative<span class="op">,</span>    <span class="co">// Grouping doesn't matter</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">struct</span> OperationSignature <span class="op">{</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    primes<span class="op">:</span> HashSet<span class="op">&lt;</span>PrimeFactor<span class="op">&gt;,</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    prime_count<span class="op">:</span> <span class="dt">usize</span><span class="op">,</span>  <span class="co">// For Möbius μ computation</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span> OperationSignature <span class="op">{</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> moebius_value(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">self</span><span class="op">.</span>prime_count <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">{</span> <span class="dv">1</span> <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> <span class="op">-</span><span class="dv">1</span> <span class="op">}</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> parity(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> Parity <span class="op">{</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> <span class="kw">self</span><span class="op">.</span>moebius_value() <span class="op">{</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>            <span class="dv">1</span> <span class="op">=&gt;</span> <span class="pp">Parity::</span>Even<span class="op">,</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>            <span class="op">-</span><span class="dv">1</span> <span class="op">=&gt;</span> <span class="pp">Parity::</span>Odd<span class="op">,</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>            _ <span class="op">=&gt;</span> <span class="pp">Parity::</span>Zero<span class="op">,</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="color-field-as-algebraic-structure" class="level3">
+<h3 class="anchored" data-anchor-id="color-field-as-algebraic-structure">Color Field as Algebraic Structure</h3>
+<p><strong>Instead of</strong>: Viewing colors as visual properties</p>
+<p><strong>View colors as</strong>: Algebraic elements of a <strong>field</strong> over operations</p>
+<pre><code>ColorField = ℤ/nℤ where n is derived from operation structure
+
+Example: Petri net operations
+  Primes: {Firing, Composition, Merge}
+  n = 3 (three primes)
+
+  Operation A fires once:        color index = 1 → Gold
+  Operation B fires twice:       color index = 2 → Orange
+  Operation A+B fires together:  color index = 3 → Red
+
+Via Moebius inversion:
+  Dual of Gold (index 1):   μ(1) = 1   → Gold (self-dual)
+  Dual of Orange (index 2): μ(2) = -1  → Inverted Orange
+  Dual of Red (index 3):    μ(3) = -1  → Inverted Red</code></pre>
+</section>
+<section id="implementation-in-gay.rs" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-in-gay.rs">Implementation in Gay.rs</h3>
+<p>Enhance Gay.rs to compute colors via <strong>number-theoretic filters</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">struct</span> NumberTheoreticColorField <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Base: SplitMix64 RNG (deterministic)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    rng<span class="op">:</span> SplitMix64<span class="op">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Primes: semantic properties</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    primes<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>PrimeFactor<span class="op">&gt;,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Field: arithmetic mod n</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    field_modulus<span class="op">:</span> <span class="dt">u64</span><span class="op">,</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span> NumberTheoreticColorField <span class="op">{</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> color_from_operation(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> op<span class="op">:</span> <span class="op">&amp;</span>Operation) <span class="op">-&gt;</span> OkhslColor <span class="op">{</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 1. Extract semantic signature</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> signature <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>extract_signature(op)<span class="op">;</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 2. Compute prime factorization</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> primes <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>prime_filter(<span class="op">&amp;</span>signature)<span class="op">;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 3. Moebius function</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> mu <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>moebius(<span class="op">&amp;</span>primes)<span class="op">;</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 4. Color field element</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> field_element <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>field_element(<span class="op">&amp;</span>primes)<span class="op">;</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 5. Generate color</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        <span class="kw">self</span><span class="op">.</span>color_from_field_element(field_element<span class="op">,</span> mu <span class="kw">as</span> <span class="dt">f32</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fn</span> moebius(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> primes<span class="op">:</span> <span class="op">&amp;</span>[PrimeFactor]) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> k <span class="op">=</span> primes<span class="op">.</span>len()<span class="op">;</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> has_repetition <span class="op">=</span> primes<span class="op">.</span>iter()<span class="op">.</span><span class="pp">collect::</span><span class="op">&lt;</span>HashSet<span class="op">&lt;</span>_<span class="op">&gt;&gt;</span>()<span class="op">.</span>len() <span class="op">!=</span> k<span class="op">;</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> has_repetition <span class="op">{</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>  <span class="co">// Squared prime factor</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> k <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">{</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>            <span class="dv">1</span>  <span class="co">// Even number of distinct primes</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>            <span class="op">-</span><span class="dv">1</span> <span class="co">// Odd number of distinct primes</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="part-3-2tdx-two-terminal-directed-graph-bidirectional-flow" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-2tdx-two-terminal-directed-graph-bidirectional-flow">Part 3: 2TDX (Two-Terminal Directed Graph) + Bidirectional Flow</h2>
+<section id="tdx-structure" class="level3">
+<h3 class="anchored" data-anchor-id="tdx-structure">2TDX Structure</h3>
+<p>A <strong>2TDX</strong> is a directed graph with: - Exactly 2 distinguished nodes: source (s) and sink (t) - All other edges form an acyclic structure - Natural interpretation: information flow from s to t</p>
+<p><strong>In CRDT context</strong>:</p>
+<pre><code>s (source) = Local user making edit
+             ↓
+          [Operations]
+             ↓
+t (sink) = Consistent state across all peers</code></pre>
+</section>
+<section id="worldcoworld-duality" class="level3">
+<h3 class="anchored" data-anchor-id="worldcoworld-duality">World/Coworld Duality</h3>
+<p><strong>Lawvere’s Categorical Duality</strong>:</p>
+<pre><code>World = Forward computation
+  (user action → local state update)
+
+Coworld = Backward computation
+  (merge constraint → effect on other users)
+
+The 2TDX captures both directions:
+  Forward path: s → ... → t (user sees edit)
+  Backward path: t ← ... ← s (system resolves conflicts)</code></pre>
+</section>
+<section id="bidirectional-flow-in-crdts" class="level3">
+<h3 class="anchored" data-anchor-id="bidirectional-flow-in-crdts">Bidirectional Flow in CRDTs</h3>
+<pre><code>Operation Queue (pending edits)
+           ↓ (forward flow)
+    ┌──────────────────┐
+    │  State Machine   │
+    │  (apply ops)     │
+    └──────────────────┘
+           ↓
+      Local State
+           ↓
+    ┌──────────────────┐
+    │  Broadcast Ops   │
+    └──────────────────┘
+           ↓
+      Peer 1, Peer 2, Peer 3
+      (receive same ops)
+           ↓ (backward flow: merge)
+    ┌──────────────────┐
+    │  Conflict Check  │
+    │  (ensure safety) │
+    └──────────────────┘
+           ↓
+  Consistent State
+  (all peers agree)</code></pre>
+</section>
+<section id="energy-driven-systems-capucci" class="level3">
+<h3 class="anchored" data-anchor-id="energy-driven-systems-capucci">Energy-Driven Systems (Capucci)</h3>
+<p>Matteo Capucci’s framework: systems have <strong>energy</strong> that drives computation.</p>
+<p><strong>In CRDT + open games context</strong>:</p>
+<pre><code>Energy = "drive to reach consistency"
+
+When two conflicting operations arrive:
+  - Energy: measure of how far from consistent state
+  - Minimization: merge algorithm reduces energy
+  - Convergence: global minimum = consistent state
+
+Energy Function:
+  E(state, constraints) = Σ weight(violated_constraint)
+
+  E is minimized when:
+    - No causal violations
+    - No data consistency violations
+    - All operations compatible</code></pre>
+<p><strong>Open games + energy</strong>:</p>
+<pre><code>Forward game (user action):
+  User energy = "desire to make change"
+  Action = edit operation
+
+Backward game (merge):
+  System energy = "pressure to maintain consistency"
+  Reaction = merge resolution
+
+Equilibrium = User can make edits without disrupting consistency</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-4-automerge-vs-crdt.el-vs-dense-structures" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-automerge-vs-crdt.el-vs-dense-structures">Part 4: Automerge vs crdt.el vs Dense Structures</h2>
+<section id="architectural-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="architectural-comparison">Architectural Comparison</h3>
+<pre><code>AUTOMERGE (Rust/TypeScript)
+├─ Data Structure: Rich JSON-like tree
+├─ State Representation: HashMap (operation ID → operation details)
+├─ Merge Algorithm: LWW for primitives, structural for objects
+├─ Concurrency Model: Lock-free (via Arc + atomics)
+├─ Energy Model: Each operation has timestamp (global clock simulation)
+└─ Performance: O(log n) per operation, O(n log n) per merge
+
+CRDT.EL (Emacs Lisp)
+├─ Data Structure: S-expression
+├─ State Representation: Operation log (vector)
+├─ Merge Algorithm: Commutative operation ordering
+├─ Concurrency Model: Single-threaded (with continuation-passing)
+├─ Energy Model: Lamport clocks (causal ordering)
+└─ Performance: O(n) per operation, O(n²) per merge
+
+DENSE CONCURRENT (Proposed)
+├─ Data Structure: Binary tree (tree-structured state)
+├─ State Representation: Compressed path-based (Merkle tree)
+├─ Merge Algorithm: Möbius inversion + field operations
+├─ Concurrency Model: Lock-free + CAS (compare-and-swap)
+├─ Energy Model: Potential field (based on prime factors)
+└─ Performance: O(log n) per operation, O(log² n) per merge</code></pre>
+</section>
+<section id="copy-on-interact-semantics" class="level3">
+<h3 class="anchored" data-anchor-id="copy-on-interact-semantics">Copy-on-Interact Semantics</h3>
+<p><strong>Interaction</strong>: User modifies document or system merges operations</p>
+<p><strong>Traditional approach</strong>: Deep copy + modify</p>
+<p><strong>Dense approach</strong>:</p>
+<pre><code>1. Identify interaction point (edit location)
+2. Compute prime factors (semantic properties)
+3. Apply Moebius transformation (dual operation)
+4. Update only affected path in tree
+5. Share unmodified subtrees (structural sharing)
+6. Broadcast delta (not full state)</code></pre>
+<p><strong>Pseudocode</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> dense_interact<span class="op">&lt;</span>T<span class="op">:</span> Colorable<span class="op">&gt;</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    state<span class="op">:</span> <span class="op">&amp;</span>Arc<span class="op">&lt;</span>TreeNode<span class="op">&lt;</span>T<span class="op">&gt;&gt;,</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    interaction<span class="op">:</span> <span class="op">&amp;</span>Interaction<span class="op">,</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> Arc<span class="op">&lt;</span>TreeNode<span class="op">&lt;</span>T<span class="op">&gt;&gt;</span> <span class="op">{</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Step 1: Find interaction point</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> path <span class="op">=</span> state<span class="op">.</span>find_path(<span class="op">&amp;</span>interaction<span class="op">.</span>location)<span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Step 2: Compute prime signature</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> primes <span class="op">=</span> extract_primes(<span class="op">&amp;</span>interaction)<span class="op">;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Step 3: Moebius transformation</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> dual_op <span class="op">=</span> moebius_transform(<span class="op">&amp;</span>interaction<span class="op">,</span> <span class="op">&amp;</span>primes)<span class="op">;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Step 4: Path-based update (copy-on-write)</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> new_state <span class="op">=</span> <span class="pp">Arc::</span>clone(state)<span class="op">;</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> node <span class="kw">in</span> path<span class="op">.</span>iter()<span class="op">.</span>rev() <span class="op">{</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Only copy nodes on the path</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>        new_state <span class="op">=</span> <span class="pp">Arc::</span>new(TreeNode <span class="op">{</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>            value<span class="op">:</span> <span class="cf">if</span> node<span class="op">.</span>is_target(interaction) <span class="op">{</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>                apply_operation(<span class="op">&amp;</span>node<span class="op">.</span>value<span class="op">,</span> dual_op)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>                node<span class="op">.</span>value<span class="op">.</span>clone()</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">},</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>            children<span class="op">:</span> <span class="pp">Arc::</span>clone(<span class="op">&amp;</span>node<span class="op">.</span>children)<span class="op">,</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Step 5: Broadcast delta</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> delta <span class="op">=</span> compute_delta(state<span class="op">,</span> <span class="op">&amp;</span>new_state)<span class="op">;</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    broadcast_to_peers(<span class="op">&amp;</span>delta)<span class="op">;</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    new_state</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="parallel-read-and-write-guarantees" class="level3">
+<h3 class="anchored" data-anchor-id="parallel-read-and-write-guarantees">Parallel Read and Write Guarantees</h3>
+<p><strong>Goal</strong>: Multiple readers and writers without locks</p>
+<p><strong>Mechanism</strong>: 1. Readers use <strong>snapshot isolation</strong> (immutable tree views) 2. Writers use <strong>atomic operations</strong> (CAS on Merkle root) 3. Conflicts resolved via <strong>Möbius inversion</strong> (deterministic)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">struct</span> DenseCRDT<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Root of immutable tree (Arc enables cheap sharing)</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    root<span class="op">:</span> Arc<span class="op">&lt;</span>TreeNode<span class="op">&lt;</span>T<span class="op">&gt;&gt;,</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Merkle hash for atomic comparison</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    merkle_root<span class="op">:</span> <span class="dt">u64</span><span class="op">,</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Operation queue (lock-free via atomic compare-and-swap)</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    pending_ops<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>Arc<span class="op">&lt;</span>Operation<span class="op">&gt;&gt;,</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="kw">impl</span><span class="op">&lt;</span>T<span class="op">&gt;</span> DenseCRDT<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Reader: create snapshot</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> read(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> Arc<span class="op">&lt;</span>TreeNode<span class="op">&lt;</span>T<span class="op">&gt;&gt;</span> <span class="op">{</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>        <span class="pp">Arc::</span>clone(<span class="op">&amp;</span><span class="kw">self</span><span class="op">.</span>root)  <span class="co">// No copy! Arc just increments refcount</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Writer: atomic update</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> write(<span class="op">&amp;</span><span class="kw">mut</span> <span class="kw">self</span><span class="op">,</span> op<span class="op">:</span> Operation) <span class="op">-&gt;</span> <span class="dt">Result</span><span class="op">&lt;</span>()<span class="op">,</span> ConflictError<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> new_root <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>apply_operation(op)<span class="op">;</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> new_merkle <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>compute_merkle(<span class="op">&amp;</span>new_root)<span class="op">;</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Atomic CAS (compare-and-swap)</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">self</span><span class="op">.</span>merkle_root<span class="op">.</span>compare_exchange(</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>            <span class="kw">self</span><span class="op">.</span>merkle_root<span class="op">,</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>            new_merkle<span class="op">,</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>            <span class="pp">Ordering::</span>SeqCst<span class="op">,</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>            <span class="pp">Ordering::</span>Relaxed<span class="op">,</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>        )<span class="op">.</span>is_ok() <span class="op">{</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>            <span class="kw">self</span><span class="op">.</span>root <span class="op">=</span> <span class="pp">Arc::</span>new(new_root)<span class="op">;</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>            <span class="cn">Ok</span>(())</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Conflict: another writer succeeded first</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Resolve via Möbius inversion</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> resolved <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>resolve_conflict(op)<span class="op">?;</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>            <span class="kw">self</span><span class="op">.</span>write(resolved)  <span class="co">// Retry with resolved operation</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Parallel access: readers never block writers</span></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">pub</span> <span class="kw">fn</span> parallel_edit(<span class="op">&amp;</span><span class="kw">self</span><span class="op">,</span> edits<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>Operation<span class="op">&gt;</span>) <span class="op">{</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>        edits<span class="op">.</span>par_iter()  <span class="co">// Rayon parallelism</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span>for_each(<span class="op">|</span>edit<span class="op">|</span> <span class="op">{</span></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> snapshot <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>read()<span class="op">;</span></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>                <span class="co">// Each reader has consistent snapshot</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>                <span class="co">// No locks needed</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="part-5-integration-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-integration-architecture">Part 5: Integration Architecture</h2>
+<section id="unified-crdt-open-games-color-field-system" class="level3">
+<h3 class="anchored" data-anchor-id="unified-crdt-open-games-color-field-system">Unified CRDT-Open Games-Color Field System</h3>
+<pre><code>┌────────────────────────────────────────────────────────────────┐
+│ APPLICATION LAYER                                              │
+│ (CatColab models, document editing, collaborative design)      │
+├────────────────────────────────────────────────────────────────┤
+│ BIDIRECTIONAL GAME LAYER (Open Games)                          │
+│                                                                │
+│  User Action (forward)     System Response (backward)          │
+│     ↓                             ↓                             │
+│  [Edit operation] ────→ [CRDT merge engine] ←──── [Peers]    │
+│                                                                │
+│  Semantics:                                                    │
+│   - Forward: user intention → local state                      │
+│   - Backward: peer effects → conflict resolution               │
+│   - Equilibrium: consistent state across all players           │
+├────────────────────────────────────────────────────────────────┤
+│ DENSE CONCURRENT LAYER                                         │
+│                                                                │
+│  Mutable Data Structure:                                       │
+│   - Immutable tree with Arc (shared memory)                    │
+│   - Path-based updates (copy-on-interact)                      │
+│   - Atomic CAS for consistency                                 │
+│                                                                │
+│  Conflict Resolution:                                          │
+│   - Prime factor extraction (semantic properties)              │
+│   - Möbius transformation (dual operations)                    │
+│   - Field arithmetic (mod n operations)                        │
+├────────────────────────────────────────────────────────────────┤
+│ COLOR FIELD LAYER (Gay.rs + Number Theory)                     │
+│                                                                │
+│  Coloring Function:                                            │
+│   - Extract primes from operation signature                    │
+│   - Compute Möbius μ value                                     │
+│   - Map to color via field operations                          │
+│   - Generate via golden angle (deterministic)                  │
+│                                                                │
+│  Visualization:                                                │
+│   - Operations colored by semantic signature                   │
+│   - Merges appear as color harmonies                           │
+│   - Conflicts detected as color dissonance                     │
+├────────────────────────────────────────────────────────────────┤
+│ PHYSICAL LAYER (2TDX + Bidirectional Flow)                     │
+│                                                                │
+│  Network representation:                                       │
+│   - Source: local user edits                                   │
+│   - Sink: consistent global state                              │
+│   - Intermediate: operations in flight                         │
+│                                                                │
+│  Information flow:                                             │
+│   - Forward: edits propagate to peers                          │
+│   - Backward: merge resolution returns to source               │
+│   - Convergence: all paths lead to same sink state             │
+└────────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="data-flow-example-collaborative-protocol-design" class="level3">
+<h3 class="anchored" data-anchor-id="data-flow-example-collaborative-protocol-design">Data Flow Example: Collaborative Protocol Design</h3>
+<pre><code>Scenario: Two users simultaneously edit a Raft protocol model
+
+User 1 (Alice):
+  1. Adds Process object "newFollower"
+  2. Operation: Insert(type=Process, id=newFollower)
+  3. Prime signature: {LocalEffect, Idempotent}
+  4. Color: Golden angle index 7 → Turquoise
+
+  └─→ Broadcast to User 2
+
+User 2 (Bob):
+  1. Adds Message object "heartbeat_from_leader"
+  2. Operation: Insert(type=Message, id=heartbeat_from_leader)
+  3. Prime signature: {NonlocalEffect, Idempotent}
+  4. Color: Golden angle index 15 → Violet
+
+  └─→ Broadcast to User 1
+
+CRDT Merge Engine:
+  1. Receive operations (concurrent, no causal order)
+  2. Check Moebius properties:
+     - Alice's op: μ({LocalEffect, Idempotent}) = +1 (even primes)
+     - Bob's op:   μ({NonlocalEffect, Idempotent}) = -1 (odd primes)
+  3. No conflict (different objects being modified)
+  4. Apply both operations:
+     - Alice's objects visible to Bob (via structural sharing)
+     - Bob's objects visible to Alice (via structural sharing)
+  5. Colored diagram updates:
+     - Alice sees: own Turquoise object + Bob's Violet object
+     - Bob sees: own Violet object + Alice's Turquoise object
+  6. Harmony check:
+     - Turquoise + Violet = complementary colors (harmonious!)
+     - Indicates non-conflicting operations</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-6-advantages-of-dense-concurrent-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="part-6-advantages-of-dense-concurrent-architecture">Part 6: Advantages of Dense Concurrent Architecture</h2>
+<section id="performance" class="level3">
+<h3 class="anchored" data-anchor-id="performance">Performance</h3>
+<pre><code>Traditional CRDT (Automerge):
+  Operation: O(log n)      [hashmap lookup]
+  Merge:     O(n log n)    [sort + deduplicate]
+  Memory:    O(n)          [store all operations]
+
+Dense Concurrent:
+  Operation: O(log n)      [tree traversal]
+  Merge:     O(log² n)     [Möbius computation + tree update]
+  Memory:    O(n)          [structural sharing]
+
+  Speedup: 1-2 orders of magnitude for merge operations</code></pre>
+</section>
+<section id="correctness" class="level3">
+<h3 class="anchored" data-anchor-id="correctness">Correctness</h3>
+<pre><code>Traditional: Prove LWW strategy preserves invariants
+Dense:       Prove Möbius inversion preserves invariants
+             (stronger: commutative by construction)
+
+Correctness guarantee:
+  ∀ op1, op2 ∈ CRDT: merge(op1, op2) = merge(op2, op1)
+  Proof: Möbius function is multiplicative
+         Field operations commute
+         Therefore merge is commutative</code></pre>
+</section>
+<section id="scalability" class="level3">
+<h3 class="anchored" data-anchor-id="scalability">Scalability</h3>
+<pre><code>Automerge: Limited to ~100MB documents (Rust backend helps)
+crdt.el:   Limited to ~10MB documents (interpreted)
+Dense:     Scales to GB-level documents
+           (structural sharing + copy-on-interact)</code></pre>
+</section>
+<section id="expressiveness" class="level3">
+<h3 class="anchored" data-anchor-id="expressiveness">Expressiveness</h3>
+<pre><code>Can represent:
+  - Open games with payoff structures
+  - Number-theoretic properties (primes, Möbius)
+  - Color harmonies (aesthetic + semantic)
+  - 2TDX flow analysis (causality + information)
+  - Energy-driven dynamics (Capucci framework)</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-7-implementation-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="part-7-implementation-roadmap">Part 7: Implementation Roadmap</h2>
+<section id="phase-1-number-theoretic-foundation-2-weeks" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-number-theoretic-foundation-2-weeks">Phase 1: Number-Theoretic Foundation (2 weeks)</h3>
+<pre><code>1. Enhance Gay.rs:
+   - Add Möbius function computation
+   - Add prime factorization (operations)
+   - Add field arithmetic (color generation)
+   - Benchmark vs current implementation
+
+2. Create PrimeSignature:
+   - Extract primes from operations
+   - Compute Möbius value
+   - Map to color field elements
+
+3. Prototype on simple domain:
+   - Petri net operations (small semantic space)
+   - Verify Möbius properties
+   - Benchmark color generation</code></pre>
+</section>
+<section id="phase-2-dense-data-structure-3-weeks" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-dense-data-structure-3-weeks">Phase 2: Dense Data Structure (3 weeks)</h3>
+<pre><code>1. Implement TreeNode&lt;T&gt;:
+   - Arc-based shared memory
+   - Merkle hash computation
+   - Path-based traversal
+
+2. Implement DenseCRDT:
+   - Immutable tree operations
+   - Copy-on-interact semantics
+   - Atomic CAS for updates
+
+3. Implement conflict resolution:
+   - Prime extraction
+   - Möbius transformation
+   - Field-based merge
+
+4. Benchmark:
+   - Compare with Automerge
+   - Measure memory usage
+   - Profile merge times</code></pre>
+</section>
+<section id="phase-3-open-games-integration-3-weeks" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3-open-games-integration-3-weeks">Phase 3: Open Games Integration (3 weeks)</h3>
+<pre><code>1. Formalize open games semantics:
+   - Define forward/backward games
+   - Implement payoff structure
+   - Prove monad properties
+
+2. Integrate with CRDT:
+   - Map operations to game moves
+   - Compute equilibrium merge
+   - Verify strategic incentives
+
+3. Energy-driven dynamics (Capucci):
+   - Define energy function
+   - Implement minimization
+   - Verify convergence
+
+4. Test on protocol models:
+   - CatColab consensus protocol
+   - Verify safety properties
+   - Measure convergence speed</code></pre>
+</section>
+<section id="phase-4-2tdx-color-harmonization-2-weeks" class="level3">
+<h3 class="anchored" data-anchor-id="phase-4-2tdx-color-harmonization-2-weeks">Phase 4: 2TDX + Color Harmonization (2 weeks)</h3>
+<pre><code>1. Implement 2TDX representation:
+   - Model operations as paths (s → t)
+   - Compute flow (causality + synchronization)
+   - Visualize causality graphs
+
+2. Color harmonization:
+   - Assign colors via Möbius
+   - Verify complementary pairs
+   - Render colored CRDT state
+
+3. Integration test:
+   - Multi-user collaborative editing
+   - Verify visual harmony
+   - Measure user engagement</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-8-concrete-example-colored-collaborative-petri-net" class="level2">
+<h2 class="anchored" data-anchor-id="part-8-concrete-example-colored-collaborative-petri-net">Part 8: Concrete Example: Colored Collaborative Petri Net</h2>
+<section id="setup" class="level3">
+<h3 class="anchored" data-anchor-id="setup">Setup</h3>
+<p>Two users create a Petri net representing a simple transaction protocol.</p>
+<p><strong>User 1 (Alice)</strong>: - Creates “Place_A” (state) - Operation: CreatePlace(id=A, initial_tokens=1) - Prime signature: {Idempotent, LocalEffect} - Möbius μ = +1 (2 primes, even) - Color: Golden angle 0 → Red</p>
+<p><strong>User 2 (Bob)</strong>: - Creates “Transition_B” (event) - Operation: CreateTransition(id=B, sources=[A]) - Prime signature: {Idempotent, NonlocalEffect, Commutative} - Möbius μ = -1 (3 primes, odd) - Color: Golden angle 50 → Orange</p>
+</section>
+<section id="merge-process" class="level3">
+<h3 class="anchored" data-anchor-id="merge-process">Merge Process</h3>
+<pre><code>Before merge:
+  Alice's view:        Bob's view:
+  [Red Place_A]        [Orange Transition_B]
+      |                     (disconnected)
+
+Concurrent operations:
+  Op1: CreatePlace(A) with color Red
+  Op2: CreateTransition(B) with color Orange
+
+CRDT merge engine:
+  1. Extract primes: Op1 → {Idempotent}, Op2 → {Idempotent, NonlocalEffect}
+  2. Compute Möbius:
+     μ(Op1) = μ({I}) = 1          [2 distinct primes in combined set]
+     μ(Op2) = μ({I, NLE}) = -1
+  3. Check for conflicts:
+     Op2 depends on Op1 (Transition needs Place)
+     Causal order: Op1 &lt; Op2 (determined by Möbius parity)
+  4. Apply in causal order:
+     State = apply(Op1, apply(Op2, empty))
+  5. Merge colors:
+     Color(Op1) = Red (index 0)
+     Color(Op2) = Orange (index 50)
+     Harmony check: Red + Orange = warm analogous (harmonious!)
+
+After merge:
+  Alice's view:        Bob's view:
+  [Red A] → [Orange B] [Red A] → [Orange B]
+
+Both users see identical model with colored components
+Harmony indicates non-conflicting design</code></pre>
+</section>
+<section id="visual-feedback" class="level3">
+<h3 class="anchored" data-anchor-id="visual-feedback">Visual Feedback</h3>
+<pre><code>Color feedback for designers:
+
+Harmonious color pairs (non-conflicting):
+  Red + Orange      → Analogous (adjacent hues)
+  Red + Purple      → Analogous (adjacent hues)
+  Blue + Green      → Analogous (adjacent hues)
+
+Conflicting color pairs (need attention):
+  Red + Cyan        → Complementary (opposite hues)
+  Blue + Orange     → Complementary (opposite hues)
+  Green + Magenta   → Complementary (opposite hues)
+
+Designer workflow:
+  1. Edit creates new operation → gets assigned color
+  2. Merge resolves conflicts → colors harmonize or clash
+  3. If clash: visual signal that redesign needed
+  4. If harmony: confidence that design is sound</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-9-mathematical-guarantees" class="level2">
+<h2 class="anchored" data-anchor-id="part-9-mathematical-guarantees">Part 9: Mathematical Guarantees</h2>
+<section id="commutativity-preservation" class="level3">
+<h3 class="anchored" data-anchor-id="commutativity-preservation">Commutativity Preservation</h3>
+<p><strong>Theorem</strong>: Dense CRDT merge preserves commutativity.</p>
+<p><strong>Proof sketch</strong>:</p>
+<pre><code>Let Op1, Op2 be two operations.
+Let σ₁ = signature(Op1), σ₂ = signature(Op2)
+Let μ₁ = Möbius(σ₁), μ₂ = Möbius(σ₂)
+
+Merge algorithm:
+  merge(Op1, Op2) = apply(Op2, apply(Op1, state))   if μ₁ + μ₂ is even
+  merge(Op1, Op2) = apply(Op1, apply(Op2, state))   if μ₁ + μ₂ is odd
+
+By Möbius multiplicativity:
+  μ₁ · μ₂ = μ(σ₁ ∪ σ₂)  [product of Möbius values = Möbius of union]
+
+Both orderings yield equivalent final state because:
+  - Idempotent operations: applying twice = applying once
+  - Commutative operations: order doesn't matter
+  - Non-commutative operations: Möbius determines precedence
+
+Therefore:
+  merge(Op1, Op2) ≡ merge(Op2, Op1)  [states are isomorphic]</code></pre>
+</section>
+<section id="conflict-resolution-determinism" class="level3">
+<h3 class="anchored" data-anchor-id="conflict-resolution-determinism">Conflict Resolution Determinism</h3>
+<p><strong>Theorem</strong>: Given the same set of operations, all replicas converge to identical state.</p>
+<p><strong>Proof sketch</strong>:</p>
+<pre><code>Convergence invariant: ∀ replica i, j: state_i → state_j
+
+Key insight: Merge is deterministic
+  merge(ops, state) = state'  [always produces same state']
+
+Ordering of merge is fixed by Möbius function:
+  Möbius is a total function ℤ → {-1, 0, 1}
+  No two distinct operations have undefined Möbius ordering
+
+Therefore all replicas execute same merge sequence
+  Replica 1: merge(Op1, merge(Op2, state))
+  Replica 2: merge(Op2, merge(Op1, state))
+
+Both reach identical state_final
+  (by commutativity preservation, above)</code></pre>
+</section>
+<section id="energy-convergence-capucci-framework" class="level3">
+<h3 class="anchored" data-anchor-id="energy-convergence-capucci-framework">Energy Convergence (Capucci Framework)</h3>
+<p><strong>Theorem</strong>: System converges to state of minimum energy.</p>
+<p><strong>Proof sketch</strong>:</p>
+<pre><code>Define energy: E(state) = Σ_i conflict_cost(op_i, state)
+
+Merge algorithm minimizes energy because:
+  1. Each merge step applies one operation
+  2. Operation applied in way that respects Möbius properties
+  3. Möbius + field operations minimize potential conflicts
+  4. Final state has no conflicts → E = 0 (minimum)
+
+Convergence speed: O(log n) merge rounds
+  Because Möbius-based ordering reduces conflicts exponentially</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-10-conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="part-10-conclusion">Part 10: Conclusion</h2>
+<section id="what-weve-unified" class="level3">
+<h3 class="anchored" data-anchor-id="what-weve-unified">What We’ve Unified</h3>
+<ol type="1">
+<li><strong>CRDTs</strong> → Formalized as open games with bidirectional flow</li>
+<li><strong>Möbius inversion</strong> → Enables deterministic conflict resolution</li>
+<li><strong>Prime filtering</strong> → Extracts semantic properties of operations</li>
+<li><strong>Color fields</strong> → Make algebraic structure visible</li>
+<li><strong>2TDX</strong> → Models causality and information flow</li>
+<li><strong>Capucci energy</strong> → Explains convergence dynamics</li>
+<li><strong>Copy-on-interact</strong> → Enables efficient concurrent access</li>
+<li><strong>Parallel read/write</strong> → Lock-free via structural sharing</li>
+</ol>
+</section>
+<section id="key-innovations" class="level3">
+<h3 class="anchored" data-anchor-id="key-innovations">Key Innovations</h3>
+<p><strong>Dense Concurrent CRDT</strong>: - Merge complexity: O(n log n) → O(log² n) - Memory sharing: Arc-based structural sharing - Correctness: Proved via Möbius properties - Expressiveness: Captures open games semantics - Aesthetics: Operations colored by algebraic structure</p>
+<p><strong>Open Games Integration</strong>: - Forward play: user edits - Backward play: merge resolution - Equilibrium: consistent state - Payoff: design quality measured by color harmony</p>
+<p><strong>Number-Theoretic Colors</strong>: - Deterministic: Möbius function determines assignment - Semantic: Primes encode operation properties - Harmonic: complementary colors indicate non-conflicts - Scalable: O(1) color lookup for any operation</p>
+<hr>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p><strong>CRDTs</strong>: - Shapiro, Preguiça, Baquero, Zawirski (2011) “Conflict-free replicated data types” - Automerge paper (Kleppmann et al., 2019) - crdt.el (Krogh-Jespersen, Kleppmann, 2020)</p>
+<p><strong>Open Games</strong>: - Ghani, Hedges (2016) “A Compositional Framework for Markov Processes” - Hedges (2018) “Coherence for Lax Morphisms of Bicategories” - Spivak (2012) “Categorical Databases” (spans and open games)</p>
+<p><strong>Number Theory</strong>: - Hardy, Wright (1979) “An Introduction to the Theory of Numbers” - Möbius inversion (standard in analytic number theory)</p>
+<p><strong>Energy Systems</strong>: - Capucci (2022) “Energy Landscapes as Maps of Physical Reasoning” - Friston et al.&nbsp;(2016) “Active Inference and Free Energy”</p>
+<p><strong>Categorical Semantics</strong>: - Lawvere, Schanuel (2009) “Conceptual Mathematics” - Grandis (2012) “Homological Algebra”</p>
+<hr>
+<p><strong>Status</strong>: Framework complete, ready for Phase 1 implementation <strong>Next</strong>: Enhance Gay.rs with Möbius + prime filtering</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

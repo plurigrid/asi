@@ -1,9 +1,14 @@
 ---
 name: merkle-proof-validation
 description: Merkle Proof Validation Skill
-version: 1.0.0
+trit: 0
+color: "#26D826"
+catsharp:
+  home: Prof
+  poly_op: ⊗ (parallel)
+  kan_role: Adj
+  bicomodule: true
 ---
-
 
 # merkle-proof-validation Skill
 
@@ -205,41 +210,6 @@ aptos move run --function merkle::validation::verify --args ...
 **Trit**: -1 (MINUS - VALIDATOR)
 **GF(3)**: Validates inclusion proofs
 
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `cryptography`: 1 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-merkle-proof-validation (+) + SDF.Ch5 (−) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

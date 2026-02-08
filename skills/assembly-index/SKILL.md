@@ -1,7 +1,11 @@
 ---
 name: assembly-index
 description: Lee Cronin's Assembly Theory for molecular complexity measurement and
-version: 1.0.0
+  life detection via assembly index computation.
+license: UNLICENSED
+metadata:
+  trit: 1
+  source: local
 ---
 
 # Assembly Index Skill: Molecular Complexity Validation
@@ -79,10 +83,6 @@ def ma_from_ms2(spectrum: MS2Spectrum) -> float:
     return dag.longest_path()
 ```
 
----
-
-## End-of-Skill Interface
-
 ## Commands
 
 ```bash
@@ -108,42 +108,9 @@ assembly-index (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓  [Mol
 - **crn-topology** (+1): Generate reaction network topologies
 - **kolmogorov-compression** (-1): Algorithmic complexity baseline
 
-## r2con Speaker Resources
-
-| Speaker | Relevance | Repository/Talk |
-|---------|-----------|-----------------|
-| **oddcoder** | RAIR assembly analysis | [rair-core](https://github.com/rair-project/rair-core) |
-| **mr_phrazer** | MBA complexity (msynth) | [msynth](https://github.com/mrphrazer/msynth) |
-| **pancake** | Core r2 assembly | [radare2](https://github.com/radareorg/radare2) |
-
 ---
 
 **Skill Name**: assembly-index
 **Type**: Complexity Validator
 **Trit**: -1 (MINUS)
 **Color**: #2626D8 (Blue)
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 1. Flexibility through Abstraction
-
-**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
-
-### GF(3) Balanced Triad
-
-```
-assembly-index (○) + SDF.Ch1 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch7: Propagators
-
-### Connection Pattern
-
-Combinators compose operations. This skill provides composable abstractions.

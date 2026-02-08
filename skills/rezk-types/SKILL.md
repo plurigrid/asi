@@ -1,9 +1,15 @@
 ---
 name: rezk-types
 description: "Rezk types (complete Segal spaces). Local univalence: categorical isomorphisms ≃ type-theoretic identities."
-version: 1.0.0
+metadata:
+  trit: 1
+  polarity: PLUS
+  source: 'Riehl-Shulman 2017 + Rezk 2001: Complete Segal Spaces'
+  technologies:
+  - Rzk
+  - Lean4
+  - InfinityCosmos
 ---
-
 
 # Rezk Types Skill
 
@@ -116,63 +122,3 @@ end
 - Rezk, C. (2001). "A model for the homotopy theory of homotopy theory." *Trans. AMS*.
 - Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories."
 - [sHoTT library](https://rzk-lang.github.io/sHoTT/)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `homotopy-theory`: 29 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-rezk-types (○) + SDF.Ch3 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

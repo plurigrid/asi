@@ -1,9 +1,13 @@
 ---
 name: python-development
 description: Modern Python development with Python 3.12+, Django, FastAPI, async patterns,
-version: 1.0.0
+  and production best practices. Use for Python projects, APIs, data processing, or
+  automation scripts.
+license: MIT
+metadata:
+  trit: 0
+  source: wshobson/agents
 ---
-
 
 # Python Development
 
@@ -137,64 +141,3 @@ async def test_get_user(mock_db):
 - Use dataclasses or Pydantic for data structures
 - Use `asyncio` for I/O-bound operations
 - Use `contextlib.asynccontextmanager` for async resources
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-python-development (+) + SDF.Ch9 (○) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch6: Layering
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

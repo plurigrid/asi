@@ -1,8 +1,10 @@
 ---
 name: open-games
 description: Open Games Skill (ERGODIC 0)
-source: local
 license: UNLICENSED
+metadata:
+  trit: -1
+  source: local
 ---
 
 # Open Games Skill (ERGODIC 0)
@@ -150,78 +152,6 @@ Composition:
   
 Tensor:
   (A ⊸ B) ⊗ (C ⊸ D) → (A ⊗ C ⊸ B ⊗ D)
-```
-
-## Nash Equilibrium ↔ Free Energy Duality
-
-The deep connection between game-theoretic equilibria and thermodynamic free energy:
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  NASH EQUILIBRIUM = FREE ENERGY MINIMUM (Jaynes MaxEnt)    │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Payoff maximization ≡ Energy minimization (sign flip)     │
-│                                                             │
-│  U(strategy) → max  ⟺  E(configuration) → min              │
-│                                                             │
-│  Boltzmann: P(σ) ∝ exp(β·U(σ)) = exp(-β·(-U(σ)))          │
-│             = exp(-β·Energy)                                │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Mathematical Correspondence
-
-```haskell
--- Nash equilibrium as free energy minimum
-nashFreeEnergy :: OpenGame s t a b → Temperature → FreeEnergy
-nashFreeEnergy game β = 
-  let strategies = strategySpace game
-      -- Utility → negative energy
-      energy σ = negate (utility game σ)
-      -- Partition function
-      z = sum [exp (-β * energy σ) | σ <- strategies]
-      -- Free energy: F = -T log Z
-  in (-1/β) * log z
-
--- At low temperature, free energy minimum → Nash equilibrium
-lowTempLimit :: FreeEnergy → Strategy
-lowTempLimit = argmax utility  -- Nash!
-```
-
-### Variational Interpretation
-
-```python
-class FreeEnergyEquilibrium:
-    """
-    Nash equilibrium via variational free energy minimization.
-    
-    F[q] = E_q[Energy] - T·H[q]
-    
-    At equilibrium: q*(σ) ∝ exp(β·U(σ))
-    """
-    
-    def find_equilibrium(self, game, beta=1.0):
-        # Free energy: expected negative utility + entropy
-        def free_energy(strategy_distribution):
-            expected_utility = E[utility(σ) for σ ~ q]
-            entropy = -sum(q * log(q))
-            return -expected_utility - entropy / beta
-        
-        # Minimize free energy → find Nash
-        return minimize(free_energy, initial_guess)
-```
-
-### Sign Flip Isomorphism
-
-```
-Game Theory              Statistical Mechanics
-─────────────────────    ─────────────────────
-Utility U(σ)        ←→   -Energy E(σ)
-Nash Equilibrium    ←→   Boltzmann Distribution
-Payoff max          ←→   Energy min
-Mixed strategy      ←→   Thermal ensemble
-Rationality β→∞     ←→   Zero temperature T→0
 ```
 
 ## References

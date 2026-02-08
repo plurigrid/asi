@@ -1,9 +1,12 @@
 ---
 name: effective-topos
 description: FloxHub publication `bmorphism/effective-topos` - a comprehensive development
-version: 1.0.0
+  environment with 606 man pages, 97 Emacs info manuals, and deep integration across
+  Scheme (Guile/Goblins/Hoot), functional languages (OCaml, Haskell, Racket), systems
+  tools (Rust, Go), and Gay.jl deterministic coloring.
+metadata:
+  trit: 0
 ---
-
 
 # effective-topos
 
@@ -357,41 +360,3 @@ SSL_CERT_FILE="$FLOX_ENV/etc/ssl/certs/ca-bundle.crt"
 - **Man pages**: 606
 - **Info manuals**: 97
 - **Total documentation**: ~280K lines
-
-## r2con Speaker Resources
-
-radare2 ecosystem repositories from r2con speakers relevant to effective-topos:
-
-| Speaker | Repository | Relevance |
-|---------|-----------|-----------|
-| pancake (trufae) | [radare2/radare2](https://github.com/radare2/radare2) | Core r2 included in flox env |
-| pancake | [radare2/r2pipe](https://github.com/radare2/r2pipe) | Scripting bindings (Guile/OCaml) |
-| xvilka | [radareorg/awesome-decompilation](https://github.com/radareorg/awesome-decompilation) | Decompiler reference |
-| condret | [radareorg/r2ghidra](https://github.com/radareorg/r2ghidra) | ESIL + Ghidra bridge |
-| bmorphism | [bmorphism/Gay.jl](https://github.com/bmorphism/Gay.jl) | Deterministic colors for all tools |
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-effective-topos (+) + SDF.Ch5 (−) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch2: Domain-Specific Languages
-- Ch1: Flexibility through Abstraction
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.

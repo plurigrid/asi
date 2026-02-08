@@ -61,7 +61,11 @@ impl AgentMessage {
 // E-Graph Node
 // ═══════════════════════════════════════════════════════════════════════════════
 
+<<<<<<< HEAD
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq)]
+=======
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Hash)]
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 pub enum Color {
     Red,   // Positive/forward operations
     Blue,  // Negative/backward operations
@@ -216,9 +220,12 @@ impl From<&ServerlessAgent> for AgentStateResponse {
     }
 }
 
+<<<<<<< HEAD
 pub use self::{AgentMessage, Color, CRDTEGraph, ENode, MessageType, ServerlessAgent, AgentStateResponse};
 
 
+=======
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 // ═══════════════════════════════════════════════════════════════════════════════
 // P0: Core Infrastructure Components
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -262,3 +269,18 @@ pub use qasm_integration::{QuantumGate, HybridCircuit, QasmTransducer, CircuitIn
 pub mod jit_compilation;
 
 pub use jit_compilation::{JitCompiler, JitConfig, CompiledFunction, CompilationStats, CacheStatistics};
+<<<<<<< HEAD
+=======
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Skill: Pattern Rewriting JIT Compilation
+// ═══════════════════════════════════════════════════════════════════════════════
+
+pub mod skill_pattern_rewriting;
+
+pub use skill_pattern_rewriting::{
+    PatternRewritingSkill, SkillOperation, SkillResponse, OperationType, OperationStatus,
+    RegisterPatternRequest, TransducePatternRequest, GenerateCodeRequest,
+    CompileCodeRequest, CompilationResult,
+};
+>>>>>>> origin/feature/skill-connectivity-hub-20251226

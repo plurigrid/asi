@@ -1,9 +1,15 @@
 ---
 name: curiosity-driven
 description: "Schmidhuber's curiosity-driven learning: Intrinsic motivation via compression progress. Seek states that improve world model."
-version: 1.0.0
+metadata:
+  trit: 1
+  polarity: PLUS
+  source: 'Schmidhuber 1991-2010: Formal Theory of Creativity'
+  technologies:
+  - Python
+  - JAX
+  - PyTorch
 ---
-
 
 # Curiosity-Driven Learning Skill
 
@@ -151,64 +157,3 @@ end
 1. Schmidhuber, J. (1991). "A Possibility for Implementing Curiosity and Boredom in Model-Building Neural Controllers."
 2. Schmidhuber, J. (2010). "Formal Theory of Creativity, Fun, and Intrinsic Motivation."
 3. Oudeyer, P.-Y. & Kaplan, F. (2007). "What is Intrinsic Motivation? A Typology of Computational Approaches."
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-curiosity-driven (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch5: Evaluation
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

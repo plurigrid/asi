@@ -28,7 +28,11 @@ pub struct Dashboard {
 }
 
 /// Per-agent dashboard information
+<<<<<<< HEAD
 #[derive(Debug, Clone)]
+=======
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 pub struct AgentDashboardData {
     pub agent_id: usize,
     pub node_id: String,
@@ -54,7 +58,11 @@ pub struct NetworkDashboardData {
 }
 
 /// Message flow visualization
+<<<<<<< HEAD
 #[derive(Debug, Clone)]
+=======
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 pub struct MessageFlowDashboard {
     pub source: usize,
     pub target: usize,

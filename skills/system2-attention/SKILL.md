@@ -1,9 +1,12 @@
 ---
 name: system2-attention
 description: System 2 attention mechanisms for deliberate, slow reasoning in transformer
-version: 1.0.0
+  architectures.
+license: UNLICENSED
+metadata:
+  trit: 0
+  source: local
 ---
-
 
 # System 2 Attention Skill: Deliberate Reasoning Validation
 
@@ -140,64 +143,3 @@ system2-attention (-1) ⊗ cognitive-superposition (0) ⊗ forward-forward-learn
 **Type**: Deliberate Reasoning Validator
 **Trit**: -1 (MINUS)
 **Color**: #2626D8 (Blue)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 4. Pattern Matching
-
-**Concepts**: unification, match, segment variables, pattern
-
-### GF(3) Balanced Triad
-
-```
-system2-attention (○) + SDF.Ch4 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch6: Layering
-- Ch7: Propagators
-
-### Connection Pattern
-
-Pattern matching extracts structure. This skill recognizes and transforms patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

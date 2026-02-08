@@ -1,0 +1,27 @@
+;; Babashka configuration for borkdude skill
+{:paths ["." "../../.."]
+ :deps {org.babashka/sci {:mvn/version "0.10.49"}}
+ :tasks
+ {select-runtime
+  {:doc "Select optimal runtime based on environment"
+   :task (do
+           (require '[borkdude.runtime-selector :as rs])
+           (println (rs/select-for-environment (first *command-line-args*))))}
+  
+  propagate
+  {:doc "Propagate skills to all AI agents"
+   :task (do
+           (require '[borkdude.propagate :as p])
+           (p/propagate-all!))}
+  
+  verify
+  {:doc "Verify all invariants"
+   :task (do
+           (require '[borkdude.verify :as v])
+           (v/check-all!))}
+  
+  colors
+  {:doc "Show runtime colors"
+   :task (do
+           (require '[borkdude.colors :as c])
+           (c/show-all!))}}}

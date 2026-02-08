@@ -1,9 +1,10 @@
 ---
 name: world-runtime
-description: Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution. Entities branch/snapshot in <250ms.
-version: 1.0.0
+description: "Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution. Entities branch/snapshot in <250ms."
+trit: +1
+polarity: PLUS
+source: "AWS Firecracker (2018) + Morph Labs Infinibranch (2025) + Paradigm Multiverse Finance (2025)"
 ---
-
 
 # World Runtime Skill
 
@@ -353,66 +354,3 @@ Monad Block = [Tx1, Tx2, Tx3, ...]
 - [world-hopping](../world-hopping/SKILL.md) - Badiou triangle traversal
 - [chromatic-walk](../chromatic-walk/SKILL.md) - 3-agent exploration
 - [mdm-cobordism](../mdm-cobordism/SKILL.md) - State cobordisms
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-world-runtime (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch8: Degeneracy
-- Ch3: Variations on an Arithmetic Theme
-- Ch6: Layering
-- Ch4: Pattern Matching
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

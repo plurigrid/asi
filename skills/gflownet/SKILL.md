@@ -1,10 +1,15 @@
 ---
 name: gflownet
 description: "Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward. Diversity over maximization for causal discovery and molecule design."
-trit: 1
-polarity: PLUS
-source: "Bengio et al. 2021: Flow Network Based Generative Models"
-technologies: [Python, JAX, PyTorch, torchgfn]
+metadata:
+  trit: 1
+  polarity: PLUS
+  source: 'Bengio et al. 2021: Flow Network Based Generative Models'
+  technologies:
+  - Python
+  - JAX
+  - PyTorch
+  - torchgfn
 ---
 
 # GFlowNet Skill
@@ -206,49 +211,6 @@ module GFlowNet
     }
   end
 end
-```
-
-## Energy-Probability Duality
-
-The deep connection between statistical mechanics and GFlowNets:
-
-```
-Fundamental Relation:
-  log P = -βE
-
-Where:
-  P = probability of a configuration
-  β = 1/T (inverse temperature)
-  E = energy of the configuration
-
-GFlowNet Connection:
-  Reward R = -E (negative energy)
-  Flow F ∝ exp(R) = exp(-E) = P(x)
-  
-  Therefore: P(x) ∝ R(x) when R = exp(-βE)
-```
-
-### Blume-Capel Mapping for GF(3) Trits
-
-```
-The Blume-Capel model provides the energy landscape for ternary states:
-
-Energy: E(σ) = -J Σ_⟨ij⟩ σ_i σ_j + D Σ_i σ_i²
-
-Where σ ∈ {-1, 0, +1} (our GF(3) trits)
-
-Trit-Energy Correspondence:
-  σ = -1 (MINUS):  E = +D (high energy, critical/contracting)
-  σ =  0 (ERGODIC): E = 0  (zero point, synthesizing)  
-  σ = +1 (PLUS):   E = +D (high energy, generative/expanding)
-
-GFlowNet over GF(3):
-  P(σ = k) ∝ exp(-βE_k) 
-           = exp(-βD·k²) for k ∈ {-1, 0, +1}
-  
-At low T: σ = 0 dominates (ergodic vacuum)
-At high T: all three states equiprobable
-At critical T: phase transitions in trit mixing
 ```
 
 ## Key Properties

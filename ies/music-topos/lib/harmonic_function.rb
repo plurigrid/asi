@@ -69,14 +69,13 @@ class HarmonicFunction
     # Roman numeral analysis in major key
     # I(T)  ii(S) iii(S) IV(S) V(D) vi(S) vii°(D)
     case distance
-    when 0 then TONIC         # I
-    when 1 then SUBDOMINANT   # ii
-    when 2 then SUBDOMINANT   # iii
-    when 3 then SUBDOMINANT   # IV
-    when 4 then SUBDOMINANT   # iv (in minor)
-    when 5 then DOMINANT      # V
-    when 7 then TONIC         # vi (relative minor)
-    when 10 then DOMINANT     # vii°
+    when 0 then TONIC         # I (0)
+    when 2 then SUBDOMINANT   # ii (2)
+    when 4 then SUBDOMINANT   # iii (4)
+    when 5 then SUBDOMINANT   # IV (5)
+    when 7 then DOMINANT      # V (7)
+    when 9 then SUBDOMINANT   # vi (9)
+    when 11 then DOMINANT     # vii° (11)
     else SUBDOMINANT          # Default to S
     end
   end

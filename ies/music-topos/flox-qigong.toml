@@ -1,0 +1,355 @@
+# qigong: macOS Red Team / Blue Team Resource Management Environment
+# Implements all 11 Apple Silicon performance refinements
+# Built with Flox for reproducible, portable dev environments
+
+[flox]
+name = "qigong"
+description = "High-octane red team / blue team resource management for macOS Sequoia"
+version = "1.0.0"
+authors = ["Claude Code", "Security Research"]
+
+# Phase 1: Core system tools & monitoring
+[[package]]
+name = "asitop"
+source = "github:tlkh/asitop"
+description = "P/E-cluster performance monitoring for Apple Silicon"
+core = true
+
+[[package]]
+name = "macmon"
+source = "github:vladkens/macmon"
+description = "Sudoless ARM64 resource monitoring (CPU/GPU/ANE power)"
+core = true
+
+[[package]]
+name = "instruments"
+source = "system"
+description = "Xcode Instruments for DTTrace profiling & memory heap analysis"
+core = true
+
+[[package]]
+name = "powermetrics"
+source = "system"
+description = "macOS native power/thermal metrics API"
+core = true
+
+# Phase 2: Memory & cache analysis
+[[package]]
+name = "m1-memory-benchmark"
+source = "github:timoheimonen/macOS-memory-benchmark"
+description = "Apple Silicon memory bandwidth & latency profiling"
+memory = true
+
+[[package]]
+name = "lldb"
+source = "homebrew:lldb"
+description = "LLVM debugger with ARM64 support for cache inspection"
+memory = true
+
+[[package]]
+name = "swift"
+source = "system"
+description = "Swift compiler for DispatchQueue QoS manipulation"
+memory = true
+
+# Phase 3: Thermal & power profiling
+[[package]]
+name = "powermetrics-cli"
+source = "homebrew:powermetrics"
+description = "CLI wrapper for thermal throttling prediction"
+thermal = true
+
+[[package]]
+name = "py310"
+source = "nixpkgs#python310"
+description = "Python for thermal model simulation (P = C*f*V^2)"
+thermal = true
+
+# Phase 4: Dynamic instrumentation & process policy
+[[package]]
+name = "frida"
+source = "homebrew:frida"
+description = "Dynamic instrumentation toolkit for runtime inspection"
+instrumentation = true
+
+[[package]]
+name = "dtrace"
+source = "system"
+description = "DTrace for XNU kernel probing & footprint tracking"
+instrumentation = true
+
+[[package]]
+name = "taskpolicy"
+source = "system"
+description = "Darwin scheduler QoS/priority steering tool"
+instrumentation = true
+
+# Phase 5: Network & I/O forensics
+[[package]]
+name = "tcpdump"
+source = "homebrew:tcpdump"
+description = "Network packet capture for XPC profiling"
+forensics = true
+
+[[package]]
+name = "fslogger"
+source = "system"
+description = "FSEvents-based filesystem audit logging"
+forensics = true
+
+[[package]]
+name = "openssl"
+source = "homebrew:openssl"
+description = "Crypto utilities for encrypted payload timing analysis"
+forensics = true
+
+# Phase 6: Red team Arsenal
+[[package]]
+name = "metasploit"
+source = "homebrew:metasploit"
+description = "Red team exploit framework (macOS payloads)"
+redteam = true
+
+[[package]]
+name = "go"
+source = "homebrew:go"
+description = "Go for memory-efficient malware simulation"
+redteam = true
+
+[[package]]
+name = "bash"
+source = "system"
+description = "Bash for payload scripting & QoS manipulation"
+redteam = true
+
+# Phase 7: Blue team Detection
+[[package]]
+name = "osquery"
+source = "homebrew:osquery"
+description = "System monitoring for baseline & anomaly detection"
+blueteam = true
+
+[[package]]
+name = "santa"
+source = "homebrew:google-santa"
+description = "Binary authorization & process whitelisting"
+blueteam = true
+
+[[package]]
+name = "auditd"
+source = "system"
+description = "macOS audit daemon for syscall logging"
+blueteam = true
+
+# Phase 8: Data analysis & visualization
+[[package]]
+name = "python310-pandas"
+source = "homebrew:python@3.10"
+description = "Pandas for resource usage correlation analysis"
+analysis = true
+
+[[package]]
+name = "duckdb"
+source = "homebrew:duckdb"
+description = "DuckDB for temporal resource accounting queries"
+analysis = true
+
+[[package]]
+name = "graphviz"
+source = "homebrew:graphviz"
+description = "Graph visualization for thread dependency mapping"
+analysis = true
+
+# Phase 9: Documentation & reporting
+[[package]]
+name = "quarto"
+source = "homebrew:quarto"
+description = "Quarto for engagement reports & findings"
+reporting = true
+
+[[package]]
+name = "git"
+source = "system"
+description = "Git for version control of engagement artifacts"
+reporting = true
+
+[activation]
+# Environment-wide settings for qigong
+QIGONG_MODE = "red_blue_team"
+QIGONG_THERMAL_BUDGET_WATTS = "25"  # Pre-throttle margin for red team
+QIGONG_CACHE_LINE_BYTES = "128"      # M-series cache line size
+QIGONG_QOS_BASELINE = "9"             # Background QoS for process isolation
+QIGONG_FOOTPRINT_WINDOW = "1000"      # ms interval for resource accounting
+
+# Phase 1: Core monitoring initialization
+init_asitop = '''
+  mkdir -p ~/.qigong/logs
+  asitop -o ~/.qigong/logs/asitop_baseline.csv &
+  echo "P/E-cluster baseline monitoring started (PID: $!)"
+'''
+
+init_powermetrics = '''
+  mkdir -p ~/.qigong/logs
+  powermetrics -n 1 -s cpu_power,gpu_power,ane_power \
+    > ~/.qigong/logs/powermetrics_baseline.json
+  echo "Thermal baseline captured"
+'''
+
+init_macmon = '''
+  macmon > ~/.qigong/logs/macmon_live.txt 2>&1 &
+  echo "macmon sudoless monitoring active (PID: $!)"
+'''
+
+[lifecycle]
+# Pre-engagement setup
+setup_phase = '''
+  echo "=== qigong: Red Team / Blue Team Resource Management Setup ==="
+
+  # 1. Establish baseline metrics
+  echo "[*] Capturing thermal baseline..."
+  powermetrics -n 5 > ~/.qigong/baseline_thermal.txt 2>&1
+
+  # 2. Detect available P/E cores
+  echo "[*] Detecting core topology..."
+  sysctl -n hw.logicalcpu_max hw.logicalcpu hw.physicalcpu
+
+  # 3. Initialize process policy monitoring
+  echo "[*] Enabling process policy tracking..."
+  sudo dtrace -n 'syscall:::entry /execname == "taskpolicy"/ { printf("PID %d: %s\n", pid, execname); }' &
+
+  # 4. Start resource accounting
+  echo "[*] Initializing XNU footprint tracking..."
+  cat > ~/.qigong/footprint_monitor.sh << 'SCRIPT'
+  #!/bin/bash
+  while true; do
+    for pid in $(pgrep -f 'red_team\|blue_team'); do
+      echo "$(date +%s) PID=$pid Footprint=$(task_info -f $pid 2>/dev/null)" >> ~/.qigong/footprint_log.txt
+    done
+    sleep 1
+  done
+  SCRIPT
+  chmod +x ~/.qigong/footprint_monitor.sh
+
+  # 5. Compile Swift QoS steering tool
+  echo "[*] Compiling QoS steering utilities..."
+  cat > ~/.qigong/qos_steer.swift << 'SWIFT'
+  import Foundation
+  import Darwin
+
+  func setQoS(_ pid: Int32, qosClass: Int32) {
+    let policy = KERN_RESOURCE_ACCOUNTING
+    var buf: [Int32] = [qosClass]
+    let result = proc_set_thread_qos(pid, qosClass)
+    if result == 0 {
+      print("QoS \(qosClass) set for PID \(pid)")
+    } else {
+      print("Error: \(result)")
+    }
+  }
+  SWIFT
+  swiftc -o ~/.qigong/qos_steer ~/.qigong/qos_steer.swift 2>/dev/null || true
+
+  # 6. Initialize blue team baseline
+  echo "[*] Running osquery baseline..."
+  osquery --disable_logging --json > ~/.qigong/osquery_baseline.json 2>&1 || true
+
+  echo "[✓] qigong initialization complete"
+  echo "Baseline dir: ~/.qigong/"
+  echo "Monitor: asitop, macmon active"
+'''
+
+# Engagement execution
+engage_red = '''
+  echo "=== RED TEAM ENGAGEMENT PHASE ==="
+
+  # 1. Calculate power budget
+  BUDGET_WATTS=${QIGONG_THERMAL_BUDGET_WATTS:-25}
+  echo "[*] Power budget: ${BUDGET_WATTS}W (pre-throttle margin)"
+
+  # 2. Steer red team to background QoS (E-core only)
+  RED_TEAM_PID=$1
+  if [ -n "$RED_TEAM_PID" ]; then
+    taskpolicy -b -p $RED_TEAM_PID
+    echo "[*] Red team PID $RED_TEAM_PID -> E-core only (QoS 9)"
+  fi
+
+  # 3. Monitor thermal pressure
+  watch -n 0.5 'powermetrics -n 1 -s cpu_power,gpu_power | grep -E "cpu_power|gpu_power"'
+'''
+
+engage_blue = '''
+  echo "=== BLUE TEAM DETECTION PHASE ==="
+
+  # 1. Promote blue team to P-cores
+  BLUE_TEAM_PID=$1
+  if [ -n "$BLUE_TEAM_PID" ]; then
+    taskpolicy -B -p $BLUE_TEAM_PID
+    echo "[*] Blue team PID $BLUE_TEAM_PID -> P+E cores (elevated QoS)"
+  fi
+
+  # 2. Start comprehensive monitoring
+  echo "[*] Monitoring:"
+  echo "  - FSEvents: fslogger"
+  echo "  - DTTrace: kernel syscalls"
+  echo "  - asitop: P/E utilization"
+  echo "  - osquery: process baseline"
+
+  # 3. Initialize forensic capture
+  dtrace -n 'syscall:::entry { @[execname] = count(); }' &
+  fslogger > ~/.qigong/fsevent_capture.log 2>&1 &
+'''
+
+# Post-engagement analysis
+analyze = '''
+  echo "=== ENGAGEMENT ANALYSIS ==="
+
+  # 1. Generate thermal report
+  echo "[*] Thermal timeline:"
+  cat ~/.qigong/powermetrics_baseline.json | jq '.[] | {timestamp: .timestamp, cpu_w: .cpu_power, gpu_w: .gpu_power}'
+
+  # 2. Cache contention analysis
+  echo "[*] Cache coherency overhead (c2c traffic):"
+  instruments -t "System Trace" -o ~/.qigong/system_trace.trace 2>/dev/null | grep -i cache || echo "  (requires Xcode)"
+
+  # 3. Resource footprint correlation
+  echo "[*] Memory footprint vs detection latency:"
+  duckdb -json -s "SELECT timestamp, pid, footprint_mb, detection_latency_ms FROM resource_log" 2>/dev/null || true
+
+  # 4. QoS steering effectiveness
+  echo "[*] QoS enforcement violations:"
+  ps -o pid,comm,class | grep -E 'red_team|blue_team'
+'''
+
+[shell-hooks]
+# Auto-start monitoring on environment activation
+on_activate = '''
+  export QIGONG_ACTIVE=1
+  echo "qigong: Apple Silicon Red Team / Blue Team Environment"
+  echo "Refinements 1-11 enabled"
+  echo ""
+  echo "Quick start:"
+  echo "  qigong setup          # Initialize baselines"
+  echo "  qigong engage-red PID # Engage red team"
+  echo "  qigong engage-blue PID # Engage blue team"
+  echo "  qigong analyze         # Post-engagement analysis"
+'''
+
+[scripts]
+# Convenience commands
+setup = { command = "setup_phase" }
+engage_red = { command = "engage_red", args = ["$1"] }
+engage_blue = { command = "engage_blue", args = ["$1"] }
+analyze = { command = "analyze" }
+
+# Refinement-specific utilities
+refinement_1 = { description = "P/E-cluster optimization: asitop -r 0.5" }
+refinement_2 = { description = "setrlimit quirks: getrlimit & RLIMIT_CPU only" }
+refinement_3 = { description = "Sandbox entitlements: codesign -d --entitlements :- /path/to/app" }
+refinement_4 = { description = "Instruments profiling: open /Applications/Xcode.app/Contents/Applications/Instruments.app" }
+refinement_5 = { description = "dyld injection: DYLD_INSERT_LIBRARIES monitoring via kern.dyld_logging" }
+refinement_6 = { description = "Jetsam pressure: sysctl kern.memorystatus_jetsam_threshold" }
+refinement_7 = { description = "FSEvents accounting: log stream --predicate 'eventType == \"event\"'" }
+refinement_8 = { description = "QoS steering: taskpolicy -b (E-core) / -B (P+E)" }
+refinement_9 = { description = "Thermal modeling: P=C*f*V² with powermetrics" }
+refinement_10 = { description = "Cache contention: 128-byte cache lines, c2c analysis" }
+refinement_11 = { description = "XNU footprint: kern_footprint + KERN_RESOURCE_ACCOUNTING" }

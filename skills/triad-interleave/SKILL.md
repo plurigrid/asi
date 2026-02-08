@@ -1,9 +1,10 @@
 ---
 name: triad-interleave
 description: Interleave three deterministic color streams into balanced schedules
-version: 1.0.0
+  for parallel execution and evaluation.
+metadata:
+  trit: 1
 ---
-
 
 # Triad Interleave
 
@@ -443,64 +444,3 @@ for i, schedule in enumerate(chain):
 **Trit**: +1 (PLUS)
 **Dependencies**: gay-mcp, unworld
 **Related**: spi-parallel-verify (for verification)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-triad-interleave (○) + SDF.Ch5 (−) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch1: Flexibility through Abstraction
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.
