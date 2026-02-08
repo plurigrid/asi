@@ -1,0 +1,102 @@
+name: Sync Factory Droids
+
+on:
+  push:
+    paths:
+      - 'skills/**/SKILL.md'
+      - 'skills/**/*.md'
+  pull_request:
+    paths:
+      - 'skills/**/SKILL.md'
+  workflow_dispatch:
+
+env:
+  BB_VERSION: '1.12.213'
+
+jobs:
+  convert-skills:
+    runs-on: ubuntu-24.04  # Use latest LTS for better perf
+    container:
+      image: ghcr.io/babashka/babashka:${{ env.BB_VERSION }}
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git operations
+
+      - name: Convert ASI skills to Factory Droids
+        run: |
+          mkdir -p .factory/droids
+          bb convert-asi-to-factory-droids.bb skills .factory/droids
+          echo "Converted $(ls -1 .factory/droids/*.md 2>/dev/null | wc -l) skills"
+
+      - name: Validate droid YAML frontmatter
+        run: |
+          for f in .factory/droids/*.md; do
+            [ -f "$f" ] || continue
+            if ! head -1 "$f" | grep -q '^---$'; then
+              echo "ERROR: $f missing YAML frontmatter"
+              exit 1
+            fi
+            if ! grep -q '^name:' "$f"; then
+              echo "ERROR: $f missing required 'name' field"
+              exit 1
+            fi
+          done
+          echo "✓ All droids have valid frontmatter"
+
+      - name: Upload droids artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: factory-droids
+          path: .factory/droids/
+          retention-days: 7
+
+      - name: Commit converted droids
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .factory/droids/
+          git diff --cached --quiet || git commit -m "ci: sync Factory Droids from ASI skills [skip ci]"
+          git push
+
+  validate-droids:
+    needs: convert-skills
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: factory-droids
+          path: .factory/droids/
+
+      - name: Check droid tool categories
+        run: |
+          VALID_TOOLS="Read|LS|Grep|Glob|Create|Edit|ApplyPatch|Execute|WebSearch|FetchUrl"
+          VALID_CATEGORIES="read-only|edit|execute|web|mcp"
+          
+          for f in .factory/droids/*.md; do
+            [ -f "$f" ] || continue
+            TOOLS=$(grep '^tools:' "$f" | sed 's/tools://' | tr -d ' ')
+            
+            # Skip if using category shorthand
+            if echo "$TOOLS" | grep -qE "^($VALID_CATEGORIES)$"; then
+              continue
+            fi
+            
+            # Validate explicit tool names
+            if echo "$TOOLS" | grep -q '\['; then
+              TOOL_LIST=$(echo "$TOOLS" | tr -d '[]"' | tr ',' '\n')
+              for tool in $TOOL_LIST; do
+                tool=$(echo "$tool" | tr -d ' ')
+                [ -z "$tool" ] && continue
+                if ! echo "$tool" | grep -qE "^($VALID_TOOLS)$"; then
+                  echo "WARNING: $f has unknown tool: $tool"
+                fi
+              done
+            fi
+          done
+          echo "✓ Tool validation complete"
