@@ -1,9 +1,3 @@
----
-name: o
-description: 'World O Skill'
-version: 1.0.0
----
-
 # World O Skill
 
 **Trit**: +1 (PLUS (generator/executor))

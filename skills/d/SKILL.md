@@ -1,9 +1,3 @@
----
-name: d
-description: 'World D Skill'
-version: 1.0.0
----
-
 # World D Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

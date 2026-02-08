@@ -1,9 +1,3 @@
----
-name: z
-description: 'World Z Skill'
-version: 1.0.0
----
-
 # World Z Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

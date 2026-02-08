@@ -1,9 +1,9 @@
 ---
 name: braindance-worlds
 description: GF(3)-conserved distribution of Claude threads across Aptos worlds
-version: 1.0.0
+metadata:
+  trit: 0
 ---
-
 
 # Braindance Worlds
 
@@ -64,27 +64,3 @@ unzip -l ~/Desktop/braindances.zip | awk 'NR>3{print $4}' | \
 ## Unassigned Worlds
 
 `b g h i j k l m o p q u y z` — available for future threads.
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 4. Pattern Matching
-
-**Concepts**: unification, match, segment variables, pattern
-
-### GF(3) Balanced Triad
-
-```
-braindance-worlds (−) + SDF.Ch4 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Pattern matching extracts structure. This skill recognizes and transforms patterns.

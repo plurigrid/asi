@@ -1,9 +1,3 @@
----
-name: u
-description: 'World U Skill'
-version: 1.0.0
----
-
 # World U Skill
 
 **Trit**: +1 (PLUS (generator/executor))

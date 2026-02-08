@@ -1,9 +1,11 @@
 ---
 name: bifurcation
 description: Hopf bifurcation detection for dynamical system state transitions with GF(3) phase portraits
-version: 1.0.0
+metadata:
+  trit: 0
+  color: "#9966FF"
+  role: ERGODIC (Coordinator)
 ---
-
 
 # Bifurcation
 
@@ -262,27 +264,3 @@ bb scripts/bifurcation_monitor.bb --system lorenz
 - `stability-analysis` (-1): Lyapunov exponents, basin boundaries
 - `ruler-maximal` (0): Uses bifurcation for skill state transitions
 - `gay-mcp` (0): GF(3) color mapping for phase portraits
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-bifurcation (○) + SDF.Ch10 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.

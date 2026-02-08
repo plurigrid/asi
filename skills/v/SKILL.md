@@ -1,9 +1,3 @@
----
-name: v
-description: 'World V Skill'
-version: 1.0.0
----
-
 # World V Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

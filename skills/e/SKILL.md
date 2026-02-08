@@ -1,9 +1,3 @@
----
-name: e
-description: 'World E Skill'
-version: 1.0.0
----
-
 # World E Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

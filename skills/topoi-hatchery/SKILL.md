@@ -1,9 +1,3 @@
----
-name: topoi-hatchery
-description: Topoi Hatchery
-version: 1.0.0
----
-
 # Topoi Hatchery
 
 ---
@@ -103,27 +97,3 @@ shell-guard (-1) ⊗ flox (0) ⊗ topoi-hatchery (+1) = 0 ✓
 ---
 
 *"Հdelays Brilliant Chaos"*
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-topoi-hatchery (+) + SDF.Ch5 (−) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch6: Layering
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.

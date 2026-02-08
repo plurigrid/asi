@@ -1,9 +1,3 @@
----
-name: t
-description: 'World T Skill'
-version: 1.0.0
----
-
 # World T Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

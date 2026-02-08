@@ -1,9 +1,3 @@
----
-name: c
-description: 'World C Skill'
-version: 1.0.0
----
-
 # World C Skill
 
 **Trit**: +1 (PLUS (generator/executor))

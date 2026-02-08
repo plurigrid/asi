@@ -1,9 +1,3 @@
----
-name: j
-description: 'World J Skill'
-version: 1.0.0
----
-
 # World J Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

@@ -1,9 +1,3 @@
----
-name: p
-description: 'World P Skill'
-version: 1.0.0
----
-
 # World P Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

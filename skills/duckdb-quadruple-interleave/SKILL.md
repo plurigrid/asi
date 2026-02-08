@@ -1,9 +1,10 @@
 ---
 name: duckdb-quadruple-interleave
-description: Chaotic interleaving across local DuckDB databases modeled as coupled quadruple pendula. Random walks both BETWEEN databases and WITHIN tables for context injection.
-version: 1.0.0
+description: "Chaotic interleaving across local DuckDB databases modeled as coupled quadruple pendula. Random walks both BETWEEN databases and WITHIN tables for context injection."
+metadata:
+  trit: 0
+  polarity: ERGODIC
 ---
-
 
 # DuckDB Quadruple Interleave
 
@@ -419,7 +420,3 @@ When `duckdb-quadruple-interleave` loads, consider auto-loading:
 **Trit**: 0 (ERGODIC - coordinates between pendula)
 **Dependencies**: duckdb, babashka, cheshire
 **Databases**: 12 DuckDB files across 4 clusters
-
-## Forward Reference
-
-- unified-reafference (interleaved session queries)

@@ -1,9 +1,3 @@
----
-name: radare2-hatchery
-description: Radare2 Hatchery
-version: 1.0.0
----
-
 # Radare2 Hatchery
 
 ---
@@ -106,24 +100,3 @@ radare2-hatchery (-1) ⊗ mcp-builder (0) ⊗ gay-mcp (+1) = 0 ✓
 - `mcp-builder` - MCP server development
 - `blackhat-go` - Security techniques
 - `tree-sitter` - AST-based code analysis
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 7. Propagators
-
-**Concepts**: propagator, cell, constraint, bidirectional, TMS
-
-### GF(3) Balanced Triad
-
-```
-radare2-hatchery (○) + SDF.Ch7 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-
-### Connection Pattern
-
-Propagators flow constraints bidirectionally. This skill propagates information.

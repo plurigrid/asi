@@ -17,12 +17,16 @@ from typing import Optional
 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives import serialization
+import os
+
+_script_dir = Path(__file__).parent
+_agent_scripts = Path(os.environ.get("AGENT_SCRIPTS_DIR", _script_dir))
 
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s | %(message)s',
     handlers=[
-        logging.FileHandler('/Users/alice/agent_scripts/alpha.log'),
+        logging.FileHandler(_agent_scripts / 'alpha.log'),
         logging.StreamHandler()
     ]
 )
@@ -32,7 +36,7 @@ log = logging.getLogger(__name__)
 # CONFIG
 # =============================================================================
 
-WALLETS = yaml.safe_load(open("/Users/alice/agent_scripts/wallets.yaml"))['wallets']
+WALLETS = yaml.safe_load(open(_agent_scripts / "wallets.yaml"))['wallets']
 PRIVATE_KEY_HEX = WALLETS['apt_primary']['private_key'].replace("ed25519-priv-0x", "")
 ACCOUNT_ADDR = "0x" + WALLETS['apt_primary']['account'].replace("0x", "")
 USDC_OUT = "0x" + WALLETS['usdc_withdrawal']['account'].replace("0x", "")
@@ -310,7 +314,7 @@ async def run():
                 log.info(f"[{elapsed_h:.1f}h] ${price:.4f} | PnL: {pnl:+.2f}% | Spot: {spot:.1f} | USDC: ${usdc_out:.1f}")
                 last_log = now
             
-            Path("/Users/alice/agent_scripts/Holdings.md").write_text(f"""# Holdings - {datetime.now().strftime('%H:%M:%S')}
+            (_agent_scripts / "Holdings.md").write_text(f"""# Holdings - {datetime.now().strftime('%H:%M:%S')}
 **LIVE MAINNET**
 Price: ${price:.4f} | PnL: {pnl:+.2f}%
 Spot: {spot:.2f} APT | Vultures: {vulture_apt:.2f}

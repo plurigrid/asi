@@ -1,9 +1,10 @@
 ---
 name: amp-skill
 description: Interruption pattern detection and retrieval from Amp thread history. Use for analyzing tool rejection patterns and improving agent behavior.
-version: 1.0.0
+metadata:
+  trit: 0
+  color: "#26D826"
 ---
-
 
 # Amp-Skill: Interruption Pattern Detection and Retrieval
 
@@ -126,7 +127,3 @@ When Amp-Skill detects a high-rejection pattern:
 - **Local**: `~/.amp/file-changes/T-*` (2,535 files)
 - **API**: None currently (file-changes only contain diffs)
 - **Potential**: Amp GraphQL API for full conversation history
-
-## Forward Reference
-
-- unified-reafference (amp universe source)

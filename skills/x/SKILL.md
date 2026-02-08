@@ -1,9 +1,3 @@
----
-name: x
-description: 'World X Skill'
-version: 1.0.0
----
-
 # World X Skill
 
 **Trit**: +1 (PLUS (generator/executor))

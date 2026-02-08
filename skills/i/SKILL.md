@@ -1,9 +1,3 @@
----
-name: i
-description: 'World I Skill'
-version: 1.0.0
----
-
 # World I Skill
 
 **Trit**: +1 (PLUS (generator/executor))
