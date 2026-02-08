@@ -1,9 +1,13 @@
 ---
 name: zig
-description: "zig skill"
-version: 1.0.0
+description: >
+  Zig ecosystem = zig build + zig test + zig fmt + zls. Systems programming
+  without hidden control flow. Comptime metaprogramming, explicit allocators,
+  C interop. Use for low-level code, game engines, embedded, WASM.
+metadata:
+  trit: -1
+  version: 0.15.2
 ---
-
 
 # zig
 
@@ -203,32 +207,6 @@ zig(-1) ⊗ acsets(0) ⊗ gay-mcp(+1) = 0 ✓  [Schema coloring]
 zig(-1) ⊗ babashka(0) ⊗ duckdb-ies(+1) = 0 ✓  [Build analytics]
 ```
 
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 2. Domain-Specific Languages
-
-**Concepts**: DSL, wrapper, pattern-directed, embedding
-
-### GF(3) Balanced Triad
-
-```
-zig (−) + SDF.Ch2 (−) + [balancer] (−) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch6: Layering
-
-### Connection Pattern
-
-DSLs embed domain knowledge. This skill defines domain-specific operations.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule:

@@ -1,9 +1,10 @@
 ---
 name: acsets-hatchery
 description: Attributed C-Sets as algebraic databases. Category-theoretic data structures generalizing graphs and dataframes with Gay.jl color integration.
-version: 1.0.0
+metadata:
+  trit: 0
+  color: "#E146A8"
 ---
-
 
 # ACSets Hatchery
 
@@ -92,7 +93,3 @@ algebraic-rewriting (-1) ⊗ acsets-hatchery (0) ⊗ gay-monte-carlo (+1) = 0 �
 - `acsets-algebraic-databases` - Full ACSet guide
 - `specter-acset` - Bidirectional navigation
 - `world-a` - AlgebraicJulia ecosystem
-
-## Forward Reference
-
-- unified-reafference (ACSet schema consumer)

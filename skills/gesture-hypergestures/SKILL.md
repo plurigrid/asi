@@ -1,9 +1,3 @@
----
-name: gesture-hypergestures
-description: Gesture Hypergestures Skill
-version: 1.0.0
----
-
 # Gesture Hypergestures Skill
 
 > *"A gesture is a continuous curve in a topological category."*
@@ -272,29 +266,3 @@ end
 **Trit**: +1 (PLUS - GENERATOR)
 **GF(3)**: Generates continuous performance curves
 **Sonification**: C#4 sine (hue 55°, warm)
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 8. Degeneracy
-
-**Concepts**: redundancy, fallback, multiple strategies, robustness
-
-### GF(3) Balanced Triad
-
-```
-gesture-hypergestures (+) + SDF.Ch8 (−) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch6: Layering
-
-### Connection Pattern
-
-Degeneracy provides fallbacks. This skill offers redundant strategies.

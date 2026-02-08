@@ -1,9 +1,10 @@
 ---
 name: semi-conjugacy
 description: Surjective map intertwining two dynamical systems
-version: 1.0.0
+trit: 1
+geodesic: true
+moebius: "μ(n) ≠ 0"
 ---
-
 
 # Semi-conjugacy
 
@@ -76,27 +77,3 @@ Geodesic Invariant:
 Möbius Inversion:
   f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
 ```
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 8. Degeneracy
-
-**Concepts**: redundancy, fallback, multiple strategies, robustness
-
-### GF(3) Balanced Triad
-
-```
-semi-conjugacy (−) + SDF.Ch8 (−) + [balancer] (−) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-
-### Connection Pattern
-
-Degeneracy provides fallbacks. This skill offers redundant strategies.

@@ -287,7 +287,7 @@ end
 section("Layer 4: Phase 1 Integration")
 
 # Check if Phase 1 modules exist
-phase1_path = abspath("/Users/bob/ies/plurigrid-asi-skillz/lib")
+phase1_path = abspath(get(ENV, "PHASE1_LIB_PATH", joinpath(@__DIR__, "..", "..", "lib")))
 
 phase1_modules = [
     ("scl_foundation.jl", "ACSet hypothesis graphs"),

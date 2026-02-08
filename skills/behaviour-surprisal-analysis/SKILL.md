@@ -1,9 +1,3 @@
----
-name: behaviour-surprisal-analysis
-description: Behaviour Surprisal Analysis
-version: 1.0.0
----
-
 # Behaviour Surprisal Analysis
 
 **Status**: Production Ready (v3.0 - Cat# Integration)
@@ -28,34 +22,6 @@ Total Surprisal = α·S_direct + β·S_diffuse + γ·S_meta
 where α + β + γ = 1 and typically α=0.3, β=0.5, γ=0.2
 ```
 
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-behaviour-surprisal-analysis (−) + SDF.Ch5 (−) + [balancer] (−) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch6: Layering
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.
 ## Cat# Integration (v3.0)
 
 ### Galois Adjunction α ⊣ γ

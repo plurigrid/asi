@@ -1,9 +1,14 @@
 ---
 name: gay-fokker-planck-staging
 description: Two Fokker-Plancks per staging gate, conditioned on (rama OR goblins)
-version: 1.0.0
+  with accessible counterfactual worlds for each skill load.
+license: MIT
+metadata:
+  trit: 0
+  gf3_triad: fokker-planck-analyzer (-1) ⊗ gay-fokker-planck-staging (0) ⊗ agent-o-rama (+1)
+  condition: "(rama OR goblins)"
+  status: NOT_IN_PLURIGRID_ASI
 ---
-
 
 # Gay Fokker-Planck Staging
 
@@ -211,27 +216,3 @@ When committing to plurigrid/asi:
 **Condition**: (rama OR goblins)
 **FP Gates**: 2 per staging
 **Counterfactual Worlds**: 3 per skill (rama, goblins, both)
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-gay-fokker-planck-staging (○) + SDF.Ch10 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch1: Flexibility through Abstraction
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.

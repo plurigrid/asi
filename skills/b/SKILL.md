@@ -1,9 +1,3 @@
----
-name: b
-description: 'World B Skill'
-version: 1.0.0
----
-
 # World B Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

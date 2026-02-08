@@ -16,8 +16,9 @@ from dataclasses import dataclass, field
 from typing import Callable, Any, List, Dict, FrozenSet, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from functools import reduce
+import os
 
-sys.path.insert(0, '/Users/alice/.agents/skills/ordered-locale')
+sys.path.insert(0, os.environ.get("ORDERED_LOCALE_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "ordered-locale")))
 from ordered_locale import (
     Frame, OrderedLocale, triadic_gf3, cocone, cone, 
     directed_interval, print_locale

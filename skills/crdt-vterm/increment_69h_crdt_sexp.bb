@@ -10,7 +10,7 @@
 
 (def HOURS 69)
 (def THRESHOLD_MS 248400000)  ;; 69 * 60 * 60 * 1000 ms
-(def IES_ROOT "/Users/bob/ies")
+(def IES_ROOT (or (System/getenv "IES_ROOT") (str (fs/parent (fs/parent (fs/cwd))))))
 
 ;; SplitMix64-style hash for deterministic GF(3) coloring (simplified for bb)
 (defn splitmix64-hash [seed]

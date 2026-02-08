@@ -1,9 +1,11 @@
 ---
 name: unison-acset
 description: Unison language ACSet-structured skill with hierarchical documentation parsing, SPI trajectory recording, and 1069 skill predictions from zubuyul seed.
-version: 1.0.0
+trit: 0
+seed: 1069
+seed_hex: "0x42D"
+seed_name: "zubuyul"
 ---
-
 
 # Unison ACSet Skill
 
@@ -300,30 +302,3 @@ No name required. The seed *is* the address.
 **Seed**: 1069 (0x42D, zubuyul)  
 **SPI**: Verified across 15+ languages  
 **Conservation**: GF(3) balanced over triadic groupings
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-unison-acset (+) + SDF.Ch3 (○) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch2: Domain-Specific Languages
-- Ch1: Flexibility through Abstraction
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
