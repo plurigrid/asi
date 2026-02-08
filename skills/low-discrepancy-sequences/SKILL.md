@@ -1,9 +1,3 @@
----
-name: low-discrepancy-sequences
-description: "low-discrepancy-sequences skill"
-version: 1.0.0
----
-
 # Low-Discrepancy Sequences
 
 Deterministic color generation via low-discrepancy sequences with bijective index recovery.
@@ -136,30 +130,3 @@ Continued fractions provide **geodesic paths** in hyperbolic geometry (PSL(2,ℝ
 - Non-backtracking paths (prime geodesics)
 
 The Farey sequence F_n = {p/q : gcd(p,q)=1, 0≤p≤q≤n} gives rational approximations to irrationals via continued fractions, mirroring the discrete approximations to geodesic flows.
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 7. Propagators
-
-**Concepts**: propagator, cell, constraint, bidirectional, TMS
-
-### GF(3) Balanced Triad
-
-```
-low-discrepancy-sequences (○) + SDF.Ch7 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch4: Pattern Matching
-- Ch6: Layering
-
-### Connection Pattern
-
-Propagators flow constraints bidirectionally. This skill propagates information.

@@ -1,7 +1,11 @@
 ---
 name: entropy-sequencer
-description: "Layer 5: Interaction Interleaving for Maximum Information Gain"
+description: ' Layer 5: Interaction Interleaving for Maximum Information Gain'
+<<<<<<< Updated upstream
+version: 1.0.0
+=======
 version: 1.1.0
+>>>>>>> Stashed changes
 ---
 
 
@@ -492,37 +496,6 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `general`: 734 citations in bib.duckdb
 
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-entropy-sequencer (−) + SDF.Ch3 (○) + [balancer] (+) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch10: Adventure Game Example
-- Ch8: Degeneracy
-- Ch5: Evaluation
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch6: Layering
-- Ch7: Propagators
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
