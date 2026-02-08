@@ -1,37 +1,17 @@
 ---
 name: open-games
 description: Open Games Skill (ERGODIC 0)
-version: 1.0.0
+source: local
+license: UNLICENSED
 ---
-
 
 # Open Games Skill (ERGODIC 0)
 
 > Compositional game theory via Para/Optic structure
 
-**Trit**: 0 (ERGODIC)
-**Color**: #26D826 (Green)
+**Trit**: 0 (ERGODIC)  
+**Color**: #26D826 (Green)  
 **Role**: Coordinator/Transporter
-
-## bmorphism Contributions
-
-> *"Parametrised optics model cybernetic systems, namely dynamical systems steered by one or more agents. Then ⊛ represents agency being exerted on systems"*
-> — [@bmorphism](https://github.com/bmorphism), GitHub bio
-
-> *"We introduce open games as a compositional foundation of economic game theory. A compositional approach potentially allows methods of game theory and theoretical computer science to be applied to large-scale economic models"*
-> — [Compositional Game Theory](https://arxiv.org/abs/1603.04641), Ghani, Hedges, Winschel, Zahn (2016)
-
-**Key Papers** (from bmorphism's Plurigrid references):
-- [Compositional game theory](https://arxiv.org/abs/1603.04641) - open games as symmetric monoidal category morphisms
-- [Morphisms of Open Games](https://www.sciencedirect.com/science/article/pii/S1571066118300884) - connection between lenses and compositional game theory
-- [Bayesian Open Games](https://compositionality.episciences.org/13528/pdf) - stochastic environments, incomplete information
-- [Categorical Cybernetics Manifesto](https://julesh.com/posts/2019-11-27-categorical-cybernetics-manifesto.html) - control theory of complex systems
-
-**CyberCat Institute Connection**: Open games are central to the [CyberCat Institute](https://cybercat.institute) research program on categorical cybernetics.
-
-Related to bmorphism's work on:
-- [plurigrid/act](https://github.com/plurigrid/act) - active inference + ACT + enacted cognition
-- Play/Coplay bidirectional feedback structure
 
 ## Core Concept
 
@@ -172,74 +152,81 @@ Tensor:
   (A ⊸ B) ⊗ (C ⊸ D) → (A ⊗ C ⊸ B ⊗ D)
 ```
 
+## Nash Equilibrium ↔ Free Energy Duality
+
+The deep connection between game-theoretic equilibria and thermodynamic free energy:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  NASH EQUILIBRIUM = FREE ENERGY MINIMUM (Jaynes MaxEnt)    │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Payoff maximization ≡ Energy minimization (sign flip)     │
+│                                                             │
+│  U(strategy) → max  ⟺  E(configuration) → min              │
+│                                                             │
+│  Boltzmann: P(σ) ∝ exp(β·U(σ)) = exp(-β·(-U(σ)))          │
+│             = exp(-β·Energy)                                │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Mathematical Correspondence
+
+```haskell
+-- Nash equilibrium as free energy minimum
+nashFreeEnergy :: OpenGame s t a b → Temperature → FreeEnergy
+nashFreeEnergy game β = 
+  let strategies = strategySpace game
+      -- Utility → negative energy
+      energy σ = negate (utility game σ)
+      -- Partition function
+      z = sum [exp (-β * energy σ) | σ <- strategies]
+      -- Free energy: F = -T log Z
+  in (-1/β) * log z
+
+-- At low temperature, free energy minimum → Nash equilibrium
+lowTempLimit :: FreeEnergy → Strategy
+lowTempLimit = argmax utility  -- Nash!
+```
+
+### Variational Interpretation
+
+```python
+class FreeEnergyEquilibrium:
+    """
+    Nash equilibrium via variational free energy minimization.
+    
+    F[q] = E_q[Energy] - T·H[q]
+    
+    At equilibrium: q*(σ) ∝ exp(β·U(σ))
+    """
+    
+    def find_equilibrium(self, game, beta=1.0):
+        # Free energy: expected negative utility + entropy
+        def free_energy(strategy_distribution):
+            expected_utility = E[utility(σ) for σ ~ q]
+            entropy = -sum(q * log(q))
+            return -expected_utility - entropy / beta
+        
+        # Minimize free energy → find Nash
+        return minimize(free_energy, initial_guess)
+```
+
+### Sign Flip Isomorphism
+
+```
+Game Theory              Statistical Mechanics
+─────────────────────    ─────────────────────
+Utility U(σ)        ←→   -Energy E(σ)
+Nash Equilibrium    ←→   Boltzmann Distribution
+Payoff max          ←→   Energy min
+Mixed strategy      ←→   Thermal ensemble
+Rationality β→∞     ←→   Zero temperature T→0
+```
+
 ## References
 
 - Ghani, Hedges, et al. "Compositional Game Theory"
 - Capucci & Gavranović, "Actegories for Open Games"
 - Riley, "Categories of Optics"
 - CyberCat Institute tutorials
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `game-theory`: 21 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-open-games (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch8: Degeneracy
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch5: Evaluation
-- Ch4: Pattern Matching
-- Ch7: Propagators
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

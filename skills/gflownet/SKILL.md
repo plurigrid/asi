@@ -1,9 +1,11 @@
 ---
 name: gflownet
 description: "Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward. Diversity over maximization for causal discovery and molecule design."
-version: 1.0.0
+trit: 1
+polarity: PLUS
+source: "Bengio et al. 2021: Flow Network Based Generative Models"
+technologies: [Python, JAX, PyTorch, torchgfn]
 ---
-
 
 # GFlowNet Skill
 
@@ -206,6 +208,49 @@ module GFlowNet
 end
 ```
 
+## Energy-Probability Duality
+
+The deep connection between statistical mechanics and GFlowNets:
+
+```
+Fundamental Relation:
+  log P = -βE
+
+Where:
+  P = probability of a configuration
+  β = 1/T (inverse temperature)
+  E = energy of the configuration
+
+GFlowNet Connection:
+  Reward R = -E (negative energy)
+  Flow F ∝ exp(R) = exp(-E) = P(x)
+  
+  Therefore: P(x) ∝ R(x) when R = exp(-βE)
+```
+
+### Blume-Capel Mapping for GF(3) Trits
+
+```
+The Blume-Capel model provides the energy landscape for ternary states:
+
+Energy: E(σ) = -J Σ_⟨ij⟩ σ_i σ_j + D Σ_i σ_i²
+
+Where σ ∈ {-1, 0, +1} (our GF(3) trits)
+
+Trit-Energy Correspondence:
+  σ = -1 (MINUS):  E = +D (high energy, critical/contracting)
+  σ =  0 (ERGODIC): E = 0  (zero point, synthesizing)  
+  σ = +1 (PLUS):   E = +D (high energy, generative/expanding)
+
+GFlowNet over GF(3):
+  P(σ = k) ∝ exp(-βE_k) 
+           = exp(-βD·k²) for k ∈ {-1, 0, +1}
+  
+At low T: σ = 0 dominates (ergodic vacuum)
+At high T: all three states equiprobable
+At critical T: phase transitions in trit mixing
+```
+
 ## Key Properties
 
 1. **Amortized**: Learn once, sample many times (unlike MCMC per-problem)
@@ -219,65 +264,3 @@ end
 2. Malkin, N. et al. (2022). "Trajectory Balance: Improved Credit Assignment in GFlowNets."
 3. Deleu, T. et al. (2022). "Bayesian Structure Learning with Generative Flow Networks."
 4. [torchgfn library](https://github.com/GFNOrg/torchgfn)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `dynamical-systems`: 41 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 1. Flexibility through Abstraction
-
-**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
-
-### GF(3) Balanced Triad
-
-```
-gflownet (−) + SDF.Ch1 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-- Ch4: Pattern Matching
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Combinators compose operations. This skill provides composable abstractions.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

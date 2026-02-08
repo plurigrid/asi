@@ -1,0 +1,44 @@
+;; IES Personality Sortition Registry
+;; SplitMix64 hash-based GF(3) trit assignment
+;; Seed: 1069
+
+{:sortition/seed 1069
+ :sortition/timestamp "2024-12-31T21:00:00Z"
+ :sortition/gf3-balance {:minus 19 :ergodic 19 :plus 26 :sum 7 :mod3 1}
+ 
+ ;; MINUS (-1): Verification, Compression, Convergence
+ :sortition/minus
+ [{:name "karina" :msgs 8590 :skills ["bisimulation-game" "kolmogorov-compression" "segal-types"]}
+  {:name "Lauren" :msgs 4371 :skills ["narya-proofs" "verification"]}
+  {:name "Lucas" :msgs 3840 :skills ["compression" "formal-methods"]}
+  {:name "yevbar" :msgs 2201 :skills ["type-theory" "proofs"]}
+  {:name "∞-Modal Noah" :msgs 2090 :skills ["modal-logic" "verification"]}]
+ 
+ ;; ERGODIC (0): Coordination, Nash Equilibrium, Balance
+ :sortition/ergodic
+ [{:name "vie" :msgs 4176 :skills ["levin-levity" "open-games" "gflownet"]}
+  {:name "Chris Hypernym / Shyft" :msgs 4104 :skills ["game-theory" "coordination"]}
+  {:name "marsgal" :msgs 3663 :skills ["active-inference" "equilibrium"]}
+  {:name "Lily" :msgs 2358 :skills ["synthesis" "balance"]}
+  {:name "clustering coefficient" :msgs 1877 :skills ["network-theory" "topology"]}
+  {:name "Gabe Romualdo" :msgs 1752 :skills ["coordination" "systems"]}]
+ 
+ ;; PLUS (+1): Generation, Exploration, Expansion
+ :sortition/plus
+ [{:name "Yoyo Yuan" :msgs 8098 :skills ["true-alife" "glass-bead-game" "world-hopping"]}
+  {:name "Jared M." :msgs 3923 :skills ["generative" "creativity"]}
+  {:name "mpp" :msgs 2075 :skills ["exploration" "discovery"]}
+  {:name "mett barron" :msgs 2030 :skills ["generation" "novelty"]}]
+ 
+ ;; Skill → Personality mapping for open game
+ :game/skill-assignments
+ {"autopoiesis" {:trit -1 :personalities ["karina" "Lucas"]}
+  "levin-levity" {:trit 0 :personalities ["vie" "Chris Hypernym / Shyft"]}
+  "true-alife" {:trit 1 :personalities ["Yoyo Yuan" "Jared M."]}
+  "bisimulation-game" {:trit -1 :personalities ["karina" "∞-Modal Noah"]}
+  "open-games" {:trit 0 :personalities ["vie" "marsgal"]}
+  "glass-bead-game" {:trit 1 :personalities ["Yoyo Yuan"]}
+  "world-hopping" {:trit 1 :personalities ["Yoyo Yuan" "mpp"]}
+  "gflownet" {:trit 0 :personalities ["vie" "Lily"]}
+  "kolmogorov-compression" {:trit -1 :personalities ["Lauren" "yevbar"]}
+  "segal-types" {:trit -1 :personalities ["∞-Modal Noah" "karina"]}}}
