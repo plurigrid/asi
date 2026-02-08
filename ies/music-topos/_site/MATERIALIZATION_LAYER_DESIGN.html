@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>materialization_layer_design – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="materialization-layer-design" class="level1">
+<h1>Materialization Layer Design</h1>
+<section id="resource-discovery-awareness-system" class="level2">
+<h2 class="anchored" data-anchor-id="resource-discovery-awareness-system">Resource Discovery + Awareness System</h2>
+<p><strong>Date</strong>: 2025-12-21 <strong>Purpose</strong>: Transform the knowledge graph into actionable discovery and awareness mechanisms <strong>Integration</strong>: Bridges knowledge-indexer (DuckDB) with gay.rs (semantic colors) and music-topos</p>
+<hr>
+</section>
+<section id="overview-from-data-to-discovery" class="level2">
+<h2 class="anchored" data-anchor-id="overview-from-data-to-discovery">1. Overview: From Data to Discovery</h2>
+<p>The materialization layer bridges two worlds: - <strong>Input</strong>: Raw knowledge graph from indexer (1256 resources, 186 topics, 342 people) - <strong>Output</strong>: Materialized views, discovery recommendations, awareness surfaces</p>
+<pre><code>DuckDB Knowledge Graph
+    ↓
+Materialization Engine
+    ├─ Topic Clustering
+    ├─ Path Recommendations
+    ├─ Expert Ranking
+    ├─ Expertise Gaps
+    ├─ Opportunity Maps
+    ├─ Learning Progressions
+    └─ Awareness Surfaces
+    ↓
+Resource Discovery
+    ├─ Interactive Browser
+    ├─ Semantic Search
+    ├─ Color-Coded Browsing
+    ├─ Recommendation Engine
+    ├─ Learning Pathways
+    └─ Expertise Profiles</code></pre>
+<hr>
+</section>
+<section id="core-materialization-components" class="level2">
+<h2 class="anchored" data-anchor-id="core-materialization-components">2. Core Materialization Components</h2>
+<section id="topic-clustering-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="topic-clustering-relationships">2.1 Topic Clustering &amp; Relationships</h3>
+<p><strong>Problem</strong>: 186 topics without structure is overwhelming <strong>Solution</strong>: Compute topic clusters and relationship strength</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Compute topic co-occurrence networks</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> v_topic_clusters <span class="kw">AS</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> topic_pairs <span class="kw">AS</span> (</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="kw">DISTINCT</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        rt1.topic_id <span class="kw">as</span> topic_1,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        rt2.topic_id <span class="kw">as</span> topic_2,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> rt1.resource_id) <span class="kw">as</span> co_occurrence_count</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> resource_topics rt1</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> resource_topics rt2</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> rt1.resource_id <span class="op">=</span> rt2.resource_id</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> rt1.topic_id <span class="op">&lt;</span> rt2.topic_id</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">GROUP</span> <span class="kw">BY</span> rt1.topic_id, rt2.topic_id</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">HAVING</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> rt1.resource_id) <span class="op">&gt;=</span> <span class="dv">3</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    t1.topic_name <span class="kw">as</span> topic_1_name,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    t2.topic_name <span class="kw">as</span> topic_2_name,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    co_occurrence_count,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ROUND</span>(co_occurrence_count:<span class="ch">:float</span> <span class="op">/</span> <span class="fu">NULLIF</span>(<span class="fu">MIN</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> resource_topics <span class="kw">WHERE</span> topic_id <span class="op">=</span> topic_1),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> resource_topics <span class="kw">WHERE</span> topic_id <span class="op">=</span> topic_2)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    ), <span class="dv">0</span>), <span class="dv">3</span>) <span class="kw">as</span> jaccard_similarity</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> topic_pairs</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> topics t1 <span class="kw">ON</span> topic_pairs.topic_1 <span class="op">=</span> t1.<span class="kw">id</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> topics t2 <span class="kw">ON</span> topic_pairs.topic_2 <span class="op">=</span> t2.<span class="kw">id</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> co_occurrence_count <span class="kw">DESC</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="learning-path-generation" class="level3">
+<h3 class="anchored" data-anchor-id="learning-path-generation">2.2 Learning Path Generation</h3>
+<p><strong>Problem</strong>: Students don’t know optimal learning sequence <strong>Solution</strong>: Generate personalized paths through knowledge graph</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Generate recommended learning paths</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> v_learning_recommendations <span class="kw">AS</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> difficulty_scores <span class="kw">AS</span> (</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        t.<span class="kw">id</span> <span class="kw">as</span> topic_id,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        t.topic_name,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> r.<span class="kw">id</span>) <span class="kw">as</span> resource_count,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">AVG</span>(rr.difficulty_level) <span class="kw">as</span> avg_difficulty,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">AVG</span>(rr.clarity_score) <span class="kw">as</span> avg_clarity,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> tp.prerequisite_topic_id) <span class="kw">as</span> prerequisite_count</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> topics t</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span> <span class="kw">JOIN</span> resource_topics rt <span class="kw">ON</span> t.<span class="kw">id</span> <span class="op">=</span> rt.topic_id</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span> <span class="kw">JOIN</span> resources r <span class="kw">ON</span> rt.resource_id <span class="op">=</span> r.<span class="kw">id</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span> <span class="kw">JOIN</span> resource_ratings rr <span class="kw">ON</span> r.<span class="kw">id</span> <span class="op">=</span> rr.resource_id</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span> <span class="kw">JOIN</span> topic_prerequisites tp <span class="kw">ON</span> t.<span class="kw">id</span> <span class="op">=</span> tp.dependent_topic_id</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">GROUP</span> <span class="kw">BY</span> t.<span class="kw">id</span>, t.topic_name</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    topic_id,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    topic_name,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ROUND</span>(avg_difficulty:<span class="ch">:numeric</span>, <span class="dv">2</span>) <span class="kw">as</span> difficulty,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ROUND</span>(avg_clarity:<span class="ch">:numeric</span>, <span class="dv">2</span>) <span class="kw">as</span> clarity,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    prerequisite_count,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    resource_count,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">CASE</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> prerequisite_count <span class="op">=</span> <span class="dv">0</span> <span class="kw">AND</span> avg_difficulty <span class="op">&lt;</span> <span class="dv">3</span> <span class="cf">THEN</span> <span class="st">'foundation'</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> prerequisite_count <span class="op">&lt;=</span> <span class="dv">1</span> <span class="kw">AND</span> avg_difficulty <span class="op">&lt;</span> <span class="dv">4</span> <span class="cf">THEN</span> <span class="st">'intermediate'</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> prerequisite_count <span class="op">&gt;=</span> <span class="dv">2</span> <span class="kw">OR</span> avg_difficulty <span class="op">&gt;=</span> <span class="dv">4</span> <span class="cf">THEN</span> <span class="st">'advanced'</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">ELSE</span> <span class="st">'specialized'</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">END</span> <span class="kw">as</span> learning_level</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> difficulty_scores</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> difficulty, prerequisite_count;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expert-ranking-authority" class="level3">
+<h3 class="anchored" data-anchor-id="expert-ranking-authority">2.3 Expert Ranking &amp; Authority</h3>
+<p><strong>Problem</strong>: Hard to identify who’s truly authoritative on a topic <strong>Solution</strong>: Compute expertise scores using multiple signals</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Compute expertise scores</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> v_expert_authority <span class="kw">AS</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> author_stats <span class="kw">AS</span> (</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        p.<span class="kw">id</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        p.name,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        t.<span class="kw">id</span> <span class="kw">as</span> topic_id,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        t.topic_name,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> r.<span class="kw">id</span>) <span class="kw">as</span> publication_count,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">AVG</span>(r.page_rank_score) <span class="kw">as</span> avg_influence,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">MAX</span>(r.publication_date) <span class="kw">as</span> latest_publication,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">MAX</span>(r.publication_date)):<span class="ch">:int</span> <span class="op">-</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">MIN</span>(r.publication_date)):<span class="ch">:int</span> <span class="kw">as</span> years_active,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ROUND</span>(</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> r.<span class="kw">id</span>):<span class="ch">:float</span> <span class="op">/</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> resource_authors ra2</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>             <span class="kw">WHERE</span> ra2.author_id <span class="op">=</span> p.<span class="kw">id</span>),</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            <span class="dv">2</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        ) <span class="kw">as</span> publication_concentration</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> people p</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> resource_authors ra <span class="kw">ON</span> p.<span class="kw">id</span> <span class="op">=</span> ra.author_id</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> resources r <span class="kw">ON</span> ra.resource_id <span class="op">=</span> r.<span class="kw">id</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> resource_topics rt <span class="kw">ON</span> r.<span class="kw">id</span> <span class="op">=</span> rt.resource_id</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> topics t <span class="kw">ON</span> rt.topic_id <span class="op">=</span> t.<span class="kw">id</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> rt.relevance_score <span class="op">&gt;=</span> <span class="fl">0.7</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">GROUP</span> <span class="kw">BY</span> p.<span class="kw">id</span>, p.name, t.<span class="kw">id</span>, t.topic_name</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    name,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    topic_name,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    publication_count,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ROUND</span>(avg_influence:<span class="ch">:numeric</span>, <span class="dv">3</span>) <span class="kw">as</span> influence_score,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    years_active,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    publication_concentration,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ROUND</span>(</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        (publication_count:<span class="ch">:float</span> <span class="op">/</span> <span class="fu">NULLIF</span>(years_active, <span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        (avg_influence <span class="op">*</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        (publication_concentration <span class="op">*</span> <span class="fl">0.3</span>),</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    ) <span class="kw">as</span> authority_score,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">CASE</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> publication_count <span class="op">&gt;=</span> <span class="dv">20</span> <span class="kw">AND</span> avg_influence <span class="op">&gt;</span> <span class="fl">0.7</span> <span class="cf">THEN</span> <span class="st">'thought_leader'</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> publication_count <span class="op">&gt;=</span> <span class="dv">10</span> <span class="kw">AND</span> avg_influence <span class="op">&gt;</span> <span class="fl">0.6</span> <span class="cf">THEN</span> <span class="st">'established_researcher'</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> publication_count <span class="op">&gt;=</span> <span class="dv">5</span> <span class="cf">THEN</span> <span class="st">'active_contributor'</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">ELSE</span> <span class="st">'emerging_voice'</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">END</span> <span class="kw">as</span> authority_tier</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> author_stats</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> publication_count <span class="op">&gt;=</span> <span class="dv">3</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> authority_score <span class="kw">DESC</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="knowledge-gap-detection" class="level3">
+<h3 class="anchored" data-anchor-id="knowledge-gap-detection">2.4 Knowledge Gap Detection</h3>
+<p><strong>Problem</strong>: What areas are under-served? <strong>Solution</strong>: Identify gaps in coverage and opportunity areas</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Find knowledge gaps</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> v_knowledge_gaps <span class="kw">AS</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    t.topic_name,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    t.<span class="kw">category</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> rt.resource_id) <span class="kw">as</span> resource_coverage,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> ra.author_id) <span class="kw">as</span> author_coverage,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">MAX</span>(r.publication_date)) <span class="kw">as</span> latest_year,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">CASE</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> rt.resource_id) <span class="op">&lt;=</span> <span class="dv">1</span> <span class="cf">THEN</span> <span class="st">'critical_gap'</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> rt.resource_id) <span class="op">&lt;=</span> <span class="dv">3</span> <span class="cf">THEN</span> <span class="st">'significant_gap'</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> rt.resource_id) <span class="op">&lt;=</span> <span class="dv">5</span> <span class="cf">THEN</span> <span class="st">'minor_gap'</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">WHEN</span> <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">MAX</span>(r.publication_date)) <span class="op">&lt;</span> <span class="dv">2023</span> <span class="cf">THEN</span> <span class="st">'stale_content'</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">ELSE</span> <span class="st">'well_covered'</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">END</span> <span class="kw">as</span> coverage_status,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ROUND</span>(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="fl">100.0</span> <span class="op">*</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> rt.resource_id) <span class="op">/</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="fu">MAX</span>(resource_count) <span class="kw">FROM</span> (</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            <span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">as</span> resource_count <span class="kw">FROM</span> resource_topics <span class="kw">GROUP</span> <span class="kw">BY</span> topic_id</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        )),</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="kw">as</span> percentile_coverage</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> topics t</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> resource_topics rt <span class="kw">ON</span> t.<span class="kw">id</span> <span class="op">=</span> rt.topic_id</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> resources r <span class="kw">ON</span> rt.resource_id <span class="op">=</span> r.<span class="kw">id</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> resource_authors ra <span class="kw">ON</span> r.<span class="kw">id</span> <span class="op">=</span> ra.resource_id</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> t.<span class="kw">id</span>, t.topic_name, t.<span class="kw">category</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="kw">HAVING</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> rt.resource_id) <span class="op">&lt;=</span> <span class="dv">5</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>   <span class="kw">OR</span> <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">MAX</span>(r.publication_date)) <span class="op">&lt;</span> <span class="dv">2023</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> resource_coverage <span class="kw">ASC</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="topic-dependency-tree" class="level3">
+<h3 class="anchored" data-anchor-id="topic-dependency-tree">2.5 Topic Dependency Tree</h3>
+<p><strong>Problem</strong>: Hard to see prerequisites <strong>Solution</strong>: Compute and visualize dependency chains</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Build prerequisite chains</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> v_topic_prerequisites_expanded <span class="kw">AS</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> RECURSIVE prereq_chain <span class="kw">AS</span> (</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- Base: topics with no prerequisites</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">id</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        topic_name,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">category</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span> <span class="kw">as</span> <span class="fu">depth</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ARRAY</span>[<span class="kw">id</span>] <span class="kw">as</span> path,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ARRAY</span>[topic_name] <span class="kw">as</span> name_path</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> topics</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> <span class="kw">id</span> <span class="kw">NOT</span> <span class="kw">IN</span> (<span class="kw">SELECT</span> dependent_topic_id <span class="kw">FROM</span> topic_prerequisites)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- Recursive: topics with prerequisites</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        tp.dependent_topic_id,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        t.topic_name,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        t.<span class="kw">category</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        pc.<span class="fu">depth</span> <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        ARRAY_PREPEND(tp.prerequisite_topic_id, pc.path),</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        ARRAY_PREPEND(pt.topic_name, pc.name_path)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> topic_prerequisites tp</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> topics t <span class="kw">ON</span> tp.dependent_topic_id <span class="op">=</span> t.<span class="kw">id</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> topics pt <span class="kw">ON</span> tp.prerequisite_topic_id <span class="op">=</span> pt.<span class="kw">id</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> prereq_chain pc <span class="kw">ON</span> tp.prerequisite_topic_id <span class="op">=</span> pc.<span class="kw">id</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> ARRAY_LENGTH(pc.path, <span class="dv">1</span>) <span class="op">&lt;</span> <span class="dv">10</span>  <span class="co">-- Prevent infinite recursion</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">id</span> <span class="kw">as</span> topic_id,</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    topic_name,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">category</span>,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">depth</span> <span class="kw">as</span> prerequisite_depth,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    name_path <span class="kw">as</span> prerequisite_chain,</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    ARRAY_TO_STRING(name_path, <span class="st">' ← '</span>) <span class="kw">as</span> readable_path</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> prereq_chain</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="fu">depth</span> <span class="op">&gt;</span> <span class="dv">1</span>  <span class="co">-- Only show topics with prerequisites</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> <span class="fu">depth</span> <span class="kw">DESC</span>, topic_name;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="awareness-surfaces" class="level2">
+<h2 class="anchored" data-anchor-id="awareness-surfaces">3. Awareness Surfaces</h2>
+<section id="dashboard-view" class="level3">
+<h3 class="anchored" data-anchor-id="dashboard-view">3.1 Dashboard View</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Materialized dashboard for overview</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> v_dashboard_snapshot <span class="kw">AS</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> resources) <span class="kw">as</span> total_resources,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> people) <span class="kw">as</span> total_experts,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> topics) <span class="kw">as</span> total_topics,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> topics <span class="kw">WHERE</span> <span class="kw">category</span> <span class="op">=</span> <span class="st">'consensus'</span>) <span class="kw">as</span> consensus_topics,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> topics <span class="kw">WHERE</span> <span class="kw">category</span> <span class="op">=</span> <span class="st">'cryptography'</span>) <span class="kw">as</span> crypto_topics,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> topics <span class="kw">WHERE</span> <span class="kw">category</span> <span class="op">=</span> <span class="st">'mechanism_design'</span>) <span class="kw">as</span> mechanism_topics,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">AVG</span>(page_rank_score) <span class="kw">FROM</span> resources) <span class="kw">as</span> avg_resource_quality,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> resources <span class="kw">WHERE</span> publication_date <span class="op">&gt;=</span> <span class="fu">CURRENT_DATE</span> <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">'6 months'</span>) <span class="kw">as</span> recent_resources,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> topics <span class="kw">WHERE</span> <span class="kw">id</span> <span class="kw">IN</span> (<span class="kw">SELECT</span> topic_id <span class="kw">FROM</span> v_knowledge_gaps)) <span class="kw">as</span> gap_topics;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="recommendation-engine" class="level3">
+<h3 class="anchored" data-anchor-id="recommendation-engine">3.2 Recommendation Engine</h3>
+<p><strong>Query</strong>: “I’m interested in consensus. What should I learn next?”</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Personalized learning recommendations</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">FUNCTION</span> recommend_next_topics(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    interested_in_topic_id <span class="dt">INT</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    current_level <span class="dt">VARCHAR</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    limit_count <span class="dt">INT</span> <span class="kw">DEFAULT</span> <span class="dv">5</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>RETURNS <span class="kw">TABLE</span> (</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    recommended_topic_id <span class="dt">INT</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    topic_name <span class="dt">VARCHAR</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    reason <span class="dt">VARCHAR</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    difficulty_level <span class="dt">VARCHAR</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    resource_count <span class="dt">INT</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>) <span class="kw">AS</span> $$</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WITH</span> related_topics <span class="kw">AS</span> (</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">SELECT</span> <span class="kw">DISTINCT</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            tc.topic_2_id <span class="kw">as</span> related_id,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            t2.topic_name,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            tc.connection_strength,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Directly related'</span> <span class="kw">as</span> reason</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FROM</span> topic_connections tc</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">JOIN</span> topics t2 <span class="kw">ON</span> tc.topic_2_id <span class="op">=</span> t2.<span class="kw">id</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> tc.topic_1_id <span class="op">=</span> interested_in_topic_id</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>            <span class="kw">AND</span> tc.connection_strength <span class="op">&gt;</span> <span class="fl">0.5</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="kw">SELECT</span> <span class="kw">DISTINCT</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>            tp.dependent_topic_id <span class="kw">as</span> related_id,</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>            t3.topic_name,</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>            <span class="fl">1.0</span> <span class="op">-</span> (<span class="fu">ABS</span>(rr.difficulty_level <span class="op">-</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>                (<span class="kw">SELECT</span> <span class="fu">AVG</span>(rr2.difficulty_level)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">FROM</span> resource_ratings rr2</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">JOIN</span> resources r2 <span class="kw">ON</span> rr2.resource_id <span class="op">=</span> r2.<span class="kw">id</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">JOIN</span> resource_topics rt2 <span class="kw">ON</span> r2.<span class="kw">id</span> <span class="op">=</span> rt2.resource_id</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>                 <span class="kw">WHERE</span> rt2.topic_id <span class="op">=</span> interested_in_topic_id)) <span class="op">/</span> <span class="fl">5.0</span>) <span class="kw">as</span> connection_strength,</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">'Builds on this topic'</span> <span class="kw">as</span> reason</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FROM</span> topic_prerequisites tp</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        <span class="kw">JOIN</span> topics t3 <span class="kw">ON</span> tp.dependent_topic_id <span class="op">=</span> t3.<span class="kw">id</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        <span class="kw">LEFT</span> <span class="kw">JOIN</span> resource_ratings rr <span class="kw">ON</span> rr.resource_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> tp.prerequisite_topic_id <span class="op">=</span> interested_in_topic_id</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>            <span class="kw">AND</span> tp.dependent_topic_id <span class="op">!=</span> interested_in_topic_id</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>        related_topics.related_id,</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        related_topics.topic_name,</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>        related_topics.reason,</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>        lr.learning_level,</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">FROM</span> resource_topics <span class="kw">WHERE</span> topic_id <span class="op">=</span> related_topics.related_id)</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> related_topics</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LEFT</span> <span class="kw">JOIN</span> v_learning_recommendations lr</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> related_topics.related_id <span class="op">=</span> lr.topic_id</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> lr.learning_level <span class="op">!=</span> current_level  <span class="co">-- Suggest different level</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ORDER</span> <span class="kw">BY</span> connection_strength <span class="kw">DESC</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LIMIT</span> limit_count;</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>$$ LANGUAGE SQL;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="discovery-feed" class="level3">
+<h3 class="anchored" data-anchor-id="discovery-feed">3.3 Discovery Feed</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Fresh resources for discovery</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> v_discovery_feed <span class="kw">AS</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    r.title,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    r.url,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    p.name <span class="kw">as</span> contributor,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    t.topic_name,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    r.publication_date,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    r.resource_type,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    r.duration_minutes,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    r.page_rank_score,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'new_resource'</span> <span class="kw">as</span> discovery_type</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> resources r</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> resource_authors ra <span class="kw">ON</span> r.<span class="kw">id</span> <span class="op">=</span> ra.resource_id</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> people p <span class="kw">ON</span> ra.author_id <span class="op">=</span> p.<span class="kw">id</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> resource_topics rt <span class="kw">ON</span> r.<span class="kw">id</span> <span class="op">=</span> rt.resource_id</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> topics t <span class="kw">ON</span> rt.topic_id <span class="op">=</span> t.<span class="kw">id</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> r.publication_date <span class="op">&gt;=</span> <span class="fu">CURRENT_DATE</span> <span class="op">-</span> <span class="dt">INTERVAL</span> <span class="st">'30 days'</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> r.publication_date <span class="kw">DESC</span>, r.page_rank_score <span class="kw">DESC</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">50</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="integration-with-gay.rs" class="level2">
+<h2 class="anchored" data-anchor-id="integration-with-gay.rs">4. Integration with Gay.rs</h2>
+<section id="topic-to-color-mapping" class="level3">
+<h3 class="anchored" data-anchor-id="topic-to-color-mapping">4.1 Topic-to-Color Mapping</h3>
+<p>Each topic gets a deterministic color from the golden angle spiral:</p>
+<pre><code>Consensus Topics (10) → Hues 0-70°
+  ├─ Byzantine Consensus → Hue 0°
+  ├─ Tendermint → Hue 13.75°
+  ├─ Proof-of-Stake → Hue 27.5°
+  └─ ... (7 more)
+
+Cryptography Topics (12) → Hues 70-160°
+  ├─ Zero-Knowledge Proofs → Hue 70°
+  ├─ Elliptic Curves → Hue 83.75°
+  └─ ...
+
+Mechanism Design Topics (8) → Hues 160-250°
+  └─ ...</code></pre>
+<p><strong>Implementation</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// gay-rs integration</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> category_hue_base <span class="op">=</span> <span class="cf">match</span> topic<span class="op">.</span>category <span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">TopicCategory::</span>Consensus <span class="op">=&gt;</span> <span class="dv">0.0</span><span class="op">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">TopicCategory::</span>Cryptography <span class="op">=&gt;</span> <span class="dv">70.0</span><span class="op">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">TopicCategory::</span>MechanismDesign <span class="op">=&gt;</span> <span class="dv">160.0</span><span class="op">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... more categories</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> topic_color <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> hue <span class="op">=</span> (category_hue_base <span class="op">+</span> (topic_index <span class="op">%</span> <span class="dv">13</span>) <span class="op">*</span> <span class="dv">13.75</span>) <span class="op">%</span> <span class="dv">360.0</span><span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    OkhslColor <span class="op">{</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        hue<span class="op">,</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        saturation<span class="op">:</span> <span class="dv">0.5</span> <span class="op">+</span> (popularity <span class="op">*</span> <span class="dv">0.5</span>)<span class="op">,</span>  <span class="co">// Popular = more saturated</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        lightness<span class="op">:</span> <span class="dv">0.3</span> <span class="op">+</span> (coverage <span class="op">*</span> <span class="dv">0.4</span>)<span class="op">,</span>     <span class="co">// Well-covered = brighter</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="learning-paths-as-music" class="level3">
+<h3 class="anchored" data-anchor-id="learning-paths-as-music">4.2 Learning Paths as Music</h3>
+<p>Each learning path is sonified: - <strong>Topic Progression</strong> → <strong>Melodic Progression</strong> (hues → pitches) - <strong>Topic Difficulty</strong> → <strong>Register/Octave</strong> (lightness → octave) - <strong>Topic Centrality</strong> → <strong>Amplitude</strong> (authority → volume)</p>
+<hr>
+</section>
+</section>
+<section id="deployment-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-architecture">5. Deployment Architecture</h2>
+<section id="layered-system" class="level3">
+<h3 class="anchored" data-anchor-id="layered-system">5.1 Layered System</h3>
+<pre><code>┌────────────────────────────────────────┐
+│     Web Interface / API Layer          │
+│  (Browser discovery, semantic search)  │
+├────────────────────────────────────────┤
+│   Materialization Views Layer          │
+│  (Expert ranking, learning paths, gaps)│
+├────────────────────────────────────────┤
+│     DuckDB Knowledge Graph             │
+│  (Resources, people, topics, relations)│
+├────────────────────────────────────────┤
+│    Content Indexer (Rust)              │
+│  (Crawling, parsing, enrichment)       │
+├────────────────────────────────────────┤
+│   Original Sources                     │
+│  (Roughgarden, a16z, Paradigm, etc.)   │
+└────────────────────────────────────────┘</code></pre>
+</section>
+<section id="refresh-cycle" class="level3">
+<h3 class="anchored" data-anchor-id="refresh-cycle">5.2 Refresh Cycle</h3>
+<pre><code>Hourly:
+  ├─ Crawl new resources from known sources
+  ├─ Validate URL accessibility
+  └─ Add to DuckDB
+
+Daily:
+  ├─ Recompute topic clusters
+  ├─ Update expert rankings
+  ├─ Detect knowledge gaps
+  └─ Generate learning recommendations
+
+Weekly:
+  ├─ Deep citation analysis
+  ├─ Topic trend detection
+  ├─ Author influence updates
+  └─ Learning path optimization
+
+Monthly:
+  ├─ Schema optimization
+  ├─ Archive old content metadata
+  ├─ Generate research reports
+  └─ Backup database</code></pre>
+<hr>
+</section>
+</section>
+<section id="example-use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="example-use-cases">6. Example Use Cases</h2>
+<section id="use-case-1-new-learner-path" class="level3">
+<h3 class="anchored" data-anchor-id="use-case-1-new-learner-path">Use Case 1: New Learner Path</h3>
+<p><strong>User</strong>: “I want to learn about Byzantine Fault Tolerance”</p>
+<p><strong>System Response</strong> (using materialization): 1. Find “Byzantine Consensus” topic (hue = 0°, color = red) 2. Get prerequisites from <code>v_topic_prerequisites_expanded</code> 3. Recommend foundational resources from <code>v_learning_recommendations</code> 4. Display top 3 experts from <code>v_expert_authority</code> 5. Show related topics from <code>recommend_next_topics()</code> 6. Provide reading sequence with estimated time</p>
+<p><strong>Color Representation</strong>:</p>
+<pre><code>Foundation (lightness: 0.4) → dark red
+  ↓ Musical transition
+Intermediate (lightness: 0.6) → bright red
+  ↓
+Advanced (lightness: 0.8) → light red</code></pre>
+</section>
+<section id="use-case-2-research-opportunity-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="use-case-2-research-opportunity-discovery">Use Case 2: Research Opportunity Discovery</h3>
+<p><strong>Query</strong>: “What’s under-served in DeFi?”</p>
+<p><strong>System Response</strong>: 1. List DeFi topics with <code>coverage_status = 'critical_gap'</code> 2. Show gap timeframe from <code>v_knowledge_gaps</code> 3. Display who could contribute (authors in adjacent fields) 4. Calculate market opportunity (resource demand vs.&nbsp;supply)</p>
+</section>
+<section id="use-case-3-expert-collaboration-suggestion" class="level3">
+<h3 class="anchored" data-anchor-id="use-case-3-expert-collaboration-suggestion">Use Case 3: Expert Collaboration Suggestion</h3>
+<p><strong>Query</strong>: “I’m working on MEV. Who should I connect with?”</p>
+<p><strong>System Response</strong>: 1. Find co-authors of MEV papers 2. Find experts in related topics 3. Compute collaboration strength scores 4. Suggest complementary expertise gaps</p>
+<hr>
+</section>
+</section>
+<section id="success-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="success-metrics">7. Success Metrics</h2>
+<section id="coverage" class="level3">
+<h3 class="anchored" data-anchor-id="coverage">Coverage</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">80%+ of resources properly indexed (topics + authors)</label></li>
+<li><label><input type="checkbox">&lt;5% orphaned resources (no topics, no authors)</label></li>
+<li><label><input type="checkbox">Dependency chains accurately represented</label></li>
+</ul>
+</section>
+<section id="discovery" class="level3">
+<h3 class="anchored" data-anchor-id="discovery">Discovery</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Users find 3+ relevant resources per session</label></li>
+<li><label><input type="checkbox">70%+ of discovered resources rated relevant</label></li>
+<li><label><input type="checkbox">Learning paths reduce discovery time by 50%</label></li>
+</ul>
+</section>
+<section id="authority" class="level3">
+<h3 class="anchored" data-anchor-id="authority">Authority</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Expert ranking correlates with citations (r² &gt; 0.7)</label></li>
+<li><label><input type="checkbox">Authority scores stable across 3-month window</label></li>
+<li><label><input type="checkbox">Emerging voices identified before 100 publications</label></li>
+</ul>
+</section>
+<section id="gaps" class="level3">
+<h3 class="anchored" data-anchor-id="gaps">Gaps</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Identified gaps resolve within 6 months → opportunity validation</label></li>
+<li><label><input type="checkbox">Gap detection prevents “knowledge redundancy”</label></li>
+<li><label><input type="checkbox">Guides new content creation</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="files-created" class="level2">
+<h2 class="anchored" data-anchor-id="files-created">8. Files Created</h2>
+<ol type="1">
+<li><strong>MATERIALIZATION_LAYER_DESIGN.md</strong> - This document</li>
+<li><strong>MATERIALIZATION_QUERIES.sql</strong> - All view definitions</li>
+<li><strong>materialization-service/</strong> - Rust service for computing materializations</li>
+<li><strong>web-interface/</strong> - React dashboard for discovery</li>
+</ol>
+<hr>
+</section>
+<section id="closing-philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="closing-philosophy">Closing Philosophy</h2>
+<blockquote class="blockquote">
+<p>“The knowledge graph exists to serve discovery, not to be discovered itself.”</p>
+</blockquote>
+<p>The materialization layer transforms raw interconnected data into actionable awareness. Each view, each recommendation, each color-coded surface exists to answer one question:</p>
+<p><strong>“What should I learn next?”</strong></p>
+<p>The answers flow through golden-ratio-spiraled colors, through musical progressions, through personalized pathways—all grounded in the topology of human knowledge itself.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

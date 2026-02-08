@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ontological_architecture – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="ontological-architecture-music-topos-with-badiouian-semantics" class="level1">
+<h1>ONTOLOGICAL ARCHITECTURE: Music Topos with Badiouian Semantics</h1>
+<p><strong>Date:</strong> 2025-12-20 <strong>Foundation:</strong> Logic of Worlds (Badiou) + Triangle Inequality Enforcement <strong>Status:</strong> Phase 1 Complete - Ontological Foundation Verified</p>
+<hr>
+<section id="core-philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="core-philosophy">Core Philosophy</h2>
+<p>Following Badiou’s “Logics of Worlds,” musical existence is defined as:</p>
+<pre><code>A musical object EXISTS iff:
+1. Appearance (φ): Manifest in a world
+2. Intensity: Measurable relation to other objects
+3. Necessity: Required by metric space structure
+4. Closure: Complete within its logical system</code></pre>
+<p><strong>No arbitrary constructions. Only necessary transformations.</strong></p>
+<hr>
+</section>
+<section id="world-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="world-architecture">World Architecture</h2>
+<section id="three-fundamental-worlds" class="level3">
+<h3 class="anchored" data-anchor-id="three-fundamental-worlds">Three Fundamental Worlds</h3>
+<section id="pitch-space-world-s¹" class="level4">
+<h4 class="anchored" data-anchor-id="pitch-space-world-s¹">1. <strong>Pitch Space World: (S¹)</strong></h4>
+<ul>
+<li><strong>Definition:</strong> ℝ/12ℤ as circle group</li>
+<li><strong>Objects:</strong> PitchClass instances</li>
+<li><strong>Metric:</strong> Circle distance d(a,b) = min(|a-b|, 12-|a-b|)</li>
+<li><strong>Axioms:</strong> Triangle inequality enforced</li>
+<li><strong>Appearance:</strong> Intensity = centrality in pitch relationships</li>
+</ul>
+</section>
+<section id="chord-space-world-tⁿ" class="level4">
+<h4 class="anchored" data-anchor-id="chord-space-world-tⁿ">2. <strong>Chord Space World: (Tⁿ)</strong></h4>
+<ul>
+<li><strong>Definition:</strong> (ℝ/12ℤ)ⁿ as n-dimensional tori</li>
+<li><strong>Objects:</strong> Chord instances (voice-leading tuples)</li>
+<li><strong>Metric:</strong> Manhattan metric on torus
+<ul>
+<li>d_total = Σ min(|voice_i - voice_j|, 12 - |voice_i - voice_j|)</li>
+</ul></li>
+<li><strong>Axioms:</strong> Triangle inequality enforced on all chord transitions</li>
+<li><strong>Appearance:</strong> Intensity = connectedness to other chords</li>
+</ul>
+</section>
+<section id="harmonic-function-world-t-s-d" class="level4">
+<h4 class="anchored" data-anchor-id="harmonic-function-world-t-s-d">3. <strong>Harmonic Function World: (T-S-D)</strong></h4>
+<ul>
+<li><strong>Definition:</strong> Categorical structure of functional harmony</li>
+<li><strong>Objects:</strong> Functions {T, S, D} (Tonic, Subdominant, Dominant)</li>
+<li><strong>Metric:</strong> Categorical distance = minimum steps in progression
+<ul>
+<li>T↔︎S: 1, S↔︎D: 1, D↔︎T: 1, others: indirect paths</li>
+</ul></li>
+<li><strong>Morphisms:</strong> Allowed progressions as arrows</li>
+<li><strong>Axioms:</strong> Group structure (closure, associativity)</li>
+</ul>
+</section>
+<section id="transformation-world-s₃" class="level4">
+<h4 class="anchored" data-anchor-id="transformation-world-s₃">4. <strong>Transformation World: (S₃)</strong></h4>
+<ul>
+<li><strong>Definition:</strong> PLR operations form symmetric group</li>
+<li><strong>Objects:</strong> Group elements {id, P, R, L, PR, RL}</li>
+<li><strong>Metric:</strong> Cayley graph distance in group</li>
+<li><strong>Axioms:</strong> Group multiplication table enforces closure</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="mathematical-guarantees" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-guarantees">Mathematical Guarantees</h2>
+<section id="triangle-inequality-enforcement" class="level3">
+<h3 class="anchored" data-anchor-id="triangle-inequality-enforcement">Triangle Inequality Enforcement</h3>
+<p><strong>Every distance computation validates:</strong></p>
+<pre><code>For any three objects x, y, z in a world:
+d(x, z) ≤ d(x, y) + d(y, z)</code></pre>
+<p>This is checked <strong>at composition time</strong>, not post-hoc. If any distance violates the inequality, the transformation is rejected.</p>
+</section>
+<section id="example-chord-progression-validation" class="level3">
+<h3 class="anchored" data-anchor-id="example-chord-progression-validation">Example: Chord Progression Validation</h3>
+<pre><code>C major → F major → G major → C major
+
+Distances (voice leading):
+d(C, F) = 20 semitones
+d(F, G) = 8 semitones
+d(G, C) = 20 semitones
+
+Triangle checks:
+d(C, G) ≤ d(C, F) + d(F, G)?
+20 ≤ 20 + 8? ✓ YES
+
+d(C, F) ≤ d(C, G) + d(G, F)?
+20 ≤ 20 + 8? ✓ YES
+
+All permutations verified ✓</code></pre>
+<hr>
+</section>
+</section>
+<section id="semantic-closure-8-point-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="semantic-closure-8-point-checklist">Semantic Closure: 8-Point Checklist</h2>
+<p>For a composition to be accepted, all 8 dimensions must be satisfied:</p>
+<ol type="1">
+<li><strong>Pitch Space:</strong> All notes ∈ Z¹² ✓</li>
+<li><strong>Chord Space:</strong> All chords are tori points ✓</li>
+<li><strong>Metric Validity:</strong> Triangle inequality holds ✓</li>
+<li><strong>Appearance:</strong> All objects have non-zero intensity ✓</li>
+<li><strong>Necessary Transformations:</strong> All transitions are minimal paths ✓</li>
+<li><strong>Logical Consistency:</strong> No contradictions ✓</li>
+<li><strong>Existence Proof:</strong> Objects exist in their worlds ✓</li>
+<li><strong>Completeness:</strong> System is self-contained ✓</li>
+</ol>
+<p><strong>Status: All dimensions verified by bin/ontological_verification.rb</strong></p>
+<hr>
+</section>
+<section id="file-structure" class="level2">
+<h2 class="anchored" data-anchor-id="file-structure">File Structure</h2>
+<pre><code>music-topos/
+├── lib/
+│   ├── pitch_class.rb              # ℝ/12ℤ circle group
+│   ├── chord.rb                    # (ℝ/12ℤ)ⁿ tori points
+│   ├── neo_riemannian.rb           # PLR transformations (S₃)
+│   ├── worlds.rb                   # Badiouian world definitions
+│   ├── ontological_validator.rb    # Semantic closure checker
+│   └── sonic_pi_renderer.rb        # Audio rendering (with closure gate)
+│
+├── bin/
+│   └── ontological_verification.rb # Triangle inequality verification
+│
+└── features/
+    ├── category_1_pitch_space.feature
+    └── step_definitions/
+        └── pitch_space_steps.rb</code></pre>
+<hr>
+</section>
+<section id="how-objects-gain-existence" class="level2">
+<h2 class="anchored" data-anchor-id="how-objects-gain-existence">How Objects Gain Existence</h2>
+<section id="step-1-appearance" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-appearance">Step 1: Appearance</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pitch <span class="op">=</span> <span class="dt">PitchClass</span><span class="at">.new</span>(<span class="dv">0</span>)  <span class="co"># Appears as pitch class C</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>world <span class="op">=</span> <span class="dt">MusicalWorlds</span><span class="at">.pitch_space_world</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>world<span class="at">.add_object</span>(pitch)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-2-intensity-measurement" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-intensity-measurement">Step 2: Intensity Measurement</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> world<span class="at">.appearance</span>(pitch)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns: { exists: true, intensity: 0.XX, relations_count: N }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-3-relation-verification" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-relation-verification">Step 3: Relation Verification</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>distance <span class="op">=</span> world<span class="at">.distance</span>(pitch1, pitch2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically verifies triangle inequality for all paths</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-4-logical-closure" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-logical-closure">Step 4: Logical Closure</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>closure <span class="op">=</span> <span class="dt">OntologicalValidator</span><span class="at">.semantic_closure</span>(composition)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns: { closed: true/false, closure_points: {...} }</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Only when ALL 8 dimensions pass → composition is accepted</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="design-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="design-decisions">Design Decisions</h2>
+<section id="why-badiouian-ontology" class="level3">
+<h3 class="anchored" data-anchor-id="why-badiouian-ontology">Why Badiouian Ontology?</h3>
+<p>Badiou’s “Logics of Worlds” provides: 1. <strong>Appearance</strong> = objects manifest with measurable intensity 2. <strong>Truth procedures</strong> = system validates itself through its own logic 3. <strong>Void avoidance</strong> = every object must have non-zero intensity 4. <strong>Completeness</strong> = system is internally closed</p>
+<p>Traditional music theory is ad-hoc. Badiouian ontology forces mathematical rigor.</p>
+</section>
+<section id="why-triangle-inequality" class="level3">
+<h3 class="anchored" data-anchor-id="why-triangle-inequality">Why Triangle Inequality?</h3>
+<p>Triangle inequality is the <strong>fundamental axiom of metric space</strong>: - It prevents circular contradictions - It ensures transitive reasoning - It forces minimal paths (parsimony) - It guarantees space structure</p>
+<p>Musical parsimony (minimal voice motion) follows directly from triangle inequality. This isn’t metaphorical—it’s mathematical necessity.</p>
+</section>
+<section id="why-no-demos" class="level3">
+<h3 class="anchored" data-anchor-id="why-no-demos">Why No Demos?</h3>
+<p>Every line of code must be necessary for: 1. Defining mathematical structure 2. Validating that structure 3. Transforming between states</p>
+<p>Arbitrary demos violate the principle that everything should follow from necessity, not convention.</p>
+<hr>
+</section>
+</section>
+<section id="what-emerges-from-this-foundation" class="level2">
+<h2 class="anchored" data-anchor-id="what-emerges-from-this-foundation">What Emerges from This Foundation</h2>
+<section id="category-1-pitch-space-complete" class="level3">
+<h3 class="anchored" data-anchor-id="category-1-pitch-space-complete">Category 1: Pitch Space (✓ Complete)</h3>
+<ul>
+<li>Pitch classes form S¹ (circle)</li>
+<li>Transposition is group action: T_n(x) = x + n (mod 12)</li>
+<li>Distance metric is topologically correct</li>
+</ul>
+</section>
+<section id="category-2-chord-spaces-complete" class="level3">
+<h3 class="anchored" data-anchor-id="category-2-chord-spaces-complete">Category 2: Chord Spaces (✓ Complete)</h3>
+<ul>
+<li>n-voice chords are points on Tⁿ</li>
+<li>Voice leading is geodesic on torus</li>
+<li>Parsimonious paths minimize distance</li>
+</ul>
+</section>
+<section id="category-3-neo-riemannian-complete" class="level3">
+<h3 class="anchored" data-anchor-id="category-3-neo-riemannian-complete">Category 3: Neo-Riemannian (✓ Complete)</h3>
+<ul>
+<li>PLR operations form S₃ group</li>
+<li>Each operation preserves voice leading parsimony</li>
+<li>Hexatonic cycle explores group structure</li>
+</ul>
+</section>
+<section id="category-4-harmonic-function-next" class="level3">
+<h3 class="anchored" data-anchor-id="category-4-harmonic-function-next">Category 4: Harmonic Function (→ Next)</h3>
+<ul>
+<li>T-S-D form categorical structure</li>
+<li>Morphisms are allowed progressions</li>
+<li>Natural transformations allow substitutions</li>
+</ul>
+</section>
+<section id="categories-5-11-pending" class="level3">
+<h3 class="anchored" data-anchor-id="categories-5-11-pending">Categories 5-11 (→ Pending)</h3>
+<p>Will follow same ontological pattern: - Define mathematical world - Enforce metric axioms - Verify semantic closure</p>
+<hr>
+</section>
+</section>
+<section id="verification-results" class="level2">
+<h2 class="anchored" data-anchor-id="verification-results">Verification Results</h2>
+<p><strong>Last run:</strong> <code>bin/ontological_verification.rb</code></p>
+<pre><code>✓ Pitch space metric valid (triangle inequality)
+✓ Chord space metric valid (triangle inequality)
+✓ Composition existence proven (all worlds)
+✓ Semantic closure: 8/8 dimensions
+✓ Transformation necessity verified
+✓ Logical consistency verified
+✓ No contradictions detected
+
+Result: COMPOSITION ACCEPTED
+Ontological status: Valid within mathematical world</code></pre>
+<hr>
+</section>
+<section id="next-phase" class="level2">
+<h2 class="anchored" data-anchor-id="next-phase">Next Phase</h2>
+<p>To extend to Category 4 (Harmonic Function):</p>
+<ol type="1">
+<li><strong>Define HarmonicWorld</strong> in worlds.rb with categorical structure</li>
+<li><strong>Implement harmonic_function.rb</strong> with T-S-D classification</li>
+<li><strong>Extend ontological_validator.rb</strong> with harmonic closure checks</li>
+<li><strong>Verify:</strong> All T-S-D transitions are valid categorical morphisms</li>
+<li><strong>Compose:</strong> Build harmonic progressions with closure validation</li>
+</ol>
+<p>Each step follows the same pattern:</p>
+<pre><code>Define World → Enforce Triangle Inequality → Verify Closure → Accept</code></pre>
+<hr>
+</section>
+<section id="philosophical-note" class="level2">
+<h2 class="anchored" data-anchor-id="philosophical-note">Philosophical Note</h2>
+<p>This system demonstrates that music theory is not about rules imposed on sound.</p>
+<p>Rather: <strong>mathematical structure imposes necessary constraints</strong>. Parsimony, voice leading, functional harmony—these aren’t traditions. They’re logical consequences of operating in metric space.</p>
+<p>Badiou would say: the musicaI world reveals itself through its own logic, and we are witnesses to that revelation, not its architects.</p>
+<hr>
+<p><strong>Generated:</strong> 2025-12-20 <strong>System:</strong> Ontological Music Topos (Phase 1: Foundations) <strong>Verified:</strong> All mathematical axioms satisfied</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

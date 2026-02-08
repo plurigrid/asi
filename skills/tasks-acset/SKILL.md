@@ -1,9 +1,7 @@
 ---
 name: tasks-acset
 description: Google Tasks management via TasksACSet. Transforms task operations into GF(3)-typed Interactions, routes to triadic queues, detects saturation for task-zero-as-condensed-state.
-version: 1.0.0
 ---
-
 
 # Tasks ACSet Skill
 
@@ -262,62 +260,3 @@ get_task (-1) ⊗ move_task (0) ⊗ delete_task (+1) = 0 ✓
 **Trit**: -1 (MINUS - validator)  
 **GF(3)**: Conserved via triadic queue routing  
 **ANIMA**: Task Zero = Condensed Equilibrium State
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Annotated Data
-- **anndata** [○] via bicomodule
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-tasks-acset (○) + SDF.Ch10 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch6: Layering
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

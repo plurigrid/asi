@@ -1,10 +1,16 @@
 ---
 name: segal-types
-description: "Segal types for synthetic ∞-categories. Binary composites exist uniquely up to homotopy. Foundation for topological chemputer."
-trit: -1
-polarity: MINUS
-source: "Riehl-Shulman 2017: A type theory for synthetic ∞-categories"
-technologies: [Rzk, Lean4, Agda, InfinityCosmos]
+description: Segal types for synthetic ∞-categories. Binary composites exist uniquely
+  up to homotopy. Foundation for topological chemputer.
+metadata:
+  trit: -1
+  polarity: MINUS
+  source: 'Riehl-Shulman 2017: A type theory for synthetic ∞-categories'
+  technologies:
+  - Rzk
+  - Lean4
+  - Agda
+  - InfinityCosmos
 ---
 
 # Segal Types Skill

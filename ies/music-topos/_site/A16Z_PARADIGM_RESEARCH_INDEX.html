@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>a16z_paradigm_research_index – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="a16z-crypto-paradigm-research-comprehensive-knowledge-index" class="level1">
+<h1>a16z Crypto &amp; Paradigm Research: Comprehensive Knowledge Index</h1>
+<p><strong>Compiled:</strong> 2025-12-21 <strong>Purpose:</strong> Knowledge indexing system for consensus mechanisms, distributed systems, mechanism design, cryptography, and blockchain protocol research</p>
+<hr>
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#a16z-crypto-research-overview">a16z Crypto Research Overview</a></li>
+<li><a href="#paradigm-research-overview">Paradigm Research Overview</a></li>
+<li><a href="#consensus-mechanisms--distributed-systems">Consensus Mechanisms &amp; Distributed Systems</a></li>
+<li><a href="#zero-knowledge-proofs--cryptography">Zero-Knowledge Proofs &amp; Cryptography</a></li>
+<li><a href="#smart-contract-security--formal-verification">Smart Contract Security &amp; Formal Verification</a></li>
+<li><a href="#mechanism-design--defi-applications">Mechanism Design &amp; DeFi Applications</a></li>
+<li><a href="#mev-research">MEV Research</a></li>
+<li><a href="#economic-models--tokenomics">Economic Models &amp; Tokenomics</a></li>
+<li><a href="#key-researchers--contributors">Key Researchers &amp; Contributors</a></li>
+<li><a href="#educational-resources--courses">Educational Resources &amp; Courses</a></li>
+</ol>
+<hr>
+</section>
+<section id="a16z-crypto-research-overview" class="level2">
+<h2 class="anchored" data-anchor-id="a16z-crypto-research-overview">a16z Crypto Research Overview</h2>
+<section id="main-research-hub" class="level3">
+<h3 class="anchored" data-anchor-id="main-research-hub">Main Research Hub</h3>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/focus-areas/research/</li>
+<li><strong>Description:</strong> Multidisciplinary research lab working on consensus, cryptography, economics, and blockchain theory</li>
+<li><strong>Research Topics:</strong> Consensus &amp; distributed systems, ZK &amp; SNARKs, Cryptography, Economics and incentives</li>
+</ul>
+</section>
+<section id="research-team-leadership" class="level3">
+<h3 class="anchored" data-anchor-id="research-team-leadership">Research Team Leadership</h3>
+<ul>
+<li><strong>Tim Roughgarden</strong> - Head of Research, Professor at Columbia University
+<ul>
+<li>Profile: https://a16zcrypto.com/team/tim-roughgarden/</li>
+<li>Personal site: https://timroughgarden.org/</li>
+<li>Focus: Mechanism design, blockchain theory, algorithmic game theory</li>
+<li>Relevance: 10/10 (directly aligned with Roughgarden’s work)</li>
+</ul></li>
+</ul>
+</section>
+<section id="key-research-areas" class="level3">
+<h3 class="anchored" data-anchor-id="key-research-areas">Key Research Areas</h3>
+<ol type="1">
+<li><strong>Consensus &amp; Distributed Systems</strong></li>
+<li><strong>Zero-Knowledge &amp; SNARKs</strong></li>
+<li><strong>Cryptography</strong></li>
+<li><strong>Economics &amp; Incentives</strong></li>
+<li><strong>Formal Verification</strong></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="paradigm-research-overview" class="level2">
+<h2 class="anchored" data-anchor-id="paradigm-research-overview">Paradigm Research Overview</h2>
+<section id="main-research-hub-1" class="level3">
+<h3 class="anchored" data-anchor-id="main-research-hub-1">Main Research Hub</h3>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/writing</li>
+<li><strong>Description:</strong> Research-driven crypto investment firm focusing on fundamental problems in crypto</li>
+<li><strong>Approach:</strong> “As likely to collaborate on research paper or ship code as advise on business strategy”</li>
+</ul>
+</section>
+<section id="research-focus-areas" class="level3">
+<h3 class="anchored" data-anchor-id="research-focus-areas">Research Focus Areas</h3>
+<ol type="1">
+<li>Automated Market Makers (AMMs)</li>
+<li>MEV &amp; Transaction Ordering</li>
+<li>Mechanism Design &amp; Auctions</li>
+<li>Protocol Infrastructure</li>
+<li>DeFi Primitives</li>
+</ol>
+</section>
+<section id="total-research-output" class="level3">
+<h3 class="anchored" data-anchor-id="total-research-output">Total Research Output</h3>
+<ul>
+<li><strong>226+ research papers and posts</strong> (as of Dec 2025)</li>
+<li>Categories: Research, Policy, Commentary, News</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="consensus-mechanisms-distributed-systems" class="level2">
+<h2 class="anchored" data-anchor-id="consensus-mechanisms-distributed-systems">Consensus Mechanisms &amp; Distributed Systems</h2>
+<section id="comprehensive-resources" class="level3">
+<h3 class="anchored" data-anchor-id="comprehensive-resources">Comprehensive Resources</h3>
+<section id="consensus-canon-a16z-crypto" class="level4">
+<h4 class="anchored" data-anchor-id="consensus-canon-a16z-crypto"><strong>Consensus Canon</strong> (a16z crypto)</h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/consensus-canon/</li>
+<li><strong>Author:</strong> Andrew Lewis-Pye</li>
+<li><strong>Date:</strong> January 31, 2023</li>
+<li><strong>Duration:</strong> 16 minutes read</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong>
+<ul>
+<li>Byzantine Broadcast, Byzantine Agreement, State Machine Replication</li>
+<li>Synchronous, partially synchronous, and asynchronous protocols</li>
+<li>Permissioned vs permissionless protocols</li>
+<li>DAG-based protocols</li>
+</ul></li>
+<li><strong>Format:</strong> Comprehensive reading list with categorized papers and resources</li>
+</ul>
+</section>
+<section id="foundations-of-blockchains-tim-roughgarden" class="level4">
+<h4 class="anchored" data-anchor-id="foundations-of-blockchains-tim-roughgarden"><strong>Foundations of Blockchains</strong> (Tim Roughgarden)</h4>
+<ul>
+<li><strong>URL:</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RLOHv_xUGLqRts_9JxrckiA</li>
+<li><strong>Platform:</strong> YouTube lecture series</li>
+<li><strong>Author:</strong> Tim Roughgarden (a16z crypto Head of Research)</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong> Proof-of-work, proof-of-stake, blockchain foundations</li>
+<li><strong>Format:</strong> Video lectures</li>
+</ul>
+</section>
+<section id="blockchain-foundations-dionysis-zindros" class="level4">
+<h4 class="anchored" data-anchor-id="blockchain-foundations-dionysis-zindros"><strong>Blockchain Foundations</strong> (Dionysis Zindros)</h4>
+<ul>
+<li><strong>URL:</strong> http://web.stanford.edu/class/ee374/</li>
+<li><strong>Platform:</strong> Stanford course materials</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> PoW and PoS protocols</li>
+<li><strong>Format:</strong> Lecture notes</li>
+</ul>
+</section>
+</section>
+<section id="research-talks-seminars" class="level3">
+<h3 class="anchored" data-anchor-id="research-talks-seminars">Research Talks &amp; Seminars</h3>
+<section id="summer-25-research-series-a16z-crypto" class="level4">
+<h4 class="anchored" data-anchor-id="summer-25-research-series-a16z-crypto"><strong>Summer ’25 Research Series</strong> (a16z crypto)</h4>
+<ul>
+<li><strong>URL:</strong> YouTube playlist (18 videos)</li>
+<li><strong>Platform:</strong> YouTube</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Recent Talks (2025):</strong></li>
+</ul>
+<ol type="1">
+<li><strong>“Quantifying Inefficiency”</strong>
+<ul>
+<li>Speaker: Yannai Gonczarowski</li>
+<li>Duration: 1:04:01</li>
+<li>Views: 249</li>
+<li>Date: 8 days ago</li>
+</ul></li>
+<li><strong>“A Constitution in the Sky”</strong>
+<ul>
+<li>Speaker: Andrew Hall</li>
+<li>Duration: 49:19</li>
+<li>Views: 239</li>
+<li>Date: 8 days ago</li>
+<li>Relevance: 9/10 (governance mechanisms)</li>
+</ul></li>
+<li><strong>“Building Secure Distributed Computing Systems for Blockchains”</strong>
+<ul>
+<li>Speaker: Aniket Kate</li>
+<li>Duration: 1:04:08</li>
+<li>Views: 255</li>
+<li>Date: 2 weeks ago</li>
+<li>Relevance: 10/10</li>
+</ul></li>
+<li><strong>“Alpenglow: Solana’s New Consensus”</strong>
+<ul>
+<li>Speaker: Roger Wattenhofer</li>
+<li>Duration: 55:15</li>
+<li>Views: 598</li>
+<li>Date: 1 month ago</li>
+<li>Relevance: 10/10</li>
+</ul></li>
+<li><strong>“Consensus Under Adversary Majority”</strong>
+<ul>
+<li>Speaker: Joachim Neu</li>
+<li>Duration: 41:22</li>
+<li>Views: 406</li>
+<li>Date: 1 month ago</li>
+<li>Relevance: 10/10</li>
+</ul></li>
+<li><strong>“Recent Advances in DAG-based Protocols”</strong>
+<ul>
+<li>Speaker: Kartik Nayak</li>
+<li>Duration: 55:49</li>
+<li>Views: 299</li>
+<li>Date: 1 month ago</li>
+<li>Relevance: 10/10</li>
+</ul></li>
+<li><strong>“Granular Synchrony: A New Network Timing Model”</strong>
+<ul>
+<li>Speaker: Ling Ren</li>
+<li>Duration: 52:45</li>
+<li>Views: 279</li>
+<li>Date: 1 month ago</li>
+<li>Relevance: 10/10</li>
+</ul></li>
+<li><strong>“Cryptography for Encrypted Mempools”</strong>
+<ul>
+<li>Speaker: Dan Boneh</li>
+<li>Duration: 1:04:00</li>
+<li>Views: 621</li>
+<li>Date: 3 weeks ago</li>
+<li>Relevance: 9/10</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="byzantine-fault-tolerance-bft" class="level3">
+<h3 class="anchored" data-anchor-id="byzantine-fault-tolerance-bft">Byzantine Fault Tolerance (BFT)</h3>
+<section id="bft-archives-a16z-crypto" class="level4">
+<h4 class="anchored" data-anchor-id="bft-archives-a16z-crypto"><strong>BFT Archives</strong> (a16z crypto)</h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/tags/bfts-byzantine-fault-tolerance/</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Resources:</strong></li>
+</ul>
+<ol type="1">
+<li><strong>“DAG Meets BFT: The Next Generation of BFT Consensus”</strong>
+<ul>
+<li>URL: https://a16zcrypto.com/posts/videos/dag-meets-bft-the-next-generation-of-bft-consensus/</li>
+<li>Format: Video</li>
+<li>Key Concepts: Directed acyclic graph (DAG) based BFT protocols</li>
+</ul></li>
+<li><strong>“Byzantine Fault Tolerance with Dynamic Participation”</strong>
+<ul>
+<li>URL: https://a16zcrypto.com/posts/videos/byzantine-fault-tolerance-with-dynamic-participation/</li>
+<li>Speaker: Ling Ren</li>
+<li>Key Concepts: Dynamic participation vs classical BFT</li>
+</ul></li>
+<li><strong>“Consensus in Blockchains: Overview and Recent Results”</strong>
+<ul>
+<li>Speaker: Christian Cachin</li>
+<li>Duration: Variable</li>
+<li>Relevance: 10/10</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="specific-research-papers-from-consensus-canon" class="level3">
+<h3 class="anchored" data-anchor-id="specific-research-papers-from-consensus-canon">Specific Research Papers (from Consensus Canon)</h3>
+<section id="foundational-papers" class="level4">
+<h4 class="anchored" data-anchor-id="foundational-papers">Foundational Papers</h4>
+<ol type="1">
+<li><strong>“The Byzantine Generals Problem” (1982)</strong>
+<ul>
+<li>Authors: Leslie Lamport, Robert Shostak, Marshall Pease</li>
+<li>URL: https://lamport.azurewebsites.net/pubs/byz.pdf</li>
+<li>Relevance: 10/10</li>
+<li>Key Concepts: Byzantine faults, distributed consensus foundations</li>
+</ul></li>
+<li><strong>“Consensus in the Presence of Partial Synchrony” (1988)</strong>
+<ul>
+<li>Authors: Cynthia Dwork, Nancy Lynch, Larry Stockmeyer</li>
+<li>URL: https://groups.csail.mit.edu/tds/papers/Lynch/jacm88.pdf</li>
+<li>Relevance: 10/10</li>
+<li>Key Concepts: Partially synchronous protocols, GST (Global Stabilization Time)</li>
+</ul></li>
+</ol>
+</section>
+<section id="modern-protocols" class="level4">
+<h4 class="anchored" data-anchor-id="modern-protocols">Modern Protocols</h4>
+<ol start="3" type="1">
+<li><strong>“Casper the Friendly Finality Gadget” (2017)</strong>
+<ul>
+<li>Authors: Vitalik Buterin, Virgil Griffith</li>
+<li>URL: https://arxiv.org/abs/1710.09437</li>
+<li>Relevance: 10/10</li>
+<li>Key Concepts: Ethereum proof-of-stake, finality gadget</li>
+</ul></li>
+<li><strong>“HotStuff: BFT Consensus in the Lens of Blockchain” (2018)</strong>
+<ul>
+<li>Authors: Maofan Yin, Dahlia Malkhi, et al.</li>
+<li>URL: https://arxiv.org/pdf/1803.05069.pdf</li>
+<li>Relevance: 10/10</li>
+<li>Key Concepts: Optimistic responsiveness, chained consensus</li>
+</ul></li>
+<li><strong>“Tendermint: The Latest Gossip on BFT Consensus” (2018)</strong>
+<ul>
+<li>Authors: Ethan Buchman, Jae Kwon, Zarko Milosevic</li>
+<li>URL: https://arxiv.org/pdf/1807.04938.pdf</li>
+<li>Relevance: 10/10</li>
+<li>Key Concepts: Practical BFT for blockchains</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="additional-research-topics" class="level3">
+<h3 class="anchored" data-anchor-id="additional-research-topics">Additional Research Topics</h3>
+<section id="accountable-liveness-new-paper-alert" class="level4">
+<h4 class="anchored" data-anchor-id="accountable-liveness-new-paper-alert"><strong>‘Accountable Liveness’: New Paper Alert</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/accountable-liveness/</li>
+<li><strong>Authors:</strong> Alexander (Sasha) Spiegelman, Tim Roughgarden, Robert Hackett</li>
+<li><strong>Date:</strong> March 14, 2025</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong> Punishing adversarial nodes that stall transaction confirmation</li>
+</ul>
+</section>
+<section id="beyond-51-attacks" class="level4">
+<h4 class="anchored" data-anchor-id="beyond-51-attacks"><strong>“Beyond 51% Attacks”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/beyond-51-attacks/</li>
+<li><strong>Key Concepts:</strong> Blockchain resilience, fault tolerance bounds</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="zero-knowledge-proofs-cryptography" class="level2">
+<h2 class="anchored" data-anchor-id="zero-knowledge-proofs-cryptography">Zero-Knowledge Proofs &amp; Cryptography</h2>
+<section id="comprehensive-resources-1" class="level3">
+<h3 class="anchored" data-anchor-id="comprehensive-resources-1">Comprehensive Resources</h3>
+<section id="zero-knowledge-canon-parts-1-2-a16z-crypto" class="level4">
+<h4 class="anchored" data-anchor-id="zero-knowledge-canon-parts-1-2-a16z-crypto"><strong>Zero Knowledge Canon, Parts 1 &amp; 2</strong> (a16z crypto)</h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/zero-knowledge-canon/</li>
+<li><strong>Authors:</strong> Elena Burger, Bryan Chiang, Sonal Chokshi, Eddy Lazzarin, Justin Thaler, Ali Yahya</li>
+<li><strong>Date:</strong> September 16, 2022</li>
+<li><strong>Duration:</strong> 44 minutes read</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Sections:</strong>
+<ul>
+<li>Foundations, background, evolutions</li>
+<li>Overviews &amp; intros</li>
+<li>Deep dives: courses, breakdowns, builder guides</li>
+<li>Applications &amp; tutorials</li>
+<li>Annotated reading list by Justin Thaler</li>
+</ul></li>
+</ul>
+</section>
+<section id="key-zk-research-areas-from-canon" class="level4">
+<h4 class="anchored" data-anchor-id="key-zk-research-areas-from-canon">Key ZK Research Areas (from Canon):</h4>
+<ol type="1">
+<li><strong>SNARKs from Linear PCPs</strong>
+<ul>
+<li>Circuit-specific setup</li>
+<li>Relevant papers include GGPR (2012), Groth16 (2016)</li>
+</ul></li>
+<li><strong>SNARKs with Universal Trusted Setup</strong>
+<ul>
+<li>PlonK (2019)</li>
+<li>Marlin (2019)</li>
+</ul></li>
+<li><strong>Polynomial Commitment Schemes</strong>
+<ul>
+<li>KZG commitments (2010)</li>
+<li>FRI (2017)</li>
+<li>Bulletproofs (2017)</li>
+</ul></li>
+<li><strong>Interactive Proofs &amp; Multi-prover IPs</strong>
+<ul>
+<li>GKR protocol (2008)</li>
+<li>Spartan (2019)</li>
+</ul></li>
+<li><strong>Recursive SNARKs</strong>
+<ul>
+<li>Halo (2019)</li>
+<li>Nova (2021)</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="research-talks" class="level3">
+<h3 class="anchored" data-anchor-id="research-talks">Research Talks</h3>
+<section id="zk-and-cryptography" class="level4">
+<h4 class="anchored" data-anchor-id="zk-and-cryptography"><strong>“ZK and Cryptography”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/videos/zk-and-cryptography/</li>
+<li><strong>Moderator:</strong> Tim Roughgarden</li>
+<li><strong>Speakers:</strong> Valeria Nikolaenko, Joe Bonneau, Justin Thaler</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong> Diverse aspects of cryptography, zero-knowledge systems</li>
+</ul>
+</section>
+<section id="formal-methods-for-zero-knowledge-circuits" class="level4">
+<h4 class="anchored" data-anchor-id="formal-methods-for-zero-knowledge-circuits"><strong>“Formal Methods for Zero Knowledge Circuits”</strong></h4>
+<ul>
+<li><strong>Speaker:</strong> Isil Dillig</li>
+<li><strong>Platform:</strong> YouTube (a16z crypto research talks)</li>
+<li><strong>URL:</strong> https://www.youtube.com/watch?v=tZ7_S0isWwk</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="zk-whiteboard-sessions" class="level4">
+<h4 class="anchored" data-anchor-id="zk-whiteboard-sessions"><strong>ZK Whiteboard Sessions</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://zkhack.dev/whiteboard/</li>
+<li><strong>Led by:</strong> Dan Boneh et al</li>
+<li><strong>Format:</strong> Introductory modules</li>
+<li><strong>Relevance:</strong> 8/10 (educational)</li>
+</ul>
+</section>
+</section>
+<section id="cryptography-research" class="level3">
+<h3 class="anchored" data-anchor-id="cryptography-research">Cryptography Research</h3>
+<section id="cryptography-for-blockchains-avoiding-common-mistakes" class="level4">
+<h4 class="anchored" data-anchor-id="cryptography-for-blockchains-avoiding-common-mistakes"><strong>“Cryptography for Blockchains: Avoiding Common Mistakes”</strong></h4>
+<ul>
+<li><strong>Speaker:</strong> Dan Boneh</li>
+<li><strong>Platform:</strong> YouTube</li>
+<li><strong>URL:</strong> https://www.youtube.com/watch?v=9yNsOg3_Y3k</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="distributed-randomness-beacons" class="level4">
+<h4 class="anchored" data-anchor-id="distributed-randomness-beacons"><strong>“Distributed Randomness Beacons”</strong></h4>
+<ul>
+<li><strong>Speaker:</strong> Joseph Bonneau</li>
+<li><strong>Platform:</strong> YouTube</li>
+<li><strong>URL:</strong> https://www.youtube.com/watch?v=eDSPeRmD6Pw</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="threshold-ecdsa-in-3-rounds" class="level4">
+<h4 class="anchored" data-anchor-id="threshold-ecdsa-in-3-rounds"><strong>“Threshold ECDSA in 3 Rounds”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/videos/threshold-ecdsa-in-3-rounds/</li>
+<li><strong>Relevance:</strong> 8/10</li>
+<li><strong>Key Concepts:</strong> Multi-party computation, threshold signatures</li>
+</ul>
+</section>
+<section id="quantum-computing-and-blockchains-matching-urgency-to-actual-threats" class="level4">
+<h4 class="anchored" data-anchor-id="quantum-computing-and-blockchains-matching-urgency-to-actual-threats"><strong>“Quantum Computing and Blockchains: Matching Urgency to Actual Threats”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/quantum-computing-misconceptions-realities-blockchains-planning-migrations/</li>
+<li><strong>Author:</strong> Justin Thaler</li>
+<li><strong>Date:</strong> December 5, 2025</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Post-quantum cryptography, migration strategies</li>
+</ul>
+</section>
+</section>
+<section id="key-researchers" class="level3">
+<h3 class="anchored" data-anchor-id="key-researchers">Key Researchers</h3>
+<section id="valeria-nikolaenko-a16z-crypto-research-partner" class="level4">
+<h4 class="anchored" data-anchor-id="valeria-nikolaenko-a16z-crypto-research-partner"><strong>Valeria Nikolaenko</strong> (a16z crypto Research Partner)</h4>
+<ul>
+<li>Focus: Cryptography, blockchain security, zero-knowledge proofs</li>
+<li>Notable Work: “A Survey of Proof-of-Stake (PoS) Blockchain Designs”</li>
+<li><strong>URL:</strong> https://www.youtube.com/watch?v=mZ-Ya7NRDxM</li>
+</ul>
+</section>
+<section id="joseph-bonneau-a16z-crypto-technical-advisor" class="level4">
+<h4 class="anchored" data-anchor-id="joseph-bonneau-a16z-crypto-technical-advisor"><strong>Joseph Bonneau</strong> (a16z crypto Technical Advisor)</h4>
+<ul>
+<li>Focus: Applied cryptography, blockchain security</li>
+<li>Notable Work: Public randomness and randomness beacons</li>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/public-randomness-and-randomness-beacons/</li>
+</ul>
+</section>
+<section id="dan-boneh-a16z-crypto-senior-research-advisor" class="level4">
+<h4 class="anchored" data-anchor-id="dan-boneh-a16z-crypto-senior-research-advisor"><strong>Dan Boneh</strong> (a16z crypto Senior Research Advisor)</h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/team/dan-boneh/</li>
+<li>Position: Leads applied cryptography group at Stanford</li>
+<li>Focus: Applications of cryptography to computer security</li>
+</ul>
+</section>
+<section id="justin-thaler-a16z-crypto" class="level4">
+<h4 class="anchored" data-anchor-id="justin-thaler-a16z-crypto"><strong>Justin Thaler</strong> (a16z crypto)</h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/team/justin-thaler/</li>
+<li>Notable Work: “Proofs, Arguments, and Zero-Knowledge” textbook</li>
+<li>Book URL: https://people.cs.georgetown.edu/jthaler/ProofsArgsAndZK.pdf</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="smart-contract-security-formal-verification" class="level2">
+<h2 class="anchored" data-anchor-id="smart-contract-security-formal-verification">Smart Contract Security &amp; Formal Verification</h2>
+<section id="halmos-project-a16z-crypto" class="level3">
+<h3 class="anchored" data-anchor-id="halmos-project-a16z-crypto">Halmos Project (a16z crypto)</h3>
+<section id="symbolic-testing-with-halmos-for-formal-verification" class="level4">
+<h4 class="anchored" data-anchor-id="symbolic-testing-with-halmos-for-formal-verification"><strong>“Symbolic Testing with Halmos for Formal Verification”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/symbolic-testing-with-halmos-leveraging-existing-tests-for-formal-verification/</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Bridging gap between unit testing and formal verification</li>
+</ul>
+</section>
+<section id="halmos-archives" class="level4">
+<h4 class="anchored" data-anchor-id="halmos-archives"><strong>Halmos Archives</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/tags/halmos/</li>
+<li><strong>Latest:</strong> Halmos v0.3.0 release highlights</li>
+<li><strong>Key Features:</strong> Symbolic testing tool for EVM smart contracts</li>
+</ul>
+</section>
+<section id="formal-verification-of-pectra-system-contracts-with-halmos" class="level4">
+<h4 class="anchored" data-anchor-id="formal-verification-of-pectra-system-contracts-with-halmos"><strong>“Formal Verification of Pectra System Contracts with Halmos”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/formal-verification-of-pectra-system-contracts-with-halmos/</li>
+<li><strong>Author:</strong> Daejun Park</li>
+<li><strong>Date:</strong> January 30, 2025</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Ethereum Pectra upgrade verification</li>
+</ul>
+</section>
+<section id="implementing-stateful-invariant-testing-with-halmos" class="level4">
+<h4 class="anchored" data-anchor-id="implementing-stateful-invariant-testing-with-halmos"><strong>“Implementing Stateful Invariant Testing with Halmos”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/implementing-stateful-invariant-testing-with-halmos/</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+</section>
+<section id="security-research" class="level3">
+<h3 class="anchored" data-anchor-id="security-research">Security Research</h3>
+<section id="smart-contract-security-checklist-for-web3-development" class="level4">
+<h4 class="anchored" data-anchor-id="smart-contract-security-checklist-for-web3-development"><strong>“Smart Contract Security Checklist for Web3 Development”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/smart-contract-security-checklist-web3-development/</li>
+<li><strong>Relevance:</strong> 8/10</li>
+<li><strong>Key Concepts:</strong> Core security fundamentals for web3 builders</li>
+</ul>
+</section>
+<section id="secure-smart-contract-development" class="level4">
+<h4 class="anchored" data-anchor-id="secure-smart-contract-development"><strong>“Secure Smart Contract Development”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/videos/secure-smart-contract-development/</li>
+<li><strong>Format:</strong> Video</li>
+<li><strong>Relevance:</strong> 8/10</li>
+<li><strong>Key Concepts:</strong> Coding risks, memory safety, input validation</li>
+</ul>
+</section>
+</section>
+<section id="key-researcher" class="level3">
+<h3 class="anchored" data-anchor-id="key-researcher">Key Researcher</h3>
+<section id="daejun-park-a16z-crypto-senior-blockchain-security-engineer" class="level4">
+<h4 class="anchored" data-anchor-id="daejun-park-a16z-crypto-senior-blockchain-security-engineer"><strong>Daejun Park</strong> (a16z crypto Senior Blockchain Security Engineer)</h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/team/daejun-park/</li>
+<li><strong>Focus:</strong> Formal methods and tools for web3 security</li>
+<li><strong>Projects:</strong> Halmos, Pectra verification</li>
+<li><strong>GitHub:</strong> https://github.com/daejunpark/sys-asm-halmos</li>
+</ul>
+</section>
+</section>
+<section id="paradigm-security-research" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm-security-research">Paradigm Security Research</h3>
+<section id="samczsun-former-research-partner-at-paradigm" class="level4">
+<h4 class="anchored" data-anchor-id="samczsun-former-research-partner-at-paradigm"><strong>samczsun</strong> (Former Research Partner at Paradigm)</h4>
+<ul>
+<li><strong>Key Contributions:</strong> Smart contract auditing, security research</li>
+<li><strong>Notable Work:</strong> “Escaping the Dark Forest” (2020)
+<ul>
+<li>URL: https://www.paradigm.xyz/2020/09/escaping-the-dark-forest</li>
+</ul></li>
+<li><strong>Current Focus:</strong> SEAL 911 security initiative</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="mechanism-design-defi-applications" class="level2">
+<h2 class="anchored" data-anchor-id="mechanism-design-defi-applications">Mechanism Design &amp; DeFi Applications</h2>
+<section id="mechanism-design-resources" class="level3">
+<h3 class="anchored" data-anchor-id="mechanism-design-resources">Mechanism Design Resources</h3>
+<section id="reasons-why-blockchain-mechanism-design-is-hard" class="level4">
+<h4 class="anchored" data-anchor-id="reasons-why-blockchain-mechanism-design-is-hard"><strong>“8 Reasons Why Blockchain Mechanism Design is Hard”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/8-reasons-why-blockchain-mechanism-design-is-hard/</li>
+<li><strong>Author:</strong> Tim Roughgarden</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong> Inverse game theory, incentive design, auction theory, market design</li>
+</ul>
+</section>
+<section id="credible-auctions-a-trilemma" class="level4">
+<h4 class="anchored" data-anchor-id="credible-auctions-a-trilemma"><strong>“Credible Auctions: A Trilemma”</strong></h4>
+<ul>
+<li><strong>Speaker:</strong> Mohammad Akbarpour</li>
+<li><strong>Platform:</strong> a16z crypto research talks</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+</section>
+<section id="paradigm-amm-research" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm-amm-research">Paradigm AMM Research</h3>
+<section id="understanding-automated-market-makers-part-1-price-impact" class="level4">
+<h4 class="anchored" data-anchor-id="understanding-automated-market-makers-part-1-price-impact"><strong>“Understanding Automated Market-Makers, Part 1: Price Impact”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2021/04/understanding-automated-market-makers-part-1-price-impact</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Trading fees, spreads, price impact</li>
+</ul>
+</section>
+<section id="twamm" class="level4">
+<h4 class="anchored" data-anchor-id="twamm"><strong>“TWAMM”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2021/07/twamm</li>
+<li><strong>Authors:</strong> Paradigm Research</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Time-weighted AMM for large orders on Ethereum</li>
+</ul>
+</section>
+<section id="uniswap-v3-the-universal-amm" class="level4">
+<h4 class="anchored" data-anchor-id="uniswap-v3-the-universal-amm"><strong>“Uniswap v3: The Universal AMM”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2021/06/uniswap-v3-the-universal-amm</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Concentrated liquidity, capital efficiency</li>
+</ul>
+</section>
+<section id="pm-amm-a-uniform-amm-for-prediction-markets" class="level4">
+<h4 class="anchored" data-anchor-id="pm-amm-a-uniform-amm-for-prediction-markets"><strong>“pm-AMM: A Uniform AMM for Prediction Markets”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2024/11/pm-amm</li>
+<li><strong>Date:</strong> November 2024</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Prediction market AMM design</li>
+</ul>
+</section>
+<section id="orbital" class="level4">
+<h4 class="anchored" data-anchor-id="orbital"><strong>“Orbital”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2025/06/orbital</li>
+<li><strong>Date:</strong> June 2025</li>
+<li><strong>Authors:</strong> Dave White, Ciamac Moallemi</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> AMM for stablecoin pools (2, 3, or 10,000 stablecoins)</li>
+</ul>
+</section>
+</section>
+<section id="auction-theory-mechanism-design-paradigm" class="level3">
+<h3 class="anchored" data-anchor-id="auction-theory-mechanism-design-paradigm">Auction Theory &amp; Mechanism Design (Paradigm)</h3>
+<section id="gradual-dutch-auctions-gda" class="level4">
+<h4 class="anchored" data-anchor-id="gradual-dutch-auctions-gda"><strong>“Gradual Dutch Auctions” (GDA)</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2022/04/gda</li>
+<li><strong>Authors:</strong> Dave White et al.</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Efficient sales of assets without liquid markets</li>
+</ul>
+</section>
+<section id="variable-rate-gdas-vrgdas" class="level4">
+<h4 class="anchored" data-anchor-id="variable-rate-gdas-vrgdas"><strong>“Variable Rate GDAs” (VRGDAs)</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2022/08/vrgda</li>
+<li><strong>Author:</strong> Dave White</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="leaderless-auctions" class="level4">
+<h4 class="anchored" data-anchor-id="leaderless-auctions"><strong>“Leaderless Auctions”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2024/02/leaderless-auctions</li>
+<li><strong>Date:</strong> February 2024</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Decentralized auctions, no auctioneer, addressing “last look” problem</li>
+</ul>
+</section>
+<section id="distribution-markets" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-markets"><strong>“Distribution Markets”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2024/12/distribution-markets</li>
+<li><strong>Date:</strong> December 2024</li>
+<li><strong>Authors:</strong> Dave White et al.</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Prediction markets for continuous outcomes</li>
+</ul>
+</section>
+</section>
+<section id="defi-economics" class="level3">
+<h3 class="anchored" data-anchor-id="defi-economics">DeFi Economics</h3>
+<section id="lvr-quantifying-the-cost-of-providing-liquidity" class="level4">
+<h4 class="anchored" data-anchor-id="lvr-quantifying-the-cost-of-providing-liquidity"><strong>“LVR: Quantifying the Cost of Providing Liquidity”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/lvr-quantifying-the-cost-of-providing-liquidity-to-automated-market-makers/</li>
+<li><strong>Authors:</strong> Tim Roughgarden et al.</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong> Loss-versus-rebalancing, LP costs</li>
+</ul>
+</section>
+<section id="priority-is-all-you-need" class="level4">
+<h4 class="anchored" data-anchor-id="priority-is-all-you-need"><strong>“Priority Is All You Need”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2024/06/priority-is-all-you-need</li>
+<li><strong>Date:</strong> June 2024</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> MEV taxes, application-level MEV capture</li>
+</ul>
+</section>
+<section id="everything-is-a-perp" class="level4">
+<h4 class="anchored" data-anchor-id="everything-is-a-perp"><strong>“Everything Is A Perp”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2024/03/everything-is-a-perp</li>
+<li><strong>Date:</strong> March 2024</li>
+<li><strong>Relevance:</strong> 8/10</li>
+<li><strong>Key Concepts:</strong> Perpetual contracts, index exposure</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="mev-research" class="level2">
+<h2 class="anchored" data-anchor-id="mev-research">MEV Research</h2>
+<section id="paradigm-mev-research" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm-mev-research">Paradigm MEV Research</h3>
+<section id="mev-and-me" class="level4">
+<h4 class="anchored" data-anchor-id="mev-and-me"><strong>“MEV and Me”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2021/02/mev-and-me</li>
+<li><strong>Date:</strong> February 2021</li>
+<li><strong>Authors:</strong> Paradigm Research</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong> Flashbots formation, MEV negative externalities</li>
+</ul>
+</section>
+<section id="the-key-neutrality-of-baselayer-markets" class="level4">
+<h4 class="anchored" data-anchor-id="the-key-neutrality-of-baselayer-markets"><strong>“The Key Neutrality of Baselayer Markets”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2025/04/the-key-neutrality-of-baselayer-markets</li>
+<li><strong>Date:</strong> April 2025</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong> MEV evolution, Ethereum MEV ecosystem</li>
+</ul>
+</section>
+<section id="time-slots-and-the-ordering-of-events-in-ethereum-proof-of-stake" class="level4">
+<h4 class="anchored" data-anchor-id="time-slots-and-the-ordering-of-events-in-ethereum-proof-of-stake"><strong>“Time, Slots, and the Ordering of Events in Ethereum Proof-of-Stake”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2023/04/mev-boost-ethereum-consensus</li>
+<li><strong>Date:</strong> April 2023</li>
+<li><strong>Relevance:</strong> 10/10</li>
+<li><strong>Key Concepts:</strong> mev-boost protocol, MEV mitigation</li>
+</ul>
+</section>
+<section id="artemis-an-open-source-mev-bot-framework" class="level4">
+<h4 class="anchored" data-anchor-id="artemis-an-open-source-mev-bot-framework"><strong>“Artemis: An Open-Source MEV Bot Framework”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2023/05/artemis</li>
+<li><strong>Date:</strong> May 2023</li>
+<li><strong>Relevance:</strong> 8/10</li>
+<li><strong>Key Concepts:</strong> MEV bot framework in Rust, modular design</li>
+</ul>
+</section>
+<section id="intent-based-architecture-and-their-risks" class="level4">
+<h4 class="anchored" data-anchor-id="intent-based-architecture-and-their-risks"><strong>“Intent-Based Architecture and Their Risks”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2023/06/intents</li>
+<li><strong>Date:</strong> June 2023</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Intent-based systems, MEV implications</li>
+</ul>
+</section>
+</section>
+<section id="a16z-mev-research" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-mev-research">a16z MEV Research</h3>
+<section id="ethereum-roadmap-focil-and-multi-proposers" class="level4">
+<h4 class="anchored" data-anchor-id="ethereum-roadmap-focil-and-multi-proposers"><strong>Ethereum Roadmap: FOCIL and Multi-Proposers</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/ethereum-roadmap-focil-and-multi-proposers/</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Short-term censorship, latency advantages, multi-proposer schemes</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="economic-models-tokenomics" class="level2">
+<h2 class="anchored" data-anchor-id="economic-models-tokenomics">Economic Models &amp; Tokenomics</h2>
+<section id="a16z-token-design-research" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-token-design-research">a16z Token Design Research</h3>
+<section id="tokenology-moving-beyond-tokenomics" class="level4">
+<h4 class="anchored" data-anchor-id="tokenology-moving-beyond-tokenomics"><strong>“Tokenology: Moving Beyond ‘Tokenomics’”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/beyond-tokenomics-tokenology/</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Multi-dimensional token design beyond economics</li>
+</ul>
+</section>
+<section id="defining-tokens" class="level4">
+<h4 class="anchored" data-anchor-id="defining-tokens"><strong>“Defining Tokens”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/defining-tokens/</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Seven categories of tokens, framework for understanding tokens</li>
+</ul>
+</section>
+<section id="sanity-checks-before-designing-a-token" class="level4">
+<h4 class="anchored" data-anchor-id="sanity-checks-before-designing-a-token"><strong>“7 Sanity Checks Before Designing a Token”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/designing-tokens-sanity-checks-principles-guidance/</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="token-design-mental-models-capabilities" class="level4">
+<h4 class="anchored" data-anchor-id="token-design-mental-models-capabilities"><strong>“Token Design: Mental Models, Capabilities”</strong></h4>
+<ul>
+<li><strong>Speaker:</strong> Eddy Lazzarin (a16z crypto CTO)</li>
+<li><strong>Platform:</strong> YouTube</li>
+<li><strong>URL:</strong> https://www.youtube.com/watch?v=GOkxDvq_8zQ</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="a-new-financial-model-for-app-tokens-how-to-generate-cash-flows" class="level4">
+<h4 class="anchored" data-anchor-id="a-new-financial-model-for-app-tokens-how-to-generate-cash-flows"><strong>“A New Financial Model for App Tokens: How to Generate Cash Flows”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/application-tokens-economic-model-cash-flows/</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Cash flows for app tokens, compliant fee models</li>
+</ul>
+</section>
+<section id="arcade-tokens-the-most-underappreciated-token-type" class="level4">
+<h4 class="anchored" data-anchor-id="arcade-tokens-the-most-underappreciated-token-type"><strong>“Arcade Tokens: The Most Underappreciated Token Type”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/arcade-tokens/</li>
+<li><strong>Authors:</strong> Scott Duke Kominers, Eddy Lazzarin, Miles Jennings, Tim Roughgarden</li>
+<li><strong>Date:</strong> November 13, 2025</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+</section>
+<section id="proof-of-stake-economics" class="level3">
+<h3 class="anchored" data-anchor-id="proof-of-stake-economics">Proof of Stake Economics</h3>
+<section id="a-survey-of-proof-of-stake-pos-blockchain-designs" class="level4">
+<h4 class="anchored" data-anchor-id="a-survey-of-proof-of-stake-pos-blockchain-designs"><strong>“A Survey of Proof-of-Stake (PoS) Blockchain Designs”</strong></h4>
+<ul>
+<li><strong>Speaker:</strong> Valeria Nikolaenko</li>
+<li><strong>Platform:</strong> YouTube</li>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/videos/a-survey-of-proof-of-stake-pos-blockchain-designs/</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="the-cryptoeconomics-of-slashing" class="level4">
+<h4 class="anchored" data-anchor-id="the-cryptoeconomics-of-slashing"><strong>“The Cryptoeconomics of Slashing”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/the-cryptoeconomics-of-slashing/</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Proof-of-stake penalties, enforcement mechanisms</li>
+</ul>
+</section>
+</section>
+<section id="rollup-economics" class="level3">
+<h3 class="anchored" data-anchor-id="rollup-economics">Rollup Economics</h3>
+<section id="rollup-sequencer-economics-open-questions" class="level4">
+<h4 class="anchored" data-anchor-id="rollup-sequencer-economics-open-questions"><strong>“Rollup Sequencer Economics: Open Questions”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/videos/rollup-sequencer-economics-questions-2/</li>
+<li><strong>Relevance:</strong> 9/10</li>
+<li><strong>Key Concepts:</strong> Horizontal scaling, computation sharding</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="key-researchers-contributors" class="level2">
+<h2 class="anchored" data-anchor-id="key-researchers-contributors">Key Researchers &amp; Contributors</h2>
+<section id="a16z-crypto-research-team" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-crypto-research-team">a16z Crypto Research Team</h3>
+<section id="tim-roughgarden---head-of-research" class="level4">
+<h4 class="anchored" data-anchor-id="tim-roughgarden---head-of-research"><strong>Tim Roughgarden</strong> - Head of Research</h4>
+<ul>
+<li><strong>Profile:</strong> https://a16zcrypto.com/team/tim-roughgarden/</li>
+<li><strong>Position:</strong> Professor, Columbia University; Director, Columbia-Ethereum Research Center</li>
+<li><strong>Personal Site:</strong> https://timroughgarden.org/</li>
+<li><strong>Papers:</strong> https://timroughgarden.org/chron.html</li>
+<li><strong>Twitter:</strong> <span class="citation" data-cites="Tim_Roughgarden">(<a href="#ref-Tim_Roughgarden" role="doc-biblioref"><strong>Tim_Roughgarden?</strong></a>)</span></li>
+<li><strong>Focus Areas:</strong> Mechanism design, algorithmic game theory, blockchain theory</li>
+<li><strong>Key Contributions:</strong>
+<ul>
+<li>“Complexity Theory, Game Theory, and Economics”</li>
+<li>“How Does Blockchain Security Dictate Blockchain Implementation?”</li>
+<li>Algorithms Illuminated (textbook series)</li>
+</ul></li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="valeria-nikolaenko---research-partner" class="level4">
+<h4 class="anchored" data-anchor-id="valeria-nikolaenko---research-partner"><strong>Valeria Nikolaenko</strong> - Research Partner</h4>
+<ul>
+<li><strong>Focus:</strong> Cryptography, blockchain security, zero-knowledge proofs</li>
+<li><strong>Key Work:</strong> PoS blockchain designs, ZK workshop presentations</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="joseph-bonneau---research-partner" class="level4">
+<h4 class="anchored" data-anchor-id="joseph-bonneau---research-partner"><strong>Joseph Bonneau</strong> - Research Partner</h4>
+<ul>
+<li><strong>Position:</strong> Associate Professor, NYU (as of 2024)</li>
+<li><strong>CV:</strong> https://jbonneau.com/doc/jbonneau_cv.pdf</li>
+<li><strong>Focus:</strong> Applied cryptography, blockchain security</li>
+<li><strong>Key Work:</strong> Distributed randomness beacons, VDFs</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="dan-boneh---senior-research-advisor" class="level4">
+<h4 class="anchored" data-anchor-id="dan-boneh---senior-research-advisor"><strong>Dan Boneh</strong> - Senior Research Advisor</h4>
+<ul>
+<li><strong>Profile:</strong> https://a16zcrypto.com/team/dan-boneh/</li>
+<li><strong>Position:</strong> Professor, Stanford University; Co-director, Computer Security Lab</li>
+<li><strong>Focus:</strong> Applied cryptography, computer security</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="justin-thaler---research" class="level4">
+<h4 class="anchored" data-anchor-id="justin-thaler---research"><strong>Justin Thaler</strong> - Research</h4>
+<ul>
+<li><strong>Profile:</strong> https://a16zcrypto.com/team/justin-thaler/</li>
+<li><strong>Key Work:</strong> “Proofs, Arguments, and Zero-Knowledge” (textbook)</li>
+<li><strong>Focus:</strong> Verifiable computing, SNARKs, interactive proofs</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="daejun-park---senior-blockchain-security-engineer" class="level4">
+<h4 class="anchored" data-anchor-id="daejun-park---senior-blockchain-security-engineer"><strong>Daejun Park</strong> - Senior Blockchain Security Engineer</h4>
+<ul>
+<li><strong>Profile:</strong> https://a16zcrypto.com/team/daejun-park/</li>
+<li><strong>Focus:</strong> Formal methods, web3 security tools</li>
+<li><strong>Key Projects:</strong> Halmos</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="andrew-lewis-pye---professor-london-school-of-economics" class="level4">
+<h4 class="anchored" data-anchor-id="andrew-lewis-pye---professor-london-school-of-economics"><strong>Andrew Lewis-Pye</strong> - Professor, London School of Economics</h4>
+<ul>
+<li><strong>Twitter:</strong> <span class="citation" data-cites="AndrewLewisPye">(<a href="#ref-AndrewLewisPye" role="doc-biblioref"><strong>AndrewLewisPye?</strong></a>)</span></li>
+<li><strong>Site:</strong> https://lewis-pye.com/</li>
+<li><strong>Focus:</strong> Consensus protocols, tokenomics</li>
+<li><strong>Key Work:</strong> “Consensus in 50 Pages”</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="scott-duke-kominers---research-partner" class="level4">
+<h4 class="anchored" data-anchor-id="scott-duke-kominers---research-partner"><strong>Scott Duke Kominers</strong> - Research Partner</h4>
+<ul>
+<li><strong>Profile:</strong> https://a16zcrypto.com/team/scott-kominers/</li>
+<li><strong>Focus:</strong> Mechanism design, market design</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="andrew-hall---research-partner" class="level4">
+<h4 class="anchored" data-anchor-id="andrew-hall---research-partner"><strong>Andrew Hall</strong> - Research Partner</h4>
+<ul>
+<li><strong>Profile:</strong> https://a16zcrypto.com/team/andrew-hall/</li>
+<li><strong>Focus:</strong> Governance, voting mechanisms</li>
+<li><strong>Recent Work:</strong> “When Should You Deliberate, and When Should You Vote?”</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+</section>
+<section id="paradigm-research-team" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm-research-team">Paradigm Research Team</h3>
+<section id="matt-huang---co-founder-managing-partner" class="level4">
+<h4 class="anchored" data-anchor-id="matt-huang---co-founder-managing-partner"><strong>Matt Huang</strong> - Co-Founder, Managing Partner</h4>
+<ul>
+<li><strong>Profile:</strong> https://www.paradigm.xyz/team/matt-huang</li>
+<li><strong>Key Publications:</strong>
+<ul>
+<li>“Bitcoin for the Sovereign” (Nov 2024)</li>
+<li>“Announcing Paradigm’s Third Fund” ($850M, June 2024)</li>
+</ul></li>
+</ul>
+</section>
+<section id="dave-white---research-partner" class="level4">
+<h4 class="anchored" data-anchor-id="dave-white---research-partner"><strong>Dave White</strong> - Research Partner</h4>
+<ul>
+<li><strong>Profile:</strong> https://www.paradigm.xyz/team/dave-white</li>
+<li><strong>Background:</strong> Quantitative trader (Headlands, Two Sigma, Cutler)</li>
+<li><strong>Key Research:</strong>
+<ul>
+<li>Gradual Dutch Auctions (GDA)</li>
+<li>Variable Rate GDAs (VRGDA)</li>
+<li>Distribution Markets</li>
+<li>Orbital (stablecoin AMM)</li>
+</ul></li>
+<li><strong>Relevance:</strong> 10/10 (mechanism design)</li>
+</ul>
+</section>
+<section id="dan-robinson---general-partner" class="level4">
+<h4 class="anchored" data-anchor-id="dan-robinson---general-partner"><strong>Dan Robinson</strong> - General Partner</h4>
+<ul>
+<li><strong>Profile:</strong> https://www.paradigm.xyz/team/dan-robinson</li>
+<li><strong>Focus:</strong> Crypto investments, open-source protocol research</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="georgios-konstantopoulos---cto" class="level4">
+<h4 class="anchored" data-anchor-id="georgios-konstantopoulos---cto"><strong>Georgios Konstantopoulos</strong> - CTO</h4>
+<ul>
+<li><strong>Profile:</strong> https://www.paradigm.xyz/team/georgios-konstantopoulos</li>
+<li><strong>Twitter:</strong> <span class="citation" data-cites="gakonst">(<a href="#ref-gakonst" role="doc-biblioref"><strong>gakonst?</strong></a>)</span></li>
+<li><strong>GitHub:</strong> https://github.com/gakonst</li>
+<li><strong>Key Projects:</strong>
+<ul>
+<li>Reth (Rust Ethereum execution client)</li>
+<li>Foundry (Ethereum development toolkit)</li>
+</ul></li>
+<li><strong>Relevance:</strong> 8/10 (infrastructure)</li>
+</ul>
+</section>
+<section id="ciamac-moallemi---research-advisor" class="level4">
+<h4 class="anchored" data-anchor-id="ciamac-moallemi---research-advisor"><strong>Ciamac Moallemi</strong> - Research Advisor</h4>
+<ul>
+<li><strong>Profile:</strong> https://www.paradigm.xyz/team/ciamac-moallemi</li>
+<li><strong>Focus:</strong> AMM design, DeFi mechanisms</li>
+<li><strong>Key Work:</strong> pm-AMM (prediction markets)</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="storm-slivkoff---research" class="level4">
+<h4 class="anchored" data-anchor-id="storm-slivkoff---research"><strong>Storm Slivkoff</strong> - Research</h4>
+<ul>
+<li><strong>Profile:</strong> https://www.paradigm.xyz/team/storm-slivkoff</li>
+<li><strong>Recent Work:</strong> “Polymarket Volume Is Being Double-Counted” (Dec 2025)</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+</section>
+<section id="other-notable-contributors" class="level3">
+<h3 class="anchored" data-anchor-id="other-notable-contributors">Other Notable Contributors</h3>
+<section id="ittai-abraham---intel-formerly-vmware-research" class="level4">
+<h4 class="anchored" data-anchor-id="ittai-abraham---intel-formerly-vmware-research"><strong>Ittai Abraham</strong> - Intel (formerly VMware Research)</h4>
+<ul>
+<li><strong>Focus:</strong> Distributed systems, consensus protocols</li>
+<li><strong>Notable:</strong> Co-author of HotStuff</li>
+<li><strong>a16z crypto seminar:</strong> “It’s All about Trust”</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="kartik-nayak---researcher" class="level4">
+<h4 class="anchored" data-anchor-id="kartik-nayak---researcher"><strong>Kartik Nayak</strong> - Researcher</h4>
+<ul>
+<li><strong>Focus:</strong> DAG-based protocols, consensus</li>
+<li><strong>a16z crypto seminar:</strong> “Recent Advances in DAG-based Protocols”</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="ling-ren---researcher" class="level4">
+<h4 class="anchored" data-anchor-id="ling-ren---researcher"><strong>Ling Ren</strong> - Researcher</h4>
+<ul>
+<li><strong>Focus:</strong> Byzantine consensus, network timing models</li>
+<li><strong>a16z crypto seminars:</strong> Multiple talks on consensus</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="christian-cachin---researcher" class="level4">
+<h4 class="anchored" data-anchor-id="christian-cachin---researcher"><strong>Christian Cachin</strong> - Researcher</h4>
+<ul>
+<li><strong>Focus:</strong> Byzantine agreement, distributed systems</li>
+<li><strong>a16z crypto seminar:</strong> “Overview and Recent Results”</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="educational-resources-courses" class="level2">
+<h2 class="anchored" data-anchor-id="educational-resources-courses">Educational Resources &amp; Courses</h2>
+<section id="comprehensive-canons-a16z-crypto" class="level3">
+<h3 class="anchored" data-anchor-id="comprehensive-canons-a16z-crypto">Comprehensive Canons (a16z crypto)</h3>
+<section id="consensus-canon" class="level4">
+<h4 class="anchored" data-anchor-id="consensus-canon"><strong>Consensus Canon</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/consensus-canon/</li>
+<li><strong>Author:</strong> Andrew Lewis-Pye</li>
+<li><strong>Format:</strong> Annotated reading list</li>
+<li><strong>Sections:</strong>
+<ul>
+<li>General resources</li>
+<li>Synchronous protocols</li>
+<li>Partially synchronous protocols</li>
+<li>Asynchronous protocols</li>
+<li>DAG protocols</li>
+<li>Permissionless protocols</li>
+</ul></li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="zero-knowledge-canon-parts-1-2" class="level4">
+<h4 class="anchored" data-anchor-id="zero-knowledge-canon-parts-1-2"><strong>Zero Knowledge Canon (Parts 1 &amp; 2)</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/zero-knowledge-canon/</li>
+<li><strong>Authors:</strong> Multiple (Elena Burger, Justin Thaler, et al.)</li>
+<li><strong>Format:</strong> Comprehensive resource list + annotated bibliography</li>
+<li><strong>Sections:</strong>
+<ul>
+<li>Foundations &amp; evolutions</li>
+<li>Overviews &amp; intros</li>
+<li>Deep dives &amp; courses</li>
+<li>Applications &amp; tutorials</li>
+<li>Part 2: Chronological research list</li>
+</ul></li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+</section>
+<section id="video-lecture-series" class="level3">
+<h3 class="anchored" data-anchor-id="video-lecture-series">Video Lecture Series</h3>
+<section id="foundations-of-blockchains-tim-roughgarden-1" class="level4">
+<h4 class="anchored" data-anchor-id="foundations-of-blockchains-tim-roughgarden-1"><strong>Foundations of Blockchains</strong> (Tim Roughgarden)</h4>
+<ul>
+<li><strong>Platform:</strong> YouTube</li>
+<li><strong>URL:</strong> https://www.youtube.com/playlist?list=PLEGCF-WLh2RLOHv_xUGLqRts_9JxrckiA</li>
+<li><strong>Format:</strong> University-level lecture series</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="a16z-crypto-summer-research-seminars" class="level4">
+<h4 class="anchored" data-anchor-id="a16z-crypto-summer-research-seminars"><strong>a16z Crypto Summer Research Seminars</strong></h4>
+<ul>
+<li><strong>Summer ’25:</strong> 18 videos (ongoing)</li>
+<li><strong>Summer ’24:</strong> Full playlist available</li>
+<li><strong>Summer ’23:</strong> Archived</li>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/introducing-our-summer-23-research-seminars/</li>
+<li><strong>Format:</strong> Expert research presentations</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+</section>
+<section id="external-educational-resources" class="level3">
+<h3 class="anchored" data-anchor-id="external-educational-resources">External Educational Resources</h3>
+<section id="decentralized-thoughts-blog" class="level4">
+<h4 class="anchored" data-anchor-id="decentralized-thoughts-blog"><strong>Decentralized Thoughts</strong> (Blog)</h4>
+<ul>
+<li><strong>URL:</strong> https://decentralizedthoughts.github.io/start-here/</li>
+<li><strong>Authors:</strong> Ittai Abraham, Kartik Nayak, et al.</li>
+<li><strong>Format:</strong> Technical blog with explanations</li>
+<li><strong>Relevance:</strong> 9/10</li>
+</ul>
+</section>
+<section id="foundations-of-distributed-consensus-and-blockchains-textbook" class="level4">
+<h4 class="anchored" data-anchor-id="foundations-of-distributed-consensus-and-blockchains-textbook"><strong>Foundations of Distributed Consensus and Blockchains</strong> (Textbook)</h4>
+<ul>
+<li><strong>Author:</strong> Elaine Shi</li>
+<li><strong>URL:</strong> https://www.distributedconsensus.net/</li>
+<li><strong>Format:</strong> Preliminary draft textbook</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="proofs-arguments-and-zero-knowledge-textbook" class="level4">
+<h4 class="anchored" data-anchor-id="proofs-arguments-and-zero-knowledge-textbook"><strong>Proofs, Arguments, and Zero-Knowledge</strong> (Textbook)</h4>
+<ul>
+<li><strong>Author:</strong> Justin Thaler</li>
+<li><strong>URL:</strong> https://people.cs.georgetown.edu/jthaler/ProofsArgsAndZK.pdf</li>
+<li><strong>Format:</strong> Comprehensive textbook</li>
+<li><strong>Relevance:</strong> 10/10</li>
+</ul>
+</section>
+<section id="zk-whiteboard-sessions-1" class="level4">
+<h4 class="anchored" data-anchor-id="zk-whiteboard-sessions-1"><strong>ZK Whiteboard Sessions</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://zkhack.dev/whiteboard/</li>
+<li><strong>Led by:</strong> Dan Boneh et al.</li>
+<li><strong>Format:</strong> Introductory video modules</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="zero-knowledge-podcast" class="level4">
+<h4 class="anchored" data-anchor-id="zero-knowledge-podcast"><strong>Zero Knowledge Podcast</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://zeroknowledge.fm/</li>
+<li><strong>Host:</strong> Anna Rose</li>
+<li><strong>Format:</strong> Interview podcast</li>
+<li><strong>Relevance:</strong> 7/10</li>
+</ul>
+</section>
+</section>
+<section id="practical-resources" class="level3">
+<h3 class="anchored" data-anchor-id="practical-resources">Practical Resources</h3>
+<section id="applied-zk-0xparc" class="level4">
+<h4 class="anchored" data-anchor-id="applied-zk-0xparc"><strong>Applied ZK (0xPARC)</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://learn.0xparc.org/materials/intro</li>
+<li><strong>Format:</strong> Learning resources for engineers</li>
+<li><strong>Focus:</strong> Theory to practice without formal mathematics background</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="zkrepl" class="level4">
+<h4 class="anchored" data-anchor-id="zkrepl"><strong>zkREPL</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://zkrepl.dev</li>
+<li><strong>Author:</strong> Kevin Kwok</li>
+<li><strong>Format:</strong> In-browser development environment for zkSNARKs</li>
+<li><strong>Relevance:</strong> 7/10</li>
+</ul>
+</section>
+<section id="arkworks-rust-ecosystem" class="level4">
+<h4 class="anchored" data-anchor-id="arkworks-rust-ecosystem"><strong>Arkworks</strong> (Rust Ecosystem)</h4>
+<ul>
+<li><strong>URL:</strong> https://github.com/arkworks-rs</li>
+<li><strong>Format:</strong> Libraries for zkSNARK development</li>
+<li><strong>Relevance:</strong> 7/10</li>
+</ul>
+</section>
+</section>
+<section id="conference-field-notes" class="level3">
+<h3 class="anchored" data-anchor-id="conference-field-notes">Conference Field Notes</h3>
+<section id="science-of-blockchain-conference-24" class="level4">
+<h4 class="anchored" data-anchor-id="science-of-blockchain-conference-24"><strong>Science of Blockchain Conference ’24</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/science-of-blockchain-conference-24-field-notes/</li>
+<li><strong>Authors:</strong> a16z crypto research team</li>
+<li><strong>Format:</strong> Conference highlights and summaries</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="real-world-crypto-2025-field-notes" class="level4">
+<h4 class="anchored" data-anchor-id="real-world-crypto-2025-field-notes"><strong>Real World Crypto 2025: Field Notes</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/real-world-crypto-2025-best-of/</li>
+<li><strong>Author:</strong> Joseph Bonneau</li>
+<li><strong>Format:</strong> Conference highlights</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="infrastructure-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="infrastructure-implementation">Infrastructure &amp; Implementation</h2>
+<section id="ethereum-layer-2" class="level3">
+<h3 class="anchored" data-anchor-id="ethereum-layer-2">Ethereum &amp; Layer 2</h3>
+<section id="reth-rust-ethereum-execution-client-paradigm" class="level4">
+<h4 class="anchored" data-anchor-id="reth-rust-ethereum-execution-client-paradigm"><strong>Reth: Rust Ethereum Execution Client</strong> (Paradigm)</h4>
+<ul>
+<li><strong>URL (Announcement):</strong> https://www.paradigm.xyz/2022/12/reth</li>
+<li><strong>URL (Release):</strong> https://www.paradigm.xyz/2023/06/reth-alpha</li>
+<li><strong>URL (Performance):</strong> https://www.paradigm.xyz/2024/04/reth-perf</li>
+<li><strong>Lead:</strong> Georgios Konstantopoulos</li>
+<li><strong>Key Features:</strong>
+<ul>
+<li>Written in Rust</li>
+<li>Modular, contributor-friendly</li>
+<li>Path to 1 gigagas per second</li>
+</ul></li>
+<li><strong>Relevance:</strong> 7/10 (implementation)</li>
+</ul>
+</section>
+<section id="rollups-research" class="level4">
+<h4 class="anchored" data-anchor-id="rollups-research"><strong>Rollups Research</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/tags/rollups/</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Optimistic vs ZK rollups</li>
+<li>Sequencer economics</li>
+<li>Scaling solutions</li>
+</ul></li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="investing-in-optimism" class="level4">
+<h4 class="anchored" data-anchor-id="investing-in-optimism"><strong>“Investing in Optimism”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/investing-in-optimism/</li>
+<li><strong>Relevance:</strong> 7/10</li>
+<li><strong>Key Concepts:</strong> Ethereum Layer 2, optimistic rollups</li>
+</ul>
+</section>
+</section>
+<section id="development-tools" class="level3">
+<h3 class="anchored" data-anchor-id="development-tools">Development Tools</h3>
+<section id="foundry-paradigm" class="level4">
+<h4 class="anchored" data-anchor-id="foundry-paradigm"><strong>Foundry</strong> (Paradigm)</h4>
+<ul>
+<li><strong>URL:</strong> https://www.paradigm.xyz/2021/12/introducing-the-foundry-ethereum-development-toolbox</li>
+<li><strong>Description:</strong> Ethereum development toolbox</li>
+<li><strong>Language:</strong> Rust</li>
+<li><strong>Relevance:</strong> 6/10 (tooling)</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="podcasts-media" class="level2">
+<h2 class="anchored" data-anchor-id="podcasts-media">Podcasts &amp; Media</h2>
+<section id="a16z-crypto-podcast-web3-with-a16z-crypto" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-crypto-podcast-web3-with-a16z-crypto">a16z Crypto Podcast (“web3 with a16z crypto”)</h3>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/podcasts/</li>
+<li><strong>Description:</strong> Definitive resource for crypto and web3</li>
+<li><strong>Format:</strong> Interview and discussion podcast</li>
+<li><strong>Relevance:</strong> 7/10</li>
+</ul>
+</section>
+<section id="notable-episodes" class="level3">
+<h3 class="anchored" data-anchor-id="notable-episodes">Notable Episodes</h3>
+<section id="prediction-markets---everything-you-need-to-know" class="level4">
+<h4 class="anchored" data-anchor-id="prediction-markets---everything-you-need-to-know"><strong>“Prediction Markets - Everything You Need to Know”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/podcast/prediction-markets-explained/</li>
+<li><strong>Guests:</strong> Includes Tim Roughgarden</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="blockchain-performance-demystified" class="level4">
+<h4 class="anchored" data-anchor-id="blockchain-performance-demystified"><strong>“Blockchain Performance, Demystified”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/podcast/blockchain-performance-aptos/</li>
+<li><strong>Topic:</strong> Throughput and latency optimization</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="congestion-pricing-economics-theory-reality" class="level4">
+<h4 class="anchored" data-anchor-id="congestion-pricing-economics-theory-reality"><strong>“Congestion Pricing: Economics, Theory, Reality”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/podcast/congestion-pricing-economics-new-york/</li>
+<li><strong>Topic:</strong> Economic mechanisms with blockchain parallels</li>
+<li><strong>Relevance:</strong> 7/10</li>
+</ul>
+</section>
+<section id="programming-languages-crypto" class="level4">
+<h4 class="anchored" data-anchor-id="programming-languages-crypto"><strong>“Programming Languages &amp; Crypto”</strong></h4>
+<ul>
+<li><strong>URL:</strong> https://web3-with-a16z.simplecast.com/episodes/programming-languages-smart-contract-programming-evolutions</li>
+<li><strong>Topic:</strong> Smart contract programming languages</li>
+<li><strong>Relevance:</strong> 7/10</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="recent-publications-2024-2025" class="level2">
+<h2 class="anchored" data-anchor-id="recent-publications-2024-2025">Recent Publications (2024-2025)</h2>
+<section id="a16z-crypto-recent-research" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-crypto-recent-research">a16z Crypto Recent Research</h3>
+<section id="december-2025" class="level4">
+<h4 class="anchored" data-anchor-id="december-2025">December 2025</h4>
+<ul>
+<li><strong>“Quantum Computing and Blockchains: Matching Urgency to Actual Threats”</strong> (Justin Thaler)</li>
+<li><strong>“17 Things We’re Excited About for Crypto in 2026”</strong> (Multiple authors)</li>
+</ul>
+</section>
+<section id="november-2025" class="level4">
+<h4 class="anchored" data-anchor-id="november-2025">November 2025</h4>
+<ul>
+<li><strong>“Arcade Tokens: The Most Underappreciated Token Type”</strong> (Kominers, Lazzarin, Jennings, Roughgarden)</li>
+</ul>
+</section>
+<section id="october-2025" class="level4">
+<h4 class="anchored" data-anchor-id="october-2025">October 2025</h4>
+<ul>
+<li><strong>“When Should You Deliberate, and When Should You Vote?”</strong> (Andrew Hall)</li>
+<li><strong>“64-bit Proving for Jolt, Without a Slowdown”</strong> (Georghiades, Milson, Thaler, et al.)</li>
+</ul>
+</section>
+<section id="january-2025" class="level4">
+<h4 class="anchored" data-anchor-id="january-2025">January 2025</h4>
+<ul>
+<li><strong>“Formal Verification of Pectra System Contracts with Halmos”</strong> (Daejun Park)</li>
+</ul>
+</section>
+</section>
+<section id="paradigm-recent-research" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm-recent-research">Paradigm Recent Research</h3>
+<section id="december-2025-1" class="level4">
+<h4 class="anchored" data-anchor-id="december-2025-1">December 2025</h4>
+<ul>
+<li><strong>“Data Banishes Fear”</strong> (Justin Slaughter) - Stablecoins and banking</li>
+<li><strong>“Polymarket Volume Is Being Double-Counted”</strong> (Storm Slivkoff)</li>
+</ul>
+</section>
+<section id="november-2024" class="level4">
+<h4 class="anchored" data-anchor-id="november-2024">November 2024</h4>
+<ul>
+<li><strong>“pm-AMM: A Uniform AMM for Prediction Markets”</strong></li>
+</ul>
+</section>
+<section id="june-2025" class="level4">
+<h4 class="anchored" data-anchor-id="june-2025">June 2025</h4>
+<ul>
+<li><strong>“Orbital”</strong> (Dave White, Ciamac Moallemi) - Stablecoin AMM</li>
+</ul>
+</section>
+<section id="april-2025" class="level4">
+<h4 class="anchored" data-anchor-id="april-2025">April 2025</h4>
+<ul>
+<li><strong>“The Key Neutrality of Baselayer Markets”</strong> - MEV research</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="state-of-crypto-reports" class="level2">
+<h2 class="anchored" data-anchor-id="state-of-crypto-reports">State of Crypto Reports</h2>
+<section id="state-of-crypto-2025-a16z-crypto" class="level3">
+<h3 class="anchored" data-anchor-id="state-of-crypto-2025-a16z-crypto"><strong>State of Crypto 2025</strong> (a16z crypto)</h3>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/state-of-crypto-report-2025/</li>
+<li><strong>Date:</strong> December 2025</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Institutional adoption</li>
+<li>Stablecoin rise</li>
+<li>Crypto x AI</li>
+<li>Mainstream adoption metrics</li>
+</ul></li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+</section>
+<section id="state-of-crypto-2024" class="level3">
+<h3 class="anchored" data-anchor-id="state-of-crypto-2024"><strong>State of Crypto 2024</strong></h3>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/article/state-of-crypto-report-2024/</li>
+<li><strong>Key Data:</strong> Layer 2 adoption, ZK proof usage, ETH metrics</li>
+<li><strong>Relevance:</strong> 8/10</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="github-resources-open-source" class="level2">
+<h2 class="anchored" data-anchor-id="github-resources-open-source">GitHub Resources &amp; Open Source</h2>
+<section id="a16z-crypto-open-source" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-crypto-open-source">a16z crypto Open Source</h3>
+<ul>
+<li><strong>Halmos:</strong> https://github.com/a16z/halmos (symbolic testing)</li>
+<li><strong>PyPI:</strong> https://pypi.org/project/halmos/</li>
+</ul>
+</section>
+<section id="paradigm-open-source" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm-open-source">Paradigm Open Source</h3>
+<ul>
+<li><strong>Reth:</strong> Rust Ethereum client</li>
+<li><strong>Foundry:</strong> Development toolkit</li>
+<li><strong>Artemis:</strong> MEV bot framework</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="policy-regulation-resources" class="level2">
+<h2 class="anchored" data-anchor-id="policy-regulation-resources">Policy &amp; Regulation Resources</h2>
+<section id="a16z-crypto-policy" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-crypto-policy">a16z crypto Policy</h3>
+<ul>
+<li><strong>URL:</strong> https://a16zcrypto.com/posts/focus-areas/policy/</li>
+<li><strong>Key Topics:</strong>
+<ul>
+<li>Developer protection</li>
+<li>Regulatory updates</li>
+<li>Comment letters &amp; amicus briefs</li>
+</ul></li>
+</ul>
+</section>
+<section id="paradigm-policy" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm-policy">Paradigm Policy</h3>
+<ul>
+<li><strong>Multiple comment letters to CFTC, Treasury, FCA</strong></li>
+<li><strong>Focus:</strong> DeFi regulatory frameworks, stablecoin regulation</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="additional-search-queries-for-deep-dive" class="level2">
+<h2 class="anchored" data-anchor-id="additional-search-queries-for-deep-dive">Additional Search Queries for Deep Dive</h2>
+<p>To expand this index further, consider searching for:</p>
+<ol type="1">
+<li><strong>Specific protocol analysis:</strong>
+<ul>
+<li>Bitcoin protocol research</li>
+<li>Ethereum consensus research</li>
+<li>Solana consensus (Alpenglow)</li>
+</ul></li>
+<li><strong>Advanced topics:</strong>
+<ul>
+<li>Verifiable delay functions (VDFs)</li>
+<li>Threshold cryptography</li>
+<li>Multi-party computation (MPC)</li>
+<li>Trusted execution environments (TEEs)</li>
+</ul></li>
+<li><strong>Application-specific research:</strong>
+<ul>
+<li>Privacy-preserving smart contracts</li>
+<li>Decentralized identity</li>
+<li>Cross-chain communication</li>
+<li>Oracle systems</li>
+</ul></li>
+<li><strong>Performance &amp; scalability:</strong>
+<ul>
+<li>Blockchain performance measurement</li>
+<li>Throughput optimization</li>
+<li>State growth solutions</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="using-this-index" class="level2">
+<h2 class="anchored" data-anchor-id="using-this-index">Using This Index</h2>
+<section id="for-consensus-distributed-systems-research" class="level3">
+<h3 class="anchored" data-anchor-id="for-consensus-distributed-systems-research">For Consensus &amp; Distributed Systems Research:</h3>
+<ul>
+<li>Start with <strong>Consensus Canon</strong> for comprehensive reading list</li>
+<li>Watch <strong>Tim Roughgarden’s Foundations of Blockchains</strong> lectures</li>
+<li>Follow <strong>Summer Research Series</strong> for cutting-edge talks</li>
+<li>Read recent papers on <strong>BFT</strong> and <strong>DAG protocols</strong></li>
+</ul>
+</section>
+<section id="for-cryptography-zero-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="for-cryptography-zero-knowledge">For Cryptography &amp; Zero-Knowledge:</h3>
+<ul>
+<li>Start with <strong>Zero Knowledge Canon</strong></li>
+<li>Read <strong>Justin Thaler’s textbook</strong> (Proofs, Arguments, and Zero-Knowledge)</li>
+<li>Watch <strong>ZK Whiteboard Sessions</strong></li>
+<li>Follow <strong>Halmos project</strong> for practical verification</li>
+</ul>
+</section>
+<section id="for-mechanism-design-economics" class="level3">
+<h3 class="anchored" data-anchor-id="for-mechanism-design-economics">For Mechanism Design &amp; Economics:</h3>
+<ul>
+<li>Focus on <strong>Tim Roughgarden’s papers</strong> and talks</li>
+<li>Study <strong>Paradigm’s AMM research</strong> (Dave White’s work)</li>
+<li>Review <strong>auction theory papers</strong> (GDA, VRGDA, etc.)</li>
+<li>Examine <strong>token design resources</strong> from a16z</li>
+</ul>
+</section>
+<section id="for-mev-research" class="level3">
+<h3 class="anchored" data-anchor-id="for-mev-research">For MEV Research:</h3>
+<ul>
+<li>Start with <strong>Paradigm’s “MEV and Me”</strong></li>
+<li>Study <strong>“Priority Is All You Need”</strong></li>
+<li>Review <strong>Ethereum roadmap</strong> discussions (FOCIL, multi-proposers)</li>
+<li>Follow <strong>Flashbots</strong> research (referenced by Paradigm)</li>
+</ul>
+</section>
+<section id="for-smart-contract-security" class="level3">
+<h3 class="anchored" data-anchor-id="for-smart-contract-security">For Smart Contract Security:</h3>
+<ul>
+<li>Study <strong>Halmos documentation</strong> and releases</li>
+<li>Review <strong>Daejun Park’s formal verification work</strong></li>
+<li>Examine <strong>samczsun’s security research</strong></li>
+<li>Follow <strong>security best practices</strong> guides</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="recommended-learning-paths" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-learning-paths">Recommended Learning Paths</h2>
+<section id="path-1-fundamentals-to-advanced-consensus" class="level3">
+<h3 class="anchored" data-anchor-id="path-1-fundamentals-to-advanced-consensus">Path 1: Fundamentals to Advanced (Consensus)</h3>
+<ol type="1">
+<li>Read <strong>Consensus Canon</strong> introduction</li>
+<li>Watch <strong>Foundations of Blockchains</strong> (Roughgarden)</li>
+<li>Study <strong>Byzantine Generals Problem</strong> paper</li>
+<li>Progress through <strong>synchronous → partially synchronous → asynchronous</strong> protocols</li>
+<li>Explore <strong>modern protocols</strong> (Tendermint, HotStuff, Casper)</li>
+<li>Watch <strong>recent research seminars</strong> on DAG protocols and new consensus mechanisms</li>
+</ol>
+</section>
+<section id="path-2-zero-knowledge-deep-dive" class="level3">
+<h3 class="anchored" data-anchor-id="path-2-zero-knowledge-deep-dive">Path 2: Zero-Knowledge Deep Dive</h3>
+<ol type="1">
+<li>Read <strong>Zero Knowledge Canon</strong> Part 1 overview</li>
+<li>Study <strong>foundational papers</strong> from canon Part 2</li>
+<li>Watch <strong>ZK Whiteboard Sessions</strong></li>
+<li>Read <strong>Thaler’s textbook</strong> chapters</li>
+<li>Explore <strong>applications</strong> (zkEVMs, privacy systems)</li>
+<li>Build with <strong>practical tools</strong> (zkREPL, Arkworks)</li>
+</ol>
+</section>
+<section id="path-3-mechanism-design-defi" class="level3">
+<h3 class="anchored" data-anchor-id="path-3-mechanism-design-defi">Path 3: Mechanism Design &amp; DeFi</h3>
+<ol type="1">
+<li>Read <strong>“8 Reasons Why Blockchain Mechanism Design is Hard”</strong></li>
+<li>Study <strong>Paradigm AMM research</strong> series</li>
+<li>Explore <strong>auction theory</strong> papers (GDA, VRGDA)</li>
+<li>Review <strong>token design</strong> frameworks</li>
+<li>Analyze <strong>MEV research</strong> and mitigation strategies</li>
+<li>Study <strong>economic models</strong> for proof-of-stake</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="contact-community" class="level2">
+<h2 class="anchored" data-anchor-id="contact-community">Contact &amp; Community</h2>
+<section id="a16z-crypto" class="level3">
+<h3 class="anchored" data-anchor-id="a16z-crypto">a16z crypto</h3>
+<ul>
+<li><strong>Website:</strong> https://a16zcrypto.com</li>
+<li><strong>Twitter:</strong> <span class="citation" data-cites="a16zcrypto">(<a href="#ref-a16zcrypto" role="doc-biblioref"><strong>a16zcrypto?</strong></a>)</span></li>
+<li><strong>Newsletter:</strong> web3 weekly newsletter (sign up on website)</li>
+</ul>
+</section>
+<section id="paradigm" class="level3">
+<h3 class="anchored" data-anchor-id="paradigm">Paradigm</h3>
+<ul>
+<li><strong>Website:</strong> https://www.paradigm.xyz</li>
+<li><strong>Twitter:</strong> <span class="citation" data-cites="paradigm">(<a href="#ref-paradigm" role="doc-biblioref"><strong>paradigm?</strong></a>)</span></li>
+<li><strong>Research:</strong> https://www.paradigm.xyz/writing</li>
+</ul>
+</section>
+<section id="academic-resources" class="level3">
+<h3 class="anchored" data-anchor-id="academic-resources">Academic Resources</h3>
+<ul>
+<li><strong>Decentralized Thoughts:</strong> https://decentralizedthoughts.github.io</li>
+<li><strong>Tim Roughgarden:</strong> https://timroughgarden.org</li>
+<li><strong>Andrew Lewis-Pye:</strong> https://lewis-pye.com</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="document-metadata" class="level2">
+<h2 class="anchored" data-anchor-id="document-metadata">Document Metadata</h2>
+<ul>
+<li><strong>Compiled:</strong> 2025-12-21</li>
+<li><strong>Sources:</strong> a16z crypto, Paradigm Research, Academic papers, YouTube lectures</li>
+<li><strong>Total Resources Indexed:</strong> 200+</li>
+<li><strong>Research Papers:</strong> 100+</li>
+<li><strong>Video Lectures:</strong> 50+</li>
+<li><strong>Key Researchers:</strong> 20+</li>
+<li><strong>Last Updated:</strong> 2025-12-21</li>
+</ul>
+<hr>
+</section>
+<section id="notes-for-future-updates" class="level2">
+<h2 class="anchored" data-anchor-id="notes-for-future-updates">Notes for Future Updates</h2>
+<p>This index should be updated with: - New research papers from a16z crypto and Paradigm - Additional talks from research seminar series - New releases from Halmos and other open-source projects - Updated researcher profiles and affiliations - New educational resources and courses - Conference proceedings and field notes</p>
+<p><strong>Maintenance Schedule:</strong> Quarterly updates recommended to capture new research output.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

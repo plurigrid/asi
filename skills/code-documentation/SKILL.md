@@ -1,9 +1,13 @@
 ---
 name: code-documentation
 description: Writing effective code documentation - API docs, README files, inline
-version: 1.0.0
+  comments, and technical guides. Use for documenting codebases, APIs, or writing
+  developer guides.
+license: MIT
+metadata:
+  trit: 0
+  source: wshobson/agents
 ---
-
 
 # Code Documentation
 
@@ -261,60 +265,3 @@ Handles user authentication using JWT tokens with refresh rotation.
 3. **Update with code** - Stale docs are worse than none
 4. **Examples over explanations** - Show, don't just tell
 5. **Progressive disclosure** - Quick start first, details later
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `dynamical-systems`: 41 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 8. Degeneracy
-
-**Concepts**: redundancy, fallback, multiple strategies, robustness
-
-### GF(3) Balanced Triad
-
-```
-code-documentation (−) + SDF.Ch8 (−) + [balancer] (−) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-
-### Connection Pattern
-
-Degeneracy provides fallbacks. This skill offers redundant strategies.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

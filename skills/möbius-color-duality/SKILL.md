@@ -2,11 +2,14 @@
 name: möbius-color-duality
 description: Möbius inversion for Gay.jl color duality - closes sparsification spine gap
 <<<<<<< HEAD
+<<<<<<< HEAD
 version: 1.0.0
 ---
 
 
 =======
+=======
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 metadata:
   trit: 1
   polarity: PLUS
@@ -17,7 +20,10 @@ metadata:
   - Category theory (contravariant functors)
 ---
 
+<<<<<<< HEAD
 >>>>>>> origin/gayish
+=======
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 # Möbius Color Duality Skill
 
 > *"Möbius inversion recovers local structure from global aggregates."*
@@ -64,6 +70,7 @@ Key classes:
 **Coverage**: Begins to fill 1.6% → expand to 10%+ target
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## SDF Interleaving
 
 This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
@@ -89,3 +96,5 @@ möbius-color-duality (−) + SDF.Ch3 (○) + [balancer] (+) = 0
 Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
 =======
 >>>>>>> origin/gayish
+=======
+>>>>>>> origin/feature/skill-connectivity-hub-20251226

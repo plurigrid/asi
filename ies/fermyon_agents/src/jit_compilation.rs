@@ -74,12 +74,29 @@ impl Default for JitConfig {
 }
 
 /// JIT Compiler state and execution engine
+<<<<<<< HEAD
+=======
+#[derive(Clone)]
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 pub struct JitCompiler {
     pub config: JitConfig,
     pub compiled_functions: Arc<Mutex<HashMap<String, CompiledFunction>>>,
     pub compilation_stats: Arc<Mutex<CompilationStats>>,
 }
 
+<<<<<<< HEAD
+=======
+impl std::fmt::Debug for JitCompiler {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("JitCompiler")
+            .field("config", &self.config)
+            .field("compiled_functions", &"<Arc<Mutex<HashMap>>>")
+            .field("compilation_stats", &"<Arc<Mutex<CompilationStats>>>")
+            .finish()
+    }
+}
+
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 /// Statistics about compilation
 #[derive(Debug, Clone, Default)]
 pub struct CompilationStats {

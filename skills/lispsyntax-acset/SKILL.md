@@ -1,9 +1,15 @@
 ---
 name: lispsyntax-acset
 description: LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv-style
-version: 1.0.0
+  deriving and Specter-style navigation
+license: MIT
+metadata:
+  source: music-topos + Specter CPS patterns
+  trit: 0
+  gf3_conserved: true
+  dynamic_sufficiency: verified
+  version: 1.2.0
 ---
-
 
 # lispsyntax-acset
 
@@ -221,67 +227,3 @@ end
 - [ppx_sexp_conv](https://github.com/janestreet/ppx_sexp_conv) - Jane Street
 - [LispSyntax.jl](https://github.com/swadey/LispSyntax.jl)
 - [ACSets.jl](https://github.com/AlgebraicJulia/ACSets.jl)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Annotated Data
-- **anndata** [○] via bicomodule
-  - Hub for annotated matrices
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-lispsyntax-acset (+) + SDF.Ch3 (○) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch2: Domain-Specific Languages
-- Ch5: Evaluation
-- Ch7: Propagators
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

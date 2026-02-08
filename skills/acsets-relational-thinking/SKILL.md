@@ -1,9 +1,11 @@
 ---
 name: acsets-relational-thinking
 description: ACSets (Attributed C-Sets) for categorical database design and DPO rewriting
-version: 1.0.0
+license: UNLICENSED
+metadata:
+  trit: 0
+  source: local
 ---
-
 
 # SKILL: ACSets Relational Thinking
 
@@ -293,65 +295,3 @@ just acset-triads            # Show synergistic triads
 **Type**: Category-Theoretic Database / DPO Rewriting
 **Trit**: 0 (ERGODIC)
 **GF(3)**: Conserved via triadic composition
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Annotated Data
-- **anndata** [○] via bicomodule
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 2. Domain-Specific Languages
-
-**Concepts**: DSL, wrapper, pattern-directed, embedding
-
-### GF(3) Balanced Triad
-
-```
-acsets-relational-thinking (−) + SDF.Ch2 (−) + [balancer] (−) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-- Ch3: Variations on an Arithmetic Theme
-- Ch4: Pattern Matching
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-DSLs embed domain knowledge. This skill defines domain-specific operations.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Span
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

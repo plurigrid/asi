@@ -1,9 +1,15 @@
 ---
 name: crdt
+metadata:
+  trit: 0
+  version: 1.0
+  status: production
+  framework: Jules Hedges' Compositional Game Theory
+  language: Ruby
+  trit: ±1
+  integration: Amp, Codex, Music-Topos
 description: crdt skill
-version: 1.0.0
 ---
-
 
 # CRDT Skill - Conflict-free Replicated Data Types
 
@@ -12,28 +18,6 @@ version: 1.0.0
 **Language**: Ruby (HedgesOpenGames module)
 **Trit**: ±1 (covariant/contravariant)
 **Integration**: Amp, Codex, Music-Topos CRDT
-
-## bmorphism Contributions
-
-> *"all is bidirectional"*
-> — [@bmorphism](https://gist.github.com/bmorphism/ead83aec97dab7f581d49ddcb34a46d4), Play/Coplay gist
-
-> *"Automerge is a local-first sync engine for multiplayer apps that works offline, prevents conflicts, and runs fast."*
-> — [Automerge](https://automerge.org/)
-
-**Plurigrid Connection**: CRDTs embody the principle of **autopoietic ergodicity** — self-sustaining distributed systems that explore all accessible states and converge automatically. This aligns with bmorphism's vision of:
-- **Local-first** computing (offline-capable, no single point of failure)
-- **Bidirectional sync** (Play/Coplay structure for state transfer)
-- **Conflict-free** composition (open games with guaranteed Nash equilibria)
-
-**Key References**:
-- [Automerge](https://github.com/automerge/automerge) - JSON-like CRDTs for offline-first apps
-- [Yjs](https://yjs.dev/) - High-performance CRDT framework
-- [Compositional Game Theory](https://arxiv.org/abs/1603.04641) - Open games foundation for Play/Coplay
-
-Related to bmorphism's work on:
-- [plurigrid/act](https://github.com/plurigrid/act) - cognitive category theory with eventual consistency
-- Parametrised optics for bidirectional state transfer
 
 ## Overview
 
@@ -396,67 +380,3 @@ Grouping of merges doesn't matter.
 **Installation Date**: 2025-12-21
 **All Tests Passing**: Yes
 **Ready for Deployment**: Yes
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `distributed-systems`: 3 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-crdt (−) + SDF.Ch10 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch8: Degeneracy
-- Ch1: Flexibility through Abstraction
-- Ch6: Layering
-- Ch2: Domain-Specific Languages
-- Ch7: Propagators
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

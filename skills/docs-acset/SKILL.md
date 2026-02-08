@@ -1,9 +1,7 @@
 ---
 name: docs-acset
 description: Google Docs/Sheets management via ACSet condensation. Transforms documents into GF(3)-typed Interactions, tracks comments/cells, detects saturation when all comments resolved. Use for document workflows, spreadsheet automation, or applying ANIMA principles to Workspace documents.
-version: 1.0.0
 ---
-
 
 # Docs ACSet Skill
 
@@ -253,65 +251,3 @@ comment (-1) ⊗ reply (0) ⊗ resolve (0) + export (+1) = 0 ✓
 **Trit**: 0 (ERGODIC - coordinator)  
 **GF(3)**: Conserved via verb typing  
 **ANIMA**: Published Document = Condensed State
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Annotated Data
-- **anndata** [○] via bicomodule
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-docs-acset (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch7: Propagators
-- Ch3: Variations on an Arithmetic Theme
-- Ch6: Layering
-- Ch1: Flexibility through Abstraction
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

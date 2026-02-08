@@ -1,9 +1,12 @@
 ---
 name: compression-progress
 description: Schmidhuber's compression progress as intrinsic curiosity reward for
-version: 1.0.0
+  learning systems.
+license: UNLICENSED
+metadata:
+  trit: 0
+  source: local
 ---
-
 
 # Compression Progress Skill: Curiosity-Driven Learning
 
@@ -117,63 +120,3 @@ kolmogorov-compression (-1) ⊗ turing-chemputer (0) ⊗ compression-progress (+
 **Type**: Curiosity Generator
 **Trit**: +1 (PLUS)
 **Color**: #D82626 (Red)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-compression-progress (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch1: Flexibility through Abstraction
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

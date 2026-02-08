@@ -1,0 +1,401 @@
+{
+  "metadata": {
+    "book": "Black Hat Go",
+    "total_techniques": 44,
+    "chapters": 7,
+    "export_date": "2025-12-22"
+  },
+  "statistics": {
+    "by_chapter": {
+      "1_introduction": 3,
+      "2_microarchitecture": 6,
+      "3_speculative_execution": 7,
+      "4_power_analysis": 8,
+      "5_timing_attacks": 7,
+      "6_em_and_physical": 7,
+      "7_fault_injection": 6
+    },
+    "by_complexity": {
+      "beginner": 2,
+      "intermediate": 14,
+      "advanced": 28
+    },
+    "average_risk_level": 6.91
+  },
+  "techniques": [
+    {
+      "id": "intro-cpu-architecture",
+      "name": "CPU Architecture Fundamentals",
+      "chapter": 1,
+      "complexity": "Beginner",
+      "risk_level": 0,
+      "description": "CPU pipelines, instruction execution, caches, branch predictors"
+    },
+    {
+      "id": "intro-side-channels",
+      "name": "Side-Channel Attack Introduction",
+      "chapter": 1,
+      "complexity": "Beginner",
+      "risk_level": 1,
+      "description": "Classification and overview of all side-channel attack types"
+    },
+    {
+      "id": "intro-threat-models",
+      "name": "Threat Models for Side-Channels",
+      "chapter": 1,
+      "complexity": "Intermediate",
+      "risk_level": 2,
+      "description": "Adversary capabilities, assumptions, and realistic scenarios"
+    },
+    {
+      "id": "cache-l1-l2-l3",
+      "name": "CPU Cache Hierarchy",
+      "chapter": 2,
+      "complexity": "Intermediate",
+      "risk_level": 3,
+      "description": "Cache organization, replacement policies (LRU), coherence protocols"
+    },
+    {
+      "id": "cache-replacement-policy",
+      "name": "Cache Replacement Policy Analysis",
+      "chapter": 2,
+      "complexity": "Intermediate",
+      "risk_level": 4,
+      "description": "Exploit LRU/pseudo-LRU replacement decisions"
+    },
+    {
+      "id": "tlb-side-channel",
+      "name": "TLB Side-Channel Analysis",
+      "chapter": 2,
+      "complexity": "Intermediate",
+      "risk_level": 5,
+      "description": "TLB entries leak virtual address patterns"
+    },
+    {
+      "id": "branch-prediction",
+      "name": "Branch Predictor Analysis",
+      "chapter": 2,
+      "complexity": "Intermediate",
+      "risk_level": 4,
+      "description": "Infer branch outcomes through timing analysis"
+    },
+    {
+      "id": "dram-rowhammer",
+      "name": "DRAM Row Hammer Attack",
+      "chapter": 2,
+      "complexity": "Advanced",
+      "risk_level": 8,
+      "description": "Exploit DRAM refresh mechanisms to flip memory bits",
+      "discovered_year": 2014,
+      "affected_systems": ["All modern x86", "ARM processors"]
+    },
+    {
+      "id": "memory-hierarchy-timing",
+      "name": "Memory Hierarchy Timing Leaks",
+      "chapter": 2,
+      "complexity": "Intermediate",
+      "risk_level": 5,
+      "description": "Measure access times at different cache levels"
+    },
+    {
+      "id": "spectre-v1",
+      "name": "Spectre v1 (Bounds Check Bypass)",
+      "chapter": 3,
+      "complexity": "Advanced",
+      "risk_level": 10,
+      "description": "Bypass bounds checks via speculative execution to leak data",
+      "discovered_year": 2017,
+      "affected_systems": ["Intel", "AMD", "ARM", "All modern CPUs"],
+      "cve_ids": ["CVE-2017-5753"]
+    },
+    {
+      "id": "spectre-v2",
+      "name": "Spectre v2 (Branch Target Injection)",
+      "chapter": 3,
+      "complexity": "Advanced",
+      "risk_level": 10,
+      "description": "Poison branch prediction buffer (BTB) to redirect indirect branches",
+      "discovered_year": 2017,
+      "affected_systems": ["Intel", "AMD"],
+      "cve_ids": ["CVE-2017-5715"]
+    },
+    {
+      "id": "meltdown",
+      "name": "Meltdown (Rogue Data Cache Load)",
+      "chapter": 3,
+      "complexity": "Advanced",
+      "risk_level": 10,
+      "description": "Read arbitrary kernel memory via exception handling race condition",
+      "discovered_year": 2017,
+      "affected_systems": ["Intel (mainly)"],
+      "cve_ids": ["CVE-2017-5754"]
+    },
+    {
+      "id": "rogue-system-register",
+      "name": "Rogue System Register Read",
+      "chapter": 3,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Read privileged system registers through speculative execution"
+    },
+    {
+      "id": "spectre-pht-poison",
+      "name": "Pattern History Table (PHT) Poisoning",
+      "chapter": 3,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Poison PHT entries to control speculative execution"
+    },
+    {
+      "id": "indirect-branch-prediction",
+      "name": "Indirect Branch Prediction Poisoning",
+      "chapter": 3,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Exploit indirect branch misprediction for information leakage"
+    },
+    {
+      "id": "return-oriented-programming",
+      "name": "Return-Oriented Programming (ROP)",
+      "chapter": 3,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Chain gadgets to execute arbitrary code via speculative execution"
+    },
+    {
+      "id": "simple-power-analysis",
+      "name": "Simple Power Analysis (SPA)",
+      "chapter": 4,
+      "complexity": "Intermediate",
+      "risk_level": 6,
+      "description": "Visual inspection of power traces to identify operations"
+    },
+    {
+      "id": "differential-power-analysis",
+      "name": "Differential Power Analysis (DPA)",
+      "chapter": 4,
+      "complexity": "Advanced",
+      "risk_level": 8,
+      "description": "Statistical analysis of power differences to extract keys",
+      "discovered_year": 1998
+    },
+    {
+      "id": "correlation-power-analysis",
+      "name": "Correlation Power Analysis (CPA)",
+      "chapter": 4,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Correlate power with key hypotheses to recover AES/RSA keys",
+      "discovered_year": 2004
+    },
+    {
+      "id": "mutual-information-analysis",
+      "name": "Mutual Information Analysis (MIA)",
+      "chapter": 4,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Information-theoretic power analysis attack"
+    },
+    {
+      "id": "stochastic-models",
+      "name": "Stochastic Models for Power Analysis",
+      "chapter": 4,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Model power consumption stochastically for attacks"
+    },
+    {
+      "id": "template-attacks",
+      "name": "Template Attacks (Profiling)",
+      "chapter": 4,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Build templates via machine learning on power traces"
+    },
+    {
+      "id": "power-analysis-masking",
+      "name": "Power Masking (Countermeasure)",
+      "chapter": 4,
+      "complexity": "Advanced",
+      "risk_level": 7,
+      "description": "Add noise to power consumption to hide operations"
+    },
+    {
+      "id": "random-delay",
+      "name": "Random Delays (Countermeasure)",
+      "chapter": 4,
+      "complexity": "Intermediate",
+      "risk_level": 5,
+      "description": "Randomize execution time to desynchronize traces"
+    },
+    {
+      "id": "timing-attack-basic",
+      "name": "Timing Attack on Cryptographic Operations",
+      "chapter": 5,
+      "complexity": "Intermediate",
+      "risk_level": 7,
+      "description": "Extract keys from variable execution times",
+      "discovered_year": 1996
+    },
+    {
+      "id": "cache-timing-attack",
+      "name": "Cache-Timing Attack Fundamentals",
+      "chapter": 5,
+      "complexity": "Advanced",
+      "risk_level": 8,
+      "description": "Infer memory access patterns from cache timing"
+    },
+    {
+      "id": "flush-reload",
+      "name": "Flush+Reload Cache Attack",
+      "chapter": 5,
+      "complexity": "Advanced",
+      "risk_level": 8,
+      "description": "Flush cache lines and measure reload time",
+      "discovered_year": 2014
+    },
+    {
+      "id": "prime-probe",
+      "name": "Prime+Probe Cache Attack",
+      "chapter": 5,
+      "complexity": "Advanced",
+      "risk_level": 7,
+      "description": "Prime cache with victim's data, probe eviction patterns",
+      "discovered_year": 2005
+    },
+    {
+      "id": "evict-time",
+      "name": "Evict+Time Cache Attack",
+      "chapter": 5,
+      "complexity": "Advanced",
+      "risk_level": 7,
+      "description": "Measure access time after evicting victim's cache line"
+    },
+    {
+      "id": "spectre-timing",
+      "name": "Spectre via Cache Timing",
+      "chapter": 5,
+      "complexity": "Advanced",
+      "risk_level": 10,
+      "description": "Use cache-timing to read results of speculative execution"
+    },
+    {
+      "id": "constant-time-implementation",
+      "name": "Constant-Time Implementation (Defense)",
+      "chapter": 5,
+      "complexity": "Advanced",
+      "risk_level": 1,
+      "description": "Write cryptographic code to avoid timing leaks"
+    },
+    {
+      "id": "electromagnetic-analysis",
+      "name": "Electromagnetic Analysis (EMA)",
+      "chapter": 6,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Recover keys from CPU EM emissions",
+      "discovered_year": 2002
+    },
+    {
+      "id": "van-eck-phreaking",
+      "name": "Van Eck Phreaking (Display Emissions)",
+      "chapter": 6,
+      "complexity": "Intermediate",
+      "risk_level": 6,
+      "description": "Recover display contents from EM emissions",
+      "discovered_year": 1985
+    },
+    {
+      "id": "acoustic-cryptanalysis",
+      "name": "Acoustic Cryptanalysis",
+      "chapter": 6,
+      "complexity": "Intermediate",
+      "risk_level": 7,
+      "description": "Extract keys from CPU acoustic emissions",
+      "discovered_year": 2013
+    },
+    {
+      "id": "acoustic-rsa-key-extraction",
+      "name": "Acoustic RSA Key Extraction",
+      "chapter": 6,
+      "complexity": "Advanced",
+      "risk_level": 8,
+      "description": "Recover full RSA keys from acoustic side-channel",
+      "discovered_year": 2013
+    },
+    {
+      "id": "thermal-imaging",
+      "name": "Thermal Imaging Side-Channel",
+      "chapter": 6,
+      "complexity": "Intermediate",
+      "risk_level": 5,
+      "description": "Infer operations from thermal patterns"
+    },
+    {
+      "id": "optical-emissions",
+      "name": "Optical Side-Channels (LED/Display)",
+      "chapter": 6,
+      "complexity": "Intermediate",
+      "risk_level": 5,
+      "description": "Leak information from optical emissions"
+    },
+    {
+      "id": "power-line-coupling",
+      "name": "Power Line Coupling Attack",
+      "chapter": 6,
+      "complexity": "Intermediate",
+      "risk_level": 5,
+      "description": "Measure power via power supply line at distance"
+    },
+    {
+      "id": "fault-injection-overview",
+      "name": "Fault Injection Attacks (Overview)",
+      "chapter": 7,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Induce faults to extract cryptographic keys"
+    },
+    {
+      "id": "clock-glitching",
+      "name": "Clock Glitching Attack",
+      "chapter": 7,
+      "complexity": "Advanced",
+      "risk_level": 8,
+      "description": "Manipulate clock signal to cause instruction skips"
+    },
+    {
+      "id": "voltage-glitching",
+      "name": "Voltage Glitching Attack",
+      "chapter": 7,
+      "complexity": "Advanced",
+      "risk_level": 8,
+      "description": "Manipulate voltage to induce bit flips"
+    },
+    {
+      "id": "laser-fault-injection",
+      "name": "Laser Fault Injection",
+      "chapter": 7,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Use laser pulses to induce faults in silicon",
+      "discovered_year": 2002
+    },
+    {
+      "id": "differential-fault-analysis",
+      "name": "Differential Fault Analysis (DFA)",
+      "chapter": 7,
+      "complexity": "Advanced",
+      "risk_level": 9,
+      "description": "Analyze differences between correct/faulty outputs to recover keys",
+      "discovered_year": 1997
+    },
+    {
+      "id": "electromagnetic-fault-injection",
+      "name": "Electromagnetic Fault Injection",
+      "chapter": 7,
+      "complexity": "Advanced",
+      "risk_level": 8,
+      "description": "Use EM pulses to induce faults without physical contact"
+    }
+  ]
+}

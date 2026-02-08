@@ -1,9 +1,14 @@
 ---
 name: hvm-runtime
 description: HVM Runtime Skill
-version: 1.0.0
+trit: 0
+color: "#26D826"
+catsharp:
+  home: Prof
+  poly_op: ⊗ (parallel)
+  kan_role: Adj
+  bicomodule: true
 ---
-
 
 # hvm-runtime Skill
 
@@ -266,46 +271,6 @@ bend debug program.bend --show-net
 **Trit**: +1 (PLUS - GENERATOR)
 **GF(3)**: Generates optimal parallel reductions
 
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-hvm-runtime (+) + SDF.Ch9 (○) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch1: Flexibility through Abstraction
-- Ch2: Domain-Specific Languages
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

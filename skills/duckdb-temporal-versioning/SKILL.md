@@ -1,9 +1,10 @@
 ---
 name: duckdb-temporal-versioning
 description: Temporal versioning and interaction history with time-travel queries,
-version: 1.0.0
+  causality tracking, and deterministic replay
+metadata:
+  trit: 0
 ---
-
 
 <!-- Propagated to amp | Trit: +1 | Source: .ruler/skills/duckdb-temporal-versioning -->
 
@@ -631,44 +632,3 @@ db.close()
 **GF(3)**: Balanced with clj-kondo-3color (-1) + acsets (0)
 **SPI**: Guaranteed (same schema + data → same results)
 **Applications**: Data acquisition, feature storage, training trace logging, audit trails
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Dataframes
-- **polars** [○] via bicomodule
-
-### Time Series
-- **aeon** [○] via bicomodule
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.
-
-## Forward Reference
-
-- unified-reafference (temporal session alignment)
