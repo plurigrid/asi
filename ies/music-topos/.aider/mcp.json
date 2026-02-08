@@ -1,0 +1,3 @@
+{
+  "mcpServers": {"gay" {"command" "julia", "args" ["--project=@gay" "-e" "using Gay; Gay.serve_mcp()"], "env" {"GAY_SEED" "1069"}}, "unworld" {"command" "ruby", "args" ["-I" "lib" "-r" "unworld" "-e" "Unworld.serve_mcp"], "env" {"GENESIS_SEED" "0x42D"}}, "synadia" {"command" "ruby", "args" ["-I" "lib" "-r" "synadia_broadcast" "-e" "SynadiaBroadcast.serve_mcp"], "env" {"NATS_URL" "nats://127.0.0.1:4222"}}, "propagator" {"command" "lein", "args" ["run" "-m" "music-topos.propagator-mcp"], "env" {"DUCKDB_PATH" "/tmp/propagator-state.duckdb"}}}
+}

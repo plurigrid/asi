@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>gay_rs_distribution_strategy – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="gay.rs-distribution-strategy" class="level1">
+<h1>Gay.rs Distribution Strategy</h1>
+<section id="from-category-theory-to-deterministic-music-generation" class="level2">
+<h2 class="anchored" data-anchor-id="from-category-theory-to-deterministic-music-generation">From Category Theory to Deterministic Music Generation</h2>
+<p><strong>Version</strong>: 1.0 <strong>Date</strong>: 2025-12-21 <strong>Status</strong>: Ready for Distribution <strong>Target Audience</strong>: Musicians, mathematicians, creative coders, live coding performers</p>
+<hr>
+</section>
+<section id="i.-executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="i.-executive-summary">I. EXECUTIVE SUMMARY</h2>
+<p><strong>Gay.rs</strong> is a Rust library that bridges: - <strong>Gay.jl</strong> (deterministic color generation via golden angle) - <strong>Music Topos</strong> (categorical generative music via Free/Cofree monads) - <strong>Apple Silicon</strong> (native parallelism via ARM NEON + Rayon) - <strong>Web</strong>: (WASM + browser tools like Glicol, Tone.js)</p>
+<p>It enables the vision: <strong>“The next color determines the next sound.”</strong></p>
+<section id="key-differentiators" class="level3">
+<h3 class="anchored" data-anchor-id="key-differentiators">Key Differentiators</h3>
+<ol type="1">
+<li><strong>Deterministic</strong> - Reproducible colors/music from seeds (not random)</li>
+<li><strong>Parallel-first</strong> - SIMD + Rayon by default, not performance-afterwards</li>
+<li><strong>Mathematically grounded</strong> - Based on category theory (Mazzola, Spivak)</li>
+<li><strong>Multi-platform</strong> - Native Rust, WASM, MCP server, CLI</li>
+<li><strong>Niche</strong> - Only tool combining parallel color synthesis + automatic music mapping</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="ii.-educational-flow-theory-implementation-art" class="level2">
+<h2 class="anchored" data-anchor-id="ii.-educational-flow-theory-implementation-art">II. EDUCATIONAL FLOW: Theory → Implementation → Art</h2>
+<section id="a.-foundation-layer-category-theory-1-2-weeks" class="level3">
+<h3 class="anchored" data-anchor-id="a.-foundation-layer-category-theory-1-2-weeks">A. Foundation Layer: Category Theory (1-2 weeks)</h3>
+<p><strong>Learning Goal</strong>: Understand how mathematics describes music <strong>Key Concepts</strong>: Categories, functors, natural transformations <strong>References</strong>: - Mazzola: <em>Topos of Music</em> (Parts 1-2) - Lawvere &amp; Schanuel: <em>Conceptual Mathematics</em> - Spivak: <em>Category Theory for the Sciences</em></p>
+<p><strong>Practical Exercise</strong>:</p>
+<pre><code>Read: Pitch space as metric space (Z/12Z)
+Code: Implement pitch distance function
+Result: Understand harmonic distance</code></pre>
+</section>
+<section id="b.-parallel-computation-layer-1-week" class="level3">
+<h3 class="anchored" data-anchor-id="b.-parallel-computation-layer-1-week">B. Parallel Computation Layer (1 week)</h3>
+<p><strong>Learning Goal</strong>: Understand deterministic parallelism <strong>Key Concepts</strong>: SplitMix64, golden angle, reafference <strong>References</strong>: - Vigna &amp; Blackman: “SplitMix64 RNG paper” - Phipps: “Gallery of Phyllotaxis” - Gay.jl documentation</p>
+<p><strong>Practical Exercise</strong>:</p>
+<pre><code>Read: Golden ratio in nature
+Implement: color_at(seed, index) → {hue, sat, light}
+Verify: 100M colors with zero repeats
+Result: Understand deterministic randomness</code></pre>
+</section>
+<section id="c.-music-mapping-layer-1-week" class="level3">
+<h3 class="anchored" data-anchor-id="c.-music-mapping-layer-1-week">C. Music Mapping Layer (1 week)</h3>
+<p><strong>Learning Goal</strong>: Map colors to musical parameters <strong>Key Concepts</strong>: Hue→pitch, saturation→density, lightness→amplitude <strong>References</strong>: - Helmholtz: <em>On the Sensations of Tone</em> - Lerdahl &amp; Jackendoff: <em>Generative Theory of Music</em> - Music Topos documentation</p>
+<p><strong>Practical Exercise</strong>:</p>
+<pre><code>Read: Color perception vs pitch perception
+Implement: color_to_note(color, scale)
+Verify: All notes in target scale
+Result: Understand color-music isomorphism</code></pre>
+</section>
+<section id="d.-categorical-semantics-layer-2-weeks" class="level3">
+<h3 class="anchored" data-anchor-id="d.-categorical-semantics-layer-2-weeks">D. Categorical Semantics Layer (2 weeks)</h3>
+<p><strong>Learning Goal</strong>: Understand Free/Cofree monad pattern <strong>Key Concepts</strong>: Patterns (Free), Matter (Cofree), Module action (runs_on) <strong>References</strong>: - Borceux: <em>Handbook of Categorical Algebra</em> - Awodey: <em>Category Theory</em> - Music Topos: docs/ARCHITECTURE.md</p>
+<p><strong>Practical Exercise</strong>:</p>
+<pre><code>Read: Free monad = decision trees
+Implement: pattern.plays_on(matter) → score_events
+Verify: Patterns can run on different matter contexts
+Result: Understand compositional semantics</code></pre>
+</section>
+<section id="e.-distribution-integration-1-week" class="level3">
+<h3 class="anchored" data-anchor-id="e.-distribution-integration-1-week">E. Distribution &amp; Integration (1 week)</h3>
+<p><strong>Learning Goal</strong>: Deploy and integrate gay-rs <strong>Key Concepts</strong>: MCP servers, WASM, CLI tools <strong>References</strong>: - Claude Agent SDK documentation - wasm-bindgen guide - Glicol documentation</p>
+<p><strong>Practical Exercise</strong>:</p>
+<pre><code>Deploy: MCP server on localhost:3000
+Integrate: With Claude, Glicol, Tone.js
+Verify: End-to-end color → music pipeline
+Result: Understand production systems</code></pre>
+<hr>
+</section>
+</section>
+<section id="iii.-documentation-structure" class="level2">
+<h2 class="anchored" data-anchor-id="iii.-documentation-structure">III. DOCUMENTATION STRUCTURE</h2>
+<section id="readme.md-quick-start" class="level3">
+<h3 class="anchored" data-anchor-id="readme.md-quick-start">README.md (Quick Start)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Gay.rs: Deterministic Parallel Colors → Music</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Generate music from deterministic colors using golden angle spirals.</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Optimized for Apple Silicon with SIMD and Rayon parallelism.</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quick Start</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>cargo add gay-rs</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>let mut gen = ColorGenerator::new(42);</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>let color = gen.next_color();</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>let note = color.to_note(&amp;MusicalScale::Major);</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example: Infinite Music</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">code example showing neverending color stream</span><span class="co">]</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Learn More</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Complete Guide</span><span class="co">](./docs/GUIDE.md)</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Gay.jl Integration</span><span class="co">](./docs/GAY_JL_BRIDGE.md)</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Music Mapping</span><span class="co">](./docs/MUSIC_MAPPING.md)</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Category Theory Foundation</span><span class="co">](./docs/THEORY.md)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="docsguide.md-comprehensive-learning" class="level3">
+<h3 class="anchored" data-anchor-id="docsguide.md-comprehensive-learning">docs/GUIDE.md (Comprehensive Learning)</h3>
+<ol type="1">
+<li>What is Gay.rs?</li>
+<li>Color generation (SplitMix64 + golden angle)</li>
+<li>Musical mapping (hue→pitch, saturation→density)</li>
+<li>Parallel generation (SIMD + Rayon)</li>
+<li>Integration (MCP, WASM, CLI)</li>
+<li>Theory foundation (categories, topoi)</li>
+</ol>
+</section>
+<section id="docsgay_jl_bridge.md-integration-guide" class="level3">
+<h3 class="anchored" data-anchor-id="docsgay_jl_bridge.md-integration-guide">docs/GAY_JL_BRIDGE.md (Integration Guide)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Gay.jl ↔ Gay.rs Bridge</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Philosophy</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>Both implement deterministic color generation via golden angle.</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>Gay.rs is the performant Rust implementation for production systems.</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Equivalence</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Gay.jl <span class="pp">|</span> Gay.rs <span class="pp">|</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|--------|</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Julia module <span class="pp">|</span> Rust crate <span class="pp">|</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> High-level, expressive <span class="pp">|</span> Production-ready <span class="pp">|</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Single-threaded <span class="pp">|</span> Parallel (SIMD + Rayon) <span class="pp">|</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Research-focused <span class="pp">|</span> Application-focused <span class="pp">|</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Migration Path</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Prototype in Gay.jl (high-level thinking)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Generate colors/music parameters</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Implement in Gay.rs (production deployment)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Verify outputs match exactly</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="docsmusic_mapping.md-colormusic-reference" class="level3">
+<h3 class="anchored" data-anchor-id="docsmusic_mapping.md-colormusic-reference">docs/MUSIC_MAPPING.md (Color→Music Reference)</h3>
+<p><strong>Hue → Pitch Class</strong></p>
+<pre><code>Hue (0°-360°) → 12 semitones
+0°-30° → C
+30°-60° → C#/Db
+...
+330°-360° → B</code></pre>
+<p><strong>Saturation → Voice Density</strong></p>
+<pre><code>Saturation (0-1) → Note count (1-8)
+0-0.25 → 1 voice (single melody)
+0.25-0.5 → 2 voices
+0.5-0.75 → 4 voices
+0.75-1.0 → 8 voices (rich harmony)</code></pre>
+<p><strong>Lightness → Amplitude</strong></p>
+<pre><code>Lightness (0-1) → MIDI velocity (0-127)
+0-0.3 → very quiet (0-40)
+0.3-0.6 → normal (40-90)
+0.6-1.0 → loud (90-127)</code></pre>
+</section>
+<section id="docsexamples.md-runnable-code" class="level3">
+<h3 class="anchored" data-anchor-id="docsexamples.md-runnable-code">docs/EXAMPLES.md (Runnable Code)</h3>
+<section id="example-1-infinite-music-stream" class="level4">
+<h4 class="anchored" data-anchor-id="example-1-infinite-music-stream">Example 1: Infinite Music Stream</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">gay_rs::color::</span>ColorGenerator<span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">gay_rs::music::</span>MusicalScale<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> gen <span class="op">=</span> <span class="pp">ColorGenerator::</span>new(<span class="dv">42</span>)<span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span><span class="dv">32</span> <span class="op">{</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> color <span class="op">=</span> gen<span class="op">.</span>next_color()<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> note <span class="op">=</span> color_to_note(<span class="op">&amp;</span>color<span class="op">,</span> <span class="op">&amp;</span><span class="pp">MusicalScale::</span>Major)<span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">"{:?} → {}"</span><span class="op">,</span> color<span class="op">,</span> note<span class="op">.</span>name())<span class="op">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-2-parallel-seed-mining" class="level4">
+<h4 class="anchored" data-anchor-id="example-2-parallel-seed-mining">Example 2: Parallel Seed Mining</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">gay_rs::parallel::</span>find_best_seed<span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> best <span class="op">=</span> find_best_seed(<span class="dv">42</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">64</span>)<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"Best seed: {} (score: {:.3})"</span><span class="op">,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>             best<span class="op">.</span>seed<span class="op">,</span> best<span class="op">.</span>total_score)<span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-3-wasm-integration-browser" class="level4">
+<h4 class="anchored" data-anchor-id="example-3-wasm-integration-browser">Example 3: WASM Integration (Browser)</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="op">*</span> <span class="im">as</span> gay <span class="im">from</span> <span class="st">'gay.wasm'</span><span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> colors <span class="op">=</span> gay<span class="op">.</span><span class="fu">colors_batch</span>(<span class="dv">42</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> notes <span class="op">=</span> colors<span class="op">.</span><span class="fu">map</span>(c <span class="kw">=&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    gay<span class="op">.</span><span class="fu">color_to_note</span>(<span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(c)<span class="op">,</span> <span class="st">'major'</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(notes)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-4-mcp-server" class="level4">
+<h4 class="anchored" data-anchor-id="example-4-mcp-server">Example 4: MCP Server</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span><span class="pp">tokio::</span>main<span class="at">]</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> server <span class="op">=</span> <span class="pp">MCPServer::</span>new(<span class="dv">3000</span>)<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    server<span class="op">.</span>start()<span class="op">.</span><span class="kw">await</span><span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">"MCP server at http://localhost:3000"</span>)<span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="docstheory.md-mathematical-foundations" class="level3">
+<h3 class="anchored" data-anchor-id="docstheory.md-mathematical-foundations">docs/THEORY.md (Mathematical Foundations)</h3>
+<p><strong>1. Golden Angle &amp; Phyllotaxis</strong> - φ (golden ratio) ≈ 1.618… - φ² ≈ 2.618… - Golden angle = 360° / φ² ≈ 137.508° - Properties: No repeats, even distribution, aesthetically pleasing</p>
+<p><strong>2. SplitMix64 RNG</strong> - Vigna &amp; Blackman’s fast splittable RNG - Constants: GOLDEN = 0x9e3779b97f4a7c15 - Properties: Deterministic, parallel-safe, no correlation</p>
+<p><strong>3. Category Theory in Music</strong> - Pitch space as metric space (Z/12Z) - Voice leading as permutations (S₁₂) - Harmonic function as functors - Modulation as natural transformations</p>
+<p><strong>4. Free &amp; Cofree Monads</strong> - Free monad = decision trees (patterns) - Cofree comonad = infinite context (matter) - Module action = composition of pattern + matter</p>
+<hr>
+</section>
+</section>
+<section id="iv.-positioning-marketing" class="level2">
+<h2 class="anchored" data-anchor-id="iv.-positioning-marketing">IV. POSITIONING &amp; MARKETING</h2>
+<section id="target-personas" class="level3">
+<h3 class="anchored" data-anchor-id="target-personas">Target Personas</h3>
+<p><strong>1. Live Coding Musicians</strong> - Sonic Pi, TidalCycles users - Want: Accessible but powerful generative tools - Need: Real-time performance, deterministic beauty</p>
+<p><strong>2. Creative Coders</strong> - p5.js, Processing users discovering music - Want: Visual feedback + audio generation - Need: Browser integration, interactive tools</p>
+<p><strong>3. Mathematicians &amp; Theorists</strong> - Category theory, topology researchers - Want: Rigorous implementation of topoi - Need: Theory-grounded code, validation</p>
+<p><strong>4. AI/Agent Builders</strong> - Claude, other LLM users - Want: Tool discovery via MCP protocol - Need: Composable, discoverable services</p>
+</section>
+<section id="unique-selling-points" class="level3">
+<h3 class="anchored" data-anchor-id="unique-selling-points">Unique Selling Points</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 27%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Gay.rs</th>
+<th>Competitors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Deterministic colors</strong></td>
+<td>✅ Golden angle</td>
+<td>❌ Random</td>
+</tr>
+<tr class="even">
+<td><strong>Parallel-by-default</strong></td>
+<td>✅ SIMD + Rayon</td>
+<td>❌ Sequential</td>
+</tr>
+<tr class="odd">
+<td><strong>Apple Silicon native</strong></td>
+<td>✅ ARM Neon optimization</td>
+<td>❌ Generic</td>
+</tr>
+<tr class="even">
+<td><strong>Automatic music mapping</strong></td>
+<td>✅ hue→pitch, sat→density</td>
+<td>❌ Manual mapping</td>
+</tr>
+<tr class="odd">
+<td><strong>Category theory grounded</strong></td>
+<td>✅ Free/Cofree semantics</td>
+<td>⚠️ Ad-hoc</td>
+</tr>
+<tr class="even">
+<td><strong>Multi-platform</strong></td>
+<td>✅ CLI, WASM, MCP, native</td>
+<td>❌ Single platform</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tagline-options" class="level3">
+<h3 class="anchored" data-anchor-id="tagline-options">Tagline Options</h3>
+<ol type="1">
+<li><em>“Deterministic music from color. Maximum parallelism.”</em></li>
+<li><em>“Where mathematics meets music: Gay.jl in production.”</em></li>
+<li><em>“Apple Silicon speedup for generative music.”</em></li>
+<li><em>“The golden angle meets your DAW.”</em></li>
+<li><em>“Parallel-first creative coding for music.”</em></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="v.-distribution-channels" class="level2">
+<h2 class="anchored" data-anchor-id="v.-distribution-channels">V. DISTRIBUTION CHANNELS</h2>
+<section id="package-ecosystems" class="level3">
+<h3 class="anchored" data-anchor-id="package-ecosystems">1. Package Ecosystems</h3>
+<ul>
+<li><strong>Crates.io</strong> (Rust crate registry)</li>
+<li><strong>npm</strong> (WASM package for JavaScript users)</li>
+<li><strong>NuGet</strong> (if bindings for C# needed)</li>
+</ul>
+</section>
+<section id="documentation-platforms" class="level3">
+<h3 class="anchored" data-anchor-id="documentation-platforms">2. Documentation Platforms</h3>
+<ul>
+<li><strong>docs.rs</strong> (auto-generated Rust docs)</li>
+<li><strong>GitHub Pages</strong> (comprehensive guides)</li>
+<li><strong>ReadTheDocs</strong> (if moving to Sphinx/Python)</li>
+</ul>
+</section>
+<section id="community-integration" class="level3">
+<h3 class="anchored" data-anchor-id="community-integration">3. Community Integration</h3>
+<ul>
+<li><strong>TOPLAP.org</strong> - Live coding community</li>
+<li><strong>Lines.io</strong> - Experimental music forum</li>
+<li><strong>GitHub Discussions</strong> - Direct user support</li>
+<li><strong>YouTube/Twitch</strong> - Tutorial videos, live demos</li>
+</ul>
+</section>
+<section id="academic-integration" class="level3">
+<h3 class="anchored" data-anchor-id="academic-integration">4. Academic Integration</h3>
+<ul>
+<li><strong>ACM Digital Library</strong> - Research publication</li>
+<li><strong>arXiv</strong> - Theory papers (Mazzola, category theory angle)</li>
+<li><strong>Zenodo</strong> - Open science release</li>
+</ul>
+</section>
+<section id="music-tool-integrations" class="level3">
+<h3 class="anchored" data-anchor-id="music-tool-integrations">5. Music Tool Integrations</h3>
+<ul>
+<li><strong>Glicol</strong> - Rust audio graph node (audio-gen)</li>
+<li><strong>Sonic Pi</strong> - Ruby bindings (music education)</li>
+<li><strong>Max/MSP</strong> - External object (if demand exists)</li>
+<li><strong>SuperCollider</strong> - UGen bindings (synthesis backend)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="vi.-publication-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="vi.-publication-roadmap">VI. PUBLICATION ROADMAP</h2>
+<section id="phase-1-release-month-1" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-release-month-1">Phase 1: Release (Month 1)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Publish gay-rs v0.1.0 on crates.io</label></li>
+<li><label><input type="checkbox">Comprehensive README + docs</label></li>
+<li><label><input type="checkbox">Example implementations (4-5 examples)</label></li>
+<li><label><input type="checkbox">Test suite with 95%+ coverage</label></li>
+<li><label><input type="checkbox">GitHub repository with CI/CD</label></li>
+</ul>
+</section>
+<section id="phase-2-integration-month-2" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-integration-month-2">Phase 2: Integration (Month 2)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">WASM package on npm (glicol-gay bridge)</label></li>
+<li><label><input type="checkbox">Tone.js example (interactive demo)</label></li>
+<li><label><input type="checkbox">MCP server example (Claude integration)</label></li>
+<li><label><input type="checkbox">Tutorial blog post series</label></li>
+</ul>
+</section>
+<section id="phase-3-expansion-month-3" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3-expansion-month-3">Phase 3: Expansion (Month 3)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Academic paper (theory + implementation)</label></li>
+<li><label><input type="checkbox">Video demonstrations (Twitch live coding)</label></li>
+<li><label><input type="checkbox">Community workshops / tutorials</label></li>
+<li><label><input type="checkbox">TOPLAP presentation</label></li>
+</ul>
+</section>
+<section id="phase-4-ecosystem-month-4" class="level3">
+<h3 class="anchored" data-anchor-id="phase-4-ecosystem-month-4">Phase 4: Ecosystem (Month 4+)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Ruby bindings (bridge to music-topos)</label></li>
+<li><label><input type="checkbox">Python package (data science integration)</label></li>
+<li><label><input type="checkbox">Supercollider extension</label></li>
+<li><label><input type="checkbox">Production deployments</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="vii.-key-reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="vii.-key-reference-materials">VII. KEY REFERENCE MATERIALS</h2>
+<section id="required-books-via-ananas.clj" class="level3">
+<h3 class="anchored" data-anchor-id="required-books-via-ananas.clj">Required Books (via ananas.clj)</h3>
+<ol type="1">
+<li><strong>Mazzola: Topos of Music</strong> (all 3 volumes)
+<ul>
+<li>Part I: Theory (foundations)</li>
+<li>Part II: Performance (realtime systems)</li>
+<li>Part III: Gestures (interaction)</li>
+</ul></li>
+<li><strong>Lawvere &amp; Schanuel: Conceptual Mathematics</strong>
+<ul>
+<li>Sets and functions (category basics)</li>
+<li>Isomorphisms and duality</li>
+</ul></li>
+<li><strong>Spivak: Category Theory for the Sciences</strong>
+<ul>
+<li>Applied category theory</li>
+<li>Databases and networks</li>
+</ul></li>
+<li><strong>Vigna &amp; Blackman: SplitMix64 Paper</strong>
+<ul>
+<li>Fast splittable RNG</li>
+<li>Parallel safety guarantees</li>
+</ul></li>
+<li><strong>Helm holtz: On the Sensations of Tone</strong>
+<ul>
+<li>Physics of sound and perception</li>
+<li>Harmonic analysis foundations</li>
+</ul></li>
+<li><strong>Lerdahl &amp; Jackendoff: Generative Theory of Music</strong>
+<ul>
+<li>Cognitive music theory</li>
+<li>Hierarchical structures</li>
+</ul></li>
+</ol>
+</section>
+<section id="academic-papers" class="level3">
+<h3 class="anchored" data-anchor-id="academic-papers">Academic Papers</h3>
+<ul>
+<li>Spivak et al.&nbsp;“Seven Sketches in Compositionality”</li>
+<li>Loregian: “Bicategories and 2-Transducers”</li>
+<li>Borceux: “Handbook of Categorical Algebra”</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="viii.-github-repository-structure" class="level2">
+<h2 class="anchored" data-anchor-id="viii.-github-repository-structure">VIII. GITHUB REPOSITORY STRUCTURE</h2>
+<pre><code>gay-rs/
+├── Cargo.toml                    # Package manifest
+├── README.md                     # Quick start
+├── LICENSE                       # MIT
+│
+├── src/
+│   ├── lib.rs                    # Main library
+│   ├── rng.rs                    # SplitMix64 + golden angle
+│   ├── color.rs                  # OkhslColor generation
+│   ├── music.rs                  # Music mapping
+│   ├── parallel.rs               # Rayon + seed mining
+│   ├── mcp.rs                    # MCP server
+│   └── wasm.rs                   # WASM bindings
+│
+├── examples/
+│   ├── infinite_music.rs         # Neverending color stream
+│   ├── seed_discovery.rs         # Interactive seed mining
+│   ├── parallel_benchmark.rs     # Performance comparison
+│   ├── wasm_glicol.html          # Browser integration demo
+│   └── mcp_client.rs             # MCP server example
+│
+├── benches/
+│   ├── color_throughput.rs       # SIMD vs sequential
+│   ├── parallel_scaling.rs       # Rayon scaling
+│   └── seed_mining.rs            # Mining performance
+│
+├── tests/
+│   ├── color_generation.rs       # Determinism tests
+│   ├── music_mapping.rs          # Scale validation
+│   ├── parallel_consistency.rs   # Parallel correctness
+│   └── integration.rs            # End-to-end
+│
+├── docs/
+│   ├── GUIDE.md                  # Comprehensive guide
+│   ├── GAY_JL_BRIDGE.md          # Integration docs
+│   ├── MUSIC_MAPPING.md          # Color→music reference
+│   ├── EXAMPLES.md               # Runnable examples
+│   ├── THEORY.md                 # Mathematical foundations
+│   ├── PERFORMANCE.md            # Benchmarking results
+│   └── ARCHITECTURE.md           # Design decisions
+│
+├── www/
+│   ├── index.html                # Landing page
+│   ├── demo.html                 # Interactive browser demo
+│   ├── gallery.html              # Generated music examples
+│   └── style.css
+│
+├── ci/
+│   └── github_workflows/
+│       ├── test.yml              # Test on every push
+│       ├── bench.yml             # Benchmark results
+│       └── doc.yml               # Deploy docs
+│
+└── CHANGELOG.md</code></pre>
+<hr>
+</section>
+<section id="ix.-success-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="ix.-success-metrics">IX. SUCCESS METRICS</h2>
+<section id="technical" class="level3">
+<h3 class="anchored" data-anchor-id="technical">Technical</h3>
+<ul>
+<li><strong>Test coverage</strong>: &gt;95%</li>
+<li><strong>Performance</strong>: 4× SIMD speedup, 8× Rayon scaling</li>
+<li><strong>Documentation</strong>: &gt;500 lines of guides, 10+ examples</li>
+<li><strong>Zero bugs in first 100 downloads</strong></li>
+</ul>
+</section>
+<section id="community" class="level3">
+<h3 class="anchored" data-anchor-id="community">Community</h3>
+<ul>
+<li><strong>Crates.io downloads</strong>: 1K+ in month 1</li>
+<li><strong>GitHub stars</strong>: 100+ in month 2</li>
+<li><strong>Integration partnerships</strong>: ≥3 tools (Glicol, Tone.js, etc.)</li>
+<li><strong>Academic citations</strong>: ≥2 in year 1</li>
+</ul>
+</section>
+<section id="adoption" class="level3">
+<h3 class="anchored" data-anchor-id="adoption">Adoption</h3>
+<ul>
+<li><strong>Live coding musicians</strong>: Using in performances</li>
+<li><strong>Education</strong>: University courses</li>
+<li><strong>Production</strong>: Real-world music generation systems</li>
+<li><strong>Open source</strong>: Community contributions &amp; extensions</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="x.-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="x.-next-steps">X. NEXT STEPS</h2>
+<ol type="1">
+<li><strong>Complete Core Implementation</strong> (✅ Done)
+<ul>
+<li>gay-rs library compiles</li>
+<li>26 tests pass</li>
+<li>Documentation drafted</li>
+</ul></li>
+<li><strong>Fetch Reference Materials</strong> (→ Now)
+<ul>
+<li>Use ananas.clj to download key books</li>
+<li>Extract relevant sections</li>
+<li>Create theory guides</li>
+</ul></li>
+<li><strong>Build Documentation</strong> (Next)
+<ul>
+<li>Comprehensive README</li>
+<li>Theory + practical guides</li>
+<li>Example implementations</li>
+<li>Integration tutorials</li>
+</ul></li>
+<li><strong>Prepare for Release</strong> (Then)
+<ul>
+<li>Polish and optimize</li>
+<li>Add CI/CD pipeline</li>
+<li>Set up GitHub repo</li>
+<li>Create marketing materials</li>
+</ul></li>
+<li><strong>Publish &amp; Promote</strong> (Final)
+<ul>
+<li>Release on crates.io</li>
+<li>Write blog posts</li>
+<li>Present at conferences</li>
+<li>Build community</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="closing-vision" class="level2">
+<h2 class="anchored" data-anchor-id="closing-vision">CLOSING VISION</h2>
+<p><strong>Gay.rs</strong> embodies the principle:</p>
+<blockquote class="blockquote">
+<p>“The next color determines the next sound.”</p>
+</blockquote>
+<p>By bridging deterministic color generation (Gay.jl), mathematical music theory (Mazzola topoi), and native parallelism (Apple Silicon), we create a system where: - Mathematics becomes executable art - Creativity emerges from rigor - Beauty proves itself through code</p>
+<p>This is the distribution that will bring that vision to audiences ready to think differently about music and mathematics together.</p>
+<hr>
+<p><strong>Status</strong>: Ready for implementation <strong>Next</strong>: Fetch reference books, build documentation, prepare public release</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

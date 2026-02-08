@@ -1,9 +1,14 @@
 ---
 name: doc-coauthoring
 description: Guide users through a structured workflow for co-authoring documentation.
-version: 1.0.0
+  Use when user wants to write documentation, proposals, technical specs, decision
+  docs, or similar structured content. This workflow helps users efficiently transfer
+  context, refine content through iteration, and verify the doc works for readers.
+  Trigger when user mentions writing docs, creating proposals, drafting specs, or
+  similar documentation tasks.
+metadata:
+  trit: 0
 ---
-
 
 # Doc Co-Authoring Workflow
 
@@ -375,66 +380,3 @@ Announce document completion. Provide a few final tips:
 - Don't rush through stages
 - Each iteration should make meaningful improvements
 - The goal is a document that actually works for readers
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-doc-coauthoring (○) + SDF.Ch9 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch10: Adventure Game Example
-- Ch5: Evaluation
-- Ch8: Degeneracy
-- Ch7: Propagators
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

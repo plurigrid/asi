@@ -1,10 +1,15 @@
 ---
 name: kolmogorov-compression
-description: "Kolmogorov complexity as the ultimate intelligence measure. Shortest program that outputs data."
-trit: -1
-polarity: MINUS
-source: "Solomonoff 1964, Kolmogorov 1965, KoLMogorov-Test 2025"
-technologies: [Python, MLX, Lean4]
+description: Kolmogorov complexity as the ultimate intelligence measure. Shortest
+  program that outputs data.
+metadata:
+  trit: -1
+  polarity: MINUS
+  source: Solomonoff 1964, Kolmogorov 1965, KoLMogorov-Test 2025
+  technologies:
+  - Python
+  - MLX
+  - Lean4
 ---
 
 # Kolmogorov Compression Skill

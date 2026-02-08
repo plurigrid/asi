@@ -1,9 +1,12 @@
 ---
 name: developer-growth-analysis
 description: Analyzes your recent Claude Code chat history to identify coding patterns,
-version: 1.0.0
+  development gaps, and areas for improvement, curates relevant learning resources
+  from HackerNews, and automatically sends a personalized growth report to your Slack
+  DMs.
+metadata:
+  trit: 1
 ---
-
 
 # Developer Growth Analysis
 
@@ -322,66 +325,3 @@ This skill:
 - Focuses on actionable improvements, not vague feedback
 - Provides specific time estimates based on complexity
 - Prioritizes areas that will have the most impact on your development velocity
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Eda
-- **exploratory-data-analysis** [○] via bicomodule
-  - Exploratory analysis
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-developer-growth-analysis (○) + SDF.Ch9 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch6: Layering
-- Ch2: Domain-Specific Languages
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

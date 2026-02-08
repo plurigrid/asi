@@ -1,0 +1,156 @@
+{
+  "mcpServers": {
+    "gay": {
+      "command": "julia",
+      "args": [
+        "--project=@gay",
+        "-e",
+        "using Gay; Gay.serve_mcp()"
+      ],
+      "env": {
+        "GAY_SEED": "1069"
+      },
+      "type": "stdio"
+    },
+    "synadia": {
+      "command": "ruby",
+      "args": [
+        "-I",
+        "lib",
+        "-r",
+        "synadia_broadcast",
+        "-e",
+        "SynadiaBroadcast.serve_mcp"
+      ],
+      "env": {
+        "NATS_URL": "nats://127.0.0.1:4222"
+      },
+      "type": "stdio"
+    },
+    "world": {
+      "command": "ruby",
+      "args": [
+        "-I",
+        "lib",
+        "-r",
+        "world_broadcast",
+        "-e",
+        "WorldBroadcast.serve_mcp"
+      ],
+      "type": "stdio"
+    },
+    "glass_bead": {
+      "command": "ruby",
+      "args": [
+        "-I",
+        "lib",
+        "-r",
+        "glass_bead_game",
+        "-e",
+        "GlassBeadGame.serve_mcp"
+      ],
+      "type": "stdio"
+    },
+    "propagator": {
+      "command": "lein",
+      "args": [
+        "run",
+        "-m",
+        "music-topos.propagator-mcp"
+      ],
+      "env": {
+        "DUCKDB_PATH": "/tmp/propagator-state.duckdb"
+      },
+      "type": "stdio"
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firecrawl-mcp"
+      ],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      },
+      "type": "stdio"
+    },
+    "exa": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic/exa-mcp-server"
+      ],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      },
+      "type": "stdio"
+    },
+    "huggingface": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic/huggingface-mcp-server"
+      ],
+      "env": {
+        "HF_TOKEN": "${HF_TOKEN}"
+      },
+      "type": "stdio"
+    },
+    "radare2": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic/radare2-mcp-server"
+      ],
+      "type": "stdio"
+    },
+    "tree_sitter": {
+      "command": "uvx",
+      "args": [
+        "mcp-tree-sitter"
+      ],
+      "type": "stdio"
+    },
+    "narya": {
+      "command": "bb",
+      "args": [
+        "gay.bb",
+        "1069"
+      ],
+      "env": {
+        "TAP_STATE": "LIVE",
+        "SPECTRAL_GAP": "0.25"
+      },
+      "type": "stdio"
+    },
+    "tasks": {
+      "command": "bb",
+      "args": [
+        "mcp-tasks.bb",
+        "1069"
+      ],
+      "env": {
+        "TTL_MS": "60000",
+        "POLL_INTERVAL_MS": "5000"
+      },
+      "type": "stdio"
+    },
+    "mathpix": {
+      "command": "ruby",
+      "args": [
+        "-I",
+        "lib",
+        "-r",
+        "mathpix/mcp",
+        "-e",
+        "Mathpix::MCP.serve"
+      ],
+      "env": {
+        "MATHPIX_APP_ID": "${MATHPIX_APP_ID}",
+        "MATHPIX_APP_KEY": "${MATHPIX_APP_KEY}",
+        "GF3_SEED": "1069"
+      },
+      "type": "stdio"
+    }
+  }
+}

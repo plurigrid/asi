@@ -1,7 +1,8 @@
 ---
 name: propagators
-description: Sussman/Radul propagator networks for constraint propagation and bidirectional
-version: 1.0.0
+description: "Sussman/Radul propagator networks for constraint propagation and bidirectional dataflow."
+trit: 0
+bundle: strange-loops
 ---
 
 # Propagators Skill
@@ -156,6 +157,22 @@ struct AdhesionHoriz <: ScopedPropagator  # ↔ Beck-Chevalley
 end
 ```
 
+## GF(3) Integration
+
+```julia
+# Triadic propagator network
+struct TriadicCell
+    trit::Int  # -1, 0, +1
+    value::Any
+    neighbors::Vector{Propagator}
+end
+
+# Conservation: sum of connected cells = 0 (mod 3)
+function verify_gf3(cells::Vector{TriadicCell})
+    sum(c.trit for c in cells) % 3 == 0
+end
+```
+
 ## Dependency-Directed Backtracking
 
 When contradiction (⊤) is reached:
@@ -199,6 +216,13 @@ When contradiction (⊤) is reached:
 1. **Radul & Sussman (2009)** - "The Art of the Propagator"
 2. **Steele (1980)** - "The Definition and Implementation of Constraint Languages"
 3. **Apt (1999)** - "The Essence of Constraint Propagation"
+
+## Related Skills
+
+- `epistemic-arbitrage` - Uses scoped propagators
+- `constraint-logic` - Logical foundation
+- `dataflow` - One-way version
+- `interaction-nets` - Another "no control" model
 
 ---
 
@@ -387,68 +411,3 @@ def propagate_with_neighbors(constraints, initial_values):
 **Trit**: +1 (PLUS - Generator)
 **GF(3)**: Forms valid triads with coordinators (0) and validators (-1)
 **Applications**: Bidirectional constraints, type inference, epistemic arbitrage, CAD modeling
-
----
-
-## End-of-Skill Interface
-
-## GF(3) Integration
-
-```julia
-# Triadic propagator network
-struct TriadicCell
-    trit::Int  # -1, 0, +1
-    value::Any
-    neighbors::Vector{Propagator}
-end
-
-# Conservation: sum of connected cells = 0 (mod 3)
-function verify_gf3(cells::Vector{TriadicCell})
-    sum(c.trit for c in cells) % 3 == 0
-end
-```
-
-## r2con Speaker Resources
-
-| Speaker | Relevance | Repository/Talk |
-|---------|-----------|-----------------|
-| **alkalinesec** | ESILSolve constraint propagation | [esilsolve](https://github.com/aemmitt-ns/esilsolve) |
-| **condret** | ESIL symbolic cells | [radare2 ESIL](https://github.com/radareorg/radare2) |
-| **Pelissier_S** | Symbolic execution | r2con 2020 talk |
-
-## Related Skills
-
-- `epistemic-arbitrage` - Uses scoped propagators
-- `constraint-logic` - Logical foundation
-- `dataflow` - One-way version
-- `interaction-nets` - Another "no control" model
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-propagators (+) + SDF.Ch3 (○) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch7: Propagators
-- Ch5: Evaluation
-- Ch4: Pattern Matching
-- Ch6: Layering
-- Ch10: Adventure Game Example
-- Ch2: Domain-Specific Languages
-- Ch1: Flexibility through Abstraction
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

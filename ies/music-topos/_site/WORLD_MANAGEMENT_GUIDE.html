@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>world_management_guide – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="world-management-agent-skills-integration-guide" class="level1">
+<h1>World Management &amp; Agent Skills Integration Guide</h1>
+<p><strong>Date</strong>: 2025-12-21 <strong>Status</strong>: Justfile enhanced with GitHub CLI + DuckDB integration <strong>Location</strong>: <code>/Users/bob/ies/music-topos/justfile</code></p>
+<hr>
+<section id="what-was-added" class="level2">
+<h2 class="anchored" data-anchor-id="what-was-added">What Was Added</h2>
+<p>Your justfile now includes <strong>four major new features</strong>:</p>
+<section id="github-cli-graphql-interactions" class="level3">
+<h3 class="anchored" data-anchor-id="github-cli-graphql-interactions">1. <strong>GitHub CLI GraphQL Interactions</strong></h3>
+<p>Query and manage music-topos related repositories programmatically</p>
+</section>
+<section id="duckdb-world-versioning" class="level3">
+<h3 class="anchored" data-anchor-id="duckdb-world-versioning">2. <strong>DuckDB World Versioning</strong></h3>
+<p>Track world versions, execution history, and metadata in a queryable database</p>
+</section>
+<section id="agent-skills-registry" class="level3">
+<h3 class="anchored" data-anchor-id="agent-skills-registry">3. <strong>Agent Skills Registry</strong></h3>
+<p>Auto-register and manage agent skills from agentskills.io</p>
+</section>
+<section id="world-execution-logging" class="level3">
+<h3 class="anchored" data-anchor-id="world-execution-logging">4. <strong>World Execution Logging</strong></h3>
+<p>Record execution time, status, and output files for each world run</p>
+<hr>
+</section>
+</section>
+<section id="quick-start" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
+<section id="initialize-everything" class="level3">
+<h3 class="anchored" data-anchor-id="initialize-everything">Initialize Everything</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the world database</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-db-init</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Register agent skills</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> skills-register</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># List all registered worlds</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-list</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># List all available skills</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> skills-list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="query-github-repositories" class="level3">
+<h3 class="anchored" data-anchor-id="query-github-repositories">Query GitHub Repositories</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find all music-topos and worlds-tagged repos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-repos-query</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone/sync all repos to /Users/bob/ies/worlds/</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-repos-sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="manage-world-versions" class="level3">
+<h3 class="anchored" data-anchor-id="manage-world-versions">Manage World Versions</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Register a new world</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-register my-new-world</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bump version (patch, minor, or major)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-version-bump my-world patch</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-version-bump my-world minor</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-version-bump my-world major</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View execution history</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-history my-world</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-history <span class="st">"*"</span> 20  <span class="co"># Last 20 runs across all worlds</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="execute-worlds-with-logging" class="level3">
+<h3 class="anchored" data-anchor-id="execute-worlds-with-logging">Execute Worlds with Logging</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a world and log results to DuckDB</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-execute my-world</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The system logs:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   - Execution timestamp</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   - Duration in seconds</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   - Status (success/error)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   - Output file location</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="database-schema" class="level2">
+<h2 class="anchored" data-anchor-id="database-schema">Database Schema</h2>
+<section id="worlds-table" class="level3">
+<h3 class="anchored" data-anchor-id="worlds-table"><code>worlds</code> table</h3>
+<pre><code>id (INTEGER, PK)
+name (VARCHAR, UNIQUE)
+path (VARCHAR)
+version (VARCHAR) - Semver format: 1.0.0
+created_at (TIMESTAMP)
+last_modified (TIMESTAMP)
+description (VARCHAR)
+tags (VARCHAR[])
+author (VARCHAR)</code></pre>
+</section>
+<section id="world_dependencies-table" class="level3">
+<h3 class="anchored" data-anchor-id="world_dependencies-table"><code>world_dependencies</code> table</h3>
+<pre><code>dependent_world_id (FK)
+dependency_world_id (FK)
+dependency_type (VARCHAR) - 'import', 'extends', 'requires'</code></pre>
+</section>
+<section id="world_execution-table" class="level3">
+<h3 class="anchored" data-anchor-id="world_execution-table"><code>world_execution</code> table</h3>
+<pre><code>id (INTEGER, PK)
+world_id (FK)
+executed_at (TIMESTAMP)
+duration_seconds (REAL)
+status (VARCHAR) - 'success' or 'error'
+output_file (VARCHAR)</code></pre>
+</section>
+<section id="agent_skills-table" class="level3">
+<h3 class="anchored" data-anchor-id="agent_skills-table"><code>agent_skills</code> table</h3>
+<pre><code>id (INTEGER, PK)
+skill_name (VARCHAR, UNIQUE)
+description (VARCHAR)
+source_url (VARCHAR)
+version (VARCHAR)
+compatibility (VARCHAR[]) - ['Amp', 'Claude Code', 'Copilot', ...]
+requires (VARCHAR[]) - Dependencies on other skills
+created_at (TIMESTAMP)
+last_used (TIMESTAMP)</code></pre>
+<hr>
+</section>
+</section>
+<section id="registered-agent-skills" class="level2">
+<h2 class="anchored" data-anchor-id="registered-agent-skills">Registered Agent Skills</h2>
+<section id="skills-auto-registered" class="level3">
+<h3 class="anchored" data-anchor-id="skills-auto-registered">7 Skills Auto-Registered</h3>
+<ol type="1">
+<li><strong>epistemic-arbitrage</strong>
+<ul>
+<li>Parallel mathematician broadcast with propagators</li>
+<li>Platforms: Amp, Claude Code, Copilot</li>
+</ul></li>
+<li><strong>glass-bead-game</strong>
+<ul>
+<li>Interdisciplinary synthesis connecting domains</li>
+<li>Platforms: Amp, Claude Code, Aider</li>
+</ul></li>
+<li><strong>world-hopping</strong>
+<ul>
+<li>Badiou triangle inequality for possible worlds</li>
+<li>Platforms: Amp, Claude Code</li>
+</ul></li>
+<li><strong>parallel-execution</strong>
+<ul>
+<li>SPI-compliant deterministic parallel computation</li>
+<li>Platforms: Claude Code</li>
+<li>Requires: gay-rs</li>
+</ul></li>
+<li><strong>mcp-server-creation</strong>
+<ul>
+<li>Tool composition for agent capabilities</li>
+<li>Platforms: Claude Code, Cursor</li>
+</ul></li>
+<li><strong>repl-integration</strong>
+<ul>
+<li>Live coding with feedback loops (Sonic Pi, SuperCollider)</li>
+<li>Platforms: Claude Code, Geiser</li>
+</ul></li>
+<li><strong>skill-composition</strong>
+<ul>
+<li>Meta-skill for combining existing skills</li>
+<li>Platforms: Amp, Claude Code, Copilot</li>
+<li>Requires: epistemic-arbitrage, glass-bead-game, world-hopping</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="github-graphql-queries" class="level2">
+<h2 class="anchored" data-anchor-id="github-graphql-queries">GitHub GraphQL Queries</h2>
+<section id="query-structure" class="level3">
+<h3 class="anchored" data-anchor-id="query-structure">Query Structure</h3>
+<p>The system uses GitHub GraphQL to search for repositories with topics: - <code>topic:music-topos</code> - Primary project repos - <code>topic:worlds</code> - World-related projects</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode graphql code-with-copy"><code class="sourceCode graphql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">query</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    search(<span class="kw">query</span>: <span class="st">"topic:music-topos topic:worlds"</span>, <span class="kw">type</span>: REPOSITORY, first: <span class="dv">50</span>) {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        repositoryCount</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        edges {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            node {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                ... <span class="kw">on</span> Repository {</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                    name</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                    nameWithOwner</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                    url</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                    description</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                    pushedAt</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                    primaryLanguage { name }</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-output" class="level3">
+<h3 class="anchored" data-anchor-id="example-output">Example Output</h3>
+<pre><code>ToposInstitute/CatColab: Formal collaborative modeling via category theory (2025-12-21T18:42:28Z)
+borkdude/cherry-mac-app-test: Cherry ClojureScript compiler (2025-12-20T14:30:15Z)
+...</code></pre>
+<hr>
+</section>
+</section>
+<section id="how-it-integrates-with-your-system" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-integrates-with-your-system">How It Integrates With Your System</h2>
+<section id="knowledge-graph-integration" class="level3">
+<h3 class="anchored" data-anchor-id="knowledge-graph-integration">Knowledge Graph Integration</h3>
+<pre><code>Knowledge Indexer (DuckDB)
+    ↓ Topics, Resources, Experts
+    ↓
+Music Topos (.worlds.duckdb)
+    ├─ worlds table (your curated world collection)
+    ├─ world_execution (logs when each world runs)
+    └─ agent_skills (tools available to extend system)</code></pre>
+</section>
+<section id="version-increment-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="version-increment-workflow">Version Increment Workflow</h3>
+<pre><code>Version 1.0.0
+    ↓ (just world-version-bump myworld patch)
+Version 1.0.1  ← Patch: bug fix
+    ↓ (just world-version-bump myworld minor)
+Version 1.1.0  ← Minor: backward-compatible feature
+    ↓ (just world-version-bump myworld major)
+Version 2.0.0  ← Major: breaking change</code></pre>
+</section>
+<section id="execution-logging" class="level3">
+<h3 class="anchored" data-anchor-id="execution-logging">Execution Logging</h3>
+<pre><code>User runs: just world-execute initial
+    ↓
+System executes world (~/worlds/initial/run.rb or pattern-on-matter)
+    ↓
+Measures duration, records status
+    ↓
+Inserts into world_execution:
+    world_id: 1001
+    executed_at: 2025-12-21 19:45:33
+    duration_seconds: 12.5
+    status: 'success'
+    output_file: '/tmp/initial.wav'
+    ↓
+User can query: just world-history initial 10</code></pre>
+<hr>
+</section>
+</section>
+<section id="advanced-usage" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-usage">Advanced Usage</h2>
+<section id="query-execution-history-raw-sql" class="level3">
+<h3 class="anchored" data-anchor-id="query-execution-history-raw-sql">Query Execution History (Raw SQL)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to the database directly</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">duckdb</span> /Users/bob/ies/music-topos/.worlds.duckdb</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List slowest worlds</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> w.name, COUNT<span class="er">(</span><span class="ex">*</span><span class="kw">)</span> <span class="fu">as</span> runs, AVG<span class="er">(</span><span class="ex">e.duration_seconds</span><span class="kw">)</span> <span class="fu">as</span> avg_duration</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> world_execution e</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">JOIN</span> worlds w ON e.world_id = w.id</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">GROUP</span> BY w.id, w.name</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ex">ORDER</span> BY avg_duration DESC<span class="kw">;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Find failed executions</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> w.name, e.executed_at, e.status</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> world_execution e</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="ex">JOIN</span> worlds w ON e.world_id = w.id</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="ex">WHERE</span> e.status != <span class="st">'success'</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="ex">ORDER</span> BY e.executed_at DESC<span class="kw">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="custom-skill-registration" class="level3">
+<h3 class="anchored" data-anchor-id="custom-skill-registration">Custom Skill Registration</h3>
+<p>You can add your own skills to the database:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">duckdb</span> /Users/bob/ies/music-topos/.worlds.duckdb</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">INSERT</span> INTO agent_skills <span class="er">(</span><span class="ex">skill_name,</span> description, compatibility, requires<span class="kw">)</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">VALUES</span> <span class="er">(</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'my-custom-skill'</span><span class="ex">,</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Description of what it does'</span><span class="ex">,</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">ARRAY</span><span class="op">[</span><span class="st">'Claude Code'</span>, <span class="st">'Cursor'</span><span class="op">]</span><span class="ex">,</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">ARRAY</span><span class="op">[</span><span class="st">'dependency1'</span>, <span class="st">'dependency2'</span><span class="op">]</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="kw">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sync-and-register-all-github-repos" class="level3">
+<h3 class="anchored" data-anchor-id="sync-and-register-all-github-repos">Sync and Register All GitHub Repos</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-shot command to sync all repos and register them</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> repo_dir <span class="kw">in</span> /Users/bob/ies/worlds/<span class="pp">*</span>/<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">world_name</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">$repo_dir</span><span class="st">"</span><span class="va">)</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">just</span> world-register <span class="st">"</span><span class="va">$world_name</span><span class="st">"</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="integration-with-existing-just-world-target" class="level2">
+<h2 class="anchored" data-anchor-id="integration-with-existing-just-world-target">Integration With Existing “just world” Target</h2>
+<p>The new <code>world-append-duckdb</code> target is designed to be called from your main <code>world</code> target:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Current "just world" does:</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Check deps</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Setup SuperCollider</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Boot SuperCollider</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Check audio</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Run InitialObjectWorld</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Run TerminalObjectWorld</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># You can add at the end:</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     just world-append-duckdb  ← Initializes databases and logs execution</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="workflow-examples" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-examples">Workflow Examples</h2>
+<section id="example-1-track-a-new-world-type" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-track-a-new-world-type">Example 1: Track a New World Type</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new world directory</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /Users/bob/ies/worlds/my-procedural-world</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"#!/bin/bash\necho 'Running my world...'"</span> <span class="op">&gt;</span> /Users/bob/ies/worlds/my-procedural-world/run.sh</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Register it</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-register my-procedural-world</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Increment version as you develop</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-version-bump my-procedural-world patch</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Run and log</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-execute my-procedural-world</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check history</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-history my-procedural-world</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-2-discover-available-skills" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-discover-available-skills">Example 2: Discover Available Skills</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List all skills</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> skills-list</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find skills compatible with Claude Code</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ex">duckdb</span> /Users/bob/ies/music-topos/.worlds.duckdb <span class="op">&lt;&lt; 'EOF'</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT skill_name, description</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="st">FROM agent_skills</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE array_contains(compatibility, 'Claude Code')</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY skill_name;</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-3-sync-external-worlds" class="level3">
+<h3 class="anchored" data-anchor-id="example-3-sync-external-worlds">Example 3: Sync External Worlds</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find all public music-topos repos on GitHub</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-repos-query</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone/update them all</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-repos-sync</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Register each one</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> repo <span class="kw">in</span> /Users/bob/ies/worlds/<span class="pp">*</span>/<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">just</span> world-register <span class="st">"</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">$repo</span><span class="st">"</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Now you have a full world index</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="commands-reference" class="level2">
+<h2 class="anchored" data-anchor-id="commands-reference">Commands Reference</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>just world-repos-query</code></td>
+<td>Find music-topos repos on GitHub</td>
+</tr>
+<tr class="even">
+<td><code>just world-repos-sync</code></td>
+<td>Clone/pull all repos to local</td>
+</tr>
+<tr class="odd">
+<td><code>just world-db-init</code></td>
+<td>Initialize DuckDB schema</td>
+</tr>
+<tr class="even">
+<td><code>just world-register NAME</code></td>
+<td>Add a world to the database</td>
+</tr>
+<tr class="odd">
+<td><code>just world-list</code></td>
+<td>Show all registered worlds</td>
+</tr>
+<tr class="even">
+<td><code>just world-version-bump NAME TYPE</code></td>
+<td>Increment version (patch/minor/major)</td>
+</tr>
+<tr class="odd">
+<td><code>just world-history NAME</code></td>
+<td>Show execution history</td>
+</tr>
+<tr class="even">
+<td><code>just skills-register</code></td>
+<td>Register agent skills</td>
+</tr>
+<tr class="odd">
+<td><code>just skills-list</code></td>
+<td>Show available skills</td>
+</tr>
+<tr class="even">
+<td><code>just world-execute NAME</code></td>
+<td>Run a world and log results</td>
+</tr>
+<tr class="odd">
+<td><code>just world-append-duckdb</code></td>
+<td>Initialize everything (call from <code>just world</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<ol type="1">
+<li><strong>Initialize</strong>: <code>just world-db-init</code></li>
+<li><strong>Sync repos</strong>: <code>just world-repos-sync</code></li>
+<li><strong>Register worlds</strong>: <code>just world-register &lt;each-world&gt;</code></li>
+<li><strong>Verify</strong>: <code>just world-list</code> and <code>just skills-list</code></li>
+<li><strong>Execute</strong>: <code>just world-execute initial</code> (will log to DuckDB)</li>
+<li><strong>Query</strong>: <code>just world-history initial</code></li>
+</ol>
+<hr>
+</section>
+<section id="integration-notes" class="level2">
+<h2 class="anchored" data-anchor-id="integration-notes">Integration Notes</h2>
+<section id="why-duckdb" class="level3">
+<h3 class="anchored" data-anchor-id="why-duckdb">Why DuckDB?</h3>
+<ul>
+<li><strong>Embedded</strong>: No separate server (single <code>.worlds.duckdb</code> file)</li>
+<li><strong>SQL</strong>: Full SQL queries on world metadata</li>
+<li><strong>Fast</strong>: OLAP-optimized for analytics</li>
+<li><strong>Deterministic</strong>: Same schema = same results across machines</li>
+<li><strong>Syncs with knowledge graph</strong>: Can join against main music-topos knowledge base</li>
+</ul>
+</section>
+<section id="why-github-graphql" class="level3">
+<h3 class="anchored" data-anchor-id="why-github-graphql">Why GitHub GraphQL?</h3>
+<ul>
+<li><strong>Precise</strong>: Query by topic, language, last-modified date</li>
+<li><strong>Automated</strong>: Discover new music-topos repos automatically</li>
+<li><strong>Bidirectional</strong>: Sync fork relationships, collaborators</li>
+<li><strong>Auditable</strong>: Logged API calls show what changed and when</li>
+</ul>
+</section>
+<section id="why-agent-skills" class="level3">
+<h3 class="anchored" data-anchor-id="why-agent-skills">Why Agent Skills?</h3>
+<ul>
+<li><strong>Composable</strong>: Skills depend on other skills</li>
+<li><strong>Reusable</strong>: Same skill works across multiple agents</li>
+<li><strong>Discoverable</strong>: Query by platform compatibility</li>
+<li><strong>Versioned</strong>: Track which version of a skill you’re using</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="error-handling" class="level2">
+<h2 class="anchored" data-anchor-id="error-handling">Error Handling</h2>
+<section id="no-duckdb" class="level3">
+<h3 class="anchored" data-anchor-id="no-duckdb">No DuckDB</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-list</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># → "No world database found. Run: just world-db-init"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-db-init  <span class="co"># Fixes it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="world-not-found" class="level3">
+<h3 class="anchored" data-anchor-id="world-not-found">World Not Found</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-execute nonexistent</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># → "✗ World not found: nonexistent"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-register myworld  <span class="co"># Register it first</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="github-not-authenticated" class="level3">
+<h3 class="anchored" data-anchor-id="github-not-authenticated">GitHub Not Authenticated</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> world-repos-query</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># → Authentication error</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth login  <span class="co"># Login to GitHub CLI first</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<p><strong>Status</strong>: Ready to use <strong>Test it</strong>: <code>just world-db-init &amp;&amp; just world-list</code></p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

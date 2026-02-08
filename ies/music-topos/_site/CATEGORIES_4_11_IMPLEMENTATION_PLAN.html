@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>categories_4_11_implementation_plan – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="categories-4-11-implementation-plan" class="level1">
+<h1>Categories 4-11 Implementation Plan</h1>
+<p><strong>Current Status</strong>: Phase 9 Complete - All tests passing, system fully operational <strong>Foundation</strong>: Badiouian ontology with triangle inequality enforcement <strong>Testing</strong>: Automated via Flox, validated in actual Ruby runtime</p>
+<hr>
+<section id="implementation-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-architecture">Implementation Architecture</h2>
+<section id="core-principle" class="level3">
+<h3 class="anchored" data-anchor-id="core-principle">Core Principle</h3>
+<p>Each category extends the existing world system:</p>
+<pre><code>World (Base)
+  ├─ PitchSpaceWorld (Cat 1) ✓ DONE
+  ├─ ChordSpaceWorld (Cat 2) ✓ DONE
+  ├─ LeitmotifWorld (Cat 3) ✓ DONE
+  ├─ GroupTheoryWorld (Cat 4) ← START HERE
+  ├─ HarmonicFunctionWorld (Cat 5)
+  ├─ ModulationWorld (Cat 6)
+  ├─ PolyphonicWorld (Cat 7)
+  ├─ ProgressionWorld (Cat 8)
+  ├─ StructuralWorld (Cat 9)
+  ├─ FormWorld (Cat 10)
+  └─ AdvancedWorld (Cat 11)</code></pre>
+<p>Each world: 1. Defines its own objects (mathematical entities) 2. Enforces triangle inequality in its metric 3. Validates semantic closure (8 dimensions) 4. Provides OSC rendering for audio 5. Comes with complete test suite</p>
+<hr>
+</section>
+</section>
+<section id="category-4-group-theory-extensions" class="level2">
+<h2 class="anchored" data-anchor-id="category-4-group-theory-extensions">Category 4: Group Theory Extensions</h2>
+<section id="domain" class="level3">
+<h3 class="anchored" data-anchor-id="domain">Domain</h3>
+<p>Extend pitch space from cyclic group ℤ/12ℤ to full permutation group S₁₂.</p>
+</section>
+<section id="files-to-create" class="level3">
+<h3 class="anchored" data-anchor-id="files-to-create">Files to Create</h3>
+<p><strong>lib/group_theory.rb</strong> (NEW) - Class: <code>Group</code> (abstract) - Class: <code>CyclicGroup</code> (extends Group) - Class: <code>PermutationGroup</code> (extends Group, implements S₁₂) - Class: <code>GroupElement</code> (represents group member) - Class: <code>GroupAction</code> (function G × X → X)</p>
+<p><strong>lib/worlds/group_theory_world.rb</strong> (NEW) - Class: <code>GroupTheoryWorld</code> (extends World) - Metric: Cayley graph distance in group - Axiom: Group closure (a·b ∈ G for all a,b ∈ G) - Axiom: Associativity - Axiom: Identity element - Axiom: Inverse elements</p>
+<p><strong>test/test_group_theory.rb</strong> (NEW) - Test: Group axioms (closure, associativity, identity, inverse) - Test: Permutation multiplication - Test: Cayley graph distance metric - Test: Voice leading under group actions - Test: Triangle inequality in group metric</p>
+</section>
+<section id="implementation-details" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-details">Implementation Details</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group 5-tuple signature</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">Group</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (G, *, e, inv, metric)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># G = set of elements</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># * = binary operation</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># e = identity element</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># inv = inverse function</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># metric = Cayley graph distance</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize(elements, operation, identity, inverse_fn, metric)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@elements</span> <span class="op">=</span> elements</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@operation</span> <span class="op">=</span> operation</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@identity</span> <span class="op">=</span> identity</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@inverse_fn</span> <span class="op">=</span> inverse_fn</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@metric</span> <span class="op">=</span> metric</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verify group axioms</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> validate_group_axioms</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Closure: a·b ∈ G for all a,b</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Associativity: (a·b)·c = a·(b·c)</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Identity: a·e = a, e·a = a</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Inverse: a·a⁻¹ = e</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># S₁₂ = symmetric group on 12 elements (all permutations of [0..11])</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">PermutationGroup</span> <span class="op">&lt;</span> <span class="dt">Group</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> <span class="dv">self</span><span class="at">.</span><span class="cn">S12</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 12! = 479,001,600 permutations</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Represent as cycles: (0 1 2) means 0→1, 1→2, 2→0</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store as arrays for efficiency</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Cayley graph metric: shortest path in multiplication table</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> cayley_distance(perm1, perm2)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Breadth-first search from perm1 to perm2</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># using group generators as edges</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generators for S₁₂: transpositions (i j)</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Voice leading under group action</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> voice_leading_action(group, perm, chord)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply permutation to chord pitches</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Example: (0 1) swaps pitches 0 and 1</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># C Major = [0, 4, 7] → [4, 0, 7] under (0 1)</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="test-structure" class="level3">
+<h3 class="anchored" data-anchor-id="test-structure">Test Structure</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test</span> <span class="st">"Group closure"</span> <span class="cf">do</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  s12 <span class="op">=</span> <span class="dt">PermutationGroup</span><span class="at">.</span><span class="cn">S12</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  perm_a <span class="op">=</span> s12<span class="at">.random_element</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  perm_b <span class="op">=</span> s12<span class="at">.random_element</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  product <span class="op">=</span> s12<span class="at">.multiply</span>(perm_a, perm_b)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  assert s12<span class="at">.contains?</span>(product)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">test</span> <span class="st">"Cayley distance triangle inequality"</span> <span class="cf">do</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  s12 <span class="op">=</span> <span class="dt">PermutationGroup</span><span class="at">.</span><span class="cn">S12</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  g, h, k <span class="op">=</span> s12<span class="at">.random_elements</span>(<span class="dv">3</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  d_gh <span class="op">=</span> cayley_distance(g, h)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  d_hk <span class="op">=</span> cayley_distance(h, k)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  d_gk <span class="op">=</span> cayley_distance(g, k)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  assert d_gk <span class="op">&lt;=</span> d_gh <span class="op">+</span> d_hk</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">test</span> <span class="st">"Voice leading under transposition"</span> <span class="cf">do</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  c_major <span class="op">=</span> <span class="dt">Chord</span><span class="at">.from_notes</span>(<span class="kw">[</span><span class="ch">'C'</span>, <span class="ch">'E'</span>, <span class="ch">'G'</span><span class="kw">]</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  transposition <span class="op">=</span> <span class="dt">PermutationGroup</span><span class="at">.</span><span class="cn">S12</span><span class="at">.transposition</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  c_major_transposed <span class="op">=</span> transposition<span class="at">.act_on</span>(c_major)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verify pitches are permuted correctly</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  assert c_major_transposed<span class="at">.pitches</span> <span class="op">==</span> <span class="kw">[</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">7</span><span class="kw">]</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-outputs" class="level3">
+<h3 class="anchored" data-anchor-id="expected-outputs">Expected Outputs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Group axioms verified</label></li>
+<li><label><input type="checkbox" checked="">S₁₂ with 479M permutations represented efficiently</label></li>
+<li><label><input type="checkbox" checked="">Cayley graph distance metric</label></li>
+<li><label><input type="checkbox" checked="">Voice leading transformations</label></li>
+<li><label><input type="checkbox" checked="">Triangle inequality in S₁₂ metric</label></li>
+<li><label><input type="checkbox" checked="">5+ test cases passing</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="category-5-harmonic-function" class="level2">
+<h2 class="anchored" data-anchor-id="category-5-harmonic-function">Category 5: Harmonic Function</h2>
+<section id="domain-1" class="level3">
+<h3 class="anchored" data-anchor-id="domain-1">Domain</h3>
+<p>Musical chords have functional roles: Tonic (T), Subdominant (S), Dominant (D).</p>
+</section>
+<section id="files-to-create-1" class="level3">
+<h3 class="anchored" data-anchor-id="files-to-create-1">Files to Create</h3>
+<p><strong>lib/harmonic_function.rb</strong> (NEW) - Class: <code>HarmonicFunction</code> (T, S, D) - Class: <code>FunctionalChord</code> (chord + function) - Method: <code>function_from_chord()</code> (rules to determine function) - Method: <code>valid_progression?(chord1, chord2)</code> (functional rules)</p>
+<p><strong>lib/worlds/harmonic_function_world.rb</strong> (NEW) - Class: <code>HarmonicFunctionWorld</code> (extends World) - Metric: Functional distance (0 if same function, 1 if one transition, 2 if unusual) - Axiom: T-D-T creates closed cycle - Axiom: S always precedes D - Axiom: Deceptive cadence (D-vi) is valid</p>
+<p><strong>test/test_harmonic_function.rb</strong> (NEW)</p>
+</section>
+<section id="implementation-details-1" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-details-1">Implementation Details</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Harmonic functions in major/minor keys</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># C Major: C(T), D(S), E(S), F(S), G(D), A(S), B(D), C(T)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Minor:   Similar with appropriate adjustments</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">HarmonicFunction</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TONIC</span> <span class="op">=</span> <span class="wa">:tonic</span>         <span class="co"># I, vi (relative minor)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="cn">SUBDOMINANT</span> <span class="op">=</span> <span class="wa">:subdominant</span>  <span class="co"># ii, iii, IV, V/V</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="cn">DOMINANT</span> <span class="op">=</span> <span class="wa">:dominant</span>        <span class="co"># V, vii°</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Determine function of a chord in context</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> <span class="dv">self</span><span class="at">.analyze</span>(chord, key, context <span class="op">=</span> <span class="dv">nil</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rules based on:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Root position/inversion</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Previous chord (if context given)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Key signature</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Functional distance between chords</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> functional_distance(chord1, chord2, progression_context)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  func1 <span class="op">=</span> <span class="dt">HarmonicFunction</span><span class="at">.analyze</span>(chord1)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  func2 <span class="op">=</span> <span class="dt">HarmonicFunction</span><span class="at">.analyze</span>(chord2)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Distance based on valid progressions</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># T → D: distance = 2 (needs S in between)</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># T → S: distance = 1 (valid)</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># S → D: distance = 1 (valid)</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># D → T: distance = 1 (valid)</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># D → S: distance = 2 (S should come before D)</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-outputs-1" class="level3">
+<h3 class="anchored" data-anchor-id="expected-outputs-1">Expected Outputs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Functional analysis of any chord</label></li>
+<li><label><input type="checkbox" checked="">Valid progression detection</label></li>
+<li><label><input type="checkbox" checked="">Cadential patterns recognized</label></li>
+<li><label><input type="checkbox" checked="">Deceptive cadences handled</label></li>
+<li><label><input type="checkbox" checked="">Test suite with 8+ cases</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="category-6-modulation-transposition" class="level2">
+<h2 class="anchored" data-anchor-id="category-6-modulation-transposition">Category 6: Modulation &amp; Transposition</h2>
+<section id="domain-2" class="level3">
+<h3 class="anchored" data-anchor-id="domain-2">Domain</h3>
+<p>Keys can change; chords can be transposed; relationships preserved.</p>
+</section>
+<section id="files-to-create-2" class="level3">
+<h3 class="anchored" data-anchor-id="files-to-create-2">Files to Create</h3>
+<p><strong>lib/modulation.rb</strong> (NEW) - Class: <code>Modulation</code> (key change) - Class: <code>ModulationPath</code> (sequence of key changes) - Method: <code>common_tone_modulation()</code> - Method: <code>pivot_chord_modulation()</code> - Method: <code>chromatic_modulation()</code></p>
+<p><strong>lib/worlds/modulation_world.rb</strong> (NEW) - Metric: Distance = chromatic steps in modulation path - Axiom: Triangle inequality in modulation space</p>
+<p><strong>test/test_modulation.rb</strong> (NEW)</p>
+</section>
+<section id="expected-outputs-2" class="level3">
+<h3 class="anchored" data-anchor-id="expected-outputs-2">Expected Outputs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Modulation detection</label></li>
+<li><label><input type="checkbox" checked="">Pivot chord analysis</label></li>
+<li><label><input type="checkbox" checked="">Key signature changes</label></li>
+<li><label><input type="checkbox" checked="">Transposition with preservation of relationships</label></li>
+<li><label><input type="checkbox" checked="">6+ test cases</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="category-7-polyphonic-voice-leading" class="level2">
+<h2 class="anchored" data-anchor-id="category-7-polyphonic-voice-leading">Category 7: Polyphonic Voice Leading</h2>
+<section id="domain-3" class="level3">
+<h3 class="anchored" data-anchor-id="domain-3">Domain</h3>
+<p>4-voice writing rules (SATB): soprano, alto, tenor, bass.</p>
+</section>
+<section id="files-to-create-3" class="level3">
+<h3 class="anchored" data-anchor-id="files-to-create-3">Files to Create</h3>
+<p><strong>lib/voice_leading.rb</strong> (NEW) - Class: <code>VoiceLeadingConstraint</code> - Rules: Voice range limits, smooth voice leading, no parallel fifths, etc. - Method: <code>validate_voice_leading()</code> (rule checker)</p>
+<p><strong>lib/worlds/polyphonic_world.rb</strong> (NEW) - Objects: 4-voice progressions - Metric: Sum of voice motion distances - Axiom: Triangle inequality per voice</p>
+<p><strong>test/test_voice_leading.rb</strong> (NEW)</p>
+</section>
+<section id="expected-outputs-3" class="level3">
+<h3 class="anchored" data-anchor-id="expected-outputs-3">Expected Outputs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Voice range validation (SATB)</label></li>
+<li><label><input type="checkbox" checked="">Parallel fifths/octaves detection</label></li>
+<li><label><input type="checkbox" checked="">Voice overlap detection</label></li>
+<li><label><input type="checkbox" checked="">Smooth voice leading analysis</label></li>
+<li><label><input type="checkbox" checked="">8+ test cases</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="category-8-harmony-progression" class="level2">
+<h2 class="anchored" data-anchor-id="category-8-harmony-progression">Category 8: Harmony &amp; Progression</h2>
+<section id="domain-4" class="level3">
+<h3 class="anchored" data-anchor-id="domain-4">Domain</h3>
+<p>Chord progressions follow harmonic logic: Circle of Fifths, functional harmony.</p>
+</section>
+<section id="files-to-create-4" class="level3">
+<h3 class="anchored" data-anchor-id="files-to-create-4">Files to Create</h3>
+<p><strong>lib/progressions.rb</strong> (NEW) - Class: <code>CircleOfFifths</code> - Class: <code>HarmonicProgression</code> - Method: <code>analyze_progression()</code> - Method: <code>common_progressions()</code> (I-IV-V-I, etc.)</p>
+<p><strong>lib/worlds/progression_world.rb</strong> (NEW)</p>
+<p><strong>test/test_progressions.rb</strong> (NEW)</p>
+</section>
+<section id="expected-outputs-4" class="level3">
+<h3 class="anchored" data-anchor-id="expected-outputs-4">Expected Outputs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Circle of Fifths navigation</label></li>
+<li><label><input type="checkbox" checked="">Common progression detection</label></li>
+<li><label><input type="checkbox" checked="">Secondary dominant analysis</label></li>
+<li><label><input type="checkbox" checked="">Borrowed chord recognition</label></li>
+<li><label><input type="checkbox" checked="">10+ test cases</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="category-9-structural-tonality" class="level2">
+<h2 class="anchored" data-anchor-id="category-9-structural-tonality">Category 9: Structural Tonality</h2>
+<section id="domain-5" class="level3">
+<h3 class="anchored" data-anchor-id="domain-5">Domain</h3>
+<p>Phrases, periods, cadences; large-form structure.</p>
+</section>
+<section id="files-to-create-5" class="level3">
+<h3 class="anchored" data-anchor-id="files-to-create-5">Files to Create</h3>
+<p><strong>lib/structure.rb</strong> (NEW) - Class: <code>Phrase</code> - Class: <code>Period</code> - Class: <code>Cadence</code> (authentic, plagal, deceptive, half) - Method: <code>analyze_phrase()</code> (phrase boundary detection)</p>
+<p><strong>lib/worlds/structural_world.rb</strong> (NEW)</p>
+<p><strong>test/test_structure.rb</strong> (NEW)</p>
+</section>
+<section id="expected-outputs-5" class="level3">
+<h3 class="anchored" data-anchor-id="expected-outputs-5">Expected Outputs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Phrase detection (antecedent/consequent)</label></li>
+<li><label><input type="checkbox" checked="">Cadence recognition</label></li>
+<li><label><input type="checkbox" checked="">Phrase boundary analysis</label></li>
+<li><label><input type="checkbox" checked="">6+ test cases</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="category-10-form-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="category-10-form-analysis">Category 10: Form &amp; Analysis</h2>
+<section id="domain-6" class="level3">
+<h3 class="anchored" data-anchor-id="domain-6">Domain</h3>
+<p>Sonata form, rondo, theme &amp; variation, etc.</p>
+</section>
+<section id="files-to-create-6" class="level3">
+<h3 class="anchored" data-anchor-id="files-to-create-6">Files to Create</h3>
+<p><strong>lib/form.rb</strong> (NEW) - Class: <code>MusicalForm</code> (abstract) - Class: <code>SonataForm</code>, <code>RondoForm</code>, <code>VariationForm</code>, etc. - Method: <code>analyze_form()</code> (detect which form)</p>
+<p><strong>lib/worlds/form_world.rb</strong> (NEW)</p>
+<p><strong>test/test_form.rb</strong> (NEW)</p>
+</section>
+<section id="expected-outputs-6" class="level3">
+<h3 class="anchored" data-anchor-id="expected-outputs-6">Expected Outputs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Form type detection</label></li>
+<li><label><input type="checkbox" checked="">Section boundary analysis</label></li>
+<li><label><input type="checkbox" checked="">Theme tracking</label></li>
+<li><label><input type="checkbox" checked="">5+ test cases</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="category-11-advanced-topics" class="level2">
+<h2 class="anchored" data-anchor-id="category-11-advanced-topics">Category 11: Advanced Topics</h2>
+<section id="domain-7" class="level3">
+<h3 class="anchored" data-anchor-id="domain-7">Domain</h3>
+<p>Spectral analysis, timbre, complex harmony, extended techniques.</p>
+</section>
+<section id="files-to-create-7" class="level3">
+<h3 class="anchored" data-anchor-id="files-to-create-7">Files to Create</h3>
+<p><strong>lib/spectral.rb</strong> (NEW) - Class: <code>Spectrum</code> - Class: <code>HarmonicSeries</code> - Method: <code>analyze_spectrum()</code> (frequency content)</p>
+<p><strong>lib/worlds/spectral_world.rb</strong> (NEW)</p>
+<p><strong>test/test_spectral.rb</strong> (NEW)</p>
+</section>
+<section id="expected-outputs-7" class="level3">
+<h3 class="anchored" data-anchor-id="expected-outputs-7">Expected Outputs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Spectral analysis implementation</label></li>
+<li><label><input type="checkbox" checked="">Harmonic series analysis</label></li>
+<li><label><input type="checkbox" checked="">Timbre space navigation</label></li>
+<li><label><input type="checkbox" checked="">4+ test cases</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="implementation-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-roadmap">Implementation Roadmap</h2>
+<section id="week-1-category-4-group-theory" class="level3">
+<h3 class="anchored" data-anchor-id="week-1-category-4-group-theory">Week 1: Category 4 (Group Theory)</h3>
+<ul>
+<li>Create group_theory.rb with Group, PermutationGroup</li>
+<li>Implement S₁₂ with Cayley distance</li>
+<li>Create test suite</li>
+<li>Verify all tests pass</li>
+</ul>
+</section>
+<section id="week-2-categories-5-6-harmonic-function-modulation" class="level3">
+<h3 class="anchored" data-anchor-id="week-2-categories-5-6-harmonic-function-modulation">Week 2: Categories 5-6 (Harmonic Function + Modulation)</h3>
+<ul>
+<li>Create harmonic_function.rb</li>
+<li>Create modulation.rb</li>
+<li>Test suites for both</li>
+<li>Integrate with existing worlds</li>
+</ul>
+</section>
+<section id="week-3-categories-7-8-voice-leading-progressions" class="level3">
+<h3 class="anchored" data-anchor-id="week-3-categories-7-8-voice-leading-progressions">Week 3: Categories 7-8 (Voice Leading + Progressions)</h3>
+<ul>
+<li>Create voice_leading.rb</li>
+<li>Create progressions.rb</li>
+<li>Comprehensive test suites</li>
+<li>Audio rendering for progressions</li>
+</ul>
+</section>
+<section id="week-4-categories-9-11-structure-form-advanced" class="level3">
+<h3 class="anchored" data-anchor-id="week-4-categories-9-11-structure-form-advanced">Week 4: Categories 9-11 (Structure + Form + Advanced)</h3>
+<ul>
+<li>Create structure.rb</li>
+<li>Create form.rb</li>
+<li>Create spectral.rb</li>
+<li>Final test suites</li>
+</ul>
+</section>
+<section id="week-5-integration-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="week-5-integration-documentation">Week 5: Integration &amp; Documentation</h3>
+<ul>
+<li>Merge all categories</li>
+<li>Create unified test harness</li>
+<li>Update FLOX_SETUP for all categories</li>
+<li>Create CATEGORIES_COMPLETE.md</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="testing-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="testing-strategy">Testing Strategy</h2>
+<section id="per-category" class="level3">
+<h3 class="anchored" data-anchor-id="per-category">Per Category</h3>
+<pre><code>Category N:
+├── test/test_category_N.rb
+├── test/test_category_N_integration.rb
+├── test/test_category_N_audio.rb
+└── bin/demo_category_N.rb (interactive demo)</code></pre>
+</section>
+<section id="automation" class="level3">
+<h3 class="anchored" data-anchor-id="automation">Automation</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test single category</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">flox</span> activate <span class="at">-e</span> test <span class="at">--</span> ruby test/test_category_4.rb</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Test category + integration</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">flox</span> activate <span class="at">-e</span> test <span class="at">--</span> ruby test/test_category_4_integration.rb</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Full suite (all categories)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">flox</span> activate <span class="at">-e</span> test <span class="at">--</span> ruby test_complete_system.rb</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all category tests</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">flox</span> activate <span class="at">-e</span> audio-test <span class="at">--</span> bash <span class="at">-c</span> <span class="st">"</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">  for i in {4..11}; do</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="st">    echo Testing Category </span><span class="va">$i</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="st">    ruby test/test_category_</span><span class="va">$i</span><span class="st">.rb</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="st">  done</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="semantic-validation" class="level3">
+<h3 class="anchored" data-anchor-id="semantic-validation">Semantic Validation</h3>
+<p>Each category extends the 8-dimension semantic closure:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>closure <span class="op">=</span> <span class="dt">OntologicalValidator</span><span class="at">.semantic_closure</span>(composition)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># All 8 dimensions must validate:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. pitch_space - Notes in correct octaves</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. chord_space - Chords form valid points in Tⁿ</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. metric_valid - Distances satisfy triangle inequality</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. appearance - Objects present in the world</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. transformations_necessary - All operations preserve structure</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. consistent - No contradictions (e.g., C both major and minor)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. existence - Objects justified by rules</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. complete - Closure under all defined operations</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="key-integration-points" class="level2">
+<h2 class="anchored" data-anchor-id="key-integration-points">Key Integration Points</h2>
+<section id="audio-rendering" class="level3">
+<h3 class="anchored" data-anchor-id="audio-rendering">Audio Rendering</h3>
+<p>Each category extends SonicPiRenderer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Category 4: Play group action</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>renderer<span class="at">.render_group_action</span>(group, permutation, chord)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Category 5: Play functional progression</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>renderer<span class="at">.render_functional_progression</span>(<span class="cn">T</span>, <span class="cn">S</span>, <span class="cn">D</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Category 6: Play modulation</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>renderer<span class="at">.render_modulation</span>(key1, key2, common_tone_path)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Category 7: Play 4-voice SATB</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>renderer<span class="at">.render_satb</span>(soprano, alto, tenor, bass)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Category 8: Play progression</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>renderer<span class="at">.render_progression</span>(<span class="kw">[</span><span class="ch">'I'</span>, <span class="vs">'IV'</span>, <span class="ch">'V'</span>, <span class="ch">'I'</span><span class="kw">]</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Category 9: Play phrase with cadence</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>renderer<span class="at">.render_phrase</span>(antecedent, cadence)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Category 10: Play form structure</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>renderer<span class="at">.render_form</span>(<span class="dt">SonataForm</span><span class="at">.new</span>(exposition, development, recapitulation))</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Category 11: Play spectral content</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>renderer<span class="at">.render_spectrum</span>(harmonic_series)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>All OSC sends are actual UDP packets to Sonic Pi (localhost:4557).</p>
+<hr>
+</section>
+</section>
+<section id="validation-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="validation-checklist">Validation Checklist</h2>
+<p>For each category:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Core classes implemented</label></li>
+<li><label><input type="checkbox">Metric and triangle inequality verified</label></li>
+<li><label><input type="checkbox">8-point semantic closure confirmed</label></li>
+<li><label><input type="checkbox">Test suite created (5+ tests per category)</label></li>
+<li><label><input type="checkbox">All tests passing in actual Ruby runtime</label></li>
+<li><label><input type="checkbox">OSC audio rendering working</label></li>
+<li><label><input type="checkbox">Flox test environment updated</label></li>
+<li><label><input type="checkbox">Documentation written</label></li>
+<li><label><input type="checkbox">Integration with existing categories tested</label></li>
+</ul>
+<hr>
+</section>
+<section id="file-structure-after-completion" class="level2">
+<h2 class="anchored" data-anchor-id="file-structure-after-completion">File Structure After Completion</h2>
+<pre><code>/Users/bob/ies/music-topos/
+├── lib/
+│   ├── pitch_class.rb          ✓ (Cat 1)
+│   ├── chord.rb                ✓ (Cat 2)
+│   ├── neo_riemannian.rb       ✓ (Cat 3)
+│   ├── group_theory.rb         ← (Cat 4)
+│   ├── harmonic_function.rb    ← (Cat 5)
+│   ├── modulation.rb           ← (Cat 6)
+│   ├── voice_leading.rb        ← (Cat 7)
+│   ├── progressions.rb         ← (Cat 8)
+│   ├── structure.rb            ← (Cat 9)
+│   ├── form.rb                 ← (Cat 10)
+│   ├── spectral.rb             ← (Cat 11)
+│   ├── worlds/
+│   │   ├── pitch_space_world.rb
+│   │   ├── chord_space_world.rb
+│   │   ├── group_theory_world.rb       ← (Cat 4)
+│   │   ├── harmonic_function_world.rb  ← (Cat 5)
+│   │   └── ... (all 11 worlds)
+│   └── sonic_pi_renderer.rb
+├── test/
+│   ├── test_category_4.rb  ← START HERE
+│   ├── test_category_5.rb
+│   └── ... (all 11 tests)
+├── bin/
+│   ├── demo_category_4.rb
+│   └── ... (all 11 demos)
+├── flox.toml               (updated with new tests)
+└── [documentation files]</code></pre>
+<hr>
+</section>
+<section id="success-criteria" class="level2">
+<h2 class="anchored" data-anchor-id="success-criteria">Success Criteria</h2>
+<p>System is complete when:</p>
+<ol type="1">
+<li>✓ All 11 categories implemented</li>
+<li>✓ All tests passing (60+ test cases total)</li>
+<li>✓ Semantic closure verified for all categories</li>
+<li>✓ OSC audio rendering for all categories</li>
+<li>✓ Flox automation for complete testing</li>
+<li>✓ Comprehensive documentation</li>
+<li>✓ System demonstrates Mazzola’s music topos in practice</li>
+</ol>
+<hr>
+</section>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p><strong>Ready to begin</strong>: Category 4 (Group Theory)</p>
+<p><strong>Next action</strong>: Create <code>lib/group_theory.rb</code> with full Group and PermutationGroup implementation.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

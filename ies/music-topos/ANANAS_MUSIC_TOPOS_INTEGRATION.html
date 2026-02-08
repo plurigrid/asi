@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ananas_music_topos_integration – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./https://topos.site/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="ananas-music-topos-integration-system" class="level1">
+<h1>Ananas-Music-Topos Integration System</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This document describes the integration between two major systems:</p>
+<ol type="1">
+<li><strong>Ananas</strong> - Document provenance tracking using Attributed C-Sets (ACSet)</li>
+<li><strong>Music-Topos</strong> - Formal composition framework with multi-instrument support, proofs, and research analysis</li>
+</ol>
+<p>The bridge system creates formal provenance chains for all composition artifacts, ensuring complete traceability from research question through final output.</p>
+<hr>
+</section>
+<section id="architecture" class="level2">
+<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
+<section id="ananas-system-source" class="level3">
+<h3 class="anchored" data-anchor-id="ananas-system-source">Ananas System (Source)</h3>
+<p><strong>Purpose</strong>: Track the provenance of documents/artifacts through a categorical pipeline</p>
+<p><strong>Schema</strong> (ACSet):</p>
+<pre><code>Query → MD5 → File → Witness → Doc</code></pre>
+<ul>
+<li><strong>Query</strong>: The research question or initial investigation</li>
+<li><strong>MD5</strong>: Content hash (identity via Gay-Seed functor)</li>
+<li><strong>File</strong>: Persistent storage of artifact</li>
+<li><strong>Witness</strong>: Formal verification/attestation</li>
+<li><strong>Doc</strong>: Final published/output form</li>
+</ul>
+<p><strong>Key Feature</strong>: Gay-Seed functor maps SHA3-256 hash to rainbow color (0-11)</p>
+</section>
+<section id="music-topos-system-target" class="level3">
+<h3 class="anchored" data-anchor-id="music-topos-system-target">Music-Topos System (Target)</h3>
+<p><strong>Purpose</strong>: Formalize musical composition with multi-instrument support, theoretical proofs, and research collaboration analysis</p>
+<p><strong>Artifacts</strong>: 1. <strong>Compositions</strong> - Multi-instrument pieces with phase-scoped gestures 2. <strong>Proofs</strong> - Lean 4 theorems formalizing artist techniques 3. <strong>Analyses</strong> - GitHub researcher interaction analysis 4. <strong>Histories</strong> - Color chain + battery cycle tracking</p>
+<hr>
+</section>
+</section>
+<section id="bridge-system-artifact-provenance" class="level2">
+<h2 class="anchored" data-anchor-id="bridge-system-artifact-provenance">Bridge System: Artifact Provenance</h2>
+<section id="composition-artifact-provenance" class="level3">
+<h3 class="anchored" data-anchor-id="composition-artifact-provenance">Composition Artifact Provenance</h3>
+<p>Maps a music-topos composition through the ananas pipeline:</p>
+<pre><code>Research Question (GitHub Issue)
+    ↓
+    ↓ [Query Node]
+    ↓
+Composition Created (Multi-Instrument Piece)
+    ↓
+    ↓ [MD5 Node: Content Hash]
+    ↓
+File Stored (JSON artifact)
+    ↓
+    ↓ [File Node: Persistent Storage]
+    ↓
+Formal Verification (Lean 4 Proof)
+    ↓
+    ↓ [Witness Node: Attestation]
+    ↓
+Published Output (Documentation)
+    ↓
+    ↓ [Doc Node: Final Form]</code></pre>
+</section>
+<section id="implementation-proveniancechain-class" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-proveniancechain-class">Implementation: ProvenianceChain Class</h3>
+<pre class="hy"><code>(defclass ProvenianceChain []
+  ; artifact-id: unique identifier
+  ; github-interaction-id: source research question
+  ; nodes: sequence of Query → MD5 → File → Witness → Doc
+  ; morphisms: categorical arrows between nodes
+
+  (defn add-query [self researchers] ...)
+  (defn add-md5 [self artifact] ...)
+  (defn add-file [self artifact-path] ...)
+  (defn add-witness [self proof-id verified?] ...)
+  (defn add-doc [self doc-id artifact-type] ...)
+  (defn trace-backward [self] ...)
+  (defn to-json [self] ...))</code></pre>
+</section>
+<section id="example-composition-provenance" class="level3">
+<h3 class="anchored" data-anchor-id="example-composition-provenance">Example: Composition Provenance</h3>
+<pre class="hy"><code>(let [chain (create-composition-provenance
+             "comp_001"           ; artifact ID
+             "github_issue_4521"  ; source research
+             5                    ; instruments
+             3                    ; phases
+             ["terrytao" "jonathangorard"])]  ; researchers
+
+  ; Chain automatically builds:
+  ; Query (GitHub issue 4521)
+  ;   → MD5 (hash of composition object)
+  ;   → File (stored at artifacts/comp_001.json)
+  ;   → Witness (Lean4 proof verification)
+  ;   → Doc (published output))</code></pre>
+</section>
+<section id="output-structure" class="level3">
+<h3 class="anchored" data-anchor-id="output-structure">Output Structure</h3>
+<p>Each composition produces:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artifact-id"</span><span class="fu">:</span> <span class="st">"comp_001"</span><span class="fu">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"nodes"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"Query"</span><span class="fu">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"interaction-id"</span><span class="fu">:</span> <span class="st">"github_issue_4521"</span><span class="fu">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"researchers"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"terrytao"</span><span class="ot">,</span> <span class="st">"jonathangorard"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"theme"</span><span class="fu">:</span> <span class="st">"harmonic analysis on metric spaces"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"MD5"</span><span class="fu">,</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"artifact-id"</span><span class="fu">:</span> <span class="st">"comp_001"</span><span class="fu">,</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"content-hash"</span><span class="fu">:</span> <span class="st">"a1b2c3d4e5f6..."</span><span class="fu">,</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gayseed"</span><span class="fu">:</span> <span class="dv">7</span><span class="fu">,</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gayseed-hex"</span><span class="fu">:</span> <span class="st">"#aa00ff"</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"File"</span><span class="fu">,</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/Users/bob/ies/music-topos/artifacts/comp_001.json"</span><span class="fu">,</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"exists"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"size"</span><span class="fu">:</span> <span class="dv">4521</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"Witness"</span><span class="fu">,</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"proof-id"</span><span class="fu">:</span> <span class="st">"lean4_proof_comp_001"</span><span class="fu">,</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"verified"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"formal-system"</span><span class="fu">:</span> <span class="st">"Lean4"</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"Doc"</span><span class="fu">,</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"doc-id"</span><span class="fu">:</span> <span class="st">"doc_comp_001"</span><span class="fu">,</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"artifact-type"</span><span class="fu">:</span> <span class="st">"composition"</span><span class="fu">,</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"exportable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"formats"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"json"</span><span class="ot">,</span> <span class="st">"markdown"</span><span class="ot">,</span> <span class="st">"lean4"</span><span class="ot">,</span> <span class="st">"pdf"</span><span class="ot">]</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"morphisms"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"source"</span><span class="fu">:</span> <span class="st">"Query"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"MD5"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"search"</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"source"</span><span class="fu">:</span> <span class="st">"MD5"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"File"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"download"</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"source"</span><span class="fu">:</span> <span class="st">"File"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"Witness"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"attest"</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"source"</span><span class="fu">:</span> <span class="st">"Witness"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"Doc"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"convert"</span><span class="fu">}</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="partite-integration-machine-user-shared" class="level2">
+<h2 class="anchored" data-anchor-id="partite-integration-machine-user-shared">3-Partite Integration: Machine → User → Shared</h2>
+<p>The bridge extends to the 3-partite semantics established in music-topos:</p>
+<section id="partition-1-machine-state" class="level3">
+<h3 class="anchored" data-anchor-id="partition-1-machine-state">Partition 1: Machine State</h3>
+<ul>
+<li>Color cycle (from battery tracking)</li>
+<li>Battery level</li>
+<li>Timestamp</li>
+</ul>
+</section>
+<section id="partition-2-user-history" class="level3">
+<h3 class="anchored" data-anchor-id="partition-2-user-history">Partition 2: User History</h3>
+<ul>
+<li>Researcher activity (GitHub interactions)</li>
+<li>Composition creation events</li>
+<li>Research timeline</li>
+</ul>
+</section>
+<section id="partition-3-shared-worlds" class="level3">
+<h3 class="anchored" data-anchor-id="partition-3-shared-worlds">Partition 3: Shared Worlds</h3>
+<ul>
+<li>Artifacts (compositions, proofs, analyses)</li>
+<li>Persistent storage</li>
+<li>Verified outputs</li>
+</ul>
+</section>
+<section id="edges-causality" class="level3">
+<h3 class="anchored" data-anchor-id="edges-causality">Edges (Causality)</h3>
+<pre><code>Machine → User: "observation"
+  (Color cycle signals user research activity)
+
+User → Shared: "creation"
+  (User creates composition artifact)
+
+Shared → Machine: "feedback"
+  (Artifact hash updates color chain)</code></pre>
+</section>
+<section id="partite-provenance-class" class="level3">
+<h3 class="anchored" data-anchor-id="partite-provenance-class">3-Partite Provenance Class</h3>
+<pre class="hy"><code>(defclass TripartiteProvenance []
+  (defn connect-machine-to-user [self color-cycle battery ...] ...)
+  (defn connect-user-to-shared [self researcher-id] ...)
+  (defn connect-shared-to-machine [self artifact-hash] ...)
+  (defn to-json [self] ...))</code></pre>
+</section>
+<section id="example-complete-causality-chain" class="level3">
+<h3 class="anchored" data-anchor-id="example-complete-causality-chain">Example: Complete Causality Chain</h3>
+<pre><code>Battery Cycle 23 (color #aa00ff)
+  ↓ [observation]
+Researcher "terrytao" investigates GitHub issue #4521
+  ↓ [creation]
+Creates composition comp_001 (5 instruments, 3 phases)
+  ↓ [verified via Lean4]
+Artifact stored with hash a1b2c3d4e5f6
+  ↓ [feedback]
+Hash updates color chain (cycle 24 → gayseed-derived color)</code></pre>
+<hr>
+</section>
+</section>
+<section id="four-artifact-types" class="level2">
+<h2 class="anchored" data-anchor-id="four-artifact-types">Four Artifact Types</h2>
+<section id="composition-artifacts" class="level3">
+<h3 class="anchored" data-anchor-id="composition-artifacts">1. Composition Artifacts</h3>
+<p><strong>What</strong>: Multi-instrument musical piece</p>
+<p><strong>Provenance</strong>:</p>
+<pre><code>comp_NNN
+  → instruments: Piano, Violin, Cello, Harpsichord, Synth
+  → phases: RED/BLUE/GREEN gadgets
+  → hash: SHA3-256(composition object)
+  → verification: Polyphonic correctness in Lean4
+  → output: JSON + Audio rendering</code></pre>
+<p><strong>Example Path</strong>:</p>
+<pre><code>compose_mp4_research
+  ├─ Query: GitHub#4521 "Polyphonic gestural composition"
+  ├─ MD5: a1b2c3d4e5f6... (gayseed: 7)
+  ├─ File: artifacts/comp_001.json
+  ├─ Witness: lean4_proof_polyphonic_comp
+  └─ Doc: doc_comp_001.pdf</code></pre>
+</section>
+<section id="proof-artifacts" class="level3">
+<h3 class="anchored" data-anchor-id="proof-artifacts">2. Proof Artifacts</h3>
+<p><strong>What</strong>: Lean 4 theorems formalizing artist techniques</p>
+<p><strong>Provenance</strong>:</p>
+<pre><code>proof_ARTIST_NNN
+  → artist: Aphex Twin, Autechre, Daniel Avery, ...
+  → theorem-count: 3-7 theorems per artist
+  → hash: SHA3-256(proof object)
+  → verification: Lean4 compilation + type checking
+  → output: .lean file + proof script</code></pre>
+<p><strong>Example Path</strong>:</p>
+<pre><code>prove_aphex_equation_driven
+  ├─ Query: GitHub#5623 "Formalize equation-driven synthesis"
+  ├─ MD5: e5f6a1b2c3d4... (gayseed: 11)
+  ├─ File: artifacts/proof_aphex_001.lean
+  ├─ Witness: verified_by_lean4
+  └─ Doc: doc_proof_aphex.md</code></pre>
+</section>
+<section id="analysis-artifacts" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-artifacts">3. Analysis Artifacts</h3>
+<p><strong>What</strong>: GitHub researcher interaction analysis</p>
+<p><strong>Provenance</strong>:</p>
+<pre><code>analysis_THEME_NNN
+  → researchers: Tao, Knoroiov researchers, Gorard
+  → interaction-count: 50+
+  → hash: SHA3-256(analysis object)
+  → verification: Temporal overlap validation
+  → output: JSON + markdown report</code></pre>
+<p><strong>Example Path</strong>:</p>
+<pre><code>analyze_tao_knoroiov_gorard
+  ├─ Query: GitHub#6789 "Map researcher collaborations"
+  ├─ MD5: c3d4e5f6a1b2... (gayseed: 3)
+  ├─ File: artifacts/analysis_tao_knoroiov.json
+  ├─ Witness: validated_temporal_windows
+  └─ Doc: SHORTLIST_REPORT.md</code></pre>
+</section>
+<section id="history-artifacts" class="level3">
+<h3 class="anchored" data-anchor-id="history-artifacts">4. History Artifacts</h3>
+<p><strong>What</strong>: Color chain + battery cycles</p>
+<p><strong>Provenance</strong>:</p>
+<pre><code>history_CYCLE_RANGE
+  → color-chain: 35+ battery cycles
+  → conversations: Claude interaction history
+  → timestamp-range: Date1 → DateN
+  → hash: SHA3-256(history object)
+  → verification: Consistency check
+  → output: JSON + GraphQL queryable</code></pre>
+<hr>
+</section>
+</section>
+<section id="gay-seed-functor-integration" class="level2">
+<h2 class="anchored" data-anchor-id="gay-seed-functor-integration">Gay-Seed Functor Integration</h2>
+<p>Every artifact gets a deterministic visual signature:</p>
+<pre><code>Artifact Content
+  ↓
+  ↓ SHA3-256 hash
+  ↓
+Hash[0:2] (first 2 hex digits)
+  ↓
+  ↓ Parse as hex int
+  ↓
+Int mod 12 = index ∈ [0, 11]
+  ↓
+  ↓ Map to rainbow
+  ↓
+Gayseed Color: 🔴🟠🟡🟢🔵🟣 (12 colors)</code></pre>
+<section id="color-space" class="level3">
+<h3 class="anchored" data-anchor-id="color-space">Color Space</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Index</th>
+<th>Emoji</th>
+<th>Hex</th>
+<th>ANSI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>🔴</td>
+<td>#ff0000</td>
+<td>196</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>🟠</td>
+<td>#ff5500</td>
+<td>202</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>🟠</td>
+<td>#ff8800</td>
+<td>208</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>🟡</td>
+<td>#ffbb00</td>
+<td>214</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>🟡</td>
+<td>#ffff00</td>
+<td>226</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>🟢</td>
+<td>#88ff00</td>
+<td>118</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>🟢</td>
+<td>#00ff00</td>
+<td>46</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>🔵</td>
+<td>#00ffaa</td>
+<td>49</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>🔵</td>
+<td>#00ffff</td>
+<td>51</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>🔵</td>
+<td>#0000ff</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>🟣</td>
+<td>#8800ff</td>
+<td>93</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>🟣</td>
+<td>#aa00ff</td>
+<td>129</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="usage" class="level3">
+<h3 class="anchored" data-anchor-id="usage">Usage</h3>
+<pre class="hy"><code>(let [composition-hash "a1b2c3d4e5f6..."
+      gayseed-index (gayseed-from-hash composition-hash)
+      color-hex (gayseed-hex composition-hash)]
+  (print (str "Composition color: " color-hex " (" gayseed-index ")")))
+; Output: Composition color: #aa00ff (7)</code></pre>
+<hr>
+</section>
+</section>
+<section id="workflow-from-research-question-to-published-output" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-from-research-question-to-published-output">Workflow: From Research Question to Published Output</h2>
+<section id="step-1-research-question-query-node" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-research-question-query-node">Step 1: Research Question (Query Node)</h3>
+<pre><code>GitHub Issue #4521
+Title: "Polyphonic gestural composition on metric spaces"
+Participants: terrytao, jonathangorard, researcher_A</code></pre>
+</section>
+<section id="step-2-composition-creation-md5-node" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-composition-creation-md5-node">Step 2: Composition Creation (MD5 Node)</h3>
+<pre class="hy"><code>(let [artifact (make-composition-artifact
+                "comp_001" 5 3)
+      hashed (hash-artifact artifact)]
+  ; Hashed now contains:
+  ; - Original artifact metadata
+  ; - SHA3-256 content hash
+  ; - Gayseed color (0-11))</code></pre>
+</section>
+<section id="step-3-file-storage-file-node" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-file-storage-file-node">Step 3: File Storage (File Node)</h3>
+<pre><code>artifacts/comp_001.json
+  Size: 4521 bytes
+  Path: /Users/bob/ies/music-topos/artifacts/comp_001.json
+  Exists: true</code></pre>
+</section>
+<section id="step-4-formal-verification-witness-node" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-formal-verification-witness-node">Step 4: Formal Verification (Witness Node)</h3>
+<pre class="lean4"><code>theorem polyphonic_comp_001_correctness
+  (voices : Vector Voice 5)
+  (phases : Vector Phase 3)
+  : PolyphonicCorrectness voices phases := by
+  sorry  -- Proof of correctness</code></pre>
+</section>
+<section id="step-5-publication-doc-node" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-publication-doc-node">Step 5: Publication (Doc Node)</h3>
+<pre><code>Exported as:
+  - JSON (structured data)
+  - Markdown (human-readable)
+  - Lean4 (formal verification)
+  - PDF (printable)</code></pre>
+<hr>
+</section>
+</section>
+<section id="database-schema-integration" class="level2">
+<h2 class="anchored" data-anchor-id="database-schema-integration">Database Schema Integration</h2>
+<section id="duckdb-tables" class="level3">
+<h3 class="anchored" data-anchor-id="duckdb-tables">DuckDB Tables</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Existing music-topos tables</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> color_chain (</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">cycle</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  hex_color <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">timestamp</span> <span class="dt">TIMESTAMP</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> history_windows (</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  event_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  interaction_type <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">timestamp</span> <span class="dt">TIMESTAMP</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co">-- New ananas integration tables</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> artifact_provenance (</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  artifact_id <span class="dt">VARCHAR</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  artifact_type <span class="dt">VARCHAR</span>,  <span class="co">-- 'composition' | 'proof' | 'analysis' | 'history'</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  github_interaction_id <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  content_hash <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  gayseed_index <span class="dt">INTEGER</span>,</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  creation_timestamp <span class="dt">TIMESTAMP</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> provenance_nodes (</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  artifact_id <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  node_type <span class="dt">VARCHAR</span>,  <span class="co">-- 'Query' | 'MD5' | 'File' | 'Witness' | 'Doc'</span></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>  node_data JSON,</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>  sequence_order <span class="dt">INTEGER</span>,</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (artifact_id) <span class="kw">REFERENCES</span> artifact_provenance</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> provenance_morphisms (</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  artifact_id <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>  source_node_type <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>  target_node_type <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>  morphism_label <span class="dt">VARCHAR</span>,  <span class="co">-- 'search' | 'download' | 'attest' | 'convert'</span></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (artifact_id) <span class="kw">REFERENCES</span> artifact_provenance</span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a><span class="co">-- 3-partite connections</span></span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> tripartite_connections (</span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>  composition_id <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>  machine_cycle <span class="dt">INTEGER</span>,</span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>  user_researcher <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>  shared_artifact <span class="dt">VARCHAR</span>,</span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>  edge_type <span class="dt">VARCHAR</span>,  <span class="co">-- 'machine→user' | 'user→shared' | 'shared→machine'</span></span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (machine_cycle) <span class="kw">REFERENCES</span> color_chain,</span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (composition_id) <span class="kw">REFERENCES</span> artifact_provenance</span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="graphql-queries" class="level3">
+<h3 class="anchored" data-anchor-id="graphql-queries">GraphQL Queries</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode graphql code-with-copy"><code class="sourceCode graphql"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Query artifact provenance</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">query</span> {</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  artifactProvenance(artifactId: <span class="st">"comp_001"</span>) {</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    artifactId</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    artifactType</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    contentHash</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    gayseedIndex</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    gayseedHex</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    provenance {</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>      nodes {</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">type</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        data</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>      morphisms {</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>        source</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        target</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>        label</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Query 3-partite connection</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="kw">query</span> {</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>  tripartiteConnection(compositionId: <span class="st">"comp_001"</span>) {</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    machineState {</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>      colorCycle</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>      battery</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    userHistory {</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>      researcherId</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>      activity</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    sharedArtifact {</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>      artifactId</span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>      <span class="kw">type</span></span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>    edges {</span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>      from</span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a>      to</span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a>      label</span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb24-44"><a href="#cb24-44" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="usage-examples" class="level2">
+<h2 class="anchored" data-anchor-id="usage-examples">Usage Examples</h2>
+<section id="creating-a-composition-with-provenance" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-composition-with-provenance">Creating a Composition with Provenance</h3>
+<pre class="hy"><code>(let [chain (create-composition-provenance
+             "comp_001"
+             "github_issue_4521"
+             5
+             3
+             ["terrytao" "jonathangorard"])]
+
+  ; Export to JSON
+  (let [json-output (.to-json chain)]
+    (with [f (open "comp_001_provenance.json" "w")]
+      (f.write (json.dumps json-output :indent 2)))))</code></pre>
+</section>
+<section id="creating-a-proof-with-provenance" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-proof-with-provenance">Creating a Proof with Provenance</h3>
+<pre class="hy"><code>(let [chain (create-proof-provenance
+             "proof_aphex_001"
+             "github_issue_5623"
+             "Aphex Twin"
+             7
+             ["terrytao"])]
+
+  ; Trace backward from final doc to original query
+  (print "Provenance trace:")
+  (doseq [node (.trace-backward chain)]
+    (print (str "  " node))))</code></pre>
+</section>
+<section id="creating-analysis-with-provenance" class="level3">
+<h3 class="anchored" data-anchor-id="creating-analysis-with-provenance">Creating Analysis with Provenance</h3>
+<pre class="hy"><code>(let [chain (create-analysis-provenance
+             "analysis_tao_knoroiov_001"
+             "github_issue_6789"
+             3
+             47
+             ["terrytao" "jonathangorard" "researcher_A"])]
+
+  ; Export and save
+  (let [json-data (.to-json chain)]
+    (print (json.dumps json-data :indent 2))))</code></pre>
+<hr>
+</section>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<ol type="1">
+<li><p><strong>Complete Traceability</strong>: Every artifact has documented genealogy from research question to published output</p></li>
+<li><p><strong>Deterministic Visual Identity</strong>: Gay-Seed colors provide immediate visual recognition of artifact identity</p></li>
+<li><p><strong>Formal Verification</strong>: All artifacts validated through Lean4 proofs before publication</p></li>
+<li><p><strong>Categorical Semantics</strong>: ACSet structure ensures composability and algebraic properties</p></li>
+<li><p><strong>3-Partite Integration</strong>: Connects machine state, user history, and shared outputs</p></li>
+<li><p><strong>Queryable Provenance</strong>: DuckDB + GraphQL enable complex temporal and causal queries</p></li>
+</ol>
+<hr>
+</section>
+<section id="example-provenance-chain-output" class="level2">
+<h2 class="anchored" data-anchor-id="example-provenance-chain-output">Example Provenance Chain Output</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artifact-id"</span><span class="fu">:</span> <span class="st">"comp_001"</span><span class="fu">,</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"nodes"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"Query"</span><span class="fu">,</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"interaction-id"</span><span class="fu">:</span> <span class="st">"github_issue_4521"</span><span class="fu">,</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"researchers"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"terrytao"</span><span class="ot">,</span> <span class="st">"jonathangorard"</span><span class="ot">,</span> <span class="st">"researcher_A"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"theme"</span><span class="fu">:</span> <span class="st">"harmonic analysis on metric spaces"</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"MD5"</span><span class="fu">,</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"artifact-id"</span><span class="fu">:</span> <span class="st">"comp_001"</span><span class="fu">,</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"content-hash"</span><span class="fu">:</span> <span class="st">"a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6"</span><span class="fu">,</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gayseed"</span><span class="fu">:</span> <span class="dv">7</span><span class="fu">,</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gayseed-hex"</span><span class="fu">:</span> <span class="st">"#00ffaa"</span><span class="fu">,</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"timestamp"</span><span class="fu">:</span> <span class="st">"2025-12-21T22:15:30.123456"</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"File"</span><span class="fu">,</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"path"</span><span class="fu">:</span> <span class="st">"/Users/bob/ies/music-topos/artifacts/comp_001.json"</span><span class="fu">,</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"exists"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"size"</span><span class="fu">:</span> <span class="dv">4521</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"Witness"</span><span class="fu">,</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"proof-id"</span><span class="fu">:</span> <span class="st">"lean4_proof_comp_001"</span><span class="fu">,</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"verified"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"formal-system"</span><span class="fu">:</span> <span class="st">"Lean4"</span><span class="fu">,</span></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"timestamp"</span><span class="fu">:</span> <span class="st">"2025-12-21T22:16:45.654321"</span></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"Doc"</span><span class="fu">,</span></span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"doc-id"</span><span class="fu">:</span> <span class="st">"doc_comp_001"</span><span class="fu">,</span></span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"artifact-type"</span><span class="fu">:</span> <span class="st">"composition"</span><span class="fu">,</span></span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"exportable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"formats"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"json"</span><span class="ot">,</span> <span class="st">"markdown"</span><span class="ot">,</span> <span class="st">"lean4"</span><span class="ot">,</span> <span class="st">"pdf"</span><span class="ot">]</span></span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"morphisms"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"source"</span><span class="fu">:</span> <span class="st">"Query"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"MD5"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"search"</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"source"</span><span class="fu">:</span> <span class="st">"MD5"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"File"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"download"</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"source"</span><span class="fu">:</span> <span class="st">"File"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"Witness"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"attest"</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"source"</span><span class="fu">:</span> <span class="st">"Witness"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"Doc"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"convert"</span><span class="fu">}</span></span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"chain-length"</span><span class="fu">:</span> <span class="dv">5</span></span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<ol type="1">
+<li><strong>Implementation</strong>: Run the bridge system demo</li>
+<li><strong>Database Integration</strong>: Add provenance tables to DuckDB</li>
+<li><strong>Export Pipeline</strong>: Create exports for all existing artifacts</li>
+<li><strong>GraphQL Server</strong>: Deploy QueryAPI with provenance endpoints</li>
+<li><strong>Visualization</strong>: Create interactive provenance graphs</li>
+<li><strong>Analysis</strong>: Query temporal patterns across all artifacts</li>
+</ol>
+<hr>
+<p><em>Ananas-Music-Topos Bridge System</em> <em>Integrating document provenance with compositional formalization</em> <em>Generated: 2025-12-21</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

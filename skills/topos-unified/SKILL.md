@@ -1,6 +1,6 @@
 ---
 name: topos-unified
-description: Topos Unified Skill
+description: 'Topos Unified Skill'
 version: 1.0.0
 ---
 
@@ -9,19 +9,6 @@ version: 1.0.0
 **Trit**: +1 (PLUS/Generator) | **Color**: #D82626 | **Subagent**: Generator
 
 Unified access to all topos-theoretic resources across the filesystem - mathematical music theory, categorical databases, infinity topoi, pretopos trees, and gayzip manifests.
-
-## bmorphism Contributions
-
-> *"universal topos construction for social cognition and democratization of mathematical approach to problem-solving to all"*
-> — [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
-
-**Universal Topos for Cognition**: This skill embodies bmorphism's vision of a universal topos construction — a single categorical framework that unifies all modalities of knowledge (music, databases, distributed systems, proofs).
-
-**Topos Institute Integration**: The skill connects to [Topos Institute](https://topos.institute) resources including CatColab, StructuredDecompositions.jl, and the algebraicjulia ecosystem.
-
-**Active Inference in Topoi**: A topos is a universe where logic lives. [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) works internal to any topos — the skill provides the categorical infrastructure for multi-world cognitive agents.
-
-**Infinity Topos**: The infinity-topos resources enable higher-categorical reasoning where agents can have beliefs about beliefs about beliefs — the full tower of metacognition.
 
 ## GF(3) Triads
 
@@ -186,65 +173,3 @@ See [ILYA_EXTENSION.md](resources/ILYA_EXTENSION.md) and [ilya_self_modeling.jl]
 - babashka (bb) for fast Clojure scripting
 - DuckDB for topos artifact storage
 - Gay.jl / gay-rs for deterministic coloring
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `category-theory`: 139 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-topos-unified (○) + SDF.Ch10 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

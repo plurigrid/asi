@@ -1,0 +1,399 @@
+# qigong: macOS Red Team / Blue Team Resource Management Environment
+# Pure Nix-based (no homebrew dependencies)
+# Built with Flox for reproducible, portable dev environments
+
+[flox]
+name = "qigong"
+description = "High-octane red team / blue team resource management for macOS Sequoia"
+version = "2.0.0"
+authors = ["Claude Code", "Security Research"]
+systems = ["aarch64-darwin", "x86_64-darwin"]
+
+# ==============================================================================
+# CORE MONITORING TOOLS (System-provided on macOS)
+# ==============================================================================
+
+# These are built-in macOS tools, no package needed:
+# - asitop: Available via pip through Python
+# - powermetrics: System binary at /usr/bin/powermetrics
+# - Instruments.app: Part of Xcode
+# - taskpolicy: System binary at /usr/sbin/taskpolicy
+# - dtrace: System binary at /usr/sbin/dtrace
+
+# ==============================================================================
+# PROGRAMMING LANGUAGES & DEVELOPMENT
+# ==============================================================================
+
+[[package]]
+name = "python312"
+description = "Python 3.12 for monitoring scripts & analysis"
+package = "nixpkgs#python312"
+category = "languages"
+
+[[package]]
+name = "python312-pip"
+description = "Pip package manager for Python"
+package = "nixpkgs#python312.pkgs.pip"
+category = "languages"
+
+[[package]]
+name = "swift"
+description = "Swift compiler for DispatchQueue utilities"
+package = "nixpkgs#swift"
+category = "languages"
+
+[[package]]
+name = "go"
+description = "Go compiler for memory-efficient red team payloads"
+package = "nixpkgs#go"
+category = "languages"
+
+[[package]]
+name = "rust"
+description = "Rust for high-performance monitoring tools"
+package = "nixpkgs#rust"
+category = "languages"
+
+# ==============================================================================
+# ANALYSIS & DATA PROCESSING
+# ==============================================================================
+
+[[package]]
+name = "duckdb"
+description = "DuckDB for temporal resource accounting queries"
+package = "nixpkgs#duckdb"
+category = "analysis"
+
+[[package]]
+name = "jq"
+description = "JSON query tool for parsing powermetrics output"
+package = "nixpkgs#jq"
+category = "analysis"
+
+[[package]]
+name = "sqlite"
+description = "SQLite for engagement database"
+package = "nixpkgs#sqlite"
+category = "analysis"
+
+[[package]]
+name = "graphviz"
+description = "Graph visualization for thread dependency mapping"
+package = "nixpkgs#graphviz"
+category = "analysis"
+
+# ==============================================================================
+# TEXT PROCESSING & SCRIPTING
+# ==============================================================================
+
+[[package]]
+name = "bash"
+description = "Bash shell for orchestration scripts"
+package = "nixpkgs#bash"
+category = "scripting"
+
+[[package]]
+name = "coreutils"
+description = "GNU coreutils for standard utilities"
+package = "nixpkgs#coreutils"
+category = "scripting"
+
+[[package]]
+name = "gnused"
+description = "GNU sed for text processing"
+package = "nixpkgs#gnused"
+category = "scripting"
+
+[[package]]
+name = "gawk"
+description = "GNU awk for data processing"
+package = "nixpkgs#gawk"
+category = "scripting"
+
+[[package]]
+name = "findutils"
+description = "GNU find utilities"
+package = "nixpkgs#findutils"
+category = "scripting"
+
+[[package]]
+name = "watch"
+description = "Watch command for monitoring in real-time"
+package = "nixpkgs#procps"
+category = "scripting"
+
+# ==============================================================================
+# DEVELOPMENT TOOLS
+# ==============================================================================
+
+[[package]]
+name = "git"
+description = "Git for version control"
+package = "nixpkgs#git"
+category = "tools"
+
+[[package]]
+name = "lldb"
+description = "LLVM debugger for ARM64 inspection"
+package = "nixpkgs#lldb"
+category = "tools"
+
+[[package]]
+name = "vim"
+description = "Vim editor for configuration files"
+package = "nixpkgs#vim"
+category = "tools"
+
+[[package]]
+name = "helix"
+description = "Modern editor with better ARM64 support"
+package = "nixpkgs#helix"
+category = "tools"
+
+# ==============================================================================
+# SECURITY & FORENSICS
+# ==============================================================================
+
+[[package]]
+name = "openssl"
+description = "OpenSSL for crypto operations & timing analysis"
+package = "nixpkgs#openssl"
+category = "security"
+
+[[package]]
+name = "curl"
+description = "curl for network testing"
+package = "nixpkgs#curl"
+category = "security"
+
+[[package]]
+name = "wget"
+description = "wget for file downloads"
+package = "nixpkgs#wget"
+category = "security"
+
+# ==============================================================================
+# DOCUMENTATION & REPORTING
+# ==============================================================================
+
+[[package]]
+name = "pandoc"
+description = "Pandoc for document conversion"
+package = "nixpkgs#pandoc"
+category = "docs"
+
+[[package]]
+name = "quarto"
+description = "Quarto for engagement reports & findings"
+package = "nixpkgs#quarto"
+category = "docs"
+
+# ==============================================================================
+# OPTIONAL: Python Data Science Stack (for advanced analysis)
+# ==============================================================================
+
+[[package]]
+name = "python312-numpy"
+description = "NumPy for numerical analysis"
+package = "nixpkgs#python312.pkgs.numpy"
+category = "optional"
+
+[[package]]
+name = "python312-pandas"
+description = "Pandas for dataframe analysis"
+package = "nixpkgs#python312.pkgs.pandas"
+category = "optional"
+
+[[package]]
+name = "python312-matplotlib"
+description = "Matplotlib for visualization"
+package = "nixpkgs#python312.pkgs.matplotlib"
+category = "optional"
+
+# ==============================================================================
+# ENVIRONMENT CONFIGURATION
+# ==============================================================================
+
+[vars]
+# Power budget for red team (watts) - pre-throttle margin
+QIGONG_THERMAL_BUDGET_WATTS = "25"
+
+# Cache line size (M-series = 128 bytes, Intel = 64 bytes)
+QIGONG_CACHE_LINE_BYTES = "128"
+
+# Background QoS level for baseline (9 = most conservative)
+QIGONG_QOS_BASELINE = "9"
+
+# Memory accounting interval (milliseconds)
+QIGONG_FOOTPRINT_WINDOW = "1000"
+
+# Data directory for metrics
+QIGONG_HOME = "~/.qigong"
+
+# Python environment
+PYTHONUNBUFFERED = "1"
+
+[hooks]
+# Initialize environment on activation
+init = '''
+  echo "=========================================="
+  echo "qigong: Red Team / Blue Team Environment"
+  echo "=========================================="
+  echo ""
+  echo "Version: 2.0.0 (Pure Nix)"
+  echo "Platform: macOS Sequoia (arm64)"
+  echo ""
+  echo "System Tools Available:"
+  echo "  ✓ powermetrics (system)"
+  echo "  ✓ taskpolicy (system)"
+  echo "  ✓ dtrace (system)"
+  echo "  ✓ Instruments.app (Xcode)"
+  echo ""
+  echo "Nix-provided Tools:"
+  echo "  ✓ Python 3.12 + pip"
+  echo "  ✓ Swift, Go, Rust"
+  echo "  ✓ DuckDB, SQLite, jq"
+  echo "  ✓ Pandoc, Quarto"
+  echo ""
+  echo "Quick Start:"
+  echo "  mkdir -p ~/.qigong/{logs,data}"
+  echo "  qigong setup"
+  echo ""
+  echo "Monitor P/E cores: asitop (pip install asitop)"
+  echo ""
+'''
+
+[profile]
+# Make system tools discoverable
+systemTools = '''
+  export PATH="/usr/bin:/usr/sbin:$PATH"
+  export QIGONG_ACTIVE=1
+'''
+
+# Python environment
+pythonSetup = '''
+  # Create virtual environment for project-specific packages
+  if [ ! -d "$QIGONG_HOME/venv" ]; then
+    python3 -m venv "$QIGONG_HOME/venv"
+  fi
+  source "$QIGONG_HOME/venv/bin/activate"
+'''
+
+# ==============================================================================
+# SCRIPTS & CONVENIENCE COMMANDS
+# ==============================================================================
+
+[scripts.setup]
+description = "Initialize qigong baselines & monitoring"
+script = '''
+  mkdir -p ~/.qigong/{logs,data,venv}
+  echo "[*] qigong environment initialized"
+  echo "[*] Nix packages available via this environment"
+  echo "[*] System tools (powermetrics, taskpolicy, dtrace) from /usr/bin"
+  echo "[*] Python packages: pip install asitop macmon"
+'''
+
+[scripts.status]
+description = "Show qigong environment status"
+script = '''
+  echo "=== qigong Environment Status ==="
+  echo ""
+  echo "System Tools:"
+  which powermetrics || echo "  ✗ powermetrics not found"
+  which taskpolicy || echo "  ✗ taskpolicy not found"
+  which dtrace || echo "  ✗ dtrace not found"
+  echo ""
+  echo "Nix Tools:"
+  which python3 && echo "  ✓ Python 3.12" || echo "  ✗ Python"
+  which swift && echo "  ✓ Swift" || echo "  ✗ Swift"
+  which go && echo "  ✓ Go" || echo "  ✗ Go"
+  which duckdb && echo "  ✓ DuckDB" || echo "  ✗ DuckDB"
+  which jq && echo "  ✓ jq" || echo "  ✗ jq"
+  echo ""
+  echo "Data Directory: $QIGONG_HOME"
+  du -sh "$QIGONG_HOME" 2>/dev/null || echo "  (not initialized yet)"
+'''
+
+[scripts.install-python-tools]
+description = "Install optional Python monitoring tools via pip"
+script = '''
+  # Install Python packages for enhanced monitoring
+  pip install --quiet asitop 2>/dev/null && echo "✓ asitop installed" || true
+  pip install --quiet psutil 2>/dev/null && echo "✓ psutil installed" || true
+  pip install --quiet pandas 2>/dev/null && echo "✓ pandas installed" || true
+  echo "[*] Optional Python tools installed"
+'''
+
+[scripts.python-shell]
+description = "Python 3.12 REPL with qigong environment"
+script = '''
+  export PYTHONPATH="${PYTHONPATH:+$PYTHONPATH:}$QIGONG_HOME/lib/python"
+  python3
+'''
+
+[scripts.monitor-cores]
+description = "Monitor P/E core utilization (real-time)"
+script = '''
+  echo "Monitoring P/E core utilization..."
+  echo "Requirements: asitop (pip install asitop)"
+  echo ""
+  # Fallback if asitop not installed
+  if ! command -v asitop &> /dev/null; then
+    echo "[*] Fallback: Using sysctl"
+    while true; do
+      clear
+      echo "P-cores: $(sysctl -n hw.perflevel0.logicalcpu)"
+      echo "E-cores: $(sysctl -n hw.perflevel1.logicalcpu)"
+      echo "Total: $(sysctl -n hw.logicalcpu)"
+      sleep 2
+    done
+  else
+    asitop
+  fi
+'''
+
+[scripts.monitor-power]
+description = "Monitor CPU/GPU power consumption (real-time)"
+script = '''
+  echo "Monitoring power consumption..."
+  while true; do
+    powermetrics -n 1 -s cpu_power,gpu_power,thermal_pressure -f json 2>/dev/null | \
+      jq -r '.[] | "CPU: \(.cpu_power)W | GPU: \(.gpu_power)W | Thermal: \(.thermal_pressure)"'
+    sleep 1
+  done
+'''
+
+[scripts.analyze-resources]
+description = "Analyze current resource usage across all cores"
+script = '''
+  echo "=== Resource Analysis ==="
+  echo ""
+  echo "Core Count:"
+  sysctl hw.logicalcpu hw.physicalcpu hw.perflevel0.logicalcpu hw.perflevel1.logicalcpu
+  echo ""
+  echo "Memory:"
+  vm_stat | head -20
+  echo ""
+  echo "Thermal:"
+  powermetrics -n 1 -s thermal_pressure 2>/dev/null || echo "  (requires powermetrics)"
+'''
+
+# ==============================================================================
+# SHELL ENVIRONMENT ACTIVATION
+# ==============================================================================
+
+[shell]
+init = '''
+  # Ensure system tools are available
+  export PATH="/usr/bin:/usr/sbin:/opt/homebrew/bin:$PATH"
+  export QIGONG_ACTIVE=1
+  export QIGONG_HOME="${QIGONG_HOME:=$HOME/.qigong}"
+
+  # Initialize logging
+  mkdir -p "$QIGONG_HOME/logs"
+
+  # Convenience alias
+  alias qigong-status="flox scripts status"
+  alias qigong-cores="flox scripts monitor-cores"
+  alias qigong-power="flox scripts monitor-power"
+'''

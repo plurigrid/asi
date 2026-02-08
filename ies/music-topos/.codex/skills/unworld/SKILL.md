@@ -1,11 +1,18 @@
 ---
 name: unworld
+<<<<<<< HEAD
 description: Replace temporal succession with derivational chains using deterministic seeds and GF(3) invariants.
 source: local
 license: UNLICENSED
 ---
 
 <!-- Propagated to codex | Trit: 0 | Source: .ruler/skills/unworld -->
+=======
+description: Replace time with color chain derivations via seed chaining
+---
+
+<!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/unworld -->
+>>>>>>> origin/feature/skill-connectivity-hub-20251226
 
 <!-- Propagated to amp | Trit: 0 | Source: .ruler/skills/unworld -->
 

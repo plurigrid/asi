@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>opn_transcendental – Ramanujan CRDT Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../https://topos.site/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-db3c34c3b97b298c1c0c7d7558fdd011.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ramanujan CRDT Network</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../architecture/index.html"> 
+<span class="menu-text">System Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../crdt/index.html"> 
+<span class="menu-text">CRDT Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../egraph/index.html"> 
+<span class="menu-text">E-Graph Verification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../agents/index.html"> 
+<span class="menu-text">Multi-Agent Coordination</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../deployment/index.html"> 
+<span class="menu-text">Deployment &amp; Game Theory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../reference/index.html"> 
+<span class="menu-text">API Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/topos-institute/ramanujan-crdt"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/topos_institute"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="opn-transcendental-synthesis" class="level1">
+<h1>OPN Transcendental Synthesis</h1>
+<p><strong>17 Parallel Components for Hyperreal Electronic Music</strong></p>
+<p>This document describes the Oneohtrix Point Never-inspired synthesis system, which layers 17 specialized components to create complex, evolving electronic music.</p>
+<section id="philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="philosophy">Philosophy</h2>
+<p>OPN’s music combines: - <strong>Hyperreal MIDI orchestration</strong> — uncanny valley instruments - <strong>Granular microsound</strong> — thousands of tiny particles - <strong>Collage structure</strong> — abrupt section changes - <strong>Emotional repetition</strong> — obsessive loops with subtle variation - <strong>Spectral processing</strong> — timbral transformation</p>
+<p>The system models these as <strong>parallel categorical functors</strong> that can be composed.</p>
+</section>
+<section id="architecture" class="level2">
+<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                        TRANSCENDENTAL ORCHESTRATOR                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐               │
+│  │Granular │ │ Eccojam │ │  MIDI   │ │ Vocoder │ │Arpeggios│               │
+│  │         │ │         │ │Orchestra│ │         │ │         │               │
+│  └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘               │
+│       │          │          │          │          │                        │
+│  ┌────┴────┐ ┌────┴────┐ ┌────┴────┐ ┌────┴────┐ ┌────┴────┐               │
+│  │  Drone  │ │  Glitch │ │Dynamics │ │Polyrhythm│ │  Synth  │               │
+│  │         │ │         │ │         │ │         │ │ Textures│               │
+│  └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘               │
+│       │          │          │          │          │                        │
+│  ┌────┴────┐ ┌────┴────┐ ┌────┴────┐ ┌────┴────┐ ┌────┴────┐               │
+│  │ Samples │ │Repetition│ │ Harmony │ │Structure│ │Spectral │               │
+│  │         │ │         │ │         │ │         │ │         │               │
+│  └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘               │
+│       │          │          │          │          │                        │
+│       └──────────┴──────────┴──────┬───┴──────────┴──────────┘              │
+│                                    │                                        │
+│                             ┌──────┴──────┐                                 │
+│                             │   Spatial   │                                 │
+│                             │             │                                 │
+│                             └──────┬──────┘                                 │
+│                                    │                                        │
+│                                    ▼                                        │
+│                           [ Score Events ]                                  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="the-17-components" class="level2">
+<h2 class="anchored" data-anchor-id="the-17-components">The 17 Components</h2>
+<section id="granular-microsound" class="level3">
+<h3 class="anchored" data-anchor-id="granular-microsound">1. Granular Microsound</h3>
+<p>Thousands of tiny sound particles:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/granular.rb</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">GrainCloud</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize(center_pitch<span class="op">:</span> <span class="dv">60</span>, <span class="wa">density:</span> <span class="dv">100</span>, <span class="wa">scatter:</span> <span class="dv">12</span>, <span class="wa">duration:</span> <span class="fl">8.0</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@center</span> <span class="op">=</span> center_pitch</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@density</span> <span class="op">=</span> density      <span class="co"># grains per second</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@scatter</span> <span class="op">=</span> scatter      <span class="co"># semitones</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@duration</span> <span class="op">=</span> duration</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> generate</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    time <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    grain_interval <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> <span class="ot">@density</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> time <span class="op">&lt;</span> <span class="ot">@duration</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Gaussian scatter around center</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      pitch <span class="op">=</span> <span class="ot">@center</span> <span class="op">+</span> (rand_gaussian <span class="op">*</span> <span class="ot">@scatter</span> <span class="op">/</span> <span class="dv">3</span>)<span class="at">.round</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      dur <span class="op">=</span> <span class="fl">0.001</span> <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.049</span>  <span class="co"># 1-50ms</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      amp <span class="op">=</span> <span class="fl">0.05</span> <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.15</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      events <span class="op">&lt;&lt;</span> <span class="op">{</span> <span class="wa">at:</span> time, <span class="wa">pitch:</span> pitch, <span class="wa">dur:</span> dur, <span class="wa">amp:</span> amp <span class="op">}</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      time <span class="op">+=</span> grain_interval <span class="op">*</span> (<span class="fl">0.5</span> <span class="op">+</span> <span class="fu">rand</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    events</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Spectral smear across harmonic series</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.spectral_smear</span>(<span class="wa">fundamental:</span> <span class="dv">36</span>, <span class="wa">partials:</span> <span class="dv">8</span>, <span class="wa">duration:</span> <span class="fl">6.0</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  partials<span class="at">.times</span> <span class="cf">do</span> <span class="op">|</span>n<span class="op">|</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    freq_ratio <span class="op">=</span> n <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    pitch <span class="op">=</span> fundamental <span class="op">+</span> (<span class="dv">12</span> <span class="op">*</span> <span class="dt">Math</span><span class="at">.log2</span>(freq_ratio))<span class="at">.round</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    cloud <span class="op">=</span> <span class="dt">GrainCloud</span><span class="at">.new</span>(<span class="wa">center_pitch:</span> pitch, <span class="wa">density:</span> <span class="dv">30</span> <span class="op">/</span> (n <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    events <span class="op">+=</span> cloud<span class="at">.generate</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  events</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="eccojam-plunderphonics" class="level3">
+<h3 class="anchored" data-anchor-id="eccojam-plunderphonics">2. Eccojam / Plunderphonics</h3>
+<p>Chopped and looped fragments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/eccojam.rb</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">ChopLoop</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize(pitches, durations, loop_count<span class="op">:</span> <span class="dv">4</span>, <span class="wa">decay:</span> <span class="fl">0.95</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@pitches</span> <span class="op">=</span> pitches</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@durations</span> <span class="op">=</span> durations</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@loop_count</span> <span class="op">=</span> loop_count</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@decay</span> <span class="op">=</span> decay</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> generate</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    time <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    amp <span class="op">=</span> <span class="fl">0.6</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@loop_count</span><span class="at">.times</span> <span class="cf">do</span> <span class="op">|</span>loop_idx<span class="op">|</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="ot">@pitches</span><span class="at">.zip</span>(<span class="ot">@durations</span>)<span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>pitch, dur<span class="op">|</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Pitch drift down (tape degradation)</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        drifted_pitch <span class="op">=</span> pitch <span class="op">-</span> (loop_idx <span class="op">*</span> <span class="fl">0.1</span>)<span class="at">.round</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        stretched_dur <span class="op">=</span> dur <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> loop_idx <span class="op">*</span> <span class="fl">0.05</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        events <span class="op">&lt;&lt;</span> <span class="op">{</span> <span class="wa">at:</span> time, <span class="wa">pitch:</span> drifted_pitch, <span class="wa">dur:</span> stretched_dur, <span class="wa">amp:</span> amp <span class="op">}</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        time <span class="op">+=</span> stretched_dur</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      amp <span class="op">*=</span> <span class="ot">@decay</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    events</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Slowed sample (vaporwave style)</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.slowed_sample</span>(pitches, <span class="wa">slowdown:</span> <span class="fl">0.5</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  pitches<span class="at">.each_with_index</span> <span class="cf">do</span> <span class="op">|</span>pitch, i<span class="op">|</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Transpose down with speed</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    transposed <span class="op">=</span> pitch <span class="op">-</span> (<span class="dv">12</span> <span class="op">*</span> <span class="dt">Math</span><span class="at">.log2</span>(<span class="fl">1.0</span> <span class="op">/</span> slowdown))<span class="at">.round</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    events <span class="op">&lt;&lt;</span> <span class="op">{</span> <span class="wa">at:</span> i <span class="op">*</span> <span class="fl">0.5</span> <span class="op">/</span> slowdown, <span class="wa">pitch:</span> transposed, <span class="wa">dur:</span> <span class="fl">1.0</span>, <span class="wa">amp:</span> <span class="fl">0.4</span> <span class="op">}</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  events</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="hyperreal-midi-orchestra" class="level3">
+<h3 class="anchored" data-anchor-id="hyperreal-midi-orchestra">3. Hyperreal MIDI Orchestra</h3>
+<p>Uncanny valley instruments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/midi_orchestra.rb</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">HyperrealEnsemble</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="cn">RANGES</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="wa">violin:</span> <span class="kw">[</span><span class="dv">55</span>, <span class="dv">96</span><span class="kw">]</span>, <span class="wa">viola:</span> <span class="kw">[</span><span class="dv">48</span>, <span class="dv">84</span><span class="kw">]</span>, <span class="wa">cello:</span> <span class="kw">[</span><span class="dv">36</span>, <span class="dv">72</span><span class="kw">]</span>, <span class="wa">bass:</span> <span class="kw">[</span><span class="dv">28</span>, <span class="dv">55</span><span class="kw">]</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="wa">flute:</span> <span class="kw">[</span><span class="dv">60</span>, <span class="dv">96</span><span class="kw">]</span>, <span class="wa">oboe:</span> <span class="kw">[</span><span class="dv">58</span>, <span class="dv">91</span><span class="kw">]</span>, <span class="wa">clarinet:</span> <span class="kw">[</span><span class="dv">50</span>, <span class="dv">89</span><span class="kw">]</span>, <span class="wa">bassoon:</span> <span class="kw">[</span><span class="dv">34</span>, <span class="dv">72</span><span class="kw">]</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="wa">horn:</span> <span class="kw">[</span><span class="dv">41</span>, <span class="dv">77</span><span class="kw">]</span>, <span class="wa">trumpet:</span> <span class="kw">[</span><span class="dv">55</span>, <span class="dv">82</span><span class="kw">]</span>, <span class="wa">trombone:</span> <span class="kw">[</span><span class="dv">40</span>, <span class="dv">72</span><span class="kw">]</span>, <span class="wa">tuba:</span> <span class="kw">[</span><span class="dv">29</span>, <span class="dv">55</span><span class="kw">]</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize(voices<span class="op">:</span> <span class="kw">[</span><span class="wa">:violin</span>, <span class="wa">:cello</span>, <span class="wa">:horn</span><span class="kw">]</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@voices</span> <span class="op">=</span> voices</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> chord(root, quality<span class="op">:</span> <span class="wa">:major</span>, <span class="wa">duration:</span> <span class="fl">2.0</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    intervals <span class="op">=</span> <span class="cf">case</span> quality</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      <span class="cf">when</span> <span class="wa">:major</span> <span class="cf">then</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">7</span><span class="kw">]</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">when</span> <span class="wa">:minor</span> <span class="cf">then</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">7</span><span class="kw">]</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">when</span> <span class="wa">:maj7</span> <span class="cf">then</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">11</span><span class="kw">]</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">when</span> <span class="wa">:min7</span> <span class="cf">then</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">10</span><span class="kw">]</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@voices</span><span class="at">.each_with_index</span> <span class="cf">do</span> <span class="op">|</span>voice, i<span class="op">|</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>      pitch <span class="op">=</span> root <span class="op">+</span> intervals<span class="kw">[</span>i <span class="op">%</span> intervals<span class="at">.length</span><span class="kw">]</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Slight timing humanization</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>      events <span class="op">&lt;&lt;</span> <span class="op">{</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        <span class="wa">at:</span> <span class="kw">[</span><span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.02</span>, <span class="dv">0</span><span class="kw">]</span><span class="at">.max</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="wa">pitch:</span> pitch,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="wa">dur:</span> duration <span class="op">*</span> (<span class="fl">0.9</span> <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.2</span>),</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="wa">amp:</span> <span class="fl">0.4</span> <span class="op">*</span> (<span class="fl">0.8</span> <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.4</span>),</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        <span class="wa">voice:</span> voice</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    events</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncanny strings with clusters</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.uncanny_strings</span>(<span class="wa">root:</span> <span class="dv">48</span>, <span class="wa">duration:</span> <span class="fl">8.0</span>)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  cluster <span class="op">=</span> <span class="kw">[</span>root, root <span class="op">+</span> <span class="dv">1</span>, root <span class="op">+</span> <span class="dv">4</span>, root <span class="op">+</span> <span class="dv">5</span>, root <span class="op">+</span> <span class="dv">7</span><span class="kw">]</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  cluster<span class="at">.each_with_index.map</span> <span class="cf">do</span> <span class="op">|</span>pitch, i<span class="op">|</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span> <span class="wa">at:</span> i <span class="op">*</span> <span class="fl">0.3</span>, <span class="wa">pitch:</span> pitch, <span class="wa">dur:</span> duration <span class="op">-</span> i <span class="op">*</span> <span class="fl">0.3</span>, <span class="wa">amp:</span> <span class="fl">0.25</span> <span class="op">-</span> i <span class="op">*</span> <span class="fl">0.03</span> <span class="op">}</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="vocoder-voice-synthesis" class="level3">
+<h3 class="anchored" data-anchor-id="vocoder-voice-synthesis">4. Vocoder / Voice Synthesis</h3>
+<p>Formant-based vocal simulation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/vocoder.rb</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">VocoderVoice</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cn">FORMANTS</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="wa">a:</span> <span class="kw">[</span><span class="dv">730</span>, <span class="dv">1090</span>, <span class="dv">2440</span><span class="kw">]</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="wa">e:</span> <span class="kw">[</span><span class="dv">530</span>, <span class="dv">1840</span>, <span class="dv">2480</span><span class="kw">]</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="wa">i:</span> <span class="kw">[</span><span class="dv">270</span>, <span class="dv">2290</span>, <span class="dv">3010</span><span class="kw">]</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="wa">o:</span> <span class="kw">[</span><span class="dv">570</span>, <span class="dv">840</span>, <span class="dv">2410</span><span class="kw">]</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="wa">u:</span> <span class="kw">[</span><span class="dv">440</span>, <span class="dv">1020</span>, <span class="dv">2240</span><span class="kw">]</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize(carrier_pitch<span class="op">:</span> <span class="dv">48</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@carrier</span> <span class="op">=</span> carrier_pitch</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> vowel(v, duration<span class="op">:</span> <span class="fl">1.0</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    formants <span class="op">=</span> <span class="cn">FORMANTS</span><span class="kw">[</span>v<span class="kw">]</span> <span class="op">||</span> <span class="cn">FORMANTS</span><span class="kw">[</span><span class="wa">:a</span><span class="kw">]</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    formants<span class="at">.each_with_index.map</span> <span class="cf">do</span> <span class="op">|</span>freq, i<span class="op">|</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      pitch <span class="op">=</span> <span class="ot">@carrier</span> <span class="op">+</span> (<span class="dv">12</span> <span class="op">*</span> <span class="dt">Math</span><span class="at">.log2</span>(freq <span class="op">/</span> <span class="fl">261.63</span>))<span class="at">.round</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="op">{</span> <span class="wa">at:</span> <span class="dv">0</span>, <span class="wa">pitch:</span> pitch<span class="at">.clamp</span>(<span class="dv">24</span>, <span class="dv">96</span>), <span class="wa">dur:</span> duration, <span class="wa">amp:</span> <span class="fl">0.3</span> <span class="op">/</span> (i <span class="op">+</span> <span class="dv">1</span>) <span class="op">}</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> speak(vowels, duration_each<span class="op">:</span> <span class="fl">0.5</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    vowels<span class="at">.each_with_index</span> <span class="cf">do</span> <span class="op">|</span>v, i<span class="op">|</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      vowel(v)<span class="at">.each</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> events <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> i <span class="op">*</span> duration_each) <span class="op">}</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    events</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="retro-futurist-arpeggios" class="level3">
+<h3 class="anchored" data-anchor-id="retro-futurist-arpeggios">5. Retro-Futurist Arpeggios</h3>
+<p>Classic synth patterns with filter sweeps:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/arpeggios.rb</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cn">PATTERNS</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="wa">up:</span> <span class="op">-&gt;</span>(notes) <span class="op">{</span> notes <span class="op">}</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="wa">down:</span> <span class="op">-&gt;</span>(notes) <span class="op">{</span> notes<span class="at">.reverse</span> <span class="op">}</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="wa">updown:</span> <span class="op">-&gt;</span>(notes) <span class="op">{</span> notes <span class="op">+</span> notes<span class="kw">[</span><span class="dv">1</span><span class="op">..-</span><span class="dv">2</span><span class="kw">]</span><span class="at">.reverse</span> <span class="op">}</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="wa">random:</span> <span class="op">-&gt;</span>(notes) <span class="op">{</span> notes<span class="at">.shuffle</span> <span class="op">}</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="wa">converge:</span> <span class="op">-&gt;</span>(notes) <span class="op">{</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    (notes<span class="at">.length</span> <span class="op">/</span> <span class="fl">2.0</span>)<span class="at">.ceil.times</span> <span class="cf">do</span> <span class="op">|</span>i<span class="op">|</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      result <span class="op">&lt;&lt;</span> notes<span class="kw">[</span>i<span class="kw">]</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      result <span class="op">&lt;&lt;</span> notes<span class="kw">[</span><span class="op">-</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="kw">]</span> <span class="cf">if</span> i <span class="op">!=</span> notes<span class="at">.length</span> <span class="op">-</span> i <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    result</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.filter_sweep_arp</span>(chord, <span class="wa">duration:</span> <span class="fl">8.0</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  arp <span class="op">=</span> <span class="dt">Arpeggiator</span><span class="at">.new</span>(chord, <span class="wa">pattern:</span> <span class="wa">:updown</span>, <span class="wa">octaves:</span> <span class="dv">3</span>, <span class="wa">rate:</span> <span class="fl">0.0625</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> arp<span class="at">.generate</span>(<span class="wa">bars:</span> (duration <span class="op">/</span> <span class="dv">4</span>)<span class="at">.ceil</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Simulate filter sweep with amplitude</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.each_with_index</span> <span class="cf">do</span> <span class="op">|</span>e, i<span class="op">|</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    progress <span class="op">=</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">/</span> duration</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    filter_sim <span class="op">=</span> <span class="dt">Math</span><span class="at">.sin</span>(progress <span class="op">*</span> <span class="dt">Math</span><span class="op">::</span><span class="cn">PI</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*=</span> <span class="fl">0.5</span> <span class="op">+</span> filter_sim <span class="op">*</span> <span class="fl">0.5</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  events</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="drone-cathedral-space" class="level3">
+<h3 class="anchored" data-anchor-id="drone-cathedral-space">6. Drone / Cathedral Space</h3>
+<p>Infinite sustained tones with harmonics:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/drone.rb</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">InfiniteDrone</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize(root<span class="op">:</span> <span class="dv">36</span>, <span class="wa">harmonics:</span> <span class="dv">8</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@root</span> <span class="op">=</span> root</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@harmonics</span> <span class="op">=</span> harmonics</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> generate(duration<span class="op">:</span> <span class="fl">32.0</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="kw">[</span><span class="op">{</span> <span class="wa">at:</span> <span class="dv">0</span>, <span class="wa">pitch:</span> <span class="ot">@root</span>, <span class="wa">dur:</span> duration, <span class="wa">amp:</span> <span class="fl">0.4</span> <span class="op">}</span><span class="kw">]</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@harmonics</span><span class="at">.times</span> <span class="cf">do</span> <span class="op">|</span>n<span class="op">|</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      ratio <span class="op">=</span> n <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      pitch <span class="op">=</span> <span class="ot">@root</span> <span class="op">+</span> (<span class="dv">12</span> <span class="op">*</span> <span class="dt">Math</span><span class="at">.log2</span>(ratio))<span class="at">.round</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      detune <span class="op">=</span> (<span class="fu">rand</span> <span class="op">-</span> <span class="fl">0.5</span>) <span class="op">*</span> <span class="fl">0.2</span>  <span class="co"># Beating</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>      events <span class="op">&lt;&lt;</span> <span class="op">{</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="wa">at:</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.5</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="wa">pitch:</span> pitch <span class="op">+</span> detune,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="wa">dur:</span> duration <span class="op">-</span> <span class="fu">rand</span>,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="wa">amp:</span> <span class="fl">0.3</span> <span class="op">/</span> ratio</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    events</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="glitch-interruptions" class="level3">
+<h3 class="anchored" data-anchor-id="glitch-interruptions">7. Glitch Interruptions</h3>
+<p>Buffer stutters and data corruption:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/glitch.rb</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.buffer_stutter</span>(pitch, <span class="wa">buffer_size:</span> <span class="fl">0.05</span>, <span class="wa">repeats:</span> <span class="dv">16</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  repeats<span class="at">.times.map</span> <span class="cf">do</span> <span class="op">|</span>i<span class="op">|</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="wa">at:</span> i <span class="op">*</span> buffer_size,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="wa">pitch:</span> pitch <span class="op">+</span> (<span class="fu">rand</span> <span class="op">&gt;</span> <span class="fl">0.8</span> <span class="op">?</span> <span class="fu">rand</span>(<span class="op">-</span><span class="dv">12</span><span class="op">..</span><span class="dv">12</span>) <span class="op">:</span> <span class="dv">0</span>),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="wa">dur:</span> buffer_size <span class="op">*</span> <span class="fl">0.9</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="wa">amp:</span> <span class="fl">0.4</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> i <span class="op">*</span> <span class="fl">0.03</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.bitcrush</span>(events, <span class="wa">bits:</span> <span class="dv">4</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  step <span class="op">=</span> <span class="fl">12.0</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">**</span> bits)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="at">.merge</span>(<span class="wa">pitch:</span> (e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">/</span> step)<span class="at">.round</span> <span class="op">*</span> step) <span class="op">}</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.corrupt</span>(events, <span class="wa">corruption:</span> <span class="fl">0.3</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.map</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">rand</span> <span class="op">&lt;</span> corruption</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      e<span class="at">.merge</span>(</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="wa">pitch:</span> e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">+</span> <span class="fu">rand</span>(<span class="op">-</span><span class="dv">24</span><span class="op">..</span><span class="dv">24</span>),</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        <span class="wa">dur:</span> e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">*</span> (<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> <span class="dv">2</span>),</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        <span class="wa">amp:</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.5</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>      e</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="extreme-dynamic-range" class="level3">
+<h3 class="anchored" data-anchor-id="extreme-dynamic-range">8. Extreme Dynamic Range</h3>
+<p>Sudden silences and loud impacts:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/dynamics.rb</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.hard_cut</span>(events, <span class="wa">at_time:</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.select</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">&lt;</span> at_time <span class="op">}</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.emergence</span>(events, <span class="wa">duration:</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.map</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    progress <span class="op">=</span> <span class="kw">[</span>e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">/</span> duration, <span class="fl">1.0</span><span class="kw">]</span><span class="at">.min</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    e<span class="at">.merge</span>(<span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*</span> progress <span class="op">*</span> progress)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.breathing</span>(events, <span class="wa">cycle:</span> <span class="fl">4.0</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.map</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    phase <span class="op">=</span> (e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">%</span> cycle) <span class="op">/</span> cycle</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    breath <span class="op">=</span> <span class="fl">0.3</span> <span class="op">+</span> <span class="fl">0.7</span> <span class="op">*</span> <span class="dt">Math</span><span class="at">.sin</span>(phase <span class="op">*</span> <span class="dt">Math</span><span class="op">::</span><span class="cn">PI</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    e<span class="at">.merge</span>(<span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*</span> breath)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.impact</span>(pitch, <span class="wa">duration:</span> <span class="fl">0.5</span>, <span class="wa">amp:</span> <span class="fl">0.9</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">[</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span> <span class="wa">at:</span> <span class="dv">0</span>, <span class="wa">pitch:</span> pitch, <span class="wa">dur:</span> duration, <span class="wa">amp:</span> amp <span class="op">}</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span> <span class="wa">at:</span> <span class="dv">0</span>, <span class="wa">pitch:</span> pitch <span class="op">-</span> <span class="dv">12</span>, <span class="wa">dur:</span> duration <span class="op">*</span> <span class="fl">1.2</span>, <span class="wa">amp:</span> amp <span class="op">*</span> <span class="fl">0.8</span> <span class="op">}</span>,</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span> <span class="wa">at:</span> <span class="dv">0</span>, <span class="wa">pitch:</span> pitch <span class="op">+</span> <span class="dv">12</span>, <span class="wa">dur:</span> duration <span class="op">*</span> <span class="fl">0.8</span>, <span class="wa">amp:</span> amp <span class="op">*</span> <span class="fl">0.6</span> <span class="op">}</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">]</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="polyrhythmic-layers" class="level3">
+<h3 class="anchored" data-anchor-id="polyrhythmic-layers">9. Polyrhythmic Layers</h3>
+<p>Multiple time signatures simultaneously:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/polyrhythm.rb</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">PolyLayer</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize(divisions)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@divisions</span> <span class="op">=</span> divisions  <span class="co"># e.g., [3, 4, 5, 7]</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> generate(duration<span class="op">:</span> <span class="fl">16.0</span>, <span class="wa">pitches:</span> <span class="dv">nil</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@divisions</span><span class="at">.each_with_index</span> <span class="cf">do</span> <span class="op">|</span>div, layer<span class="op">|</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      pitch <span class="op">=</span> pitches <span class="op">?</span> pitches<span class="kw">[</span>layer <span class="op">%</span> pitches<span class="at">.length</span><span class="kw">]</span> <span class="op">:</span> <span class="dv">48</span> <span class="op">+</span> layer <span class="op">*</span> <span class="dv">7</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      interval <span class="op">=</span> duration <span class="op">/</span> (div <span class="op">*</span> <span class="dv">4</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      time <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      <span class="cf">while</span> time <span class="op">&lt;</span> duration</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        events <span class="op">&lt;&lt;</span> <span class="op">{</span> <span class="wa">at:</span> time, <span class="wa">pitch:</span> pitch, <span class="wa">dur:</span> interval <span class="op">*</span> <span class="fl">0.5</span>, <span class="wa">amp:</span> <span class="fl">0.25</span>, <span class="wa">layer:</span> layer <span class="op">}</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        time <span class="op">+=</span> interval</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    events<span class="at">.sort_by</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">}</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase shifting (Reich style)</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.phase_shift</span>(pattern, <span class="wa">copies:</span> <span class="dv">2</span>, <span class="wa">drift:</span> <span class="fl">0.01</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  copies<span class="at">.times</span> <span class="cf">do</span> <span class="op">|</span>c<span class="op">|</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    offset <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    pattern<span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>      events <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> offset, <span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">/</span> copies)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>      offset <span class="op">+=</span> drift</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.sort_by</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">}</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="synthesizer-textures" class="level3">
+<h3 class="anchored" data-anchor-id="synthesizer-textures">10. Synthesizer Textures</h3>
+<p>PWM pads, FM bells, supersaws:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/synth_textures.rb</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.pwm_pad</span>(<span class="wa">root:</span> <span class="dv">48</span>, <span class="wa">duration:</span> <span class="fl">8.0</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  detunes <span class="op">=</span> <span class="kw">[</span><span class="op">-</span><span class="fl">0.1</span>, <span class="op">-</span><span class="fl">0.05</span>, <span class="dv">0</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span><span class="kw">]</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  detunes<span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>d<span class="op">|</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    events <span class="op">&lt;&lt;</span> <span class="op">{</span> <span class="wa">at:</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.1</span>, <span class="wa">pitch:</span> root <span class="op">+</span> d, <span class="wa">dur:</span> duration, <span class="wa">amp:</span> <span class="fl">0.15</span> <span class="op">}</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    events <span class="op">&lt;&lt;</span> <span class="op">{</span> <span class="wa">at:</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.1</span>, <span class="wa">pitch:</span> root <span class="op">+</span> <span class="dv">7</span> <span class="op">+</span> d, <span class="wa">dur:</span> duration, <span class="wa">amp:</span> <span class="fl">0.12</span> <span class="op">}</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  events</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.fm_bell</span>(pitch, <span class="wa">duration:</span> <span class="fl">2.0</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="kw">[</span><span class="op">{</span> <span class="wa">at:</span> <span class="dv">0</span>, <span class="wa">pitch:</span> pitch, <span class="wa">dur:</span> duration, <span class="wa">amp:</span> <span class="fl">0.4</span> <span class="op">}</span><span class="kw">]</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inharmonic partials</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">[</span><span class="fl">1.4</span>, <span class="fl">2.76</span>, <span class="fl">5.4</span><span class="kw">]</span><span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>ratio<span class="op">|</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    harm_pitch <span class="op">=</span> pitch <span class="op">+</span> (<span class="dv">12</span> <span class="op">*</span> <span class="dt">Math</span><span class="at">.log2</span>(ratio))<span class="at">.round</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    events <span class="op">&lt;&lt;</span> <span class="op">{</span> <span class="wa">at:</span> <span class="dv">0</span>, <span class="wa">pitch:</span> harm_pitch<span class="at">.clamp</span>(<span class="dv">24</span>, <span class="dv">96</span>), <span class="wa">dur:</span> duration <span class="op">*</span> <span class="fl">0.7</span>, <span class="wa">amp:</span> <span class="fl">0.15</span> <span class="op">/</span> ratio <span class="op">}</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  events</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.supersaw</span>(pitches, <span class="wa">duration:</span> <span class="fl">4.0</span>)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  pitches<span class="at">.flat_map</span> <span class="cf">do</span> <span class="op">|</span>pitch<span class="op">|</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="dv">7</span><span class="at">.times.map</span> <span class="cf">do</span> <span class="op">|</span>i<span class="op">|</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>      <span class="op">{</span> <span class="wa">at:</span> <span class="dv">0</span>, <span class="wa">pitch:</span> pitch <span class="op">+</span> (i <span class="op">-</span> <span class="dv">3</span>) <span class="op">*</span> <span class="fl">0.08</span>, <span class="wa">dur:</span> duration, <span class="wa">amp:</span> <span class="fl">0.08</span> <span class="op">}</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sample-manipulation" class="level3">
+<h3 class="anchored" data-anchor-id="sample-manipulation">11. Sample Manipulation</h3>
+<p>Time stretching and pitch shifting:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/samples.rb</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.reverse</span>(events)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> events <span class="cf">if</span> events<span class="at">.empty?</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  max_time <span class="op">=</span> events<span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> (e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">||</span> <span class="dv">0</span>) <span class="op">}</span><span class="at">.max</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="at">.merge</span>(<span class="wa">at:</span> max_time <span class="op">-</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">-</span> (e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">||</span> <span class="dv">0</span>)) <span class="op">}</span><span class="at">.sort_by</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">}</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.paulstretch</span>(events, <span class="wa">stretch:</span> <span class="fl">8.0</span>, <span class="wa">density:</span> <span class="dv">20</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.flat_map</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    duration <span class="op">=</span> (e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">||</span> <span class="fl">0.5</span>) <span class="op">*</span> stretch</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    grains <span class="op">=</span> (density <span class="op">*</span> duration)<span class="at">.to_i</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    grains<span class="at">.times.map</span> <span class="cf">do</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">{</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        <span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">*</span> stretch <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> duration,</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        <span class="wa">pitch:</span> e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">+</span> (<span class="fu">rand</span> <span class="op">-</span> <span class="fl">0.5</span>),</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="wa">dur:</span> duration <span class="op">/</span> density <span class="op">*</span> <span class="dv">2</span>,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*</span> <span class="fl">0.3</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span><span class="at">.sort_by</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">}</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="emotional-repetition" class="level3">
+<h3 class="anchored" data-anchor-id="emotional-repetition">12. Emotional Repetition</h3>
+<p>Obsessive loops with decay:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/repetition.rb</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.obsessive_loop</span>(phrase, <span class="wa">repetitions:</span> <span class="dv">16</span>, <span class="wa">subtle_variation:</span> <span class="dv">true</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  phrase_duration <span class="op">=</span> phrase<span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> (e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">||</span> <span class="fl">0.5</span>) <span class="op">}</span><span class="at">.max</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  repetitions<span class="at">.times</span> <span class="cf">do</span> <span class="op">|</span>rep<span class="op">|</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    phrase<span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>      variation <span class="op">=</span> subtle_variation <span class="op">?</span> <span class="op">{</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="wa">pitch:</span> e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">+</span> (<span class="fu">rand</span> <span class="op">&gt;</span> <span class="fl">0.9</span> <span class="op">?</span> <span class="kw">[</span><span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span><span class="kw">]</span><span class="at">.sample</span> <span class="op">:</span> <span class="dv">0</span>),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*</span> (<span class="fl">0.95</span> <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.1</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span> <span class="op">:</span> <span class="op">{}</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>      events <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(variation)<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> rep <span class="op">*</span> phrase_duration)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  events</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.memory_fade</span>(phrase, <span class="wa">loops:</span> <span class="dv">8</span>)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  phrase_duration <span class="op">=</span> phrase<span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> (e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">||</span> <span class="fl">0.5</span>) <span class="op">}</span><span class="at">.max</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  loops<span class="at">.times</span> <span class="cf">do</span> <span class="op">|</span>l<span class="op">|</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    decay <span class="op">=</span> <span class="fl">1.0</span> <span class="op">-</span> (l<span class="at">.to_f</span> <span class="op">/</span> loops) <span class="op">*</span> <span class="fl">0.7</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    phrase<span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">next</span> <span class="cf">if</span> <span class="fu">rand</span> <span class="op">&gt;</span> decay <span class="op">+</span> <span class="fl">0.3</span>  <span class="co"># Notes disappear</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>      events <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        <span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> l <span class="op">*</span> phrase_duration,</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>        <span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*</span> decay,</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>        <span class="wa">pitch:</span> e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">-</span> (l <span class="op">*</span> <span class="fl">0.1</span>)<span class="at">.round</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  events</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="harmonic-language" class="level3">
+<h3 class="anchored" data-anchor-id="harmonic-language">13. Harmonic Language</h3>
+<p>Cluster chords and quartal voicing:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/harmony.rb</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cn">CHORD_TYPES</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="wa">major:</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">7</span><span class="kw">]</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="wa">minor:</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">7</span><span class="kw">]</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="wa">maj9:</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">14</span><span class="kw">]</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="wa">min11:</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">14</span>, <span class="dv">17</span><span class="kw">]</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="wa">cluster_tight:</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span><span class="kw">]</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="wa">cluster_wide:</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span><span class="kw">]</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="wa">quartal:</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span><span class="kw">]</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="wa">split_5ths:</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">14</span>, <span class="dv">21</span><span class="kw">]</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.chord</span>(root, <span class="wa">type:</span> <span class="wa">:major</span>, <span class="wa">duration:</span> <span class="fl">2.0</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  intervals <span class="op">=</span> <span class="cn">CHORD_TYPES</span><span class="kw">[</span>type<span class="kw">]</span> <span class="op">||</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">7</span><span class="kw">]</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  intervals<span class="at">.map.with_index</span> <span class="cf">do</span> <span class="op">|</span>i, idx<span class="op">|</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>      <span class="wa">at:</span> idx <span class="op">*</span> <span class="fl">0.02</span>,  <span class="co"># Slight strum</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>      <span class="wa">pitch:</span> (root <span class="op">+</span> i)<span class="at">.clamp</span>(<span class="dv">24</span>, <span class="dv">96</span>),</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>      <span class="wa">dur:</span> duration,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>      <span class="wa">amp:</span> <span class="fl">0.4</span> <span class="op">/</span> (idx <span class="op">*</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="structural-forms" class="level3">
+<h3 class="anchored" data-anchor-id="structural-forms">14. Structural Forms</h3>
+<p>Collage and arc forms:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/structure.rb</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">Collage</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@sections</span> <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> add_section(events, gap<span class="op">:</span> <span class="fl">0.5</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@sections</span> <span class="op">&lt;&lt;</span> <span class="op">{</span> <span class="wa">events:</span> events, <span class="wa">gap:</span> gap <span class="op">}</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">self</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> generate</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    time <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@sections</span><span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>section<span class="op">|</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>      section<span class="kw">[</span><span class="wa">:events</span><span class="kw">]</span><span class="at">.each</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> result <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> time) <span class="op">}</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>      max_time <span class="op">=</span> section<span class="kw">[</span><span class="wa">:events</span><span class="kw">]</span><span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> (e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">||</span> <span class="dv">0</span>) <span class="op">}</span><span class="at">.max</span> <span class="op">||</span> <span class="dv">0</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>      time <span class="op">+=</span> max_time <span class="op">+</span> section<span class="kw">[</span><span class="wa">:gap</span><span class="kw">]</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    result</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.arc_form</span>(<span class="wa">a_events:</span>, <span class="wa">b_events:</span>, <span class="wa">climax_events:</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A - B - Climax - B' - A'</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>  time <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  a_events<span class="at">.each</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> result <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> time) <span class="op">}</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  time <span class="op">+=</span> duration_of(a_events) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># B</span></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>  b_events<span class="at">.each</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> result <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> time) <span class="op">}</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>  time <span class="op">+=</span> duration_of(b_events) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Climax</span></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>  climax_events<span class="at">.each</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> result <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> time) <span class="op">}</span></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>  time <span class="op">+=</span> duration_of(climax_events) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># B' (transposed)</span></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>  b_events<span class="at">.each</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> result <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> time, <span class="wa">pitch:</span> e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">+</span> <span class="dv">2</span>) <span class="op">}</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>  time <span class="op">+=</span> duration_of(b_events) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A' (quieter)</span></span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>  a_events<span class="at">.each</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> result <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> time, <span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*</span> <span class="fl">0.6</span>) <span class="op">}</span></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>  result</span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="spectral-processing" class="level3">
+<h3 class="anchored" data-anchor-id="spectral-processing">15. Spectral Processing</h3>
+<p>Freeze and blur:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/spectral.rb</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.spectral_freeze</span>(<span class="wa">fundamental:</span> <span class="dv">48</span>, <span class="wa">duration:</span> <span class="fl">8.0</span>, <span class="wa">partials:</span> <span class="dv">16</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  partials<span class="at">.times.map</span> <span class="cf">do</span> <span class="op">|</span>n<span class="op">|</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    ratio <span class="op">=</span> n <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    pitch <span class="op">=</span> fundamental <span class="op">+</span> (<span class="dv">12</span> <span class="op">*</span> <span class="dt">Math</span><span class="at">.log2</span>(ratio))<span class="at">.round</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    amp <span class="op">=</span> <span class="fl">0.3</span> <span class="op">/</span> <span class="dt">Math</span><span class="at">.sqrt</span>(ratio) <span class="op">*</span> (<span class="fl">0.5</span> <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.5</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span> <span class="wa">at:</span> <span class="fu">rand</span> <span class="op">*</span> <span class="fl">0.2</span>, <span class="wa">pitch:</span> pitch<span class="at">.clamp</span>(<span class="dv">24</span>, <span class="dv">96</span>), <span class="wa">dur:</span> duration, <span class="wa">amp:</span> amp <span class="op">}</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.spectral_blur</span>(events, <span class="wa">blur_amount:</span> <span class="dv">3</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.flat_map</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    blur_amount<span class="at">.times.map</span> <span class="cf">do</span> <span class="op">|</span>b<span class="op">|</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>      offset <span class="op">=</span> (b <span class="op">-</span> blur_amount <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> <span class="fl">0.05</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>      <span class="op">{</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        <span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> offset,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        <span class="wa">pitch:</span> e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">+</span> (b <span class="op">-</span> blur_amount <span class="op">/</span> <span class="dv">2</span>),</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        <span class="wa">dur:</span> e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">*</span> <span class="fl">1.2</span>,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        <span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">/</span> blur_amount</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="spatial-effects" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-effects">16. Spatial Effects</h3>
+<p>Delay networks and reverb simulation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/spatial.rb</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.delay_network</span>(events, <span class="wa">taps:</span> <span class="dv">4</span>, <span class="wa">base_delay:</span> <span class="fl">0.3</span>, <span class="wa">feedback:</span> <span class="fl">0.6</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> events<span class="at">.dup</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  taps<span class="at">.times</span> <span class="cf">do</span> <span class="op">|</span>tap<span class="op">|</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    delay <span class="op">=</span> base_delay <span class="op">*</span> (tap <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    amp_mult <span class="op">=</span> feedback <span class="op">**</span> (tap <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    events<span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>      result <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> delay, <span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*</span> amp_mult)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  result<span class="at">.sort_by</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">}</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.shimmer</span>(events, <span class="wa">density:</span> <span class="dv">3</span>, <span class="wa">spread:</span> <span class="fl">2.0</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  events<span class="at">.flat_map</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">[</span>e<span class="kw">]</span> <span class="op">+</span> density<span class="at">.times.map</span> <span class="cf">do</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>      <span class="op">{</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        <span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> <span class="fu">rand</span> <span class="op">*</span> spread,</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>        <span class="wa">pitch:</span> e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">+</span> <span class="dv">12</span> <span class="op">+</span> <span class="fu">rand</span>(<span class="op">-</span><span class="dv">2</span><span class="op">..</span><span class="dv">2</span>),</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>        <span class="wa">dur:</span> e<span class="kw">[</span><span class="wa">:dur</span><span class="kw">]</span> <span class="op">*</span> <span class="fl">0.5</span>,</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        <span class="wa">amp:</span> e<span class="kw">[</span><span class="wa">:amp</span><span class="kw">]</span> <span class="op">*</span> <span class="fl">0.2</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="transcendental-orchestrator" class="level3">
+<h3 class="anchored" data-anchor-id="transcendental-orchestrator">17. Transcendental Orchestrator</h3>
+<p>Combines all components:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lib/opn/transcendental.rb</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">class</span> <span class="dt">TranscendentalGenerator</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> initialize(seed<span class="op">:</span> <span class="dv">42</span>, <span class="wa">duration:</span> <span class="fl">120.0</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@seed</span> <span class="op">=</span> seed</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="ot">@duration</span> <span class="op">=</span> duration</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">srand</span>(seed)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">def</span> generate</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="kw">[]</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Layer 1: Deep drone foundation</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    events <span class="op">+=</span> <span class="dt">Drone</span><span class="at">.evolving_drone</span>(<span class="wa">root:</span> <span class="dv">36</span>, <span class="wa">duration:</span> <span class="ot">@duration</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Layer 2: Granular texture</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span><span class="at">.times</span> <span class="cf">do</span> <span class="op">|</span>i<span class="op">|</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>      start <span class="op">=</span> i <span class="op">*</span> <span class="ot">@duration</span> <span class="op">/</span> <span class="dv">4</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>      cloud <span class="op">=</span> <span class="dt">Granular</span><span class="op">::</span><span class="dt">GrainCloud</span><span class="at">.new</span>(<span class="wa">center_pitch:</span> <span class="dv">60</span> <span class="op">+</span> i <span class="op">*</span> <span class="dv">7</span>, <span class="wa">density:</span> <span class="dv">30</span>)</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>      events <span class="op">+=</span> cloud<span class="at">.generate.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> start) <span class="op">}</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Layer 3: Harmonic progression</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    progression <span class="op">=</span> <span class="kw">[[</span><span class="dv">48</span>, <span class="wa">:maj9</span><span class="kw">]</span>, <span class="kw">[</span><span class="dv">53</span>, <span class="wa">:min11</span><span class="kw">]</span>, <span class="kw">[</span><span class="dv">41</span>, <span class="wa">:sus4</span><span class="kw">]</span>, <span class="kw">[</span><span class="dv">48</span>, <span class="wa">:cluster_wide</span><span class="kw">]]</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    progression<span class="at">.each_with_index</span> <span class="cf">do</span> <span class="op">|</span>(root, type), i<span class="op">|</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">Harmony</span><span class="at">.chord</span>(root, <span class="wa">type:</span> type)<span class="at">.each</span> <span class="cf">do</span> <span class="op">|</span>e<span class="op">|</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>        events <span class="op">&lt;&lt;</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> i <span class="op">*</span> <span class="ot">@duration</span> <span class="op">/</span> <span class="dv">4</span>)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Layer 4: Arpeggios</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    arp_events <span class="op">=</span> <span class="dt">Arpeggios</span><span class="at">.filter_sweep_arp</span>(<span class="kw">[</span><span class="dv">48</span>, <span class="dv">52</span>, <span class="dv">55</span>, <span class="dv">60</span><span class="kw">]</span>, <span class="wa">duration:</span> <span class="ot">@duration</span> <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    events <span class="op">+=</span> arp_events</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Layer 5: Glitch interruptions</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span><span class="at">.times</span> <span class="cf">do</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>      glitch_time <span class="op">=</span> <span class="fu">rand</span> <span class="op">*</span> <span class="ot">@duration</span></span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>      events <span class="op">+=</span> <span class="dt">Glitch</span><span class="at">.buffer_stutter</span>(<span class="dv">60</span> <span class="op">+</span> <span class="fu">rand</span>(<span class="op">-</span><span class="dv">12</span><span class="op">..</span><span class="dv">12</span>))</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> glitch_time) <span class="op">}</span></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Layer 6: Dynamics</span></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="dt">Dynamics</span><span class="at">.breathing</span>(events, <span class="wa">cycle:</span> <span class="fl">16.0</span>)</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Layer 7: Spatial</span></span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>    events <span class="op">=</span> <span class="dt">Spatial</span><span class="at">.shimmer</span>(events, <span class="wa">density:</span> <span class="dv">5</span>)</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>    events<span class="at">.sort_by</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">}</span></span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="album-presets" class="level2">
+<h2 class="anchored" data-anchor-id="album-presets">Album Presets</h2>
+<section id="garden-of-delete" class="level3">
+<h3 class="anchored" data-anchor-id="garden-of-delete">Garden of Delete</h3>
+<p>Uncanny MIDI + vocoder + glitch:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.garden_of_delete</span>(<span class="wa">duration:</span> <span class="fl">90.0</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="dt">MidiOrchestra</span><span class="at">.uncanny_strings</span>(<span class="wa">root:</span> <span class="dv">48</span>, <span class="wa">duration:</span> duration <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  events <span class="op">+=</span> <span class="dt">Vocoder</span><span class="at">.synth_choir</span>(<span class="wa">root:</span> <span class="dv">60</span>, <span class="wa">duration:</span> duration <span class="op">/</span> <span class="dv">4</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> duration <span class="op">/</span> <span class="dv">2</span>) <span class="op">}</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="dt">Glitch</span><span class="at">.corrupt</span>(events, <span class="wa">corruption:</span> <span class="fl">0.1</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Spectral</span><span class="at">.spectral_blur</span>(events, <span class="wa">blur_amount:</span> <span class="dv">2</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="r-plus-seven" class="level3">
+<h3 class="anchored" data-anchor-id="r-plus-seven">R Plus Seven</h3>
+<p>Granular + orchestral collage:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.r_plus_seven</span>(<span class="wa">duration:</span> <span class="fl">120.0</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="dt">Granular</span><span class="at">.spectral_smear</span>(<span class="wa">fundamental:</span> <span class="dv">36</span>, <span class="wa">partials:</span> <span class="dv">12</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  ensemble <span class="op">=</span> <span class="dt">MidiOrchestra</span><span class="op">::</span><span class="dt">HyperrealEnsemble</span><span class="at">.new</span>(<span class="wa">voices:</span> <span class="kw">[</span><span class="wa">:violin</span>, <span class="wa">:viola</span>, <span class="wa">:cello</span><span class="kw">]</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  events <span class="op">+=</span> ensemble<span class="at">.progression</span>(<span class="kw">[</span><span class="dv">48</span>, <span class="dv">53</span>, <span class="dv">45</span>, <span class="dv">50</span><span class="kw">]</span>, <span class="kw">[</span><span class="wa">:maj9</span>, <span class="wa">:min11</span>, <span class="wa">:sus4</span>, <span class="wa">:quartal</span><span class="kw">]</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Samples</span><span class="at">.paulstretch</span>(events, <span class="wa">stretch:</span> <span class="fl">1.5</span>, <span class="wa">density:</span> <span class="dv">15</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="age-of" class="level3">
+<h3 class="anchored" data-anchor-id="age-of">Age Of</h3>
+<p>Vocal + polyrhythm + eccojam:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">def</span> <span class="dv">self</span><span class="at">.age_of</span>(<span class="wa">duration:</span> <span class="fl">60.0</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  voice <span class="op">=</span> <span class="dt">Vocoder</span><span class="op">::</span><span class="dt">VocoderVoice</span><span class="at">.new</span>(<span class="wa">carrier_pitch:</span> <span class="dv">48</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> voice<span class="at">.speak</span>(<span class="kw">[</span><span class="wa">:a</span>, <span class="wa">:e</span>, <span class="wa">:i</span>, <span class="wa">:o</span>, <span class="wa">:u</span><span class="kw">]</span> <span class="op">*</span> <span class="dv">4</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  poly <span class="op">=</span> <span class="dt">Polyrhythm</span><span class="op">::</span><span class="dt">PolyLayer</span><span class="at">.new</span>(<span class="kw">[</span><span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span><span class="kw">]</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  events <span class="op">+=</span> poly<span class="at">.generate</span>(<span class="wa">duration:</span> duration, <span class="wa">pitches:</span> <span class="kw">[</span><span class="dv">48</span>, <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">67</span><span class="kw">]</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  phrase <span class="op">=</span> (<span class="dv">0</span><span class="op">..</span><span class="dv">7</span>)<span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>i<span class="op">|</span> <span class="op">{</span> <span class="wa">at:</span> i <span class="op">*</span> <span class="fl">0.25</span>, <span class="wa">pitch:</span> <span class="dv">60</span> <span class="op">+</span> <span class="kw">[</span><span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span><span class="kw">][</span>i<span class="kw">]</span> <span class="op">}</span> <span class="op">}</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  events <span class="op">+=</span> <span class="dt">Eccojam</span><span class="op">::</span><span class="dt">ChopLoop</span><span class="at">.new</span>(phrase<span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="kw">[</span><span class="wa">:pitch</span><span class="kw">]</span> <span class="op">}</span>, <span class="kw">[</span><span class="fl">0.2</span><span class="kw">]</span> <span class="op">*</span> <span class="dv">8</span>)<span class="at">.generate</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.map</span> <span class="op">{</span> <span class="op">|</span>e<span class="op">|</span> e<span class="at">.merge</span>(<span class="wa">at:</span> e<span class="kw">[</span><span class="wa">:at</span><span class="kw">]</span> <span class="op">+</span> duration <span class="op">/</span> <span class="dv">2</span>) <span class="op">}</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Dynamics</span><span class="at">.emergence</span>(<span class="dt">Spatial</span><span class="at">.room</span>(events, <span class="wa">size:</span> <span class="wa">:cathedral</span>), <span class="wa">duration:</span> duration <span class="op">/</span> <span class="dv">4</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<section id="command-line" class="level3">
+<h3 class="anchored" data-anchor-id="command-line">Command Line</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full transcendental piece</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> opn-transcendental</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Album presets</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> opn-garden     <span class="co"># Garden of Delete style</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> opn-rplus7     <span class="co"># R Plus Seven style</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> opn-ageof      <span class="co"># Age Of style</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># List components</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="ex">just</span> opn-components</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ruby-api" class="level3">
+<h3 class="anchored" data-anchor-id="ruby-api">Ruby API</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode ruby code-with-copy"><code class="sourceCode ruby"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require_relative</span> <span class="vs">'lib/opn/transcendental'</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Full piece</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> <span class="cn">OPN</span><span class="op">::</span><span class="dt">Transcendental</span><span class="at">.transcendental_piece</span>(<span class="wa">seed:</span> <span class="dv">42</span>, <span class="wa">duration:</span> <span class="fl">180.0</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Album presets</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>garden <span class="op">=</span> <span class="cn">OPN</span><span class="op">::</span><span class="dt">Transcendental</span><span class="at">.garden_of_delete</span>(<span class="wa">duration:</span> <span class="fl">90.0</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>rplus7 <span class="op">=</span> <span class="cn">OPN</span><span class="op">::</span><span class="dt">Transcendental</span><span class="at">.r_plus_seven</span>(<span class="wa">duration:</span> <span class="fl">120.0</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>ageof <span class="op">=</span> <span class="cn">OPN</span><span class="op">::</span><span class="dt">Transcendental</span><span class="at">.age_of</span>(<span class="wa">duration:</span> <span class="fl">60.0</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Individual components</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>cloud <span class="op">=</span> <span class="cn">OPN</span><span class="op">::</span><span class="dt">Granular</span><span class="op">::</span><span class="dt">GrainCloud</span><span class="at">.new</span>(<span class="wa">center_pitch:</span> <span class="dv">60</span>, <span class="wa">density:</span> <span class="dv">100</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>drone <span class="op">=</span> <span class="cn">OPN</span><span class="op">::</span><span class="dt">Drone</span><span class="op">::</span><span class="dt">InfiniteDrone</span><span class="at">.new</span>(<span class="wa">root:</span> <span class="dv">36</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>Oneohtrix Point Never</strong>: <em>R Plus Seven</em>, <em>Garden of Delete</em>, <em>Age Of</em></li>
+<li><strong>Curtis Roads</strong>: <em>Microsound</em> (granular synthesis theory)</li>
+<li><strong>Vaporwave</strong>: Eccojam aesthetics</li>
+<li><strong>Paulstretch</strong>: Extreme time stretching algorithm</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

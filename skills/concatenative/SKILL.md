@@ -1,9 +1,9 @@
 ---
 name: concatenative
 description: "Forth/Factor/Joy: stack-based concatenative programming where composition replaces application."
-version: 1.0.0
+trit: -1
+bundle: strange-loops
 ---
-
 
 # Concatenative Programming Skill
 
@@ -257,64 +257,3 @@ g ∘ f = "f g" : A → C
 - `tacit-programming` - Point-free style
 - `rank-polymorphism` - Also combinator-based
 - `postfix-notation` - RPN
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `category-theory`: 139 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 2. Domain-Specific Languages
-
-**Concepts**: DSL, wrapper, pattern-directed, embedding
-
-### GF(3) Balanced Triad
-
-```
-concatenative (+) + SDF.Ch2 (−) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch1: Flexibility through Abstraction
-- Ch9: Generic Procedures
-
-### Connection Pattern
-
-DSLs embed domain knowledge. This skill defines domain-specific operations.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

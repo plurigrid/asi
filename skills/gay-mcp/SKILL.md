@@ -1,7 +1,10 @@
 ---
 name: gay-mcp
-description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP. Colors are the perceptual rendering of solved constraint systems.
-version: 1.0.0
+description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+  tools for palettes and threads.
+license: UNLICENSED
+metadata:
+  source: local
 ---
 
 <!-- Propagated to codex | Trit: 0 | Source: .ruler/skills/gay-mcp -->
@@ -12,22 +15,6 @@ version: 1.0.0
 **Trit**: +1 (PLUS - optimistic/generative)
 **Principle**: Same seed → Same colors (SPI guarantee)
 **Implementation**: Gay.jl (Julia) + SplitMixTernary (Ruby)
-
----
-
-## Manifesto
-
-> **The colors are not arbitrary—they are the perceptual rendering of a solved constraint system.**
-
-We are building a **deterministic, parallelizable, human-adapted coordinate system** that renders formal constraints as perceptual reality, in a way that can be:
-
-| Property | Mechanism | Verification |
-|----------|-----------|--------------|
-| **Verified** | SPI fingerprints, GF(3) conservation | Sheaf cohomology gluing |
-| **Merged** | Worlding patterns, Möbius inversion | Derangement CRDTs |
-| **Learned** | Enzyme autodiff, reafference loops | Compression progress |
-
-The color IS the proof. The hue encodes the trit. The seed determines the universe.
 
 ---
 
@@ -76,89 +63,6 @@ The Gay MCP server provides these tools:
 | `golden_thread` | Golden angle spiral |
 | `reafference` | Self-recognition loop |
 | `loopy_strange` | Generator ≡ Observer |
-
-## Hex Color Output (#RRGGBB)
-
-Convert OkLCH to hex for CSS/web usage:
-
-```python
-def oklch_to_hex(L: float, C: float, H: float) -> str:
-    """Convert OkLCH to #RRGGBB hex string."""
-    import math
-    
-    # OkLCH -> OkLab
-    a = C * math.cos(math.radians(H))
-    b = C * math.sin(math.radians(H))
-    
-    # OkLab -> Linear RGB (simplified)
-    l_ = L/100 + 0.3963377774 * a + 0.2158037573 * b
-    m_ = L/100 - 0.1055613458 * a - 0.0638541728 * b
-    s_ = L/100 - 0.0894841775 * a - 1.2914855480 * b
-    
-    l, m, s = l_**3, m_**3, s_**3
-    
-    r = +4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s
-    g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s
-    b = -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s
-    
-    # Clamp and convert to 0-255
-    def to_byte(x): return max(0, min(255, int(x * 255)))
-    
-    return f"#{to_byte(r):02X}{to_byte(g):02X}{to_byte(b):02X}"
-```
-
-## Trit Mapping
-
-```
-Hue 0-60°, 300-360° → +1 (PLUS, warm)
-Hue 60-180°         →  0 (ERGODIC, neutral)
-Hue 180-300°        → -1 (MINUS, cold)
-```
-
-## Out-of-Order Proof
-
-```ruby
-proof = SplitMixTernary.prove_out_of_order(seed)
-# => { 
-#      ordered_equals_reversed: true,
-#      ordered_equals_shuffled: true,
-#      proof: "QED: Math is doable out of order"
-#    }
-```
-
-## Example Output
-
-```
-╔═══════════════════════════════════════════════════════════════════╗
-║  GAY.JL: Deterministic Color Generation                          ║
-╚═══════════════════════════════════════════════════════════════════╝
-
-Seed: 0x42D
-
-─── Palette (12 colors) ───
-  1: #D8267F (trit=+1)
-  2: #2CD826 (trit=0)
-  3: #4FD826 (trit=0)
-  ...
-
-─── Out-of-Order Proof ───
-  Indices: [1, 5, 10, 20, 50]
-  Ordered = Reversed: true
-  Ordered = Shuffled: true
-  QED: Math is doable out of order
-```
-
----
-
-**Skill Name**: gay-mcp
-**Type**: Deterministic Color Generation
-**Trit**: +1 (PLUS)
-**GF(3)**: Conserved via tripartite streams
-**SPI**: Guaranteed (same seed → same output)
-
----
-
-## End-of-Skill Interface
 
 ## Commands
 
@@ -241,6 +145,36 @@ triplet = streams.next_triplet()
 # => {'minus': -1, 'ergodic': 0, 'plus': 1, 'gf3_sum': 0, 'conserved': True}
 ```
 
+## Hex Color Output (#RRGGBB)
+
+Convert OkLCH to hex for CSS/web usage:
+
+```python
+def oklch_to_hex(L: float, C: float, H: float) -> str:
+    """Convert OkLCH to #RRGGBB hex string."""
+    import math
+    
+    # OkLCH -> OkLab
+    a = C * math.cos(math.radians(H))
+    b = C * math.sin(math.radians(H))
+    
+    # OkLab -> Linear RGB (simplified)
+    l_ = L/100 + 0.3963377774 * a + 0.2158037573 * b
+    m_ = L/100 - 0.1055613458 * a - 0.0638541728 * b
+    s_ = L/100 - 0.0894841775 * a - 1.2914855480 * b
+    
+    l, m, s = l_**3, m_**3, s_**3
+    
+    r = +4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s
+    g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s
+    b = -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s
+    
+    # Clamp and convert to 0-255
+    def to_byte(x): return max(0, min(255, int(x * 255)))
+    
+    return f"#{to_byte(r):02X}{to_byte(g):02X}{to_byte(b):02X}"
+```
+
 ## Integration with discrete_backprop
 
 Color learning via gradient-free optimization:
@@ -297,6 +231,36 @@ for epoch in range(100):
         break
 ```
 
+## Tripartite Streams
+
+Three independent streams with GF(3) = 0:
+
+```ruby
+streams = SplitMixTernary::TripartiteStreams.new(seed)
+
+triplet = streams.next_triplet
+# => { minus: -1, ergodic: 0, plus: 1, gf3_sum: 0, conserved: true }
+```
+
+## Trit Mapping
+
+```
+Hue 0-60°, 300-360° → +1 (PLUS, warm)
+Hue 60-180°         →  0 (ERGODIC, neutral)
+Hue 180-300°        → -1 (MINUS, cold)
+```
+
+## Out-of-Order Proof
+
+```ruby
+proof = SplitMixTernary.prove_out_of_order(seed)
+# => { 
+#      ordered_equals_reversed: true,
+#      ordered_equals_shuffled: true,
+#      proof: "QED: Math is doable out of order"
+#    }
+```
+
 ## Integration with Langevin Dynamics (NEW)
 
 Track which colors affect which noise calls in Langevin training:
@@ -332,59 +296,32 @@ next_seed = Unworld.chain_seed(current_seed, color[:trit])
 color = Unworld.derive_color(seed, index)
 ```
 
-## Tripartite Streams
-
-Three independent streams with GF(3) = 0:
-
-```ruby
-streams = SplitMixTernary::TripartiteStreams.new(seed)
-
-triplet = streams.next_triplet
-# => { minus: -1, ergodic: 0, plus: 1, gf3_sum: 0, conserved: true }
-
-## r2con Speaker Resources
-
-| Speaker | Handle | Repository | Relevance |
-|---------|--------|------------|-----------|
-| bmorphism | bmorphism | [r2zignatures](https://github.com/bmorphism/r2zignatures) | Zignature-based function recognition with Gay.jl color integration |
-| bmorphism | bmorphism | [Gay.jl](https://github.com/bmorphism/Gay.jl) | Source of deterministic color generation for r2 analysis |
-| pancake | trufae | [r2pipe](https://github.com/radareorg/r2pipe) | Scripted access to radare2 for color pipeline integration |
-| swoops | swoops | [libc_zignatures](https://github.com/swoops/libc_zignatures) | Signature similarity patterns inform color fingerprinting |
-```
-
-## Patterns That Work
-
-- Deterministic color via SplitMix64
-- GF(3) trit derivation from hue
-- Cross-session fingerprint verification
-
-## Patterns to Avoid
-
-- Non-deterministic color generation
-- Ignoring seed provenance
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 4. Pattern Matching
-
-**Concepts**: unification, match, segment variables, pattern
-
-### GF(3) Balanced Triad
+## Example Output
 
 ```
-gay-mcp (+) + SDF.Ch4 (+) + [balancer] (+) = 0
+╔═══════════════════════════════════════════════════════════════════╗
+║  GAY.JL: Deterministic Color Generation                          ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+Seed: 0x42D
+
+─── Palette (12 colors) ───
+  1: #D8267F (trit=+1)
+  2: #2CD826 (trit=0)
+  3: #4FD826 (trit=0)
+  ...
+
+─── Out-of-Order Proof ───
+  Indices: [1, 5, 10, 20, 50]
+  Ordered = Reversed: true
+  Ordered = Shuffled: true
+  QED: Math is doable out of order
 ```
 
-**Skill Trit**: 1 (PLUS - generation)
+---
 
-### Secondary Chapters
-
-- Ch6: Layering
-- Ch10: Adventure Game Example
-- Ch7: Propagators
-
-### Connection Pattern
-
-Pattern matching extracts structure. This skill recognizes and transforms patterns.
+**Skill Name**: gay-mcp
+**Type**: Deterministic Color Generation
+**Trit**: +1 (PLUS)
+**GF(3)**: Conserved via tripartite streams
+**SPI**: Guaranteed (same seed → same output)

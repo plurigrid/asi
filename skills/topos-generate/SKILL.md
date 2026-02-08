@@ -1,9 +1,11 @@
 ---
 name: topos-generate
 description: Topos Generation Skill (PLUS +1)
-version: 1.0.0
+license: UNLICENSED
+metadata:
+  trit: 1
+  source: local
 ---
-
 
 # Topos Generation Skill (PLUS +1)
 
@@ -171,68 +173,3 @@ just topos-internal formula
 - Johnstone, "Sketches of an Elephant"
 - Awodey, "Category Theory" §8
 - nLab: https://ncatlab.org/nlab/show/forcing
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Bioinformatics
-- **biopython** [○] via bicomodule
-  - Hub for biological sequences
-
-### Bibliography References
-
-- `category-theory`: 139 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-topos-generate (+) + SDF.Ch9 (○) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch5: Evaluation
-- Ch2: Domain-Specific Languages
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 1 (PLUS)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #4ECDC4
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

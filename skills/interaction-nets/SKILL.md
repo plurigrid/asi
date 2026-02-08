@@ -1,293 +1,195 @@
 ---
 name: interaction-nets
-description: Lafont's interaction nets for optimal parallel λ-reduction. Graph rewriting
-version: 1.0.0
+description: Interaction Nets Skill
+trit: 0
+color: "#26D826"
+catsharp:
+  home: Prof
+  poly_op: ⊗ (parallel)
+  kan_role: Adj
+  bicomodule: true
 ---
 
-# Interaction Nets Skill
+# interaction-nets Skill
 
-> *"The only model where parallelism is not an optimization but the semantics itself."*
 
-## Core Concept
+> *"Computation as graph rewriting. No duplication. No erasure. Pure interaction."*
 
-Interaction nets are a graphical model of computation where:
-- **Nodes** (agents) have typed ports
-- **Wires** connect ports
-- **Reduction** happens when two **principal ports** meet
-- **No global control** — all reductions are local and can happen in parallel
+## Overview
 
-```
-     ┌─●─┐              ┌───┐
-  ───┤   ├───    →   ───┤   ├───
-     └─●─┘              └───┘
-  principal ports      result
-     meet
-```
+**Interaction Nets** implements Lafont's interaction nets for optimal lambda calculus evaluation. Nodes interact pairwise; no garbage collection needed.
 
-## Why It's Strange
+## GF(3) Role
 
-1. **No evaluation order** — unlike λ-calculus, no choice between CBV/CBN
-2. **Optimal sharing** — work is never duplicated (Lamping's algorithm)
-3. **Massively parallel** — every independent redex reduces simultaneously
-4. **Linear by default** — resources used exactly once (linear logic connection)
+| Aspect | Value |
+|--------|-------|
+| Trit | 0 (ERGODIC) |
+| Role | COORDINATOR |
+| Function | Coordinates node interactions in computation graphs |
 
-## Interaction Combinators
+## Core Concepts
 
-Lafont's universal basis (3 agents):
+### Interaction Rules
 
 ```
-    ε (eraser)     δ (duplicator)     γ (constructor)
-        │              /│\                 /│\
-        ●             ● │ ●               ● │ ●
-                        │                   │
-                        ●                   ●
+      ┌───┐        ┌───┐           ┌───────────┐
+   ───┤ A ├────────┤ B ├───   →   ─┤  Result   ├─
+      └───┘        └───┘           └───────────┘
+
+Two agents meet at their principal ports.
+They interact according to their types.
+Result replaces both agents.
 ```
 
-### Reduction Rules
+### Agent Types
 
-```
-γ ─● ●─ γ  →  cross-wire (annihilation)
-δ ─● ●─ δ  →  cross-wire (annihilation)  
-γ ─● ●─ δ  →  duplication (commutation)
-ε ─● ●─ γ  →  erase both aux ports
-ε ─● ●─ δ  →  erase both aux ports
-```
-
-## HVM / Bend Implementation
-
-[Bend](https://bend-lang.org) compiles to HVM (Higher-order Virtual Machine):
-
-```python
-# Bend syntax (Python-like, compiles to interaction nets)
-def sum(n):
-  if n == 0:
-    return 0
-  else:
-    return n + sum(n - 1)
-
-# Automatically parallelizes via interaction net reduction
-# No explicit parallelism needed!
+```haskell
+data Agent
+  = Lambda Nat        -- λ-abstraction
+  | App               -- Application
+  | Dup               -- Duplicator (for sharing)
+  | Era               -- Eraser
+  | Sup Nat Nat       -- Superposition
 ```
 
-### Install & Run
+## Interaction Rules
 
-```bash
-# Install Bend
-cargo install hvm
-cargo install bend-lang
+```
+-- β-reduction
+(λ x) @ arg  →  x[arg]
 
-# Run with parallelism
-bend run program.bend -p 8  # 8 threads
+-- Duplication
+Dup (λ x)  →  (λ x₁), (λ x₂)
+
+-- Annihilation
+Era (λ x)  →  Era x
+
+-- Superposition
+Sup a b  →  parallel(a, b)
 ```
 
-## λ-Calculus Encoding
+## HVM-style Implementation
 
-### Abstraction (λx.M)
-```
-        │ (bound var)
-    ┌───●───┐
-    │   λ   │
-    └───●───┘
-        │ (body)
-```
+```rust
+// Interaction net node
+struct Node {
+    tag: u8,           // Agent type
+    ports: [Port; 3],  // Principal + 2 auxiliary
+}
 
-### Application (M N)
-```
-    │       │
-    ●───@───●
-        │
-        ● (result)
-```
-
-### β-reduction as Interaction
-```
-    (λx.M) N
-    
-        │           │
-    ┌───●───┐   ┌───●───┐
-    │   λ   ├───┤   @   │
-    └───●───┘   └───●───┘
-        │           │
-        M           N
-
-    → substitutes N for x in M (via wire surgery)
+// Interaction rule
+fn interact(a: Node, b: Node) -> Vec<Node> {
+    match (a.tag, b.tag) {
+        (LAMBDA, APP) => beta_reduce(a, b),
+        (DUP, LAMBDA) => duplicate_lambda(a, b),
+        (ERA, _) => erase(b),
+        (SUP, SUP) if a.label == b.label => annihilate(a, b),
+        (SUP, SUP) => commute(a, b),
+        _ => vec![a, b]  // No interaction
+    }
+}
 ```
 
 ## Optimal Reduction
 
-The key insight: **sharing is explicit**.
-
 ```
-Traditional:  (λx. x + x) expensive  
-              → expensive + expensive  (duplicated!)
+λf. λx. f (f x)     -- Church numeral 2
 
-Interaction:  (λx. x + x) expensive
-              → shared node, reduces ONCE, result shared
-```
+Compile to interaction net:
+┌──────────────────────────────────────┐
+│                                      │
+│    ┌───┐     ┌───┐     ┌───┐        │
+│ ───┤ λ ├─────┤ λ ├─────┤ @ ├───     │
+│    └─┬─┘     └─┬─┘     └─┬─┘        │
+│      │         │         │           │
+│      └────┬────┘         │           │
+│           │              │           │
+│        ┌──┴──┐           │           │
+│        │ Dup │───────────┘           │
+│        └─────┘                       │
+│                                      │
+└──────────────────────────────────────┘
 
-## Symmetric Interaction Combinators
-
-Mazza's variant (used in HVM2):
-
-```
-    S (symmetry)       D (duplication)       E (eraser)
-       /│\                 /│\                  │
-      ● │ ●               ● │ ●                 ●
-        │                   │
-        ●                   ●
-
-# Only 6 rules needed for universal computation
+No duplication of work!
+Sharing is explicit via Dup nodes.
 ```
 
-## Code Examples
-
-### Minimal Interaction Net in Julia
-
-```julia
-abstract type Agent end
-
-struct Eraser <: Agent end
-struct Constructor <: Agent 
-    aux1::Union{Agent, Nothing}
-    aux2::Union{Agent, Nothing}
-end
-struct Duplicator <: Agent
-    aux1::Union{Agent, Nothing}
-    aux2::Union{Agent, Nothing}
-end
-
-struct Wire
-    from::Agent
-    from_port::Symbol  # :principal, :aux1, :aux2
-    to::Agent
-    to_port::Symbol
-end
-
-function reduce!(net::Vector{Wire})
-    # Find active pairs (principal-principal connections)
-    active = filter(w -> w.from_port == :principal && 
-                         w.to_port == :principal, net)
-    
-    # Reduce all in parallel (no order!)
-    for wire in active
-        reduce_pair!(net, wire.from, wire.to)
-    end
-end
-
-function reduce_pair!(net, a::Constructor, b::Constructor)
-    # Annihilation: cross-connect auxiliaries
-    # ... wire surgery ...
-end
-
-function reduce_pair!(net, a::Constructor, b::Duplicator)
-    # Commutation: duplicate the constructor
-    # ... create new nodes ...
-end
-```
-
-### Bend Example: Parallel Tree Sum
+## GF(3) Node Types
 
 ```python
-type Tree:
-  Leaf { value }
-  Node { left, right }
+class InteractionNet:
+    """Interaction net with GF(3) node classification."""
 
-def sum(tree):
-  match tree:
-    case Tree/Leaf:
-      return tree.value
-    case Tree/Node:
-      return sum(tree.left) + sum(tree.right)
-      # ↑ Both branches computed in parallel automatically!
+    # Node roles
+    GENERATOR = +1   # Lambda, constructors
+    COORDINATOR = 0  # Application, routing
+    VALIDATOR = -1   # Erasers, checkers
 
-def main():
-  tree = Node(Node(Leaf(1), Leaf(2)), Node(Leaf(3), Leaf(4)))
-  return sum(tree)  # → 10, computed in parallel
+    def classify_node(self, node):
+        if node.tag in [LAMBDA, CON]:
+            return self.GENERATOR
+        elif node.tag in [APP, DUP]:
+            return self.COORDINATOR
+        elif node.tag in [ERA, CHK]:
+            return self.VALIDATOR
+
+    def verify_conservation(self):
+        """Check GF(3) balance after interaction."""
+        trit_sum = sum(self.classify_node(n) for n in self.nodes)
+        return trit_sum % 3 == 0
 ```
 
-## Relationship to Linear Logic
+## Parallel Evaluation
 
-| Linear Logic | Interaction Nets |
-|--------------|------------------|
-| ⊗ (tensor) | Constructor |
-| ⅋ (par) | Duplicator |
-| ! (of course) | Box/Unbox agents |
-| Cut elimination | Reduction |
+```rust
+// Interactions are confluent - order doesn't matter
+fn parallel_reduce(net: &mut Net) {
+    loop {
+        // Find all active pairs (nodes connected at principal ports)
+        let pairs = find_active_pairs(net);
 
-## Performance
+        if pairs.is_empty() {
+            break;  // Normal form reached
+        }
 
-| Metric | Traditional λ | Interaction Nets |
-|--------|---------------|------------------|
-| Complexity | Can be exponential | Optimal (no duplication) |
-| Parallelism | Sequential (usually) | Maximal |
-| Memory | GC needed | Linear (no GC) |
-| Sharing | Implicit (hard) | Explicit (easy) |
+        // Reduce all pairs in parallel
+        pairs.par_iter().for_each(|(a, b)| {
+            interact(a, b);
+        });
+    }
+}
+```
 
-## Literature
+## GF(3) Triads
 
-1. **Lafont (1990)** - "Interaction Nets" (original paper)
-2. **Lamping (1990)** - Optimal λ-reduction algorithm
-3. **Mazza (2007)** - Symmetric Interaction Combinators
-4. **Taelin (2024)** - HVM2 and Bend language
+```
+interaction-nets (0) ⊗ lambda-calculus (+1) ⊗ linear-logic (-1) = 0 ✓
+interaction-nets (0) ⊗ hvm-runtime (+1) ⊗ type-checker (-1) = 0 ✓
+```
 
 ---
 
-## End-of-Skill Interface
+**Skill Name**: interaction-nets
+**Type**: Computation Model / Graph Rewriting
+**Trit**: 0 (ERGODIC - COORDINATOR)
+**GF(3)**: Coordinates node interactions
 
-## GF(3) Integration
+## Cat# Integration
 
-```julia
-# Trit assignment for interaction net agents
-AGENT_TRITS = Dict(
-    :eraser => -1,      # Destruction
-    :duplicator => 0,   # Neutral (copies)
-    :constructor => 1,  # Creation
-)
-
-# Conservation: every reduction preserves GF(3) sum
-# γ-γ annihilation: (+1) + (+1) → 0 (both gone)
-# ε-γ erasure: (-1) + (+1) → 0
-```
-
-## r2con Speaker Resources
-
-| Speaker | Relevance | Repository/Talk |
-|---------|-----------|-----------------|
-| **condret** | ESIL graph rewriting | [radare2 ESIL](https://github.com/radareorg/radare2) |
-| **thestr4ng3r** | CFG reduction graphs | [r2ghidra](https://github.com/radareorg/r2ghidra) |
-| **xvilka** | RzIL graph IR | [rizin](https://github.com/rizinorg/rizin) |
-
-## Related Skills
-
-- `lambda-calculus` - What interaction nets optimize
-- `linear-logic` - Logical foundation
-- `graph-rewriting` - General theory
-- `propagators` - Another "no control flow" model
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
+This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:
 
 ```
-interaction-nets (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+Trit: 0 (ERGODIC)
+Home: Prof (profunctors/bimodules)
+Poly Op: ⊗ (parallel composition)
+Kan Role: Adj (adjunction bridge)
 ```
 
-**Skill Trit**: -1 (MINUS - verification)
+### GF(3) Naturality
 
-### Secondary Chapters
+The skill participates in triads where:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
 
-- Ch1: Flexibility through Abstraction
-- Ch5: Evaluation
-- Ch4: Pattern Matching
-- Ch2: Domain-Specific Languages
-- Ch7: Propagators
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
+This ensures compositional coherence in the Cat# equipment structure.

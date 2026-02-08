@@ -1,27 +1,17 @@
 ---
 name: proofgeneral-narya
 description: "Proof General + Narya: Higher-dimensional type theory proof assistant with observational bridge types for version control."
-version: 1.0.0
+license: GPL-3.0
+metadata:
+  trit: -1
+  source: ProofGeneral/PG + mikeshulman/narya + music-topos
+  xenomodern: true
+  stars: 768
 ---
-
 
 # ProofGeneral + Narya Skill
 
 > *"Observational type theory: where equality is what you can observe, not what you can prove."*
-
-## bmorphism Contributions
-
-> *"universal topos construction for social cognition and democratization of mathematical approach to problem-solving to all"*
-> — [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
-
-**Active Inference via String Diagrams**: Narya's observational bridge types connect to the [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) framework where perception and action form bidirectional loops. The bridge types implement:
-- **Reafference** (self-caused) → observationally equivalent paths
-- **Exafference** (externally-caused) → bridge types with non-trivial structure
-
-**Narya Reference** (from hatchery-papers):
-- GitHub: https://github.com/mikeshulman/narya (225+ stars)
-- Higher observational type theory proof assistant
-- Interval-free, dimension-aware type checking
 
 ## Overview
 
@@ -216,66 +206,3 @@ just measure-laxity       # Compute Bumpus laxity metrics
 - [Narya GitHub](https://github.com/mikeshulman/narya)
 - [Higher Observational Type Theory](https://ncatlab.org/nlab/show/higher+observational+type+theory)
 - [Topos Institute: Structure-Aware Version Control](https://topos.institute/blog/2024-11-13-structure-aware-version-control-via-observational-bridge-types/)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Bioinformatics
-- **biopython** [○] via bicomodule
-  - Hub for biological sequences
-
-### Bibliography References
-
-- `cryptography`: 1 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-proofgeneral-narya (−) + SDF.Ch10 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch7: Propagators
-- Ch2: Domain-Specific Languages
-- Ch6: Layering
-- Ch8: Degeneracy
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

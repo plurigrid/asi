@@ -1,7 +1,14 @@
 ---
 name: godel-machine
-description: "Schmidhuber''s Gödel Machine: Self-improving systems that prove their"
-version: 1.0.0
+description: "Schmidhuber's Gödel Machine: Self-improving systems that prove their own improvements. Darwin Gödel Machine (DGM) combines evolution with formal verification."
+metadata:
+  trit: 1
+  polarity: PLUS
+  source: Schmidhuber 2003 + Zhang et al. 2025 (Darwin Gödel Machine)
+  technologies:
+  - Python
+  - Lean4
+  - MLX
 ---
 
 # Gödel Machine Skill
@@ -94,16 +101,14 @@ class DarwinGodelMachine:
         return Agent(code=new_code, generation=self.generation + 1)
 ```
 
-## Key Properties
+## GF(3) Triads
 
-1. **Halting Problem**: Cannot prove all beneficial rewrites (incompleteness)
-2. **Safety**: Only rewrites with proofs are applied
-3. **Bootstrapping**: Initial prover must be trustworthy
-4. **Asymptotic Optimality**: Converges to optimal policy (given enough time)
-
----
-
-## End-of-Skill Interface
+```
+# Self-Improvement Triads
+kolmogorov-compression (-1) ⊗ cognitive-superposition (0) ⊗ godel-machine (+1) = 0 ✓
+proofgeneral-narya (-1) ⊗ self-evolving-agent (0) ⊗ godel-machine (+1) = 0 ✓
+sheaf-cohomology (-1) ⊗ epistemic-arbitrage (0) ⊗ godel-machine (+1) = 0 ✓
+```
 
 ## Integration with Interaction Entropy
 
@@ -133,50 +138,15 @@ module GodelMachine
 end
 ```
 
-## GF(3) Triads
+## Key Properties
 
-```
-# Self-Improvement Triads
-kolmogorov-compression (-1) ⊗ cognitive-superposition (0) ⊗ godel-machine (+1) = 0 ✓
-proofgeneral-narya (-1) ⊗ self-evolving-agent (0) ⊗ godel-machine (+1) = 0 ✓
-sheaf-cohomology (-1) ⊗ epistemic-arbitrage (0) ⊗ godel-machine (+1) = 0 ✓
-```
-
-## r2con Speaker Resources
-
-| Speaker | Relevance | Repository/Talk |
-|---------|-----------|-----------------|
-| **cryptax** | Malware evolution/mutation | [droidlysis](https://github.com/cryptax/droidlysis) |
-| **unixfreaxjp** | Self-modifying malware | r2con malware analysis |
-| **cmatthewbrooks** | Binary mutation analysis | [malchive](https://github.com/MITRECND/malchive) |
+1. **Halting Problem**: Cannot prove all beneficial rewrites (incompleteness)
+2. **Safety**: Only rewrites with proofs are applied
+3. **Bootstrapping**: Initial prover must be trustworthy
+4. **Asymptotic Optimality**: Converges to optimal policy (given enough time)
 
 ## References
 
 1. Schmidhuber, J. (2003). "Gödel Machines: Self-Referential Universal Problem Solvers."
 2. Zhang, J. et al. (2025). "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents."
 3. Schmidhuber, J. (2007). "New Millennium AI and the Convergence of History."
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-godel-machine (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-- Ch7: Propagators
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.

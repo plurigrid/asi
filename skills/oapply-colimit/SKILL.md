@@ -1,9 +1,13 @@
 ---
 name: oapply-colimit
-description: oapply operad algebra evaluation via colimits with Specter-style composition patterns
-version: 1.0.0
+description: "oapply operad algebra evaluation via colimits with Specter-style composition patterns"
+license: MIT
+metadata:
+  source: AlgebraicJulia/AlgebraicDynamics.jl + music-topos
+  trit: 1
+  gf3_conserved: true
+  version: 1.1.0
 ---
-
 
 # oapply-colimit Skill
 
@@ -119,14 +123,7 @@ diagram2 = wiring_diagram_of_sexp(sexp)
 ```
 schema-validation (-1) ⊗ acsets (0) ⊗ oapply-colimit (+1) = 0 ✓
 interval-presheaf (-1) ⊗ algebraic-dynamics (0) ⊗ oapply-colimit (+1) = 0 ✓
-bisimulation-game (-1) ⊗ coequalizers (0) ⊗ oapply-colimit (+1) = 0 ✓
 ```
-
-## Related Skills
-
-- `coequalizers` (0) - Uses pushout = coproduct + coequalizer decomposition
-- `bisimulation-game` (-1) - Behavioral equivalence for skill paths
-- `topos-adhesive-rewriting` (+1) - Incremental updates via coequalizers
 
 ## Koopman Integration
 
@@ -147,67 +144,3 @@ composed_koopman = oapply(
 - Libkind "An Algebra of Resource Sharers" arXiv:2007.14442
 - AlgebraicJulia/AlgebraicDynamics.jl
 - Nathan Marz: Specter composition patterns
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-oapply-colimit (−) + SDF.Ch5 (−) + [balancer] (−) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch10: Adventure Game Example
-- Ch7: Propagators
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: -1 (MINUS)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Ran_K
-Color: #FF6B6B
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

@@ -1,9 +1,9 @@
 ---
 name: random-walk-fusion
 description: Navigate skill graphs via deterministic random walks. Fuses derivational chains, algebraic structure, color determinism, and bidirectional flow for skill recombination.
-version: 1.0.0
+source: skill-random-walk-fusion
+license: UNLICENSED
 ---
-
 
 # Random Walk Fusion: Skill Graph Navigation
 
@@ -198,64 +198,3 @@ The fusion is not additive but **multiplicative** — concepts don't just accumu
 **Trit**: +1 (PLUS)  
 **GF(3)**: Conserved via rebalancing  
 **Walk**: Derivational, deterministic, bidirectional
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Stochastic
-- **simpy** [○] via bicomodule
-
-### Bibliography References
-
-- `graph-theory`: 38 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-random-walk-fusion (○) + SDF.Ch10 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch7: Propagators
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: -1 (MINUS)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Ran_K
-Color: #FF6B6B
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

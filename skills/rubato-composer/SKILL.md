@@ -1,9 +1,9 @@
 ---
 name: rubato-composer
 description: Rubato Composer integration for Mazzola's mathematical music theory
-version: 1.0.0
+metadata:
+  trit: 1
 ---
-
 
 # rubato-composer - Mazzola's Mathematical Music Theory in Code
 
@@ -229,66 +229,3 @@ just rubato-export       # Export to MIDI/OSC
 - `acsets/SKILL.md` - ACSet implementation
 - `OVERTONE_TO_OSC_MAPPING.md` - Sound bridge
 - [Encyclospace](http://www.encyclospace.org) - Mazzola's concept encyclopedia
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 1. Flexibility through Abstraction
-
-**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
-
-### GF(3) Balanced Triad
-
-```
-rubato-composer (−) + SDF.Ch1 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch6: Layering
-- Ch5: Evaluation
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Combinators compose operations. This skill provides composable abstractions.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 1 (PLUS)
-Home: Prof
-Poly Op: ◁
-Kan Role: Adj
-Color: #4ECDC4
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

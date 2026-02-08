@@ -1,9 +1,13 @@
 ---
 name: canvas-design
 description: Create beautiful visual art in .png and .pdf documents using design philosophy.
-version: 1.0.0
+  Use when the user asks to create a poster, piece of art, design, or other static
+  visual piece. Creates original visual designs.
+license: Apache-2.0
+metadata:
+  trit: 1
+  source: anthropics/skills
 ---
-
 
 # Canvas Design
 
@@ -90,60 +94,3 @@ const dataUrl = canvas.toDataURL('image/png');
 - **Glassmorphism**: Frosted glass effects, subtle borders
 - **Retro/Vintage**: Muted colors, textures, classic typography
 - **Abstract**: Geometric shapes, gradients, artistic composition
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 4. Pattern Matching
-
-**Concepts**: unification, match, segment variables, pattern
-
-### GF(3) Balanced Triad
-
-```
-canvas-design (−) + SDF.Ch4 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-
-### Connection Pattern
-
-Pattern matching extracts structure. This skill recognizes and transforms patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

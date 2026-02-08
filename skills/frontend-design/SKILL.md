@@ -1,9 +1,15 @@
 ---
 name: frontend-design
 description: Create distinctive, production-grade frontend interfaces with high design
-version: 1.0.0
+  quality. Use this skill when the user asks to build web components, pages, artifacts,
+  posters, or applications (examples include websites, landing pages, dashboards,
+  React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates
+  creative, polished code and UI design that avoids generic AI aesthetics.
+license: Apache-2.0
+metadata:
+  trit: 1
+  source: anthropics/skills
 ---
-
 
 This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
 
@@ -37,66 +43,3 @@ Focus on:
 NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial), cliched color schemes (purple gradients on white), predictable layouts and component patterns.
 
 Interpret creatively and make unexpected choices that feel genuinely designed for the context.
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-frontend-design (○) + SDF.Ch9 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch5: Evaluation
-- Ch1: Flexibility through Abstraction
-- Ch7: Propagators
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

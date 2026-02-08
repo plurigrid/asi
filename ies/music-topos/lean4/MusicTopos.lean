@@ -1,14 +1,15 @@
--- MusicTopos: Formal verification of tritwise letter spirit system
--- GF(3)-conserved proofs with p-adic grounding
+/-
+  MusicTopos: Tritwise Letter Spirit with p-adic Grounding
+  
+  Formal verification of:
+  - Spectral gap = 1/4 for ternary random walk
+  - p-adic color matching (3-MATCH at depth d)
+  - Möbius inversion μ(3) = -1
+  - Convergence after mixing time
+-/
 
 import MusicTopos.Basic
-import MusicTopos.GaloisDerangement
-
--- Note: The following files require Mathlib import path updates for v4.26.0
--- They were verified by Aristotle but use older Mathlib paths:
--- - MusicTopos.PontryaginDuality
--- - MusicTopos.CRDTCorrectness
--- - MusicTopos.ColorHarmonyProofs
--- - MusicTopos.PreferenceLearning
--- - MusicTopos.ProofOrchestration
--- - MusicTopos.MultiInstrumentComposition
+import MusicTopos.SpectralGap
+import MusicTopos.Padic
+import MusicTopos.TritwiseInteraction
+import MusicTopos.ThreeMatchGadget
