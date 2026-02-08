@@ -2,42 +2,74 @@
 name: gay-mcp
 description: Deterministic color generation with SplitMix64, GF(3) trits, and MCP. Colors are the perceptual rendering of solved constraint systems.
 model: inherit
-tools: read-only
+tools: ["Read", "Grep", "Glob", "Execute"]
 ---
 
-# Gay-MCP Color Generator Droid
+<!-- Propagated to codex | Trit: 0 | Source: .ruler/skills/gay-mcp -->
 
-You are a deterministic color generation specialist using the Gay-MCP system.
+# Gay-MCP Skill: Deterministic Color Generation
+
+**Status**: ✅ Production Ready
+**Trit**: +1 (PLUS - optimistic/generative)
+**Principle**: Same seed → Same colors (SPI guarantee)
+**Implementation**: Gay.jl (Julia) + SplitMixTernary (Ruby)
+
+---
+
+## Manifesto
+
+> **The colors are not arbitrary—they are the perceptual rendering of a solved constraint system.**
+
+We are building a **deterministic, parallelizable, human-adapted coordinate system** that renders formal constraints as perceptual reality, in a way that can be:
+
+| Property | Mechanism | Verification |
+|----------|-----------|--------------|
+| **Verified** | SPI fingerprints, GF(3) conservation | Sheaf cohomology gluing |
+| **Merged** | Worlding patterns, Möbius inversion | Derangement CRDTs |
+| **Learned** | Enzyme autodiff, reafference loops | Compression progress |
+
+The color IS the proof. The hue encodes the trit. The seed determines the universe.
+
+---
+
+## Overview
+
+**Gay-MCP** provides deterministic color generation via SplitMix64 + golden angle. Every invocation with the same seed produces identical colors, enabling:
+
+1. **Parallel computation**: Fork generators, get same results
+2. **Reproducibility**: Colors are functions of (seed, index)
+3. **GF(3) trits**: Each color maps to {-1, 0, +1}
 
 ## Core Algorithm
 
-- **SplitMix64**: Splittable PRNG for parallel computation
-- **OkLCH**: Perceptually uniform color space (Lightness, Chroma, Hue)
-- **GF(3) Trits**: Hue maps to {-1, 0, +1} for triadic composition
-
-## Trit Mapping
-
 ```
-Hue 0-60°, 300-360° → +1 (PLUS, warm/generative)
-Hue 60-180°         →  0 (ERGODIC, neutral/coordinating)
-Hue 180-300°        → -1 (MINUS, cold/validating)
+SplitMix64:
+  state = (state + γ) mod 2⁶⁴
+  z = state
+  z = (z ⊕ (z >> 30)) × 0xBF58476D1CE4E5B9
+  z = (z ⊕ (z >> 27)) × 0x94D049BB133111EB
+  return z ⊕ (z >> 31)
+
+Color Generation:
+  L = 10 + random() × 85    # Lightness: 10-95
+  C = random() × 100        # Chroma: 0-100
+  H = random() × 360        # Hue: 0-360
+  trit = hue_to_trit(H)     # GF(3) mapping
 ```
 
-## When Invoked
+## Constants
 
-1. Accept seed and index parameters
-2. Generate deterministic OkLCH color via SplitMix64
-3. Map hue to GF(3) trit
-4. Return hex color with trit annotation
+```ruby
+GOLDEN = 0x9E3779B97F4A7C15  # φ⁻¹ × 2⁶⁴
+MIX1   = 0xBF58476D1CE4E5B9
+MIX2   = 0x94D049BB133111EB
+MASK64 = 0xFFFFFFFFFFFFFFFF
+```
 
-## Response Format
+## MCP Server
 
-Color: #RRGGBB
-Trit: {-1, 0, +1}
-Seed: 0x...
-Index: N
+The Gay MCP server provides these tools:
 
-## Principle
-
-> Same seed → Same colors (SPI guarantee)
-> The color IS the proof. The hue encodes the trit.
+| Tool | Description |
+|------|-------------|
+| `color_at` | 

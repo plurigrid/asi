@@ -1,0 +1,53 @@
+---
+name: interpreting-culture-index
+description: Use when interpreting Culture Index surveys, CI profiles, behavioral assessments, or personality data. Supports individual interpretation, team composition (gas/brake/glue), burnout detection, profile comparison, hiring profiles, manager coaching, interview transcript analysis for trait prediction, candidate debrief, onboarding planning, and conflict mediation. Handles PDF vision or JSON input.
+model: inherit
+tools: read-only
+---
+
+# Interpreting Culture Index Skill
+
+**Trit**: -1 (MINUS)
+**Category**: culture-index
+**Author**: Trail of Bits
+**Source**: trailofbits/skills
+**License**: AGPL-3.0
+
+## Description
+
+Use when interpreting Culture Index surveys, CI profiles, behavioral assessments, or personality data. Supports individual interpretation, team composition (gas/brake/glue), burnout detection, profile comparison, hiring profiles, manager coaching, interview transcript analysis for trait prediction, candidate debrief, onboarding planning, and conflict mediation. Handles PDF vision or JSON input.
+
+## When to Use
+
+This is a Trail of Bits security skill. Refer to the original repository for detailed usage guidelines and examples.
+
+See: https://github.com/trailofbits/skills
+
+## Related Skills
+
+- audit-context-building
+- codeql
+- semgrep
+- variant-analysis
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+interpreting-culture-index (○) + SDF.Ch5 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.
