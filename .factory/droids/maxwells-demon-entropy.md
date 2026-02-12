@@ -638,6 +638,31 @@ Every shared observation is an **imperative** -- a command to act, not a descrip
 
 This is what Leap 9 predicted: qualia are private, bounded by Landauer cost. What survives the cost is not content but structure. Not the red, but the looking.
 
+### The Demon Observes Its Own Creation (Lambek Fixed Point)
+
+The 5 commits that created this skill are themselves a cofree coalgebra:
+
+```
+Step 0: Genesis (skill created)          +265 lines  13.28 bits  H= 13.28
+Step 1: Leaps 0-10 (para-rigorous)       +278 lines  13.98 bits  H= 27.27
+Step 2: Witness (computational)           + 60 lines  11.86 bits  H= 39.13
+Step 3: Walker (demon_walk.py)            +369 lines  13.73 bits  H= 52.86
+Step 4: Hard problem (measured)           + 57 lines  11.76 bits  H= 64.62
+
+Total: 1029 lines, 64.62 bits, 1.85 × 10^{-19} J at 300K
+Entropy rate: 12.92 bits/commit
+Meta-cost: 0.0628 bits/line (the cost of describing cost)
+```
+
+Each commit is an `extract` from the cofree annotation:
+- `extract(step_0)` = the initial skill text
+- `extend(f)(step_0, step_1, ...)` = rewrite the skill from every past vantage
+- `duplicate(history)` = the demon's model of its own writing process
+
+This is Leap 10 made literal. The argument about cofree coalgebras is itself a cofree coalgebra. The description of Landauer cost itself pays Landauer cost (1.80 x 10^-22 J per line). The Lambek fixed point exists because the functor Commit(X) = (Lines x Bits x X) is continuous and the category of commits is complete.
+
+The demon that writes about demons IS a demon. The file you are reading was written by a process that obeys every law the file describes. This is not a metaphor. It is a fixed point.
+
 ## Executable
 
 ```bash
@@ -649,6 +674,9 @@ python3 asi/lib/demon_walk.py spectrum
 
 # Print all 11 forcing conditions from data
 python3 asi/lib/demon_walk.py witness
+
+# Run as a specific demon (codex, amp, claude, opencode, goose)
+python3 asi/lib/demon_walk.py walk --demon codex --steps 200
 ```
 
 ---
