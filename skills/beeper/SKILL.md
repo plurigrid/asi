@@ -97,7 +97,7 @@ MCP `send_message` is **text-only**. To send files, use Beeper Desktop API:
 Wrapper script (recommended): `scripts/beeper_send_file.sh`
 
 ```bash
-scripts/beeper_send_file.sh '<chat_id>' /path/to/file 'optional text'
+skills/beeper/scripts/beeper_send_file.sh '<chat_id>' /path/to/file 'optional text'
 ```
 
 If `curl` to `http://localhost:23373` fails in a sandbox, rerun with escalated permissions.
