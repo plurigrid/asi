@@ -36,7 +36,7 @@ Access all messaging networks through three access tiers with increasing depth.
 ## Three Access Tiers
 
 ```
-Tier 1: MCP (Live)          — real-time chat, send messages, search
+Tier 1: Desktop API (MCP + HTTP) — real-time chat; send text + attachments
 Tier 2: beeper-cli (Auth)   — paginated history, chat type metadata, contacts
 Tier 3: SQLite→DuckDB (Archive) — full offline archive, cross-platform analytics
 ```
@@ -45,7 +45,8 @@ Tier 3: SQLite→DuckDB (Archive) — full offline archive, cross-platform analy
 
 | Need | Tier | Why |
 |------|------|-----|
-| Send a message | MCP | Only tier that can write |
+| Send a text message | MCP | Fast, live write path |
+| Send a file/attachment | Desktop API (HTTP) | Upload asset → send message with `attachment.uploadID` |
 | Search recent chats | MCP | Fast, live data |
 | List all DMs vs groups | beeper-cli | Has `type: "single"` field |
 | WhatsApp/iMessage chats | beeper-cli | Covers networks MCP misses |
@@ -53,64 +54,85 @@ Tier 3: SQLite→DuckDB (Archive) — full offline archive, cross-platform analy
 | Cross-platform analytics | SQLite→DuckDB | JOIN across Signal + iMessage + Telegram |
 | Contact resolution | SQLite→DuckDB | m.room.member events have display names |
 
-## Tier 1: MCP (Live API)
+## Tier 1: Desktop API (MCP + HTTP)
 
 ```
 # Search for a chat
-mcp__beeper__search_chat_names "contact name"
+mcp__beeper__search_chats query="contact name"
 
-# Send a message — MCP ONLY, other tiers are read-only
+# Get chat metadata
+mcp__beeper__get_chat chatID="..."
+
+# List messages from a chat
+mcp__beeper__list_messages chatID="..."
+
+# Search message content (literal word match; limit <= 20)
+mcp__beeper__search_messages query="keyword" limit=20
+
+# Send a text message
 mcp__beeper__send_message chatID="..." text="Hello!"
 
-# List recent chats
-mcp__beeper__list_chats limit=10
-
-# Get messages from a chat
-mcp__beeper__get_messages chatID="..."
-
-# Search message content
-mcp__beeper__search_message_contents query="keyword"
+# Prefill a draft with an attachment (manual send fallback)
+mcp__beeper__focus_app chatID="..." draftText="..." draftAttachmentPath="/path/to/file"
 ```
 
 ### MCP Tools
 
 | Tool | Purpose |
 |------|---------|
-| `list_chats` | List/filter chats by type, inbox, activity |
-| `search_chat_names` | Find chats by name |
-| `search_message_contents` | Find messages by content (literal match) |
-| `get_messages` | Get messages from a specific chat |
-| `get_person_messages` | Get all messages from a specific person |
-| `send_message` | Send text message to a chat |
+| `search_chats` | Search chats by title/network or participants |
+| `get_chat` | Get chat metadata (participants, last activity, etc.) |
+| `list_messages` | List messages in a chat (paged) |
+| `search_messages` | Search messages (literal word match) |
+| `send_message` | Send a text message |
+| `focus_app` | Open/focus Beeper Desktop and prefill draft text/attachment |
+
+### Send Attachments (Programmatic)
+
+MCP `send_message` is **text-only**. To send files, use Beeper Desktop API:
+
+1. `POST /v1/assets/upload` (multipart) → returns `uploadID`
+2. `POST /v1/chats/{chatID}/messages` with JSON body containing `attachment.uploadID`
+
+Wrapper script (recommended): `scripts/beeper_send_file.sh`
+
+```bash
+scripts/beeper_send_file.sh '<chat_id>' /path/to/file 'optional text'
+```
+
+If `curl` to `http://localhost:23373` fails in a sandbox, rerun with escalated permissions.
 
 ## Tier 2: beeper-cli (Authenticated CLI)
 
-Requires fnox for auth. Binary at `/Users/bob/go/bin/beeper-cli`.
+Requires fnox for auth. Assumes `beeper-cli` is available in `PATH`.
 
 ```bash
+# Verify beeper-cli is available
+command -v beeper-cli
+
 # Auth pattern — secret never exposed to context
 BEEPER_ACCESS_TOKEN=$(fnox get BEEPER_ACCESS_TOKEN --age-key-file ~/.age/key.txt) \
-  /Users/bob/go/bin/beeper-cli <command> -o json
+  beeper-cli <command> -o json
 
 # List chats (has type: "single" vs "group" — more reliable than MCP)
 BEEPER_ACCESS_TOKEN=$(fnox get BEEPER_ACCESS_TOKEN --age-key-file ~/.age/key.txt) \
-  /Users/bob/go/bin/beeper-cli chats list -o json
+  beeper-cli chats list -o json
 
 # List messages from a chat
 BEEPER_ACCESS_TOKEN=$(fnox get BEEPER_ACCESS_TOKEN --age-key-file ~/.age/key.txt) \
-  /Users/bob/go/bin/beeper-cli messages list -o json --chat-id "..."
+  beeper-cli messages list -o json --chat-id "..."
 
 # List connected accounts (Signal, Telegram, WhatsApp, iMessage)
 BEEPER_ACCESS_TOKEN=$(fnox get BEEPER_ACCESS_TOKEN --age-key-file ~/.age/key.txt) \
-  /Users/bob/go/bin/beeper-cli accounts list -o json
+  beeper-cli accounts list -o json
 
 # Filter by account
 BEEPER_ACCESS_TOKEN=$(fnox get BEEPER_ACCESS_TOKEN --age-key-file ~/.age/key.txt) \
-  /Users/bob/go/bin/beeper-cli chats list -o json --account-ids whatsapp
+  beeper-cli chats list -o json --account-ids whatsapp
 
 # Pagination (cursor-based)
 BEEPER_ACCESS_TOKEN=$(fnox get BEEPER_ACCESS_TOKEN --age-key-file ~/.age/key.txt) \
-  /Users/bob/go/bin/beeper-cli chats list -o json --cursor "..." --direction before
+  beeper-cli chats list -o json --cursor "..." --direction before
 ```
 
 ### beeper-cli Caveats
@@ -297,8 +319,9 @@ For semantic/complex searches, use Tier 3 (DuckDB full-text search on SQLite arc
 ## Tier Selection Decision Tree
 
 ```
-Need to SEND a message?
-  └─ Yes → Tier 1 (MCP only)
+Need to SEND something?
+  └─ Text only → Tier 1 (MCP)
+  └─ File/attachment → Tier 1 (Desktop API HTTP: upload + send; `scripts/beeper_send_file.sh`)
 
 Need chat type (DM vs group)?
   └─ Yes → Tier 2 (beeper-cli has type: "single"|"group")
@@ -318,9 +341,13 @@ Need contact name resolution?
 ## Workflow Patterns
 
 ### Find and Message Someone
-1. `mcp__beeper__search_chat_names "person name"` → get chatID
-2. `mcp__beeper__get_messages chatID="..." limit=5` → verify identity
+1. `mcp__beeper__search_chats query="person name"` → get chatID
+2. `mcp__beeper__list_messages chatID="..."` → verify identity
 3. `mcp__beeper__send_message chatID="..." text="..."`
+
+### Send a File to a Chat
+1. Get the chatID via `mcp__beeper__search_chats`.
+2. Send the file via `scripts/beeper_send_file.sh`.
 
 ### DM Landscape Analysis (Tier 3)
 ```bash
@@ -358,11 +385,11 @@ WHERE display_name LIKE '%SearchName%'
 ```bash
 # Get account IDs
 BEEPER_ACCESS_TOKEN=$(fnox get BEEPER_ACCESS_TOKEN --age-key-file ~/.age/key.txt) \
-  /Users/bob/go/bin/beeper-cli accounts list -o json
+  beeper-cli accounts list -o json
 
 # Filter chats to WhatsApp only
 BEEPER_ACCESS_TOKEN=$(fnox get BEEPER_ACCESS_TOKEN --age-key-file ~/.age/key.txt) \
-  /Users/bob/go/bin/beeper-cli chats list -o json --account-ids whatsapp
+  beeper-cli chats list -o json --account-ids whatsapp
 ```
 
 ### Refresh dm_landscape Table
@@ -443,7 +470,7 @@ Prefer DuckDB queries over fetching raw messages.
 | ERGODIC (0) | Coordinator | beeper-cli | Metadata, routing, account selection |
 | PLUS (+1) | Generator | MCP | Send messages, fetch fresh data |
 
-Conservation: all three tiers complement without overlap. MCP writes, beeper-cli routes, DuckDB archives.
+Conservation: all three tiers complement without overlap. Desktop API writes (MCP + HTTP), beeper-cli routes, DuckDB archives.
 
 ## Known Issues
 
