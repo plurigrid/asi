@@ -1,9 +1,11 @@
 ---
 name: skill-specification
 description: Agent Skills formal specification for cross-platform compatibility. Ensures skills are evolutionarily robust across Claude, Codex, Cursor, Amp, and future agents.
-version: 1.0.0
+metadata:
+  short-description: SKILL.md format specification
+  spec-url: https://agentskills.io/specification
+  validator: skills-ref validate
 ---
-
 
 # Skill Specification
 
@@ -153,68 +155,3 @@ for d in skills/*/; do skills-ref validate "$d"; done
 - [github.com/agentskills/agentskills](https://github.com/agentskills/agentskills)
 - [OpenAI Codex Skills](https://developers.openai.com/codex/skills/)
 - [Claude Code Skills](https://docs.claude.com/en/docs/claude-code/skills)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `category-theory`: 139 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-skill-specification (○) + SDF.Ch9 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch10: Adventure Game Example
-- Ch8: Degeneracy
-- Ch6: Layering
-- Ch4: Pattern Matching
-- Ch5: Evaluation
-- Ch7: Propagators
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

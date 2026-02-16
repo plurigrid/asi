@@ -1,9 +1,10 @@
 ---
 name: koopman-generator
-description: Koopman operator theory for infinite-dimensional linear lifting of nonlinear dynamics. Generates dynamics from observables.
-version: 1.0.0
+description: "Koopman operator theory for infinite-dimensional linear lifting of nonlinear dynamics. Generates dynamics from observables."
+source: Brunton+Kutz+Mezić + music-topos
+license: MIT
+trit: +1
 ---
-
 
 # Koopman Generator Skill
 
@@ -50,67 +51,3 @@ temporal-coalgebra (-1) ⊗ acsets (0) ⊗ koopman-generator (+1) = 0 ✓
 - Brunton et al. "Modern Koopman Theory" (2021)
 - Mezić "Spectral Properties of Dynamical Systems" (2005)
 - PyDMD: https://github.com/mathLab/PyDMD
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Bioinformatics
-- **biopython** [○] via bicomodule
-  - Hub for biological sequences
-
-### Scientific Computing
-- **scipy** [+] via Lan_K
-  - Generator/free structure
-
-### Bibliography References
-
-- `dynamical-systems`: 41 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-koopman-generator (○) + SDF.Ch3 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch6: Layering
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 1 (PLUS)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #4ECDC4
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

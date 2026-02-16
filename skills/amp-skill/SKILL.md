@@ -1,9 +1,10 @@
 ---
 name: amp-skill
 description: Interruption pattern detection and retrieval from Amp thread history. Use for analyzing tool rejection patterns and improving agent behavior.
-version: 1.0.0
+metadata:
+  trit: 0
+  color: "#26D826"
 ---
-
 
 # Amp-Skill: Interruption Pattern Detection and Retrieval
 
@@ -126,45 +127,3 @@ When Amp-Skill detects a high-rejection pattern:
 - **Local**: `~/.amp/file-changes/T-*` (2,535 files)
 - **API**: None currently (file-changes only contain diffs)
 - **Potential**: Amp GraphQL API for full conversation history
-
-## Forward Reference
-
-- unified-reafference (amp universe source)
-
-
-## Patterns That Work
-
-- Interruption pattern detection via file-changes
-- Cross-universe coordination with goose/claude
-- GF(3) role assignment (+1 PLUS generator)
-
-## Patterns to Avoid
-
-- Ignoring two-lock cascades
-- Missing revert tracking
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-amp-skill (−) + SDF.Ch10 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-- Ch6: Layering
-- Ch4: Pattern Matching
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.

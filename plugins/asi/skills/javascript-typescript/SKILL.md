@@ -1,0 +1,177 @@
+---
+name: javascript-typescript
+description: JavaScript and TypeScript development with ES6+, Node.js, React, and
+version: 1.0.0
+---
+
+
+# JavaScript/TypeScript Development
+
+## TypeScript Configuration
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
+```
+
+## Type Patterns
+
+### Utility Types
+```typescript
+// Pick specific properties
+type UserPreview = Pick<User, 'id' | 'name'>;
+
+// Omit properties
+type CreateUser = Omit<User, 'id' | 'createdAt'>;
+
+// Make all properties optional
+type PartialUser = Partial<User>;
+
+// Make all properties required
+type RequiredUser = Required<User>;
+
+// Extract union types
+type Status = 'pending' | 'active' | 'inactive';
+type ActiveStatus = Extract<Status, 'active' | 'pending'>;
+```
+
+### Discriminated Unions
+```typescript
+type Result<T> =
+  | { success: true; data: T }
+  | { success: false; error: Error };
+
+function handleResult<T>(result: Result<T>) {
+  if (result.success) {
+    console.log(result.data); // T
+  } else {
+    console.error(result.error); // Error
+  }
+}
+```
+
+### Generic Constraints
+```typescript
+interface HasId {
+  id: string | number;
+}
+
+function findById<T extends HasId>(items: T[], id: T['id']): T | undefined {
+  return items.find(item => item.id === id);
+}
+```
+
+## Modern JavaScript
+
+### Destructuring & Spread
+```javascript
+const { name, ...rest } = user;
+const merged = { ...defaults, ...options };
+const [first, ...others] = items;
+```
+
+### Optional Chaining & Nullish Coalescing
+```javascript
+const city = user?.address?.city ?? 'Unknown';
+const count = data?.items?.length ?? 0;
+```
+
+### Array Methods
+```javascript
+const adults = users.filter(u => u.age >= 18);
+const names = users.map(u => u.name);
+const total = items.reduce((sum, item) => sum + item.price, 0);
+const hasAdmin = users.some(u => u.role === 'admin');
+const allActive = users.every(u => u.active);
+```
+
+## React Patterns
+
+```typescript
+// Props with children
+interface CardProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+// Event handlers
+interface ButtonProps {
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+// Custom hooks
+function useLocalStorage<T>(key: string, initial: T) {
+  const [value, setValue] = useState<T>(() => {
+    const stored = localStorage.getItem(key);
+    return stored ? JSON.parse(stored) : initial;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue] as const;
+}
+```
+
+## Node.js Patterns
+
+```typescript
+// ES Modules
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+// Error handling
+process.on('unhandledRejection', (reason) => {
+  console.error('Unhandled Rejection:', reason);
+  process.exit(1);
+});
+```
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

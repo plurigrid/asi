@@ -1,9 +1,7 @@
 ---
 name: lean-proof-walk
 description: GF(3)-balanced random walk through Lean proof states. Use when generating formal proof chains with parallel triad verification. Invokes 3 agents (Generator +1, Coordinator 0, Validator -1) to traverse proof space via prime geodesics.
-version: 1.0.0
 ---
-
 
 # Lean Proof Walk
 
@@ -116,27 +114,3 @@ lean-proof-walk (0) ⊗ bdd-mathematical-verification (+1) ⊗ chromatic-walk (-
 ⟦No Goals⟧ = proof complete
 ⟦Σ trits⟧ ≡ 0 (mod 3) always
 ```
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-lean-proof-walk (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch2: Domain-Specific Languages
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.

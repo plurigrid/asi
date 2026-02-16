@@ -1,0 +1,72 @@
+{` Changeable Bool with patch constructors
+Exploring observational bridge types for version control
+
+Based on: https://topos.institute/blog/2024-11-13-structure-aware-version-control-via-observational-bridge-types/
+`}
+
+{` Standard Bool - only identity diffs exist `}
+def Bool : Type ≔ data [ true. : Bool | false. : Bool ]
+
+{` The problem: Diff Bool true. false. is EMPTY
+We can never change true to false!
+
+Solution: Higher inductive type with patch constructors
+`}
+
+{` For now, let's explore what we CAN do with standard Bool `}
+
+def not : Bool → Bool ≔ [ true. ↦ false. | false. ↦ true. ]
+
+def bool_and : Bool → Bool → Bool ≔ [
+| true. ↦ [ b ↦ b ]
+| false. ↦ [ _ ↦ false. ]]
+
+def bool_or : Bool → Bool → Bool ≔ [
+| true. ↦ [ _ ↦ true. ]
+| false. ↦ [ b ↦ b ]]
+
+{` Identity/Diff type exploration
+In Narya, Id types are observational - computed per type structure
+`}
+
+{` For Bool, Id Bool b b is inhabited by refl
+But Id Bool true. false. is empty (no constructor)
+`}
+
+def bool_refl : (b : Bool) → Id Bool b b ≔ [ b ↦ refl b ]
+
+{` GF(3) trit encoding for version control states `}
+def Trit : Type ≔ data [
+| minus. : Trit {` -1: BACKFILL/Validator `}
+| zero. : Trit {`  0: VERIFY/Coordinator `}
+| plus. : Trit {` +1: LIVE/Generator `}
+]
+
+{` Trit addition (mod 3) `}
+def add_trit : Trit → Trit → Trit ≔ [
+| minus. ↦ [
+  | minus. ↦ plus. {` -1 + -1 = -2 ≡ +1 (mod 3) `}
+  | zero. ↦ minus. {` -1 + 0 = -1 `}
+  | plus. ↦ zero. {` -1 + 1 = 0 `}
+  ]
+| zero. ↦ [ t ↦ t ] {` 0 + t = t `}
+| plus. ↦ [
+  | minus. ↦ zero. {` +1 + -1 = 0 `}
+  | zero. ↦ plus. {` +1 + 0 = +1 `}
+  | plus. ↦ minus. {` +1 + +1 = +2 ≡ -1 (mod 3) `}
+  ]]
+
+{` Conservation check: sum of balanced triad = zero `}
+def is_zero : Trit → Bool ≔ [
+| zero. ↦ true.
+| minus. ↦ false.
+| plus. ↦ false.]
+
+def balanced (a : Trit) (b : Trit) (c : Trit) : Bool
+  ≔ is_zero (add_trit (add_trit a b) c)
+
+{` Test: minus + zero + plus = 0 ✓ `}
+def test_balanced : Id Bool (balanced minus. zero. plus.) true.
+  ≔ refl true.
+
+echo test_balanced

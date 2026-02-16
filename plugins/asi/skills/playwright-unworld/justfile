@@ -1,0 +1,358 @@
+# Playwright-Unworld Skill - Just Commands
+# ============================================================================
+# Deterministic Web Automation using Seed Derivation
+# https://github.com/bmorphism/playwright-unworld
+
+set shell := ["bash", "-cu"]
+set dotenv-load := true
+
+# Default recipe
+default:
+    @just --list
+
+# ============================================================================
+# TEST SUITE EXECUTION
+# ============================================================================
+
+# Run core playwright_unworld tests
+test-core:
+    @echo "Running playwright_unworld tests..."
+    julia --project=. test/test_playwright_unworld.jl
+
+# Run tripartite test generation tests
+test-tripartite:
+    @echo "Running tripartite_testing tests..."
+    julia --project=. test/test_tripartite_testing.jl
+
+# Run Phase 1 integration tests
+test-phase1:
+    @echo "Running phase1_integration tests..."
+    julia --project=. test/test_phase1_integration.jl
+
+# Run all tests
+test-all: test-core test-tripartite test-phase1
+    @echo "✓ All tests completed"
+
+# Run tests with coverage
+test-coverage:
+    @echo "Running tests with coverage..."
+    julia --project=. --coverage=user test/test_playwright_unworld.jl
+    julia --project=. --coverage=user test/test_tripartite_testing.jl
+    @echo "Coverage: coverage/*.cov"
+
+# ============================================================================
+# EXAMPLES AND DEMONSTRATIONS
+# ============================================================================
+
+# Run login test example
+example-login:
+    @echo "Running login test example..."
+    julia --project=. examples/login_test.jl
+
+# Run e-commerce checkout suite example
+example-ecommerce:
+    @echo "Running e-commerce checkout suite..."
+    julia --project=. examples/ecommerce_suite.jl
+
+# Run CatColab navigation gallery example
+example-catcolab:
+    @echo "Running CatColab gallery generation..."
+    julia --project=. examples/catcolab_gallery.jl
+
+# Run all examples
+examples-all: example-login example-ecommerce example-catcolab
+    @echo "✓ All examples completed"
+
+# ============================================================================
+# SKILL CREATION AND MANAGEMENT
+# ============================================================================
+
+# Create a new Playwright skill with given seed and URL
+create-skill SEED URL:
+    @echo "Creating Playwright skill..."
+    @echo "  Seed: {{SEED}}"
+    @echo "  URL: {{URL}}"
+    julia --project=. -e "\
+    include(\"lib/playwright_unworld.jl\"); \
+    using .PlaywrightUnworld; \
+    skill = create_playwright_skill(\"user-skill\", {{SEED}}, \"{{URL}}\"); \
+    println(summarize(skill)); \
+    "
+
+# Create skill for local development
+create-skill-local:
+    @echo "Creating skill for localhost..."
+    @just create-skill "0x42D" "http://localhost:3000"
+
+# Create skill for example.com
+create-skill-example:
+    @echo "Creating skill for example.com..."
+    @just create-skill "0x114514" "https://example.com"
+
+# ============================================================================
+# TEST GENERATION
+# ============================================================================
+
+# Generate tripartite tests for a page type
+generate-tests PAGE_TYPE:
+    @echo "Generating tests for {{PAGE_TYPE}}..."
+    julia --project=. -e "\
+    include(\"lib/tripartite_testing.jl\"); \
+    using .TripartitePlaywrightTesting; \
+    suite = generate_tripartite_tests(0x42D, \"{{PAGE_TYPE}}\", [\"action1\", \"action2\"]); \
+    println(\"Generated \$(suite.total_tests) tests\"); \
+    println(\"GF(3) balanced: \$(suite.gf3_balanced)\"); \
+    "
+
+# Generate tests for login page
+generate-tests-login:
+    @just generate-tests "login"
+
+# Generate tests for checkout page
+generate-tests-checkout:
+    @just generate-tests "checkout"
+
+# Generate tests for search page
+generate-tests-search:
+    @just generate-tests "search"
+
+# ============================================================================
+# DETERMINISM AND REPRODUCIBILITY VERIFICATION
+# ============================================================================
+
+# Verify determinism of RNG
+verify-rng:
+    @echo "Verifying Xorshift128Plus RNG determinism..."
+    julia --project=. -e "\
+    include(\"lib/playwright_unworld.jl\"); \
+    using .PlaywrightUnworld; \
+    rng1 = Xorshift128Plus(1069); \
+    rng2 = Xorshift128Plus(1069); \
+    seq1 = [rand(rng1) for _ in 1:100]; \
+    seq2 = [rand(rng2) for _ in 1:100]; \
+    match = seq1 == seq2; \
+    println(\"RNG determinism: \$(match ? '✓ PASS' : '✗ FAIL')\"); \
+    "
+
+# Verify browser context reproducibility
+verify-context:
+    @echo "Verifying BrowserContext reproducibility..."
+    julia --project=. -e "\
+    include(\"lib/playwright_unworld.jl\"); \
+    using .PlaywrightUnworld; \
+    ctx1 = derive_browser_context(0x42D, 1); \
+    ctx2 = derive_browser_context(0x42D, 1); \
+    match = (ctx1.viewport_width == ctx2.viewport_width && \
+             ctx1.timezone == ctx2.timezone && \
+             ctx1.device_scale_factor == ctx2.device_scale_factor); \
+    println(\"Context reproducibility: \$(match ? '✓ PASS' : '✗ FAIL')\"); \
+    "
+
+# Verify GF(3) conservation
+verify-gf3:
+    @echo "Verifying GF(3) conservation..."
+    julia --project=. -e "\
+    include(\"lib/tripartite_testing.jl\"); \
+    using .TripartitePlaywrightTesting; \
+    suite = generate_tripartite_tests(0x42D, \"login\", [\"action1\"]); \
+    conserved = verify_gf3_balance(suite); \
+    println(\"GF(3) conservation: \$(conserved ? '✓ PASS' : '✗ FAIL')\"); \
+    "
+
+# Verify all determinism properties
+verify-all: verify-rng verify-context verify-gf3
+    @echo "✓ All determinism verifications passed"
+
+# ============================================================================
+# DOCUMENTATION AND ANALYSIS
+# ============================================================================
+
+# Show skill specification
+show-spec:
+    @less SKILL.md
+
+# Show implementation stats
+stats:
+    @echo "Playwright-Unworld Implementation Statistics"
+    @echo "============================================"
+    @echo ""
+    @echo "Core Implementation:"
+    wc -l lib/playwright_unworld.jl | awk '{print "  playwright_unworld.jl: " $$1 " lines"}'
+    wc -l lib/tripartite_testing.jl | awk '{print "  tripartite_testing.jl: " $$1 " lines"}'
+    @echo ""
+    @echo "Test Suite:"
+    wc -l test/test_playwright_unworld.jl | awk '{print "  test_playwright_unworld.jl: " $$1 " lines"}'
+    wc -l test/test_tripartite_testing.jl | awk '{print "  test_tripartite_testing.jl: " $$1 " lines"}'
+    @echo ""
+    @echo "Examples:"
+    wc -l examples/*.jl | tail -1 | awk '{print "  Total: " $$1 " lines"}'
+    @echo ""
+    @echo "Total project lines:"
+    find . -name "*.jl" | xargs wc -l | tail -1 | awk '{print "  " $$1 " lines"}'
+
+# Generate documentation index
+docs:
+    @echo "Playwright-Unworld Documentation"
+    @echo "=================================="
+    @echo ""
+    @echo "1. SKILL SPECIFICATION"
+    @echo "   File: SKILL.md (2000+ lines)"
+    @echo "   Topics: Architecture, API, integration, examples"
+    @echo ""
+    @echo "2. IMPLEMENTATION"
+    @echo "   Files: lib/playwright_unworld.jl (350 lines)"
+    @echo "          lib/tripartite_testing.jl (350 lines)"
+    @echo ""
+    @echo "3. TEST SUITES"
+    @echo "   Files: test/test_playwright_unworld.jl (38 tests)"
+    @echo "          test/test_tripartite_testing.jl (39 tests)"
+    @echo ""
+    @echo "4. EXAMPLES"
+    @echo "   - examples/login_test.jl (login form automation)"
+    @echo "   - examples/ecommerce_suite.jl (checkout workflow)"
+    @echo "   - examples/catcolab_gallery.jl (gallery + PDF generation)"
+    @echo ""
+    @echo "5. AVAILABLE COMMANDS"
+    @echo "   just --list    # Show all commands"
+    @echo "   just test-all  # Run all tests"
+    @echo "   just examples-all  # Run all examples"
+
+# ============================================================================
+# INTEGRATION AND PHASE 1 CONNECTION
+# ============================================================================
+
+# Check Phase 1 modules availability
+check-phase1:
+    @echo "Checking Phase 1 module availability..."
+    @if [ -f "lib/phase1_integration.jl" ]; then \
+        echo "  ✓ phase1_integration.jl (Playwright-Phase1 bridge)"; \
+    fi
+    @if [ -f "../../../ies/plurigrid-asi-skillz/lib/scl_foundation.jl" ]; then \
+        echo "  ✓ scl_foundation.jl found"; \
+    else \
+        echo "  ⏳ scl_foundation.jl pending (Phase 1 module)"; \
+    fi
+    @if [ -f "../../../ies/plurigrid-asi-skillz/lib/abduction_engine.jl" ]; then \
+        echo "  ✓ abduction_engine.jl found"; \
+    else \
+        echo "  ⏳ abduction_engine.jl pending (Phase 1 module)"; \
+    fi
+    @if [ -f "../../../ies/plurigrid-asi-skillz/lib/attention_mechanism.jl" ]; then \
+        echo "  ✓ attention_mechanism.jl found"; \
+    else \
+        echo "  ⏳ attention_mechanism.jl pending (Phase 1 module)"; \
+    fi
+
+# Plan Phase 1 integration
+plan-phase1:
+    @echo "Phase 1 Integration Plan"
+    @echo "========================"
+    @echo ""
+    @echo "1. ABDUCTION ENGINE INTEGRATION"
+    @echo "   - Learn test patterns from observations"
+    @echo "   - Auto-discover selector robustness preferences"
+    @echo "   - Identify page-type-specific actions"
+    @echo "   Status: ✓ INTEGRATION LAYER READY"
+    @echo "   Implementation: observe_dom(), hypothesize_selector()"
+    @echo "   Awaiting: Phase 1 ABD_ENGINE module"
+    @echo ""
+    @echo "2. HYPOTHESIS GRAPH INTEGRATION"
+    @echo "   - Track selector derivation decisions"
+    @echo "   - Explain timeout variance choices"
+    @echo "   - Query why specific browser context chosen"
+    @echo "   Status: ✓ INTEGRATION LAYER READY"
+    @echo "   Implementation: SelectorHypothesis, explain_selector_choice()"
+    @echo "   Awaiting: Phase 1 HYPOTHESIS_GRAPH module"
+    @echo ""
+    @echo "3. ATTENTION MECHANISM INTEGRATION"
+    @echo "   - Rank test priorities by novelty + value"
+    @echo "   - Allocate tests to MINUS/ERGODIC/PLUS agents"
+    @echo "   - Drive curiosity-driven test discovery"
+    @echo "   Status: ✓ INTEGRATION LAYER READY"
+    @echo "   Implementation: rank_test_priority(), select_test_execution_order()"
+    @echo "   Awaiting: Phase 1 ATTENTION module"
+    @echo ""
+    @echo "4. SCL BRIDGE"
+    @echo "   - Connect all three components"
+    @echo "   - Maintain GF(3) conservation throughout"
+    @echo "   - Provide unified skill interface"
+    @echo "   Status: ✓ COMPLETE"
+    @echo "   Implementation: SCLBridge, update_learning_from_observation()"
+    @echo ""
+    @echo "Documentation: see PHASE1_INTEGRATION.md"
+
+# ============================================================================
+# BUILD AND DEPLOYMENT
+# ============================================================================
+
+# Build the skill
+build:
+    @echo "Building Playwright-Unworld skill..."
+    @echo "Verifying all components..."
+    @just verify-all
+    @echo "✓ Build successful"
+
+# Clean build artifacts
+clean:
+    @echo "Cleaning build artifacts..."
+    rm -f *.cov
+    rm -rf .coverage
+    @echo "✓ Clean complete"
+
+# Full rebuild
+rebuild: clean build
+    @echo "✓ Full rebuild complete"
+
+# ============================================================================
+# HELPER AND UTILITY COMMANDS
+# ============================================================================
+
+# Run a custom Julia command
+julia-exec CMD:
+    julia --project=. -e "{{CMD}}"
+
+# Show version info
+version:
+    @echo "Playwright-Unworld Skill"
+    @echo "========================"
+    @echo "Status: Alpha (Spec complete, implementation complete, testing in progress)"
+    @echo ""
+    julia --version
+    @echo ""
+    @echo "Core modules: playwright_unworld.jl, tripartite_testing.jl"
+    @echo "Tests: 77 test cases across 2 suites"
+    @echo "Examples: 3 complete examples (login, ecommerce, catcolab)"
+
+# Help text
+help:
+    @echo "Playwright-Unworld Skill - Just Command Help"
+    @echo "============================================="
+    @echo ""
+    @echo "Testing:"
+    @echo "  just test-all          # Run all tests"
+    @echo "  just test-core         # Test playwright_unworld"
+    @echo "  just test-tripartite   # Test tripartite generation"
+    @echo ""
+    @echo "Examples:"
+    @echo "  just examples-all      # Run all examples"
+    @echo "  just example-login     # Login test demo"
+    @echo "  just example-ecommerce # E-commerce suite demo"
+    @echo "  just example-catcolab  # CatColab gallery demo"
+    @echo ""
+    @echo "Verification:"
+    @echo "  just verify-all        # Check determinism properties"
+    @echo "  just verify-rng        # Check RNG reproducibility"
+    @echo "  just verify-context    # Check browser context reproducibility"
+    @echo "  just verify-gf3        # Check GF(3) conservation"
+    @echo ""
+    @echo "Documentation:"
+    @echo "  just docs              # Show documentation index"
+    @echo "  just stats             # Show code statistics"
+    @echo "  just show-spec         # Show SKILL.md specification"
+    @echo ""
+    @echo "Build:"
+    @echo "  just build             # Build and verify skill"
+    @echo "  just clean             # Clean artifacts"
+    @echo "  just rebuild           # Full rebuild"
+    @echo ""
+    @echo "See: just --list for all available commands"

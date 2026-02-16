@@ -1,9 +1,13 @@
 ---
 name: polysimy-effect-chains
 description: Verify multiple effect interpretations through propagator networks with temporal coalgebra bisimulation and common fixpoint solutions.
-version: 1.0.0
+license: MIT
+metadata:
+  source: local
+  trit: 0
+  gf3_triad: propagators (+1) ⊗ polysimy-effect-chains (0) ⊗ temporal-coalgebra (-1)
+  status: NOT_IN_PLURIGRID_ASI
 ---
-
 
 # Polysimy Effect Chains Skill
 
@@ -156,30 +160,3 @@ A common solution exists iff the zeroth cohomology is non-empty.
 **Trit**: 0 (ERGODIC)
 **NOT IN**: plurigrid/asi (should be committed)
 **GF(3)**: Coordinates between generators and validators
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 7. Propagators
-
-**Concepts**: propagator, cell, constraint, bidirectional, TMS
-
-### GF(3) Balanced Triad
-
-```
-polysimy-effect-chains (+) + SDF.Ch7 (○) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch5: Evaluation
-
-### Connection Pattern
-
-Propagators flow constraints bidirectionally. This skill propagates information.

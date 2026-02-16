@@ -1,9 +1,8 @@
 ---
 name: say-ducklake-xor
 description: Parallel thread/DuckLake discovery with XOR uniqueness from gay_seed. Finds "say" or MCP usage, cross-refs with all DuckDB sources, launches bounded parallel ops.
-version: 1.0.0
+trit: 0
 ---
-
 
 # Say-DuckLake XOR Discovery
 
@@ -154,65 +153,3 @@ async def parallel_xor_discovery(seed: int, bound: int):
 - [PigeonsGayBridge.jl](file:///Users/bob/ies/PigeonsGayBridge.jl) - SPI via unworld dynamics
 - [ducklake_discover.py](file:///Users/bob/ies/music-topos/scripts/ducklake_discover.py) - Discovery patterns
 - [SUBOBJECT_CLASSIFIER_RECURRENCES.md](file:///Users/bob/ies/SUBOBJECT_CLASSIFIER_RECURRENCES.md) - Recurrence types
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 7. Propagators
-
-**Concepts**: propagator, cell, constraint, bidirectional, TMS
-
-### GF(3) Balanced Triad
-
-```
-say-ducklake-xor (○) + SDF.Ch7 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch6: Layering
-- Ch4: Pattern Matching
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Propagators flow constraints bidirectionally. This skill propagates information.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

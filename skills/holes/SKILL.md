@@ -1,9 +1,14 @@
 ---
 name: holes
 description: Narya interactive proof development with typed holes
-version: 1.0.0
+trit: 0
+color: "#26D826"
+catsharp:
+  home: Prof
+  poly_op: ⊗ (parallel)
+  kan_role: Adj
+  bicomodule: true
 ---
-
 
 # Holes Skill
 
@@ -11,41 +16,6 @@ Interactive proof development using typed holes in Narya proof assistant.
 
 See [HOLES_GUIDE.md](./HOLES_GUIDE.md) for detailed usage.
 
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-holes (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule:

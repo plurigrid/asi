@@ -1,0 +1,92 @@
+;; Tenderloin Color Taxonomy
+;; Interface types for colored operad skill composition
+
+{:version "0.1.0"
+ :seed 0x54454E44  ; "TEND" in hex
+ 
+ ;; Primitive colors (base types)
+ :primitives
+ {:text    {:hex "#E8E8E8" :trit 0  :desc "String, Markdown, prose"}
+  :code    {:hex "#A855F7" :trit 0  :desc "Source code, AST"}
+  :sexp    {:hex "#22C55E" :trit +1 :desc "S-expressions, Lisp data"}
+  :acset   {:hex "#3B82F6" :trit +1 :desc "Attributed C-Sets"}
+  :json    {:hex "#F59E0B" :trit 0  :desc "JSON/EDN structured data"}
+  :image   {:hex "#EC4899" :trit 0  :desc "PNG, JPEG, SVG"}
+  :audio   {:hex "#8B5CF6" :trit 0  :desc "WAV, MP3, MIDI"}
+  :video   {:hex "#EF4444" :trit -1 :desc "MP4, WebM"}
+  :effect  {:hex "#F97316" :trit -1 :desc "Side effects, IO"}
+  :pure    {:hex "#10B981" :trit +1 :desc "Pure functions"}
+  :stream  {:hex "#06B6D4" :trit 0  :desc "Async streams"}
+  :skill   {:hex "#6366F1" :trit 0  :desc "Skill reference"}
+  :world   {:hex "#84CC16" :trit +1 :desc "World state"}
+  :trit    {:hex "#FFD700" :trit 0  :desc "GF(3) value"}}
+ 
+ ;; Subtyping lattice
+ :subtype
+ [[sexp code]      ; sexp <: code
+  [code text]      ; code <: text
+  [json text]      ; json <: text
+  [acset json]     ; acset <: json (serializable)
+  [pure effect]]   ; pure <: effect (lifting)
+ 
+ ;; GF(3) role colors
+ :triad
+ {:minus   {:hex "#EF4444" :value -1 :role "SINK - absorbs, terminates"}
+  :ergodic {:hex "#FBBF24" :value 0  :role "COORDINATOR - transforms, routes"}
+  :plus    {:hex "#22C55E" :value +1 :role "SOURCE - generates, creates"}}
+ 
+ ;; Skill category colors (domain clustering)
+ :categories
+ {:lang-clojure  {:hex "#5881D8" :skills [clojure babashka babashka-clj cider-clojure clj-kondo-3color squint-runtime borkdude]}
+  :lang-scheme   {:hex "#9F1D20" :skills [scheme guile hoot goblins guile-goblins-hoot geiser-chicken sicp]}
+  :lang-ocaml    {:hex "#EC6813" :skills [ocaml opam opam-ocaml]}
+  :lang-rust     {:hex "#DEA584" :skills [rust cargo cargo-rust]}
+  :lang-emacs    {:hex "#7F5AB6" :skills [emacs elisp org emacs-info xenodium-elisp ewig-editor]}
+  :lang-python   {:hex "#3776AB" :skills [python-development uv-oneliners]}
+  :lang-js       {:hex "#F7DF1E" :skills [javascript-typescript]}
+  
+  :cat-theory    {:hex "#4ECDC4" :skills [acsets acsets-relational-thinking kan-extensions dialectica 
+                                          topos-generate topos-catcolab topos-adhesive-rewriting
+                                          operad-compose oapply-colimit discopy discohy-streams
+                                          segal-types rezk-types yoneda-directed elements-infinity-cats
+                                          synthetic-adjunctions covariant-fibrations directed-interval]}
+  
+  :gay-system    {:hex "#FF6B6B" :skills [gay-julia gay-mcp triad-interleave tripartite-decompositions
+                                          spi-parallel-verify self-validation-loop skill-dispatch
+                                          parallel-fanout polyglot-spi]}
+  
+  :world-nav     {:hex "#95E1D3" :skills [world-hopping glass-bead-game unworld unworld-ombudsman
+                                          unworlding-involution nix-acset-worlding]}
+  
+  :docs-media    {:hex "#DDA0DD" :skills [pdf docx xlsx pptx ffmpeg ffmpeg-media video-downloader
+                                          image-enhancer canvas-design content-research-writer
+                                          code-documentation doc-coauthoring]}
+  
+  :dev-tools     {:hex "#98D8C8" :skills [gh gh-cli backend-development database-design 
+                                          code-review code-refactoring frontend-design
+                                          mcp-builder webapp-testing qa-regression]}
+  
+  :meta-skills   {:hex "#F7DC6F" :skills [skill-creator skill-evolution skill-specification
+                                          skill-installer autopoiesis godel-machine self-evolving-agent
+                                          ruler]}
+  
+  :ai-ml         {:hex "#BB8FCE" :skills [cognitive-superposition gflownet curiosity-driven
+                                          compression-progress kolmogorov-compression
+                                          causal-inference forward-forward-learning system2-attention
+                                          langevin-dynamics fokker-planck-analyzer]}
+  
+  :tda-topology  {:hex "#85C1E9" :skills [persistent-homology sheaf-cohomology sheaf-laplacian-coordination
+                                          ramanujan-expander ihara-zeta moebius-inversion]}
+  
+  :games-econ    {:hex "#FAD7A0" :skills [open-games protocol-evolution-markets solver-fee intent-sink
+                                          epistemic-arbitrage]}
+  
+  :bio-chem      {:hex "#ABEBC6" :skills [turing-chemputer crn-topology assembly-index chemical-abstract-machine
+                                          alife jaxlife-open-ended lindenmayer-systems]}}
+ 
+ ;; Wiring diagram edge colors (by composition type)
+ :edges
+ {:sequential {:hex "#FFFFFF" :style "solid"   :desc "A → B"}
+  :parallel   {:hex "#FFD700" :style "dashed"  :desc "A ⊗ B"}
+  :feedback   {:hex "#FF6B6B" :style "dotted"  :desc "A ↺ B"}
+  :choice     {:hex "#4ECDC4" :style "double"  :desc "A | B"}}}

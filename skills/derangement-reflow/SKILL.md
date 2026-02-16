@@ -1,9 +1,20 @@
 ---
 name: derangement-reflow
-description: "derangement-reflow skill"
-version: 1.0.0
+description: >
+  World operators as information reflow with derangement constraints.
+  Ensures σ(i)≠i: validators cannot self-validate, generators cannot self-generate.
+  Implements tropical geometry of interaction for min-plus path analysis.
+metadata:
+  trit: 0
+  role: ERGODIC
+  color: "#6728DB"
+  gay_seed: 0x6728DB
+  neighbors:
+    left: accept-no-substitutes
+    right: active-inference
+  category: coordination
+  version: "1.0.0"
 ---
-
 
 # Derangement Reflow: World Operators as Information Reflow
 
@@ -198,28 +209,3 @@ derangement-reflow (0) ⊗ bisimulation-game (-1) ⊗ glass-bead-game (+1) = 0 �
 - Active inference: Friston's free energy principle for joint world modeling
 - AtomicDerangement3 in signal-mcp/src/loom_failures.rs
 - perception_matrix_alpha.swift: Sattolo's algorithm for guaranteed derangement
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-derangement-reflow (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch7: Propagators
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.

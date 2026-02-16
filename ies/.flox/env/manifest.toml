@@ -1,0 +1,647 @@
+## Flox Environment Manifest -----------------------------------------
+##
+##   IES: Interaction Environment System
+##
+##   The comprehensive runtime for:
+##     - Basin/Sigil compilation (Rust workspace from ~/worlds/b/basin)
+##     - Aella experience decomposition (Rascal + ANTLR + IPA)
+##     - Sygil GEB morphism verification (Elisp + Babashka)
+##     - DuckDB braindance recording & replay
+##     - VHS terminal capture → bubblegum replay → Joker analysis
+##     - Zig-sygil: GEB categorical abstract machine in Zig
+##     - GF(3) conservation across all boundaries
+##
+##   Push: flox push bmorphism/ies
+##   Pull: flox pull bmorphism/ies
+##
+## -------------------------------------------------------------------
+version = 1
+
+
+## ═══════════════════════════════════════════════════════════════════
+## Foundation: Languages & Compilers
+## ═══════════════════════════════════════════════════════════════════
+[install]
+
+# ── Rust (Basin compilation) ──────────────────────────────────────
+rustc.pkg-path = "rustc"
+cargo.pkg-path = "cargo"
+clippy.pkg-path = "clippy"
+rust-analyzer.pkg-path = "rust-analyzer"
+
+# ── Zig (zig-sygil + zig-syrup) ──────────────────────────────────
+zig.pkg-path = "zig"
+
+# ── Go (VHS + bubblegum + Joker from source) ─────────────────────
+go.pkg-path = "go"
+go.version = "^1.22.0"
+
+# ── Julia (Gay.jl + scientific computing) ─────────────────────────
+julia.pkg-path = "julia-bin"
+
+# ── JVM (Rascal + ANTLR for Aella grammars) ──────────────────────
+jdk.pkg-path = "jdk"
+jdk.version = "^21"
+antlr4.pkg-path = "antlr4"
+
+## ═══════════════════════════════════════════════════════════════════
+## Clojure Ecosystem (Joker + Babashka + Leiningen)
+## ═══════════════════════════════════════════════════════════════════
+
+# Joker: Go-based Clojure interpreter (fast startup, cross-platform)
+joker.pkg-path = "joker"
+
+# Babashka: GraalVM Clojure scripting (full clojure.core)
+babashka.pkg-path = "babashka"
+
+# Leiningen: Clojure build tool (for full JVM Clojure when needed)
+leiningen.pkg-path = "leiningen"
+
+## ═══════════════════════════════════════════════════════════════════
+## Data: DuckDB + SQLite
+## ═══════════════════════════════════════════════════════════════════
+
+# DuckDB: braindance recording store, analytical queries
+duckdb.pkg-path = "duckdb"
+
+# SQLite: lightweight local state
+sqlite.pkg-path = "sqlite"
+
+## ═══════════════════════════════════════════════════════════════════
+## Terminal Recording & Replay (Charmbracelet stack)
+## ═══════════════════════════════════════════════════════════════════
+
+# VHS: terminal session recorder (Go) → .tape → GIF/MP4/frames
+vhs.pkg-path = "vhs"
+
+# Gum (bubblegum): glamourous shell scripts, pretty TUI components
+gum.pkg-path = "gum"
+
+# Charm: distributed key-value store for terminal apps
+charm.pkg-path = "charm"
+
+## ═══════════════════════════════════════════════════════════════════
+## Scheme & Lisp (Sygil verification layer)
+## ═══════════════════════════════════════════════════════════════════
+
+# Guile: Scheme for Geiser REPL (ERGODIC trit in Sygil triad)
+guile.pkg-path = "guile"
+
+# Emacs: for sygil.el + aella.el integration
+emacs.pkg-path = "emacs"
+
+## ═══════════════════════════════════════════════════════════════════
+## Build Tools & Utilities
+## ═══════════════════════════════════════════════════════════════════
+
+gnumake.pkg-path = "gnumake"
+pkg-config.pkg-path = "pkg-config"
+git.pkg-path = "git"
+jq.pkg-path = "jq"
+curl.pkg-path = "curl"
+tree.pkg-path = "tree"
+ripgrep.pkg-path = "ripgrep"
+fd.pkg-path = "fd"
+fzf.pkg-path = "fzf"
+
+# tmux: persistent sessions on remote (hatchery)
+tmux.pkg-path = "tmux"
+
+# SSH: for hatchery remote compilation
+openssh.pkg-path = "openssh"
+
+## ═══════════════════════════════════════════════════════════════════
+## Networking: ZeroTier + Tailscale (configurable overlay)
+## ═══════════════════════════════════════════════════════════════════
+
+# ZeroTier: software-defined networking (P2P mesh, self-hosted controller option)
+# Provides L2 virtual ethernet between all IES nodes (hatchery, local, CI)
+# Configure via: zerotier-cli join <network-id>
+# Or self-host controller at: https://my.zerotier.com or ztncui
+zerotier-one.pkg-path = "zerotierone"
+
+# Tailscale: WireGuard-based mesh VPN (alternative/complement to ZeroTier)
+# Both can coexist — ZeroTier for L2 bridging, Tailscale for auth + MagicDNS
+tailscale.pkg-path = "tailscale"
+
+
+## ═══════════════════════════════════════════════════════════════════
+## Environment Variables
+## ═══════════════════════════════════════════════════════════════════
+[vars]
+# Basin workspace location
+BASIN_WORKSPACE = "$HOME/worlds/b/basin"
+
+# Aella source
+AELLA_REPO = "bmorphism/aella"
+AELLA_LOCAL = "$HOME/i/aella"
+
+# Sygil source
+SYGIL_DIR = "$HOME/i/boxxy/worlds/b/basin"
+
+# IES braindance database
+IES_DUCKDB = "/tmp/ies-braindance.duckdb"
+
+# GF(3) conservation
+GF3_MINUS = "-1"
+GF3_ERGODIC = "0"
+GF3_PLUS = "1"
+
+# Hatchery remote host (resolvable via ZeroTier, Tailscale, or SSH config)
+HATCHERY_HOST = "hatchery"
+
+# ZeroTier network ID (set to your network, or leave empty to skip auto-join)
+# Create at https://my.zerotier.com or self-host with ztncui
+ZT_NETWORK_ID = ""
+
+# ZeroTier API token (for programmatic network management)
+# Generate at https://my.zerotier.com/account
+ZT_API_TOKEN = ""
+
+# ZeroTier controller URL (default: ZeroTier Central, or self-hosted)
+ZT_CONTROLLER = "https://my.zerotier.com/api/v1"
+
+# Prefer ZeroTier over Tailscale for hatchery? (zt | ts | ssh)
+IES_NETWORK_BACKEND = "zt"
+
+# VHS output directory
+VHS_OUTPUT = "$HOME/i/asi/ies/braindance"
+
+# Joker cross-compile targets
+JOKER_TARGETS = "linux/riscv64 linux/arm64 linux/amd64"
+
+
+## ═══════════════════════════════════════════════════════════════════
+## Activation Hook
+## ═══════════════════════════════════════════════════════════════════
+[hook]
+on-activate = """
+  # ── Ensure directories ──────────────────────────────────────────
+  mkdir -p "$HOME/i/asi/ies/braindance"
+  mkdir -p "$HOME/i/asi/ies/tapes"
+  mkdir -p "$HOME/i/asi/ies/replays"
+
+  # ── ZeroTier network setup ─────────────────────────────────────
+  if [ -n "${ZT_NETWORK_ID:-}" ]; then
+    if command -v zerotier-cli >/dev/null 2>&1; then
+      # Check if ZeroTier service is running
+      zt_status=$(zerotier-cli status 2>/dev/null || echo "not running")
+      if echo "$zt_status" | grep -q "ONLINE"; then
+        echo "[zt] ZeroTier: ONLINE"
+        # Auto-join network if not already joined
+        if ! zerotier-cli listnetworks 2>/dev/null | grep -q "$ZT_NETWORK_ID"; then
+          echo "[zt] Joining network ${ZT_NETWORK_ID}..."
+          sudo zerotier-cli join "$ZT_NETWORK_ID" 2>/dev/null || \
+            echo "[zt] Join requires sudo — run: sudo zerotier-cli join $ZT_NETWORK_ID"
+        else
+          zt_ip=$(zerotier-cli listnetworks 2>/dev/null | grep "$ZT_NETWORK_ID" | awk '{print $NF}' | cut -d/ -f1)
+          echo "[zt] Network ${ZT_NETWORK_ID}: ${zt_ip:-connected}"
+        fi
+      else
+        echo "[zt] ZeroTier not running. Start with: sudo launchctl load /Library/LaunchDaemons/com.zerotier.one.plist"
+      fi
+    else
+      echo "[zt] zerotier-cli not found (install: brew install zerotier-one or use flox pkg)"
+    fi
+  fi
+
+  # ── Initialize DuckDB braindance schema if needed ───────────────
+  if [ ! -f "${IES_DUCKDB:-/tmp/ies-braindance.duckdb}" ]; then
+    echo "[ies] Initializing braindance DuckDB..."
+    duckdb "${IES_DUCKDB:-/tmp/ies-braindance.duckdb}" <<'SCHEMA'
+      -- Braindance: terminal session recordings indexed for replay
+      CREATE TABLE IF NOT EXISTS sessions (
+        session_id     VARCHAR PRIMARY KEY,
+        tape_file      VARCHAR NOT NULL,
+        recorded_at    TIMESTAMP DEFAULT current_timestamp,
+        duration_ms    INTEGER,
+        frame_count    INTEGER,
+        gf3_trit       INTEGER CHECK (gf3_trit IN (-1, 0, 1)),
+        aella_domain   VARCHAR,
+        aella_crystal  VARCHAR,
+        sygil_verified BOOLEAN DEFAULT false,
+        entropy        DOUBLE,
+        description    VARCHAR
+      );
+
+      -- Individual frames from VHS recordings
+      CREATE TABLE IF NOT EXISTS frames (
+        frame_id       INTEGER,
+        session_id     VARCHAR REFERENCES sessions(session_id),
+        timestamp_ms   INTEGER NOT NULL,
+        content        VARCHAR,
+        ansi_raw       BLOB,
+        gf3_trit       INTEGER CHECK (gf3_trit IN (-1, 0, 1)),
+        joker_result   VARCHAR,
+        PRIMARY KEY (session_id, frame_id)
+      );
+
+      -- GEB morphism verification log (from sygil)
+      CREATE TABLE IF NOT EXISTS sygil_checks (
+        check_id       INTEGER PRIMARY KEY,
+        session_id     VARCHAR REFERENCES sessions(session_id),
+        morphism_type  VARCHAR NOT NULL,
+        domain_obj     VARCHAR,
+        codomain_obj   VARCHAR,
+        gf3_sum        INTEGER,
+        conserved      BOOLEAN,
+        spectral_gap   DOUBLE,
+        checked_at     TIMESTAMP DEFAULT current_timestamp
+      );
+
+      -- Aella experience atoms extracted from sessions
+      CREATE TABLE IF NOT EXISTS experience_atoms (
+        atom_id        INTEGER PRIMARY KEY,
+        session_id     VARCHAR REFERENCES sessions(session_id),
+        domain         VARCHAR NOT NULL,
+        trit           INTEGER CHECK (trit IN (-1, 0, 1)),
+        intensity      VARCHAR,
+        temporality    VARCHAR,
+        trajectory     VARCHAR,
+        ipa_consonant  VARCHAR,
+        ipa_vowel      VARCHAR,
+        ipa_tone       VARCHAR,
+        subtype        VARCHAR
+      );
+
+      -- Basin compilation results on hatchery
+      CREATE TABLE IF NOT EXISTS compilations (
+        compile_id     VARCHAR PRIMARY KEY,
+        crate_name     VARCHAR NOT NULL,
+        target_triple  VARCHAR,
+        host           VARCHAR DEFAULT 'hatchery',
+        started_at     TIMESTAMP,
+        completed_at   TIMESTAMP,
+        success        BOOLEAN,
+        binary_size    BIGINT,
+        gf3_trit       INTEGER CHECK (gf3_trit IN (-1, 0, 1)),
+        error_log      VARCHAR
+      );
+
+      -- Cross-references: session ↔ compilation ↔ SAW repo
+      CREATE TABLE IF NOT EXISTS braindance_links (
+        link_id        INTEGER PRIMARY KEY,
+        source_type    VARCHAR NOT NULL,
+        source_id      VARCHAR NOT NULL,
+        target_type    VARCHAR NOT NULL,
+        target_id      VARCHAR NOT NULL,
+        relation       VARCHAR,
+        gf3_trit       INTEGER CHECK (gf3_trit IN (-1, 0, 1))
+      );
+
+      -- Indices for fast replay queries
+      CREATE INDEX idx_frames_session ON frames(session_id, timestamp_ms);
+      CREATE INDEX idx_atoms_domain ON experience_atoms(domain, trit);
+      CREATE INDEX idx_sygil_session ON sygil_checks(session_id);
+      CREATE INDEX idx_compile_crate ON compilations(crate_name);
+SCHEMA
+    echo "[ies] Braindance DuckDB initialized at ${IES_DUCKDB}"
+  fi
+
+  # ── Check toolchain versions ────────────────────────────────────
+  echo ""
+  echo "╔══════════════════════════════════════════════════════════╗"
+  echo "║  IES: Interaction Environment System                    ║"
+  echo "║  GF(3): (-1) + (0) + (+1) = 0  ✓                      ║"
+  echo "╚══════════════════════════════════════════════════════════╝"
+  echo ""
+  echo "[ies] Toolchain:"
+  echo "  rust    $(rustc --version 2>/dev/null | head -1)"
+  echo "  zig     $(zig version 2>/dev/null)"
+  echo "  go      $(go version 2>/dev/null | cut -d' ' -f3)"
+  echo "  julia   $(julia --version 2>/dev/null | cut -d' ' -f3)"
+  echo "  duckdb  $(duckdb --version 2>/dev/null | head -1)"
+  echo "  joker   $(joker --version 2>/dev/null 2>&1 | head -1)"
+  echo "  bb      $(bb --version 2>/dev/null | head -1)"
+  echo "  vhs     $(vhs --version 2>/dev/null 2>&1 | head -1)"
+  echo "  gum     $(gum --version 2>/dev/null 2>&1 | head -1)"
+  echo "  guile   $(guile --version 2>/dev/null | head -1)"
+  echo ""
+  echo "[ies] Databases:"
+  echo "  braindance: ${IES_DUCKDB:-/tmp/ies-braindance.duckdb}"
+  echo ""
+  echo "[ies] Directories:"
+  echo "  tapes:   ~/i/asi/ies/tapes/"
+  echo "  replays: ~/i/asi/ies/braindance/"
+  echo "  basin:   ~/worlds/b/basin/"
+  echo "  aella:   ~/i/aella/"
+  echo "  sygil:   ~/i/boxxy/worlds/b/basin/"
+  echo ""
+  echo "[ies] Network:"
+  if command -v zerotier-cli >/dev/null 2>&1; then
+    zt_stat=$(zerotier-cli status 2>/dev/null || echo "offline")
+    echo "  zerotier: $zt_stat"
+    zerotier-cli listnetworks 2>/dev/null | tail -n +2 | while read -r line; do
+      echo "    $line"
+    done
+  else
+    echo "  zerotier: not available"
+  fi
+  if command -v tailscale >/dev/null 2>&1; then
+    ts_stat=$(tailscale status --json 2>/dev/null | jq -r '.Self.HostName // "offline"' 2>/dev/null || echo "offline")
+    echo "  tailscale: $ts_stat"
+  fi
+  echo "  backend: ${IES_NETWORK_BACKEND:-ssh}"
+"""
+
+
+## ═══════════════════════════════════════════════════════════════════
+## Profile (shell aliases & functions)
+## ═══════════════════════════════════════════════════════════════════
+[profile]
+common = '''
+  # ═══════════════════════════════════════════════════════════════
+  # VHS Braindance Recording
+  # ═══════════════════════════════════════════════════════════════
+
+  # Record a braindance session
+  braindance-record() {
+    local name=${1:?usage: braindance-record NAME [description]}
+    local desc="${2:-}"
+    local tape="$HOME/i/asi/ies/tapes/${name}.tape"
+    local out="$HOME/i/asi/ies/braindance/${name}.gif"
+
+    if [ ! -f "$tape" ]; then
+      echo "# VHS tape: ${name}" > "$tape"
+      echo "# Braindance recording for IES" >> "$tape"
+      echo "Output ${out}" >> "$tape"
+      echo "Set FontSize 14" >> "$tape"
+      echo "Set Width 1200" >> "$tape"
+      echo "Set Height 600" >> "$tape"
+      echo "" >> "$tape"
+      echo "Type \"# braindance: ${name}\"" >> "$tape"
+      echo "Enter" >> "$tape"
+      echo "Sleep 500ms" >> "$tape"
+      echo "[ies] Created tape template: $tape"
+      echo "[ies] Edit it, then: vhs $tape"
+    else
+      echo "[ies] Recording ${tape}..."
+      vhs "$tape"
+    fi
+
+    # Register in DuckDB
+    local db="${IES_DUCKDB:-/tmp/ies-braindance.duckdb}"
+    duckdb "$db" -c "
+      INSERT OR REPLACE INTO sessions (session_id, tape_file, description, gf3_trit)
+      VALUES ('${name}', '${tape}', '${desc}', $(( RANDOM % 3 - 1 )) );
+    " 2>/dev/null || true
+  }
+
+  # Replay a braindance through bubblegum
+  braindance-replay() {
+    local name=${1:?usage: braindance-replay NAME}
+    local gif="$HOME/i/asi/ies/braindance/${name}.gif"
+    if [ -f "$gif" ]; then
+      gum style --border double --border-foreground 212 \
+        --padding "1 2" "Braindance: ${name}"
+      echo "Replay: $gif"
+    else
+      echo "[ies] No recording found: $gif"
+    fi
+  }
+
+  # Query braindance sessions
+  braindance-list() {
+    local db="${IES_DUCKDB:-/tmp/ies-braindance.duckdb}"
+    duckdb "$db" -c "
+      SELECT session_id, gf3_trit, aella_domain, sygil_verified,
+             recorded_at, description
+      FROM sessions ORDER BY recorded_at DESC LIMIT 20;
+    "
+  }
+
+  # ═══════════════════════════════════════════════════════════════
+  # Joker GF(3) Analysis Pipeline
+  # ═══════════════════════════════════════════════════════════════
+
+  # Pipe braindance data through Joker for GF(3) analysis
+  braindance-analyze() {
+    local name=${1:?usage: braindance-analyze NAME}
+    local db="${IES_DUCKDB:-/tmp/ies-braindance.duckdb}"
+    duckdb "$db" -json -c "
+      SELECT * FROM frames WHERE session_id='${name}' ORDER BY timestamp_ms;
+    " | joker -e '
+      (let [frames (json/read-string *in*)]
+        (println "GF(3) analysis for" (count frames) "frames")
+        (let [trits (map :gf3_trit frames)
+              sum (reduce + 0 (remove nil? trits))]
+          (println "  Trit sum:" sum)
+          (println "  Conserved:" (zero? (mod sum 3)))))
+    '
+  }
+
+  # ═══════════════════════════════════════════════════════════════
+  # Basin Remote Compilation (hatchery)
+  # ═══════════════════════════════════════════════════════════════
+
+  # Compile basin crate on hatchery
+  basin-remote-build() {
+    local crate=${1:?usage: basin-remote-build CRATE_NAME}
+    local host="${HATCHERY_HOST:-hatchery}"
+    echo "[ies] Building ${crate} on ${host}..."
+    ssh "$host" "cd ~/worlds/b/basin && cargo build -p ${crate} --release" 2>&1 | \
+      while IFS= read -r line; do
+        echo "  [${host}] $line"
+      done
+  }
+
+  # Sync basin workspace to hatchery
+  basin-sync() {
+    local host="${HATCHERY_HOST:-hatchery}"
+    echo "[ies] Syncing basin to ${host}..."
+    rsync -avz --exclude target/ --exclude .git/ \
+      "$HOME/worlds/b/basin/" "${host}:~/worlds/b/basin/"
+  }
+
+  # ═══════════════════════════════════════════════════════════════
+  # Sygil Verification
+  # ═══════════════════════════════════════════════════════════════
+
+  # Run sygil GEB check via babashka
+  sygil-check() {
+    bb "$HOME/i/boxxy/worlds/b/basin/sygil-repl.bb" "$@"
+  }
+
+  # ═══════════════════════════════════════════════════════════════
+  # Aella Experience Encoding
+  # ═══════════════════════════════════════════════════════════════
+
+  # Quick aella encode via Joker
+  aella-encode() {
+    local domain=${1:?usage: aella-encode DOMAIN TRIT INTENSITY}
+    local trit=${2:?}
+    local intensity=${3:-moderate}
+    joker -e "
+      (println {:domain \"${domain}\"
+                :trit (case \"${trit}\" \"+\" 1 \"-\" -1 \"0\" 0)
+                :intensity \"${intensity}\"
+                :gf3-conserved true})
+    "
+  }
+
+  # ═══════════════════════════════════════════════════════════════
+  # ZeroTier Network Management
+  # ═══════════════════════════════════════════════════════════════
+
+  # Join a ZeroTier network
+  zt-join() {
+    local nwid=${1:-${ZT_NETWORK_ID:?Set ZT_NETWORK_ID or pass network ID}}
+    echo "[zt] Joining network ${nwid}..."
+    sudo zerotier-cli join "$nwid"
+  }
+
+  # Leave a ZeroTier network
+  zt-leave() {
+    local nwid=${1:-${ZT_NETWORK_ID:?Set ZT_NETWORK_ID or pass network ID}}
+    echo "[zt] Leaving network ${nwid}..."
+    sudo zerotier-cli leave "$nwid"
+  }
+
+  # Show ZeroTier status + peers
+  zt-status() {
+    echo "=== ZeroTier Status ==="
+    zerotier-cli status 2>/dev/null || echo "Not running"
+    echo ""
+    echo "=== Networks ==="
+    zerotier-cli listnetworks 2>/dev/null || echo "None"
+    echo ""
+    echo "=== Peers ==="
+    zerotier-cli listpeers 2>/dev/null | head -20 || echo "None"
+  }
+
+  # Get ZeroTier IP for this node
+  zt-ip() {
+    local nwid=${1:-${ZT_NETWORK_ID}}
+    if [ -n "$nwid" ]; then
+      zerotier-cli listnetworks 2>/dev/null | grep "$nwid" | awk '{print $NF}' | cut -d/ -f1
+    else
+      zerotier-cli listnetworks 2>/dev/null | awk 'NR>1 {print $NF}' | cut -d/ -f1
+    fi
+  }
+
+  # Resolve hatchery host based on configured network backend
+  ies-resolve-host() {
+    case "${IES_NETWORK_BACKEND:-ssh}" in
+      zt)
+        # Use ZeroTier IP for hatchery
+        local zt_ip
+        zt_ip=$(zerotier-cli listpeers 2>/dev/null | grep "${HATCHERY_HOST}" | awk '{print $4}' | cut -d/ -f1)
+        if [ -n "$zt_ip" ]; then
+          echo "$zt_ip"
+        else
+          echo "${HATCHERY_HOST}"
+        fi
+        ;;
+      ts)
+        # Use Tailscale MagicDNS
+        echo "${HATCHERY_HOST}"
+        ;;
+      ssh|*)
+        echo "${HATCHERY_HOST}"
+        ;;
+    esac
+  }
+
+  # Authorize a ZeroTier member via API (requires ZT_API_TOKEN)
+  zt-authorize() {
+    local nwid=${1:-${ZT_NETWORK_ID:?}}
+    local member_id=${2:?usage: zt-authorize [network-id] member-id}
+    local controller="${ZT_CONTROLLER:-https://my.zerotier.com/api/v1}"
+    local token="${ZT_API_TOKEN:?Set ZT_API_TOKEN}"
+    curl -s -X POST "${controller}/network/${nwid}/member/${member_id}" \
+      -H "Authorization: token ${token}" \
+      -H "Content-Type: application/json" \
+      -d '{"config":{"authorized":true}}' | jq .
+  }
+
+  # Create a new ZeroTier network via API
+  zt-create-network() {
+    local name=${1:-ies-mesh}
+    local controller="${ZT_CONTROLLER:-https://my.zerotier.com/api/v1}"
+    local token="${ZT_API_TOKEN:?Set ZT_API_TOKEN}"
+    echo "[zt] Creating network: ${name}..."
+    curl -s -X POST "${controller}/network" \
+      -H "Authorization: token ${token}" \
+      -H "Content-Type: application/json" \
+      -d "{\"config\":{\"name\":\"${name}\",\"private\":true,\"v4AssignMode\":{\"zt\":true},\"routes\":[{\"target\":\"10.147.17.0/24\"}],\"ipAssignmentPools\":[{\"ipRangeStart\":\"10.147.17.1\",\"ipRangeEnd\":\"10.147.17.254\"}]}}" | jq .
+  }
+
+  # ═══════════════════════════════════════════════════════════════
+  # FloxHub Management
+  # ═══════════════════════════════════════════════════════════════
+
+  alias ies-push="flox push bmorphism/ies"
+  alias ies-pull="flox pull bmorphism/ies"
+
+  # Deploy IES to hatchery (resolves host via configured backend)
+  ies-deploy() {
+    local host
+    host=$(ies-resolve-host)
+    echo "[ies] Deploying to ${host} (via ${IES_NETWORK_BACKEND:-ssh})..."
+    ssh "$host" "flox pull bmorphism/ies && cd ~/i/asi/ies && flox activate -- echo 'IES activated on ${host}'"
+  }
+
+  # Deploy IES via ZeroTier specifically
+  ies-deploy-zt() {
+    local zt_ip
+    zt_ip=$(zt-ip)
+    if [ -z "$zt_ip" ]; then
+      echo "[zt] No ZeroTier IP found. Join a network first: zt-join <network-id>"
+      return 1
+    fi
+    echo "[ies] Deploying to hatchery via ZeroTier (${zt_ip})..."
+    ssh "root@${zt_ip}" "flox pull bmorphism/ies && cd ~/i/asi/ies && flox activate -- echo 'IES activated'"
+  }
+'''
+
+
+## ═══════════════════════════════════════════════════════════════════
+## Services
+## ═══════════════════════════════════════════════════════════════════
+[services]
+# DuckDB HTTP API for braindance queries (optional)
+# duckdb-api.command = "duckdb -httpd -port 4321 ${IES_DUCKDB}"
+
+
+## ═══════════════════════════════════════════════════════════════════
+## Build targets
+## ═══════════════════════════════════════════════════════════════════
+[build]
+
+[build.zig-sygil]
+description = "GEB categorical abstract machine in Zig"
+version = "0.1.0"
+command = """
+  mkdir -p $out/bin
+  if [ -f "$HOME/i/zig-syrup/src/bim.zig" ]; then
+    cd "$HOME/i/zig-syrup"
+    zig build -Doptimize=ReleaseFast 2>/dev/null && \
+      cp zig-out/bin/* $out/bin/ 2>/dev/null || \
+      echo "[zig-sygil] Build skipped (missing deps)"
+  fi
+"""
+
+[build.joker-cross]
+description = "Joker Clojure for all targets"
+version = "0.1.0"
+command = """
+  mkdir -p $out/bin
+  for target in linux/riscv64 linux/arm64 linux/amd64; do
+    goos=$(echo $target | cut -d/ -f1)
+    goarch=$(echo $target | cut -d/ -f2)
+    GOOS=$goos GOARCH=$goarch CGO_ENABLED=0 \
+      go build -o "$out/bin/joker-${goos}-${goarch}" github.com/candid82/joker 2>/dev/null || true
+  done
+"""
+
+
+## ═══════════════════════════════════════════════════════════════════
+## Platform support
+## ═══════════════════════════════════════════════════════════════════
+[options]
+systems = [
+  "aarch64-darwin",
+  "aarch64-linux",
+  "x86_64-darwin",
+  "x86_64-linux",
+]

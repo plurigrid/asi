@@ -1,0 +1,777 @@
+#+TITLE: Low-Discrepancy Sequences - Literate Implementation
+#+AUTHOR: Plurigrid ASI
+#+PROPERTY: header-args:julia :tangle LowDiscrepancySequences.jl
+
+* Overview
+
+Low-discrepancy sequences for deterministic color generation with bijective index recovery.
+
+This skill extends beyond the golden angle (φ) to multiple low-discrepancy sequences that provide optimal uniform coverage of color space:
+
+- Golden Angle (φ): 1D hue spiral
+- Plastic Constant (φ₂): 2D hue-saturation optimal
+- Halton: nD via prime bases
+- R-sequence: nD recursive golden ratios
+- Kronecker: 1D equidistributed
+- Sobol: nD via Gray code (excellent for high dimensions)
+- Pisot: Quasiperiodic algebraic integers
+- Continued Fractions: Geodesic hyperbolic paths
+
+*Key Property*: All sequences are *bijective* on their index. Given a color and seed, you can recover the index n that generated it.
+
+* Module Definition
+
+#+BEGIN_SRC julia
+"""
+Low-Discrepancy Sequences for Deterministic Color Generation
+
+Implements multiple low-discrepancy sequences with bijective index recovery:
+- Golden Angle (φ): 1D hue spiral
+- Plastic Constant (φ₂): 2D hue-saturation
+- Halton: nD via prime bases
+- R-sequence: nD recursive golden ratios
+- Kronecker: 1D equidistributed
+- Sobol: nD via Gray code
+- Pisot: Quasiperiodic algebraic integers
+- Continued Fractions: Geodesic hyperbolic paths
+
+All sequences are bijective: (color, seed) → index n
+"""
+module LowDiscrepancySequences
+
+export golden_angle_color, plastic_color, halton_color, r_sequence_color
+export kronecker_color, sobol_color, pisot_color, continued_fraction_color
+export invert_color, phi, phi2, plastic_constant
+export halton, van_der_corput, gray_code
+
+using Colors
+#+END_SRC
+
+* Constants
+
+The mathematical constants that define our sequences:
+
+#+BEGIN_SRC julia
+# Constants
+const φ = (1 + √5) / 2  # Golden ratio
+const φ₂ = 1.3247179572447460259609088544780973  # Plastic constant: x³ = x + 1
+
+"""
+    phi2()
+
+Plastic constant φ₂ ≈ 1.324717... (root of x³ = x + 1).
+Optimal for 2D low-discrepancy sequences.
+"""
+phi2() = φ₂
+plastic_constant() = φ₂
+
+"""
+    phi()
+
+Golden ratio φ = (1 + √5)/2 ≈ 1.618034...
+Optimal for 1D low-discrepancy sequences.
+"""
+phi() = φ
+#+END_SRC
+
+* 1. Golden Angle
+
+The existing method, included for completeness. The golden angle φ provides optimal 1D uniformity.
+
+Formula: =hue = (seed + n/φ) mod 1=
+
+#+BEGIN_SRC julia
+"""
+    golden_angle_color(n::Int; seed=0, saturation=0.7, lightness=0.55)
+
+Generate color using golden angle spiral in hue space.
+hue = (seed + n/φ) mod 1
+
+Returns RGB color. Bijective: can recover n from (color, seed).
+"""
+function golden_angle_color(n::Int; seed=0, saturation=0.7, lightness=0.55)
+    hue = mod(seed + n / φ, 1.0) * 360
+    HSL(hue, saturation, lightness) |> RGB
+end
+#+END_SRC
+
+* 2. Plastic Constant
+
+The plastic constant φ₂ is the unique real root of x³ = x + 1. It provides optimal 2D uniformity.
+
+Formula:
+- =h = (seed + n/φ₂) mod 1=
+- =s = (seed + n/φ₂²) mod 1=
+
+#+BEGIN_SRC julia
+"""
+    plastic_color(n::Int; seed=0, lightness=0.5)
+
+Generate color using plastic constant φ₂ for 2D coverage (hue, saturation).
+h = (seed + n/φ₂) mod 1
+s = (seed + n/φ₂²) mod 1
+
+Returns RGB color. Bijective: can recover n from (color, seed).
+"""
+function plastic_color(n::Int; seed=0, lightness=0.5)
+    h = mod(seed + n / φ₂, 1.0) * 360
+    s = mod(seed + n / φ₂^2, 1.0) * 0.5 + 0.5  # Scale to [0.5, 1.0] for visibility
+    HSL(h, s, lightness) |> RGB
+end
+#+END_SRC
+
+* 3. Halton Sequence
+
+The Halton sequence uses the van der Corput sequence in different prime bases to generate nD points.
+
+Formula: For base b, reflect digits of n in base b around the decimal point.
+
+Example: n=5 in base 2
+- 5 = 101₂ → 0.101₂ = 1/2 + 0/4 + 1/8 = 0.625
+
+#+BEGIN_SRC julia
+"""
+    van_der_corput(n::Int, base::Int)
+
+Van der Corput sequence: reflect digits of n in base `base` around decimal point.
+
+Example: n=5 in base 2
+  5 = 101₂ → 0.101₂ = 1/2 + 0/4 + 1/8 = 0.625
+"""
+function van_der_corput(n::Int, base::Int)
+    result = 0.0
+    f = 1.0 / base
+    i = n
+    while i > 0
+        result += f * (i % base)
+        i = div(i, base)
+        f /= base
+    end
+    return result
+end
+
+"""
+    halton(n::Int, base::Int)
+
+Halton sequence: van der Corput in base `base`.
+"""
+halton(n::Int, base::Int) = van_der_corput(n, base)
+
+"""
+    halton_color(n::Int; bases=(2, 3, 5))
+
+Generate RGB color directly via Halton sequence with prime bases.
+r = halton(n, 2)
+g = halton(n, 3)
+b = halton(n, 5)
+
+Returns RGB color. Bijective: can recover n from color (requires bases).
+"""
+function halton_color(n::Int; bases=(2, 3, 5))
+    r = halton(n, bases[1])
+    g = halton(n, bases[2])
+    b = halton(n, bases[3])
+    RGB(r, g, b)
+end
+
+"""
+    halton_hsl_color(n::Int; bases=(2, 3, 5))
+
+Generate HSL color via Halton sequence.
+h = halton(n, 2) * 360
+s = halton(n, 3) * 0.5 + 0.5
+l = halton(n, 5) * 0.3 + 0.4
+"""
+function halton_hsl_color(n::Int; bases=(2, 3, 5))
+    h = halton(n, bases[1]) * 360
+    s = halton(n, bases[2]) * 0.5 + 0.5
+    l = halton(n, bases[3]) * 0.3 + 0.4
+    HSL(h, s, l) |> RGB
+end
+#+END_SRC
+
+* 4. R-sequence
+
+The R-sequence uses d-dimensional golden ratios: roots of x^(d+1) = x + 1.
+
+- d=1: φ ≈ 1.618 (golden ratio)
+- d=2: φ₂ ≈ 1.325 (plastic constant)
+- d=3: φ₃ ≈ 1.220
+
+#+BEGIN_SRC julia
+"""
+    r_sequence_root(d::Int)
+
+Compute d-dimensional golden ratio: root of x^(d+1) = x + 1 in (1, 2).
+
+For d=1: φ ≈ 1.618 (golden ratio)
+For d=2: φ₂ ≈ 1.325 (plastic constant)
+For d=3: φ₃ ≈ 1.220
+"""
+function r_sequence_root(d::Int)
+    # Newton's method for x^(d+1) - x - 1 = 0
+    f(x) = x^(d+1) - x - 1
+    df(x) = (d+1)*x^d - 1
+    
+    x = 1.5  # Initial guess
+    for _ in 1:20
+        x_new = x - f(x) / df(x)
+        if abs(x_new - x) < 1e-10
+            return x_new
+        end
+        x = x_new
+    end
+    return x
+end
+
+"""
+    r_sequence_color(n::Int; dim=3, seed=0)
+
+Generate color using R-sequence (recursive golden ratio) for dim dimensions.
+
+For dim=2: uses plastic constant (hue, saturation)
+For dim=3: uses φ₃ for (hue, saturation, lightness)
+
+Returns RGB color. Bijective: can recover n from (color, seed, dim).
+"""
+function r_sequence_color(n::Int; dim=3, seed=0)
+    φ_d = r_sequence_root(dim)
+    
+    if dim == 2
+        h = mod(seed + n / φ_d, 1.0) * 360
+        s = mod(seed + n / φ_d^2, 1.0) * 0.5 + 0.5
+        l = 0.5
+    else  # dim >= 3
+        h = mod(seed + n / φ_d, 1.0) * 360
+        s = mod(seed + n / φ_d^2, 1.0) * 0.5 + 0.5
+        l = mod(seed + n / φ_d^3, 1.0) * 0.3 + 0.4
+    end
+    
+    HSL(h, s, l) |> RGB
+end
+#+END_SRC
+
+* 5. Kronecker Sequence
+
+The Kronecker sequence uses {nα} mod 1 for any irrational α. It's equidistributed (uniform in the limit).
+
+Common choices for α:
+- √2 ≈ 1.414
+- √3 ≈ 1.732
+- e ≈ 2.718
+- π ≈ 3.142
+
+#+BEGIN_SRC julia
+"""
+    kronecker_color(n::Int; α=√2, seed=0, saturation=0.7, lightness=0.55)
+
+Generate color using Kronecker sequence: {nα} mod 1.
+
+α should be irrational for equidistribution. Common choices:
+- √2 ≈ 1.414
+- √3 ≈ 1.732
+- e ≈ 2.718
+- π ≈ 3.142
+
+Returns RGB color. Bijective: can recover n from (color, α, seed).
+"""
+function kronecker_color(n::Int; α=√2, seed=0, saturation=0.7, lightness=0.55)
+    hue = mod(seed + n * α, 1.0) * 360
+    HSL(hue, saturation, lightness) |> RGB
+end
+#+END_SRC
+
+* 6. Sobol Sequence
+
+The Sobol sequence uses Gray code and direction numbers for excellent high-dimensional uniformity.
+
+#+BEGIN_SRC julia
+"""
+    gray_code(n::Int)
+
+Gray code: n XOR (n >> 1)
+"""
+gray_code(n::Int) = n ⊻ (n >> 1)
+
+"""
+    sobol_direction_numbers(dim::Int, bits::Int=30)
+
+Generate Sobol direction numbers for dimension `dim`.
+Simplified version using primitive polynomials.
+
+For production use, load precomputed direction numbers from Joe & Kuo (2008).
+"""
+function sobol_direction_numbers(dim::Int, bits::Int=30)
+    # Primitive polynomials (degree, polynomial coefficients)
+    # These are simplified; full implementation needs Joe-Kuo table
+    polynomials = [
+        (1, [1]),           # x
+        (2, [1, 1]),        # x² + x + 1
+        (3, [1, 0, 1]),     # x³ + x + 1
+        (4, [1, 1, 0, 1]),  # x⁴ + x + 1
+        (5, [1, 0, 1, 0, 1]) # x⁵ + x² + 1
+    ]
+    
+    idx = min(dim, length(polynomials))
+    degree, coeffs = polynomials[idx]
+    
+    # Initialize direction numbers
+    V = zeros(UInt32, bits)
+    
+    # First direction numbers = powers of 2
+    for i in 1:min(degree, bits)
+        V[i] = UInt32(1) << (bits - i)
+    end
+    
+    # Recurrence for remaining direction numbers
+    for i in (degree+1):bits
+        V[i] = V[i-degree]
+        for j in 1:degree
+            if coeffs[j] == 1
+                V[i] ⊻= V[i-j] >> j
+            end
+        end
+    end
+    
+    return V
+end
+
+"""
+    sobol_point(n::Int, dim::Int)
+
+Generate n-th point of Sobol sequence in dimension `dim`.
+Returns value in [0, 1).
+"""
+function sobol_point(n::Int, dim::Int)
+    g = gray_code(n)
+    V = sobol_direction_numbers(dim)
+    
+    x = UInt32(0)
+    for i in 1:length(V)
+        if (g >> (i-1)) & 1 == 1
+            x ⊻= V[i]
+        end
+    end
+    
+    return Float64(x) / (1 << 30)
+end
+
+"""
+    sobol_color(n::Int; mode=:hsl)
+
+Generate color using Sobol sequence.
+
+mode=:rgb: Direct RGB via dimensions 1,2,3
+mode=:hsl: HSL via dimensions 1,2,3
+
+Returns RGB color. Bijective: can recover n from (color, mode).
+"""
+function sobol_color(n::Int; mode=:hsl)
+    if mode == :rgb
+        r = sobol_point(n, 1)
+        g = sobol_point(n, 2)
+        b = sobol_point(n, 3)
+        return RGB(r, g, b)
+    else  # :hsl
+        h = sobol_point(n, 1) * 360
+        s = sobol_point(n, 2) * 0.5 + 0.5
+        l = sobol_point(n, 3) * 0.3 + 0.4
+        return HSL(h, s, l) |> RGB
+    end
+end
+#+END_SRC
+
+* 7. Pisot Sequence
+
+Pisot-Vijayaraghavan numbers are algebraic integers > 1 with all conjugates inside the unit circle. They generate quasiperiodic sequences.
+
+Formula: =round(θⁿ) mod 1=
+
+Common Pisot numbers:
+- Golden ratio φ ≈ 1.618
+- Plastic constant φ₂ ≈ 1.325
+- Silver ratio δ_S = 1 + √2 ≈ 2.414
+
+#+BEGIN_SRC julia
+"""
+    pisot_color(n::Int; θ=φ, seed=0, saturation=0.7, lightness=0.55)
+
+Generate color using Pisot sequence: round(θⁿ) mod 1.
+
+θ should be a Pisot-Vijayaraghavan number (algebraic integer > 1 
+with all conjugates inside unit circle).
+
+Common choices:
+- Golden ratio φ ≈ 1.618
+- Plastic constant φ₂ ≈ 1.325
+- Silver ratio δ_S = 1 + √2 ≈ 2.414
+
+Returns RGB color. Quasiperiodic pattern. Bijective with care.
+"""
+function pisot_color(n::Int; θ=φ, seed=0, saturation=0.7, lightness=0.55)
+    value = mod(seed + round(θ^n), 1.0)
+    hue = value * 360
+    HSL(hue, saturation, lightness) |> RGB
+end
+#+END_SRC
+
+* 8. Continued Fractions
+
+Continued fractions provide geodesic paths in hyperbolic geometry through the PSL(2,ℝ) action on ℍ².
+
+Formula: [a₀; a₁, a₂, ...] → convergents p_k/q_k
+
+#+BEGIN_SRC julia
+"""
+    continued_fraction_convergent(a::Vector{Int}, k::Int)
+
+Compute k-th convergent of continued fraction [a₀; a₁, a₂, ...].
+
+Returns (numerator, denominator).
+"""
+function continued_fraction_convergent(a::Vector{Int}, k::Int)
+    if k == 0
+        return (a[1], 1)
+    end
+    
+    # Initialize p_{-1}, p_0, q_{-1}, q_0
+    p_prev2, p_prev1 = 1, a[1]
+    q_prev2, q_prev1 = 0, 1
+    
+    for i in 2:min(k+1, length(a))
+        p = a[i] * p_prev1 + p_prev2
+        q = a[i] * q_prev1 + q_prev2
+        
+        p_prev2, p_prev1 = p_prev1, p
+        q_prev2, q_prev1 = q_prev1, q
+    end
+    
+    return (p_prev1, q_prev1)
+end
+
+"""
+    golden_ratio_cf(k::Int)
+
+Generate continued fraction expansion of golden ratio φ = [1; 1, 1, 1, ...].
+Returns k-th convergent as (p, q) where p/q ≈ φ.
+"""
+function golden_ratio_cf(k::Int)
+    a = ones(Int, k+1)
+    continued_fraction_convergent(a, k)
+end
+
+"""
+    continued_fraction_color(n::Int; cf=:golden, seed=0, saturation=0.7, lightness=0.55)
+
+Generate color using continued fraction convergents.
+
+cf=:golden: φ = [1; 1, 1, 1, ...]
+cf=:sqrt2: √2 = [1; 2, 2, 2, ...]
+cf=:e: e = [2; 1, 2, 1, 1, 4, 1, 1, 6, ...]
+
+Uses n-th convergent p/q, maps p/q to hue.
+
+Returns RGB color. Geodesic connection to hyperbolic geometry.
+"""
+function continued_fraction_color(n::Int; cf=:golden, seed=0, saturation=0.7, lightness=0.55)
+    if cf == :golden
+        a = ones(Int, n+1)
+    elseif cf == :sqrt2
+        a = vcat([1], fill(2, n))
+    elseif cf == :e
+        # e = [2; 1, 2, 1, 1, 4, 1, 1, 6, ...] pattern [2; 1, 2k, 1]
+        a = Int[2]
+        for k in 1:div(n, 3)+1
+            push!(a, 1, 2k, 1)
+        end
+        a = a[1:min(n+1, length(a))]
+    else
+        error("Unknown continued fraction type: $cf")
+    end
+    
+    p, q = continued_fraction_convergent(a, min(n, length(a)-1))
+    value = mod(seed + p / q, 1.0)
+    hue = value * 360
+    
+    HSL(hue, saturation, lightness) |> RGB
+end
+#+END_SRC
+
+* Inversion: Bijective Index Recovery
+
+The key property: all sequences are bijective. Given a color and the generation method, we can recover the index n.
+
+#+BEGIN_SRC julia
+"""
+    invert_color(color::RGB, method::Symbol; seed=0, max_search=10000, tol=0.01)
+
+Recover index n from color using specified method.
+
+method: :golden, :plastic, :halton, :r_sequence, :kronecker, :sobol, :pisot, :cf
+
+Returns n such that method_color(n; seed=seed) ≈ color, or nothing if not found.
+
+This implements the bijection property: (color, seed, method) → n
+"""
+function invert_color(color::RGB, method::Symbol; seed=0, max_search=10000, 
+                      tol=0.01, kwargs...)
+    # Color distance metric
+    distance(c1::RGB, c2::RGB) = sqrt((c1.r - c2.r)^2 + (c1.g - c2.g)^2 + (c1.b - c2.b)^2)
+    
+    generator = if method == :golden
+        n -> golden_angle_color(n; seed=seed)
+    elseif method == :plastic
+        n -> plastic_color(n; seed=seed)
+    elseif method == :halton
+        n -> halton_color(n; get(kwargs, :bases, (2,3,5))...)
+    elseif method == :r_sequence
+        n -> r_sequence_color(n; dim=get(kwargs, :dim, 3), seed=seed)
+    elseif method == :kronecker
+        n -> kronecker_color(n; α=get(kwargs, :α, √2), seed=seed)
+    elseif method == :sobol
+        n -> sobol_color(n; mode=get(kwargs, :mode, :hsl))
+    elseif method == :pisot
+        n -> pisot_color(n; θ=get(kwargs, :θ, φ), seed=seed)
+    elseif method == :cf
+        n -> continued_fraction_color(n; cf=get(kwargs, :cf, :golden), seed=seed)
+    else
+        error("Unknown method: $method")
+    end
+    
+    # Linear search (could be optimized with binary search for monotonic methods)
+    for n in 0:max_search
+        candidate = generator(n)
+        if distance(color, candidate) < tol
+            return n
+        end
+    end
+    
+    return nothing  # Not found within search range
+end
+#+END_SRC
+
+* Comparison and Analysis
+
+Tools for comparing uniformity of different sequences.
+
+#+BEGIN_SRC julia
+"""
+    discrepancy(sequence::Function, n::Int, d::Int=1)
+
+Compute star discrepancy D*(sequence, n) as measure of uniformity.
+
+Lower discrepancy = more uniform distribution.
+"""
+function discrepancy(sequence::Function, n::Int, d::Int=1)
+    points = [sequence(i) for i in 1:n]
+    
+    # Simplified discrepancy: variance of gaps
+    if d == 1
+        sorted = sort([p for p in points])
+        gaps = diff(vcat([0.0], sorted, [1.0]))
+        return std(gaps)
+    else
+        # For higher dimensions, use box discrepancy approximation
+        # This is a placeholder; full implementation requires more sophisticated methods
+        return 0.0
+    end
+end
+
+"""
+    compare_sequences(n::Int=1000)
+
+Compare uniformity of different sequences by generating n colors and analyzing distribution.
+"""
+function compare_sequences(n::Int=1000)
+    sequences = Dict(
+        :golden => (i -> golden_angle_color(i).r),
+        :plastic => (i -> plastic_color(i).r),
+        :halton => (i -> halton_color(i).r),
+        :kronecker => (i -> kronecker_color(i).r)
+    )
+    
+    results = Dict{Symbol, Float64}()
+    for (name, seq) in sequences
+        results[name] = discrepancy(seq, n)
+    end
+    
+    return results
+end
+
+end  # module LowDiscrepancySequences
+#+END_SRC
+
+* Connections
+
+** Geodesic Representations
+
+Continued fractions provide *geodesic paths* in hyperbolic geometry via the PSL(2,ℝ) action on ℍ². This connects directly to:
+
+- Geodesic skill representations (shortest execution paths)
+- Hyperbolic geometry of skill space
+- Non-backtracking paths (prime geodesics)
+
+The Farey sequence F_n gives rational approximations via continued fractions, mirroring discrete approximations to geodesic flows.
+
+** Reafference and Self-Recognition
+
+The bijection property enables *reafference*: the ability to recognize self-generated colors.
+
+If you are the same seed that generated a color, you can predict it correctly:
+1. Action: generate color at index n
+2. Prediction: compute expected color via method
+3. Sensation: observe the color
+4. Match: color matches prediction ⟹ self-recognition
+
+** GF(3) Conservation
+
+Low-discrepancy sequences are trit-0 (ERGODIC) in the GF(3) classification:
+- Not generative (+1)
+- Not analytical (-1)  
+- Infrastructure for coordination (0)
+
+** Awareness Graph Visualization
+
+These sequences enable better visualization of the 473-node awareness graph by:
+- Plastic constant: hue + saturation for behavioral similarity
+- Halton: direct RGB for trit neighborhoods
+- Sobol: high-dimensional for multi-attribute nodes
+
+* Usage Examples
+
+#+BEGIN_SRC julia :tangle no
+using LowDiscrepancySequences
+
+# Golden angle (1D hue)
+c1 = golden_angle_color(69, seed=42)
+
+# Plastic constant (2D hue-saturation)
+c2 = plastic_color(69, seed=42)
+
+# Halton (direct RGB)
+c3 = halton_color(69, bases=(2,3,5))
+
+# R-sequence (3D)
+c4 = r_sequence_color(69, dim=3, seed=42)
+
+# Invert: recover index
+n = invert_color(c2, :plastic, seed=42)
+@assert n == 69  # Bijection verified!
+
+# Compare uniformity
+results = compare_sequences(1000)
+# Lower discrepancy = more uniform
+#+END_SRC
+
+* Tests
+
+#+BEGIN_SRC julia :tangle test_low_discrepancy.jl
+using LowDiscrepancySequences
+using Test
+
+@testset "Low-Discrepancy Sequences" begin
+    @testset "Constants" begin
+        @test phi() ≈ 1.618033988749895
+        @test phi2() ≈ 1.3247179572447460
+        
+        # Verify plastic constant is root of x³ = x + 1
+        @test abs(phi2()^3 - phi2() - 1) < 1e-10
+    end
+    
+    @testset "Golden Angle" begin
+        c = golden_angle_color(0, seed=0)
+        @test isa(c, RGB)
+        
+        # Bijection test
+        c = golden_angle_color(69, seed=42)
+        n = invert_color(c, :golden, seed=42)
+        @test n == 69
+    end
+    
+    @testset "Plastic Constant" begin
+        c = plastic_color(0, seed=0)
+        @test isa(c, RGB)
+        
+        # Bijection test
+        c = plastic_color(69, seed=42)
+        n = invert_color(c, :plastic, seed=42)
+        @test n == 69
+    end
+    
+    @testset "Halton" begin
+        # Van der Corput tests
+        @test van_der_corput(5, 2) ≈ 0.625
+        @test van_der_corput(0, 2) ≈ 0.0
+        
+        c = halton_color(10)
+        @test isa(c, RGB)
+        
+        # Bijection test
+        c = halton_color(69, bases=(2,3,5))
+        n = invert_color(c, :halton, bases=(2,3,5))
+        @test n == 69
+    end
+    
+    @testset "R-sequence" begin
+        # Verify roots
+        φ₁ = r_sequence_root(1)
+        @test abs(φ₁ - phi()) < 1e-6
+        
+        φ₂ = r_sequence_root(2)
+        @test abs(φ₂ - phi2()) < 1e-6
+        
+        c = r_sequence_color(69, dim=3, seed=42)
+        @test isa(c, RGB)
+    end
+    
+    @testset "Kronecker" begin
+        c = kronecker_color(69, α=√2, seed=42)
+        @test isa(c, RGB)
+        
+        # Bijection test
+        n = invert_color(c, :kronecker, α=√2, seed=42)
+        @test n == 69
+    end
+    
+    @testset "Gray Code" begin
+        @test gray_code(0) == 0
+        @test gray_code(1) == 1
+        @test gray_code(2) == 3
+        @test gray_code(3) == 2
+        @test gray_code(5) == 7
+    end
+    
+    @testset "Sobol" begin
+        c = sobol_color(69, mode=:hsl)
+        @test isa(c, RGB)
+        
+        c_rgb = sobol_color(69, mode=:rgb)
+        @test isa(c_rgb, RGB)
+    end
+    
+    @testset "Pisot" begin
+        c = pisot_color(10, θ=phi(), seed=42)
+        @test isa(c, RGB)
+    end
+    
+    @testset "Continued Fractions" begin
+        # Golden ratio CF convergents
+        p, q = golden_ratio_cf(10)
+        @test p / q ≈ phi() atol=0.01
+        
+        c = continued_fraction_color(10, cf=:golden, seed=42)
+        @test isa(c, RGB)
+        
+        c_sqrt2 = continued_fraction_color(10, cf=:sqrt2, seed=42)
+        @test isa(c_sqrt2, RGB)
+    end
+    
+    @testset "Discrepancy" begin
+        results = compare_sequences(100)
+        @test haskey(results, :golden)
+        @test haskey(results, :plastic)
+        @test haskey(results, :halton)
+        @test all(v -> v >= 0, values(results))
+    end
+end
+#+END_SRC

@@ -1,9 +1,11 @@
 ---
 name: operad-compose
 description: Operad Composition Skill (PLUS +1)
-version: 1.0.0
+license: UNLICENSED
+metadata:
+  trit: 1
+  source: local
 ---
-
 
 # Operad Composition Skill (PLUS +1)
 
@@ -153,66 +155,3 @@ just operad-assoc op1 op2 op3
 - May, "The Geometry of Iterated Loop Spaces"
 - Loday & Vallette, "Algebraic Operads"
 - Spivak, "The Operad of Wiring Diagrams"
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `category-theory`: 139 citations in bib.duckdb
-- `operads`: 5 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-operad-compose (○) + SDF.Ch3 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch1: Flexibility through Abstraction
-- Ch6: Layering
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 1 (PLUS)
-Home: Prof
-Poly Op: ◁
-Kan Role: Adj
-Color: #4ECDC4
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.
