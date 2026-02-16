@@ -1,0 +1,34 @@
+Title: Performant, Readable and Interoperable Zig from Dafny
+Authors: Soft-Machine, Anton
+Context: ~/i/dafny-zig
+Status: Manifesto / Architecture Spec
+
+Abstract:
+This document introduces `dafny-zig`, a novel backend for the Dafny verifier that targets the Zig programming language. While Dafny provides high-level verification guarantees assuming infinite resources (unbounded integers, garbage collection), Zig prioritizes explicit resource management and "no hidden control flow." We bridge this gap through "Zig-Syrup" (`runtime.zig`), a lightweight runtime layer that provides safe, reference-counted primitives (`RcSlice`, `BigInt`) while maintaining idiomatic Zig interoperability. Our approach allows verified Dafny algorithms to be embedded into high-performance system software with minimal friction, treating verification as a zero-cost abstraction where possible, and a safe-cost abstraction where necessary.
+
+1. Introduction
+Dafny is a premier tool for writing verified software, but its reliance on a Garbage Collector (typically C# or Go runtimes) limits its adoption in embedded and systems contexts. Rust backends exist but struggle with the "borrow checker vs. garbage collector" semantic mismatch. Zig, with its manual-but-ergonomic memory management (`std.mem.Allocator`), offers a unique "middle path."
+
+2. Architecture: Zig-Syrup
+The core of our approach is `src/runtime.zig`, which we call "Syrup"—the sticky binding agent between Dafny's theoretical purity and Zig's mechanical reality.
+
+2.1. Memory Management
+Unlike other backends that introduce a full GC, `dafny-zig` uses strict reference counting for shared immutable data structures (`Seq<T>`, `Set<T>`) via `RcSlice`. This provides O(1) cloning semantics required by Dafny's verification model without stopping the world.
+- **Explicit Allocators**: Every runtime type accepts an `Allocator` on initialization.
+- **Copy-on-Write**: Mutation of "immutable" sequences is optimized via COW, deferring allocation until necessary.
+
+2.2. Big Integers
+Dafny `int` is arbitrary precision. We implement `BigInt` using Zig's `std.ArrayListUnmanaged(u64)` for limbs. This allows the compiler to detect integer overflows in the "finite" parts of the code while falling back to heap allocation only when values exceed machine word size.
+
+3. Readability & Interoperability
+Generated code should not look like "compiler vomit." It should look like Zig.
+- **Structs & Unions**: Dafny `datatype` maps cleanly to Zig `union(enum)` (tagged unions).
+- **Modules**: Dafny modules map to Zig files/structs.
+- **Native Types**: Where Dafny proves bounds (e.g., `x: int where 0 <= x < 256`), we emit native `u8`, eliding the overhead of `BigInt` entirely.
+
+4. Evaluation
+Early benchmarks suggests that for "checked" arithmetic, `dafny-zig` incurs a predictable overhead proportional to allocation patterns, but zero overhead for verified-range scalars. The generated source is human-readable, enabling "verified core, system shell" architectures where verified logic resides in a `.dfy` core and the Zig application invokes it like any other library.
+
+5. Future Work
+- Integration with Zig's `Comptime` for static verification of configuration parameters.
+- Linear Types support in Dafny to optimize away `RcSlice` overhead where uniqueness is provable.

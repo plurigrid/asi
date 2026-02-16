@@ -1,0 +1,40 @@
+{:paths ["src"]
+ :deps {babashka/fs {:mvn/version "0.5.22"}}
+ 
+ :tasks
+ {:requires ([hoppy.color-bridge :as gay])
+  
+  trace
+  {:doc "Run color traceroute"
+   :task (do
+           (require 'hoppy.color-bridge)
+           ((resolve 'hoppy.color-bridge/print-traceroute)))}
+  
+  hierarchy
+  {:doc "Show 27-agent hierarchy"
+   :task (do
+           (require 'hoppy.grain-triadic)
+           ((resolve 'hoppy.grain-triadic/print-hierarchy) 0x42D))}
+  
+  color
+  {:doc "Get color for index"
+   :task (let [[seed idx] *command-line-args*
+               seed (or (some-> seed parse-long) 0x42D)
+               idx (or (some-> idx parse-long) 0)]
+           (require 'hoppy.color-bridge)
+           (let [c ((resolve 'hoppy.color-bridge/hop-color) seed idx)]
+             (println "Seed:" (format "0x%X" seed))
+             (println "Index:" idx)
+             (println "Hue:" (:hue c))
+             (println "Trit:" (name (:trit c)))
+             (println "Hex:" ((resolve 'hoppy.color-bridge/color->hex) c))))}
+  
+  triadic
+  {:doc "Show triadic split for seed"
+   :task (let [[seed] *command-line-args*
+               seed (or (some-> seed parse-long) 0x42D)]
+           (require 'hoppy.color-bridge)
+           (let [split ((resolve 'hoppy.color-bridge/triadic-split) seed)]
+             (println "Genesis seed:" (format "0x%X" seed))
+             (doseq [[k v] split]
+               (println (format "  %s: 0x%X" (name k) v)))))}}}

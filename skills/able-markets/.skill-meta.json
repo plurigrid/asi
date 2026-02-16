@@ -1,0 +1,77 @@
+{
+  "name": "able-markets",
+  "description": "Prediction markets for protocol proposal outcomes across Swift Evolution, Aptos AIPs, and Scheme SRFIs. Financializes standard possible worlds through *Able trait taxonomy.",
+  "trit": 0,
+  "trit_symbol": "○",
+  "color": "#19A845",
+  "seed": 137,
+  "index": 1,
+  "category": "markets",
+  "tags": ["prediction-markets", "protocol-evolution", "wev", "able-traits", "aptos", "swift", "srfi"],
+  "dependencies": [
+    "protocol-evolution-markets",
+    "world-extractable-value", 
+    "gay-mcp",
+    "aptos-society"
+  ],
+  "triads": [
+    ["Queryable", "Derangeable", "Replay-Protectable"],
+    ["bisimulation-game", "able-markets", "gay-mcp"]
+  ],
+  "active_proposals": [
+    {
+      "id": "AIP-137",
+      "ecosystem": "aptos",
+      "title": "Post-Quantum SLH-DSA",
+      "status": "draft",
+      "last_call": "2026-02-09",
+      "able_trait": "PQ-Signable",
+      "trit": 0,
+      "color": "#5FE0B8"
+    },
+    {
+      "id": "AIP-129",
+      "ecosystem": "aptos",
+      "title": "Orderless Transactions",
+      "status": "draft",
+      "target": "2025-06",
+      "able_trait": "Replay-Protectable",
+      "trit": 1,
+      "color": "#E2F25B"
+    },
+    {
+      "id": "SRFI-265",
+      "ecosystem": "srfi",
+      "title": "CFG Language",
+      "status": "draft",
+      "date": "2025-10-30",
+      "able_trait": "CFG-Composable",
+      "trit": -1
+    },
+    {
+      "id": "SRFI-263",
+      "ecosystem": "srfi",
+      "title": "Prototype Object System",
+      "status": "draft",
+      "date": "2025-06-09",
+      "able_trait": "Prototype-Clonable",
+      "trit": 0
+    },
+    {
+      "id": "SE-0475",
+      "ecosystem": "swift",
+      "title": "Transactional Observation",
+      "status": "in-review",
+      "able_trait": "Observable",
+      "trit": 1
+    }
+  ],
+  "oracle_endpoints": {
+    "aptos": "https://api.github.com/repos/aptos-foundation/AIPs/contents/aips/",
+    "swift": "https://api.github.com/repos/swiftlang/swift-evolution/contents/proposals/",
+    "srfi": "https://srfi.schemers.org/"
+  },
+  "wev_formula": "WEV(W₀→W₁) = Σᵢ[V(entityᵢ,W₁) - V(entityᵢ,W₀)] × P(transition)",
+  "created": "2026-01-08",
+  "version": "1.0.0"
+}

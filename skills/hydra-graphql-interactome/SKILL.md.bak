@@ -1,0 +1,322 @@
+# Hydra-GraphQL Interactome Skill
+
+> *Hierarchical query language for security DAO interactomes with Move/Aptos bridge*
+
+## Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    HYDRA-GRAPHQL HIERARCHY                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│   Degree 0 (Root)                                                            │
+│        │                                                                     │
+│   ┌────┴────┐                                                                │
+│   │  HEAD   │ ←── Security DAO Core                                          │
+│   └────┬────┘                                                                │
+│        │                                                                     │
+│   ┌────┴────┬────────┬────────┐                                              │
+│   ▼         ▼        ▼        ▼                                              │
+│ Degree 1  Degree 1  Degree 1  Degree 1                                       │
+│ (Audit)   (Bridge)  (Move)    (Aptos)                                        │
+│    │         │        │         │                                            │
+│    ▼         ▼        ▼         ▼                                            │
+│ Degree 2+ (Personalized Author Nodes)                                        │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## GF(3) Trit Classification
+
+| Trit | Role | Query Pattern |
+|------|------|---------------|
+| -1 (MINUS) | Sink/Audit | Security vulnerability queries |
+| 0 (ERGODIC) | Bridge | Cross-chain interoperability |
+| +1 (PLUS) | Source/Deploy | New module deployment |
+
+## Hydra Query Structure
+
+```graphql
+# Hydra multi-head query for security DAO interactome
+query SecurityDAOInteractome($org: String!, $degree: Int!) {
+  # Head 1: Organization core
+  organization(login: $org) {
+    repositories(first: 100, orderBy: {field: STARGAZERS, direction: DESC}) {
+      nodes {
+        name
+        description
+        stargazerCount
+        primaryLanguage { name }
+        
+        # Degree expansion - contributors
+        collaborators(first: $degree) @include(if: $degree > 0) {
+          nodes {
+            login
+            contributionsCollection {
+              totalCommitContributions
+            }
+          }
+        }
+        
+        # Security advisories (MINUS trit)
+        vulnerabilityAlerts(first: 10) {
+          nodes {
+            securityVulnerability {
+              severity
+              package { name }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  # Head 2: Related security topics
+  search(query: "topic:security topic:dao topic:move", type: REPOSITORY, first: 20) {
+    nodes {
+      ... on Repository {
+        nameWithOwner
+        description
+        homepageUrl
+      }
+    }
+  }
+}
+```
+
+## Move/Aptos Bridge Queries
+
+### Degree-Personalized Author Expansion
+
+```graphql
+# Personalize by contributor degree from security DAO
+query PersonalizedMoveSecurityDegree($author: String!, $degree: Int!) {
+  user(login: $author) {
+    # Degree 0: Direct repos
+    repositories(first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
+      nodes {
+        name
+        languages(first: 5) {
+          nodes { name }
+        }
+        # Filter for Move language
+        @include(if: containsMove)
+      }
+    }
+    
+    # Degree 1: Following network
+    following(first: $degree) @include(if: $degree >= 1) {
+      nodes {
+        login
+        repositories(first: 10) {
+          nodes @filter(language: "Move") {
+            nameWithOwner
+          }
+        }
+      }
+    }
+    
+    # Degree 2: Followers' repos
+    followers(first: $degree) @include(if: $degree >= 2) {
+      nodes {
+        login
+        repositories(first: 10) @filter(hasTopic: "aptos") {
+          nodes {
+            nameWithOwner
+            description
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+## Security DAO Organizations Index
+
+| Organization | Focus | Trit | Key Repos |
+|--------------|-------|------|-----------|
+| `aptos-labs` | Move runtime | 0 | aptos-core, aptos-wallet |
+| `MystenLabs` | Sui Move | 0 | sui, sui-move |
+| `move-language` | Spec/VM | 0 | move |
+| `otter-sec` | Security audit | -1 | solana-verify |
+| `openzeppelin` | Contracts | -1 | openzeppelin-contracts |
+| `sherlock-protocol` | Audit platform | -1 | sherlock-v2-core |
+| `code4rena` | Audit contests | -1 | code-contests |
+| `consensys` | Enterprise | 0 | quorum |
+| `daostack` | DAO framework | +1 | arc, alchemy |
+| `aragon` | DAO infra | +1 | aragon-core |
+
+## Hierarchical Degree Navigation
+
+```python
+#!/usr/bin/env python3
+"""
+Hydra query executor with degree personalization.
+"""
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["gql[aiohttp]", "rich"]
+# ///
+
+from gql import gql, Client
+from gql.transport.aiohttp import AIOHTTPTransport
+
+GITHUB_GRAPHQL = "https://api.github.com/graphql"
+
+HYDRA_QUERY = gql("""
+query HydraSecurityDAO($org: String!, $degree: Int!) {
+  organization(login: $org) {
+    repositories(first: 50) {
+      nodes {
+        name
+        description
+        stargazerCount
+        collaborators(first: $degree) {
+          nodes { login }
+        }
+      }
+    }
+  }
+}
+""")
+
+async def expand_degree(client, org: str, degree: int) -> dict:
+    """Expand interactome to specified degree."""
+    result = await client.execute_async(
+        HYDRA_QUERY,
+        variable_values={"org": org, "degree": degree}
+    )
+    return result
+
+def personalize_by_author(nodes: list, author: str) -> list:
+    """Filter and weight nodes by author proximity."""
+    return [
+        n for n in nodes 
+        if author in [c['login'] for c in n.get('collaborators', {}).get('nodes', [])]
+    ]
+
+def compute_degree_trit(degree: int) -> int:
+    """Map degree to GF(3) trit."""
+    return (degree % 3) - 1  # {-1, 0, +1}
+```
+
+## bmorphism Interactome Bridge
+
+### Key Authors by Degree
+
+| Degree | Authors | Connection |
+|--------|---------|------------|
+| 0 | bmorphism | Core - plurigrid founder |
+| 1 | olynch, epatters | AlgebraicJulia/Topos |
+| 1 | klazuka, simonster | Anthropic engineers |
+| 2 | jules-hedges | Open games, optics |
+| 2 | mzargham | BlockScience/cadCAD |
+| 3 | dspivak | Poly, MIT |
+
+### Aptos Security Authors
+
+| Author | Role | Repos |
+|--------|------|-------|
+| `aptos-labs/security` | Core team | aptos-core security |
+| `MoveBit` | Audit firm | move-lint |
+| `zellic-audit` | Security auditor | Move audits |
+| `OtterSec` | Audit firm | Various |
+
+## Commands
+
+```bash
+# Query security DAO interactome at degree 2
+just hydra-query plurigrid 2
+
+# Personalize by author
+just hydra-personalize bmorphism aptos-labs
+
+# Expand Move security network
+just hydra-move-security 3
+
+# Bridge to Aptos
+just hydra-aptos-bridge "0x1::coin"
+```
+
+## Justfile Recipes
+
+```just
+# Hydra query at degree
+hydra-query org degree:
+    @echo "🐉 Hydra query: {{org}} degree={{degree}}"
+    gh api graphql -f query='
+    {
+      organization(login: "{{org}}") {
+        repositories(first: 20) {
+          nodes { name stargazerCount }
+        }
+      }
+    }'
+
+# Personalize by author
+hydra-personalize author org:
+    @echo "👤 Personalizing {{org}} for {{author}}"
+    gh api graphql -f query='
+    {
+      user(login: "{{author}}") {
+        following(first: 50) {
+          nodes { login }
+        }
+      }
+    }'
+
+# Move security network
+hydra-move-security degree:
+    @echo "🔒 Move security degree={{degree}}"
+    gh api graphql -f query='
+    {
+      search(query: "language:Move topic:security", type: REPOSITORY, first: 20) {
+        nodes {
+          ... on Repository { nameWithOwner description }
+        }
+      }
+    }'
+
+# Aptos bridge
+hydra-aptos-bridge module:
+    @echo "🌉 Aptos bridge: {{module}}"
+    curl -s "https://api.mainnet.aptoslabs.com/v1/accounts/0x1/modules" | jq '.[].abi.name' | head -10
+```
+
+## Integration with Gay.jl Colors
+
+```julia
+using Gay
+
+# Seed from interactome hash
+seed!(hash("security-dao-interactome") % 2^32)
+
+# Color each degree
+for degree in 0:3
+    c = color_at(degree + 1)
+    trit = mod(degree, 3) - 1
+    println("Degree $degree: $(c.hex) trit=$trit")
+end
+```
+
+## Related Skills
+
+- `bmorphism-interactome` - Core bmorphism network
+- `gh-interactome` - General GitHub network discovery
+- `aptos-agent` - Aptos blockchain interaction
+- `acsets-algebraic-databases` - ACSet patterns for graph data
+- `gay-mcp` - Deterministic color generation
+
+## GF(3) Conservation
+
+Every Hydra query expansion must conserve:
+```
+Σ trits = 0 (mod 3)
+```
+
+Example 3-head query:
+- Head 1 (Audit): trit = -1
+- Head 2 (Bridge): trit = 0
+- Head 3 (Deploy): trit = +1
+- Sum: -1 + 0 + 1 = 0 ✓

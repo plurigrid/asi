@@ -1,0 +1,135 @@
+# Decentralized Emacs: Self-hosted elisp evaluation via GitHub Actions
+# Place in .github/workflows/elisp-eval.yml
+
+name: Elisp Eval
+
+on:
+  workflow_dispatch:
+    inputs:
+      elisp_code:
+        description: 'Elisp code to evaluate'
+        required: true
+        type: string
+      emacs_version:
+        description: 'Emacs version (snapshot, 29.4, 28.2, etc.)'
+        default: '29.4'
+        type: string
+      load_packages:
+        description: 'Comma-separated packages to load (e.g., "dash,s,f")'
+        required: false
+        type: string
+      gay_seed:
+        description: 'Gay.jl seed for deterministic coloring'
+        default: '1069'
+        type: string
+
+env:
+  GAY_SEED: ${{ inputs.gay_seed }}
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.eval.outputs.result }}
+      exit_code: ${{ steps.eval.outputs.exit_code }}
+      gay_color: ${{ steps.eval.outputs.gay_color }}
+    
+    steps:
+      - name: Setup Emacs
+        uses: purcell/setup-emacs@master
+        with:
+          version: ${{ inputs.emacs_version }}
+      
+      - name: Install packages
+        if: inputs.load_packages != ''
+        run: |
+          packages="${{ inputs.load_packages }}"
+          emacs --batch --eval "
+            (require 'package)
+            (add-to-list 'package-archives '(\"melpa\" . \"https://melpa.org/packages/\") t)
+            (package-initialize)
+            (package-refresh-contents)
+            (dolist (pkg '($(echo $packages | tr ',' ' ' | sed 's/[^ ]*/\0 /g')))
+              (unless (package-installed-p pkg)
+                (package-install pkg)))
+          "
+      
+      - name: Evaluate Elisp
+        id: eval
+        run: |
+          # Create output file
+          touch /tmp/elisp-output.txt
+          
+          # Evaluate with output capture
+          set +e
+          result=$(emacs --batch --eval '
+            (condition-case err
+                (let ((output (with-output-to-string
+                               (princ (eval (read "${{ inputs.elisp_code }}"))))))
+                  (with-temp-file "/tmp/elisp-output.txt"
+                    (insert output))
+                  (princ output))
+              (error
+               (with-temp-file "/tmp/elisp-output.txt"
+                 (insert (format "Error: %s" err)))
+               (princ (format "Error: %s" err))))
+          ' 2>&1)
+          exit_code=$?
+          set -e
+          
+          # Compute Gay.jl-style color from seed + run number
+          run_number=${{ github.run_number }}
+          seed=${{ inputs.gay_seed }}
+          # Simple hash-based color (approximating SplitMix64)
+          hash=$((($seed * 0x9E3779B97F4A7C15 + $run_number) % 16777216))
+          gay_color=$(printf "#%06X" $hash)
+          
+          # Output results
+          echo "result<<EOF" >> $GITHUB_OUTPUT
+          echo "$result" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "exit_code=$exit_code" >> $GITHUB_OUTPUT
+          echo "gay_color=$gay_color" >> $GITHUB_OUTPUT
+          
+          # Also print for logs
+          echo "=== Elisp Result ==="
+          echo "$result"
+          echo "=== Gay Color: $gay_color ==="
+      
+      - name: Upload Result Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: elisp-result-${{ github.run_number }}
+          path: /tmp/elisp-output.txt
+          retention-days: 7
+
+  # Self-hosted variant (uncomment and configure)
+  # eval-self-hosted:
+  #   runs-on: [self-hosted, emacs]
+  #   steps:
+  #     - name: Eval with emacsclient
+  #       run: |
+  #         emacsclient --eval "${{ inputs.elisp_code }}" \
+  #           || emacs --batch --eval "${{ inputs.elisp_code }}"
+
+  notify:
+    needs: eval
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Summary
+        run: |
+          echo "## Elisp Evaluation Result" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Emacs Version:** ${{ inputs.emacs_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Gay Color:** ${{ needs.eval.outputs.gay_color }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Input" >> $GITHUB_STEP_SUMMARY
+          echo '```elisp' >> $GITHUB_STEP_SUMMARY
+          echo "${{ inputs.elisp_code }}" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Output" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "${{ needs.eval.outputs.result }}" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

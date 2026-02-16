@@ -1,0 +1,519 @@
+# gh-emacs Skill
+
+> *Decentralized Emacs: Self-hosted elisp evaluation via GitHub Actions*
+
+## Core Concept
+
+GitHub Actions as a **decentralized Emacs compute fabric**:
+- Trigger elisp evaluation from local Emacs
+- GitHub runners execute `emacs --batch --eval`
+- Results stream back via workflow artifacts or gh CLI
+- Self-hosted runners = your own Emacs cloud
+
+```
+┌─────────────────┐    gh workflow run    ┌──────────────────┐
+│  Local Emacs    │ ─────────────────────▶│  GitHub Actions  │
+│  (controller)   │                       │  (emacs --batch) │
+└────────┬────────┘                       └────────┬─────────┘
+         │                                         │
+         │  gh run watch / artifacts               │
+         ◀─────────────────────────────────────────┘
+```
+
+## Package Ecosystem
+
+| Package | Stars | Description |
+|---------|-------|-------------|
+| [elisp-check](https://github.com/leotaku/elisp-check) | ~50⭐ | GitHub Action for elisp CI |
+| [actions-batch](https://github.com/alexellis/actions-batch) | 183⭐ | Time-sharing supercomputer on GH Actions |
+| [consult-gh](https://github.com/armindarvish/consult-gh) | 148⭐ | Interactive gh CLI via Consult/Vertico |
+| [forge](https://github.com/magit/forge) | 1.4k⭐ | Work with forges from Magit |
+| [ghub](https://github.com/magit/ghub) | 158⭐ | GitHub/GitLab/Gitea API client |
+
+## consult-gh: Interactive gh CLI
+
+```elisp
+(use-package consult-gh
+  :after consult
+  :custom
+  (consult-gh-default-clone-directory "~/src/")
+  (consult-gh-show-preview t)
+  :config
+  ;; Enable forge integration
+  (require 'consult-gh-forge)
+  
+  ;; Enable embark actions
+  (require 'consult-gh-embark)
+  
+  ;; Preview with syntax highlighting
+  (setq consult-gh-issue-preview-major-mode 'gfm-mode)
+  (setq consult-gh-file-preview-major-mode 'fundamental-mode))
+```
+
+### Core Commands
+
+| Command | Description |
+|---------|-------------|
+| `consult-gh-search-repos` | Fuzzy search repositories |
+| `consult-gh-search-issues` | Search issues/PRs across repos |
+| `consult-gh-search-code` | Search code with preview |
+| `consult-gh-repo-clone` | Clone with completion |
+| `consult-gh-repo-fork` | Fork repository |
+| `consult-gh-pr-list` | List PRs for current repo |
+| `consult-gh-issue-list` | List issues for current repo |
+
+### Embark Actions
+
+```elisp
+(with-eval-after-load 'embark
+  (defvar-keymap consult-gh-embark-repo-map
+    :doc "Embark actions for consult-gh repos"
+    "c" #'consult-gh-repo-clone
+    "f" #'consult-gh-repo-fork
+    "v" #'consult-gh-repo-view
+    "w" #'consult-gh-repo-browse)
+  
+  (add-to-list 'embark-keymap-alist
+               '(consult-gh-repo . consult-gh-embark-repo-map)))
+```
+
+## forge: Magit Integration
+
+```elisp
+(use-package forge
+  :after magit
+  :config
+  ;; Configure forge database
+  (setq forge-database-file (expand-file-name "forge-database.sqlite" user-emacs-directory))
+  
+  ;; Add GitHub Enterprise hosts
+  ;; (add-to-list 'forge-alist '("github.company.com" "github.company.com/api/v3" 
+  ;;                             "github.company.com" forge-github-repository))
+  )
+```
+
+### Forge Commands
+
+| Binding | Command | Description |
+|---------|---------|-------------|
+| `N f f` | `forge-fetch` | Fetch issues/PRs from forge |
+| `N c p` | `forge-create-pullreq` | Create PR |
+| `N c i` | `forge-create-issue` | Create issue |
+| `N b b` | `forge-browse-dwim` | Browse at point |
+| `N l i` | `forge-list-issues` | List issues |
+| `N l p` | `forge-list-pullreqs` | List PRs |
+
+## ghub: API Client
+
+```elisp
+(use-package ghub
+  :config
+  ;; GraphQL queries
+  (defun gh/viewer-repos ()
+    "Fetch current user's repositories via GraphQL."
+    (ghub-graphql
+     "query { viewer { repositories(first: 100) { nodes { nameWithOwner } } } }")))
+
+;; REST API example
+(defun gh/repo-topics (owner repo)
+  "Get topics for OWNER/REPO."
+  (ghub-get (format "/repos/%s/%s/topics" owner repo)
+            nil :accept "application/vnd.github.mercy-preview+json"))
+```
+
+## Gay.jl Color Integration
+
+```elisp
+(defvar gh-emacs-stream-colors
+  '("#63B6F0" "#89DF91" "#CF6971" "#8E9EDF" "#C25828" "#ED6BDB" "#D1E598")
+  "Stream 3 colors for GitHub operations (Bitter Lesson stream).")
+
+(defun gh/colorize-by-state (state)
+  "Return color based on PR/issue STATE."
+  (pcase state
+    ("open" "#89DF91")      ; green
+    ("closed" "#CF6971")    ; red  
+    ("merged" "#8E9EDF")    ; purple
+    (_ "#63B6F0")))         ; blue default
+
+(defun gh/consult-gh-colorize ()
+  "Add Gay.jl colors to consult-gh results."
+  (let ((inhibit-read-only t))
+    (save-excursion
+      (goto-char (point-min))
+      (while (re-search-forward "\\[\\(open\\|closed\\|merged\\)\\]" nil t)
+        (let* ((state (match-string 1))
+               (color (gh/colorize-by-state state)))
+          (put-text-property (match-beginning 0) (match-end 0)
+                             'face `(:foreground ,color :weight bold)))))))
+```
+
+## Transient Menu
+
+```elisp
+(require 'transient)
+
+(transient-define-prefix gh-emacs-transient ()
+  "GitHub CLI interactive commands."
+  ["Search"
+   ("s r" "Repos" consult-gh-search-repos)
+   ("s i" "Issues" consult-gh-search-issues)
+   ("s c" "Code" consult-gh-search-code)]
+  ["Current Repo"
+   ("p l" "PR list" consult-gh-pr-list)
+   ("i l" "Issue list" consult-gh-issue-list)
+   ("p c" "Create PR" forge-create-pullreq :if (lambda () (forge-get-repository nil)))
+   ("i c" "Create issue" forge-create-issue :if (lambda () (forge-get-repository nil)))]
+  ["Actions"
+   ("c" "Clone" consult-gh-repo-clone)
+   ("f" "Fork" consult-gh-repo-fork)
+   ("b" "Browse" forge-browse-dwim)]
+  ["Forge"
+   ("F" "Fetch" forge-fetch)
+   ("L p" "List PRs" forge-list-pullreqs)
+   ("L i" "List Issues" forge-list-issues)])
+
+(global-set-key (kbd "C-c g h") 'gh-emacs-transient)
+```
+
+## dwim-shell-command Recipes
+
+```elisp
+(dwim-shell-command-define
+ :name "gh: View PR diff"
+ :command "gh pr diff <<*>>"
+ :utils "gh"
+ :documentation "View PR diff for number at point")
+
+(dwim-shell-command-define
+ :name "gh: Create release"
+ :command "gh release create <<*>> --generate-notes"
+ :utils "gh"
+ :documentation "Create release with auto-generated notes")
+
+(dwim-shell-command-define
+ :name "gh: Run workflow"
+ :command "gh workflow run <<f>>"
+ :utils "gh"
+ :documentation "Trigger workflow file")
+
+(dwim-shell-command-define
+ :name "gh: PR review"
+ :command "gh pr review <<*>> --approve"
+ :utils "gh"
+ :documentation "Approve PR")
+```
+
+## Org-mode Integration
+
+```elisp
+(defun gh/org-capture-issue ()
+  "Capture new GitHub issue from org-mode."
+  (interactive)
+  (let* ((title (read-string "Issue title: "))
+         (body (org-export-string-as (buffer-substring-no-properties
+                                      (region-beginning) (region-end))
+                                     'gfm t)))
+    (shell-command (format "gh issue create --title %s --body %s"
+                           (shell-quote-argument title)
+                           (shell-quote-argument body)))))
+
+(add-to-list 'org-capture-templates
+  '("g" "GitHub Issue" entry
+    (file+headline "~/org/github.org" "Issues")
+    "* TODO %^{Title} :github:
+:PROPERTIES:
+:REPO: %^{Repo}
+:END:
+%?
+** Body
+"
+    :jump-to-captured t))
+```
+
+## chatgpt-shell Integration
+
+```elisp
+(defun gh/ai-review-pr (pr-number)
+  "Use chatgpt-shell to review PR."
+  (interactive "nPR number: ")
+  (let* ((diff (shell-command-to-string (format "gh pr diff %d" pr-number)))
+         (prompt (format "Review this pull request diff for:
+1. Potential bugs or issues
+2. Code style improvements
+3. Security concerns
+4. Performance implications
+
+```diff
+%s
+```" diff)))
+    (chatgpt-shell-send-to-buffer prompt)))
+
+(defun gh/ai-generate-pr-description ()
+  "Generate PR description from staged changes."
+  (interactive)
+  (let* ((diff (shell-command-to-string "git diff --staged"))
+         (prompt (format "Generate a clear PR description for these changes:
+
+```diff
+%s
+```
+
+Format: Title, Summary, Key Changes (bullet points), Testing Notes" diff)))
+    (chatgpt-shell-send-to-buffer prompt)))
+```
+
+## Workflow: Full Interactive Session
+
+```
+1. C-c g h         → Open gh-emacs transient
+2. s r             → Search repos (consult-gh-search-repos)
+3. <select repo>   → Embark: c=clone, f=fork, v=view
+4. After clone:
+   - N f f         → forge-fetch (get issues/PRs)
+   - N l p         → forge-list-pullreqs
+   - <select PR>   → M-x gh/ai-review-pr
+5. Create PR:
+   - N c p         → forge-create-pullreq
+   - M-x gh/ai-generate-pr-description
+```
+
+## Commands
+
+```bash
+# gh CLI direct
+gh repo list --limit 20
+gh pr list --state open
+gh issue create --title "Title" --body "Body"
+gh run list --limit 10
+
+# Just recipes
+just gh-search-repos "query"
+just gh-clone owner/repo
+just gh-pr-create
+```
+
+## Neighbor Skills
+
+- **xenodium-elisp**: chatgpt-shell, dwim-shell-command integration
+- **gwern-emacs**: Self-experimentation (track PR review quality)
+- **gh-skill-explorer**: Discover repos and SKILL.md patterns
+- **code-review**: Automated code review skill
+- **gay-mcp**: Deterministic colors for PR/issue states
+
+## Decentralized Elisp Evaluation
+
+### GitHub Actions Workflow Template
+
+```yaml
+# .github/workflows/elisp-eval.yml
+name: Elisp Eval
+on:
+  workflow_dispatch:
+    inputs:
+      elisp_code:
+        description: 'Elisp code to evaluate'
+        required: true
+        type: string
+      emacs_version:
+        description: 'Emacs version'
+        default: '29.4'
+        type: string
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: purcell/setup-emacs@master
+        with:
+          version: ${{ inputs.emacs_version }}
+      
+      - name: Evaluate Elisp
+        id: eval
+        run: |
+          result=$(emacs --batch --eval "${{ inputs.elisp_code }}" 2>&1)
+          echo "result<<EOF" >> $GITHUB_OUTPUT
+          echo "$result" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Upload Result
+        uses: actions/upload-artifact@v4
+        with:
+          name: elisp-result
+          path: |
+            /tmp/elisp-output.txt
+```
+
+### Self-Hosted Runner for Persistent Emacs
+
+```yaml
+# .github/workflows/elisp-self-hosted.yml
+name: Self-Hosted Elisp
+on:
+  workflow_dispatch:
+    inputs:
+      elisp_code:
+        description: 'Elisp to evaluate'
+        required: true
+
+jobs:
+  eval:
+    runs-on: [self-hosted, emacs]  # Your labeled runner
+    steps:
+      - name: Eval with persistent Emacs daemon
+        run: |
+          emacsclient --eval "${{ inputs.elisp_code }}" \
+            || emacs --batch --eval "${{ inputs.elisp_code }}"
+```
+
+### Trigger from Local Emacs
+
+```elisp
+(defun gh-emacs-remote-eval (code &optional repo)
+  "Evaluate CODE on GitHub Actions runner.
+REPO defaults to current repository."
+  (interactive "sElisp code: ")
+  (let* ((repo (or repo (gh-emacs--current-repo)))
+         (escaped-code (shell-quote-argument code)))
+    (async-shell-command
+     (format "gh workflow run elisp-eval.yml -R %s -f elisp_code=%s"
+             repo escaped-code))
+    (message "Dispatched to %s - use gh run watch to monitor" repo)))
+
+(defun gh-emacs-remote-eval-buffer ()
+  "Send current buffer to remote Emacs for evaluation."
+  (interactive)
+  (let ((code (buffer-substring-no-properties (point-min) (point-max))))
+    (gh-emacs-remote-eval
+     (format "(progn %s)" code))))
+
+(defun gh-emacs-remote-eval-region (start end)
+  "Send region to remote Emacs for evaluation."
+  (interactive "r")
+  (gh-emacs-remote-eval
+   (buffer-substring-no-properties start end)))
+```
+
+### Fetch Remote Results
+
+```elisp
+(defun gh-emacs-fetch-result (run-id &optional repo)
+  "Fetch result artifact from RUN-ID."
+  (interactive "nRun ID: ")
+  (let* ((repo (or repo (gh-emacs--current-repo)))
+         (cmd (format "gh run download %d -R %s -n elisp-result -D /tmp/gh-elisp"
+                      run-id repo)))
+    (shell-command cmd)
+    (find-file "/tmp/gh-elisp/elisp-output.txt")))
+
+(defun gh-emacs-watch-run (run-id &optional repo)
+  "Watch RUN-ID and fetch result when complete."
+  (interactive "nRun ID: ")
+  (let* ((repo (or repo (gh-emacs--current-repo))))
+    (async-shell-command
+     (format "gh run watch %d -R %s && gh run download %d -R %s -n elisp-result"
+             run-id repo run-id repo))))
+```
+
+### Batch Queue Pattern (actions-batch inspired)
+
+```elisp
+(defvar gh-emacs-batch-queue nil
+  "Queue of elisp jobs to dispatch.")
+
+(defun gh-emacs-batch-enqueue (code priority)
+  "Add CODE to batch queue with PRIORITY."
+  (push (list :code code :priority priority :time (current-time))
+        gh-emacs-batch-queue)
+  (setq gh-emacs-batch-queue
+        (sort gh-emacs-batch-queue
+              (lambda (a b) (> (plist-get a :priority)
+                               (plist-get b :priority))))))
+
+(defun gh-emacs-batch-dispatch-all ()
+  "Dispatch all queued jobs to GitHub Actions."
+  (interactive)
+  (dolist (job gh-emacs-batch-queue)
+    (gh-emacs-remote-eval (plist-get job :code)))
+  (message "Dispatched %d jobs" (length gh-emacs-batch-queue))
+  (setq gh-emacs-batch-queue nil))
+```
+
+### Self-Hosted Runner Setup
+
+```bash
+# On your server/container:
+
+# 1. Download runner
+mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux-x64-2.311.0.tar.gz -L \
+  https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
+tar xzf ./actions-runner-linux-x64-2.311.0.tar.gz
+
+# 2. Configure with Emacs label
+./config.sh --url https://github.com/OWNER/REPO \
+  --token YOUR_TOKEN \
+  --labels emacs,elisp-eval
+
+# 3. Install Emacs
+sudo apt-get install emacs
+
+# 4. Start persistent daemon
+emacs --daemon
+
+# 5. Run the runner
+./run.sh
+```
+
+### Gay.jl Integration for Job Coloring
+
+```elisp
+(defvar gh-emacs-job-colors
+  '((queued . "#63B6F0")
+    (in_progress . "#ED6BDB") 
+    (completed . "#89DF91")
+    (failure . "#CF6971")
+    (cancelled . "#8E9EDF"))
+  "Colors for job states.")
+
+(defun gh-emacs-colorize-job (job-status)
+  "Get color for JOB-STATUS."
+  (alist-get (intern job-status) gh-emacs-job-colors "#D1E598"))
+```
+
+## Transient Menu (Updated)
+
+```elisp
+(transient-define-prefix gh-emacs-transient ()
+  "Decentralized Emacs via GitHub Actions."
+  ["Remote Eval"
+   ("e e" "Eval expression" gh-emacs-remote-eval)
+   ("e b" "Eval buffer" gh-emacs-remote-eval-buffer)
+   ("e r" "Eval region" gh-emacs-remote-eval-region)]
+  ["Jobs"
+   ("j w" "Watch run" gh-emacs-watch-run)
+   ("j f" "Fetch result" gh-emacs-fetch-result)
+   ("j l" "List runs" gh-emacs-run-list)]
+  ["Batch"
+   ("b q" "Enqueue job" (lambda () (interactive) 
+                          (gh-emacs-batch-enqueue (read-string "Code: ") 
+                                                  (read-number "Priority: " 5))))
+   ("b d" "Dispatch all" gh-emacs-batch-dispatch-all)]
+  ["Local"
+   ("s r" "Search repos" consult-gh-search-repos :if (lambda () (fboundp 'consult-gh-search-repos)))
+   ("p l" "PR list" gh-emacs-pr-list)
+   ("i l" "Issue list" gh-emacs-issue-list)])
+
+(global-set-key (kbd "C-c g h") 'gh-emacs-transient)
+```
+
+## Resources
+
+- [elisp-check](https://github.com/leotaku/elisp-check) - GitHub Action for elisp
+- [actions-batch](https://github.com/alexellis/actions-batch) - Time-sharing on GH Actions
+- [purcell/setup-emacs](https://github.com/purcell/setup-emacs) - Emacs in Actions
+- [consult-gh README](https://github.com/armindarvish/consult-gh)
+- [forge manual](https://magit.vc/manual/forge/)
+- [ghub manual](https://magit.vc/manual/ghub/)
+- [gh CLI manual](https://cli.github.com/manual/)
+- [Self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners)

@@ -1,0 +1,503 @@
+---
+metadata:
+  skill_type: Dynamical system substrate for balancing opposing forces
+  interface_ports:
+  - Commands
+---
+# omg-tension-resolver Skill
+
+> *Resolve skill paradigm tensions through OpenModelica Microgrid Gym dynamics*
+
+## The Gym as Universal Resolver
+
+[OpenModelica Microgrid Gym](https://github.com/upb-lea/openmodelica-microgrid-gym) (OMG) provides a physical substrate where all skill tensions find resolution through **energy flow dynamics**:
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│                     MICROGRID AS SKILL RESOLVER                       │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│   TENSION                    MICROGRID RESOLUTION                     │
+│   ═══════                    ════════════════════                     │
+│                                                                       │
+│   temporal ↔ atemporal   →   FMU simulation ↔ steady-state analysis  │
+│   symbolic ↔ subsymbolic →   Modelica eqns ↔ neural controller       │
+│   maximize ↔ sample      →   SafeOpt UCB ↔ GP posterior sampling     │
+│   backprop ↔ non-backprop→   gradient ctrl ↔ Bayesian optimization   │
+│   local ↔ global         →   inverter control ↔ grid-wide stability  │
+│   discrete ↔ continuous  →   PWM switching ↔ continuous power flow   │
+│                                                                       │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+## Tension Resolution Patterns
+
+### 1. Temporal ↔ Atemporal (d=2.131)
+
+**Skills in tension**: `unworld`, `temporal-coalgebra`, `duckdb-temporal-versioning`
+
+**Resolution via FMU dynamics**:
+
+```python
+# Temporal: FMU simulation with time-stepping
+class TemporalController:
+    def step(self, env, t, dt):
+        # Time-indexed state evolution
+        obs, reward, done, info = env.step(self.action(t))
+        return obs
+
+# Atemporal: Steady-state Lyapunov analysis
+class AtemporalAnalyzer:
+    def steady_state(self, network_yaml):
+        # No time - only derivational structure
+        # V_steady = lim_{t→∞} V(t) if stable
+        jacobian = self.linearize_around_equilibrium()
+        eigenvalues = np.linalg.eigvals(jacobian)
+        return all(ev.real < 0 for ev in eigenvalues)  # Hurwitz criterion
+```
+
+**Bridge**: The FMU supports **both** time-domain simulation AND steady-state analysis. The `ModelicaEnv.reset()` initializes to steady-state, while `step()` evolves temporally.
+
+### 2. Symbolic ↔ Subsymbolic (d=1.859)
+
+**Skills in tension**: `sicp`, `lispsyntax-acset`, `gflownet`, `forward-forward-learning`
+
+**Resolution via Modelica + Neural control**:
+
+```python
+# Symbolic: Modelica equations (explicit structure)
+"""
+model Inverter
+  parameter Real L = 2.3e-3;  // Inductance
+  parameter Real R = 0.4;      // Resistance
+  Real v_out, i_out;
+equation
+  L * der(i_out) = v_in - R * i_out - v_out;  // Symbolic ODE
+end Inverter;
+"""
+
+# Subsymbolic: Neural network controller
+class NeuralController:
+    def __init__(self):
+        self.net = nn.Sequential(
+            nn.Linear(obs_dim, 64),
+            nn.ReLU(),
+            nn.Linear(64, action_dim)
+        )
+    
+    def action(self, obs):
+        return self.net(torch.tensor(obs))
+
+# Resolution: Hybrid control with symbolic safety envelope
+class HybridController:
+    def __init__(self):
+        self.neural = NeuralController()
+        self.symbolic_bounds = SymbolicSafetyEnvelope()
+    
+    def action(self, obs):
+        neural_action = self.neural.action(obs)
+        # Project onto symbolic safety set
+        return self.symbolic_bounds.project(neural_action)
+```
+
+### 3. Maximize ↔ Sample (d=1.867)
+
+**Skills in tension**: `compression-progress`, `kolmogorov-compression`, `gflownet`, `curiosity-driven`
+
+**Resolution via SafeOpt Bayesian optimization**:
+
+```python
+# SafeOpt balances BOTH paradigms:
+# - UCB (Upper Confidence Bound) = maximize expected + uncertainty
+# - Posterior sampling = sample from GP belief
+
+class SafeOptResolver:
+    def __init__(self, initial_safe_params):
+        self.gp = GPy.models.GPRegression(X_init, Y_init, 
+                                           kernel=GPy.kern.Matern32(ndim))
+        self.optimizer = SafeOptSwarm(self.gp, 
+                                       parameter_set=bounds,
+                                       threshold=safe_threshold)
+    
+    def resolve_tension(self, mode='balanced'):
+        if mode == 'maximize':
+            # Pure exploitation (compression-progress)
+            return self.optimizer.optimize(beta=0.0)
+        elif mode == 'sample':
+            # Pure exploration (gflownet-like)
+            return self.gp.posterior_sample()
+        else:
+            # Balanced: SafeOpt's natural behavior
+            return self.optimizer.optimize()  # UCB with safety
+```
+
+### 4. Backprop ↔ Non-Backprop (d=1.952)
+
+**Skills in tension**: `system2-attention`, `forward-forward-learning`, `godel-machine`
+
+**Resolution via gradient-free Bayesian optimization**:
+
+```python
+# OMG's SafeOpt is GRADIENT-FREE by design!
+# No backprop through the FMU - only black-box evaluation
+
+class GradientFreeOptimizer:
+    """
+    SafeOpt queries the environment as a black box:
+    params → episode reward (no gradients needed)
+    
+    This resolves the backprop/non-backprop tension:
+    - Internal FMU uses symbolic equations (differentiable)
+    - Outer loop uses GP (no backprop through simulation)
+    """
+    
+    def optimize_episode(self, params):
+        # Run full episode with params
+        self.controller.set_params(params)
+        total_reward = 0
+        obs = self.env.reset()
+        done = False
+        while not done:
+            action = self.controller(obs)
+            obs, reward, done, _ = self.env.step(action)
+            total_reward += reward
+        return total_reward  # Black-box evaluation
+```
+
+### 5. Local ↔ Global (d=0.5)
+
+**Skills in tension**: `forward-forward-learning`, `epistemic-arbitrage` vs `sheaf-cohomology`, `kan-extensions`
+
+**Resolution via multi-inverter coordination**:
+
+```python
+# Local: Each inverter has its own PI controller
+class LocalInverterController:
+    def __init__(self, inverter_id):
+        self.id = inverter_id
+        self.kp, self.ki = 0.1, 10.0  # Local gains
+    
+    def control(self, local_obs):
+        # Only sees own voltage/current
+        error = self.v_ref - local_obs['v_out']
+        return self.kp * error + self.ki * self.integral
+
+# Global: Grid-wide droop control for load sharing
+class GlobalDroopController:
+    def __init__(self, inverters):
+        self.inverters = inverters
+        self.droop = 0.01  # Frequency droop coefficient
+    
+    def coordinate(self, global_state):
+        # Adjust all inverters for power balance
+        total_load = sum(inv.p_out for inv in self.inverters)
+        for inv in self.inverters:
+            # Droop: share load proportionally
+            inv.freq_ref = 50 - self.droop * inv.p_out
+
+# Resolution: Hierarchical control (local + global)
+class HierarchicalController:
+    def __init__(self):
+        self.local = [LocalInverterController(i) for i in range(n_inv)]
+        self.global_ = GlobalDroopController(self.local)
+    
+    def control(self, obs):
+        # Global sets references
+        self.global_.coordinate(obs['grid'])
+        # Local tracks references
+        return [c.control(obs[f'inv_{i}']) for i, c in enumerate(self.local)]
+```
+
+### 6. Discrete ↔ Continuous (d=0.6)
+
+**Skills in tension**: `acsets`, `three-match`, `moebius-inversion` vs `persistent-homology`, `sheaf-laplacian`
+
+**Resolution via PWM and averaging**:
+
+```python
+# Discrete: PWM switching (finite states)
+class PWMController:
+    def __init__(self, fs=10000):  # 10kHz switching
+        self.fs = fs
+        self.states = [-1, 0, 1]  # Discrete switching states
+    
+    def switch(self, duty_cycle):
+        # Discrete decision: which state?
+        return np.sign(duty_cycle) if abs(duty_cycle) > 0.5 else 0
+
+# Continuous: Averaged model (dq-frame)
+class ContinuousModel:
+    """
+    dq-frame transformation averages over switching:
+    v_d, v_q = continuous voltages (no switching ripple)
+    """
+    def transform(self, v_abc, theta):
+        T = park_transform(theta)
+        return T @ v_abc  # Continuous representation
+
+# Resolution: Multi-rate simulation
+class MultiRateEnv:
+    def __init__(self):
+        self.fast_dt = 1e-5   # Switching dynamics
+        self.slow_dt = 1e-3   # Averaged dynamics
+    
+    def step(self, action):
+        # Fast loop: discrete switching
+        for _ in range(int(self.slow_dt / self.fast_dt)):
+            switch_state = self.pwm.switch(action)
+            self.fmu.doStep(self.fast_dt, switch_state)
+        
+        # Slow loop: averaged observation
+        return self.average_obs(), self.reward(), self.done()
+```
+
+## Triangle Inequality Resolution
+
+Each tension pair becomes a **valid hop** through the microgrid:
+
+```
+          unworld ←───────2.13───────→ temporal-coalgebra
+              │                              │
+              │                              │
+              │     ┌───────────────┐        │
+              └────►│   OMG FMU     │◄───────┘
+                    │ steady-state  │
+                    │   + step()    │
+                    └───────────────┘
+                           │
+                     d ≤ 1.0 + 1.0 = 2.0
+                    (triangle inequality satisfied via bridge)
+```
+
+## Implementation
+
+### Environment Configuration
+
+```yaml
+# net/tension_resolver.yaml
+Network:
+  name: TensionResolver
+  
+Components:
+  # Symbolic (Modelica equations)
+  Inverter1:
+    type: Inverter
+    params: {L: 2.3e-3, R: 0.4}
+  
+  # Subsymbolic (neural controller target)
+  Load:
+    type: RLLoad
+    controller: neural
+  
+  # Discrete/Continuous bridge
+  PWM:
+    type: PWMModulator
+    fs: 10000
+    
+Connections:
+  - [Inverter1.output, Load.input]
+```
+
+### Tension-Aware Agent
+
+```python
+from openmodelica_microgrid_gym.agents import SafeOptAgent
+
+class TensionResolvingAgent(SafeOptAgent):
+    """
+    Agent that explicitly resolves skill tensions through control.
+    """
+    
+    def __init__(self, tensions: List[Tuple[str, str, float]]):
+        super().__init__()
+        self.tensions = tensions
+        self.resolution_weights = self._compute_weights()
+    
+    def _compute_weights(self):
+        """Map tensions to control objectives."""
+        weights = {}
+        for t1, t2, dist in self.tensions:
+            if 'temporal' in t1 or 'temporal' in t2:
+                weights['settling_time'] = 1.0 / dist
+            if 'maximize' in t1 or 'sample' in t2:
+                weights['exploration_exploitation'] = dist
+            if 'local' in t1 or 'global' in t2:
+                weights['coordination'] = 1.0 / dist
+        return weights
+    
+    def reward(self, obs):
+        """Multi-objective reward balancing tensions."""
+        r = 0
+        if 'settling_time' in self.resolution_weights:
+            r -= self.resolution_weights['settling_time'] * obs['overshoot']
+        if 'exploration_exploitation' in self.resolution_weights:
+            r += self.resolution_weights['exploration_exploitation'] * obs['novelty']
+        return r
+```
+
+### Running Resolution
+
+```python
+import gym
+from tension_resolver import TensionResolvingAgent
+
+# Load tensions from dissonance analysis
+tensions = [
+    ('unworld', 'temporal-coalgebra', 2.131),
+    ('compression-progress', 'gflownet', 1.859),
+    ('system2-attention', 'forward-forward-learning', 1.940),
+]
+
+env = gym.make('openmodelica_microgrid_gym:ModelicaEnv-v1',
+               net='net/tension_resolver.yaml',
+               model_path='omg_grid/grid.network.fmu')
+
+agent = TensionResolvingAgent(tensions)
+
+# Training resolves tensions through physical dynamics
+for episode in range(100):
+    obs = env.reset()
+    done = False
+    while not done:
+        action = agent.act(obs)
+        obs, reward, done, info = env.step(action)
+    agent.update(reward)
+    
+    print(f"Episode {episode}: Tension resolution = {agent.resolution_metric()}")
+```
+
+## Gay.jl Color Mapping
+
+Map tensions to power flow phases:
+
+```python
+PHASE_COLORS = {
+    'phase_a': '#E6F463',  # Stream 2 (temporal)
+    'phase_b': '#63B6F0',  # Stream 3 (symbolic)
+    'phase_c': '#5713C0',  # Stream 4 (maximize)
+}
+
+def tension_to_phase(t1, t2):
+    """Map tension pair to three-phase color."""
+    if 'temporal' in t1 or 'temporal' in t2:
+        return PHASE_COLORS['phase_a']
+    elif 'symbolic' in t1 or 'symbolic' in t2:
+        return PHASE_COLORS['phase_b']
+    else:
+        return PHASE_COLORS['phase_c']
+```
+
+## Neighbor Skills
+
+- **alife**: Emergent dynamics from simple rules (like microgrid self-organization)
+- **forward-forward-learning**: Local learning ↔ local inverter control
+- **gflownet**: Sampling ↔ SafeOpt posterior sampling
+- **sheaf-laplacian-coordination**: Global consensus ↔ droop control
+- **acsets**: Discrete structure ↔ network topology
+- **crn-topology**: Reaction networks ↔ power flow networks
+
+## Geometric Morphism Structure (Symplectic Bordism Core)
+
+### Secondary Symplectic Hub (Equilibrium Dynamics)
+
+This skill occupies a **harmonic equilibrium nexus** in the skill-space network:
+
+**Flow Properties:**
+- In-degree: 6 (receives from 6 distinct morphism sources)
+- Out-degree: 6 (sends to 6 distinct morphism targets)
+- **Symplectic Property**: |in - out| = 0 ✓ (perfect flow balance)
+- **Status**: SECONDARY SYMPLECTIC HUB (harmonic equilibrium resolver)
+
+**Morphism Neighbors (Discovered via Random Walk):**
+```
+skill.omg-tension-resolver ←→ skill.gym
+                           ←→ skill.entropy-sequencer
+                           ←→ skill.self-validation-loop
+                           ←→ skill.sheaf-laplacian-coordination
+                           ←→ skill.alife
+                           ←→ skill.forward-forward-learning
+```
+
+### Interpretation
+
+The OpenModelica Microgrid Gym represents **physical equilibrium as tension resolution**:
+
+- **Type**: Dynamical system substrate for balancing opposing forces
+- **Role**: Central equilibrium point in the skill manifold
+- **Topology**: Bridges symbolic (Modelica equations) and subsymbolic (neural control)
+- **Symplectic Property**: Preserves energy flow across all tension dimensions
+
+Its perfect 6→6 balance means it acts as a **harmony resolver**—a system where opposing skill paradigms find their natural equilibrium point, with energy flowing inward and outward in equal measure.
+
+### Coherence Proof
+
+```
+Theorem (Harmonic Equilibrium Property):
+  skill.omg-tension-resolver is symplectic ⟺ in-deg = out-deg = 6
+
+Proof:
+  by direct inspection of morphism graph
+  ∑ in-flow = ∑ out-flow = 6 ✓
+
+  Each tension resolves to a dual representation:
+    (temporal ↔ atemporal) through FMU ↔ steady-state
+    (symbolic ↔ subsymbolic) through Modelica ↔ neural
+    (local ↔ global) through inverter ↔ grid stability
+
+Corollary (Lyapunov Stability):
+  For any composition φ: X → Y through omg-tension-resolver,
+  the equilibrium is asymptotically stable:
+    lim_{t→∞} ||X(t) - X*|| = 0
+```
+
+### Cross-Skill Integration
+
+This skill links seamlessly to:
+- **gym**: Practical instantiation of environment-based learning
+- **entropy-sequencer**: Temporal sequences of equilibrium states
+- **self-validation-loop**: Validation through stable dynamics
+- **sheaf-laplacian-coordination**: Global coordination via local dynamics
+- **alife**: Emergent self-organization through energy flow
+- **forward-forward-learning**: Local learning in equilibrium basin
+
+## Resources
+
+- [OMG GitHub](https://github.com/upb-lea/openmodelica-microgrid-gym)
+- [OMG Documentation](https://upb-lea.github.io/openmodelica-microgrid-gym)
+- [SafeOpt Paper](https://arxiv.org/abs/1509.01066)
+- [OMG Whitepaper](https://arxiv.org/abs/2005.04869)
+- [Symplectic Bordism Core](../../SYMPLECTIC_BORDISM_CORE.md) — Full geometric morphism analysis
+
+---
+
+## End-of-Skill Interface
+
+## Commands
+
+```bash
+# Install OMG
+conda install -c conda-forge pyfmi
+pip install openmodelica_microgrid_gym
+
+# Run tension resolution
+python tension_resolver.py --tensions "unworld,temporal-coalgebra,2.131"
+
+# Visualize resolution
+python visualize_resolution.py --episode 50
+```
+
+
+---
+
+## Autopoietic Marginalia
+
+> **The interaction IS the skill improving itself.**
+
+Every use of this skill is an opportunity for worlding:
+- **MEMORY** (-1): Record what was learned
+- **REMEMBERING** (0): Connect patterns to other skills  
+- **WORLDING** (+1): Evolve the skill based on use
+
+
+
+*Add Interaction Exemplars here as the skill is used.*
