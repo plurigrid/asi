@@ -1,10 +1,9 @@
 ---
 name: bifurcation-generator
 description: Generate bifurcation diagrams for dynamical systems. Use when visualizing parameter-dependent behavior transitions.
-metadata:
-  trit: 1
-  created_with: amp
+version: 1.0.0
 ---
+
 
 # Bifurcation Generator
 
@@ -41,3 +40,24 @@ def logistic_bifurcation(r_min=2.5, r_max=4.0, steps=1000):
 This skill (PLUS +1) pairs with `bifurcation` (ERGODIC 0) for balanced analysis:
 - bifurcation: detects and classifies transitions
 - bifurcation-generator: visualizes parameter space
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+bifurcation-generator (+) + SDF.Ch2 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.

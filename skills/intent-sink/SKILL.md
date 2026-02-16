@@ -1,14 +1,9 @@
 ---
 name: intent-sink
 description: Intent Sink Skill
-trit: 0
-color: "#26D826"
-catsharp:
-  home: Prof
-  poly_op: ⊗ (parallel)
-  kan_role: Adj
-  bicomodule: true
+version: 1.0.0
 ---
+
 
 # intent-sink Skill
 
@@ -189,6 +184,44 @@ intent-sink (-1) ⊗ dynamic-sufficiency (0) ⊗ polyglot-spi (+1) = 0 ✓
 **Trit**: -1 (MINUS - VALIDATOR)
 **GF(3)**: Final checkpoint for intent execution
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+intent-sink (−) + SDF.Ch1 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

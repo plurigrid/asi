@@ -1,12 +1,9 @@
 ---
 name: changelog-generator
 description: Automatically creates user-facing changelogs from git commits by analyzing
-  commit history, categorizing changes, and transforming technical commits into clear,
-  customer-friendly release notes. Turns hours of manual changelog writing into minutes
-  of automated generation.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # Changelog Generator
 
@@ -107,3 +104,60 @@ guidelines from CHANGELOG_STYLE.md
 - Generating email updates for users
 - Creating social media announcement posts
 
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Bioinformatics
+- **biopython** [○] via bicomodule
+  - Hub for biological sequences
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+changelog-generator (○) + SDF.Ch2 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 1 (PLUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #4ECDC4
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

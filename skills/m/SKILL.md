@@ -1,3 +1,9 @@
+---
+name: m
+description: 'World M Skill'
+version: 1.0.0
+---
+
 # World M Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

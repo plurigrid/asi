@@ -1,10 +1,9 @@
 ---
 name: ultrametric-distance
 description: Non-Archimedean distance metrics for hierarchical clustering and p-adic analysis
-metadata:
-  trit: -1
-  source: local
+version: 1.0.0
 ---
+
 
 # Ultrametric Distance Skill
 
@@ -262,3 +261,24 @@ git-ultrametric HEAD~5 main
 **Type**: Distance Metric / Clustering
 **Trit**: -1 (MINUS)
 **Use Case**: Hierarchical validation, tree construction, version ancestry
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+ultrametric-distance (+) + SDF.Ch3 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

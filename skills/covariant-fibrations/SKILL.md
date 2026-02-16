@@ -1,12 +1,9 @@
 ---
 name: covariant-fibrations
 description: Riehl-Shulman covariant fibrations for dependent types over directed
-  intervals in synthetic ∞-categories.
-license: UNLICENSED
-metadata:
-  trit: -1
-  source: local
+version: 1.0.0
 ---
+
 
 # Covariant Fibrations Skill: Directed Transport
 
@@ -111,3 +108,60 @@ covariant-fibrations (-1) ⊗ elements-infinity-cats (0) ⊗ rezk-types (+1) = 0
 **Type**: Directed Transport Validator
 **Trit**: -1 (MINUS)
 **Color**: #2626D8 (Blue)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `homotopy-theory`: 29 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+covariant-fibrations (+) + SDF.Ch7 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

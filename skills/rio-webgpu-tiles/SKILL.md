@@ -1,11 +1,9 @@
 ---
 name: rio-webgpu-tiles
 description: WebGPU tile rendering for Rio Terminal via wgpu and sugarloaf. Extends
-  OSC 1337 for GPU shaders in terminal regions. Use when implementing terminal graphics,
-  custom shaders, or GPU-accelerated terminal UI.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # Rio WebGPU Tiles
 
@@ -141,3 +139,64 @@ printf '\033]1337;Tile=remove:42\007'
 ## Shader Examples
 
 See `reference/shaders.md` for complete plasma, clock, and noise shader implementations.
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 9. Generic Procedures
+
+**Concepts**: dispatch, multimethod, predicate dispatch, generic
+
+### GF(3) Balanced Triad
+
+```
+rio-webgpu-tiles (+) + SDF.Ch9 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Generic procedures dispatch on predicates. This skill selects implementations dynamically.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

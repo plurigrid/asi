@@ -1,14 +1,9 @@
 ---
 name: sicp
 description: "SICP: Structure and Interpretation of Computer Programs - computational processes, abstraction, and metalinguistic design"
-license: CC-BY-SA-4.0
-metadata:
-  source: info-geometric-morphism
-  trit: -1
-  gf3_conserved: true
-  xenomodern: true
-  ironic_detachment: 0.42
+version: 1.0.0
 ---
+
 
 # SICP Skill
 
@@ -151,3 +146,68 @@ bb info_to_skill_morphism.bb parse sicp.info > sicp.sexp
 - [Full text online](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
 - [MIT OCW 6.001](https://ocw.mit.edu/courses/6-001-structure-and-interpretation-of-computer-programs-spring-2005/)
 - [SICP Distilled](https://www.sicpdistilled.com/) (Clojure version)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 9. Generic Procedures
+
+**Concepts**: dispatch, multimethod, predicate dispatch, generic
+
+### GF(3) Balanced Triad
+
+```
+sicp (+) + SDF.Ch9 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch1: Flexibility through Abstraction
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic procedures dispatch on predicates. This skill selects implementations dynamically.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

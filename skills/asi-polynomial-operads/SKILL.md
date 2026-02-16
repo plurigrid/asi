@@ -1,14 +1,9 @@
 ---
 name: asi-polynomial-operads
 description: ASI skill integrating polynomial functors, free monad/cofree comonad
-  module action, operadic decomposition, and open games for compositional intelligence.
-license: MIT
-metadata:
-  source: Spivak, Libkind, Bumpus, Swan, Hedges
-  trit: 0
-  gf3_triad: cohomology-obstruction (-1) ⊗ asi-polynomial-operads (0) ⊗ pattern-runs-on-matter
-    (+1)
+version: 1.0.0
 ---
+
 
 # ASI Polynomial Operads Skill
 
@@ -310,3 +305,71 @@ scripts/
 - `triad-interleave` — Balanced ternary scheduling
 - `world-hopping` — Badiou triangle navigation
 - `open-games` — Bidirectional transformations
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+- `polynomial-functors`: 8 citations in bib.duckdb
+- `operads`: 5 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+asi-polynomial-operads (−) + SDF.Ch3 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch9: Generic Procedures
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch5: Evaluation
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

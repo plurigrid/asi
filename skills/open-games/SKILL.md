@@ -1,19 +1,37 @@
 ---
 name: open-games
 description: Open Games Skill (ERGODIC 0)
-license: UNLICENSED
-metadata:
-  trit: -1
-  source: local
+version: 1.0.0
 ---
+
 
 # Open Games Skill (ERGODIC 0)
 
 > Compositional game theory via Para/Optic structure
 
-**Trit**: 0 (ERGODIC)  
-**Color**: #26D826 (Green)  
+**Trit**: 0 (ERGODIC)
+**Color**: #26D826 (Green)
 **Role**: Coordinator/Transporter
+
+## bmorphism Contributions
+
+> *"Parametrised optics model cybernetic systems, namely dynamical systems steered by one or more agents. Then ⊛ represents agency being exerted on systems"*
+> — [@bmorphism](https://github.com/bmorphism), GitHub bio
+
+> *"We introduce open games as a compositional foundation of economic game theory. A compositional approach potentially allows methods of game theory and theoretical computer science to be applied to large-scale economic models"*
+> — [Compositional Game Theory](https://arxiv.org/abs/1603.04641), Ghani, Hedges, Winschel, Zahn (2016)
+
+**Key Papers** (from bmorphism's Plurigrid references):
+- [Compositional game theory](https://arxiv.org/abs/1603.04641) - open games as symmetric monoidal category morphisms
+- [Morphisms of Open Games](https://www.sciencedirect.com/science/article/pii/S1571066118300884) - connection between lenses and compositional game theory
+- [Bayesian Open Games](https://compositionality.episciences.org/13528/pdf) - stochastic environments, incomplete information
+- [Categorical Cybernetics Manifesto](https://julesh.com/posts/2019-11-27-categorical-cybernetics-manifesto.html) - control theory of complex systems
+
+**CyberCat Institute Connection**: Open games are central to the [CyberCat Institute](https://cybercat.institute) research program on categorical cybernetics.
+
+Related to bmorphism's work on:
+- [plurigrid/act](https://github.com/plurigrid/act) - active inference + ACT + enacted cognition
+- Play/Coplay bidirectional feedback structure
 
 ## Core Concept
 
@@ -160,3 +178,68 @@ Tensor:
 - Capucci & Gavranović, "Actegories for Open Games"
 - Riley, "Categories of Optics"
 - CyberCat Institute tutorials
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `game-theory`: 21 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+open-games (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch8: Degeneracy
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

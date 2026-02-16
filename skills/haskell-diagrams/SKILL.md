@@ -1,6 +1,6 @@
 ---
 name: haskell-diagrams
-description: 'haskell-diagrams - Declarative Vector Graphics with Diagrams DSL'
+description: haskell-diagrams - Declarative Vector Graphics with Diagrams DSL
 version: 1.0.0
 ---
 
@@ -239,3 +239,65 @@ diagrams/
 **Status**: ✅ L4 Admissible
 **Trit**: 0 (ERGODIC) - Coordinates graphics generation
 **Date**: 2025-12-25
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Visualization
+- **matplotlib** [○] via bicomodule
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+haskell-diagrams (○) + SDF.Ch2 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

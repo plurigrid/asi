@@ -1,10 +1,9 @@
 ---
 name: compositional-acset-comparison
-description: "Compositional algorithm and data analysis via algebraic databases"
-license: UNLICENSED
-metadata:
-  trit: 0
+description: Compositional algorithm and data analysis via algebraic databases
+version: 1.0.0
 ---
+
 
 # Compositional ACSet Comparison Skill
 
@@ -368,3 +367,68 @@ For presheaf topoi PSh(SchDuckDB) and PSh(SchLanceDB):
 - [ACSets.jl Documentation](https://algebraicjulia.github.io/ACSets.jl/)
 - [StructuredDecompositions.jl](https://github.com/AlgebraicJulia/StructuredDecompositions.jl)
 - [Gay.jl Deterministic Colors](https://github.com/bmorphism/Gay.jl)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Annotated Data
+- **anndata** [○] via bicomodule
+  - Hub for annotated matrices
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+compositional-acset-comparison (○) + SDF.Ch3 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch8: Degeneracy
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch2: Domain-Specific Languages
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

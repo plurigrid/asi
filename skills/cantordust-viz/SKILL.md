@@ -1,16 +1,9 @@
 ---
 name: cantordust-viz
 description: Binary visualization for human pattern recognition - Ghidra plugin by Chris Domas (xoreaxeaxeax)
-metadata:
-  trit: -1
-  color: '#E54951'
-  gf3_role: MINUS
-  version: 1.0.0
-  repo: Battelle/cantordust
-  author: Chris Domas (xoreaxeaxeax)
-  interface_ports:
-  - References
+version: 1.0.0
 ---
+
 # Cantordust Binary Visualization
 
 > **Use when embeddings fail: humans see patterns algorithms miss.**
@@ -101,3 +94,24 @@ result = analyze_binary_with_gay("target.bin")
 | Binary (Cantordust) | 2-tuple → 256×256 | entropy → trit → color |
 | Audio (CJ Carr) | Mel spectrogram | centroid/flatness → HSL |
 | Color (Gay.jl) | SplitMix64 + golden angle | SPI deterministic |
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+cantordust-viz (−) + SDF.Ch4 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.

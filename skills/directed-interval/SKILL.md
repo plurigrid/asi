@@ -1,15 +1,9 @@
 ---
 name: directed-interval
 description: Directed interval type 2 axiomatizing (0 → 1). Time-directed homotopy
-  for reactions.
-metadata:
-  trit: 0
-  polarity: ERGODIC
-  source: 'Riehl-Shulman 2017: directed cubes and extension types'
-  technologies:
-  - Rzk
-  - Cubical Agda
+version: 1.0.0
 ---
+
 
 # Directed Interval Skill
 
@@ -156,3 +150,63 @@ end
 - Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories." §3.
 - [Rzk documentation](https://rzk-lang.github.io/rzk/)
 - Licata, D. & Harper, R. (2011). "2-Dimensional Directed Type Theory."
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+directed-interval (−) + SDF.Ch5 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch6: Layering
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

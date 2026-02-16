@@ -1,10 +1,9 @@
 ---
 name: discrete-backprop
 description: Gradient-free optimization via discrete perturbations and trit-based learning
-metadata:
-  trit: +1
-  source: local
+version: 1.0.0
 ---
+
 
 # Discrete Backprop Skill
 
@@ -347,3 +346,28 @@ def color_guided_optimization(seed: int, loss_fn, params: List[float]):
 **Trit**: +1 (PLUS)
 **GF(3)**: Native conservation via trit gradients
 **Use Case**: Non-differentiable optimization, ternary networks, combinatorial search
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+discrete-backprop (+) + SDF.Ch1 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch6: Layering
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.

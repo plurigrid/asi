@@ -1,7 +1,7 @@
 ---
 name: beeper-mcp
 description: Unified messaging via Beeper Desktop MCP. Search chats, send messages, manage conversations across all networks (iMessage, WhatsApp, Signal, Telegram, Discord, Slack, etc.)
-version: 1.1.0
+version: 1.2.0
 trit: 0
 role: ERGODIC
 color: "#6B5CE7"
@@ -31,6 +31,28 @@ pre_hook: pre-hook.sh
 # Beeper MCP Skill
 
 Access all messaging networks through Beeper's unified interface.
+
+## Data-Mined Usage (1,114 calls across sessions)
+
+### Tool Frequency
+| Tool | Calls | Pattern |
+|------|-------|---------|
+| `search_message_contents` | 366 | Dominant — message forensics |
+| `get_messages` | 297 | Chat history retrieval |
+| `search_chat_names` | 189 | Find chats by name |
+| `list_chats` | 118 | Inbox browsing |
+| `get_person_messages` | 87 | Per-person history |
+| `get_media_attachment` | 47 | Image/file retrieval |
+
+### Top Search Patterns
+- **Contact search**: greentea* (39x), Constantine (10x), ies (6x), albert brox (3x), Lauren (5x), Yuliya (5x), Betty (3x)
+- **Content search**: plurigrid (4x), arxiv (3x), tenderloin (2x), seek (3x)
+- **Platform**: All bridged via Signal
+
+### Co-occurrence
+- beeper + exa (4 sessions) — search context for conversations
+- beeper + flox (3 sessions) — dev environment + messaging
+- beeper standalone (9 sessions) — pure messaging
 
 ## Quick Start
 

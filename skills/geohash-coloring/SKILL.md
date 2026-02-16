@@ -1,6 +1,6 @@
 ---
 name: geohash-coloring
-description: 'Geohash Coloring Skill'
+description: Geohash Coloring Skill
 version: 1.0.0
 ---
 
@@ -341,3 +341,66 @@ geohash-coloring (+1) ⊗ acsets (0) ⊗ three-match (-1) = 0 ✓
 - Geohash.org specification
 - H3 hexagonal alternative (Uber)
 - S2 geometry (Google)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Geospatial
+- **geopandas** [○] via bicomodule
+
+### Visualization
+- **matplotlib** [○] via bicomodule
+  - Hub for all visualization
+
+### Bibliography References
+
+- `cryptography`: 1 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+geohash-coloring (−) + SDF.Ch7 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -1,16 +1,9 @@
 ---
 name: causal-inference
 description: "Bengio's causal inference for AI: Interventional reasoning, counterfactuals, and System 2 deep learning. World models with causal structure."
-metadata:
-  trit: 0
-  polarity: ERGODIC
-  source: 'Bengio et al. 2019: Towards Causal Representation Learning'
-  technologies:
-  - Python
-  - DoWhy
-  - CausalML
-  - Pyro
+version: 1.0.0
 ---
+
 
 # Causal Inference Skill
 
@@ -240,3 +233,68 @@ end
 2. Schölkopf, B. et al. (2021). "Toward Causal Representation Learning."
 3. Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*.
 4. Bengio, Y. (2017). "The Consciousness Prior."
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+causal-inference (+) + SDF.Ch3 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+- Ch8: Degeneracy
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch1: Flexibility through Abstraction
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

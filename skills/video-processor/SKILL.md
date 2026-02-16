@@ -1,11 +1,9 @@
 ---
 name: video-processor
 description: "Automated video processing: metadata extraction, thumbnails, transcoding, audio extraction with DuckDB tracking"
-metadata:
-  trit: 0
-  version: "1.0.0"
-  bundle: media
+version: 1.0.0
 ---
+
 
 # Video Processor Skill
 
@@ -224,6 +222,31 @@ just video-list
 - **duckdb-ies** (+1): Interactome analytics
 - **fswatch-duckdb** (0): File system watching
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 6. Layering
+
+**Concepts**: layered data, metadata, provenance, units
+
+### GF(3) Balanced Triad
+
+```
+video-processor (○) + SDF.Ch6 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+
+### Connection Pattern
+
+Layering adds metadata. This skill tracks provenance or annotations.
 ## Cat# Integration
 
 ```

@@ -1,3 +1,9 @@
+---
+name: r
+description: 'World R Skill'
+version: 1.0.0
+---
+
 # World R Skill
 
 **Trit**: +1 (PLUS (generator/executor))

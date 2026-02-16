@@ -1,14 +1,9 @@
 ---
 name: pdf
 description: Comprehensive PDF manipulation toolkit for extracting text and tables,
-  creating new PDFs, merging/splitting documents, and handling forms. When Claude
-  needs to fill in a PDF form or programmatically process, generate, or analyze PDF
-  documents at scale.
-license: Apache-2.0
-metadata:
-  trit: 0
-  source: anthropics/skills
+version: 1.0.0
 ---
+
 
 # PDF Processing Guide
 
@@ -107,3 +102,60 @@ qpdf input.pdf --pages . 1-5 -- pages1-5.pdf
 | Extract tables | pdfplumber | `page.extract_tables()` |
 | Create PDFs | reportlab | Canvas or Platypus |
 | OCR scanned PDFs | pytesseract | Convert to image first |
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+pdf (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

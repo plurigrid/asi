@@ -1,12 +1,9 @@
 ---
 name: bumpus-narratives
 description: Sheaves on time categories for compositional temporal reasoning. Bumpus
-  et al. narrative framework with adhesion filter FPT algorithms and Gay.jl color
-  integration.
-metadata:
-  trit: 0
-  short-description: Temporal narratives via sheaves
+version: 1.0.0
 ---
+
 
 # Bumpus Narratives Skill
 
@@ -129,3 +126,67 @@ obstruction = cech_H0(n)
 2. **Ghrist** - Elementary Applied Topology (Čech cohomology)
 3. **Fairbanks** - AlgebraicJulia ecosystem for ACSets
 4. **Gay.jl** - Deterministic color chains for diagram coloring
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+bumpus-narratives (○) + SDF.Ch3 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.
+
+## Forward Reference
+
+- unified-reafference (applies sheaf structure)
