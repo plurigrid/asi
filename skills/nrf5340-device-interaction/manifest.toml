@@ -1,0 +1,192 @@
+[skill]
+name = "nrf5340-device-interaction"
+type = "Hardware Abstraction + Security Testing"
+version = "1.0.0"
+status = "production"
+
+[description]
+short = "Low-level hardware interaction for nRF5340 DK with GF(3) state coordination"
+long = """
+Unified skill combining hardware abstraction (nrf5340-hardware) with
+blackhat security patterns (blackhat-go) for authorized device testing,
+low-level debugging, and GF(3) triadic state management.
+
+Provides:
+- Device auto-detection via nrfjprog / system_profiler
+- SWD memory probing (register reads/writes)
+- Debug port security analysis
+- RTT bidirectional console
+- BLE radio inspection
+- Firmware building and flashing
+- GF(3) conservation for device state transitions
+- Integration with NATS color broadcasting
+"""
+
+[metadata]
+trit = "ERGODIC"  # 0: Coordinator between physical and logical
+gf3_balance = true
+dual_use = true  # Development + penetration testing
+authorization_required = true  # For security testing
+
+[base_skills]
+dependencies = [
+    "nrf5340-hardware",
+    "blackhat-go"
+]
+
+[files]
+readme = "README.md"
+documentation = "nrf5340_device_interaction_skill.md"
+python_library = "nrf5340_device_interaction.py"
+
+[commands]
+detect = "python3 nrf5340_device_interaction.py"
+integrated = "ENABLE_NATS_BROADCASTER=1 python3 /Users/bob/.hardware-bundles/startup-coordinator.py"
+probe = "python3 -c \"from nrf5340_device_interaction import *; probe = SWDMemoryProbe(); print(DebugPortAnalysis.check_debug_enabled(probe))\""
+
+[integration]
+startup_coordinator = "/Users/bob/.hardware-bundles/startup-coordinator.py"
+hardware_bundle = "/Users/bob/.hardware-bundles/"
+nats_broadcaster = "/Users/bob/.hardware-bundles/nats_color_broadcaster.py"
+
+[security]
+context = ["Authorized penetration testing", "CTF challenges", "Educational labs", "Own-device research"]
+prohibited = ["Unauthorized device access", "Firmware extraction without license", "Credential harvesting", "Supply chain attacks"]
+authorization_template = "Written engagement letter required for security testing"
+
+[requirements.python]
+pyserial = ">=3.5"
+bleak = ">=0.20"
+
+[requirements.tools]
+nrfjprog = "Nordic nRF Tools"
+jlink_tools = "Segger J-Link RTT utilities"
+nrf_connect_sdk = "v3.1.0+"
+
+[classes]
+nRF5340Detector = """
+Auto-detect nRF5340 DK via multiple methods:
+- nrfjprog -i (J-Link serial enumeration)
+- system_profiler SPUSBDataType (macOS)
+- /dev/tty enumeration (serial port)
+"""
+
+SWDMemoryProbe = """
+Low-level memory access via Serial Wire Debug:
+- read_memory(address, size) -> bytes
+- write_memory(address, data) -> None
+- read_register(base, offset) -> int
+- write_register(base, offset, value) -> None
+"""
+
+DebugPortAnalysis = """
+Debug port security status:
+- check_debug_enabled(probe) -> Dict
+- disable_debug(probe) -> None (IRREVERSIBLE)
+"""
+
+BLERadioAnalyzer = """
+Radio state inspection:
+- read_radio_state(probe) -> Dict
+  - state: DISABLED|RXRU|TXRU|RX|TX
+  - frequency_mhz: 2400-2483
+  - tx_power_dbm: -40 to +4
+  - crc_enabled: bool
+"""
+
+nRF5340StateController = """
+GF(3) state management:
+- probe_state(probe) -> DeviceTrit
+- transition(new_trit, reason) -> bool
+  - VALIDATOR (-1): Locked secure
+  - ERGODIC (0): Normal operation
+  - GENERATOR (+1): Debug enabled
+"""
+
+FirmwareManager = """
+Build and flash firmware:
+- build(app_path) -> bool
+- flash() -> bool
+- verify() -> bool
+"""
+
+RTTClient = """
+Real-Time Transfer console:
+- start() -> bool
+- send_command(cmd) -> None
+- read_output(timeout) -> str
+- stop() -> None
+"""
+
+[examples]
+"Detect device" = """
+from nrf5340_device_interaction import nRF5340Detector
+detector = nRF5340Detector()
+detector.auto_detect()
+"""
+
+"Probe hardware state" = """
+from nrf5340_device_interaction import SWDMemoryProbe, DebugPortAnalysis
+probe = SWDMemoryProbe(detector.serial_number)
+status = DebugPortAnalysis.check_debug_enabled(probe)
+print(status)
+"""
+
+"Check GF(3) state" = """
+from nrf5340_device_interaction import nRF5340StateController
+controller = nRF5340StateController()
+state = controller.probe_state(probe)
+print(f"Device trit: {state.name}")
+"""
+
+"Build and flash" = """
+from nrf5340_device_interaction import FirmwareManager
+manager = FirmwareManager()
+manager.build("nrf/applications/blinky")
+manager.flash()
+manager.verify()
+"""
+
+[gf3]
+# GF(3) triadic system integration
+trit_value = 0  # ERGODIC
+role = "Coordinator between device hardware and logical states"
+
+balanced_triads = [
+    "Validator (-1) ⊗ Device (0) ⊗ Generator (+1) = 0",
+    "Bootloader (-1) ⊗ Hardware (0) ⊗ Debug tools (+1) = 0"
+]
+
+conservation_rule = "Sum of all component trits ≡ 0 (mod 3) at all times"
+
+[testing]
+unit_tests = true
+integration_tests = true
+authorization_required = true
+mock_device = true  # Can test without physical hardware
+
+[changelog]
+"1.0.0" = [
+    "Initial production release",
+    "Combined nrf5340-hardware + blackhat-go skills",
+    "Integrated with NATS color broadcasting",
+    "GF(3) state management",
+    "Authorization framework"
+]
+
+[related_skills]
+[related_skills.base_skills]
+nrf5340-hardware = "Hardware abstraction patterns"
+blackhat-go = "Security testing techniques"
+
+[related_skills.integration]
+nats-color-broadcaster = "Device state visualization"
+startup-coordinator = "Hardware bundle orchestration"
+
+[author]
+email = "bob@example.com"
+last_updated = "2026-02-03"
+
+[licensing]
+type = "Dual-use (Development + Authorized Security Testing)"
+authorization_required = true

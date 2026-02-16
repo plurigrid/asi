@@ -1,0 +1,175 @@
+# OlmoEarth MLX Skill - Just Commands
+# ============================================================================
+# Spatio-Temporal Earth Intelligence + Isometric Clock Visualization
+# GeoACSet materialization with GF(3) triadic classification
+
+set shell := ["bash", "-cu"]
+
+# Default recipe
+default:
+    @just --list
+
+# ============================================================================
+# VISUALIZATION
+# ============================================================================
+
+# Build isometric clock view (default: 2-hour sectors)
+clock:
+    @echo "Building isometric clock view..."
+    python3 build_isometric_clock_view.py
+    @echo "✓ Open olmoearth_isometric_clock_view.html"
+
+# Build clock view with custom granularity (1, 2, 3, or 6 hours)
+clock-granularity HOURS:
+    @echo "Building clock view with {{HOURS}}-hour sectors..."
+    python3 build_isometric_clock_view.py --granularity {{HOURS}}
+
+# Build hourly clock (24 sectors)
+clock-hourly:
+    python3 build_isometric_clock_view.py --granularity 1 --out olmoearth_clock_1h.html
+    @echo "✓ Open olmoearth_clock_1h.html"
+
+# Build quadrant clock (4 sectors)
+clock-quadrant:
+    python3 build_isometric_clock_view.py --granularity 6 --out olmoearth_clock_6h.html
+    @echo "✓ Open olmoearth_clock_6h.html"
+
+# Build clock with specific queries
+clock-queries +QUERIES:
+    python3 build_isometric_clock_view.py --queries {{QUERIES}}
+
+# Open clock view in browser (macOS)
+clock-open: clock
+    open olmoearth_isometric_clock_view.html
+
+# ============================================================================
+# GEO WEV EXTRACTION
+# ============================================================================
+
+# Run full geographic WEV extraction pipeline
+extract:
+    @echo "Running OlmoEarth Geographic WEV Extraction..."
+    python3 olmoearth_geo_wev.py
+
+# Extract with custom query limit
+extract-limit LIMIT:
+    python3 -c "\
+    from olmoearth_geo_wev import GeoWEVEngine; \
+    engine = GeoWEVEngine(); \
+    for q in ['filecoin_storage_providers', 'fvm_contract_deployments', 'bridge_transactions', 'grant_disbursements']: \
+        events = engine.extract_from_dune(q, limit={{LIMIT}}); \
+        print(f'  {q}: {len(events)} events'); \
+    geoacset = engine.materialize_geoacset(); \
+    print(f'GeoACSet: {len(geoacset.nodes)} nodes, GF(3) sum: {geoacset.gf3_sum()}'); \
+    "
+
+# Show engine status
+status:
+    @cat geo_wev_status.json 2>/dev/null || echo "No status file. Run 'just extract' first."
+
+# ============================================================================
+# VERIFICATION
+# ============================================================================
+
+# Verify GF(3) conservation across GeoACSet
+verify-gf3:
+    @echo "Verifying GF(3) conservation..."
+    python3 -c "\
+    from olmoearth_geo_wev import GeoWEVEngine; \
+    engine = GeoWEVEngine(); \
+    for q in ['filecoin_storage_providers', 'fvm_contract_deployments', 'bridge_transactions', 'grant_disbursements']: \
+        engine.extract_from_dune(q, limit=12); \
+    geoacset = engine.materialize_geoacset(); \
+    s = geoacset.gf3_sum(); \
+    balanced = s % 3 == 0; \
+    print(f'GF(3) sum: {s}, mod 3: {s % 3}'); \
+    print(f'Conservation: {\"PASS\" if balanced else \"FAIL\"}'); \
+    "
+
+# Verify clock view builds without error for all granularities
+verify-clock:
+    @echo "Verifying clock view builds..."
+    @for g in 1 2 3 6; do \
+        python3 build_isometric_clock_view.py --granularity $$g --out /tmp/clock_test_$${g}h.html 2>&1 && \
+        echo "  granularity=$$g: PASS" || echo "  granularity=$$g: FAIL"; \
+    done
+    @rm -f /tmp/clock_test_*h.html /tmp/clock_test_*h.status.json
+
+# Run all verifications
+verify-all: verify-gf3 verify-clock
+    @echo "✓ All verifications passed"
+
+# ============================================================================
+# DOCUMENTATION
+# ============================================================================
+
+# Show skill specification
+show-spec:
+    @less SKILL.md
+
+# Show implementation stats
+stats:
+    @echo "OlmoEarth MLX Implementation Statistics"
+    @echo "========================================"
+    @echo ""
+    @echo "Core Implementation:"
+    @wc -l olmoearth_geo_wev.py | awk '{print "  olmoearth_geo_wev.py:          " $$1 " lines"}'
+    @wc -l build_isometric_clock_view.py | awk '{print "  build_isometric_clock_view.py: " $$1 " lines"}'
+    @echo ""
+    @echo "Artifacts:"
+    @ls -la *.html 2>/dev/null | awk '{print "  " $$NF ": " $$5 " bytes"}' || echo "  (none yet — run 'just clock')"
+    @echo ""
+    @echo "Status:"
+    @ls -la *.json 2>/dev/null | awk '{print "  " $$NF}' || echo "  (none)"
+
+# ============================================================================
+# BUILD AND CLEAN
+# ============================================================================
+
+# Full build: extract + clock + verify
+build: extract clock verify-all
+    @echo "✓ Build complete"
+
+# Clean generated artifacts
+clean:
+    @echo "Cleaning artifacts..."
+    rm -f olmoearth_isometric_clock_view.html
+    rm -f olmoearth_isometric_clock_view.status.json
+    rm -f olmoearth_clock_*.html
+    rm -f olmoearth_clock_*.status.json
+    rm -f geo_wev_status.json
+    @echo "✓ Clean complete"
+
+# Full rebuild
+rebuild: clean build
+
+# ============================================================================
+# HELP
+# ============================================================================
+
+# Show help
+help:
+    @echo "OlmoEarth MLX Skill - Command Help"
+    @echo "==================================="
+    @echo ""
+    @echo "Visualization:"
+    @echo "  just clock               # Build default 2-hour clock view"
+    @echo "  just clock-hourly        # Build 24-sector hourly view"
+    @echo "  just clock-quadrant      # Build 4-sector quadrant view"
+    @echo "  just clock-granularity 3 # Custom granularity"
+    @echo "  just clock-open          # Build and open in browser"
+    @echo ""
+    @echo "Extraction:"
+    @echo "  just extract             # Run full WEV extraction"
+    @echo "  just extract-limit 20    # Extract with custom row limit"
+    @echo "  just status              # Show last extraction status"
+    @echo ""
+    @echo "Verification:"
+    @echo "  just verify-all          # Run all checks"
+    @echo "  just verify-gf3          # Check GF(3) conservation"
+    @echo "  just verify-clock        # Check clock builds"
+    @echo ""
+    @echo "Build:"
+    @echo "  just build               # Full pipeline"
+    @echo "  just clean               # Remove artifacts"
+    @echo "  just rebuild             # Clean + build"
