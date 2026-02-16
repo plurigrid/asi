@@ -1,9 +1,14 @@
 ---
 name: xlsx
 description: Comprehensive spreadsheet creation, editing, and analysis with support
-version: 1.0.0
+  for formulas, formatting, data analysis, and visualization. When Claude needs to
+  work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc) for creating new spreadsheets,
+  reading/analyzing data, modifying existing spreadsheets, or recalculating formulas.
+license: Apache-2.0
+metadata:
+  trit: 0
+  source: anthropics/skills
 ---
-
 
 # Excel/Spreadsheet Processing
 
@@ -98,66 +103,3 @@ sheet['D20'] = '=AVERAGE(D2:D19)'
 - Use `data_only=True` to read calculated values
 - For large files: Use `read_only=True` or `write_only=True`
 - Formulas are preserved but not evaluated by openpyxl
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 7. Propagators
-
-**Concepts**: propagator, cell, constraint, bidirectional, TMS
-
-### GF(3) Balanced Triad
-
-```
-xlsx (○) + SDF.Ch7 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-- Ch4: Pattern Matching
-- Ch6: Layering
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Propagators flow constraints bidirectionally. This skill propagates information.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

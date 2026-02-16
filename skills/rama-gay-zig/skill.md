@@ -1,105 +1,199 @@
+---
+name: rama-gay-zig
+description: "rama-gay-zig skill"
+version: 1.0.0
+---
+
 # rama-gay-zig
 
-Triadic interleave of Gay.jl, Rama, and Zig for GF(3)-conserved builds.
+Interleaved skill combining Rama distributed semantics, Gay.jl GF(3) color logic, and Zig package management for ASI coordination.
 
-## Overview
+## Semantic Triad (GF(3) Conserved)
 
-Combines three ecosystems with perfect GF(3) conservation:
+| Component | Trit | Role | Hue Range |
+|-----------|------|------|-----------|
+| **Gay.jl** | -1 (MINUS) | Color assignment, SPI verification | 180-300° (cold) |
+| **Rama** | 0 (ERGODIC) | Topology coordination, dataflow | 60-180° (neutral) |
+| **Zig** | +1 (PLUS) | Build execution, package resolution | 0-60°, 300-360° (warm) |
 
-| Component | Trit | Role |
-|-----------|------|------|
-| Gay.jl | -1 | Color/SPI source (validation) |
-| Rama | 0 | Topology coordinator (ergodic) |
-| Zig | +1 | Build executor (generation) |
+**Conservation invariant:** `Σ trits ≡ 0 (mod 3)`
 
-**Sum: (-1) + (0) + (+1) = 0** ✓
+## Core Primitives
 
-**Origin**: PR #37 (closed, consolidated into main via #42)
+### Gay.jl Color Semantics
+```julia
+using Gay
 
-## Semantic Interleave
+# GF(3) trit assignment for streams
+struct GayTrit
+    value::Int8  # -1, 0, +1
+    color::GayRGB
+    fingerprint::UInt64
+end
 
+# Interleave colors with Rama primitives
+function rama_color_depot(depot_name::Symbol, trit::GayTrit)
+    verify_spi = gay_verify_spi(trit.fingerprint)
+    (depot = depot_name, color = trit.color, spi = verify_spi)
+end
 ```
-Gay.jl (color) ──► Rama (topology) ──► Zig (build)
-      │                  │                 │
-      ▼                  ▼                 ▼
-   Validate          Coordinate        Generate
-   (MINUS)           (ERGODIC)          (PLUS)
-```
 
-## Babashka Bridge
-
+### Rama Distributed Primitives
 ```clojure
-#!/usr/bin/env bb
-(require '[babashka.process :refer [shell]])
+;; Rama module with Gay.jl color-tagged streams
+(defmodule GayColorModule [setup topologies]
+  ;; Depot: MINUS trit (input stream)
+  (declare-depot setup *color-events :random)
 
-(def gay-color (splitmix64 1069))
-(def rama-topology {:dataflow :pstate :depot :query})
-(def zig-target "aarch64-macos")
+  ;; PState: PLUS trit (materialized output)
+  (declare-pstate setup $$color-index
+    {Long (map-schema :fingerprint Long :color String :trit Int)})
 
-(defn triadic-build [seed]
-  (let [color (splitmix64 seed)
-        trit (mod color 3)]
-    (case trit
-      0 {:action :coordinate :tool :rama}
-      1 {:action :generate :tool :zig}
-      2 {:action :validate :tool :gay})))
-```
-
-## Rama Topology
-
-```clojure
-;; Rama dataflow with Gay.jl coloring
-(defmodule GayColoredTopology [setup topologies]
-  (declare-depot setup *colors :random)
-  
+  ;; Topology: ERGODIC trit (transformation)
   (<<sources topologies
-    "color-source"
-    (source> *colors :> *color)
-    (splitmix64> *color :> *hue)
-    (|hash> *hue :trit :> *trit)))
+    (source> *color-events :> %event)
+    (|hash (:fingerprint %event))
+    (local-transform>
+      [(keypath (:fingerprint %event)) (termval %event)]
+      $$color-index)))
 ```
 
-## Zig Build Integration
-
+### Zig Package Management
 ```zig
-// build.zig.zon with Gay.jl seed
+// build.zig.zon - Gay-Rama interop package
 .{
     .name = "rama-gay-zig",
-    .version = "0.4.0",
+    .version = "0.1.0",
     .dependencies = .{
-        .gay_colors = .{
-            .seed = 0x42D,  // 1069
-            .golden = 0x9e3779b97f4a7c15,
+        .gay_ffi = .{
+            .url = "https://github.com/bmorphism/gay.jl/archive/refs/heads/main.tar.gz",
+            .hash = "...",
+        },
+        .rama_client = .{
+            .url = "https://github.com/redplanetlabs/rama-zig-client/archive/refs/heads/main.tar.gz",
+            .hash = "...",
         },
     },
 }
 ```
 
-## Interactome
+```zig
+// src/gay_rama.zig - Trit-colored Rama client
+const std = @import("std");
+const gay = @import("gay_ffi");
+const rama = @import("rama_client");
 
-```mermaid
-graph LR
-    subgraph bmorphism
-        GAY[Gay.jl]
-    end
-    subgraph redplanetlabs
-        RAMA[Rama]
-    end
-    subgraph ziglang
-        ZIG[Zig]
-    end
-    
-    GAY -->|color seed| RAMA
-    RAMA -->|topology| ZIG
-    ZIG -->|build artifact| GAY
+pub const Trit = enum(i8) {
+    minus = -1,  // Gay.jl: color source
+    ergodic = 0, // Rama: topology
+    plus = 1,    // Zig: execution
+
+    pub fn conserved(trits: []const Trit) bool {
+        var sum: i32 = 0;
+        for (trits) |t| sum += @as(i32, @intFromEnum(t));
+        return @mod(sum, 3) == 0;
+    }
+};
+
+pub const ColoredDepot = struct {
+    name: []const u8,
+    trit: Trit,
+    fingerprint: u64,
+
+    pub fn append(self: *ColoredDepot, data: []const u8) !void {
+        const color = gay.next_color(self.fingerprint);
+        try rama.depot_append(self.name, .{
+            .data = data,
+            .color = color,
+            .trit = @intFromEnum(self.trit),
+        });
+    }
+};
 ```
 
-## GF(3) Trit
+## Interleaving Protocol
 
-**Trit: 0** (ERGODIC) - Triadic coordination
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    RAMA-GAY-ZIG INTERLEAVE                      │
+├─────────────────────────────────────────────────────────────────┤
+│  Gay.jl (-1)  ──color──▶  Rama (0)  ──exec──▶  Zig (+1)        │
+│      │                       │                     │            │
+│      ▼                       ▼                     ▼            │
+│  SPI verify            Depot append           Build.zig         │
+│  Fingerprint           PState query           Package fetch     │
+│  Trit assign           Topology run           WASM compile      │
+├─────────────────────────────────────────────────────────────────┤
+│  Σ(-1 + 0 + 1) = 0 (mod 3) ✓  GF(3) CONSERVED                  │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-## Related Skills
+## Usage
 
-- `gay-julia` - Gay.jl integration
-- `zig-programming` - Zig expertise
-- `clojure` - Babashka/Rama
+### From Babashka (Clojure CLI)
+```clojure
+;; Interleave Claude threads with Gay.jl colors into Rama
+(require '[babashka.process :refer [shell]])
+
+(defn gay-rama-append [thread]
+  (let [fingerprint (hash (:id thread))
+        trit (mod fingerprint 3)
+        color (case trit 0 :minus 1 :ergodic 2 :plus)]
+    (shell "curl" "-X" "POST"
+           (str "http://$RAMA_HOST:2000/rest/GayColorModule/depot/*color-events/append")
+           "-d" (json/generate-string
+                  {:data thread :trit trit :color (name color)}))))
+```
+
+### From Zig (native)
+```bash
+zig build run -- --depot color-events --trit minus --fingerprint 0xDEADBEEF
+```
+
+### From Julia (Gay.jl native)
+```julia
+using Gay
+
+# Create interleaved stream
+interleaver = GayInterleaver(seed=0x42)
+for (trit, color) in gay_interleave_streams([:rama, :zig, :julia])
+    @info "Stream" trit color gay_fingerprint(color)
+end
+```
+
+## GitHub Interactome
+
+This skill connects:
+- `bmorphism/gay.jl` - GF(3) color theory + SPI verification
+- `redplanetlabs/rama-*` - Distributed backend primitives
+- `ziglang/zig` - Build system + package manager
+- `plurigrid/asi` - ASI skill orchestration
+
+## Dependencies
+
+- Julia 1.10+ with Gay.jl
+- Rama 0.14+ (REST API enabled)
+- Zig 0.13+ with build.zig.zon support
+- Babashka 1.4+ for Clojure scripting
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+rama-gay-zig (−) + SDF.Ch8 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

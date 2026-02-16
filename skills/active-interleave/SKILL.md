@@ -1,7 +1,8 @@
 ---
 name: active-interleave
-description: Active Interleave Skill
-version: 1.0.0
+description: Interleaves context from recently active Claude/Amp threads into current activity via random walk.
+metadata:
+  trit: 0
 ---
 
 # Active Interleave Skill
@@ -85,33 +86,6 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `general`: 734 citations in bib.duckdb
 
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 6. Layering
-
-**Concepts**: layered data, metadata, provenance, units
-
-### GF(3) Balanced Triad
-
-```
-active-interleave (−) + SDF.Ch6 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch7: Propagators
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Layering adds metadata. This skill tracks provenance or annotations.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

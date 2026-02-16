@@ -1,9 +1,9 @@
 ---
 name: topos-of-music
 description: Guerino Mazzola's mathematical music theory - Forms, Denotators, Morphisms, and Neo-Riemannian PLR operations with Gay.jl color integration
-version: 1.0.0
+trit: +1
+color: "#D82626"
 ---
-
 
 # Topos of Music Skill
 
@@ -259,60 +259,3 @@ just knet-verify nodes="0 4 7" arrows="T4 T3 T7"
 - Mazzola, G. *Musical Performance* (2011)
 - Fiore & Noll. "Commuting Groups and the Topos of Triads"
 - Cohn, R. "Neo-Riemannian Operations, Parsimonious Trichords"
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `category-theory`: 139 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 1. Flexibility through Abstraction
-
-**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
-
-### GF(3) Balanced Triad
-
-```
-topos-of-music (○) + SDF.Ch1 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-
-### Connection Pattern
-
-Combinators compose operations. This skill provides composable abstractions.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

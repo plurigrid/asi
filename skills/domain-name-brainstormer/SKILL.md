@@ -1,9 +1,11 @@
 ---
 name: domain-name-brainstormer
 description: Generates creative domain name ideas for your project and checks availability
-version: 1.0.0
+  across multiple TLDs (.com, .io, .dev, .ai, etc.). Saves hours of brainstorming
+  and manual checking.
+metadata:
+  trit: 0
 ---
-
 
 # Domain Name Brainstormer
 
@@ -212,64 +214,3 @@ After picking a domain:
 - Research trademark availability
 - Plan brand identity colors/fonts
 
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `abstract-interpretation`: 26 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 4. Pattern Matching
-
-**Concepts**: unification, match, segment variables, pattern
-
-### GF(3) Balanced Triad
-
-```
-domain-name-brainstormer (−) + SDF.Ch4 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-- Ch2: Domain-Specific Languages
-
-### Connection Pattern
-
-Pattern matching extracts structure. This skill recognizes and transforms patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

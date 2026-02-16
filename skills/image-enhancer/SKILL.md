@@ -1,9 +1,11 @@
 ---
 name: image-enhancer
 description: Improves the quality of images, especially screenshots, by enhancing
-version: 1.0.0
+  resolution, sharpness, and clarity. Perfect for preparing images for presentations,
+  documentation, or social media posts.
+metadata:
+  trit: 0
 ---
-
 
 # Image Enhancer
 
@@ -99,60 +101,3 @@ Original preserved as: screenshot-2024-original.png
 - **Presentations**: Upscale images for large screens
 - **Print Materials**: Increase resolution for physical media
 
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Visualization
-- **matplotlib** [○] via bicomodule
-  - Hub for all visualization
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-image-enhancer (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

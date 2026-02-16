@@ -1,0 +1,71 @@
+# Worlding Skill Development Commands
+# =====================================
+# Run with: just <command>
+
+# Default: run all tests
+default: test
+
+# Run CI tests
+test:
+    julia test/runtests.jl
+
+# Run tests with verbose output
+test-verbose:
+    julia test/runtests.jl --verbose
+
+# Quick syntax-only checks
+test-quick:
+    julia test/runtests.jl --quick
+
+# Validate Narya syntax
+check-narya:
+    @echo "Checking Narya syntax..."
+    @julia -e 'content = read("world_pattern.ny", String); \
+        open = count(==("{"), content); \
+        close = count(==("}"), content); \
+        println("Braces: $open open, $close close"); \
+        @assert open == close "Unbalanced braces!"'
+    @echo "✅ Narya syntax valid"
+
+# Check for forbidden demo_ pattern
+check-no-demo:
+    @echo "Checking for forbidden demo_ pattern..."
+    @! grep -r "function demo_" *.jl test/*.jl 2>/dev/null && echo "✅ No demo_ functions found"
+
+# Verify GF(3) conservation in SKILL.md
+check-gf3:
+    @grep -q "trit: 0" SKILL.md && echo "✅ GF(3) trit: 0 verified"
+
+# Run all checks
+check: check-narya check-no-demo check-gf3
+    @echo "✅ All checks passed"
+
+# Build ACSet from thread data
+build-acset:
+    julia -e 'include("world_threads_acset.jl"); \
+        using .WorldThreadsACSet; \
+        acset = world_threads_acset(); \
+        print_thread_report(acset)'
+
+# Show skill statistics
+stats:
+    @echo "═══════════════════════════════════════"
+    @echo "  WORLDING SKILL STATISTICS"
+    @echo "═══════════════════════════════════════"
+    @wc -l *.jl *.ny *.md 2>/dev/null | tail -1
+    @echo "Files:"
+    @ls -la *.jl *.ny *.md 2>/dev/null | wc -l | xargs echo "  Total:"
+    @echo "Test files:"
+    @ls test/*.jl 2>/dev/null | wc -l | xargs echo "  "
+
+# Clean generated files
+clean:
+    rm -rf __pycache__ *.pyc .pytest_cache
+
+# Format Julia files (requires JuliaFormatter)
+format:
+    julia -e 'using JuliaFormatter; format(".")'
+
+# Open skill in editor
+edit:
+    ${EDITOR:-code} .

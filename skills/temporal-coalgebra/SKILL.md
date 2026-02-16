@@ -1,9 +1,11 @@
 ---
 name: temporal-coalgebra
 description: Coalgebraic observation of derivation streams with final coalgebra bisimulation
-version: 1.0.0
+  for infinite trace verification.
+license: UNLICENSED
+metadata:
+  source: local
 ---
-
 
 # Temporal Coalgebra Skill: Observation Duality
 
@@ -171,17 +173,10 @@ game_result = obs.verify_game(three_match_gadget)
 Forms valid triads with ERGODIC (0) and PLUS (+1) skills:
 
 ```
-temporal-coalgebra (-1) ⊗ coequalizers (0) ⊗ topos-adhesive-rewriting (+1) = 0 ✓
 temporal-coalgebra (-1) ⊗ unworld (0) ⊗ gay-mcp (+1) = 0 ✓
 temporal-coalgebra (-1) ⊗ glass-bead-game (0) ⊗ cider-clojure (+1) = 0 ✓
 temporal-coalgebra (-1) ⊗ acsets (0) ⊗ rubato-composer (+1) = 0 ✓
 ```
-
-## Related Skills
-
-- `coequalizers` (0) - Uses coalgebraic bisimulation to establish behavioral equivalence before quotienting
-- `bisimulation-game` (-1) - Game-theoretic bisimulation testing
-- `topos-adhesive-rewriting` (+1) - Rewriting preserves observational equivalence
 
 ## Mathematical Foundation
 
@@ -257,67 +252,3 @@ GF(3) conserved: true
 **Color**: #2626D8 (Blue)
 **GF(3)**: Forms valid triads with ERGODIC + PLUS skills
 **Dual**: Algebra (construction) ↔ Coalgebra (observation)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Time Series
-- **aeon** [−] via Ran_K
-  - Temporal/coalgebraic time series
-
-### Bibliography References
-
-- `linear-algebra`: 112 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-temporal-coalgebra (−) + SDF.Ch5 (−) + [balancer] (−) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch6: Layering
-- Ch10: Adventure Game Example
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: -1 (MINUS)
-Home: Span
-Poly Op: ×
-Kan Role: Adj
-Color: #FF6B6B
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

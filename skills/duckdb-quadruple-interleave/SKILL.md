@@ -1,9 +1,10 @@
 ---
 name: duckdb-quadruple-interleave
-description: Chaotic interleaving across local DuckDB databases modeled as coupled quadruple pendula. Random walks both BETWEEN databases and WITHIN tables for context injection.
-version: 1.0.0
+description: "Chaotic interleaving across local DuckDB databases modeled as coupled quadruple pendula. Random walks both BETWEEN databases and WITHIN tables for context injection."
+metadata:
+  trit: 0
+  polarity: ERGODIC
 ---
-
 
 # DuckDB Quadruple Interleave
 
@@ -419,32 +420,3 @@ When `duckdb-quadruple-interleave` loads, consider auto-loading:
 **Trit**: 0 (ERGODIC - coordinates between pendula)
 **Dependencies**: duckdb, babashka, cheshire
 **Databases**: 12 DuckDB files across 4 clusters
-
-## Forward Reference
-
-- unified-reafference (interleaved session queries)
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-duckdb-quadruple-interleave (○) + SDF.Ch10 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch4: Pattern Matching
-- Ch7: Propagators
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.

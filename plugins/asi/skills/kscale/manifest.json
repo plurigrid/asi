@@ -1,0 +1,146 @@
+{
+  "name": "kscale-robotics",
+  "version": "1.0.0",
+  "description": "K-Scale Labs robotics skill collection for humanoid robot development, RL training, and sim-to-real transfer",
+  "author": "K-Scale Labs + Plurigrid",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "ksim-rl",
+      "path": "../ksim-rl/SKILL.md",
+      "trit": -1,
+      "trit_label": "MINUS",
+      "color": "#3A2F9E",
+      "category": "robotics-rl",
+      "description": "RL training library for humanoid locomotion"
+    },
+    {
+      "name": "kos-firmware",
+      "path": "../kos-firmware/SKILL.md",
+      "trit": 1,
+      "trit_label": "PLUS",
+      "color": "#79ED91",
+      "category": "robotics-firmware",
+      "description": "K-Scale Operating System - robot firmware with gRPC services"
+    },
+    {
+      "name": "evla-vla",
+      "path": "../evla-vla/SKILL.md",
+      "trit": -1,
+      "trit_label": "MINUS",
+      "color": "#DBA51D",
+      "category": "robotics-vla",
+      "description": "EdgeVLA - vision-language-action model for robotics"
+    },
+    {
+      "name": "urdf2mjcf",
+      "path": "../urdf2mjcf/SKILL.md",
+      "trit": -1,
+      "trit_label": "MINUS",
+      "color": "#4615B7",
+      "category": "robotics-tools",
+      "description": "URDF to MJCF conversion for MuJoCo"
+    },
+    {
+      "name": "kbot-humanoid",
+      "path": "../kbot-humanoid/SKILL.md",
+      "trit": -1,
+      "trit_label": "MINUS",
+      "color": "#5B45C2",
+      "category": "robotics-platform",
+      "description": "K-Bot humanoid robot platform specifications"
+    },
+    {
+      "name": "zeroth-bot",
+      "path": "../zeroth-bot/SKILL.md",
+      "trit": -1,
+      "trit_label": "MINUS",
+      "color": "#8CC136",
+      "category": "robotics-platform",
+      "description": "3D-printed open-source humanoid robot"
+    },
+    {
+      "name": "mujoco-scenes",
+      "path": "../mujoco-scenes/SKILL.md",
+      "trit": 0,
+      "trit_label": "ERGODIC",
+      "color": "#9FD875",
+      "category": "robotics-simulation",
+      "description": "MuJoCo scene composition for training"
+    },
+    {
+      "name": "kscale-actuator",
+      "path": "../kscale-actuator/SKILL.md",
+      "trit": -1,
+      "trit_label": "MINUS",
+      "color": "#B9172E",
+      "category": "robotics-hardware",
+      "description": "Robstride motor control via CAN bus"
+    },
+    {
+      "name": "entropy-sim2real",
+      "path": "../entropy-sim2real/SKILL.md",
+      "trit": -1,
+      "trit_label": "MINUS",
+      "color": "#E85B8E",
+      "category": "robotics-transfer",
+      "description": "Entropy-driven sim-to-real transfer"
+    }
+  ],
+  "gf3_analysis": {
+    "total_skills": 9,
+    "trit_sum": -6,
+    "trit_distribution": {
+      "MINUS (-1)": 7,
+      "ERGODIC (0)": 1,
+      "PLUS (+1)": 1
+    },
+    "balance_status": "UNBALANCED",
+    "needed_for_balance": "+2 (need 2 more PLUS skills to form 3 balanced triads)",
+    "balanced_triads": [
+      {
+        "triad": ["ksim-rl", "kos-firmware", "mujoco-scenes"],
+        "trits": [-1, 1, 0],
+        "sum": 0,
+        "valid": true
+      }
+    ],
+    "suggested_triads": [
+      {
+        "triad": ["evla-vla", "kos-firmware", "mujoco-scenes"],
+        "note": "Reuses kos-firmware (+1)"
+      },
+      {
+        "triad": ["urdf2mjcf", "kos-firmware", "mujoco-scenes"],
+        "note": "Reuses kos-firmware (+1)"
+      },
+      {
+        "triad": ["kbot-humanoid", "kos-firmware", "mujoco-scenes"],
+        "note": "Reuses kos-firmware (+1)"
+      },
+      {
+        "triad": ["zeroth-bot", "kos-firmware", "mujoco-scenes"],
+        "note": "Reuses kos-firmware (+1)"
+      },
+      {
+        "triad": ["kscale-actuator", "kos-firmware", "mujoco-scenes"],
+        "note": "Reuses kos-firmware (+1)"
+      },
+      {
+        "triad": ["entropy-sim2real", "kos-firmware", "mujoco-scenes"],
+        "note": "Reuses kos-firmware (+1)"
+      }
+    ],
+    "recommendation": "Add PLUS skills like 'kscale-onboard' (+1) for on-robot compute or 'kscale-deploy' (+1) for deployment automation to enable more balanced triads"
+  },
+  "categories": {
+    "robotics-rl": ["ksim-rl"],
+    "robotics-firmware": ["kos-firmware"],
+    "robotics-vla": ["evla-vla"],
+    "robotics-tools": ["urdf2mjcf"],
+    "robotics-platform": ["kbot-humanoid", "zeroth-bot"],
+    "robotics-simulation": ["mujoco-scenes"],
+    "robotics-hardware": ["kscale-actuator"],
+    "robotics-transfer": ["entropy-sim2real"]
+  }
+}

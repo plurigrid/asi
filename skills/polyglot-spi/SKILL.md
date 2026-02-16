@@ -1,9 +1,9 @@
 ---
 name: polyglot-spi
-description: Cross-Language Strong Parallelism Invariance Verification
-version: 1.0.0
+description: ' Cross-Language Strong Parallelism Invariance Verification'
+metadata:
+  trit: 0
 ---
-
 
 # polyglot-spi
 
@@ -244,63 +244,3 @@ spi-generate-tests lang="kotlin":
 - `spi-parallel-verify` - Parallel stream verification
 - `gay-mcp` - Color generation
 - `triad-interleave` - Stream interleaving
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `polynomial-functors`: 8 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 4. Pattern Matching
-
-**Concepts**: unification, match, segment variables, pattern
-
-### GF(3) Balanced Triad
-
-```
-polyglot-spi (○) + SDF.Ch4 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch2: Domain-Specific Languages
-
-### Connection Pattern
-
-Pattern matching extracts structure. This skill recognizes and transforms patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

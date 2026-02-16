@@ -1,0 +1,210 @@
+{:cell-ontology
+ {:t-cell
+  {:id "CL:0000084"
+   :name "T cell"
+   :ontology "Cell Ontology (CL)"
+   :term-count 2932
+   :comultiplication
+   {:description "T cell → subtypes via lineage"
+    :children [{:id "CL:0000624" :name "CD4-positive, alpha-beta T cell"}
+               {:id "CL:0000625" :name "CD8-positive, alpha-beta T cell"}
+               {:id "CL:0000798" :name "gamma-delta T cell"}
+               {:id "CL:0000809" :name "double-positive, alpha-beta thymocyte"}
+               {:id "CL:0002420" :name "immature T cell"}
+               {:id "CL:0000895" :name "naive T cell"}
+               {:id "CL:0000787" :name "memory T cell"}]
+    :formula "Δ(T cell) = T cell ⊗ {CD4+ T, CD8+ T, γδ T, ...}"}
+   :counit
+   {:description "Extract term name"
+    :value "T cell"
+    :formula "ε(T cell) = 'T cell'"}
+   :coassociativity
+   {:verified true
+    :description "Grandchildren accessible via children or directly"
+    :paths ["T cell → CD4+ T → naive CD4+ T"
+            "T cell → naive CD4+ T (via grandchildren)"]}
+   :counit-laws
+   {:left {:verified true :formula "(ε ⊗ id) ∘ Δ = id"}
+    :right {:verified true :formula "(id ⊗ ε) ∘ Δ = id"}}
+   :python-code "bt.CellType.from_source(ontology_id='CL:0000084').children.all()"
+   :lamin-api "https://docs.lamin.ai/bionty"}
+
+  :dn3-thymocyte
+  {:id "CL:0000807"
+   :name "DN3 thymocyte"
+   :ontology "Cell Ontology (CL)"
+   :bicomodule true
+   :left-coaction
+   {:context "Cell lineage hierarchy"
+    :description "Navigate developmental stages"
+    :formula "ρ_L: DN3 → CellType ⊗ DN3"
+    :path "thymocyte → DN1 → DN2 → DN3 → DN4 → DP → SP"}
+   :right-coaction
+   {:context "Tissue localization"
+    :description "Navigate anatomical location"
+    :formula "ρ_R: DN3 → DN3 ⊗ Tissue"
+    :location "thymus (UBERON:0002370)"}
+   :compatibility
+   {:verified true
+    :formula "(id ⊗ ρ_R) ∘ ρ_L = (ρ_L ⊗ id) ∘ ρ_R"
+    :interpretation "Development in tissue = Tissue-specific development"}
+   :python-code "bt.CellType.from_source(ontology_id='CL:0000807')"}
+
+  :hematopoietic-stem-cell
+  {:id "CL:0000037"
+   :name "hematopoietic stem cell"
+   :ontology "Cell Ontology (CL)"
+   :comultiplication
+   {:description "HSC → all blood cell lineages"
+    :children [{:id "CL:0000050" :name "megakaryocyte-erythroid progenitor"}
+               {:id "CL:0000051" :name "common lymphoid progenitor"}
+               {:id "CL:0000049" :name "common myeloid progenitor"}]
+    :formula "Δ(HSC) = HSC ⊗ {MEP, CLP, CMP}"}
+   :kan-extension
+   {:left "Aggregate all blood cell properties → HSC characteristics"
+    :right "Distribute HSC potential → all lineages"}
+   :python-code "bt.CellType.from_source(ontology_id='CL:0000037')"}}
+
+ :disease-ontology
+ {:parkinsons
+  {:id "MONDO:0005180"
+   :name "Parkinson disease"
+   :ontology "Mondo Disease Ontology (MONDO)"
+   :term-count 30128
+   :comultiplication
+   {:description "Parkinson disease → disease subtypes"
+    :children [{:id "MONDO:0011613" :name "autosomal recessive early-onset Parkinson disease"}
+               {:id "MONDO:0008199" :name "late-onset Parkinson disease"}
+               {:id "MONDO:0017300" :name "juvenile-onset Parkinson disease"}
+               {:id "MONDO:0016933" :name "PARK7-related early-onset Parkinson disease"}]
+    :formula "Δ(Parkinson) = Parkinson ⊗ {early-onset, late-onset, juvenile, ...}"}
+   :counit
+   {:value "Parkinson disease"
+    :formula "ε(Parkinson) = 'Parkinson disease'"}
+   :kan-extension
+   {:left
+    {:description "Left Kan: Aggregate symptoms/biomarkers from subtypes"
+     :formula "Lan_F: Subtypes → Parent"
+     :example "Common features: dopamine loss, motor symptoms, α-synuclein aggregation"}
+    :right
+    {:description "Right Kan: Distribute treatment protocol to subtypes"
+     :formula "Ran_F: Parent → Subtypes"
+     :example "General Parkinson treatment → adapted for each subtype age/genetics"}}
+   :python-code "bt.Disease.from_source(ontology_id='MONDO:0005180')"
+   :lamin-api "https://docs.lamin.ai/disease"}
+
+  :alzheimers
+  {:id "MONDO:0004975"
+   :name "Alzheimer disease"
+   :ontology "Mondo Disease Ontology (MONDO)"
+   :comultiplication
+   {:children [{:id "MONDO:0011450" :name "familial Alzheimer disease"}
+               {:id "MONDO:0005423" :name "late-onset Alzheimer disease"}]
+    :formula "Δ(Alzheimer) = Alzheimer ⊗ {familial, late-onset}"}
+   :adjunction
+   {:free-forgetful
+    {:description "Genotype ⊣ Phenotype"
+     :forward "APOE4 variant → Alzheimer risk"
+     :backward "Alzheimer diagnosis → check APOE status"}}
+   :python-code "bt.Disease.from_source(ontology_id='MONDO:0004975')"}}
+
+ :gene-ontology
+ {:biological-process
+  {:id "GO:0008150"
+   :name "biological_process"
+   :ontology "Gene Ontology (GO)"
+   :term-count 47856
+   :comultiplication
+   {:description "biological_process → all process types"
+    :children [{:id "GO:0008152" :name "metabolic process"}
+               {:id "GO:0065007" :name "biological regulation"}
+               {:id "GO:0050789" :name "regulation of biological process"}
+               {:id "GO:0051179" :name "localization"}
+               {:id "GO:0032502" :name "developmental process"}
+               {:id "GO:0040007" :name "growth"}
+               {:id "GO:0009987" :name "cellular process"}
+               {:id "GO:0023052" :name "signaling"}]
+    :formula "Δ(bio_process) = bio_process ⊗ {metabolic, regulation, localization, ...}"}
+   :coassociativity
+   {:verified true
+    :example "carbohydrate metabolic process (GO:0005975)"
+    :path-1 "biological_process → metabolic → carbohydrate_metabolic"
+    :path-2 "biological_process → cellular → cellular_metabolic → carbohydrate_metabolic"
+    :result "Both paths reach GO:0005975 ✓"}
+   :python-code "bt.Pathway.from_source(ontology_id='GO:0008150')"
+   :lamin-api "https://docs.lamin.ai/pathway"}
+
+  :acetyl-coa-biosynthesis
+  {:id "GO:0019681"
+   :name "acetyl-CoA biosynthetic process from pyruvate"
+   :ontology "Gene Ontology (GO)"
+   :comultiplication
+   {:description "Pathway → sequential reaction steps"
+    :children [{:step 1 :name "pyruvate decarboxylation"}
+               {:step 2 :name "acetyl group transfer to CoA"}
+               {:step 3 :name "CoA activation"}]
+    :formula "Δ(pathway) = pathway ⊗ {step1, step2, step3}"}
+   :sequential-structure true
+   :python-code "bt.Pathway.from_source(ontology_id='GO:0019681')"}}
+
+ :tissue-ontology
+ {:lung
+  {:id "UBERON:0002048"
+   :name "lung"
+   :ontology "UBERON Tissue Ontology"
+   :term-count 15719
+   :comultiplication
+   {:description "lung → anatomical subdivisions"
+    :children [{:id "UBERON:0002167" :name "right lung"}
+               {:id "UBERON:0002168" :name "left lung"}]
+    :grandchildren [{:id "UBERON:0008953" :name "right upper lobe"}
+                    {:id "UBERON:0008954" :name "right middle lobe"}
+                    {:id "UBERON:0008955" :name "right lower lobe"}
+                    {:id "UBERON:0008951" :name "left upper lobe"}
+                    {:id "UBERON:0008952" :name "left lower lobe"}]
+    :formula "Δ(lung) = lung ⊗ {right lung, left lung}"}
+   :coassociativity
+   {:verified true
+    :direct "lung → 5 lobes (direct grandchildren)"
+    :hierarchical "lung → left/right (2) → lobes (5 total)"
+    :result "Both paths yield 5 lobes ✓"}
+   :python-code "bt.Tissue.from_source(ontology_id='UBERON:0002048')"
+   :lamin-api "https://docs.lamin.ai/tissue"}
+
+  :thymus
+  {:id "UBERON:0002370"
+   :name "thymus"
+   :ontology "UBERON Tissue Ontology"
+   :function "T cell development and maturation"
+   :bicomodule-context
+   {:description "Thymus appears in both Tissue and CellType ontologies"
+    :tissue-view "Anatomical structure in mediastinum"
+    :cellular-view "Home of thymocytes (developing T cells)"}
+   :python-code "bt.Tissue.from_source(ontology_id='UBERON:0002370')"}}
+
+ :organism-taxonomy
+ {:mammalia
+  {:id "NCBITaxon:40674"
+   :name "Mammalia"
+   :ontology "NCBI Taxonomy"
+   :comultiplication
+   {:description "Mammalia → mammalian orders"
+    :children [{:id "NCBITaxon:9989" :name "Rodentia"}
+               {:id "NCBITaxon:9443" :name "Primates"}
+               {:id "NCBITaxon:33554" :name "Carnivora"}
+               {:id "NCBITaxon:9721" :name "Cetartiodactyla"}]
+    :formula "Δ(Mammalia) = Mammalia ⊗ {Rodentia, Primates, Carnivora, ...}"}
+   :phylogenetic-tree true
+   :python-code "bt.Organism.from_source(ontology_id='NCBITaxon:40674')"}
+
+  :primates
+  {:id "NCBITaxon:9443"
+   :name "Primates"
+   :ontology "NCBI Taxonomy"
+   :comultiplication
+   {:children [{:id "NCBITaxon:9604" :name "Hominidae"}
+               {:id "NCBITaxon:9527" :name "Cercopithecidae"}]
+    :grandchildren [{:id "NCBITaxon:9606" :name "Homo sapiens"}
+                    {:id "NCBITaxon:9598" :name "Pan troglodytes"}
+                    {:id "NCBITaxon:9595" :name "Gorilla"}]}
+   :python-code "bt.Organism.from_source(ontology_id='NCBITaxon:9443')"}}}

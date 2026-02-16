@@ -1,9 +1,11 @@
 ---
 name: infinity-operads
-description: ∞-Operads for pairwise/tritwise Cat# interactions with lazy ACSet materialization unifying effective, realizability, and Grothendieck topoi via dendroidal Segal spaces.
-version: 1.0.0
+description: "∞-Operads for pairwise/tritwise Cat# interactions with lazy ACSet materialization unifying effective, realizability, and Grothendieck topoi via dendroidal Segal spaces."
+trit: 0
+polarity: ERGODIC
+source: "Cisinski-Moerdijk, Lurie, Barwick-Schommer-Pries, Spivak Cat#"
+technologies: [DisCoPy, Catlab.jl, Narya, DuckDB]
 ---
-
 
 # ∞-Operads Skill (ERGODIC 0)
 
@@ -419,44 +421,3 @@ class LazyACSetMaterializer:
 - `kinetic-block` — Dendroidal stratification patterns
 - `segal-types` — ∞-category Segal conditions
 - `rezk-types` — Complete Segal spaces
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `category-theory`: 139 citations in bib.duckdb
-- `operads`: 5 citations in bib.duckdb
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 8. Degeneracy
-
-**Concepts**: redundancy, fallback, multiple strategies, robustness
-
-### GF(3) Balanced Triad
-
-```
-infinity-operads (○) + SDF.Ch8 (−) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch7: Propagators
-
-### Connection Pattern
-
-Degeneracy provides fallbacks. This skill offers redundant strategies.
