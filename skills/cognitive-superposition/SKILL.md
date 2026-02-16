@@ -1,20 +1,9 @@
 ---
 name: cognitive-superposition
 description: Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
-  (compression), Schmidhuber (curiosity-driven), and Bengio (GFlowNets) into unified
-  ASI framework with quantum-inspired measurement collapse.
-metadata:
-  trit: 0
-  polarity: ERGODIC
-  source: Riehl-Shulman + Sutskever-SSI + Schmidhuber-LSTM + Bengio-GFlowNet
-  technologies:
-  - Rzk
-  - Lean4
-  - MLX
-  - JAX
-  - Julia
-  - DisCoPy
+version: 1.0.0
 ---
+
 
 # Cognitive Superposition Skill
 
@@ -641,3 +630,67 @@ This enables ASI that is simultaneously:
 - **Efficiently compressed** (Sutskever)
 - **Intrinsically curious** (Schmidhuber)
 - **Diversely generative** (Bengio)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+cognitive-superposition (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+- Ch1: Flexibility through Abstraction
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

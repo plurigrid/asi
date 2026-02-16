@@ -1,3 +1,9 @@
+---
+name: g
+description: 'World G Skill'
+version: 1.0.0
+---
+
 # World G Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

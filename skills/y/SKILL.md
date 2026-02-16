@@ -1,3 +1,9 @@
+---
+name: y
+description: 'World Y Skill'
+version: 1.0.0
+---
+
 # World Y Skill
 
 **Trit**: -1 (MINUS (validator/constrainer))

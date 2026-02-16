@@ -1,11 +1,9 @@
 ---
 name: gh-cli
-description: "GitHub CLI for repository management. Issues, PRs, releases, and API queries from the command line."
-metadata:
-  trit: 0
-  version: "1.0.0"
-  bundle: tooling
+description: GitHub CLI for repository management. Issues, PRs, releases, and API queries from the command line.
+version: 1.0.0
 ---
+
 
 # GitHub CLI Skill
 
@@ -68,3 +66,63 @@ gh issue edit 125 --add-label "ternary:-"
 bisimulation-game (-1) ⊗ gh-cli (0) ⊗ gh-interactome (+1) = 0 ✓
 code-review (-1) ⊗ gh-cli (0) ⊗ changelog-generator (+1) = 0 ✓
 ```
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 9. Generic Procedures
+
+**Concepts**: dispatch, multimethod, predicate dispatch, generic
+
+### GF(3) Balanced Triad
+
+```
+gh-cli (−) + SDF.Ch9 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Generic procedures dispatch on predicates. This skill selects implementations dynamically.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -1,21 +1,9 @@
 ---
 name: dynamic-sufficiency
 description: Causal state gating via ε-machine. Coworld observer that prevents action
-  without verified minimal sufficient skill coverage. Post-rigorous globally.
-license: MIT
-metadata:
-  source: SFI Computational Mechanics + Autopoiesis + Darwin Gödel Machine
-  trit: -1
-  color: '#2626D8'
-  world: gay-mcp
-  coworld: self  # This IS the coworld
-  gf3_role: VALIDATOR
-  version: 2.0.0
-  causal_states: true
-  epsilon_machine: true
-  world_generating: true
-  post_rigorous: true
+version: 1.0.0
 ---
+
 
 # Dynamic Sufficiency Skill
 
@@ -874,3 +862,70 @@ epsilon_machine.add_observation(action, loaded, success=False)
 **GF(3) Triad**: `dynamic-sufficiency (-1) ⊗ skill-dispatch (0) ⊗ skill-loader (+1) = 0`
 **SFI Foundation**: Computational Mechanics, Effective Complexity, Predictive Information
 **Status**: ✅ ADMITTED (all 7 MUST requirements satisfied)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Scientific Computing
+- **scipy** [○] via bicomodule
+  - Hub for numerical/scientific computation
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+dynamic-sufficiency (+) + SDF.Ch3 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+- Ch9: Generic Procedures
+- Ch8: Degeneracy
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch1: Flexibility through Abstraction
+- Ch6: Layering
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

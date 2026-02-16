@@ -1,10 +1,9 @@
 ---
 name: moth-actias
-description: "Moth's Actias quantum synth for qubit sonification with Bloch sphere visualization and MIDI control"
-trit: +1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+description: Moth's Actias quantum synth for qubit sonification with Bloch sphere visualization and MIDI control
+version: 1.0.0
 ---
+
 
 # Moth Actias Quantum Synth
 
@@ -162,3 +161,24 @@ SynthDef(\actias, { |theta=0, phi=0, gate=1|
 **Condition**: μ(n) ≠ 0 (Möbius squarefree)
 
 This skill is qualified for non-backtracking geodesic traversal.
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+moth-actias (○) + SDF.Ch2 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.

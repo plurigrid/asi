@@ -1,3 +1,9 @@
+---
+name: narya-hatchery
+description: Narya Hatchery
+version: 1.0.0
+---
+
 # Narya Hatchery
 
 ---
@@ -85,3 +91,28 @@ proofgeneral-narya (-1) ⊗ narya-hatchery (0) ⊗ gay-mcp (+1) = 0 ✓
 - `proofgeneral-narya` - Emacs integration
 - `holes` - Interactive proof development
 - `move-narya-bridge` - Move contract verification
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+narya-hatchery (−) + SDF.Ch5 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch6: Layering
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

@@ -1,16 +1,7 @@
 ---
 name: segal-types
 description: Segal types for synthetic ∞-categories. Binary composites exist uniquely
-  up to homotopy. Foundation for topological chemputer.
-metadata:
-  trit: -1
-  polarity: MINUS
-  source: 'Riehl-Shulman 2017: A type theory for synthetic ∞-categories'
-  technologies:
-  - Rzk
-  - Lean4
-  - Agda
-  - InfinityCosmos
+version: 1.0.0
 ---
 
 # Segal Types Skill
@@ -124,8 +115,46 @@ end
 
 3. **2-out-of-3**: If two of f, g, g∘f are equivalences, so is the third.
 
+---
+
+## End-of-Skill Interface
+
+## r2con Speaker Resources
+
+| Speaker | Relevance | Repository/Talk |
+|---------|-----------|-----------------|
+| **bmorphism** | Category theory signatures | [libc_zignatures](https://github.com/bmorphism/libc_zignatures) |
+| **condret** | ESIL semantics (∞-cat structure) | [radare2 ESIL](https://github.com/radareorg/radare2) |
+| **thestr4ng3r** | CFG as ∞-groupoid | [r2ghidra](https://github.com/radareorg/r2ghidra) |
+
 ## References
 
 - Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories." *Higher Structures* 1(1):116-193.
 - [Rzk repository](https://github.com/rzk-lang/rzk)
 - [InfinityCosmos](https://github.com/emilyriehl/infinity-cosmos)
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+segal-types (−) + SDF.Ch3 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+- Ch6: Layering
+- Ch5: Evaluation
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

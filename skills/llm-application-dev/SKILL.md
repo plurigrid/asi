@@ -1,13 +1,9 @@
 ---
 name: llm-application-dev
 description: Building applications with Large Language Models - prompt engineering,
-  RAG patterns, and LLM integration. Use for AI-powered features, chatbots, or LLM-based
-  automation.
-license: MIT
-metadata:
-  trit: 0
-  source: wshobson/agents
+version: 1.0.0
 ---
+
 
 # LLM Application Development
 
@@ -218,3 +214,66 @@ async function safeLLMCall<T>(
 - **Cost Control**: Use cheaper models for simple tasks
 - **Latency**: Stream responses for better UX
 - **Privacy**: Don't send PII to external APIs
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+llm-application-dev (−) + SDF.Ch5 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch6: Layering
+- Ch8: Degeneracy
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

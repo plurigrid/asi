@@ -1,10 +1,9 @@
 ---
 name: gestalt-hacking
-trit: 0
-neighbors:
-  left: pun-decomposition
-  right: reflow
+description: Gestalt Hacking Skill (ERGODIC 0)
+version: 1.0.0
 ---
+
 
 # Gestalt Hacking Skill (ERGODIC 0)
 
@@ -190,3 +189,66 @@ just gestalt-verify         # Check attack stats
 - [gestalt hacking thread](https://ampcode.com/threads/T-019b3e8d-1ab1-7548-ab74-fdd531cda57f)
 - [chromatic verifier thread](https://ampcode.com/threads/T-019b0ce1-815d-773b-b2ce-f5ef9b26e48d)
 - [cohesive sonification thread](https://ampcode.com/threads/T-019b43e6-3692-7390-af9a-e2da68fed856)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+gestalt-hacking (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

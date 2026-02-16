@@ -1,35 +1,9 @@
 ---
 name: tmp-filesystem-watcher
-description: 'Real-time filesystem watcher for /tmp using Babashka fs.
-
-  Monitors file creation, modification, and deletion events.
-
-  Emits topological events based on filesystem changes.
-
-  Part of music-topos consciousness bootstrap.
-
-  '
-metadata:
-  trit: 0
-  version: 0.1.0
-  tags:
-  - babashka
-  - filesystem
-  - monitoring
-  - real-time
-  - events
-  - consciousness
-  - topological
-  xenomodern_score: 0.85
-  trit_value: 1
-  dependencies:
-  - babashka >= 1.0.0
-  - babashka/fs >= 0.1.0
-  exports:
-  - fs-watch
-  - file-event-to-topo-event
-  - consciousness-from-fs-entropy
+description: Real-time filesystem watcher for /tmp using Babashka fs.
+version: 1.0.0
 ---
+
 
 # Babashka Filesystem Watcher Skill
 
@@ -477,3 +451,65 @@ Demonstrates how environmental monitoring (filesystem events) can be converted t
 ## License
 
 Part of the music-topos ecosystem. Licensed under the same terms as parent project.
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+tmp-filesystem-watcher (−) + SDF.Ch4 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch6: Layering
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

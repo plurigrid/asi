@@ -1,9 +1,9 @@
 ---
 name: dynamic-sufficiency-goblin
 description: Self-regulating Goblins actor implementing Ivan Illich's dynamic sufficiency
-metadata:
-  trit: +1
+version: 1.0.0
 ---
+
 
 # Dynamic Sufficiency Goblin
 
@@ -133,3 +133,27 @@ flox install guile guile-goblins guile-fibers guile-gnutls
 ```
 braindance-worlds (0) ⊗ dynamic-sufficiency (+1) ⊗ acsets (-1) = 0 ✓
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+dynamic-sufficiency-goblin (−) + SDF.Ch1 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.

@@ -1,3 +1,9 @@
+---
+name: cats-for-ai
+description: cats.for" (Categories for AI)
+version: 1.0.0
+---
+
 # cats.for" (Categories for AI)
 
 > "Category theory is compositionality made formal"
@@ -370,3 +376,29 @@ just cats4ai-integrate SKILL_NAME
 **Trit**: 0 (ERGODIC)
 **Poly**: Inaccessible worlds as colors maximal
 **GF(3)**: Conserved across all triads
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+cats-for-ai (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+- Ch6: Layering
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

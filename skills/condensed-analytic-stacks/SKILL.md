@@ -1,10 +1,9 @@
 ---
 name: condensed-analytic-stacks
 description: Scholze-Clausen condensed mathematics bridge to sheaf neural networks
-  via 6-functor formalism
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # condensed-analytic-stacks Skill
 
@@ -354,3 +353,68 @@ just sheaf-bridge-demo        # Demo condensed→sheaf NN bridge
 - `lib/lispsyntax_acset_bridge.jl` - LispSyntax.jl ↔ ACSet.jl bridge
 - `PONTRYAGIN_DUALITY_COMPREHENSIVE_ANALYSIS.md` - Condensed extension (lines 844-860)
 - `LISPSYNTAX_ACSET_BRIDGE_COMPLETE.md` - Integration summary
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+condensed-analytic-stacks (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+- Ch1: Flexibility through Abstraction
+- Ch5: Evaluation
+- Ch3: Variations on an Arithmetic Theme
+- Ch2: Domain-Specific Languages
+- Ch6: Layering
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

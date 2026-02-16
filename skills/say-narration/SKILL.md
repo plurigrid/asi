@@ -1,8 +1,9 @@
 ---
 name: say-narration
 description: Use macOS text-to-speech for agent narration and announcements. Sub-agents announce themselves using different language voices speaking English. Use for multi-agent workflows where each agent has a distinct voice identity.
-compatibility: macOS only. Uses built-in `say` command.
+version: 1.0.0
 ---
+
 
 # Say Narration (macOS TTS)
 
@@ -125,3 +126,65 @@ Each voice interaction contributes to the triadic balance:
 - Use Premium voices for primary agents (best quality)
 - Never use Daniel or any British male voices
 - Never use novelty/effect voices
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+say-narration (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

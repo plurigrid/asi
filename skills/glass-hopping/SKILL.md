@@ -1,11 +1,9 @@
 ---
 name: glass-hopping
-description: "Glass Bead Game + World Hopping via Observational Bridge Types. Navigate possibility space through ordered locale ≪ relations with Narya-verified transitions."
-trit: 0
-polarity: ERGODIC
-depends_on: [glass-bead-game, world-hopping, ordered-locale]
-source: "Synthesis of Hesse, Badiou, Heunen-van der Schaaf (2024)"
+description: Glass Bead Game + World Hopping via Observational Bridge Types. Navigate possibility space through ordered locale ≪ relations with Narya-verified transitions.
+version: 1.0.0
 ---
+
 
 # Glass Hopping: Observational Bridge Navigation
 
@@ -366,3 +364,65 @@ just glass-hop-demo
 **GF(3)**: Conserved at each hop
 **Bridge Types**: Observational (asymmetric, directed)
 **Triangle Inequality**: Enforced by ≪ transitivity
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+glass-hopping (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch6: Layering
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

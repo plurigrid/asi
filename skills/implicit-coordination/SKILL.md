@@ -1,10 +1,9 @@
 ---
 name: implicit-coordination
-description: "Stigmergic agent coordination through environment modification, not messages. Vehicle semantics where carrier encodes meaning."
-trit: 0
-polarity: ERGODIC
-source: "Grassé (1959) + Susi & Ziemke (2001) + Paradigm Multiverse (2025)"
+description: Stigmergic agent coordination through environment modification, not messages. Vehicle semantics where carrier encodes meaning.
+version: 1.0.0
 ---
+
 
 # Implicit Coordination Skill
 
@@ -253,3 +252,66 @@ just verse-stigmergy
 - [world-extractable-value](../world-extractable-value/SKILL.md) - WEV at Markov blanket
 - [chromatic-walk](../chromatic-walk/SKILL.md) - 3-agent exploration
 - [shadow-goblin](../shadow-goblin/SKILL.md) - Trace observation
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+implicit-coordination (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch5: Evaluation
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

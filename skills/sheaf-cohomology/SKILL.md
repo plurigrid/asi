@@ -1,11 +1,9 @@
 ---
 name: sheaf-cohomology
 description: Čech cohomology for local-to-global consistency verification in code
-  structure and data schemas.
-license: UNLICENSED
-metadata:
-  source: local
+version: 1.0.0
 ---
+
 
 # Sheaf Cohomology Skill: Local-to-Global Verification
 
@@ -210,3 +208,66 @@ GF(3) Trit: -1 (MINUS/Validator)
 **Trit**: -1 (MINUS)
 **Color**: #2626D8 (Blue)
 **GF(3)**: Forms valid triads with ERGODIC + PLUS skills
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+sheaf-cohomology (−) + SDF.Ch8 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+- Ch2: Domain-Specific Languages
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: -1 (MINUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #FF6B6B
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

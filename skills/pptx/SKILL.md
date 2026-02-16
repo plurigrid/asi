@@ -1,13 +1,9 @@
 ---
 name: pptx
 description: Presentation creation, editing, and analysis. When Claude needs to work
-  with presentations (.pptx files) for creating new presentations, modifying content,
-  working with layouts, adding speaker notes, or any presentation tasks.
-license: Apache-2.0
-metadata:
-  trit: 0
-  source: anthropics/skills
+version: 1.0.0
 ---
+
 
 # PowerPoint Processing
 
@@ -116,3 +112,63 @@ prs.save('modified.pptx')
 - Keep text minimal, use visuals
 - Use Inches() or Pt() for sizing
 - Save frequently during creation
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+pptx (○) + SDF.Ch7 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

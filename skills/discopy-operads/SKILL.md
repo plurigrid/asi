@@ -1,6 +1,6 @@
 ---
 name: discopy-operads
-description: 'DiscoPy Operads Skill'
+description: DiscoPy Operads Skill
 version: 1.0.0
 ---
 
@@ -9,6 +9,17 @@ version: 1.0.0
 > **Repo Color:** `#64e3ec` | **Seed:** `0x128b6ef4564e3a00` | **Index:** 224/1055
 
 DisCoPy: Python toolkit for computing with string diagrams, monoidal categories, and operads.
+
+## bmorphism Contributions
+
+> *"universal topos construction for social cognition and democratization of mathematical approach to problem-solving to all"*
+> — [Plurigrid: the story thus far](https://gist.github.com/bmorphism/a400e174b9f93db299558a6986be0310)
+
+**Operads as Skill Composition**: DisCoPy's operad module implements the colored operad structure that bmorphism uses for skill composition. Each skill is an operation with typed inputs/outputs; composition follows operad laws.
+
+**Active Inference Connection**: The operadic structure enables hierarchical [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) — nested perception-action loops where higher-level beliefs parameterize lower-level policies.
+
+**GF(3) Colored Operads**: Following the paper "On the homotopy theory of equivariant colored operads" (Bonventre & Pereira), colors can encode trit values {-1, 0, +1} for balanced skill composition.
 
 ## Quick Reference
 
@@ -365,3 +376,69 @@ inner = Hypergraph(
 ---
 
 *Chromatic seed: `0x128b6ef4564e3a00` | Color: `#64e3ec`*
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+- `operads`: 5 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 9. Generic Procedures
+
+**Concepts**: dispatch, multimethod, predicate dispatch, generic
+
+### GF(3) Balanced Triad
+
+```
+discopy-operads (+) + SDF.Ch9 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch6: Layering
+
+### Connection Pattern
+
+Generic procedures dispatch on predicates. This skill selects implementations dynamically.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

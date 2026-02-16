@@ -1,9 +1,9 @@
 ---
 name: lhott-cohesive-linear
-description: "Cohesive Linear HoTT patterns for interaction entropy with diagram generation. Implements Schreiber's cohesive modalities (♯,♭,ʃ) and Riley's linear modality (♮) for quantum-classical bridging."
-trit: 0
-polarity: ERGODIC
+description: Cohesive Linear HoTT patterns for interaction entropy with diagram generation. Implements Schreiber's cohesive modalities (♯,♭,ʃ) and Riley's linear modality (♮) for quantum-classical bridging.
+version: 1.0.0
 ---
+
 
 # LHoTT Cohesive Linear Skill
 
@@ -197,3 +197,65 @@ just lhott-full-export
 - Schreiber, U. (2014). "Quantization via Linear Homotopy Types"
 - Riley, M. (2022). "A Bunched Homotopy Type Theory for Synthetic Stable Homotopy Theory"
 - [nLab: Cohesive HoTT](https://ncatlab.org/nlab/show/cohesive+homotopy+type+theory)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `linear-algebra`: 112 citations in bib.duckdb
+- `homotopy-theory`: 29 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+lhott-cohesive-linear (−) + SDF.Ch3 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.
