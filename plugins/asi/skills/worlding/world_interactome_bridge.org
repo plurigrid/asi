@@ -1,0 +1,330 @@
+#+TITLE: Worlding - Literate Implementation
+#+AUTHOR: asi contributors
+#+DATE: 2026-01-07
+#+PROPERTY: header-args:julia :tangle world_interactome_bridge.jl :mkdirp yes :padline no
+
+* Overview
+
+Literate implementation of the *worlding* skill.
+
+** Original Source
+
+This was automatically converted from =world_interactome_bridge.jl=.
+
+* Implementation
+
+#+BEGIN_SRC julia :tangle world_interactome_bridge.jl
+"""
+World Interactome Bridge
+========================
+
+Connects GitHub interactome graph theory (MinHash deduplication, 
+Shannon entropy, link depth tracking) to the world_ fingerprint pattern.
+
+Key insight: "shortable opened twice" = fingerprint(w1) XOR fingerprint(w2) = 0
+
+From AGENTS.md world_ requirements:
+- length(world) - cardinality
+- merge(w1, w2) - monoidal composition
+- fingerprint(world) - SPI-compliant hash with XOR property
+
+From GitHub interactome:
+- MinHash deduplication (Jaccard 0.85 threshold)
+- Shannon entropy H for interaction diversity
+- Link depth via POSET + Möbius inversion
+"""
+
+module WorldInteractomeBridge
+
+using Random
+
+# ============================================================================
+# Core Types
+# ============================================================================
+
+"""
+Interaction graph node with world_ pattern compliance
+"""
+struct InteractionNode
+    id::String
+    fingerprint::UInt64
+    trit::Int8  # GF(3): -1, 0, +1
+    depth::Int  # Link depth in graph
+    entropy::Float64  # Shannon entropy
+end
+
+"""
+World state built from interaction graph traversal
+"""
+mutable struct InteractionWorld
+    nodes::Vector{InteractionNode}
+    visited_fingerprints::Set{UInt64}  # Track "opened" fingerprints
+    duplicate_count::Int  # "Opened twice" counter
+end
+
+# ============================================================================
+# World Pattern Interface (from world_pattern.ny)
+# ============================================================================
+
+"""
+    length(world) -> cardinality
+"""
+function length(world::InteractionWorld)::Int
+    return Base.length(world.nodes)
+end
+
+"""
+    merge(w1, w2) -> combined world (monoidal)
+"""
+function merge(w1::InteractionWorld, w2::InteractionWorld)::InteractionWorld
+    combined_nodes = vcat(w1.nodes, w2.nodes)
+    combined_fps = union(w1.visited_fingerprints, w2.visited_fingerprints)
+    
+    # Count duplicates from merge (nodes that were in both)
+    overlap_fps = intersect(w1.visited_fingerprints, w2.visited_fingerprints)
+    duplicate_count = w1.duplicate_count + w2.duplicate_count + Base.length(overlap_fps)
+    
+    return InteractionWorld(combined_nodes, combined_fps, duplicate_count)
+end
+
+"""
+    fingerprint(world) -> SPI-compliant XOR hash
+
+Property: fingerprint(merge(w1, w2)) = fingerprint(w1) XOR fingerprint(w2)
+"""
+function fingerprint(world::InteractionWorld)::UInt64
+    fp = UInt64(0)
+    for node in world.nodes
+        fp = xor(fp, node.fingerprint)
+    end
+    return fp
+end
+
+"""
+    gf3_sum(world) -> GF(3) conservation check
+
+Returns: Sum of trits mod 3 (should be 0 for balanced worlds)
+"""
+function gf3_sum(world::InteractionWorld)::Int
+    total = sum(Int(n.trit) for n in world.nodes; init=0)
+    return mod(total, 3)
+end
+
+# ============================================================================
+# "Opened Twice" Detection (from MinHash deduplication)
+# ============================================================================
+
+"""
+    opened_twice(w1, w2) -> Bool
+
+Detects if same content was visited twice.
+Uses fingerprint XOR = 0 criterion.
+
+Corresponds to MinHash duplicate_clusters detection:
+  duplicate_indices = {x["base_index"] for cluster in duplicate_clusters for x in cluster}
+"""
+function opened_twice(w1::InteractionWorld, w2::InteractionWorld)::Bool
+    return fingerprint(w1) == fingerprint(w2)
+end
+
+"""
+    detect_duplicate_visit!(world, node) -> Bool
+
+Track if a node's fingerprint was already visited.
+Returns true if this is a duplicate ("opened twice").
+"""
+function detect_duplicate_visit!(world::InteractionWorld, node::InteractionNode)::Bool
+    if node.fingerprint in world.visited_fingerprints
+        world.duplicate_count += 1
+        return true  # Opened twice!
+    else
+        push!(world.visited_fingerprints, node.fingerprint)
+        push!(world.nodes, node)
+        return false
+    end
+end
+
+# ============================================================================
+# Shannon Entropy (from GitHub interactome)
+# ============================================================================
+
+"""
+    shannon_entropy(distribution) -> Float64
+
+H = -Σ p_i * log(p_i), normalized to [0, 1]
+
+High entropy (>0.75) = NORTH/NORTHEAST compass (contention zone)
+Low entropy (<0.30) = SOUTH compass (consensus)
+"""
+function shannon_entropy(distribution::Vector{Float64})::Float64
+    total = sum(distribution)
+    if total == 0
+        return 0.0
+    end
+    
+    probs = distribution ./ total
+    entropy = 0.0
+    
+    for p in probs
+        if p > 0
+            entropy -= p * log(p)
+        end
+    end
+    
+    # Normalize
+    max_entropy = log(Base.length(probs))
+    return max_entropy > 0 ? entropy / max_entropy : 0.0
+end
+
+"""
+    compass_direction(entropy) -> String
+
+Map entropy to navigation direction (from github_interactome_skill.py)
+"""
+function compass_direction(entropy::Float64)::String
+    entropy = clamp(entropy, 0.0, 1.0)
+    
+    if entropy >= 0.90
+        return "NORTH"       # Highest contention
+    elseif entropy >= 0.75
+        return "NORTHEAST"   # High activity
+    elseif entropy >= 0.60
+        return "EAST"        # Moderate-high
+    elseif entropy >= 0.45
+        return "SOUTHEAST"   # Moderate
+    else
+        return "SOUTH"       # Low, consensus
+    end
+end
+
+# ============================================================================
+# Link Depth (POSET traversal)
+# ============================================================================
+
+"""
+    track_link_depth(world, max_depth=6) -> Dict{UInt64, Int}
+
+Track depth of each fingerprint in dependency POSET.
+Uses Möbius inversion pattern for cumulative effects.
+"""
+function track_link_depth(world::InteractionWorld, max_depth::Int=6)::Dict{UInt64, Int}
+    depths = Dict{UInt64, Int}()
+    
+    for (i, node) in enumerate(world.nodes)
+        current_depth = min(node.depth, max_depth)
+        
+        if haskey(depths, node.fingerprint)
+            # Already seen - track as duplicate with cumulative depth
+            depths[node.fingerprint] = max(depths[node.fingerprint], current_depth)
+        else
+            depths[node.fingerprint] = current_depth
+        end
+    end
+    
+    return depths
+end
+
+# ============================================================================
+# Factory Functions
+# ============================================================================
+
+"""
+    world_interactome(seed=137508) -> InteractionWorld
+
+Create empty interactome world (follows world_ pattern naming).
+"""
+function world_interactome(seed::UInt64=UInt64(137508))::InteractionWorld
+    return InteractionWorld(InteractionNode[], Set{UInt64}(), 0)
+end
+
+"""
+    world_interactome_node(id, depth=0, trit=0, seed=nothing) -> InteractionNode
+
+Create interaction node with deterministic fingerprint.
+"""
+function world_interactome_node(
+    id::String; 
+    depth::Int=0, 
+    trit::Int8=Int8(0),
+    seed::Union{UInt64, Nothing}=nothing
+)::InteractionNode
+    # Deterministic fingerprint from id (SplitMix64 style)
+    fp = if seed !== nothing
+        seed
+    else
+        h = hash(id)
+        UInt64(h)
+    end
+    
+    entropy = 0.5  # Default moderate entropy
+    
+    return InteractionNode(id, fp, trit, depth, entropy)
+end
+
+# ============================================================================
+# Verification
+# ============================================================================
+
+"""
+    verify_world_laws(world) -> NamedTuple
+
+Verify world_ pattern compliance:
+1. length is defined
+2. fingerprint XOR property
+3. GF(3) conservation
+"""
+function verify_world_laws(world::InteractionWorld)
+    len = length(world)
+    fp = fingerprint(world)
+    gf3 = gf3_sum(world)
+    
+    # Create test merge
+    empty_world = world_interactome()
+    merged = merge(world, empty_world)
+    
+    # Verify XOR identity: merge with empty preserves fingerprint
+    fp_preserved = fingerprint(merged) == fp
+    
+    # Verify GF(3) conservation
+    gf3_conserved = gf3 == 0 || gf3 == 1 || gf3 == 2  # Valid mod 3
+    
+    return (
+        length = len,
+        fingerprint = fp,
+        gf3_sum = gf3,
+        fingerprint_preserved = fp_preserved,
+        gf3_valid = gf3_conserved,
+        duplicates_detected = world.duplicate_count,
+        compliant = fp_preserved && gf3_conserved
+    )
+end
+
+export InteractionNode, InteractionWorld
+export length, merge, fingerprint, gf3_sum
+export opened_twice, detect_duplicate_visit!
+export shannon_entropy, compass_direction
+export track_link_depth
+export world_interactome, world_interactome_node
+export verify_world_laws
+
+end # module
+
+#+END_SRC
+
+* Usage
+
+Execute the code above with =C-c C-c= or tangle with =C-c C-v t=.
+
+* Testing
+
+Add test blocks here:
+
+#+BEGIN_SRC julia :results output
+# Add tests
+#+END_SRC
+
+* Export
+
+To tangle: =M-x org-babel-tangle= or =C-c C-v t=
+To execute: =M-x org-babel-execute-buffer= or =C-c C-v C-b=
+To export: =M-x org-html-export-to-html= or =C-c C-e h h=

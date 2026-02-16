@@ -1,9 +1,11 @@
 ---
 name: zig-programming
-description: "zig-programming skill"
-version: 1.0.0
+description: >
+  Provides comprehensive Zig programming language expertise including syntax, standard library,
+  build system, memory management, error handling, and C interoperability. Use this skill when
+  working with Zig code, learning Zig concepts, debugging compilation errors, or building
+  Zig applications across multiple versions (0.2.0 through master).
 ---
-
 
 # Zig Programming Language Skill
 
@@ -300,29 +302,3 @@ Core Zig idioms:
 6. **Document public APIs** - Add `///` doc comments for exported functions
 7. **Handle optionals explicitly** - Use `orelse`, `.?`, or `if` unwrapping
 8. **No hidden control flow** - Zig has no hidden allocations, exceptions, or async
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-zig-programming (−) + SDF.Ch9 (○) + [balancer] (+) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch8: Degeneracy
-- Ch4: Pattern Matching
-- Ch2: Domain-Specific Languages
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.

@@ -1,9 +1,12 @@
 ---
 name: content-research-writer
 description: Assists in writing high-quality content by conducting research, adding
-version: 1.0.0
+  citations, improving hooks, iterating on outlines, and providing real-time feedback
+  on each section. Transforms your writing process from solo effort to collaborative
+  partnership.
+metadata:
+  trit: 0
 ---
-
 
 # Content Research Writer
 
@@ -538,64 +541,3 @@ Recommended structure for writing projects:
 - Writing case studies
 - Developing course outlines
 
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `algorithms`: 19 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 9. Generic Procedures
-
-**Concepts**: dispatch, multimethod, predicate dispatch, generic
-
-### GF(3) Balanced Triad
-
-```
-content-research-writer (○) + SDF.Ch9 (○) + [balancer] (○) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch5: Evaluation
-- Ch4: Pattern Matching
-
-### Connection Pattern
-
-Generic procedures dispatch on predicates. This skill selects implementations dynamically.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 1 (PLUS)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #4ECDC4
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

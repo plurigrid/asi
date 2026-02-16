@@ -1,9 +1,14 @@
 ---
 name: linear-logic
 description: Linear Logic Skill
-version: 1.0.0
+trit: 0
+color: "#26D826"
+catsharp:
+  home: Prof
+  poly_op: ⊗ (parallel)
+  kan_role: Adj
+  bicomodule: true
 ---
-
 
 # linear-logic Skill
 
@@ -237,46 +242,6 @@ just linear-to-inet proof.net -o output.inet
 **Trit**: -1 (MINUS - VALIDATOR)
 **GF(3)**: Validates resource usage constraints
 
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `linear-algebra`: 112 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-linear-logic (−) + SDF.Ch3 (○) + [balancer] (+) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch6: Layering
-- Ch1: Flexibility through Abstraction
-- Ch7: Propagators
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

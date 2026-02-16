@@ -1,9 +1,10 @@
 ---
 name: plr-thread-coloring
 description: PLR (Parallel/Leading-tone/Relative) transitions for thread coloring. One-hot keyspace reduction to GF(3) trits for behavior indexing. Grows perception/action information field capacity through efficient user illusion.
-version: 1.0.0
+trit: 0
+seed: 1069
+license: MIT
 ---
-
 
 # PLR Thread Coloring
 
@@ -180,27 +181,3 @@ See [detailed implementations](references/IMPLEMENTATIONS.md) for:
 **Field Growth**: Capacity × (1 + α × diversity)
 
 > *The user illusion is sufficient when the keyspace fits in working memory.*
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 1. Flexibility through Abstraction
-
-**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
-
-### GF(3) Balanced Triad
-
-```
-plr-thread-coloring (+) + SDF.Ch1 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch7: Propagators
-
-### Connection Pattern
-
-Combinators compose operations. This skill provides composable abstractions.

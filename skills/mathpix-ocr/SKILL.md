@@ -1,9 +1,9 @@
 ---
 name: mathpix-ocr
 description: Mathpix OCR for LaTeX extraction with balanced ternary checkpoints
-version: 1.0.0
+metadata:
+  trit: 0
 ---
-
 
 # mathpix-ocr - Balanced Ternary OCR Pipeline for LaTeX → ACSet Extraction
 
@@ -360,67 +360,3 @@ just mathpix-batch         # Run batch with checkpoints
 just mathpix-sonify        # Generate audio for batch
 just mathpix-acset         # Full pipeline to ACSet
 ```
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Document Processing
-- **pdf** [○] via bicomodule
-  - Document extraction
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-mathpix-ocr (○) + SDF.Ch10 (+) + [balancer] (−) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-### Secondary Chapters
-
-- Ch8: Degeneracy
-- Ch3: Variations on an Arithmetic Theme
-- Ch1: Flexibility through Abstraction
-- Ch4: Pattern Matching
-- Ch6: Layering
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

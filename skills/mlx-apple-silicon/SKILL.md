@@ -1,9 +1,9 @@
 ---
 name: mlx-apple-silicon
-description: Run LLMs on Apple Silicon with MLX/mlx_lm - unified memory, 4-bit quantization, streaming generation, prompt caching. Optimal for M-series chips.
-version: 1.0.0
+description: "Run LLMs on Apple Silicon with MLX/mlx_lm - unified memory, 4-bit quantization, streaming generation, prompt caching. Optimal for M-series chips."
+compatibility: Requires macOS with Apple Silicon (M1/M2/M3/M4), Python 3.10+, mlx, mlx-lm packages.
+trit: +1
 ---
-
 
 # MLX Apple Silicon Skill
 
@@ -641,67 +641,3 @@ def free_energy(model, x, prior_mean, prior_var):
 **GF(3)**: Generates tokens deterministically
 **Platform**: macOS with Apple Silicon
 **Active Inference**: Supports latent space extraction + free energy minimization
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Autodiff
-- **jax** [○] via bicomodule
-  - Automatic differentiation
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-mlx-apple-silicon (−) + SDF.Ch5 (−) + [balancer] (−) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch4: Pattern Matching
-- Ch6: Layering
-- Ch10: Adventure Game Example
-- Ch1: Flexibility through Abstraction
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

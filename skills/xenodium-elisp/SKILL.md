@@ -1,9 +1,14 @@
 ---
 name: xenodium-elisp
 description: "Xenodium's Emacs packages: chatgpt-shell, agent-shell, dwim-shell-command, and ACP integration for modern Emacs development."
-version: 1.0.0
+license: GPL-3.0
+metadata:
+  trit: 0
+  source: xenodium + music-topos
+  xenomodern: true
+  total_stars: 2847
+  ironic_detachment: 0.618
 ---
-
 
 # Xenodium Elisp Skill
 
@@ -215,64 +220,3 @@ just dwim-define           # Create custom dwim-shell-command
 - [xenodium.com](https://xenodium.com/) - Blog with Emacs tips
 - [YouTube: Xenodium](https://www.youtube.com/@xenodium) - Video tutorials
 - [ACP Specification](https://agentclientprotocol.com/) - Agent Client Protocol
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-xenodium-elisp (−) + SDF.Ch10 (+) + [balancer] (○) = 0
-```
-
-**Skill Trit**: -1 (MINUS - verification)
-
-### Secondary Chapters
-
-- Ch7: Propagators
-- Ch6: Layering
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

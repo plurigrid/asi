@@ -1,0 +1,37 @@
+---
+name: audit-context-building
+description: Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding.
+category: audit-context-building
+author: Trail of Bits
+source: trailofbits/skills
+license: AGPL-3.0
+trit: -1
+trit_label: MINUS
+verified: true
+featured: false
+---
+
+# Audit Context Building Skill
+
+**Trit**: -1 (MINUS)
+**Category**: audit-context-building
+**Author**: Trail of Bits
+**Source**: trailofbits/skills
+**License**: AGPL-3.0
+
+## Description
+
+Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding.
+
+## When to Use
+
+This is a Trail of Bits security skill. Refer to the original repository for detailed usage guidelines and examples.
+
+See: https://github.com/trailofbits/skills
+
+## Related Skills
+
+- audit-context-building
+- codeql
+- semgrep
+- variant-analysis

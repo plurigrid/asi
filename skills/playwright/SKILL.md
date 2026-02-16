@@ -1,9 +1,8 @@
 ---
 name: playwright
 description: Browser automation via Playwright MCP. Use for web scraping, taking screenshots, interacting with web pages, testing web UIs, and automating browser tasks. Headless browser support.
-version: 1.0.0
+compatibility: Requires npx and @anthropic-ai/mcp-server-playwright package.
 ---
-
 
 # Playwright Browser Automation
 
@@ -73,60 +72,3 @@ MCP server configured in `~/.mcp.json`:
 - Wait for page loads before interacting
 - Browser runs headless by default
 - Screenshots are useful for debugging
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 5. Evaluation
-
-**Concepts**: eval, apply, interpreter, environment
-
-### GF(3) Balanced Triad
-
-```
-playwright (○) + SDF.Ch5 (−) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 0 (ERGODIC - coordination)
-
-
-### Connection Pattern
-
-Evaluation interprets expressions. This skill processes or generates evaluable forms.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Ran_K
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

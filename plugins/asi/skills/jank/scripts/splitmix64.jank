@@ -1,0 +1,37 @@
+(defn splitmix64-next
+  "Advance SplitMix64 state. Returns [new-state output].
+   Steele/Vigna/L'Ecuyer (2014). Matches Gay.jl exactly."
+  [state]
+  (let [state' (+ state 0x9E3779B97F4A7C15)
+        z (-> state'
+              (bit-xor (bit-shift-right state' 30))
+              (* 0xBF58476D1CE4E5B9))
+        z (-> z
+              (bit-xor (bit-shift-right z 27))
+              (* 0x94D049BB133111EB))
+        z (bit-xor z (bit-shift-right z 31))]
+    [state' z]))
+
+(defn hue-from-hash [h]
+  (mod (/ (* (bit-and h 0xFFFF) 360.0) 65536.0) 360.0))
+
+(defn girard-polarity [hue]
+  (cond (< hue 120.0) :positive
+        (< hue 240.0) :neutral
+        :else          :negative))
+
+(defn tap-control [pol]
+  (case pol :positive 1 :neutral 0 :negative -1))
+
+(defn -main [& args]
+  (let [seed (if (first args) (Long/parseLong (first args)) 0)]
+    (loop [state seed, i 0]
+      (when (< i 10)
+        (let [[state' hash] (splitmix64-next state)
+              hue (hue-from-hash hash)
+              pol (girard-polarity hue)]
+          (println (str i " " (format "%016x" hash)
+                        " hue=" (format "%.1f" hue)
+                        " " (name pol)
+                        " TAP=" (tap-control pol)))
+          (recur state' (inc i)))))))

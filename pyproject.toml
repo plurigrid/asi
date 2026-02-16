@@ -1,0 +1,62 @@
+[project]
+name = "asi"
+version = "0.1.0"
+description = "Algebraic Superintelligence - Category-theoretic skill framework with GF(3) conservation (powered by Hy)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    { name = "Plurigrid", email = "hello@plurigrid.org" }
+]
+keywords = ["ai", "skills", "category-theory", "gf3", "bicomodule", "hy", "lisp", "clojure", "babashka"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Lisp",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "hy>=1.0.0",
+    "hyrule>=0.7.0",
+    "textual>=0.89.0",
+    "rich>=13.9.0",
+    "click>=8.1.0",
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+asi = "asi.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/plurigrid/asi"
+Documentation = "https://plurigrid.org/asi"
+Repository = "https://github.com/plurigrid/asi"
+
+[build-system]
+requires = ["hatchling>=1.21.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/asi"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/skills",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+]

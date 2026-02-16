@@ -1,0 +1,45 @@
+[project]
+name = "alife-uvx"
+version = "0.1.0"
+description = "TrueALIFE: Self-Indexing Automata via uvx native paths - top of skills.sh"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Plurigrid", email = "alife@plurigrid.xyz" },
+]
+keywords = ["alife", "artificial-life", "cellular-automata", "gf3", "skills", "uvx"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Artificial Life",
+]
+dependencies = [
+    "click>=8.1",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+full = [
+    "jax[cpu]>=0.4",
+    "numpy>=1.24",
+]
+
+[project.scripts]
+alife = "alife_uvx.cli:main"
+alife-spawn = "alife_uvx.cli:spawn_cmd"
+alife-walk = "alife_uvx.cli:walk_cmd"
+alife-status = "alife_uvx.cli:status_cmd"
+
+[project.urls]
+Homepage = "https://github.com/plurigrid/asi"
+Repository = "https://github.com/plurigrid/asi/tree/main/alife-uvx"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/alife_uvx"]

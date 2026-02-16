@@ -1,9 +1,14 @@
 ---
 name: clj-kondo-3color
 description: clj-kondo linter with Gay.jl 3-color integration for GF(3) conservation
-version: 1.0.0
+  in Clojure code analysis.
+license: EPL-1.0
+metadata:
+  source: clj-kondo/clj-kondo + music-topos
+  xenomodern: true
+  stars: 1800
+  ironic_detachment: 0.42
 ---
-
 
 # clj-kondo 3-Color Integration
 
@@ -199,63 +204,3 @@ just clj-kondo-asi-check          # Run with ASI safety hooks
 - [clj-kondo GitHub](https://github.com/clj-kondo/clj-kondo) (1.8k ⭐)
 - [clj-kondo Configuration](https://cljdoc.org/d/clj-kondo/clj-kondo/2025.10.23/doc/configuration)
 - [Plurigrid PolicyGrid](https://resources.aigr.id/16.3_PolicyGridxAIGrid/)
-
-
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Visualization
-- **matplotlib** [○] via bicomodule
-  - Hub for all visualization
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 4. Pattern Matching
-
-**Concepts**: unification, match, segment variables, pattern
-
-### GF(3) Balanced Triad
-
-```
-clj-kondo-3color (+) + SDF.Ch4 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch2: Domain-Specific Languages
-
-### Connection Pattern
-
-Pattern matching extracts structure. This skill recognizes and transforms patterns.
-## Cat# Integration
-
-This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
-
-```
-Trit: 0 (ERGODIC)
-Home: Prof
-Poly Op: ⊗
-Kan Role: Adj
-Color: #26D826
-```
-
-### GF(3) Naturality
-
-The skill participates in triads satisfying:
-```
-(-1) + (0) + (+1) ≡ 0 (mod 3)
-```
-
-This ensures compositional coherence in the Cat# equipment structure.

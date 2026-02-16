@@ -105,7 +105,7 @@ uv run python outlook_university.py auth
 ```bash
 # Check login
 uv run python outlook_university.py whoami
-# Logged in as: [user email]
+# Logged in as: yulia.zubak@alumni.utoronto.ca
 
 # List messages
 uv run python outlook_university.py list 10

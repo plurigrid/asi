@@ -1,9 +1,15 @@
 ---
 name: gf3-pr-verify
 description: Verify GF(3) skill conservation on pull requests. Ensures every contribution
-version: 1.0.0
+  records which skills were used with proper trit assignments (PLUS/ERGODIC/MINUS) and
+  validates that the sum is conserved (mod 3). Required for PR acceptance.
+license: Apache-2.0
+metadata:
+  trit: -1
+  color: "#3541C7"
+  role: validator
+  source: plurigrid/asi
 ---
-
 
 # GF(3) PR Verification
 
@@ -194,46 +200,6 @@ Conservation law:
 This ensures the skill lattice remains balanced across all contributions.
 
 
-
-## Scientific Skill Interleaving
-
-This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
-
-### Graph Theory
-- **networkx** [○] via bicomodule
-  - Universal graph hub
-
-### Bibliography References
-
-- `general`: 734 citations in bib.duckdb
-
-
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-gf3-pr-verify (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch4: Pattern Matching
-- Ch6: Layering
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

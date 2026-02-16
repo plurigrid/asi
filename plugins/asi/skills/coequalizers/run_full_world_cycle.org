@@ -1,0 +1,368 @@
+#+TITLE: Coequalizers - Literate Implementation
+#+AUTHOR: asi contributors
+#+DATE: 2026-01-07
+#+PROPERTY: header-args:julia :tangle run_full_world_cycle.jl :mkdirp yes :padline no
+
+* Overview
+
+Literate implementation of the *coequalizers* skill.
+
+** Original Source
+
+This was automatically converted from =run_full_world_cycle.jl=.
+
+* Implementation
+
+#+BEGIN_SRC julia :tangle run_full_world_cycle.jl
+#!/usr/bin/env julia
+
+# run_full_world_cycle.jl
+# Execute the complete 7-world cycle on all 471 skills with assigned trits
+
+using Printf
+
+@enum World begin
+    W0_REDUNDANT = 0
+    W1_QUOTIENT = 1
+    W2_PUSHOUT = 2
+    W3_BISIMULATION_GAME = 3
+    W4_SHEAF_GLUING = 4
+    W5_IRREVERSIBLE = 5
+    W6_ADHESIVE_REWRITING = 6
+end
+
+mutable struct Skill
+    name::String
+    trit::Int
+    role::String
+    behavior_hash::UInt64
+end
+
+mutable struct WorldState
+    world::World
+    skills::Vector{Skill}
+    metadata::Dict{Symbol, Any}
+end
+
+function WorldState(world::World, skills::Vector{Skill})
+    gf3_sum = sum(s.trit for s in skills)
+    metadata = Dict{Symbol, Any}(
+        :gf3_sum => gf3_sum,
+        :gf3_conserved => (gf3_sum % 3 == 0),
+        :n_validators => count(s -> s.trit == -1, skills),
+        :n_coordinators => count(s -> s.trit == 0, skills),
+        :n_generators => count(s -> s.trit == 1, skills)
+    )
+    WorldState(world, skills, metadata)
+end
+
+# Φ₀₁: Quotient redundant skills by behavioral equivalence
+function Φ₀₁_quotient(state::WorldState)::WorldState
+    @assert state.world == W0_REDUNDANT
+    
+    # Group by behavior hash
+    equivalence_classes = Dict{UInt64, Vector{Skill}}()
+    for skill in state.skills
+        hash_val = skill.behavior_hash
+        if !haskey(equivalence_classes, hash_val)
+            equivalence_classes[hash_val] = Skill[]
+        end
+        push!(equivalence_classes[hash_val], skill)
+    end
+    
+    # Take canonical representatives (first of each class)
+    canonical_skills = [class[1] for class in values(equivalence_classes)]
+    
+    new_state = WorldState(W1_QUOTIENT, canonical_skills)
+    
+    # Record quotient data
+    new_state.metadata[:n_equivalence_classes] = length(equivalence_classes)
+    new_state.metadata[:quotient_ratio] = length(canonical_skills) / length(state.skills)
+    new_state.metadata[:largest_class] = maximum(length(class) for class in values(equivalence_classes))
+    
+    return new_state
+end
+
+# Φ₁₂: Decompose via pushout = coproduct + coequalizer
+function Φ₁₂_pushout_decomposition(state::WorldState)::WorldState
+    @assert state.world == W1_QUOTIENT
+    
+    # Partition skills by trit for coproduct
+    validators = filter(s -> s.trit == -1, state.skills)
+    coordinators = filter(s -> s.trit == 0, state.skills)
+    generators = filter(s -> s.trit == 1, state.skills)
+    
+    # Apply coequalizer within each part
+    all_parts = vcat(validators, coordinators, generators)
+    
+    new_state = WorldState(W2_PUSHOUT, all_parts)
+    new_state.metadata[:coproduct_parts] = 3
+    new_state.metadata[:validators] = length(validators)
+    new_state.metadata[:coordinators] = length(coordinators)
+    new_state.metadata[:generators] = length(generators)
+    
+    return new_state
+end
+
+# Φ₂₃: Embed into bisimulation game (Attacker/Defender/Arbiter)
+function Φ₂₃_game_embedding(state::WorldState)::WorldState
+    @assert state.world == W2_PUSHOUT
+    
+    # Assign game roles based on trits
+    # -1 (VALIDATOR) → Attacker (challenges transitions)
+    # +1 (GENERATOR) → Defender (provides transitions)
+    # 0 (COORDINATOR) → Arbiter (checks GF(3))
+    
+    attackers = filter(s -> s.trit == -1, state.skills)
+    defenders = filter(s -> s.trit == 1, state.skills)
+    arbiters = filter(s -> s.trit == 0, state.skills)
+    
+    new_state = WorldState(W3_BISIMULATION_GAME, state.skills)
+    new_state.metadata[:attackers] = length(attackers)
+    new_state.metadata[:defenders] = length(defenders)
+    new_state.metadata[:arbiters] = length(arbiters)
+    new_state.metadata[:game_balanced] = (length(attackers) ≈ length(defenders))
+    
+    return new_state
+end
+
+# Φ₃₄: Construct observational sheaf (gluing dual to coequalizer)
+function Φ₃₄_observational_sheaf(state::WorldState)::WorldState
+    @assert state.world == W3_BISIMULATION_GAME
+    
+    # Sheaf sections = local observations
+    # Gluing = ensuring consistency across overlaps
+    
+    new_state = WorldState(W4_SHEAF_GLUING, state.skills)
+    new_state.metadata[:sheaf_sections] = length(state.skills)
+    new_state.metadata[:gluing_conditions] = length(state.skills) * (length(state.skills) - 1) ÷ 2
+    
+    return new_state
+end
+
+# Φ₄₅: Classify irreversible morphisms (information loss)
+function Φ₄₅_irreversibility_classifier(state::WorldState)::WorldState
+    @assert state.world == W4_SHEAF_GLUING
+    
+    # Count potential information-losing transformations
+    # Coequalizers are irreversible (many-to-one)
+    
+    irreversible_count = 0
+    reversible_count = 0
+    
+    for skill in state.skills
+        # Heuristic: VALIDATORs are often reversible (bijective checks)
+        # GENERATORs are often irreversible (creative, non-injective)
+        if skill.trit == 1
+            irreversible_count += 1
+        else
+            reversible_count += 1
+        end
+    end
+    
+    new_state = WorldState(W5_IRREVERSIBLE, state.skills)
+    new_state.metadata[:irreversible_morphisms] = irreversible_count
+    new_state.metadata[:reversible_morphisms] = reversible_count
+    new_state.metadata[:irreversibility_ratio] = irreversible_count / length(state.skills)
+    
+    return new_state
+end
+
+# Φ₅₆: Integrate with adhesive rewriting (DPO rules)
+function Φ₅₆_rewrite_integration(state::WorldState)::WorldState
+    @assert state.world == W5_IRREVERSIBLE
+    
+    # DPO (Double Pushout) rewriting
+    # L ← K → R pattern
+    
+    new_state = WorldState(W6_ADHESIVE_REWRITING, state.skills)
+    new_state.metadata[:dpo_rules] = length(state.skills)
+    new_state.metadata[:adhesive_category] = "ACSet"
+    
+    return new_state
+end
+
+# Φ₆₀: Close the cycle (return to redundant state)
+function Φ₆₀_closure(state::WorldState)::WorldState
+    @assert state.world == W6_ADHESIVE_REWRITING
+    
+    # Cycle back to W0 with learned structure
+    new_state = WorldState(W0_REDUNDANT, state.skills)
+    new_state.metadata[:cycle_complete] = true
+    new_state.metadata[:cycles_elapsed] = get(state.metadata, :cycles_elapsed, 0) + 1
+    
+    return new_state
+end
+
+function hop(state::WorldState)::WorldState
+    if state.world == W0_REDUNDANT
+        return Φ₀₁_quotient(state)
+    elseif state.world == W1_QUOTIENT
+        return Φ₁₂_pushout_decomposition(state)
+    elseif state.world == W2_PUSHOUT
+        return Φ₂₃_game_embedding(state)
+    elseif state.world == W3_BISIMULATION_GAME
+        return Φ₃₄_observational_sheaf(state)
+    elseif state.world == W4_SHEAF_GLUING
+        return Φ₄₅_irreversibility_classifier(state)
+    elseif state.world == W5_IRREVERSIBLE
+        return Φ₅₆_rewrite_integration(state)
+    elseif state.world == W6_ADHESIVE_REWRITING
+        return Φ₆₀_closure(state)
+    end
+end
+
+function cycle_worlds(initial_state::WorldState, n_cycles::Int=3)::Vector{WorldState}
+    trajectory = [initial_state]
+    current = initial_state
+    
+    for cycle in 1:n_cycles
+        println("\n" * "=" ^ 70)
+        println("CYCLE $(cycle) / $(n_cycles)")
+        println("=" ^ 70)
+        
+        for step in 1:7
+            current = hop(current)
+            push!(trajectory, current)
+            
+            world_name = string(current.world)
+            n_skills = length(current.skills)
+            gf3_status = current.metadata[:gf3_conserved] ? "✓" : "✗"
+            
+            @printf("  Step %d: %-30s | %3d skills | GF(3): %s\n", 
+                    step, world_name, n_skills, gf3_status)
+            
+            # Show key metadata
+            for (key, val) in current.metadata
+                if key in [:n_equivalence_classes, :quotient_ratio, :attackers, :defenders, :irreversibility_ratio]
+                    if val isa Float64
+                        @printf("         %-30s = %.3f\n", string(key), val)
+                    else
+                        @printf("         %-30s = %s\n", string(key), string(val))
+                    end
+                end
+            end
+        end
+    end
+    
+    return trajectory
+end
+
+function analyze_fixed_points(trajectory::Vector{WorldState})
+    println("\n" * "=" ^ 70)
+    println("FIXED POINT ANALYSIS")
+    println("=" ^ 70)
+    
+    # Count skills at each world in final cycle
+    final_cycle = trajectory[end-6:end]
+    
+    for (i, state) in enumerate(final_cycle)
+        world_name = string(state.world)
+        n_skills = length(state.skills)
+        println("  $(world_name): $(n_skills) skills")
+    end
+    
+    # Check for convergence
+    if length(trajectory) >= 14
+        cycle1_sizes = [length(s.skills) for s in trajectory[1:7]]
+        cycle2_sizes = [length(s.skills) for s in trajectory[8:14]]
+        
+        converged = cycle1_sizes == cycle2_sizes
+        println("\n  Convergence: $(converged ? "✓ YES" : "✗ NO")")
+        
+        if !converged
+            println("    Cycle 1 sizes: $(cycle1_sizes)")
+            println("    Cycle 2 sizes: $(cycle2_sizes)")
+        end
+    end
+    
+    # Find hub skills (appear in all worlds)
+    all_skill_names = Set{String}()
+    for state in trajectory
+        for skill in state.skills
+            push!(all_skill_names, skill.name)
+        end
+    end
+    
+    println("\n  Total unique skills seen: $(length(all_skill_names))")
+    
+    # Check if agent-o-rama is universal hub
+    agent_in_all = all(state -> any(s -> s.name == "agent-o-rama", state.skills), trajectory)
+    println("  agent-o-rama in all states: $(agent_in_all ? "✓ YES" : "✗ NO")")
+end
+
+# Main execution
+function main()
+    println("=" ^ 70)
+    println("FULL 7-WORLD CYCLE EXECUTION")
+    println("=" ^ 70)
+    
+    # Load skill assignments from CSV manually
+    csv_path = "/Users/bob/i/asi/skills/coequalizers/all_skill_trits.csv"
+    skills = Skill[]
+    
+    open(csv_path, "r") do f
+        readline(f)  # Skip header
+        for line in eachline(f)
+            parts = split(line, ',')
+            if length(parts) >= 3
+                skill_name = String(parts[1])
+                trit = parse(Int, parts[2])
+                role = String(parts[3])
+                push!(skills, Skill(skill_name, trit, role, hash(skill_name)))
+            end
+        end
+    end
+    
+    println("Loaded $(length(skills)) skills from $(csv_path)")
+    println()
+    
+    # Initialize at W0 (Redundant)
+    initial_state = WorldState(W0_REDUNDANT, skills)
+    
+    println("Initial State:")
+    println("  World: $(initial_state.world)")
+    println("  Skills: $(length(initial_state.skills))")
+    println("  GF(3) sum: $(initial_state.metadata[:gf3_sum])")
+    println("  GF(3) conserved: $(initial_state.metadata[:gf3_conserved])")
+    println("  Validators: $(initial_state.metadata[:n_validators])")
+    println("  Coordinators: $(initial_state.metadata[:n_coordinators])")
+    println("  Generators: $(initial_state.metadata[:n_generators])")
+    
+    # Run 3 complete cycles
+    trajectory = cycle_worlds(initial_state, 3)
+    
+    # Analyze fixed points
+    analyze_fixed_points(trajectory)
+    
+    println("\n" * "=" ^ 70)
+    println("WORLD CYCLE COMPLETE")
+    println("=" ^ 70)
+    println("  Total states visited: $(length(trajectory))")
+    println("  Cycles completed: 3")
+    println("  Final world: $(trajectory[end].world)")
+    println("  Final skill count: $(length(trajectory[end].skills))")
+    println()
+end
+
+main()
+
+#+END_SRC
+
+* Usage
+
+Execute the code above with =C-c C-c= or tangle with =C-c C-v t=.
+
+* Testing
+
+Add test blocks here:
+
+#+BEGIN_SRC julia :results output
+# Add tests
+#+END_SRC
+
+* Export
+
+To tangle: =M-x org-babel-tangle= or =C-c C-v t=
+To execute: =M-x org-babel-execute-buffer= or =C-c C-v C-b=
+To export: =M-x org-html-export-to-html= or =C-c C-e h h=

@@ -1,0 +1,125 @@
+{
+  "schema": {
+    "name": "BrowserHistory",
+    "objects": [
+      "Browser",
+      "URL",
+      "Visit",
+      "Domain"
+    ],
+    "homs": {
+      "browser_of": [
+        "URL",
+        "Browser"
+      ],
+      "domain_of": [
+        "URL",
+        "Domain"
+      ],
+      "url_of": [
+        "Visit",
+        "URL"
+      ],
+      "from_visit": [
+        "Visit",
+        "Visit"
+      ]
+    },
+    "attrs": {
+      "browser_name": [
+        "Browser",
+        "String"
+      ],
+      "url_text": [
+        "URL",
+        "String"
+      ],
+      "visit_time": [
+        "Visit",
+        "Int"
+      ],
+      "domain_name": [
+        "Domain",
+        "String"
+      ]
+    },
+    "attrtypes": [
+      "String",
+      "Int"
+    ]
+  },
+  "parts": {
+    "Browser": [
+      1,
+      2
+    ],
+    "URL": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "Visit": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Domain": [
+      1,
+      2,
+      3
+    ]
+  },
+  "subparts": {
+    "browser_of": [
+      1,
+      1,
+      1,
+      2
+    ],
+    "domain_of": [
+      1,
+      2,
+      3,
+      1
+    ],
+    "url_of": [
+      1,
+      2,
+      3,
+      1,
+      4
+    ],
+    "from_visit": [
+      null,
+      1,
+      2,
+      3,
+      null
+    ],
+    "browser_name": [
+      "ChatGPT Atlas",
+      "Safari"
+    ],
+    "url_text": [
+      "https://github.com/bmorphism/Gay.jl",
+      "https://ampcode.com/workspaces/ies",
+      "https://chatgpt.com/",
+      "https://github.com/AlgebraicJulia"
+    ],
+    "visit_time": [
+      1000,
+      1001,
+      1002,
+      1003,
+      1004
+    ],
+    "domain_name": [
+      "github.com",
+      "ampcode.com",
+      "chatgpt.com"
+    ]
+  }
+}
