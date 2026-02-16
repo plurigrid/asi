@@ -1,0 +1,42 @@
+{:paths ["src"]
+ 
+ :deps {org.clojure/clojure {:mvn/version "1.12.0"}
+        org.clojure/core.async {:mvn/version "1.6.681"}}
+ 
+ :aliases
+ {:dev
+  {:extra-paths ["dev"]
+   :extra-deps {nrepl/nrepl {:mvn/version "1.3.0"}
+                cider/cider-nrepl {:mvn/version "0.50.2"}}}
+  
+  ;; Integration with bhauman/clojure-mcp
+  :clojure-mcp
+  {:extra-deps {io.github.bhauman/clojure-mcp {:git/url "https://github.com/bhauman/clojure-mcp"
+                                                :git/sha "HEAD"}}
+   :main-opts ["-m" "clojure-mcp.main"]}
+  
+  ;; Integration with theronic/modex
+  :modex
+  {:extra-deps {io.github.theronic/modex {:git/url "https://github.com/theronic/modex"
+                                           :git/sha "HEAD"}}}
+  
+  ;; Integration with ObneyAI/grain
+  :grain
+  {:extra-deps {io.github.ObneyAI/grain {:git/url "https://github.com/ObneyAI/grain"
+                                          :git/sha "HEAD"}}}
+  
+  ;; Run color traceroute
+  :trace
+  {:main-opts ["-e" "(require 'hoppy.color-bridge) (hoppy.color-bridge/print-traceroute)"]}
+  
+  ;; Run hierarchy demo
+  :hierarchy
+  {:main-opts ["-e" "(require 'hoppy.grain-triadic) (hoppy.grain-triadic/print-hierarchy 0x42D)"]}
+  
+  ;; Start nREPL with colored TAP
+  :nrepl-color
+  {:main-opts ["-e" "(require 'hoppy.color-bridge) (hoppy.color-bridge/install-colored-tap!) (require 'nrepl.cmdline) (nrepl.cmdline/-main)"]}
+  
+  ;; Babashka compatible
+  :bb
+  {:extra-deps {babashka/fs {:mvn/version "0.5.22"}}}}}

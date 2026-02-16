@@ -1,0 +1,300 @@
+---
+metadata:
+  interface_ports:
+  - Commands
+---
+# derivational-coalgebra Skill
+
+> *Bridge between atemporal derivations (unworld) and temporal observations (coalgebra)*
+
+## The Gap
+
+The highest tension in skill space (d=2.131):
+
+```
+ATEMPORAL                              TEMPORAL
+    │                                      │
+ unworld                           temporal-coalgebra
+ dialectica                        duckdb-temporal-versioning
+ unworlding-involution             changelog-generator
+    │                                      │
+    └──────────── d = 2.131 ───────────────┘
+```
+
+## Resolution: Derivational Coalgebra
+
+Coalgebraic observation of **derivation streams** rather than time-indexed states:
+
+```
+Traditional coalgebra:    S → F(S)     where F is a functor on temporal states
+Derivational coalgebra:   D → F(D)     where D is the derivation poset
+```
+
+### Key Insight
+
+Replace `t ∈ Time` with `δ ∈ Derivation`:
+
+| Temporal | Derivational |
+|----------|--------------|
+| `state(t)` | `state(δ)` |
+| `t₁ < t₂` | `δ₁ ⊢ δ₂` |
+| `lim_{t→∞}` | `fixpoint(δ)` |
+| `∂/∂t` | `∂/∂δ` (sensitivity to derivation step) |
+
+## Core Types
+
+```haskell
+-- Derivation as a partial order (not linear time)
+data Derivation a where
+  Base :: a -> Derivation a
+  Step :: Derivation a -> (a -> a) -> Derivation a
+  Join :: Derivation a -> Derivation a -> Derivation a  -- parallel
+
+-- Coalgebraic observation
+class DerivationalCoalgebra s where
+  observe :: s -> ObservationF s
+  unfold  :: s -> Stream (Derivation s)
+
+-- The functor bridges both paradigms
+data ObservationF s = ObsF
+  { current   :: s                    -- atemporal snapshot
+  , successor :: Derivation s         -- derivational continuation
+  , temporal  :: Maybe (Time, s)      -- optional temporal embedding
+  }
+```
+
+## Implementation
+
+### Python Bridge
+
+```python
+from dataclasses import dataclass
+from typing import Generic, TypeVar, Callable, Optional
+from abc import ABC, abstractmethod
+
+S = TypeVar('S')
+
+@dataclass
+class Derivation(Generic[S]):
+    """Derivation step with optional temporal embedding."""
+    state: S
+    parent: Optional['Derivation[S]'] = None
+    rule: Optional[str] = None  # derivation rule name
+    timestamp: Optional[float] = None  # temporal embedding (optional)
+    
+    @property
+    def depth(self) -> int:
+        """Derivation depth (atemporal measure)."""
+        if self.parent is None:
+            return 0
+        return 1 + self.parent.depth
+    
+    def derive(self, f: Callable[[S], S], rule: str = "step") -> 'Derivation[S]':
+        """Create child derivation (atemporal)."""
+        return Derivation(
+            state=f(self.state),
+            parent=self,
+            rule=rule,
+            timestamp=None  # no time needed
+        )
+    
+    def embed_temporal(self, t: float) -> 'Derivation[S]':
+        """Optionally embed into temporal axis."""
+        return Derivation(
+            state=self.state,
+            parent=self.parent,
+            rule=self.rule,
+            timestamp=t
+        )
+
+class DerivationalCoalgebra(ABC, Generic[S]):
+    """
+    Bridge between atemporal derivations and temporal observations.
+    
+    Resolves the unworld ↔ temporal-coalgebra tension by:
+    1. Representing computation as derivation chains (atemporal)
+    2. Providing coalgebraic observation interface
+    3. Optionally embedding into temporal axis when needed
+    """
+    
+    @abstractmethod
+    def observe(self, d: Derivation[S]) -> S:
+        """Observe current state (works both temporally and atemporally)."""
+        pass
+    
+    @abstractmethod
+    def unfold(self, d: Derivation[S]) -> 'Stream[Derivation[S]]':
+        """Coalgebraic unfold: generate derivation stream."""
+        pass
+    
+    def to_temporal(self, stream: 'Stream[Derivation[S]]', 
+                    dt: float = 1.0) -> 'Stream[tuple[float, S]]':
+        """Embed derivation stream into temporal axis."""
+        t = 0.0
+        for d in stream:
+            yield (t, d.state)
+            t += dt
+    
+    def from_temporal(self, t_stream: 'Stream[tuple[float, S]]') -> 'Stream[Derivation[S]]':
+        """Extract derivational structure from temporal stream."""
+        prev = None
+        for t, s in t_stream:
+            d = Derivation(state=s, parent=prev, timestamp=t)
+            yield d
+            prev = d
+```
+
+### Gay.jl Color Integration
+
+```python
+DERIVATIONAL_COLORS = {
+    'atemporal': '#5713C0',   # Stream 4 (pure derivation)
+    'temporal': '#E6F463',    # Stream 2 (time-embedded)
+    'bridge': '#89DF91',      # Stream 3 (translation layer)
+}
+
+def color_derivation(d: Derivation) -> str:
+    """Color based on temporal embedding status."""
+    if d.timestamp is None:
+        return DERIVATIONAL_COLORS['atemporal']
+    else:
+        return DERIVATIONAL_COLORS['temporal']
+```
+
+## Bisimulation for Equivalence
+
+Two derivation streams are bisimilar if their observations match:
+
+```python
+def bisimilar(d1: Derivation[S], d2: Derivation[S], 
+              coalg: DerivationalCoalgebra[S]) -> bool:
+    """
+    Check bisimulation: same observations regardless of
+    whether temporal or atemporal representation.
+    """
+    obs1 = coalg.observe(d1)
+    obs2 = coalg.observe(d2)
+    
+    if obs1 != obs2:
+        return False
+    
+    # Check continuations (up to finite depth)
+    for next1, next2 in zip(coalg.unfold(d1), coalg.unfold(d2)):
+        if coalg.observe(next1) != coalg.observe(next2):
+            return False
+    
+    return True
+```
+
+## Triangle Inequality Restoration
+
+With this bridge skill:
+
+```
+d(unworld, derivational-coalgebra) ≈ 1.0
+d(derivational-coalgebra, temporal-coalgebra) ≈ 1.0
+
+Therefore:
+d(unworld, temporal-coalgebra) ≤ 1.0 + 1.0 = 2.0 ✓
+(Original: 2.131, now satisfies triangle inequality)
+```
+
+## Use Cases
+
+### 1. Version Control Without Time
+
+```python
+# Git commits as derivations, not timestamps
+class GitDerivational(DerivationalCoalgebra[Tree]):
+    def observe(self, d: Derivation[Tree]) -> Tree:
+        return d.state
+    
+    def unfold(self, d: Derivation[Tree]):
+        # Derivation graph, not timeline
+        for parent in d.parents:
+            yield parent
+```
+
+### 2. Proof Assistant States
+
+```python
+# Narya/Agda proof states as derivations
+class ProofDerivational(DerivationalCoalgebra[ProofState]):
+    def derive_tactic(self, state: ProofState, tactic: Tactic):
+        return Derivation(
+            state=apply_tactic(state, tactic),
+            parent=state,
+            rule=tactic.name
+        )
+```
+
+### 3. DuckDB Temporal Queries via Derivation
+
+```python
+# Bridge DuckDB temporal to derivational
+def temporal_to_derivational(db: duckdb.Connection):
+    """Convert temporal version table to derivation chain."""
+    rows = db.execute("""
+        SELECT * FROM version_history 
+        ORDER BY version_id
+    """).fetchall()
+    
+    prev = None
+    for row in rows:
+        d = Derivation(
+            state=row['data'],
+            parent=prev,
+            rule=row['change_type'],
+            timestamp=row['timestamp']  # preserve but not rely on
+        )
+        yield d
+        prev = d
+```
+
+## Neighbor Skills
+
+- **unworld**: Pure atemporal derivations
+- **temporal-coalgebra**: Pure temporal observations  
+- **duckdb-temporal-versioning**: Practical temporal queries
+- **proofgeneral-narya**: Proof derivations
+- **dialectica**: Constructive derivations
+
+## Resources
+
+- [Jacobs - Introduction to Coalgebra](https://www.cs.ru.nl/B.Jacobs/CLG/JacsCoalgBook.pdf)
+- [Rutten - Universal Coalgebra](https://homepages.cwi.nl/~janr/papers/files-of-papers/universal_coalgebra.pdf)
+- [unworld skill](file:///Users/bob/.claude/skills/unworld/SKILL.md)
+- [temporal-coalgebra skill](file:///Users/bob/.claude/skills/temporal-coalgebra/SKILL.md)
+
+---
+
+## End-of-Skill Interface
+
+## Commands
+
+```bash
+# Convert temporal log to derivational
+python derivational_coalgebra.py --input temporal.log --output derivations.json
+
+# Check bisimulation
+python derivational_coalgebra.py --bisim d1.json d2.json
+
+# Embed derivations into time
+python derivational_coalgebra.py --embed derivations.json --dt 1.0
+```
+
+
+---
+
+## Autopoietic Marginalia
+
+> **The interaction IS the skill improving itself.**
+
+Every use of this skill is an opportunity for worlding:
+- **MEMORY** (-1): Record what was learned
+- **REMEMBERING** (0): Connect patterns to other skills  
+- **WORLDING** (+1): Evolve the skill based on use
+
+
+
+*Add Interaction Exemplars here as the skill is used.*

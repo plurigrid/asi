@@ -1,0 +1,104 @@
+-- 11labsACSet Unison Abilities
+-- ElevenLabs voice synthesis with GF(3) conservation
+
+structural type VoiceID = VoiceID Text
+
+structural type Trit = Minus | Ergodic | Plus
+
+structural type Voice = { 
+  id : VoiceID, 
+  name : Text, 
+  trit : Trit,
+  language : Text 
+}
+
+structural type Audio = Audio Bytes
+
+structural type Generation = {
+  voice : Voice,
+  text : Text,
+  audio : Audio,
+  characterCount : Nat
+}
+
+-- The ElevenLabs ability
+ability ElevenLabs where
+  -- Synthesize text to audio using a voice
+  synthesize : Text -> Voice -> {ElevenLabs} Audio
+  
+  -- List all available voices
+  listVoices : {ElevenLabs} [Voice]
+  
+  -- Get generation history for a voice
+  getHistory : Voice -> {ElevenLabs} [Generation]
+  
+  -- Search voices by criteria
+  searchVoices : Text -> {ElevenLabs} [Voice]
+
+-- GF(3) operations
+tritToInt : Trit -> Int
+tritToInt = cases
+  Minus -> -1
+  Ergodic -> 0
+  Plus -> +1
+
+intToTrit : Int -> Trit
+intToTrit n = 
+  match mod n 3 with
+    0 -> Ergodic
+    1 -> Plus
+    _ -> Minus
+
+-- Conservation check: sum of trits ≡ 0 (mod 3)
+conservesTrit : [Voice] -> Boolean
+conservesTrit voices = 
+  total = List.foldLeft (acc v -> acc + tritToInt v.trit) +0 voices
+  mod total 3 == 0
+
+-- Triadic voice selection: always pick balanced triple
+selectTriad : {ElevenLabs} (Voice, Voice, Voice)
+selectTriad = 
+  voices = listVoices
+  plus = List.find (v -> v.trit === Plus) voices
+  ergodic = List.find (v -> v.trit === Ergodic) voices
+  minus = List.find (v -> v.trit === Minus) voices
+  match (plus, ergodic, minus) with
+    (Some p, Some e, Some m) -> (p, e, m)
+    _ -> bug "No complete triad available"
+
+-- Narrate with all three voices (GF(3) conserved)
+narrateTriad : Text -> Text -> Text -> {ElevenLabs} (Audio, Audio, Audio)
+narrateTriad plusText ergodicText minusText =
+  (plus, ergodic, minus) = selectTriad
+  (synthesize plusText plus, 
+   synthesize ergodicText ergodic, 
+   synthesize minusText minus)
+
+-- Default voices per language/trit
+defaultVoices : Map (Text, Trit) Voice
+defaultVoices = Map.fromList [
+  (("fr", Plus), Voice (VoiceID "thomas_id") "Thomas" Plus "fr"),
+  (("en", Ergodic), Voice (VoiceID "daniel_id") "Daniel" Ergodic "en"),
+  (("de", Minus), Voice (VoiceID "anna_id") "Anna" Minus "de")
+]
+
+-- Grid: 11 labs × capabilities
+-- "11 labs in the grid" = 11 voice categories
+labsGrid : [Text]
+labsGrid = [
+  "Narration",      -- 1
+  "Characters",     -- 2
+  "Conversational", -- 3
+  "News",           -- 4
+  "Meditation",     -- 5
+  "Audiobook",      -- 6
+  "Animation",      -- 7
+  "Gaming",         -- 8
+  "Social",         -- 9
+  "Professional",   -- 10
+  "Experimental"    -- 11
+]
+
+-- Each lab has its own ability modulation
+ability LabModulation where
+  modulate : Text -> Voice -> {LabModulation} Voice

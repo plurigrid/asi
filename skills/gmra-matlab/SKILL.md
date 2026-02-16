@@ -1,0 +1,556 @@
+---
+metadata:
+  skill_type: Multi-Resolution Analysis with Dynamic Sufficiency
+  interface_ports:
+  - References
+trit: -1
+---
+# GMRA-MATLAB Skill
+
+**Geometric Multi-Resolution Analysis with Dynamic Sufficiency**
+
+```
+                    ┌─────────────────────────────────────┐
+                    │   GMRA SHARDED RECONSTRUCTABILITY   │
+                    └─────────────────────────────────────┘
+                                     │
+              ┌──────────────────────┼──────────────────────┐
+              ▼                      ▼                      ▼
+        ┌──────────┐          ┌──────────┐          ┌──────────┐
+        │  MATLAB  │          │  Julia   │          │  Python  │
+        │  GMRA    │◀────────▶│  Gay.jl  │◀────────▶│  PyGMRA  │
+        │  MINUS   │          │  ERGODIC │          │   PLUS   │
+        │   (-1)   │          │    (0)   │          │   (+1)   │
+        └────┬─────┘          └────┬─────┘          └────┬─────┘
+             │                     │                     │
+             └─────────────────────┼─────────────────────┘
+                                   ▼
+                         ┌──────────────────┐
+                         │  LOCAL RECON-    │
+                         │  STRUCTABILITY   │
+                         │  (No Trusted     │
+                         │   Setup)         │
+                         └──────────────────┘
+```
+
+**Version**: 1.0.0  
+**Trit**: -1 (MINUS - Validator/Reconstructor)  
+**GF(3) Triad**: `gmra-matlab (-1) ⊗ gay-julia (0) ⊗ gmra-python (+1) = 0`
+
+---
+
+## Core Insight: Deterministic Colors for Local Reconstructability
+
+Gay.jl's SplitMix64 provides the **homogeneous property** required for sharding:
+
+```julia
+# Property 1: Deterministic (same seed = same color everywhere)
+Gay.gay_seed(0x42D)
+color1 = Gay.color_at(137)  # Always #A855F7
+
+# Property 2: Splittable (shard computation, reconstruct locally)  
+shard_a = Gay.color_at(137, seed=0x42D)  # Node A computes
+shard_b = Gay.color_at(137, seed=0x42D)  # Node B computes independently
+@assert shard_a == shard_b  # Local reconstructability ✓
+
+# Property 3: No trusted setup (unlike zkSNARKs)
+# SplitMix64 has no "toxic waste" - seed is public knowledge
+```
+
+This replaces trusted setup requirements with **deterministic splittable RNG**.
+
+---
+
+## Dynamic Sufficiency Criteria
+
+### Pre-Execution Gate
+
+Before invoking GMRA operations, verify sufficient capabilities:
+
+```python
+class GMRASufficiencyGate:
+    """
+    Dynamic sufficiency for GMRA operations.
+    Implements ε-machine from Computational Mechanics (SFI).
+    """
+    
+    CAUSAL_STATES = {
+        'gmra:construct': {
+            'required_skills': ['linear-algebra', 'clustering', 'pca'],
+            'required_tools': ['numpy', 'scipy', 'sklearn'],
+            'optional': ['matlab', 'octave', 'julia'],
+            'min_coverage': 0.8,
+            'trit': -1
+        },
+        'gmra:query': {
+            'required_skills': ['tree-traversal', 'nearest-neighbor'],
+            'required_tools': ['numpy'],
+            'optional': ['sentence-transformers'],
+            'min_coverage': 0.9,
+            'trit': 0
+        },
+        'gmra:synthesize': {
+            'required_skills': ['interpolation', 'tangent-space', 'wasserstein'],
+            'required_tools': ['numpy', 'scipy'],
+            'optional': ['pot', 'geomloss'],
+            'min_coverage': 0.85,
+            'trit': +1
+        },
+        'gmra:visualize': {
+            'required_skills': ['plotting', 'color-mapping'],
+            'required_tools': ['matplotlib', 'gay-mcp'],
+            'optional': ['plotly', 'graphviz'],
+            'min_coverage': 0.7,
+            'trit': 0
+        }
+    }
+    
+    def check_sufficiency(self, operation: str, loaded_skills: set) -> dict:
+        """
+        Verify sufficient skills for GMRA operation.
+        
+        Returns:
+            {
+                'sufficient': bool,
+                'coverage': float,
+                'missing': list,
+                'fallback': str or None
+            }
+        """
+        if operation not in self.CAUSAL_STATES:
+            return {'sufficient': False, 'coverage': 0.0, 
+                    'missing': ['unknown-operation'], 'fallback': None}
+        
+        state = self.CAUSAL_STATES[operation]
+        required = set(state['required_skills'] + state['required_tools'])
+        
+        covered = required & loaded_skills
+        missing = required - loaded_skills
+        coverage = len(covered) / len(required) if required else 1.0
+        
+        # Check optional tools for fallback
+        fallback = None
+        if coverage < state['min_coverage']:
+            for opt in state['optional']:
+                if opt in loaded_skills:
+                    fallback = opt
+                    break
+        
+        return {
+            'sufficient': coverage >= state['min_coverage'],
+            'coverage': coverage,
+            'missing': list(missing),
+            'fallback': fallback,
+            'trit': state['trit']
+        }
+```
+
+### MATLAB Availability Detection
+
+```python
+import subprocess
+import shutil
+
+def detect_matlab_environment() -> dict:
+    """
+    Detect MATLAB/Octave availability for GMRA.
+    Follows dynamic sufficiency: prefer native, fallback gracefully.
+    """
+    result = {
+        'matlab': False,
+        'octave': False,
+        'julia': False,
+        'python_fallback': True,
+        'recommended': 'python'
+    }
+    
+    # Check MATLAB
+    matlab_path = shutil.which('matlab')
+    if matlab_path:
+        try:
+            proc = subprocess.run(['matlab', '-batch', 'disp("ok")'], 
+                                  capture_output=True, timeout=30)
+            result['matlab'] = proc.returncode == 0
+        except:
+            pass
+    
+    # Check Octave (FOSS MATLAB alternative)
+    octave_path = shutil.which('octave')
+    if octave_path:
+        try:
+            proc = subprocess.run(['octave', '--eval', 'disp("ok")'],
+                                  capture_output=True, timeout=10)
+            result['octave'] = proc.returncode == 0
+        except:
+            pass
+    
+    # Check Julia (for Gay.jl integration)
+    julia_path = shutil.which('julia')
+    if julia_path:
+        try:
+            proc = subprocess.run(['julia', '-e', 'println("ok")'],
+                                  capture_output=True, timeout=10)
+            result['julia'] = proc.returncode == 0
+        except:
+            pass
+    
+    # Determine recommendation
+    if result['matlab']:
+        result['recommended'] = 'matlab'  # Original Maggioni toolbox
+    elif result['octave']:
+        result['recommended'] = 'octave'  # FOSS alternative
+    elif result['julia']:
+        result['recommended'] = 'julia'   # Gay.jl + ACSets integration
+    else:
+        result['recommended'] = 'python'  # Pure Python fallback
+    
+    return result
+```
+
+---
+
+## GMRA Sources (Multi-Language)
+
+### 1. MATLAB (Original Maggioni Toolbox)
+
+**Source**: `https://mauromaggioni.duckdns.org/?page_id=105`  
+**Status**: ⚠️ Primary site unreliable, use mirrors
+
+```matlab
+% Maggioni GMRA Toolbox usage (if available)
+% Download from: https://github.com/samuelgerber/gmra (C++ core)
+
+% Load data
+X = randn(1000, 50);  % 1000 points in 50D
+
+% Build GMRA tree
+opts = struct();
+opts.MaxLevels = 4;
+opts.IntrinsicDim = 8;
+gmra = GMRA(X, opts);
+
+% Query at level
+[approx, cell_idx] = gmra.project(query, level);
+```
+
+### 2. R Package (C++ Backend)
+
+**Source**: `https://github.com/samuelgerber/gmra`
+
+```r
+# Install
+library(devtools)
+devtools::install_github("samuelgerber/gmra")
+
+# Usage
+library(gmra)
+tree <- gmra_create(X, max_scale = 4)
+result <- gmra_query(tree, query_point)
+```
+
+### 3. Python (Pure Implementation)
+
+**Source**: Local implementation with Gay.jl bridge
+
+```python
+from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans
+import numpy as np
+
+class SimpleGMRA:
+    """
+    GMRA with Gay.jl deterministic coloring.
+    Enables local reconstructability for sharded queries.
+    """
+    
+    def __init__(self, X, max_levels=4, intrinsic_dim=8, gay_seed=0x42D):
+        self.X = X
+        self.max_levels = max_levels
+        self.d = intrinsic_dim
+        self.gay_seed = gay_seed
+        self.tree = []
+        self._build_tree()
+    
+    def _gay_color(self, level: int, cell_idx: int) -> str:
+        """
+        Deterministic color for (level, cell).
+        Enables local reconstructability across shards.
+        """
+        # SplitMix64-style hash
+        seed = (self.gay_seed ^ (level * 0x9E3779B9) ^ (cell_idx * 0x85EBCA6B))
+        seed = ((seed >> 16) ^ seed) * 0x45D9F3B
+        seed = ((seed >> 16) ^ seed) * 0x45D9F3B
+        seed = (seed >> 16) ^ seed
+        
+        # Map to LCH color space
+        hue = (seed % 360)
+        chroma = 50 + (seed >> 8) % 50
+        lightness = 45 + (seed >> 16) % 20
+        
+        return f"lch({lightness}% {chroma} {hue})"
+    
+    def _build_tree(self):
+        """Build hierarchical tree with deterministic colors."""
+        n_clusters_per_level = [3, 6, 18, len(self.X)]
+        
+        for level, n_clusters in enumerate(n_clusters_per_level[:self.max_levels]):
+            if n_clusters >= len(self.X):
+                # Finest level: individual points
+                cells = [{
+                    'mean': self.X[i],
+                    'basis': np.eye(self.d)[:, :min(self.d, self.X.shape[1])],
+                    'indices': [i],
+                    'color': self._gay_color(level, i),
+                    'level': level
+                } for i in range(len(self.X))]
+            else:
+                cells = self._build_level(n_clusters, level)
+            
+            self.tree.append(cells)
+    
+    def _build_level(self, n_clusters: int, level: int) -> list:
+        """Build one GMRA level with local PCA."""
+        kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+        labels = kmeans.fit_predict(self.X)
+        
+        cells = []
+        for k in range(n_clusters):
+            mask = (labels == k)
+            indices = np.where(mask)[0]
+            X_cell = self.X[mask]
+            
+            if len(X_cell) == 0:
+                continue
+            
+            mean = X_cell.mean(axis=0)
+            
+            # Local PCA for tangent space
+            if len(X_cell) > self.d:
+                pca = PCA(n_components=min(self.d, len(X_cell), X_cell.shape[1]))
+                pca.fit(X_cell - mean)
+                basis = pca.components_.T
+            else:
+                basis = np.eye(X_cell.shape[1])[:, :self.d]
+            
+            cells.append({
+                'mean': mean,
+                'basis': basis,
+                'indices': indices.tolist(),
+                'color': self._gay_color(level, k),
+                'level': level
+            })
+        
+        return cells
+    
+    def project(self, x: np.ndarray, level: int) -> tuple:
+        """Project to GMRA approximation at level."""
+        cells = self.tree[level]
+        
+        dists = [np.linalg.norm(x - cell['mean']) for cell in cells]
+        nearest_idx = np.argmin(dists)
+        cell = cells[nearest_idx]
+        
+        # Project to tangent space
+        x_centered = x - cell['mean']
+        if cell['basis'].shape[0] == len(x_centered):
+            coords = cell['basis'].T @ x_centered
+            x_approx = cell['mean'] + cell['basis'] @ coords
+        else:
+            x_approx = cell['mean']
+        
+        return x_approx, nearest_idx, cell
+    
+    def local_reconstruct(self, level: int, cell_idx: int) -> dict:
+        """
+        Local reconstructability: given (level, cell_idx),
+        reconstruct full cell information without global state.
+        
+        This is the key property enabled by Gay.jl determinism.
+        """
+        cell = self.tree[level][cell_idx]
+        
+        # Color is reconstructable from (level, cell_idx) alone
+        expected_color = self._gay_color(level, cell_idx)
+        assert cell['color'] == expected_color, "Color mismatch - reconstruction failed"
+        
+        return {
+            'level': level,
+            'cell_idx': cell_idx,
+            'color': cell['color'],
+            'n_points': len(cell['indices']),
+            'reconstructable': True
+        }
+```
+
+### 4. Julia (Gay.jl + ACSets Integration)
+
+**Source**: `/Users/bob/ies/GMRA_ACSET_GOKO_MORPHISMS.jl`
+
+```julia
+using Gay, ACSets, Catlab
+
+"""
+GMRA with Gay.jl coloring and ACSet morphism structure.
+"""
+struct ColoredGMRA
+    levels::Vector{Vector{Dict}}
+    gay_seed::UInt64
+end
+
+function ColoredGMRA(X::Matrix, max_levels::Int=4; seed::UInt64=0x42D)
+    Gay.gay_seed(seed)
+    
+    levels = Vector{Vector{Dict}}()
+    n_clusters = [3, 6, 18, size(X, 1)]
+    
+    for (level, k) in enumerate(n_clusters[1:max_levels])
+        cells = build_level(X, k, level, seed)
+        push!(levels, cells)
+    end
+    
+    ColoredGMRA(levels, seed)
+end
+
+function local_reconstruct(gmra::ColoredGMRA, level::Int, cell_idx::Int)
+    """
+    Reconstruct cell from (level, cell_idx) alone.
+    No global state needed - Gay.jl provides determinism.
+    """
+    Gay.gay_seed(gmra.gay_seed)
+    expected_color = Gay.color_at(level * 1000 + cell_idx)
+    
+    cell = gmra.levels[level][cell_idx]
+    @assert cell[:color] == expected_color "Local reconstruction verified"
+    
+    cell
+end
+```
+
+---
+
+## GF(3) Conservation in GMRA Hierarchy
+
+```python
+def verify_gf3_across_levels(gmra: SimpleGMRA) -> dict:
+    """
+    Verify GF(3) trit conservation across GMRA levels.
+    
+    Property: Σ trits ≡ 0 (mod 3) at each level
+    """
+    results = {}
+    
+    for level, cells in enumerate(gmra.tree):
+        # Assign trits based on cell position modulo 3
+        trits = [(i % 3) - 1 for i in range(len(cells))]  # {-1, 0, +1}
+        total = sum(trits)
+        
+        results[level] = {
+            'n_cells': len(cells),
+            'trit_sum': total,
+            'conserved': total % 3 == 0,
+            'colors': [cell['color'] for cell in cells[:3]]
+        }
+    
+    return results
+```
+
+---
+
+## Dynamic Sufficiency Workflow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    GMRA SUFFICIENCY WORKFLOW                        │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  1. DETECT ENVIRONMENT                                              │
+│     ├─ MATLAB available? → Use Maggioni toolbox                     │
+│     ├─ Octave available? → Use FOSS fallback                        │
+│     ├─ Julia available? → Use Gay.jl + ACSets                       │
+│     └─ Python only? → Use SimpleGMRA                                │
+│                                                                     │
+│  2. CHECK SUFFICIENCY                                               │
+│     ├─ Required skills loaded?                                      │
+│     ├─ Coverage ≥ threshold?                                        │
+│     └─ GF(3) triad balanced?                                        │
+│                                                                     │
+│  3. EXECUTE WITH LOCAL RECONSTRUCTABILITY                           │
+│     ├─ Build tree with Gay.jl colors                                │
+│     ├─ Shard across nodes if distributed                            │
+│     └─ Verify: any shard can reconstruct cell from (level, idx)     │
+│                                                                     │
+│  4. VALIDATE                                                        │
+│     ├─ GF(3) conservation verified?                                 │
+│     ├─ Color determinism verified?                                  │
+│     └─ No trusted setup required? ✓                                 │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Installation
+
+```bash
+# Python (always available)
+pip install numpy scipy scikit-learn sentence-transformers
+
+# Optional: R package (C++ backend)
+R -e 'devtools::install_github("samuelgerber/gmra")'
+
+# Optional: Julia (Gay.jl integration)
+julia -e 'using Pkg; Pkg.add(["Gay", "ACSets", "Catlab"])'
+
+# Optional: Octave (FOSS MATLAB alternative)
+brew install octave  # macOS
+apt install octave   # Debian/Ubuntu
+```
+
+---
+
+## Key Properties
+
+| Property | Mechanism | Benefit |
+|----------|-----------|---------|
+| **Deterministic** | SplitMix64 seed | Same color everywhere |
+| **Splittable** | Independent streams | Parallel/distributed |
+| **No Trusted Setup** | Public seed | Unlike zkSNARKs |
+| **Local Reconstructability** | (level, idx) → cell | Sharding-friendly |
+| **GF(3) Conservation** | Σ trits ≡ 0 (mod 3) | Algebraic invariant |
+
+---
+
+---
+
+## End-of-Skill Interface
+
+## References
+
+1. **Allard, Chen & Maggioni (2012)** - GMRA foundation (ACHA)
+2. **Crutchfield & Young** - Computational Mechanics (SFI)
+3. **samuelgerber/gmra** - C++/R implementation
+4. **Gay.jl** - Deterministic coloring with SPI
+5. **GMRA_ACSET_GOKO_MORPHISMS.jl** - Local Julia implementation
+
+---
+
+**Skill Name**: gmra-matlab  
+**Type**: Multi-Resolution Analysis with Dynamic Sufficiency  
+**Trit**: -1 (MINUS - Validator/Reconstructor)  
+**Sufficiency Triad**: `gmra-matlab (-1) ⊗ gay-julia (0) ⊗ gmra-python (+1) = 0`
+
+
+---
+
+## Autopoietic Marginalia
+
+> **The interaction IS the skill improving itself.**
+
+Every use of this skill is an opportunity for worlding:
+- **MEMORY** (-1): Record what was learned
+- **REMEMBERING** (0): Connect patterns to other skills  
+- **WORLDING** (+1): Evolve the skill based on use
+
+
+
+*Add Interaction Exemplars here as the skill is used.*

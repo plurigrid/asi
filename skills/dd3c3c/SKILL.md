@@ -1,0 +1,119 @@
+---
+name: dd3c3c
+description: 'Worldmat TiDAR: 3×3×3 matrix of diffusion draft + AR verify executions
+  with GF(3) conservation'
+color: '#DD3C3C'
+hue: 0.0
+knight_tour_position: 1
+metadata:
+  interface_ports:
+  - Related Skills
+---
+# dd3c3c — Worldmat TiDAR
+
+**Color:** `#DD3C3C` (scarlet, hue 0°)  
+**Knight Tour Position:** 1 (entry point)  
+**Golden Angle:** 137.508° per step
+
+## Overview
+
+A **Worldmat** is a 3×3×3 matrix of TiDAR executions structured by:
+
+| Axis | Values | GF(3) |
+|------|--------|-------|
+| Polarity | MINUS(-1), ERGODIC(0), PLUS(+1) | Conservation |
+| Temporal | PAST(0), PRESENT(1), FUTURE(2) | Slice sum = 0 |
+| Modality | OBSERVATION(0), ACTION(1), PREDICTION(2) | Per axis |
+
+## TiDAR Pattern (arXiv:2511.08923)
+
+```
+Phase 1: Diffusion Draft (parallel)
+  └─ SplitMix64.split(n) → n independent token streams
+  
+Phase 2: AR Verify (sequential)  
+  └─ Hash chain: prev ⊕ token → verified
+```
+
+## Usage
+
+```python
+from worldmat import Worldmat, verify_spi
+
+# Initialize with drand seed
+wm = Worldmat(master_seed=0x87079c9f1d3b0474)
+
+# Execute all 27 cells via TiDAR
+wm.execute_parallel()
+
+# Verify GF(3) conservation
+gf3 = wm.verify_gf3()  # All slices sum to 0 mod 3
+
+# Verify SPI (parallel == sequential)
+spi = verify_spi(seed)  # fingerprints match ✓
+
+# Export as ACSet
+acset = wm.to_acset()
+```
+
+## Knight Tour Discovery
+
+Skills are discovered via knight moves through color space:
+
+```
+Position 1: #DD3C3C (this skill) ← ENTRY
+Position 2: #3CDD6B (+137.5°)
+Position 3: #9A3CDD (+275.0°)
+...
+Position 27: #DD3C7E (+335.2°) ← EXIT
+```
+
+Jump pattern on 3×3×3: `(±1,±2,0)`, `(±2,±1,0)`, `(±1,0,±2)`, etc.
+
+## Implementation
+
+```
+/Users/bob/ies/worldmat/worldmat.py
+```
+
+## GF(3) Invariants
+
+- Every polarity slice (9 cells): Σ trits ≡ 0 (mod 3)
+- Every temporal slice (9 cells): Σ trits ≡ 0 (mod 3)  
+- Every modality slice (9 cells): Σ trits ≡ 0 (mod 3)
+- MINUS ⊗ ERGODIC ⊗ PLUS = 0 always
+
+## Color Schema
+
+| Polarity | Hex | Trit |
+|----------|-----|------|
+| MINUS | `#9E16EF` | -1 |
+| ERGODIC | `#55D9A0` | 0 |
+| PLUS | `#AF3424` | +1 |
+
+---
+
+## End-of-Skill Interface
+
+## Related Skills
+
+- `3cdd6b` — Knight tour position 2 (next)
+- `three-match` — 3-coloring gadget
+- `spi-parallel-verify` — Fingerprint verification
+- `gay-mcp` — Deterministic color generation
+
+
+---
+
+## Autopoietic Marginalia
+
+> **The interaction IS the skill improving itself.**
+
+Every use of this skill is an opportunity for worlding:
+- **MEMORY** (-1): Record what was learned
+- **REMEMBERING** (0): Connect patterns to other skills  
+- **WORLDING** (+1): Evolve the skill based on use
+
+
+
+*Add Interaction Exemplars here as the skill is used.*
