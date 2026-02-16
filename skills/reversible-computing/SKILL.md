@@ -1,9 +1,9 @@
 ---
 name: reversible-computing
 description: "Janus and reversible languages: run programs backwards, time-symmetric computation."
-trit: 0
-bundle: strange-loops
+version: 1.0.0
 ---
+
 
 # Reversible Computing Skill
 
@@ -240,3 +240,65 @@ procedure fib(int n, int x1, int x2)
 - `thermodynamics` - Landauer limit
 - `bidirectional-programming` - Lenses
 - `interaction-nets` - Reduction is reversible
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 6. Layering
+
+**Concepts**: layered data, metadata, provenance, units
+
+### GF(3) Balanced Triad
+
+```
+reversible-computing (+) + SDF.Ch6 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+- Ch2: Domain-Specific Languages
+- Ch7: Propagators
+
+### Connection Pattern
+
+Layering adds metadata. This skill tracks provenance or annotations.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

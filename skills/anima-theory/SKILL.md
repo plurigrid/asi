@@ -1,11 +1,29 @@
 ---
 name: anima-theory
 description: ANIMA as limit construction over condensed skill applications. Formalizes prediction markets as belief ANIMAs, structure dishes as condensation media, and impact as equivalence class change. Use for understanding agency at maximum entropy, compositional world modeling, or applying Scholze-Clausen condensed mathematics to AI.
+version: 1.0.0
 ---
+
 
 # ANIMA Theory
 
 > *Agency emerges only at the limit of condensed skill applications.*
+
+## bmorphism Contributions
+
+> *"Autopoiesis refers to the self-maintenance of a system, where the system is capable of reproducing and maintaining itself. Ergodicity is a property that suggests a system will explore all accessible states given enough time."*
+> — [vibes.lol gist](https://gist.github.com/bmorphism/c41eaa531be774101c9d9b082bb369eb)
+
+**Active Inference at the Limit**: ANIMA theory connects to [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) at the categorical limit — when skill applications reach a fixed point, the agent achieves minimum free energy. The ANIMA IS the equilibrium distribution of beliefs.
+
+**Autopoietic Agency**: bmorphism's autopoiesis concept maps directly to ANIMA:
+- **Self-maintenance** → Fixed point where skills reproduce existing equivalence classes
+- **Operational closure** → The condensation limit is closed under skill composition
+- **Structural coupling** → Skills adapt to environment while preserving ANIMA identity
+
+**Condensed Mathematics Connection**: The Scholze-Clausen condensation in ANIMA theory parallels the condensed analytic stacks that bmorphism explores for sheaf neural networks. Condensation is the mathematical operation that takes infinite skill compositions to finite fixed points.
+
+**Ergodic Agency**: The ERGODIC phase (trit 0) is where true agency emerges — the system has explored all accessible states (ergodic), choices are meaningful, and equilibrium is maintained through continuous skill application.
 
 ## Core Definition
 
@@ -382,3 +400,65 @@ just anima-gf3-check
 **Trit**: 0 (ERGODIC - coordinator of phases)  
 **Phase Diagram**: BEFORE → AT → BEYOND  
 **Agency Criterion**: EnumEntropy = MaxEnumEntropy
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+anima-theory (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch5: Evaluation
+- Ch6: Layering
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

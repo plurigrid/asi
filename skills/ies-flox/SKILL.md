@@ -1,11 +1,9 @@
 ---
 name: ies-flox
 description: FloxHub publication `bmorphism/ies` - a focused development environment
-  for Clojure, Julia, Python, and multimedia with Gay.jl/Gay.bb deterministic coloring
-  integration.
-metadata:
-  trit: 0
+version: 1.0.0
 ---
+
 
 # ies-flox
 
@@ -337,3 +335,64 @@ Trit 2 (Output):      ffmpeg → render media
 - **Systems**: aarch64-darwin, x86_64-darwin, aarch64-linux, x86_64-linux
 - **Man pages**: 59
 - **Gay.jl seed**: 69
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 1. Flexibility through Abstraction
+
+**Concepts**: combinators, compose, parallel-combine, spread-combine, arity
+
+### GF(3) Balanced Triad
+
+```
+ies-flox (−) + SDF.Ch1 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Combinators compose operations. This skill provides composable abstractions.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

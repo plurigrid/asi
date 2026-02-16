@@ -1,10 +1,9 @@
 ---
 name: spi-parallel-verify
 description: Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for
-  3-way color streams with arbitrary precision.
-metadata:
-  trit: -1
+version: 1.0.0
 ---
+
 
 # SPI Parallel Verify
 
@@ -381,3 +380,64 @@ for seed in seeds:
 **Type**: Verification / Testing
 **Trit**: 0 (ERGODIC)
 **Dependencies**: gay-mcp, triad-interleave, unworld
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+spi-parallel-verify (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ×
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

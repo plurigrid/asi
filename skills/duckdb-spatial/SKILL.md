@@ -1,6 +1,6 @@
 ---
 name: duckdb-spatial
-description: 'DuckDB Spatial Skill'
+description: DuckDB Spatial Skill
 version: 1.0.0
 ---
 
@@ -215,3 +215,72 @@ duckdb-spatial (0) ⊗ osm-topology (-1) ⊗ map-projection (+1) = 0 ✓
 - [DuckDB Spatial Extension](https://duckdb.org/docs/extensions/spatial)
 - [H3 Hexagonal Grid](https://h3geo.org/)
 - PostGIS Documentation
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Dataframes
+- **polars** [○] via bicomodule
+  - High-performance dataframes
+
+### Geospatial
+- **geopandas** [○] via bicomodule
+  - Spatial data processing
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 7. Propagators
+
+**Concepts**: propagator, cell, constraint, bidirectional, TMS
+
+### GF(3) Balanced Triad
+
+```
+duckdb-spatial (−) + SDF.Ch7 (○) + [balancer] (+) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch6: Layering
+
+### Connection Pattern
+
+Propagators flow constraints bidirectionally. This skill propagates information.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.
+
+
+## Forward Reference
+
+- unified-reafference (spatial session mapping)

@@ -1,13 +1,9 @@
 ---
 name: rama-gay-clojure
 description: Red Planet Labs Rama with Gay.jl deterministic coloring for 100x backend
-  development with gay-colored parentheses as expressive as tensor shapes.
-license: Proprietary (Rama) + MIT (integration)
-metadata:
-  trit: 0
-  source: redplanetlabs/rama + music-topos
-  xenomodern: true
+version: 1.0.0
 ---
+
 
 # Rama + Gay.jl: Colored Scalable Backends
 
@@ -200,3 +196,65 @@ just rama-simulflow               # Voice-enabled Rama
 - [Rama Clojure API](https://redplanetlabs.com/docs/~/clj-defining-modules.html)
 - [Mastodon Clone](https://redplanetlabs.com/mastodon-clone) (10k LOC, Twitter-scale)
 - [Rama in 5 Minutes](https://blog.redplanetlabs.com/2025/12/02/rama-in-five-minutes-clojure-version/)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Visualization
+- **matplotlib** [○] via bicomodule
+  - Hub for all visualization
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+rama-gay-clojure (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

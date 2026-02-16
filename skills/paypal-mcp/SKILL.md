@@ -1,10 +1,9 @@
 ---
 name: paypal-mcp
 description: PayPal MCP server integration for invoices, payments, subscriptions, disputes, and transaction reporting via @paypal/mcp.
-metadata:
-  trit: 0
-  color: "#26D826"
+version: 1.0.0
 ---
+
 
 # paypal-mcp Skill
 
@@ -275,3 +274,29 @@ PayPal-MCP as ERGODIC (0) coordinator in payment triads:
 - [PayPal MCP Server](https://github.com/paypal/mcp)
 - [PayPal REST API Docs](https://developer.paypal.com/docs/api/overview/)
 - [PYUSD Documentation](https://www.paypal.com/pyusd)
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+paypal-mcp (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.

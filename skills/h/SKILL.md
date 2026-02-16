@@ -1,3 +1,9 @@
+---
+name: h
+description: 'World H Skill'
+version: 1.0.0
+---
+
 # World H Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

@@ -1,11 +1,9 @@
 ---
 name: nix-acset-worlding
 description: Model Nix store as Attributed C-Set for dependency verification, GC analysis,
-  and Flox world management with Gay.jl coloring.
-metadata:
-  trit: 0
-  short-description: Nix store as ACSet
+version: 1.0.0
 ---
+
 
 # Nix ACSet Worlding Skill
 
@@ -144,3 +142,66 @@ When two derivations depend on conflicting versions:
 2. **Eelco** - The Purely Functional Software Deployment Model
 3. **ACSets.jl** - Attributed C-Sets for algebraic databases
 4. **Gay.jl** - Deterministic coloring for store visualization
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Annotated Data
+- **anndata** [○] via bicomodule
+  - Hub for annotated matrices
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+nix-acset-worlding (○) + SDF.Ch3 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch1: Flexibility through Abstraction
+- Ch10: Adventure Game Example
+- Ch7: Propagators
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

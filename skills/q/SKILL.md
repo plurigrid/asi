@@ -1,3 +1,9 @@
+---
+name: q
+description: 'World Q Skill'
+version: 1.0.0
+---
+
 # World Q Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

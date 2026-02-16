@@ -1,8 +1,12 @@
 ---
 name: resource-sharing
-description: 'Resource Sharing Skill'
-version: 1.0.0
+description: Resource Sharing Skill
+version: 1.0.1
 ---
+
+## CRITICAL: NO DEMOS
+
+Loading this skill ≠ executing demonstration code. Execute ONLY on explicit user request.
 
 # Resource Sharing Skill
 
@@ -183,3 +187,60 @@ migrate-scum PID:
 **Trit**: 0 (ERGODIC - Coordinator)  
 **GF(3) Role**: Brokers load between PLUS and MINUS nodes  
 **Integration**: scum-score, localsend-mcp, tailscale-mesh
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+resource-sharing (−) + SDF.Ch4 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

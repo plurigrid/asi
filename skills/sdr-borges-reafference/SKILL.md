@@ -1,10 +1,7 @@
 ---
 name: sdr-borges-reafference
-description: "SDR (GNU Radio) as self-learning REPL with Borges infinite library exploration, reafference random walks, spectral gap 1/4, and maximally mixed state for agency-enabling signal processing."
-trit: 0  # ERGODIC: bridges generation (+1) and verification (-1)
+description: 'SDR (GNU Radio) as self-learning REPL with Borges infinite library exploration, reafference random walks, spectral gap 1/4, and maximally mixed state for agency-enabling signal processing.'
 version: 1.0.0
-seed: 1069
-spectral_gap: 0.25  # 1/4 optimal for slow mixing = exploration
 ---
 
 # SDR-Borges-Reafference: Agency-Enabling Signal Processing
@@ -360,3 +357,30 @@ GF(3)_SUM: 0 ✓ CONSERVED
 ---
 
 *"In the Library of Babel, every signal has already been transmitted. We need only learn to tune."*
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+sdr-borges-reafference (+) + SDF.Ch5 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+- Ch6: Layering
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.

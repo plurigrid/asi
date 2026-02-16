@@ -1,8 +1,9 @@
 ---
 name: tailscale-file-transfer
 description: Tailscale mesh VPN file transfer with open games semantics (play/coplay)
-  and bidirectional lens optics
+version: 1.0.0
 ---
+
 
 <!-- Propagated to amp | Trit: +1 | Source: .ruler/skills/tailscale-file-transfer -->
 
@@ -335,3 +336,67 @@ composed = skill.compose_with_other_game(verify_game, composition_type: :sequent
 **Documentation**: Complete ✅
 **Ready for Composition**: Yes ✅
 **Last Updated**: 2025-12-21
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `distributed-systems`: 3 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+tailscale-file-transfer (○) + SDF.Ch10 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch8: Degeneracy
+- Ch6: Layering
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: -1 (MINUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Ran_K
+Color: #FF6B6B
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

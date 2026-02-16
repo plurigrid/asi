@@ -1,16 +1,9 @@
 ---
 name: yoneda-directed
 description: Directed Yoneda lemma as directed path induction. Riehl-Shulman's key
-  insight for synthetic ∞-categories.
-metadata:
-  trit: -1
-  polarity: MINUS
-  source: 'Riehl-Shulman 2017: A type theory for synthetic ∞-categories'
-  technologies:
-  - Rzk
-  - Lean4
-  - Agda
+version: 1.0.0
 ---
+
 
 # Directed Yoneda Skill
 
@@ -79,3 +72,63 @@ This is analogous to:
 
 1. Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories." §5.
 2. [Rzk sHoTT library](https://rzk-lang.github.io/sHoTT/)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 5. Evaluation
+
+**Concepts**: eval, apply, interpreter, environment
+
+### GF(3) Balanced Triad
+
+```
+yoneda-directed (+) + SDF.Ch5 (−) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+
+### Connection Pattern
+
+Evaluation interprets expressions. This skill processes or generates evaluable forms.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Presheaves
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

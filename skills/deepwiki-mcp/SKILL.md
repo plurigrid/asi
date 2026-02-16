@@ -1,11 +1,9 @@
 ---
 name: deepwiki-mcp
 description: DeepWiki MCP server for AI-powered GitHub repository documentation and
-  Q&A
-metadata:
-  trit: 0
-  bundle: research
+version: 1.0.0
 ---
+
 
 # DeepWiki MCP Skill
 
@@ -15,6 +13,38 @@ metadata:
 **Trit**: 0 (Ergodic - coordinates knowledge retrieval)
 **Bundle**: research
 **Provider**: Cognition (Devin AI) - Official, Free, No Auth Required
+
+## Data-Mined Usage (342 calls across sessions)
+
+### Tool Frequency
+| Tool | Calls |
+|------|-------|
+| `ask_question` | 196 (57%) |
+| `read_wiki_structure` | 75 (22%) |
+| `read_wiki_contents` | 71 (21%) |
+
+### Top Queried Repos (by frequency)
+| Repo | Calls |
+|------|-------|
+| `plurigrid/zig-syrup` | 17 |
+| `ghostty-org/ghostty` | 17 |
+| `AlgebraicJulia/StructuredDecompositions.jl` | 17 |
+| `basilisp-lang/basilisp` | 12 |
+| `plurigrid/asi` | 8 |
+| `roc-lang/roc` | 6 |
+| `radarroark/xitdb` | 6 |
+| `engboris/stellogen` | 6 |
+| `bmorphism/boxxy` | 6 |
+| `bmorphism/Gay.jl` | 5 |
+| `aptos-labs/aptos-core` | 5 |
+| `sst/opencode` | 4 |
+| `openai/codex` | 4 |
+| `hylang/hy` | 4 |
+| `discopy/discopy` | 3 |
+
+### Co-occurrence
+- deepwiki + exa (3 sessions) — repo docs + web research
+- deepwiki + exa + firecrawl (3 sessions) — full research pipeline
 
 ## Overview
 
@@ -300,3 +330,67 @@ mcp__deepwiki__ask_question("redplanetlabs/agent-o-rama",
 **Auth**: None required (free)
 **Scope**: All public GitHub repos indexed on DeepWiki.com
 **Qualified**: 2025-12-22 (verified against acsets skill)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+deepwiki-mcp (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch3: Variations on an Arithmetic Theme
+- Ch1: Flexibility through Abstraction
+- Ch4: Pattern Matching
+- Ch2: Domain-Specific Languages
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

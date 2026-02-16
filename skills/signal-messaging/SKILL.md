@@ -1,8 +1,9 @@
 ---
 name: signal-messaging
 description: Send and receive Signal messages via MCP. Use this skill when you need to interact with Signal messenger - sending messages, reading conversations, or automating Signal-based workflows.
-compatibility: Requires signal-mcp server built with Cargo. Signal account must be registered.
+version: 1.0.0
 ---
+
 
 # Signal Messaging via MCP
 
@@ -56,3 +57,60 @@ Use `read_mcp_resource` to interact with Signal:
 - Check logs: `RUST_LOG=signal_mcp=debug`
 - Verify Signal account is registered/linked
 - Restart Amp after config changes
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Scientific Computing
+- **scipy** [○] via bicomodule
+  - Hub for numerical/scientific computation
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+signal-messaging (+) + SDF.Ch3 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

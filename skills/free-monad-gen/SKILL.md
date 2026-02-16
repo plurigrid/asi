@@ -1,11 +1,9 @@
 ---
 name: free-monad-gen
 description: Free Monad Generation Skill (PLUS +1)
-license: UNLICENSED
-metadata:
-  trit: 1
-  source: local
+version: 1.0.0
 ---
+
 
 # Free Monad Generation Skill (PLUS +1)
 
@@ -164,3 +162,67 @@ runState :: s -> Eff (State s ': effs) a -> Eff effs (a, s)
 - Swierstra, "Data Types à la Carte"
 - Kiselyov & Ishii, "Freer Monads, More Extensible Effects"
 - Capriotti & Kaposi, "Free Applicatives"
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `category-theory`: 139 citations in bib.duckdb
+- `monads`: 13 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 2. Domain-Specific Languages
+
+**Concepts**: DSL, wrapper, pattern-directed, embedding
+
+### GF(3) Balanced Triad
+
+```
+free-monad-gen (−) + SDF.Ch2 (−) + [balancer] (−) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+DSLs embed domain knowledge. This skill defines domain-specific operations.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 1 (PLUS)
+Home: Presheaves
+Poly Op: ⊗
+Kan Role: Lan_K
+Color: #4ECDC4
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

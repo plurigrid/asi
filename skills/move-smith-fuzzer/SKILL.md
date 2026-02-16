@@ -1,14 +1,9 @@
 ---
 name: move-smith-fuzzer
 description: Move Smith Fuzzer Skill
-trit: 0
-color: "#26D826"
-catsharp:
-  home: Prof
-  poly_op: ⊗ (parallel)
-  kan_role: Adj
-  bicomodule: true
+version: 1.0.0
 ---
+
 
 # move-smith-fuzzer Skill
 
@@ -234,6 +229,45 @@ just move-fuzz-coverage sources/ --output coverage.html
 **Trit**: -1 (MINUS - VALIDATOR)
 **GF(3)**: Validates Move contracts through differential testing
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+move-smith-fuzzer (○) + SDF.Ch8 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch5: Evaluation
+- Ch1: Flexibility through Abstraction
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

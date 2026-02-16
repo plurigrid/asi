@@ -1,44 +1,13 @@
 ---
 name: cheapskate
-description: This skill should be used to enforce token efficiency. Every token must pay rent - no preamble, hedging, restating, filler, or apologies. Evicts freeloading tokens from agent output.
-version: 0.1.0
-metadata:
-  trit: -1
-  color: "#2626D8"
-  role: validator
-created_with:
-  - skill-creator: ○ structure
-  - accept-no-substitutes: ⊖ pattern detection
-  - kolmogorov-compression: ⊕ compression ratio
+description: Cheapskate Skill
+version: 1.0.0
 ---
 
 # Cheapskate Skill
 
 **Trit**: -1 (MINUS - validator/constrainer)
-**Purpose**: Every token must pay rent. No freeloaders.
-
----
-
-## Rent-Paying Tokens
-
-A token pays rent if it:
-1. **Does work** - executes, builds, tests, deploys
-2. **Answers directly** - no preamble, no hedging
-3. **Moves forward** - no restating, no summarizing what was said
-4. **Is necessary** - couldn't be cut without losing meaning
-
-## Freeloading Tokens (evict immediately)
-
-| Freeloader | Example | Eviction |
-|------------|---------|----------|
-| Preamble | "I'll help you with..." | Delete |
-| Hedging | "It seems like maybe..." | State directly |
-| Restating | "You asked me to..." | Skip |
-| Filler | "Let me think about..." | Just do |
-| Over-explaining | 3 paragraphs for 1 line fix | Code only |
-| Permission-seeking | "Should I proceed?" | Proceed |
-| Apologies | "Sorry, I..." | Fix it |
-| Summaries | "To summarize..." | Stop |
+**Purpose**: Minimize Amp thread costs through token efficiency
 
 ---
 
@@ -171,46 +140,10 @@ As MINUS (-1) validator:
 
 ---
 
-## Freeloader Detection Pipeline
-
-### Phase 1: Pattern Scan
-```bash
-scripts/evict.sh < output.txt
-```
-
-### Phase 2: Compression Ratio
-```python
-# Highly compressible = repetitive = freeloaders
-ratio = len(zlib.compress(text)) / len(text)
-if ratio < 0.3: EVICT
-```
-
-### Phase 3: Work Ratio
-```python
-# Count tool calls vs prose tokens
-work_tokens = count_code_blocks() + count_tool_calls()
-prose_tokens = total - work_tokens
-if prose_tokens / total > 0.7: EVICT
-```
-
-## Integration with accept-no-substitutes
-
-```bash
-# Chain validators
-output | accept-no-substitutes/scripts/validate.sh | cheapskate/scripts/evict.sh
-```
-
-Both skills emit MINUS (-1) on rejection:
-- `accept-no-substitutes`: rejects incomplete work
-- `cheapskate`: rejects work that doesn't work
-
 ## Commands
 
 ```bash
-# Evict freeloaders from output
-scripts/evict.sh < output.txt
-
-# Analyze thread token efficiency
+# Analyze thread token usage
 just cheapskate-analyze <thread-id>
 
 # Estimate remaining budget
@@ -242,6 +175,33 @@ This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
 
 - `general`: 734 citations in bib.duckdb
 
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+cheapskate (+) + SDF.Ch10 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch9: Generic Procedures
+- Ch4: Pattern Matching
+- Ch8: Degeneracy
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
 ## Cat# Integration
 
 This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:

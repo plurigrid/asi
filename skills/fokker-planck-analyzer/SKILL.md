@@ -1,13 +1,22 @@
 ---
 name: fokker-planck-analyzer
-description: "' Layer 5: Convergence to Equilibrium Analysis'"
-metadata:
-  trit: 0
+description: ' Layer 5: Convergence to Equilibrium Analysis'
+version: 1.0.0
 ---
+
 
 # fokker-planck-analyzer
 
 > Layer 5: Convergence to Equilibrium Analysis
+
+## bmorphism Contributions
+
+> *"what would it mean to become the Fokker-Planck equation—identity as probability flow?"*
+> — [bmorphism gist](https://gist.github.com/bmorphism/a02cc1d1431d4e8b847fdc6276bc3614)
+
+**Philosophical Frame**: The Fokker-Planck equation describes how probability distributions evolve over time. bmorphism's question about "becoming" the equation points to the deep connection between identity and probability flow — the self as a dynamical system converging to equilibrium.
+
+**Active Inference Connection**: Fokker-Planck dynamics underlie [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) (Tull, Kleiner, Smithe) where free energy minimization drives probabilistic belief updates.
 
 **Version**: 1.0.0
 **Trit**: -1 (Validator - verifies steady state)
@@ -380,3 +389,70 @@ just fokker-solver-comparison
 **Key Property**: Verifies that Langevin training has reached Gibbs equilibrium
 **Status**: ✅ Production Ready
 **Theory**: Fokker-Planck PDE, Gibbs distribution, mixing time estimation
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Scientific Computing
+- **scipy** [○] via bicomodule
+
+### Bibliography References
+
+- `dynamical-systems`: 41 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+fokker-planck-analyzer (○) + SDF.Ch3 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch5: Evaluation
+- Ch6: Layering
+- Ch1: Flexibility through Abstraction
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 1 (PLUS)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Lan_K
+Color: #4ECDC4
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.
+
+## Forward Reference
+
+- unified-reafference (equilibrium across universes)

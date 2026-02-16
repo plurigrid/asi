@@ -1,10 +1,9 @@
 ---
 name: acsets-hatchery
 description: Attributed C-Sets as algebraic databases. Category-theoretic data structures generalizing graphs and dataframes with Gay.jl color integration.
-metadata:
-  trit: 0
-  color: "#E146A8"
+version: 1.0.0
 ---
+
 
 # ACSets Hatchery
 
@@ -93,3 +92,45 @@ algebraic-rewriting (-1) ⊗ acsets-hatchery (0) ⊗ gay-monte-carlo (+1) = 0 �
 - `acsets-algebraic-databases` - Full ACSet guide
 - `specter-acset` - Bidirectional navigation
 - `world-a` - AlgebraicJulia ecosystem
+
+## Forward Reference
+
+- unified-reafference (ACSet schema consumer)
+
+
+## Patterns That Work
+
+- Schema-first database design
+- Morphism-based foreign keys
+- Integration with unified-reafference
+
+## Patterns to Avoid
+
+- Ad-hoc schema changes
+- Missing attribute type annotations
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+acsets-hatchery (+) + SDF.Ch3 (○) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch7: Propagators
+- Ch10: Adventure Game Example
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.

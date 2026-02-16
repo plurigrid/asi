@@ -1,3 +1,9 @@
+---
+name: w
+description: 'World W Skill'
+version: 1.0.0
+---
+
 # World W Skill
 
 **Trit**: +0 (ERGODIC (coordinator/synthesizer))

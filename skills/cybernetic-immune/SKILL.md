@@ -1,14 +1,36 @@
 ---
 name: cybernetic-immune
-description: "Cybernetic immune system with Varela+Friston+Powers for Self/Non-Self discrimination via reafference, GF(3) trit encoding, and information geometry"
-trit: 0
-gf3_triad: "three-match (-1) ⊗ cybernetic-immune (0) ⊗ gay-mcp (+1)"
+description: Cybernetic immune system with Varela+Friston+Powers for Self/Non-Self discrimination via reafference, GF(3) trit encoding, and information geometry
+version: 1.0.0
 ---
+
 
 # Cybernetic Immune Skill
 
 > *"The immune system is a cognitive system: it learns, remembers, and discriminates self from non-self."*
 > — Francisco Varela, *Principles of Biological Autonomy* (1979)
+
+## bmorphism Contributions
+
+> *"Autopoietic Ergodicity combines the principles of autopoiesis and ergodicity. Autopoiesis refers to the self-maintenance of a system, where the system is capable of reproducing and maintaining itself."*
+> — [vibes.lol gist](https://gist.github.com/bmorphism/c41eaa531be774101c9d9b082bb369eb)
+
+> *"Active Inference in String Diagrams: A Categorical Account of Predictive Processing and Free Energy"*
+> — [ACT 2023](https://act2023.github.io/papers/paper42.pdf), Tull, Kleiner, Smithe
+
+**Categorical Cybernetics Connection**: The immune system's self/non-self discrimination maps directly to:
+- **Reafference** (self-caused) → SELF trit (-1)
+- **Exafference** (externally-caused) → NON-SELF trit (+1)
+- **Markov blanket** → boundary of selfhood
+
+**Key Papers** (from bmorphism's Plurigrid references):
+- [Towards Foundations of Categorical Cybernetics](https://arxiv.org/abs/2105.06332) - parametrised optics for agency
+- [Active Inference in String Diagrams](https://arxiv.org/abs/2308.00861) - free energy via category theory
+- [Categorical Cybernetics Manifesto](https://julesh.com/posts/2019-11-27-categorical-cybernetics-manifesto.html) - control theory of complex systems
+
+Related to bmorphism's work on:
+- [plurigrid/act](https://github.com/plurigrid/act) - active inference + ACT + enacted cognition
+- Autopoietic ergodicity and embodied gradualism
 
 ## 1. Core Concept
 
@@ -209,3 +231,65 @@ getDiagnostics() {
 - [`gay-mcp`](../gay-mcp/SKILL.md) — Deterministic color generation
 - [`shadow-goblin`](../shadow-goblin/SKILL.md) — Observer agent tracing
 - [`koopman-generator`](../koopman-generator/SKILL.md) — Dynamics from observables
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `game-theory`: 21 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+cybernetic-immune (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+- Ch3: Variations on an Arithmetic Theme
+- Ch4: Pattern Matching
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

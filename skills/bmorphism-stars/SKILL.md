@@ -1,17 +1,9 @@
 ---
 name: bmorphism-stars
 description: bmorphism's GitHub stars (2155 repos) and created repos - a curated index
-  of applied category theory, MCP servers, and xenomodern tooling.
-license: MIT
-metadata:
-  trit: 0
-  source: github.com/bmorphism
-  total_stars: 2155
-  public_repos: 396
-  followers: 253
-  following: 1547
-  created: 2011-12-02
+version: 1.0.0
 ---
+
 
 # bmorphism Stars & Repos Index
 
@@ -152,3 +144,66 @@ just bmorphism-mcp        # List MCP server repos
 just bmorphism-act        # Filter applied category theory
 just bmorphism-random     # Random starred repo
 ```
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Hub for all graph/network skills
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 10. Adventure Game Example
+
+**Concepts**: autonomous agent, game, synthesis
+
+### GF(3) Balanced Triad
+
+```
+bmorphism-stars (−) + SDF.Ch10 (+) + [balancer] (○) = 0
+```
+
+**Skill Trit**: -1 (MINUS - verification)
+
+### Secondary Chapters
+
+- Ch4: Pattern Matching
+- Ch6: Layering
+- Ch5: Evaluation
+- Ch7: Propagators
+
+### Connection Pattern
+
+Adventure games synthesize techniques. This skill integrates multiple patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

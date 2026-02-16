@@ -1,12 +1,9 @@
 ---
 name: crn-topology
 description: Chemical Reaction Network topology for generating and analyzing reaction
-  graph structures.
-license: UNLICENSED
-metadata:
-  trit: 1
-  source: local
+version: 1.0.0
 ---
+
 
 # CRN Topology Skill: Reaction Network Generation
 
@@ -138,3 +135,59 @@ persistent-homology (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓ 
 **Type**: Reaction Network Generator
 **Trit**: +1 (PLUS)
 **Color**: #D82626 (Red)
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+
+### Bibliography References
+
+- `graph-theory`: 38 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 3. Variations on an Arithmetic Theme
+
+**Concepts**: generic arithmetic, coercion, symbolic, numeric
+
+### GF(3) Balanced Triad
+
+```
+crn-topology (○) + SDF.Ch3 (○) + [balancer] (○) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+
+### Connection Pattern
+
+Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

@@ -1,10 +1,9 @@
 ---
 name: lyapunov-function
 description: Scalar function decreasing along trajectories
-trit: -1
-geodesic: true
-moebius: "μ(n) ≠ 0"
+version: 1.0.0
 ---
+
 
 # Lyapunov Function
 
@@ -77,3 +76,27 @@ Geodesic Invariant:
 Möbius Inversion:
   f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
 ```
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 8. Degeneracy
+
+**Concepts**: redundancy, fallback, multiple strategies, robustness
+
+### GF(3) Balanced Triad
+
+```
+lyapunov-function (○) + SDF.Ch8 (−) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch3: Variations on an Arithmetic Theme
+
+### Connection Pattern
+
+Degeneracy provides fallbacks. This skill offers redundant strategies.

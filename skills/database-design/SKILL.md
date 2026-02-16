@@ -1,13 +1,9 @@
 ---
 name: database-design
 description: Database schema design, optimization, and migration patterns for PostgreSQL,
-  MySQL, and NoSQL databases. Use for designing schemas, writing migrations, or optimizing
-  queries.
-license: MIT
-metadata:
-  trit: 0
-  source: wshobson/agents
+version: 1.0.0
 ---
+
 
 # Database Design
 
@@ -179,3 +175,63 @@ ALTER TABLE reservations ADD CONSTRAINT excl_no_overlap
 - Design for eventual consistency in distributed systems
 - Document schema decisions in migration files
 - Test migrations on production-size data before deploying
+
+
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Dataframes
+- **polars** [○] via bicomodule
+  - High-performance dataframes
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+database-design (○) + SDF.Ch4 (+) + [balancer] (−) = 0
+```
+
+**Skill Trit**: 0 (ERGODIC - coordination)
+
+### Secondary Chapters
+
+- Ch7: Propagators
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.
+## Cat# Integration
+
+This skill maps to **Cat# = Comod(P)** as a bicomodule in the equipment structure:
+
+```
+Trit: 0 (ERGODIC)
+Home: Prof
+Poly Op: ⊗
+Kan Role: Adj
+Color: #26D826
+```
+
+### GF(3) Naturality
+
+The skill participates in triads satisfying:
+```
+(-1) + (0) + (+1) ≡ 0 (mod 3)
+```
+
+This ensures compositional coherence in the Cat# equipment structure.

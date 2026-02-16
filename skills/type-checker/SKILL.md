@@ -1,14 +1,9 @@
 ---
 name: type-checker
 description: Type Checker Skill
-trit: 0
-color: "#26D826"
-catsharp:
-  home: Prof
-  poly_op: ⊗ (parallel)
-  kan_role: Adj
-  bicomodule: true
+version: 1.0.0
 ---
+
 
 # type-checker Skill
 
@@ -282,6 +277,45 @@ just move-typecheck sources/gf3.move
 **Trit**: -1 (MINUS - VALIDATOR)
 **GF(3)**: Validates type correctness before execution
 
+
+## Scientific Skill Interleaving
+
+This skill connects to the K-Dense-AI/claude-scientific-skills ecosystem:
+
+### Graph Theory
+- **networkx** [○] via bicomodule
+  - Universal graph hub
+
+### Bibliography References
+
+- `general`: 734 citations in bib.duckdb
+
+
+
+## SDF Interleaving
+
+This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
+
+### Primary Chapter: 4. Pattern Matching
+
+**Concepts**: unification, match, segment variables, pattern
+
+### GF(3) Balanced Triad
+
+```
+type-checker (+) + SDF.Ch4 (+) + [balancer] (+) = 0
+```
+
+**Skill Trit**: 1 (PLUS - generation)
+
+### Secondary Chapters
+
+- Ch1: Flexibility through Abstraction
+- Ch7: Propagators
+
+### Connection Pattern
+
+Pattern matching extracts structure. This skill recognizes and transforms patterns.
 ## Cat# Integration
 
 This skill maps to Cat# = Comod(P) as a bicomodule in the Prof home:

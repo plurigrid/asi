@@ -1,3 +1,9 @@
+---
+name: f
+description: 'World F Skill'
+version: 1.0.0
+---
+
 # World F Skill
 
 **Trit**: +1 (PLUS (generator/executor))
