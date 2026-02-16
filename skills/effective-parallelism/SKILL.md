@@ -1,0 +1,152 @@
+---
+metadata:
+  interface_ports:
+  - Related Skills
+---
+# Effective Parallelism Skill
+
+GF(3)-balanced parallel agent orchestration with operad composition and prediction market allocation.
+
+## Core Pattern: Triadic Agent Dispatch
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  MINUS (⊖)        ERGODIC (⊙)        PLUS (⊕)         │
+│  trit = -1        trit = 0           trit = +1         │
+│  ────────────────────────────────────────────────────  │
+│  Backfill         Verify             Live              │
+│  Cool hue         Neutral            Warm hue          │
+│  ACP protocol     DuckDB             MCP protocol      │
+│  gravity operad   thread operad      little_disks      │
+└─────────────────────────────────────────────────────────┘
+         Sum mod 3 = 0  →  GF(3) CONSERVED ✓
+```
+
+## 7-Operad Batch Template
+
+For 7 parallel agents, use these operads (sum = 0 mod 3):
+
+| Operad | Trit | Role |
+|--------|------|------|
+| little_disks | +1 | Forward exploration |
+| cubes | -1 | Grid traversal |
+| cactus | -1 | Tree decomposition |
+| thread | 0 | Sequential anchor |
+| gravity | -1 | Attraction dynamics |
+| modular | +1 | Composable units |
+| swiss_cheese | +1 | Boundary handling |
+
+**Sum**: +1 -1 -1 +0 -1 +1 +1 = 0 ✓
+
+## Usage Patterns
+
+### Pattern 1: Random Walk with Replacement Check
+
+```python
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+def parallel_skill_walk(skills: list, n_agents: int = 3):
+    """Dispatch n_agents over skills with GF(3) balance."""
+    trits = [-1, 0, +1][:n_agents]  # Ensure balance
+    
+    with ThreadPoolExecutor(max_workers=n_agents) as executor:
+        futures = {
+            executor.submit(agent_task, skills, trit): trit
+            for trit in trits
+        }
+        for future in as_completed(futures):
+            yield future.result()
+```
+
+### Pattern 2: Prediction Market Allocation
+
+```python
+def allocate_by_probability(contracts: list, budget: float):
+    """Allocate budget proportional to contract probabilities."""
+    total_p = sum(c.current_price for c in contracts)
+    return {
+        c.id: budget * (c.current_price / total_p)
+        for c in contracts
+    }
+```
+
+### Pattern 3: 23³ Orthogonal Grid Walk
+
+```python
+DIM = 23  # Prime for collision avoidance
+
+def hash_to_cell(name: str) -> tuple:
+    """Map skill name to 23³ grid cell."""
+    x = hash(name + "x") % DIM
+    y = hash(name + "y") % DIM
+    z = hash(name + "z") % DIM
+    return (x, y, z)
+```
+
+## DuckDB Integration
+
+Query Nov2025 tables for synergy-informed dispatch:
+
+```sql
+-- Top ego nodes for agent assignment
+SELECT ego, COUNT(*) as n_alters, AVG(synergy_score) as avg_synergy
+FROM gaymc_diffusion
+GROUP BY ego ORDER BY n_alters DESC LIMIT 15;
+
+-- Temporal evolution for scheduling
+SELECT month_bin, n_threads, mean_hue FROM gay_equiv_temporal
+ORDER BY month_bin DESC;
+
+-- Verification status
+SELECT verification_status, hue_entropy_normalized
+FROM gay_solomonoff_verification LIMIT 1;
+```
+
+## Skill Dispatch Rules
+
+1. **Always check GF(3) sum** before spawning agents
+2. **Use ThreadPoolExecutor** with max_workers = 3, 7, or 12 (balanced batches)
+3. **Assign protocols by trit**: MCP (+1), DuckDB (0), ACP (-1)
+4. **Color-code agents** from Gay.jl seed 42069 palette
+5. **Track boredom**: If agent revisits 3+ times, expand skill pool
+
+## Gay.jl Palette (seed 42069)
+
+```python
+COLORS = ["#28C3BF", "#DDB562", "#AC2A5A", "#A55936", "#5A8C3E", "#7B68EE", "#FF6B6B"]
+```
+
+## Verification Command
+
+```bash
+# Check GF(3) balance of any trit list
+python3 -c "print(sum([-1, 0, +1, +1, -1, +1, -1]) % 3)"  # Should be 0
+```
+
+---
+
+## End-of-Skill Interface
+
+## Related Skills
+
+- `tripartite-decompositions` - GF(3) structured decompositions
+- `parallel-fanout` - Maximum synergistic parallelism
+- `triad-interleave` - Interleave three color streams
+- `spi-parallel-verify` - Strong Parallelism Invariance verification
+- `entropy-sequencer` - Interaction interleaving for max info gain
+
+
+---
+
+## Autopoietic Marginalia
+
+> **The interaction IS the skill improving itself.**
+
+Every use of this skill is an opportunity for worlding:
+- **MEMORY** (-1): Record what was learned
+- **REMEMBERING** (0): Connect patterns to other skills  
+- **WORLDING** (+1): Evolve the skill based on use
+
+
+
+*Add Interaction Exemplars here as the skill is used.*

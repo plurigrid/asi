@@ -1,0 +1,182 @@
+# Topos Polynomial Functors Skill
+
+Polynomial functors and dialectica categories following Topos Institute's formalization by David Spivak, Nelson Niu, and Valeria de Paiva.
+
+## Core Concepts
+
+### The Poly Category
+
+**Poly** is the category of polynomial functors with remarkable structure:
+- Complete and cocomplete
+- 3 orthogonal factorization systems
+- 2 monoidal closed structures (⊗ composition, × parallel)
+
+### Free Sum and Product Completion: ΣΠC
+
+Objects of ΣΠC are formal expressions:
+```
+∑_{i∈I} ∏_{a∈A_i} c_{i,a}
+```
+
+**Key distributive law** (products of sums ↔ sums of products):
+```
+∏_{i∈I} ∑_{a∈A_i} c_{i,a} ≅ ∑_{ā∈∏_{i∈I}A_i} ∏_{i∈I} c_{i,ā_i}
+```
+
+### Polynomial Structure: Positions, Directions, Predicates
+
+For polynomial `p = ∑_{i∈I} y^{A_i}`:
+- **Positions** (I): Where we are
+- **Directions** (A_i): Where we can go from position i
+- **Predicates**: Properties at each position/direction pair
+
+### Morphisms in ΣΠC
+
+A morphism `φ: p → q` consists of:
+1. **Forward on positions**: `φ₁: I_p → I_q`
+2. **Backward on directions**: `φ♯: A_{q,φ₁(i)} → A_{p,i}`
+3. **Forward on predicates**: `φ₂: c_{p,i,a} → c_{q,φ₁(i),φ♯(a)}`
+
+### Vertical-Cartesian Factorization
+
+Every morphism factors as **vertical** then **cartesian**:
+- **Vertical**: Only changes position (identity on directions)
+- **Cartesian**: Only changes directions/predicates (identity on positions)
+
+```
+p --vertical--> r --cartesian--> q
+```
+
+### Monomials: Mo(C)
+
+**Monomials** are polynomials with single position:
+```
+Mo(C) ⊂ ΣΠC where objects are ∏_{a∈A} c_a
+```
+
+Monomials correspond to **bimorphic lenses** in functional programming.
+
+## Dialectica Categories
+
+### D(Set) - Dialectica Sets
+Objects: (U, X, α: U×X → 2)
+Morphisms: (f, F) where f: U → V, F: U×Y → X with α(u,F(u,y)) ⊢ β(f(u),y)
+
+### G(Set) - Gödel Dialectica  
+Like D(Set) but with total relations.
+
+### Gd(C) - Generalized Dialectica
+Parameterized by base category C with fibration structure.
+
+**Bridge**: Dialectica = ΣΠ(2) with predicate structure
+
+## Integration with Gay-MCP
+
+Map polynomial structure to color generation:
+```julia
+# Positions → Colors (deterministic from seed)
+# Directions → Trits (GF(3) backward map)
+# Predicates → Validation (forward on properties)
+
+struct PolyColor
+    position::UInt64      # seed/index → color
+    directions::NTuple{3, Int8}  # trit triple
+    predicate::Bool       # validation result
+end
+```
+
+## Integration with Open Games
+
+Polynomial functors model **open games**:
+```
+Game(X,S,R,Y) ≅ Lens(X×S, Y×R)
+             ≅ ∑_{σ:X→Y} ∏_{x:X} R → S
+```
+
+- **Positions** = Strategy profiles
+- **Directions** = Deviations
+- **Predicates** = Equilibrium conditions
+
+## Integration with Dialectica Skill
+
+```
+Dialectica ──────────────────────── Poly
+    │                                  │
+    │  D(Set) ≅ ΣΠ(2)                 │
+    │  with predicate fibration       │
+    │                                  │
+    ▼                                  ▼
+Proof-relevant                   Compositional
+game semantics                   open systems
+```
+
+## Key Formulas
+
+### Polynomial Functor Application
+```
+p(Y) = ∑_{i∈I} Y^{A_i} = ∑_{i∈I} (A_i → Y)
+```
+
+### Lens as Polynomial Morphism
+```
+Lens(S,T,A,B) ≅ Hom_Poly(Sy^S, Ty^A×B)
+```
+
+### Monoidal Composition
+```
+(p ⊗ q)(Y) = p(q(Y))
+p ⊗ q = ∑_{i∈I_p} ∑_{j∈I_q^{A_i}} y^{∑_{a∈A_i} B_{j(a)}}
+```
+
+## Usage Patterns
+
+### Define a Polynomial
+```julia
+# p(y) = 2y³ + y = ∑_{i∈{0,1}} y^{A_i}
+# where A_0 = 3, A_1 = 1
+poly_p = Polynomial(
+    positions = [:left, :right],
+    directions = Dict(:left => 3, :right => 1)
+)
+```
+
+### Compose Polynomials
+```julia
+# (p ⊗ q)(y) = p(q(y))
+composed = poly_compose(p, q)
+```
+
+### Vertical-Cartesian Factor
+```julia
+v, c = factor_vc(morphism)
+# morphism = c ∘ v
+```
+
+## References
+
+- Spivak, Niu: "Polynomial Functors: A Mathematical Theory of Interaction"
+- de Paiva: "Dialectica Categories" 
+- Topos Institute Blog: poly.math.mit.edu
+- Ahman, Uustalu: "Directed Containers as Categories"
+
+## Cross-Skill Synergies
+
+| Skill | Connection |
+|-------|------------|
+| `open-games` | Games as polynomial coalgebras |
+| `dialectica` | D(Set) ≅ ΣΠ(2) with predicates |
+| `gay-mcp` | Position=color, direction=trit |
+| `kan-extensions` | Poly has all Kan extensions |
+| `acsets` | Polynomial schemas for C-sets |
+
+## Quick Reference
+
+```
+ΣΠC = Free sum-product completion
+Poly = ΣΠ(Set)
+Mo(C) = Monomials ⊂ ΣΠC
+D(Set) = Dialectica = ΣΠ(2) + predicates
+
+Morphism = (forward-pos, backward-dir, forward-pred)
+Factor = Vertical ; Cartesian
+```

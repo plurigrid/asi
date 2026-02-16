@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""
+gay - Unified CLI for color traceroute
+
+Usage:
+  gay trace [SEED] [--json]     # 8-hop traceroute
+  gay batch SEED N              # N colors, timing
+  gay gpu SEED N                # GPU benchmark
+  gay acset SEED [FILE]         # Export Catlab JSON
+  gay julia SEED                # Run Julia bridge
+"""
+import sys, os, subprocess
+
+SKILL_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def main():
+    if len(sys.argv) < 2:
+        print(__doc__)
+        sys.exit(0)
+    
+    cmd = sys.argv[1]
+    args = sys.argv[2:]
+    
+    if cmd == "trace":
+        seed = args[0] if args else "0x42D"
+        json_flag = "--json" in args
+        script = os.path.join(SKILL_DIR, "turbo.py")
+        subprocess.run(["python3", script, seed, "8"] + (["--json"] if json_flag else []))
+    
+    elif cmd == "batch":
+        seed = args[0] if args else "0x42D"
+        n = args[1] if len(args) > 1 else "1000000"
+        script = os.path.join(SKILL_DIR, "turbo.py")
+        subprocess.run(["python3", script, seed, n])
+    
+    elif cmd == "gpu":
+        seed = args[0] if args else "0x42D"
+        n = args[1] if len(args) > 1 else "10000000"
+        script = os.path.join(SKILL_DIR, "gpu.py")
+        subprocess.run(["python3", script, seed, n])
+    
+    elif cmd == "fast":
+        seed = args[0] if args else "0x42D"
+        script = os.path.join(SKILL_DIR, "fast.py")
+        subprocess.run(["python3", script, seed])
+    
+    elif cmd == "acset":
+        seed = args[0] if args else "0x42D"
+        out = args[1] if len(args) > 1 else "/tmp/gay_acset.json"
+        script = os.path.join(SKILL_DIR, "turbo.py")
+        with open(out, "w") as f:
+            subprocess.run(["python3", script, seed, "8", "--json"], stdout=f)
+        print(f"Exported to {out}")
+    
+    elif cmd == "julia":
+        seed = args[0] if args else "0x42D"
+        julia_script = os.path.join(SKILL_DIR, "src", "AcsetGayBridge.jl")
+        code = f'''
+include("{julia_script}")
+using .AcsetGayBridge
+servers = ["sRGB", "clj-mcp", "nrepl", "grain", "modex", "fastmlx", "Gay.jl", "∞"]
+world = world_color_traceroute({seed}, servers; n_agents=27)
+render_traceroute(world)
+'''
+        subprocess.run(["julia", "-e", code])
+    
+    elif cmd == "bb":
+        seed = args[0] if args else "0x42D"
+        src = os.path.join(SKILL_DIR, "src")
+        subprocess.run(["bb", "--classpath", src, "-e", 
+            f"(require 'hoppy.color-bridge) (hoppy.color-bridge/print-traceroute {seed})"])
+    
+    else:
+        print(f"Unknown command: {cmd}")
+        print(__doc__)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()

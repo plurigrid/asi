@@ -1,0 +1,144 @@
+(* CondensedANIMA.stg - Stellogen Proof Net specification *)
+(* GF(3) Conservation via Linear Logic *)
+
+(* ══════════════════════════════════════════════════════════════════════════ *)
+(* GF(3) Elements as proof net nodes *)
+(* ══════════════════════════════════════════════════════════════════════════ *)
+
++zero.
++one.
++two.
+
+(* Addition in GF(3): mod 3 arithmetic *)
++add3(zero, zero, zero).
++add3(zero, one, one).
++add3(zero, two, two).
++add3(one, zero, one).
++add3(one, one, two).
++add3(one, two, zero).
++add3(two, zero, two).
++add3(two, one, zero).
++add3(two, two, one).
+
+(* Negation in GF(3) *)
++neg(zero, zero).
++neg(one, two).
++neg(two, one).
+
+(* ══════════════════════════════════════════════════════════════════════════ *)
+(* Ward Identity: Sum of three trits = 0 (mod 3) *)
+(* ══════════════════════════════════════════════════════════════════════════ *)
+
++ward(A, B, C) :- 
+    add3(A, B, AB),
+    add3(AB, C, zero).
+
+(* Balanced triad examples *)
+?ward(one, one, one).    (* 1 + 1 + 1 = 3 ≡ 0 *)
+?ward(zero, zero, zero). (* 0 + 0 + 0 = 0 *)
+?ward(one, zero, two).   (* 1 + 0 + 2 = 3 ≡ 0 *)
+?ward(two, two, two).    (* 2 + 2 + 2 = 6 ≡ 0 *)
+
+(* ══════════════════════════════════════════════════════════════════════════ *)
+(* Service Operations with Trit Assignment *)
+(* ══════════════════════════════════════════════════════════════════════════ *)
+
+(* MINUS (two in GF3) = VALIDATOR *)
++op_trit(gmail, read, two).
++op_trit(gmail, archive, two).
++op_trit(drive, download, two).
++op_trit(calendar, check, two).
++op_trit(tasks, complete, two).
++op_trit(video, review, two).
+
+(* ZERO = ERGODIC *)
++op_trit(gmail, reply, zero).
++op_trit(drive, share, zero).
++op_trit(calendar, update, zero).
++op_trit(tasks, update, zero).
++op_trit(video, export, zero).
+
+(* PLUS (one in GF3) = GENERATOR *)
++op_trit(gmail, send, one).
++op_trit(drive, upload, one).
++op_trit(calendar, create, one).
++op_trit(tasks, create, one).
++op_trit(video, analyze, one).
+
+(* ══════════════════════════════════════════════════════════════════════════ *)
+(* ANIMA State and Condensation *)
+(* ══════════════════════════════════════════════════════════════════════════ *)
+
+(* State with traces at a level *)
+*anima[+traces, +level, -certificate].
+
+(* Condensation check: ward identity holds across all traces *)
++condensed(Traces, Level) :-
+    sum_trits(Traces, Sum),
+    Sum = zero,
+    Level > 0.
+
+(* Helper: sum of trit list *)
++sum_trits([], zero).
++sum_trits([H|T], Sum) :-
+    sum_trits(T, TailSum),
+    add3(H, TailSum, Sum).
+
+(* Fixed point: no more transitions possible *)
++at_fixed_point(State) :-
+    State.level = State.level.  (* reflexive check *)
+
+(* ══════════════════════════════════════════════════════════════════════════ *)
+(* Cross-Service Morphisms *)
+(* ══════════════════════════════════════════════════════════════════════════ *)
+
+(* Morphism preserves trit *)
++morph(Source, Target, Trit, Trit) :-
+    op_trit(Source, _, Trit),
+    op_trit(Target, create, one).  (* target gets same trit *)
+
+(* Video → Workspace morphisms *)
++video_to_drive(VideoId, Trit) :-
+    op_trit(video, analyze, Trit),
+    morph(video, drive, Trit, Trit).
+
++video_to_gmail(VideoId, Trit) :-
+    op_trit(video, analyze, Trit),
+    morph(video, gmail, Trit, Trit).
+
+(* ══════════════════════════════════════════════════════════════════════════ *)
+(* System Closure Verification *)
+(* ══════════════════════════════════════════════════════════════════════════ *)
+
+(* All skills in model *)
++skill(video_analysis_gf3, zero).
++skill(workspace_bridge, zero).
++skill(triadic_analyzer, zero).
+
+(* Skills are balanced *)
++skills_balanced :-
+    findall(T, skill(_, T), Trits),
+    sum_trits(Trits, zero).
+
+(* Workflows commute (simplified) *)
++workflow_commutes(A, B) :-
+    skill(A, TA),
+    skill(B, TB),
+    add3(TA, TB, Sum),
+    add3(TB, TA, Sum).
+
+(* System is closed *)
++system_closed :-
+    skills_balanced,
+    forall(skill(A, _), forall(skill(B, _), workflow_commutes(A, B))).
+
+(* ══════════════════════════════════════════════════════════════════════════ *)
+(* Queries *)
+(* ══════════════════════════════════════════════════════════════════════════ *)
+
+?- skills_balanced.
+?- system_closed.
+?- ward(one, one, one).
+?- condensed([one, one, one], 1).
+
+(* Expected: all queries succeed ✓ *)

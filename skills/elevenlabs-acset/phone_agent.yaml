@@ -1,0 +1,87 @@
+# ElevenLabs Phone Agent Configuration
+# Special agent for +14156960069
+
+agent_id: monaduck69-voice
+phone: "+14156960069"
+trit: -1  # MINUS (consumption/input)
+color: "#0243d2"
+
+# Voice synthesis settings
+voice_settings:
+  voice_id: "cgSgspJ2msm6clMCkdW9"  # Default ElevenLabs voice
+  model_id: "eleven_multilingual_v2"
+  stability: 0.5
+  similarity_boost: 0.75
+  style: 0.4
+  use_speaker_boost: true
+  speed: 1.0
+  output_format: "mp3_44100_128"
+
+# V3 Audio Tags support
+audio_tags:
+  enabled: true
+  supported:
+    - "[excited]"
+    - "[whispers]"
+    - "[angry]"
+    - "[laughs]"
+    - "[sarcastic]"
+    - "[sad]"
+    - "[normal]"
+    - "[character_1]"
+    - "[character_2]"
+
+# Media company sources
+media_sources:
+  soundcloud:
+    user: "rickroderick"
+    url: "https://soundcloud.com/rickroderick"
+    content_type: "philosophy_lectures"
+    
+  bandcamp:
+    user: "monaduck69"
+    url: "https://monaduck69.bandcamp.com"
+    content_type: "music"
+    
+  poe:
+    user: "bmorphism"
+    url: "https://poe.com/bmorphism"
+    content_type: "ai_persona"
+
+# Agent capabilities
+capabilities:
+  - text_to_speech
+  - voice_cloning
+  - audio_isolation
+  - sound_effects
+  - music_generation
+  - speech_to_text
+
+# DuckDB persistence
+persistence:
+  db_path: "~/.topos/elevenlabs.duckdb"
+  sync_interval_minutes: 15
+  history_retention_days: 90
+
+# MCP server integration
+mcp:
+  server: "bmorphism__elevenlabs-mcp-enhanced"
+  command: "uvx elevenlabs-mcp"
+  env:
+    ELEVENLABS_API_KEY: "${ELEVENLABS_API_KEY}"
+    ELEVENLABS_DEBUG: "false"
+
+# GF(3) triadic routing
+gf3_routing:
+  minus_skills:
+    - elevenlabs-acset  # This skill
+    - text_input
+  ergodic_skills:
+    - crossmodal-gf3
+    - voice_transform
+  plus_skills:
+    - gesture-hypergestures
+    - audio_output
+    - rick-roderick
+
+# Conservation check: (-1) + (0) + (+1) = 0 ✓
