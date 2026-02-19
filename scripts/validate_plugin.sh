@@ -81,6 +81,14 @@ TIER1_COUNT=$(comm -12 <(ls ~/.claude/skills 2>/dev/null | sort) <(ls ~/.codex/s
               comm -12 - <(ls ~/.config/goose/skills 2>/dev/null | sort) 2>/dev/null | wc -l | tr -d ' ')
 echo "   ✓ $TIER1_COUNT Tier 1 skills (present in Claude + Codex + Gemini + Goose)"
 
+# Check 6: Repository-wide skill invariants
+echo "6. Enforcing skill invariants..."
+python3 scripts/enforce_skill_invariants.py \
+  --skills-dir skills \
+  --config invariants/skill_invariants_config.json \
+  --state invariants/skill_invariants_state.json
+echo "   ✓ Skill invariants hold"
+
 echo ""
 echo "=== Validation Complete ==="
 echo "Total skills: $SKILL_COUNT"
