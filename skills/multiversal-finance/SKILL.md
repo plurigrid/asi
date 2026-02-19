@@ -148,13 +148,61 @@ compression-progress (-1) ⊗ multiversal-finance (+1) ⊗ gay-mcp (0) = 0 ✓  
 
 ---
 
+## MARL + Mutual Information Layer
+
+Multiversal finance IS multi-agent reinforcement learning where the reward signal
+is compression progress (ΔC) and the coordination metric is mutual information.
+
+### Markov Category Structure
+
+```
+Generative channel (MonadDistribution):  Agent-O-Rama proposes (seed, index) bets
+Recognition channel (MonadFactor):       Shadow Goblin scores & conditions on ΔC
+Composition (TracedT(WeightedT)):        LMSR market equilibrium = Nash fixed point
+```
+
+### Mutual Information Flow
+
+```
+I(observation; world_model) = ΔC = compression_progress
+I(agent_action; grid_state) = coordination_quality
+I(corpus; outcome) >> I(public; outcome)  ← Dyssonance information advantage
+```
+
+### Nashator Games (implemented in stress-games.ts)
+
+| Game | Players | Models |
+|------|---------|--------|
+| `cityLearnDemandResponse` | Prosumer(-1) × Grid(+1) | Ontology cityLearn OpenGame |
+| `multiversalPredictionMarket` | Agent-O-Rama(+1) × Shadow Goblin(-1) | Core prediction market |
+| `mutualInfoCoordination` | DER_Producer(-1) × DER_Consumer(+1) | MARL mutual info maximization |
+| `lmsrMarketGame` | Trader(+1) × MM(0) × Oracle(-1) | LMSR as open game |
+| `wevExtractionGame` | Speculator(+1) × Ecosystem(-1) | WEV from proposal outcomes |
+| `dyssonanceOracleGame` | Oracle(-1) × Trader(+1) | Privileged corpus scoring |
+| `agmBeliefRevisionGame` | Believer(0) × Evidence(0) | AGM rational belief change |
+
+### Lifecycle Compositions
+
+```
+multiversalLifecycle = mutualInfoCoordination ; multiversalPredictionMarket ;
+                       dyssonanceOracleGame ; wevExtractionGame
+
+energyMarketLifecycle = cityLearnDemandResponse ; agmBeliefRevisionGame ;
+                        mutualInfoCoordination
+```
+
+---
+
 ## Skills Required
 
 - `gay-mcp`: Deterministic color oracle
-- `captp`: Secure settlement transport  
+- `captp`: Secure settlement transport
 - `curiosity-driven`: Compression progress metric
 - `world-hopping`: Navigate between seeds (possible worlds)
 - `acsets-algebraic-databases`: Market schema
+- `monad-bayes-asi-interleave`: SMC/MCMC backends for inference
+- `ontology-asi-interleave`: Autopoietic ergodicity + Open Games bridge
+- `nashator`: Nash equilibrium solver for all game compositions
 
 ---
 
