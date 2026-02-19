@@ -12,44 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-<<<<<<< HEAD
-      - name: Setup Babashka
-        uses: DeLaGuardo/setup-clojure@12.5
-        with:
-          bb: latest
-
-      - name: Copy skills-ref.bb
-        run: |
-          curl -sL https://raw.githubusercontent.com/plurigrid/asi/main/skills-ref.bb -o skills-ref.bb || cp ../skills-ref.bb . 2>/dev/null || true
-
-      - name: Validate skill directories
-        run: |
-          echo "Validating skill directories..."
-          ERRORS=0
-          
-          for dir in skills/*/; do
-            if [ -f "${dir}SKILL.md" ]; then
-              if bb skills-ref.bb validate "$dir" 2>&1; then
-                echo "✓ $dir"
-              else
-                echo "✗ $dir"
-                ERRORS=$((ERRORS + 1))
-              fi
-            fi
-          done
-          
-          if [ $ERRORS -gt 0 ]; then
-            echo "Found $ERRORS validation errors"
-            exit 1
-          fi
-          
-          echo "All skills validated successfully"
-=======
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
->>>>>>> origin/feature/skill-connectivity-hub-20251226
+          node-version: "18"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python test deps
+        run: python3 -m pip install --upgrade pip pytest
 
       - name: Validate skills.json schema
         run: |
@@ -58,75 +32,33 @@ jobs:
             const fs = require('fs');
             const data = JSON.parse(fs.readFileSync('skills.json', 'utf8'));
 
-<<<<<<< HEAD
-=======
-            // Check structure
->>>>>>> origin/feature/skill-connectivity-hub-20251226
             if (!Array.isArray(data.skills)) {
               console.error('ERROR: skills must be an array');
               process.exit(1);
             }
-<<<<<<< HEAD
 
             const required = ['name', 'description', 'category', 'author', 'license'];
             const names = new Set();
             let errors = 0;
 
-            data.skills.forEach((skill, i) => {
-              required.forEach(field => {
+            data.skills.forEach((skill) => {
+              required.forEach((field) => {
                 if (!skill[field]) {
-                  console.error('ERROR: Skill ' + skill.name + ' missing ' + field);
+                  console.error('ERROR: Skill ' + (skill.name || '<unknown>') + ' missing ' + field);
                   errors++;
                 }
               });
 
-              if (names.has(skill.name)) {
-                console.error('ERROR: Duplicate skill name: ' + skill.name);
-                errors++;
-              }
-              names.add(skill.name);
-
-              if (!/^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$/.test(skill.name)) {
-                console.error('ERROR: Invalid skill name format: ' + skill.name);
-=======
-
-            const required = ['name', 'description', 'category', 'author', 'license'];
-            const validCategories = ['development', 'document', 'creative', 'business', 'productivity'];
-            const names = new Set();
-            let errors = 0;
-
-            data.skills.forEach((skill, i) => {
-              // Check required fields
-              required.forEach(field => {
-                if (!skill[field]) {
-                  console.error('ERROR: Skill ' + skill.name + ' missing ' + field);
-                  errors++;
-                }
-              });
-
-              // Check category
-              if (skill.category && !validCategories.includes(skill.category)) {
-                console.error('ERROR: Invalid category ' + skill.category + ' for ' + skill.name);
-                errors++;
-              }
-
-              // Check for duplicates
-              if (names.has(skill.name)) {
-                console.error('ERROR: Duplicate skill name: ' + skill.name);
-                errors++;
-              }
-              names.add(skill.name);
-
-              // Check name format
-              if (!/^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$/.test(skill.name)) {
+              if (skill.name && !/^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$/.test(skill.name)) {
                 console.error('ERROR: Invalid skill name format: ' + skill.name);
                 errors++;
               }
 
-              // Check description length
-              if (skill.description && skill.description.length < 10) {
-                console.error('WARNING: Short description for ' + skill.name);
+              if (skill.name && names.has(skill.name)) {
+                console.error('ERROR: Duplicate skill name: ' + skill.name);
+                errors++;
               }
+              if (skill.name) names.add(skill.name);
             });
 
             if (errors > 0) {
@@ -137,140 +69,77 @@ jobs:
             console.log('✓ skills.json is valid (' + data.skills.length + ' skills)');
           "
 
-      - name: Check skill folders match JSON
+      - name: Validate listed skill folders and frontmatter
         run: |
-          echo "Checking skill folders..."
+          echo "Validating listed skills..."
           node -e "
             const fs = require('fs');
             const path = require('path');
 
             const data = JSON.parse(fs.readFileSync('skills.json', 'utf8'));
-            const jsonSkills = new Set(data.skills.map(s => s.name));
-
             const skillsDir = 'skills';
-            const folders = fs.readdirSync(skillsDir).filter(f =>
-              fs.statSync(path.join(skillsDir, f)).isDirectory()
-            );
-
             let errors = 0;
 
-            // Check each folder has an entry in JSON
-            folders.forEach(folder => {
-              if (!jsonSkills.has(folder)) {
-                console.error('ERROR: Folder ' + folder + ' not in skills.json');
+            data.skills.forEach((skill) => {
+              const folder = path.join(skillsDir, skill.name);
+              const skillMd = path.join(folder, 'SKILL.md');
+
+              if (!fs.existsSync(folder)) {
+                console.error('ERROR: Folder missing for listed skill: ' + skill.name);
                 errors++;
+                return;
               }
 
-              // Check SKILL.md exists
-              const skillMd = path.join(skillsDir, folder, 'SKILL.md');
               if (!fs.existsSync(skillMd)) {
-                console.error('ERROR: Missing SKILL.md in ' + folder);
+                console.error('ERROR: SKILL.md missing for listed skill: ' + skill.name);
                 errors++;
+                return;
               }
-            });
-
-            // Check each JSON entry has a folder
-            jsonSkills.forEach(name => {
-              if (!folders.includes(name)) {
-                console.error('ERROR: skills.json has ' + name + ' but folder missing');
-                errors++;
-              }
-            });
-
-            if (errors > 0) {
-              process.exit(1);
-            }
-
-            console.log('✓ All ' + folders.length + ' skill folders match skills.json');
-          "
-
-      - name: Validate SKILL.md frontmatter
-        run: |
-          echo "Validating frontmatter..."
-          node -e "
-            const fs = require('fs');
-            const path = require('path');
-
-            const skillsDir = 'skills';
-            const folders = fs.readdirSync(skillsDir).filter(f =>
-              fs.statSync(path.join(skillsDir, f)).isDirectory()
-            );
-
-            let errors = 0;
-
-            folders.forEach(folder => {
-              const skillMd = path.join(skillsDir, folder, 'SKILL.md');
-              if (!fs.existsSync(skillMd)) return;
 
               const content = fs.readFileSync(skillMd, 'utf8');
-
-              // Check for frontmatter
               if (!content.startsWith('---')) {
-                console.error('ERROR: ' + folder + '/SKILL.md missing frontmatter');
+                console.error('ERROR: ' + skill.name + '/SKILL.md missing YAML frontmatter');
                 errors++;
                 return;
               }
 
-              // Extract frontmatter
-              const endIndex = content.indexOf('---', 3);
-              if (endIndex === -1) {
-                console.error('ERROR: ' + folder + '/SKILL.md has unclosed frontmatter');
+              const end = content.indexOf('---', 3);
+              if (end === -1) {
+                console.error('ERROR: ' + skill.name + '/SKILL.md has unclosed frontmatter');
                 errors++;
                 return;
               }
 
-              const frontmatter = content.slice(3, endIndex);
-
-              // Check for name field
+              const frontmatter = content.slice(3, end);
               if (!frontmatter.includes('name:')) {
-                console.error('ERROR: ' + folder + '/SKILL.md missing name in frontmatter');
+                console.error('ERROR: ' + skill.name + '/SKILL.md missing name in frontmatter');
                 errors++;
               }
-
-              // Check for description field
               if (!frontmatter.includes('description:')) {
-                console.error('ERROR: ' + folder + '/SKILL.md missing description in frontmatter');
->>>>>>> origin/feature/skill-connectivity-hub-20251226
+                console.error('ERROR: ' + skill.name + '/SKILL.md missing description in frontmatter');
                 errors++;
               }
             });
 
             if (errors > 0) {
-<<<<<<< HEAD
-              console.error('Found ' + errors + ' errors');
               process.exit(1);
             }
 
-            console.log('✓ skills.json is valid (' + data.skills.length + ' skills)');
+            console.log('✓ Listed skill folders and frontmatter are valid');
           "
 
-      - name: Check GF(3) balance
+      - name: Enforce monotonic skill invariants
         run: |
-          echo "Checking GF(3) triadic balance..."
-          bb -e '
-            (require (quote [cheshire.core :as json]))
-            (let [data (json/parse-string (slurp "skills.json") true)
-                  skills (:skills data)
-                  trits (keep :trit skills)
-                  sum (reduce + 0 trits)
-                  balanced (zero? (mod sum 3))]
-              (println (format "Total skills: %d" (count skills)))
-              (println (format "Skills with trit: %d" (count trits)))
-              (println (format "Trit sum: %d" sum))
-              (println (format "GF(3) balanced: %s" (if balanced "YES" "NO")))
-              (when-not balanced
-                (System/exit 1)))
-          '
-=======
-              process.exit(1);
-            }
+          python3 scripts/enforce_skill_invariants.py \
+            --skills-dir skills \
+            --config invariants/skill_invariants_config.json \
+            --state invariants/skill_invariants_state.json
 
-            console.log('✓ All SKILL.md files have valid frontmatter');
-          "
+      - name: Run invariant unit tests
+        run: python3 -m pytest -q tests/test_skill_invariants.py
 
-      - name: Run tests
+      - name: Run CLI regression tests
         run: node test.js
 
       - name: Validate CLI loads
         run: node cli.js list > /dev/null && echo "✓ CLI loads successfully"
->>>>>>> origin/feature/skill-connectivity-hub-20251226
