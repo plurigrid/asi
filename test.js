@@ -92,7 +92,16 @@ test('no duplicate skill names', () => {
 });
 
 test('all categories are valid', () => {
-  const validCategories = ['development', 'document', 'creative', 'business', 'productivity'];
+  const validCategories = [
+    'development',
+    'document',
+    'creative',
+    'business',
+    'productivity',
+    'infrastructure',
+    'mathematics',
+    'ai-agents'
+  ];
   const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'skills.json'), 'utf8'));
 
   data.skills.forEach(skill => {
