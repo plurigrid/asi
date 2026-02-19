@@ -1,0 +1,76 @@
+module SkillReachabilityInvariant;
+
+-- Constraint cloning for Anoma/Juvix:
+--   1) skill count is non-decreasing unless explicit human oversight exists
+--   2) reachability cost steadily decreases (strict on growth, non-increasing otherwise)
+
+type Oversight :=
+  | NoOversight
+  | HumanOversight String;
+
+type SkillSnapshot := mkSkillSnapshot {
+  skillCount : Nat;
+  reachabilityCost : Nat;
+  oversight : Oversight
+};
+
+isHumanOversight : Oversight -> Bool;
+isHumanOversight NoOversight := false;
+isHumanOversight (HumanOversight _) := true;
+
+nonDecreasingSkillCountUnlessOversight : SkillSnapshot -> SkillSnapshot -> Bool;
+nonDecreasingSkillCountUnlessOversight prev next :=
+  if isHumanOversight (oversight next)
+  then true
+  else skillCount next >= skillCount prev;
+
+steadilyDecreasingReachabilityCostUnlessOversight : SkillSnapshot -> SkillSnapshot -> Bool;
+steadilyDecreasingReachabilityCostUnlessOversight prev next :=
+  if isHumanOversight (oversight next)
+  then true
+  else
+    if skillCount next > skillCount prev
+    then reachabilityCost next < reachabilityCost prev
+    else reachabilityCost next <= reachabilityCost prev;
+
+validTransition : SkillSnapshot -> SkillSnapshot -> Bool;
+validTransition prev next :=
+  nonDecreasingSkillCountUnlessOversight prev next
+  && steadilyDecreasingReachabilityCostUnlessOversight prev next;
+
+-- Anoma intent-shaped payload for this policy.
+type ReachabilityInvariantIntent := mkReachabilityInvariantIntent {
+  previous : SkillSnapshot;
+  next : SkillSnapshot;
+  witness : ByteArray
+};
+
+satisfiesInvariantIntent : ReachabilityInvariantIntent -> Bool;
+satisfiesInvariantIntent intent :=
+  validTransition (previous intent) (next intent);
+
+-- Geb-facing boolean conjunction shape for downstream compilation.
+asConstraintPair : SkillSnapshot -> SkillSnapshot -> Pair Bool Bool;
+asConstraintPair prev next :=
+  mkPair
+    (nonDecreasingSkillCountUnlessOversight prev next)
+    (steadilyDecreasingReachabilityCostUnlessOversight prev next);
+
+-- Locally dense time (bounded local time-gap between accepted snapshots).
+type TimedSkillSnapshot := mkTimedSkillSnapshot {
+  tick : Nat;
+  snap : SkillSnapshot
+};
+
+locallyDenseTimeUnlessOversight : Nat -> TimedSkillSnapshot -> TimedSkillSnapshot -> Bool;
+locallyDenseTimeUnlessOversight maxGap prev next :=
+  if isHumanOversight (oversight (snap next))
+  then true
+  else
+    let dt := tick next - tick prev
+    in tick next >= tick prev && dt <= maxGap;
+
+validTimedTransition : Nat -> TimedSkillSnapshot -> TimedSkillSnapshot -> Bool;
+validTimedTransition maxGap prev next :=
+  validTransition (snap prev) (snap next)
+  && locallyDenseTimeUnlessOversight maxGap prev next;
