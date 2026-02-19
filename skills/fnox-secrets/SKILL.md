@@ -130,3 +130,70 @@ Participates in triads:
 ```
 fnox-secrets (-1) ⊗ world-runtime (0) ⊗ gay-mcp (+1) = 0 ✓
 ```
+
+## 1Password Provider Bridge
+
+fnox natively supports 1Password as a provider backend. Secrets stored in 1Password can be accessed through the same `fnox get` interface.
+
+### Setup
+
+```bash
+# Add 1Password as a provider
+fnox provider add op 1password
+
+# Configure vault in fnox.toml
+```
+
+```toml
+# fnox.toml
+[providers.op]
+type = "1password"
+vault = "Employee"
+```
+
+### Defining 1Password-backed Secrets
+
+Use `op://` secret references as the value:
+
+```toml
+[secrets.MY_API_KEY]
+provider = "op"
+value = "op://Employee/MyAPIKey/password"
+```
+
+### Usage (same interface as age secrets)
+
+```bash
+# CORRECT - direct pipe, secret never in context
+eval $(op signin)
+MY_API_KEY=$(fnox get MY_API_KEY --age-key-file ~/.age/key.txt) ./my-command
+
+# Works identically to age-backed secrets
+MORPH_API_KEY=$(fnox get MORPH_API_KEY --age-key-file ~/.age/key.txt) \
+MY_API_KEY=$(fnox get MY_API_KEY --age-key-file ~/.age/key.txt) \
+  python my_script.py
+```
+
+### Mixed Provider Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  fnox get SECRET_NAME                                        │
+│       │                                                      │
+│       ├── provider = "myage" ──▶ age decrypt (local/offline) │
+│       │                                                      │
+│       └── provider = "op" ──▶ op read op://... (1Password)   │
+│                                  │                           │
+│                                  └── requires eval $(op signin) │
+│                                                              │
+│  Both paths ──▶ $(...) ──▶ ENV VAR ──▶ SUBPROCESS            │
+│                     └──▶ NEVER TO STDOUT/CONTEXT             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### When to Use Which Provider
+
+| Provider | Use Case |
+|----------|----------|
+| `myage` (age) | Offline access, CI/CD, air-gapped systems |
+| `op` (1Password) | Team-shared secrets, credential rotation, audit trail |
