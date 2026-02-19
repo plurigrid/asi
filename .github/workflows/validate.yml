@@ -143,3 +143,26 @@ jobs:
 
       - name: Validate CLI loads
         run: node cli.js list > /dev/null && echo "✓ CLI loads successfully"
+
+  juvix-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Juvix
+        uses: jaxxstorm/action-install-gh-release@v1.12.0
+        with:
+          repo: anoma/juvix
+          tag: v0.6.10
+          extension-matching: disable
+          rename-to: juvix
+          chmod: 0755
+
+      - name: Verify Juvix installation
+        run: juvix --version
+
+      - name: Typecheck formalization
+        run: |
+          cd formalization
+          juvix typecheck SkillReachabilityInvariant.juvix
+          echo "✓ Juvix formalization typechecks"
