@@ -1,11 +1,11 @@
 ---
 name: egpu
-description: "External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, workload migration, and Basin's eGPU infrastructure (basin-display, basin-gpu). Use when working with eGPU detection, GPU failover, Thunderbolt networking, or multi-GPU workload routing."
+description: "External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, workload migration, and Project's eGPU infrastructure (gpu-display, gpu-runtime). Use when working with eGPU detection, GPU failover, Thunderbolt networking, or multi-GPU workload routing."
 ---
 
 # eGPU Skill
 
-External GPU knowledge for hardware detection, bandwidth analysis, hotplug recovery, and Basin's GPU infrastructure.
+External GPU knowledge for hardware detection, bandwidth analysis, hotplug recovery, and Project's GPU infrastructure.
 
 ## Trigger Conditions
 
@@ -14,7 +14,7 @@ External GPU knowledge for hardware detection, bandwidth analysis, hotplug recov
 - Questions about Thunderbolt bandwidth, PCIe tunneling, or GPU enclosures
 - Multi-GPU routing, failover, or compute offloading
 - Apple Silicon eGPU limitations
-- Basin's `basin-display/src/egpu.rs` or `basin-gpu/src/workload_migrator.rs`
+- Project's `gpu-display/src/egpu.rs` or `gpu-runtime/src/workload_migrator.rs`
 
 ## What Is an eGPU?
 
@@ -106,17 +106,17 @@ device.on_uncaptured_error(|error| {
 });
 ```
 
-## Basin eGPU Infrastructure
+## Project eGPU Infrastructure
 
 ### Key Files
 
 | File | Purpose |
 |------|---------|
-| `crates/basin-display/src/egpu.rs` | `EGpuManager`, `EGpuDevice`, `ThunderboltMesh`, `AppleSiliconEGpuInfo` |
-| `crates/basin-gpu/src/device_lifecycle.rs` | `GpuDeviceRegistry`, `GpuDeviceState`, health scoring, simulated GPU |
-| `crates/basin-gpu/src/workload_migrator.rs` | `WorkloadMigrator`, `MigrationConfig`, `MigrationStrategy` (Eager/Lazy/Preemptive/LoadBalanced) |
-| `crates/basin-gpu/src/workload_checkpoint.rs` | `CheckpointManager`, `Checkpointable` trait for GPU state snapshots |
-| `foundation/basin-hardware/src/iokit.rs` | IOKit FFI for TB speed detection, `is_egpu()` |
+| `crates/gpu-display/src/egpu.rs` | `EGpuManager`, `EGpuDevice`, `ThunderboltMesh`, `AppleSiliconEGpuInfo` |
+| `crates/gpu-runtime/src/device_lifecycle.rs` | `GpuDeviceRegistry`, `GpuDeviceState`, health scoring, simulated GPU |
+| `crates/gpu-runtime/src/workload_migrator.rs` | `WorkloadMigrator`, `MigrationConfig`, `MigrationStrategy` (Eager/Lazy/Preemptive/LoadBalanced) |
+| `crates/gpu-runtime/src/workload_checkpoint.rs` | `CheckpointManager`, `Checkpointable` trait for GPU state snapshots |
+| `foundation/hardware-layer/src/iokit.rs` | IOKit FFI for TB speed detection, `is_egpu()` |
 | `docs/design/EGPU_HOTPLUG_ROADMAP.md` | 5-phase implementation plan |
 
 ### Core Types
@@ -151,7 +151,7 @@ pub enum ThunderboltSpeed { TB1, TB2, TB3, TB4, TB5 }
 ### EGpuManager Usage
 
 ```rust
-use basin_display::egpu::EGpuManager;
+use gpu_display::egpu::EGpuManager;
 
 let manager = EGpuManager::new();  // Auto-enumerates
 manager.start_monitoring()?;       // Hotplug events
@@ -173,7 +173,7 @@ manager.safe_disconnect(gpu_id)?;
 ### Workload Migration
 
 ```rust
-use basin_gpu::workload_migrator::{WorkloadMigrator, MigrationConfig, MigrationStrategy};
+use gpu_runtime::workload_migrator::{WorkloadMigrator, MigrationConfig, MigrationStrategy};
 
 let config = MigrationConfig {
     strategy: MigrationStrategy::Eager,
@@ -203,10 +203,10 @@ let config = MigrationConfig {
 
 ### Thunderbolt Mesh Networking
 
-Basin supports TB mesh networking for GPU cluster communication (IP over Thunderbolt):
+Project supports TB mesh networking for GPU cluster communication (IP over Thunderbolt):
 
 ```rust
-use basin_display::egpu::ThunderboltMesh;
+use gpu_display::egpu::ThunderboltMesh;
 
 let mesh = ThunderboltMesh::discover()?;
 println!("Active peers: {}", mesh.active_peer_count());
@@ -218,7 +218,7 @@ if let Some(best) = mesh.best_peer() {
 }
 ```
 
-## Implementation Status (Basin)
+## Implementation Status (Project)
 
 | Component | Status |
 |-----------|--------|
