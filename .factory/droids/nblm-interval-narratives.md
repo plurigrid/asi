@@ -182,6 +182,73 @@ D_lambda([a,b]) = [a + lambda*(b-a), b]  -- shrink from left
 ```
 Applied to sources: older sources get smaller effective intervals.
 
+## Colored Compiler Versions (seed=520)
+
+OCaml/OxCaml ecosystem colored via plastic thread (rho=1.324718, ternary-native):
+
+| Version | Kind | Color | Trit | Status |
+|---------|------|-------|------|--------|
+| OCaml 5.6.0 | upstream dev | `#3B3AC3` | +1 | Latest (2026-01-26) |
+| OCaml 5.5.0 | upstream stable | `#BC0AA2` | -1 | Stable (2025-05-05) |
+| OCaml 5.4.2 | upstream patch | `#E78AA1` | 0 | Patch (2026-02-18) |
+| OCaml 5.4.0 | local default | `#9B5F22` | -1 | Broken (abort trap) |
+| OxCaml 5.2.0+ox | Jane Street | `#36D124` | +1 | Active switch |
+| OCaml 5.3.0 | narya53 | `#E4899F` | 0 | Working |
+| OCaml 5.2.1 | narya52 | `#E491A5` | 0 | Available |
+| OCaml 5.1.1 | narya | `#48D76A` | +1 | Original Narya |
+
+### 17-Skill Constellation (plastic thread, GF(3)-balanced)
+
+Skills selected for the OCaml/OxCaml/Narya/dendritic-interleave ecosystem:
+
+| # | Skill | Color | Trit | Why |
+|---|-------|-------|------|-----|
+| 1 | ocaml | `#90262C` | -1 | Core language: all versions live here |
+| 2 | opam | `#359DDE` | -1 | Package manager: switch orchestration |
+| 3 | zig-systems | `#667CD2` | 0 | Dendritic innate immune interleave target |
+| 4 | cargo-rust | `#7035A1` | +1 | Dendritic adaptive immune interleave target |
+| 5 | yb-translator | `#6CD6EE` | +1 | Bio-ontology translations (DC/MHC/TCR) |
+| 6 | operadic-composition | `#EFDD57` | -1 | Dendritic cells AS colored operads |
+| 7 | narya-hatchery | `#32BDBD` | 0 | Narya proof ecosystem across 3 switches |
+| 8 | proofgeneral-narya | `#49CB8B` | 0 | Proof development for typed holes |
+| 9 | holes | `#400DC6` | 0 | Interactive proof with typed holes |
+| 10 | stellogen | `#EACC48` | 0 | Stellar resolution / proof search |
+| 11 | segal-types | `#D1A10D` | -1 | Synthetic infinity-categories for OxCaml modes |
+| 12 | infinity-categories | `#14B23A` | 0 | Higher category theory substrate |
+| 13 | gay-integration | `#DB8C85` | 0 | Deterministic color generation backbone |
+| 14 | lhott-cohesive-linear | `#1ABB47` | -1 | Cohesive modalities = OxCaml mode system |
+| 15 | condensed-mathematics | `#D77FE9` | -1 | Capsules/Data/Access = condensed sets |
+| 16 | bisimulation-game | `#AC680B` | +1 | Skill dispersal across agent ecosystems |
+| 17 | synthetic-adjunctions | `#EB5A99` | 0 | Directed universal constructions for compilation |
+
+**Trit census**: MINUS(-1)=6, ERGODIC(0)=8, PLUS(+1)=3. Sum = -3 ≡ 0 (mod 3). **BALANCED.**
+
+### Balanced Triads
+
+| Triad | Skills | Trits | Sum | Status |
+|-------|--------|-------|-----|--------|
+| Proof Core | narya-hatchery + proofgeneral-narya + holes | 0+0+0 | 0 | Balanced (all ergodic) |
+| Compiler Backends | ocaml + zig-systems + cargo-rust | -1+0+1 | 0 | Balanced |
+| Bio-Operad | yb-translator + operadic-composition + gay-integration | +1-1+0 | 0 | Balanced |
+| Type Theory | segal-types + infinity-categories + synthetic-adjunctions | -1+0+0 | -1 | Needs +1 |
+| Cohesive-Condensed | lhott-cohesive-linear + condensed-mathematics + bisimulation-game | -1-1+1 | -1 | Needs +1 |
+
+### Why These 17
+
+1. **ocaml** / **opam**: The compiler versions themselves live in opam switches; every operation begins here
+2. **zig-systems** / **cargo-rust**: The dendritic interleave targets innate (Zig: comptime, allocator-as-parameter) and adaptive (Rust: ownership, borrow checker as thymic selection) immunity
+3. **yb-translator**: Translates every concept to biological ontology (EBI OLS terms) -- DC cells, MHC restriction, V(D)J recombination
+4. **operadic-composition**: Dendritic cells ARE colored operads with typed ports {innate, adaptive, self, non-self}; cross-presentation = FFI morphism
+5. **narya-hatchery** / **proofgeneral-narya** / **holes**: Narya runs on 3 OCaml switches (5.1.1, 5.2.1, 5.3.0); typed holes are the core proof development interface
+6. **stellogen**: Stellar resolution for automated proof search; complements Narya's interactive approach
+7. **segal-types**: Binary composites exist uniquely up to homotopy; models OxCaml's mode system where locality/uniqueness/contention form a Segal-type fiber
+8. **infinity-categories**: The substrate for Riehl-Shulman directed type theory that OxCaml modes approximate
+9. **gay-integration**: Deterministic color generation for all 8 compiler versions and 17 skills
+10. **lhott-cohesive-linear**: OxCaml's mode system (locality, uniqueness, portability, contention, linearity) maps directly to Schreiber's cohesive modalities (sharp, flat, shape) + Riley's linear modality
+11. **condensed-mathematics**: OxCaml capsules (Data/Access/Password/Key) are condensed sets -- topology on aliasing structure
+12. **bisimulation-game**: Disperses these skills across agents with GF(3) conservation
+13. **synthetic-adjunctions**: Directed adjunctions in type theory for universal constructions during compilation (left adjoint = free generation, right = forgetful/erasure)
+
 ## Gay.jl Integration
 
 ### Color-Coded Notebooks
