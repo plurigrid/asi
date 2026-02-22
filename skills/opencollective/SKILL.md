@@ -25,6 +25,20 @@ Query and manage Open Collective accounts, finances, and community data via thei
 - **Token creation**: `https://opencollective.com/<your-slug>/admin/for-developers`
 - **Not available via API**: Stripe/PayPal payment creation, captcha-protected operations
 
+## MCP Server Setup
+
+Use `mcp-graphql` to expose the OC API as MCP tools. With fnox-backed auth:
+
+```bash
+claude mcp add opencollective-graphql -- /bin/sh -c \
+  'unset PYTHONPATH && \
+   ENDPOINT=https://api.opencollective.com/graphql/v2 \
+   HEADERS="{\"Personal-Token\":\"$(fnox get OPENCOLLECTIVE_TOKEN --age-key-file ~/.age/key.txt -c ~/v/instance-onboarding/fnox.toml)\"}" \
+   exec npx mcp-graphql'
+```
+
+Store your token: `fnox set OPENCOLLECTIVE_TOKEN <token> --age-key-file ~/.age/key.txt -c ~/v/instance-onboarding/fnox.toml`
+
 ## Quick Start
 
 If `opencollective-graphql` MCP server is available, use its `query-graphql` tool. Otherwise use `curl`.
