@@ -6,6 +6,6 @@ set -euo pipefail
 KEYWORD="${1:?Usage: osf-search.sh <keyword> [page_size]}"
 PAGE_SIZE="${2:-10}"
 
-curl -sfL "https://api.osf.io/v2/nodes/?filter[title]=${KEYWORD}&page[size]=${PAGE_SIZE}" | \
+curl -sfL --globoff "https://api.osf.io/v2/nodes/?filter[title]=${KEYWORD}&page[size]=${PAGE_SIZE}" | \
   jq -r '.data[] | "\(.id)\t\(.attributes.title)\t\(.attributes.date_modified)\t\(.attributes.description[:80] // "-")"' | \
-  column -t -s $'\t' -N "ID,TITLE,MODIFIED,DESCRIPTION"
+  column -t -s $'\t'

@@ -10,6 +10,6 @@ BASE="https://api.osf.io/v2/nodes/${PROJECT_ID}/files/osfstorage/${SUBPATH}"
 AUTH_HEADER=""
 [ -n "${OSF_TOKEN:-}" ] && AUTH_HEADER="Authorization: Bearer $OSF_TOKEN"
 
-curl -sfL ${AUTH_HEADER:+-H "$AUTH_HEADER"} "$BASE" | \
+curl -sfL --globoff ${AUTH_HEADER:+-H "$AUTH_HEADER"} "$BASE" | \
   jq -r '.data[] | "\(.attributes.kind)\t\(.attributes.size // "-")\t\(.attributes.name)\t\(.links.download // "-")"' | \
-  column -t -s $'\t' -N "TYPE,SIZE,NAME,DOWNLOAD"
+  column -t -s $'\t'

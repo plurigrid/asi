@@ -52,18 +52,23 @@ Remote paths are prefixed with the storage provider, typically `osfstorage/`.
 
 Base URL: `https://api.osf.io/v2/`
 
+**Important**: Use `--globoff` with curl — OSF query params use `[]` which curl interprets as glob ranges.
+
 ```bash
 # List project files
-curl -s "https://api.osf.io/v2/nodes/<id>/files/osfstorage/" | jq '.data[].attributes.name'
+curl -sL --globoff "https://api.osf.io/v2/nodes/<id>/files/osfstorage/" | jq '.data[].attributes.name'
 
 # Get project metadata
-curl -s "https://api.osf.io/v2/nodes/<id>/" | jq '.data.attributes'
+curl -sL --globoff "https://api.osf.io/v2/nodes/<id>/" | jq '.data.attributes'
 
 # Search public nodes by title
-curl -s "https://api.osf.io/v2/nodes/?filter[title]=keyword" | jq '.data[].attributes.title'
+curl -sL --globoff "https://api.osf.io/v2/nodes/?filter[title]=keyword&page[size]=20" | jq '.data[] | {id, title: .attributes.title}'
+
+# Browse subfolder (use folder ID from parent listing)
+curl -sL --globoff "https://api.osf.io/v2/nodes/<id>/files/osfstorage/<folder_id>/" | jq '.data[].attributes.name'
 
 # With auth
-curl -H "Authorization: Bearer $OSF_TOKEN" "https://api.osf.io/v2/nodes/<id>/files/osfstorage/"
+curl -sL --globoff -H "Authorization: Bearer $OSF_TOKEN" "https://api.osf.io/v2/nodes/<id>/files/osfstorage/"
 ```
 
 File download links are in `data[].links.download` — follow redirects with `curl -L -o`.
