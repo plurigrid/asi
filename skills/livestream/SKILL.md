@@ -1,3 +1,8 @@
+---
+name: livestream
+description: Warehouse audio pipeline for live capture, transcription, and narration from meeting room mics via Tailscale. Triggers: livestream, warehouse audio, transcription pipeline, meeting capture, whisper.
+---
+
 # Livestream Skill: Warehouse Audio Pipeline
 
 Live audio capture, transcription, and narration from the meeting room via Tailscale network.

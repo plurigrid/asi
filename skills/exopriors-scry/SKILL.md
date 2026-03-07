@@ -1,3 +1,8 @@
+---
+name: exopriors-scry
+description: SQL and vector search over 3B+ docs (arXiv, HN, LessWrong, EA Forum, Bluesky, Reddit). Triggers: exopriors, scry, research corpus, semantic search, arxiv search, vector search.
+---
+
 # ExoPriors Scry — Research Corpus Skill
 
 SQL + vector search over 3B+ docs (arXiv, HN, LW, EA Forum, Twitter, Bluesky, Reddit, Substack, Wikipedia, Ethereum).

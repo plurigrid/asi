@@ -1,3 +1,8 @@
+---
+name: modding-ghostty
+description: Defensive security map of Ghostty terminal escape sequences. VT/OSC attack surface, stdin injection vectors, parser DFA analysis, CVE catalog. Triggers: ghostty security, escape sequence, terminal hardening, VT parser, OSC.
+---
+
 # Modding Ghostty
 
 Defensive security map of Ghostty's VT/OSC escape sequence surface. Covers what each sequence visibly modifies on screen, invisible state mutations, stdin injection vectors, and parser DFA traversability toward undesired states.
