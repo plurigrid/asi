@@ -1,75 +1,33 @@
 ---
 name: möbius-color-duality
-description: Möbius inversion for Gay.jl color duality - closes sparsification spine gap
-version: 1.0.0
+description: Möbius inversion for Gay.jl color spaces — recovers seeds from color distributions
 ---
 
+# Möbius Color Duality
 
-# Möbius Color Duality Skill
+Numerical Möbius inversion applied to color spaces: given observed color distributions (global aggregates), recover the generating seed (local structure).
 
-> *"Möbius inversion recovers local structure from global aggregates."*
+## Module
 
-## The Gap
+`lib/gay_möbius_inversion.py` (490 lines) — not currently found in the repo tree. If it has been moved or renamed, search for `ColorMöbiusInverter` or `TriadicColorInverter`.
 
-The Amp thread corpus (1,807 threads) is **85.6% mapped to sparsification spine** but has a critical gap:
+### Key Classes
 
-```
-Generation (Synthesis)     ████████░  49.2% ⭐ WELL-DEVELOPED
-Validation (Verification)  ████░░░░░  21.6% ✓ SOLID
-Execution (Control)        ███░░░░░░  15.2% ✓ ADEQUATE
-Ontology (ACSet)           ██░░░░░░░   6.8% ⚠️ THIN
-Decomposition (Hierarchy)  █░░░░░░░░   5.6% ⚠️ WEAK
-Inversion (Duality)        ░░░░░░░░░   1.6% ❌ CRITICAL GAP
-```
+- `ColorMöbiusInverter` — numerical forward/backward inversion for color spaces. Forward: seed to color indices to structures. Backward: structures to color distributions to recovered seed.
+- `TriadicColorInverter` — extends inversion to GF(3) ternary color states.
 
-The system can **generate** but not **invert**. This skill closes that gap.
+### Usage
 
-## Core Insight
+```python
+from lib.gay_möbius_inversion import ColorMöbiusInverter
 
-**Forward (Generation)**: seed → color indices → structures  
-**Backward (Inversion)**: structures → color distributions → recover seed
-
-## Implementation
-
-Module: `lib/gay_möbius_inversion.py` (490 lines)
-
-Key classes:
-- `ColorMöbiusInverter`: Numerical inversion for color spaces
-- `TriadicColorInverter`: GF(3) ternary extension
-
-## Status
-
-✓ **Core implementation**: Möbius function, forward/backward inversion  
-✓ **Duality graph generation**: Contravariant functor structures  
-⊘ **GF(3) integration**: Ternary state extension  
-⊘ **Amp corpus application**: Test on actual thread colorization  
-
-## Sparsification Spine Integration
-
-**Tier**: Layer 5 - INVERSION (Duality/Reversal)  
-**Trit**: +1 (PLUS/Generator)  
-**Coverage**: Begins to fill 1.6% → expand to 10%+ target
-
-## SDF Interleaving
-
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 3. Variations on an Arithmetic Theme
-
-**Concepts**: generic arithmetic, coercion, symbolic, numeric
-
-### GF(3) Balanced Triad
-
-```
-möbius-color-duality (−) + SDF.Ch3 (○) + [balancer] (+) = 0
+inverter = ColorMöbiusInverter()
+# Forward pass: seed -> color distribution
+distribution = inverter.forward(seed)
+# Backward pass: distribution -> recovered seed
+recovered = inverter.invert(distribution)
 ```
 
-**Skill Trit**: -1 (MINUS - verification)
+## Integration
 
-### Secondary Chapters
-
-- Ch6: Layering
-
-### Connection Pattern
-
-Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+This fills the "Inversion (Duality)" layer of the sparsification spine (was at 1.6% coverage). The system can generate color structures but this module enables the reverse — recovering seeds from observed colorizations.
