@@ -37,6 +37,123 @@ moduleAssignment nGenes = do
   return assignments
 ```
 
+## Concrete Affordances
+
+### Clone Upstream Repositories
+
+```bash
+# WGCNA analysis pipeline
+git clone https://github.com/zubyul/WGCNA.git /Users/alice/v/zubyul-wgcna
+
+# Jonikas lab data processing
+git clone https://github.com/zubyul/jonikas_lab_data_analysis_misc.git /Users/alice/v/zubyul-jonikas
+```
+
+### Bayesian Network Structure Learning from WGCNA Eigengenes (pgmpy)
+
+Learn the regulatory DAG over module eigengenes discovered by WGCNA:
+
+```python
+# pip install pgmpy pandas numpy
+import pandas as pd
+import numpy as np
+from pgmpy.estimators import HillClimbSearch, BicScore
+from pgmpy.models import BayesianNetwork
+from pgmpy.estimators import MaximumLikelihoodEstimator
+
+np.random.seed(42)
+
+# Simulated WGCNA module eigengenes (replace with real eigengene matrix from R)
+# Columns = module colors (WGCNA convention), rows = samples
+n_samples = 200
+eigengenes = pd.DataFrame({
+    'ME_blue':   np.random.randn(n_samples),
+    'ME_brown':  np.random.randn(n_samples),
+    'ME_turquoise': np.random.randn(n_samples),
+    'ME_green':  np.random.randn(n_samples),
+    'ME_yellow': np.random.randn(n_samples),
+})
+# Inject causal structure: blue -> brown, turquoise -> green, blue -> yellow
+eigengenes['ME_brown'] += 0.6 * eigengenes['ME_blue']
+eigengenes['ME_green'] += 0.5 * eigengenes['ME_turquoise']
+eigengenes['ME_yellow'] += 0.4 * eigengenes['ME_blue'] + 0.3 * eigengenes['ME_turquoise']
+
+# Discretize for BN (or use linear Gaussian BN)
+discretized = eigengenes.apply(lambda col: pd.cut(col, bins=3, labels=['low','mid','high']))
+
+# Hill Climb structure learning with BIC scoring
+hc = HillClimbSearch(discretized)
+best_model = hc.estimate(scoring_method=BicScore(discretized), max_indegree=3)
+
+print("Learned DAG edges (regulatory relationships):")
+for edge in best_model.edges():
+    print(f"  {edge[0]} -> {edge[1]}")
+
+# Fit parameters
+bn = BayesianNetwork(best_model.edges())
+bn.fit(discretized, estimator=MaximumLikelihoodEstimator)
+print(f"\nNodes: {bn.nodes()}")
+print(f"Edges: {bn.edges()}")
+```
+
+### Gene Module Hypergraph with HyperNetX
+
+Construct a hypergraph where each WGCNA module is a hyperedge containing its member genes:
+
+```python
+# pip install hypernetx matplotlib
+import hypernetx as hnx
+import matplotlib.pyplot as plt
+
+# Gene-to-module assignments from WGCNA (replace with real output)
+# Each module (hyperedge) contains multiple genes (nodes)
+module_membership = {
+    'blue':      ['BDNF', 'SLC6A4', 'HTR2A', 'FKBP5', 'NR3C1'],
+    'brown':     ['COMT', 'MAOA', 'DRD2', 'DRD4', 'SLC6A3'],
+    'turquoise': ['DISC1', 'NRG1', 'DTNBP1', 'CACNA1C', 'ANK3', 'TCF4'],
+    'green':     ['NTRK2', 'CREB1', 'ARC', 'HOMER1'],
+    'yellow':    ['SLC6A4', 'TPH2', 'MAOA', 'HTR1A'],  # note: SLC6A4, MAOA overlap
+}
+
+H = hnx.Hypergraph(module_membership)
+
+# Basic topology
+print(f"Nodes (genes): {H.number_of_nodes()}")
+print(f"Hyperedges (modules): {H.number_of_edges()}")
+
+# Genes shared across modules (hub genes / overlapping membership)
+for node in H.nodes():
+    memberships = H.nodes.memberships[node]
+    if len(memberships) > 1:
+        print(f"  Hub gene {node} in modules: {memberships}")
+
+# Compute s-adjacency: two modules are s-adjacent if they share >= s genes
+for s in [1, 2]:
+    adj = H.adjacency_matrix(s=s)
+    print(f"\n{s}-adjacency matrix (modules sharing >= {s} genes):")
+    print(adj.todense())
+
+# Visualize
+hnx.drawing.draw(H, with_node_labels=True, with_edge_labels=True)
+plt.title("WGCNA Gene Module Hypergraph")
+plt.savefig("/tmp/gene_module_hypergraph.png", dpi=150, bbox_inches='tight')
+print("Hypergraph saved to /tmp/gene_module_hypergraph.png")
+```
+
+### Load WGCNA Eigengenes from R Output
+
+Bridge R WGCNA output into Python:
+
+```python
+# After running WGCNA in R, export eigengenes:
+#   write.csv(MEs, "module_eigengenes.csv", row.names=TRUE)
+import pandas as pd
+
+eigengenes = pd.read_csv("/Users/alice/v/zubyul-wgcna/output/module_eigengenes.csv", index_col=0)
+print(f"Loaded {eigengenes.shape[1]} module eigengenes for {eigengenes.shape[0]} samples")
+print(eigengenes.head())
+```
+
 ## Edges
 
 - -> monad-bayes (Bayesian network priors)

@@ -215,6 +215,92 @@ AWS_AGENTCORE_CONFIG = {
 }
 ```
 
+## Concrete Affordances
+
+### Validate SKILL.md against AAIF descriptor format
+
+Run this one-liner from the repo root to check that a SKILL.md has valid frontmatter with the required `name` and `description` fields:
+
+```bash
+# Usage: validate a single skill
+python3 -c "
+import yaml, sys, pathlib
+
+skill_path = sys.argv[1]
+md = pathlib.Path(skill_path, 'SKILL.md')
+if not md.exists():
+    print(f'FAIL: {md} not found'); sys.exit(1)
+content = md.read_text()
+parts = content.split('---')
+if len(parts) < 3:
+    print(f'FAIL: no YAML frontmatter delimiters in {md}'); sys.exit(1)
+meta = yaml.safe_load(parts[1])
+required = {'name', 'description'}
+missing = required - set(meta.keys())
+if missing:
+    print(f'FAIL: missing required fields: {missing}'); sys.exit(1)
+if not isinstance(meta['name'], str) or not meta['name'].strip():
+    print('FAIL: name must be a non-empty string'); sys.exit(1)
+if not isinstance(meta['description'], str) or not meta['description'].strip():
+    print('FAIL: description must be a non-empty string'); sys.exit(1)
+print(f'PASS: {meta[\"name\"]} — AAIF descriptor valid')
+print(f'  name:        {meta[\"name\"]}')
+print(f'  description: {meta[\"description\"][:80]}...')
+" /Users/alice/v/asi/skills/aaif-governance-interleave
+```
+
+### Batch-validate all skills in the repo
+
+```bash
+for d in /Users/alice/v/asi/skills/*/; do
+  python3 -c "
+import yaml, sys, pathlib
+skill_path = sys.argv[1]
+md = pathlib.Path(skill_path, 'SKILL.md')
+if not md.exists(): print(f'SKIP: {md}'); sys.exit(0)
+content = md.read_text()
+parts = content.split('---')
+if len(parts) < 3: print(f'FAIL: {md} — no frontmatter'); sys.exit(1)
+meta = yaml.safe_load(parts[1])
+for field in ('name', 'description'):
+    if field not in meta or not str(meta[field]).strip():
+        print(f'FAIL: {md} — missing or empty \"{field}\"'); sys.exit(1)
+print(f'PASS: {meta[\"name\"]}')
+" "$d"
+done
+```
+
+### Generate AAIF descriptor JSON from SKILL.md
+
+```bash
+# Emit the full AAIFDescriptor as JSON for a given skill
+python3 -c "
+import yaml, json, sys, pathlib
+
+skill_path = sys.argv[1]
+content = pathlib.Path(skill_path, 'SKILL.md').read_text()
+meta = yaml.safe_load(content.split('---')[1])
+name, desc = meta['name'], meta['description'].strip()
+
+print(json.dumps({
+    'name': name,
+    'mcp_schema': {
+        'name': name, 'description': desc,
+        'inputSchema': {'type': 'object', 'properties': {'query': {'type': 'string'}}}
+    },
+    'a2a_skill_descriptor': {
+        'id': name, 'name': name.replace('-', ' ').title(),
+        'description': desc, 'inputModes': ['text'], 'outputModes': ['text', 'data']
+    },
+    'agntcy_oasf': {
+        'schema_version': '1.0', 'name': name, 'description': desc,
+        'aaif_compatible': True, 'a2a_compatible': True, 'mcp_compatible': True
+    },
+    'ipsie_profile': 'public'
+}, indent=2))
+" /Users/alice/v/asi/skills/aaif-governance-interleave
+```
+
 ## Gap Registry
 
 | Gap | What | Resolution Path |
