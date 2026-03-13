@@ -64,17 +64,31 @@ completes their B-mod boxing.
 
 ## Trit Mismatch Findings (from 26-letter boxing)
 
-5 letter-worlds have SKILL.md trits that contradict their canonical droid identity:
+**13 of 26** letter-world SKILL.md files in the upstream repo have wrong trits.
+The root cause: SKILL.md files use a naive cycling pattern `(0, +1, -1)` starting
+from letter b, instead of the actual assignments from `~/.factory/droids/world-*.md`.
 
-| Letter | SKILL.md says | Droid says | Status |
-|--------|--------------|-----------|--------|
-| k | 0 (ERGODIC) | +1 (PLUS) | Needs fix |
-| l | +1 (PLUS) | -1 (MINUS) | Needs fix |
-| n | 0 (ERGODIC) | -1 (MINUS) | Needs fix |
-| s | -1 (MINUS) | +1 (PLUS) | Needs fix |
-| x | +1 (PLUS) | -1 (MINUS) | Needs fix |
+| Letter | SKILL.md says | Droid says (canonical) | Status |
+|--------|--------------|----------------------|--------|
+| a | (stub, no trit) | -1 (MINUS) | Needs fix |
+| c | +1 (PLUS) | -1 (MINUS) | **Wrong** |
+| i | +1 (PLUS) | 0 (ERGODIC) | **Wrong** |
+| j | -1 (MINUS) | 0 (ERGODIC) | **Wrong** |
+| k | 0 (ERGODIC) | +1 (PLUS) | **Wrong** |
+| l | +1 (PLUS) | -1 (MINUS) | **Wrong** |
+| n | 0 (ERGODIC) | -1 (MINUS) | **Wrong** |
+| o | +1 (PLUS) | -1 (MINUS) | **Wrong** |
+| p | -1 (MINUS) | 0 (ERGODIC) | **Wrong** |
+| q | 0 (ERGODIC) | -1 (MINUS) | **Wrong** |
+| s | -1 (MINUS) | +1 (PLUS) | **Wrong** |
+| x | +1 (PLUS) | -1 (MINUS) | **Wrong** |
+| y | -1 (MINUS) | 0 (ERGODIC) | **Wrong** |
 
-These are detected by each letter's boxing test. Fixing them is a follow-up PR.
+The 13 correct letters (b, d, e, f, g, h, m, r, t, u, v, w, z) happen to align
+because the cycling pattern coincides with the real assignment at those positions.
+
+Fixing them is a follow-up PR. Our new skills (asi-letter-inventory, seatbelt-bridge.scm)
+use the **correct** canonical trits from droid configs.
 
 ## Review Checklist
 

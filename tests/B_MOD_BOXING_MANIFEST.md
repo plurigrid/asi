@@ -53,12 +53,18 @@ succeed without enforcement) is the proof obligation.
 ## GF(3) Conservation
 
 Trit distribution across 26 letters:
+Canonical trit distribution (from ~/.factory/droids/world-*.md):
 - MINUS (-1): a, c, d, g, l, m, n, o, q, v, x = 11 letters
-- ERGODIC (0): b, e, h, i, j, k(canonical), p, t, w, y, z = 10 letters  
-- PLUS (+1): f, k(SKILL.md), r, s, u = 5 letters
+- ERGODIC (0): b, e, h, i, j, p, t, w, y, z = 10 letters
+- PLUS (+1): f, k, r, s, u = 5 letters
 
 Sum = 11*(-1) + 10*(0) + 5*(+1) = -11 + 0 + 5 = -6
 -6 mod 3 = 0 CONSERVED
+
+NOTE: 13 of 26 upstream SKILL.md files have wrong trits (naive cycling
+pattern instead of canonical droid assignments). See REVIEW_GUIDE.md
+for the full mismatch table. Our seatbelt-bridge.scm and
+asi-letter-inventory use the correct canonical trits.
 
 ## Cross-World Composition Tests
 
