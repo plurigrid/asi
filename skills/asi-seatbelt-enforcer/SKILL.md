@@ -65,3 +65,15 @@ done
 The 26 droid configs describe isolation conceptually ("your letter-world's perspective")
 but nothing enforces it at the kernel level. Without Seatbelt profiles, world-a can
 write to world-z's directory. This skill closes that gap.
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| sheaf-cohomology | ↔ | -1 | Cocycle condition: profile overlap consistency is Cech cohomology |
+| security-ownership-map | → | ? | Write-confinement rules feed sensitivity analysis |
+| triadic-skill-orchestrator | ← | +1 | Fills VALIDATOR (-1) slot in enforcement triplet |
+| gf3-conservation-oracle | ↔ | ? | 26-letter trit table validates conservation |
+| self-validation-loop | ← | -1 | Efference copy for droid↔profile alignment |
+| acset-taxonomy | → | 0 | Letter-trit schema as domain-specific ACSet |
+| bisimulation-game | → | mixed | Safety invariant as observational bridge type |

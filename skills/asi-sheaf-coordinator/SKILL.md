@@ -96,3 +96,15 @@ This is automatically satisfied by GF(3) conservation:
 | skill-validation-gf3 | Directory structure validation | No .sb profile validation |
 
 This skill fills the coordination gap between all of them.
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| sheaf-cohomology | ↔ | -1 | Cech cocycle verification for profile sections |
+| bisimulation-game | ↔ | mixed | Arbiter observation: safety invariant per round |
+| topos-unified | ↔ | 0 | Descent condition for local-to-global gluing |
+| narya-proofs | ← | -1 | Formal verification of gluing conditions |
+| open-games | → | +1 | Isolation breakdown as game-theoretic defection |
+| protocol-acset | → | ? | Profile schema as ACSet protocol |
+| gf3-conservation-oracle | ↔ | ? | Conservation check at sheaf level |

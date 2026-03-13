@@ -79,3 +79,14 @@ done
 echo "Total missing: $MISSING"
 [ $MISSING -eq 0 ] && echo "INVENTORY COMPLETE" || echo "INVENTORY INCOMPLETE"
 ```
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| acset-taxonomy | ↔ | 0 | 26-letter schema as domain-specific ACSet |
+| gf3-conservation-oracle | ↔ | ? | Complete trit table feeds conservation oracle |
+| plurigrid-asi-integrated | → | ? | Fills 18 missing letter mappings |
+| security-ownership-map | → | ? | Letter-to-stratum ownership boundaries |
+| skill-connectivity-hub | → | 0 | Inventory as hub-routing input |
+| triadic-skill-orchestrator | → | +1 | Full trit table for triplet assignment |

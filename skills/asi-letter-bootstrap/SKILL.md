@@ -63,3 +63,14 @@ The bootstrap ensures that any new letter added:
 1. Has an explicit trit assignment
 2. The global sum remains ≡ 0 (mod 3)
 3. At least one valid triad exists involving the new letter
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| world-hopping | ↔ | +1 | World creation protocol |
+| triadic-skill-orchestrator | ← | +1 | Triplet assignment for new letter |
+| gay-mcp | ← | +1 | Color derivation for new letter |
+| gf3-conservation-oracle | → | ? | Conservation check after addition |
+| asi-letter-inventory | → | -1 | Updates inventory with new entry |
+| unworld | ↔ | ? | Seed chaining for new world derivation |

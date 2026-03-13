@@ -57,3 +57,14 @@ GF(3): v(-1) + l(-1) + r(+1) = -1 ≡ 2 (mod 3) — VIOLATION
 | shell-guard | Dispatch uses shell-guard for ENOENT prevention |
 | gf3-conservation-oracle | Dispatch checks conservation before executing |
 | world-runtime-capability | Dispatch maps to wasmCloud providers |
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| skill-dispatch | ↔ | 0 | Sub-router for letter-scoped activation |
+| agent-o-rama | ← | +1 | Agent activation triggers letter dispatch |
+| dynamic-sufficiency | ← | 0 | Sufficiency check before dispatch |
+| cat-tripartite | → | mixed | SICP/CTP/CatColab routing by trit role |
+| asi-skill-selector | ↔ | 0 | Selector picks, dispatch routes |
+| bisimulation-game | → | mixed | Dispatch equivalence as bisimulation |

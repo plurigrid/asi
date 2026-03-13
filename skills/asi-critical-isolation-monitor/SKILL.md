@@ -55,3 +55,14 @@ published outputs. This is spectral gap 1/4 — mixing time τ = 4.
 | Cross-world write SUCCESS | CRITICAL | Profile missing or broken |
 | ξ > 10 (high correlation) | WARN | Worlds losing independence |
 | Trit sum ≢ 0 (mod 3) after skill change | CRITICAL | GF(3) violation |
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| narya-proofs | ← | -1 | Formal verification of correlation length bounds |
+| open-games | → | +1 | Isolation breakdown as game-theoretic defection |
+| behaviour-surprisal-analysis | ↔ | ? | Seatbelt denials as surprisal events |
+| gf3-conservation-oracle | → | ? | Conservation violation as critical event |
+| bisimulation-game | → | mixed | Monitor state as arbiter observation |
+| self-validation-loop | ← | -1 | Nociceptive loop: denial→alarm→correction |

@@ -64,3 +64,14 @@ All profiles pass `sandbox-exec` testing. No shell involved.
 | gf3-kanren.scm | miniKanren relations — pure logic |
 
 All Goblins skills already follow scsh philosophy: no shell, just Scheme.
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| interaction-nets | ↔ | 0 | scsh process composition as net reduction |
+| goblins-adapter | ↔ | 0 | Guile interop for ElizaOS→scsh bridge |
+| sdr-borges-reafference | ← | ? | .scm spectral analysis pattern |
+| gf3-tripartite | → | 0 | scsh pipelines preserve tripartite structure |
+| hvm-runtime | → | ? | scsh→HVM compilation for parallel execution |
+| sicmutils | ← | +1 | SRFI bridges for numerical scsh pipelines |

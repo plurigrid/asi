@@ -85,3 +85,14 @@ To add a new profile, add a `<profile>` record to `seatbelt-scsh.scm`:
 ```
 
 Then add it to the core list and re-run. GF(3) conservation is checked automatically.
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| gay-mcp | ↔ | +1 | SplitMix64 color derivation for profile identity |
+| triadic-skill-orchestrator | ← | +1 | GENERATOR slot in dispatch triplet |
+| world-hopping | ↔ | +1 | World creation protocol triggers profile generation |
+| interaction-nets | → | 0 | scsh process composition as net reduction |
+| goblins-adapter | → | 0 | Profile generation as Goblins capability |
+| agent-o-rama | ← | +1 | Agent activation triggers profile dispatch |

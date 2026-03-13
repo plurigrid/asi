@@ -81,3 +81,14 @@ PROPOSED FIXES:
 - Runs as pre-commit hook alongside gf3-conservation-oracle
 - Feeds into asi-sheaf-coordinator for gluing verification
 - Triggers asi-letter-bootstrap when gaps are found
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| self-validation-loop | ↔ | -1 | Efference copy for droid↔skill alignment |
+| gf3-conservation-oracle | ↔ | ? | Pre-commit: mixer validates before oracle conserves |
+| acset-taxonomy | → | 0 | Droid↔skill mapping as ACSet morphism |
+| skill-connectivity-hub | → | 0 | Mixer feeds connectivity graph updates |
+| security-ownership-map | → | ? | Orphaned droids/skills as ownership gaps |
+| asi-letter-inventory | ← | -1 | Complete trit table feeds mixer validation |

@@ -95,3 +95,15 @@ This skill fills the gap: actual `.scm` code that bridges Goblins to Seatbelt.
 
 `~/worlds/seatbelt-scsh.scm` — the actual implementation.
 Run `guile -s ~/worlds/seatbelt-scsh.scm /tmp/sb` to generate all 33 profiles.
+
+## NEIGHBOR_SKILLS
+
+| Skill | Direction | Trit | Connection |
+|---|---|---|---|
+| goblins-adapter | ↔ | 0 | Evaluator→lifecycle hook for capability attenuation |
+| goblins | ↔ | -1 | CapTP/Syrup for cross-vat profile exchange |
+| botnet-studies | ← | -1 | POLA capability passing pattern |
+| levin-levity | ← | ? | goblins_triad.scm auto-spawn pattern |
+| gay-mcp | → | +1 | SplitMix64 color for actor identity |
+| interaction-nets | → | 0 | Actor messages as interaction net reduction |
+| self-validation-loop | → | -1 | Goblins efference copy for profile validation |
