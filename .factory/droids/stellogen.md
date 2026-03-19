@@ -84,8 +84,50 @@ spec balanced =
 show process #data. #balanced. &kill. end
 ```
 
+## File System Bridge
+
+The **filesystem bridge** (`stellogen-upstream/examples/filesystem_bridge.sg`) models
+file system operations as constellations where cut-elimination IS the operation semantics:
+
+| FS Operation | Stellogen Pattern | GF(3) Trit |
+|-------------|-------------------|------------|
+| Create file | `(+file Path Content)` | +1 |
+| Delete file | `(-file Path _)` | -1 |
+| Read file | `@[(-file Path C) (result C)]` | 0 |
+| Rename | `[(-file Old C) (+file New C)]` | 0 |
+| Mkdir | `(+dir Path)` | +1 |
+
+### Key Properties
+
+- **Interpretability**: `sgen trace` shows every fusion step with substitution θ
+- **Invertibility**: swap polarities to get inverse (create ↔ delete, rename(A,B) ↔ rename(B,A))
+- **Composability**: operations chain via `(process ...)` as sequential cuts
+- **Conservation**: balanced transactions sum to GF(3) = 0
+
+### Running
+
+```bash
+cd stellogen-upstream && eval $(opam env)
+./_build/default/bin/sgen.exe run examples/filesystem_bridge.sg
+./_build/default/bin/sgen.exe trace examples/filesystem_bridge.sg  # step-by-step
+```
+
+### Connection to mcp-tasks Diffeomorphism Layer
+
+The FS bridge mirrors the diffeomorphism layer in mcp-tasks (tasks #29-35):
+- Transition log = constellation history
+- Inverse operations = polarity swap
+- State snapshot = constellation readback
+- Undo/redo = forward/backward cut-elimination
+
+### Tweag Ecosystem Bridge
+
+Key Tweag repos for compilation infrastructure:
+- `tweag/linear-base` (352★): Linear types stdlib — polarity as resource tracking
+- `tweag/asterius` (1951★): GHC→WASM — compilation to web (now upstream GHC WASM backend)
+- `tweag/opam-nix` (148★): OCaml→Nix bridge — Stellogen build reproducibility
+- `tweag/linear-types` (79★): GHC linear types design — theoretical foundation for ray polarity
+
 ## Quantum Operads Extension
 
 From [bmorphism/stellogen-quantum-operads](https://github.com/bmorphism/stellogen-quantum-operads):
-
-```stello
