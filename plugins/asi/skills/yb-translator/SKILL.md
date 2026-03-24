@@ -188,12 +188,18 @@ SOURCE: https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl
 4. **One parallel per concept** - no tables, no frills
 5. **Run fetch script** when uncertain about term existence
 
-## Related Skills (Random Walk r=3)
+## What was removed
 
-| Skill | Relation | Trit |
-|-------|----------|------|
-| **assembly-index** | Cronin's molecular complexity → code complexity | ⊕ |
-| **alife** | Artificial life / origin of life parallels | ○ |
-| **turing-chemputer** | Chemical computation ↔ biological computation | ⊖ |
+`analyze_all_skills.clj` classified 99% of 485 skills as coalgebras via regex
+keyword matching. `random_walk_verifier.clj` "verified" those classifications
+by running more regex on the same content. `skill_taxonomy.edn` stored the
+result. These were removed because a classifier with 99% positive rate has
+zero discriminative power — it's entropy maximization, not structure detection.
 
-Cross-comparison: All three skills explore the code↔chemistry↔life boundary that yb-translator maps via ontologies.
+What remains: twelve concrete translations with verifiable EBI OLS ontology IDs,
+a bidirectional lookup dictionary (translate.clj), and a concept-to-example
+mapper that queries live ontology data (concept_to_example.clj).
+
+The test for whether a translation belongs here: does the ontology ID exist,
+and does the mechanistic parallel hold at the level of the mechanism, not just
+the analogy? If you can't answer both, it doesn't go in.
