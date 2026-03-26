@@ -1,11 +1,18 @@
 ---
 name: gf3-conservation-oracle
+<<<<<<< HEAD
 description: Formal oracle verifying GF(3) trit conservation across skill triads, belief states, and propagator networks. Given a set of skills/values with assigned trits, decides if the sum ≡ 0 mod 3 for every valid triad. Returns CONSERVED | VIOLATED | UNKNOWN with an explicit witness (the violating triad or the certificate). This is the pre-commit invariant enforced by gf3-pr-verify.
 version: 1.0.0
 trit: -1
 role: VALIDATOR
 tags: [gf3, oracle, conservation, triads, formal, invariant, pre-commit, validator]
 deployed: 2026-02-19
+=======
+description: >
+  Formal oracle verifying GF(3) trit conservation across skill triads.
+  Triggers: verify trit conservation, check GF(3) invariant, pre-commit trit check,
+  triad validation, conservation law enforcement, sum mod 3 check.
+>>>>>>> origin/main
 ---
 
 # GF(3) Conservation Oracle
@@ -15,6 +22,7 @@ deployed: 2026-02-19
 ### Type
 
 ```
+<<<<<<< HEAD
 ConservationOracle : SkillGraph → ConservationResult
 
 ConservationResult =
@@ -24,18 +32,35 @@ ConservationResult =
 
 ValidTriad    = (s₁, s₂, s₃, trits) where trit(s₁) + trit(s₂) + trit(s₃) ≡ 0 mod 3
 ViolatingTriad = (s₁, s₂, s₃, trits) where trit(s₁) + trit(s₂) + trit(s₃) ≢ 0 mod 3
+=======
+ConservationOracle : SkillGraph -> ConservationResult
+
+ConservationResult =
+  | CONSERVED   { certificate: list[ValidTriad] }
+  | VIOLATED    { witness: ViolatingTriad }
+  | UNKNOWN     { reason: string }
+
+ValidTriad     = (s1, s2, s3, trits) where trit(s1) + trit(s2) + trit(s3) = 0 mod 3
+ViolatingTriad = (s1, s2, s3, trits) where trit(s1) + trit(s2) + trit(s3) != 0 mod 3
+>>>>>>> origin/main
 ```
 
 ### Preconditions
 
 1. SkillGraph has at least 3 skills
+<<<<<<< HEAD
 2. Every skill has a trit ∈ {-1, 0, +1} (from gf3-trit-oracle, NOT guessed)
 3. "Valid triad" means: the three skills are connected (skill graph edge or hub connection)
 4. Background: `skills.json` registry with trit fields populated
+=======
+2. Every skill has a trit in {-1, 0, +1}
+3. "Valid triad" means: three skills are connected (edge or hub connection)
+>>>>>>> origin/main
 
 ### Postconditions
 
 1. Returns EXACTLY ONE of: `CONSERVED` | `VIOLATED` | `UNKNOWN`
+<<<<<<< HEAD
 2. `CONSERVED` is witnessed by an explicit list of checked triads (never "all triads ok")
 3. `VIOLATED` provides the FIRST violating triad found (witness, not just count)
 4. `UNKNOWN` only if a skill in the checked graph has `CellValue.nothing` from gf3-trit-oracle
@@ -59,12 +84,32 @@ def gf3_add(a: int, b: int) -> int:
 
 def gf3_sum(*args: int) -> int:
     """Sum of any number of trits in GF(3)."""
+=======
+2. `CONSERVED` is witnessed by an explicit list of checked triads
+3. `VIOLATED` provides the FIRST violating triad found
+4. `UNKNOWN` only if a skill has undefined trit
+5. Deterministic: same graph state -> same result
+
+## GF(3) Arithmetic
+
+```python
+def gf3_rep(x: int) -> int:
+    """Map any integer to canonical GF(3) representative in {-1, 0, +1}."""
+    r = x % 3
+    return r if r <= 1 else r - 3
+
+def gf3_add(a: int, b: int) -> int:
+    return gf3_rep(a + b)
+
+def gf3_sum(*args: int) -> int:
+>>>>>>> origin/main
     result = 0
     for a in args:
         result = gf3_add(result, a)
     return result
 
 def is_valid_triad(t1: int, t2: int, t3: int) -> bool:
+<<<<<<< HEAD
     """Conservation law: t1 + t2 + t3 ≡ 0 (mod 3)."""
     return gf3_sum(t1, t2, t3) == 0
 
@@ -84,18 +129,36 @@ def third_trit(t1: int, t2: int) -> int:
 
 ---
 
+=======
+    """Conservation law: t1 + t2 + t3 = 0 (mod 3)."""
+    return gf3_sum(t1, t2, t3) == 0
+
+def third_trit(t1: int, t2: int) -> int:
+    """Given two trits, compute the unique third conserving GF(3)."""
+    return gf3_rep(-(t1 + t2))
+```
+
+>>>>>>> origin/main
 ## Oracle Implementation
 
 ```python
 from dataclasses import dataclass
+<<<<<<< HEAD
 from typing import Optional
+=======
+>>>>>>> origin/main
 import json
 
 @dataclass
 class SkillNode:
     name: str
+<<<<<<< HEAD
     trit: int       # -1, 0, +1 — from gf3-trit-oracle (NOT guessed)
     role: str       # VALIDATOR | ERGODIC | BRIDGE | GENERATOR
+=======
+    trit: int
+    role: str
+>>>>>>> origin/main
 
 @dataclass
 class Triad:
@@ -113,6 +176,7 @@ class Triad:
 
 def conservation_oracle(
     skills: list[SkillNode],
+<<<<<<< HEAD
     edges: list[tuple[str, str]],  # skill graph edges
     check_all: bool = False,       # if False, return on first violation
 ) -> dict:
@@ -133,6 +197,20 @@ def conservation_oracle(
             }
 
     # Build adjacency for connected triple enumeration
+=======
+    edges: list[tuple[str, str]],
+    check_all: bool = False,
+) -> dict:
+    """
+    Requirement:  all skills have trit in {-1, 0, +1}
+    Postcondition: returns CONSERVED | VIOLATED | UNKNOWN
+    """
+    skill_map = {s.name: s for s in skills}
+    for skill in skills:
+        if skill.trit not in (-1, 0, 1):
+            return {"result": "UNKNOWN", "reason": f"Skill '{skill.name}' has undefined trit"}
+
+>>>>>>> origin/main
     adj = {s.name: set() for s in skills}
     for (a, b) in edges:
         adj[a].add(b)
@@ -141,17 +219,28 @@ def conservation_oracle(
     violations = []
     valid_triads = []
 
+<<<<<<< HEAD
     # Check all connected triples
+=======
+>>>>>>> origin/main
     skill_names = list(skill_map.keys())
     for i, n1 in enumerate(skill_names):
         for n2 in skill_names[i+1:]:
             if n2 not in adj[n1]:
+<<<<<<< HEAD
                 continue  # not connected — skip
+=======
+                continue
+>>>>>>> origin/main
             for n3 in skill_names:
                 if n3 == n1 or n3 == n2:
                     continue
                 if n3 not in adj[n1] and n3 not in adj[n2]:
+<<<<<<< HEAD
                     continue  # n3 not connected to either — skip
+=======
+                    continue
+>>>>>>> origin/main
 
                 s1, s2, s3 = skill_map[n1], skill_map[n2], skill_map[n3]
                 triad = Triad(s1, s2, s3)
@@ -160,7 +249,10 @@ def conservation_oracle(
                     valid_triads.append({
                         "skills": [n1, n2, n3],
                         "trits": [s1.trit, s2.trit, s3.trit],
+<<<<<<< HEAD
                         "sum_mod3": 0
+=======
+>>>>>>> origin/main
                     })
                 else:
                     violations.append({
@@ -169,6 +261,7 @@ def conservation_oracle(
                         "sum_mod3": triad.trit_sum
                     })
                     if not check_all:
+<<<<<<< HEAD
                         # Return immediately on first violation
                         return {
                             "result": "VIOLATED",
@@ -192,28 +285,54 @@ def conservation_oracle(
 ---
 
 ## Pre-Commit Integration (gf3-pr-verify hook)
+=======
+                        return {"result": "VIOLATED", "witness": violations[0]}
+
+    if violations:
+        return {"result": "VIOLATED", "witness": violations[0],
+                "all_violations": violations if check_all else None}
+
+    return {"result": "CONSERVED", "certificate": valid_triads,
+            "triads_checked": len(valid_triads)}
+```
+
+## Pre-Commit Hook
+>>>>>>> origin/main
 
 ```bash
 #!/usr/bin/env bash
 # .git/hooks/pre-commit
+<<<<<<< HEAD
 # Requirement: gf3-trit-oracle is accessible (jq + skills.json)
 # Postcondition: blocks commit if GF(3) conservation violated
 
+=======
+>>>>>>> origin/main
 set -euo pipefail
 
 SKILLS_JSON="$HOME/i/asi/skills.json"
 ORACLE_SCRIPT="$HOME/i/asi/skills/gf3-conservation-oracle/check.py"
 
+<<<<<<< HEAD
 # Get changed skill directories
 CHANGED_SKILLS=$(git diff --cached --name-only | grep 'skills/' | cut -d/ -f1-3 | sort -u)
 
 if [ -z "$CHANGED_SKILLS" ]; then
     exit 0  # No skill changes — no conservation check needed
+=======
+CHANGED_SKILLS=$(git diff --cached --name-only | grep 'skills/' | cut -d/ -f1-3 | sort -u)
+
+if [ -z "$CHANGED_SKILLS" ]; then
+    exit 0
+>>>>>>> origin/main
 fi
 
 echo "GF(3) Conservation Oracle: checking changed skills..."
 
+<<<<<<< HEAD
 # Extract full skill graph from registry
+=======
+>>>>>>> origin/main
 python3 "$ORACLE_SCRIPT" \
     --skills-json "$SKILLS_JSON" \
     --changed-skills "$CHANGED_SKILLS" \
@@ -222,12 +341,16 @@ python3 "$ORACLE_SCRIPT" \
 STATUS=$?
 if [ $STATUS -ne 0 ]; then
     echo "BLOCKED: GF(3) conservation violated."
+<<<<<<< HEAD
     echo "Fix the trit assignment before committing."
+=======
+>>>>>>> origin/main
     echo "Use: third_trit(t1, t2) to compute the required third trit."
     exit 1
 fi
 
 echo "GF(3) conservation: CONSERVED. Commit allowed."
+<<<<<<< HEAD
 exit 0
 ```
 
@@ -245,11 +368,23 @@ def monotonic_oracle(old_skills_json: str, new_skills_json: str) -> dict:
     Postcondition: returns CONSERVED if new_count >= old_count, VIOLATED otherwise
 
     This is SEPARATE from GF(3) conservation — both must hold.
+=======
+```
+
+## Monotonic Skill Invariant
+
+```python
+def monotonic_oracle(old_skills_json: str, new_skills_json: str) -> dict:
+    """
+    Separate from GF(3) conservation -- both must hold.
+    Postcondition: CONSERVED if new_count >= old_count, VIOLATED otherwise.
+>>>>>>> origin/main
     """
     old_count = len(json.load(open(old_skills_json))["skills"])
     new_count = len(json.load(open(new_skills_json))["skills"])
 
     if new_count >= old_count:
+<<<<<<< HEAD
         return {
             "result": "CONSERVED",
             "old_count": old_count,
@@ -293,13 +428,29 @@ CellValue.contradiction → two authoritative sources disagree → HALT
 // Requirement: Dafny 4.x installed
 // Postcondition: conservation law formally verified for up to N triad checks
 
+=======
+        return {"result": "CONSERVED", "old_count": old_count,
+                "new_count": new_count, "delta": new_count - old_count}
+    else:
+        return {"result": "VIOLATED", "witness": {
+            "old_count": old_count, "new_count": new_count}}
+```
+
+## Dafny Formal Verification
+
+```dafny
+>>>>>>> origin/main
 lemma GF3Conservation(t1: int, t2: int, t3: int)
     requires t1 in {-1, 0, 1} && t2 in {-1, 0, 1} && t3 in {-1, 0, 1}
     requires (t1 + t2 + t3) % 3 == 0
     ensures third_trit(t1, t2) == t3
 {
+<<<<<<< HEAD
     // Proof: by exhaustive case analysis (27 cases)
     // Dafny verifies this automatically via SAT
+=======
+    // Proof by exhaustive case analysis (27 cases) -- Dafny verifies via SAT
+>>>>>>> origin/main
 }
 
 function third_trit(t1: int, t2: int): int
@@ -313,6 +464,7 @@ function third_trit(t1: int, t2: int): int
 }
 ```
 
+<<<<<<< HEAD
 ---
 
 ## What This Oracle Is NOT
@@ -334,3 +486,11 @@ function third_trit(t1: int, t2: int): int
 - `skill-validation-gf3` — validates individual skills against registry
 - `formal-verification` / `dafny-formal-verification` — Dafny proof of the lemmas above
 - `bisimulation-oracle` — uses trit class to gate bisimulation queries
+=======
+## What This Oracle Is NOT
+
+- NOT a style checker -- conservation is a mathematical invariant
+- NOT a majority vote -- one violation invalidates the entire graph
+- NOT approximate -- exact mod 3, no tolerance
+- NOT transitive -- CONSERVED for subgraph does NOT imply CONSERVED for full graph
+>>>>>>> origin/main

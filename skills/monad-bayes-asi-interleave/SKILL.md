@@ -1,5 +1,6 @@
 ---
 name: monad-bayes-asi-interleave
+<<<<<<< HEAD
 description: Bridge layer connecting tweag/monad-bayes to plurigrid/asi. Routes SMC/MCMC/PMMH/RMSMC monad transformer stacks into asi's abductive reasoning, lolita physics emulation, and GF(3)-colored sampling capabilities.
 version: 1.0.0
 trit: 0
@@ -28,6 +29,35 @@ TracedT m a             ← records execution trace for MH proposals
 
 DensityT (free monad)   ← categorical structure: computes joint density of traces
                           mhTransFree :: WeightedT (Free.DensityT m) a → Trace a → ...
+=======
+description: >
+  Bridge connecting tweag/monad-bayes probabilistic inference (SMC/MCMC/PMMH/RMSMC monad
+  transformer stacks) to ASI abductive reasoning and sampling capabilities.
+  Use when wiring Haskell probabilistic programming into ASI pipelines,
+  running SMC over hypothesis spaces, or performing PMMH parameter inference
+  for physics emulation.
+---
+
+# monad-bayes x ASI Interleave
+
+Bridge connecting tweag/monad-bayes (probabilistic inference as monad transformer stacks) to the ASI skill graph.
+
+## Monad Transformer Stack Anatomy
+
+```
+WeightedT m a           <- innermost: accumulates likelihood (MonadFactor)
+  |
+PopulationT m a         <- = WeightedT (ListT m) a; manages particle populations
+  |
+SequentialT m a         <- sequential time steps; works with PopulationT
+  |
+TracedT m a             <- records execution trace for MH proposals
+  |-- Static.TracedT:   model :: WeightedT (DensityT m) a
+  |-- Basic.TracedT:    model :: WeightedT (DensityT Identity) a
+  +-- Dynamic.TracedT:  m (WeightedT (DensityT m) a, Trace a)
+
+DensityT (free monad)   <- categorical structure: computes joint density of traces
+>>>>>>> origin/main
 ```
 
 ### Algorithm Compositions
@@ -36,6 +66,7 @@ DensityT (free monad)   ← categorical structure: computes joint density of tra
 |-----------|-------|
 | **SMC** | `SequentialT (PopulationT m)` |
 | **MCMC** | `TracedT (WeightedT m)` |
+<<<<<<< HEAD
 | **PMMH** | `TracedT (WeightedT m)` (params) ⊗ `SequentialT (PopulationT (WeightedT m))` (state) |
 | **RMSMC** | `SequentialT (TracedT (PopulationT m))` |
 
@@ -64,17 +95,39 @@ hypothesisPrior query = do
   t <- categorical (V.fromList [1/3, 1/3, 1/3])
   let tritVal = [-1, 0, 1] !! t
   -- Gemini scores likelihood (via vertex-asi-interleave)
+=======
+| **PMMH** | `TracedT (WeightedT m)` (params) x `SequentialT (PopulationT (WeightedT m))` (state) |
+| **RMSMC** | `SequentialT (TracedT (PopulationT m))` |
+
+## ASI Integration Points
+
+### 1. abductive-monte-carlo -> monad-bayes SMC Backend
+
+Swap in monad-bayes as the backend for hypothesis sampling:
+
+```haskell
+data Hypothesis = H { content :: Text, trit :: Int }
+
+hypothesisPrior :: MonadInfer m => Text -> m Hypothesis
+hypothesisPrior query = do
+  t <- categorical (V.fromList [1/3, 1/3, 1/3])
+  let tritVal = [-1, 0, 1] !! t
+>>>>>>> origin/main
   score <- liftIO $ geminiLikelihood query tritVal
   factor (Exp score)
   return $ H { content = query, trit = tritVal }
 
+<<<<<<< HEAD
 -- SMC over hypothesis space
+=======
+>>>>>>> origin/main
 sampleHypotheses :: IO [Hypothesis]
 sampleHypotheses = do
   let config = SMCConfig { resampler = systematic, numSteps = 10, numParticles = 1000 }
   smc config $ hypothesisPrior "Is this attractor chaotic?"
 ```
 
+<<<<<<< HEAD
 ### 2. gay-monte-carlo → monad-bayes WeightedT
 
 `gay-monte-carlo` performs GF(3)-colored sampling. Connect to monad-bayes for proper weight accumulation:
@@ -109,11 +162,19 @@ skillTriadPosterior = do
 
 ```haskell
 -- PMMH: parameters (physical coefficients) × state (latent trajectory)
+=======
+### 2. lolita Physics Emulation -> PMMH Parameter Inference
+
+Use PMMH to infer latent parameters from observables (NeurIPS 2025, arxiv:2507.02608):
+
+```haskell
+>>>>>>> origin/main
 lolitaPMMH
   :: (MonadSample m, MonadInfer m)
   => [[Double]]  -- observed trajectory (downsampled)
   -> m ([Double], [[Double]])  -- (parameters, inferred latents)
 lolitaPMMH obs = do
+<<<<<<< HEAD
   -- Parameter model (TracedT layer)
   params <- do
     reynoldsNum <- gamma 2.0 0.5   -- Re ~ 2
@@ -160,11 +221,44 @@ breathingRMSMC observations = do
 
 ```haskell
 -- DensityT trace as ASI skill composition log
+=======
+  params <- do
+    reynoldsNum <- gamma 2.0 0.5
+    rayleighNum <- gamma 10.0 0.1
+    return [reynoldsNum, rayleighNum]
+  latents <- forM (zip obs [0..]) $ \(obsT, t) -> do
+    latent <- multivariate params t
+    mapM_ (\(o, l) -> score $ Normal l 0.1 `logProb` o) (zip obsT latent)
+    return latent
+  return (params, latents)
+```
+
+### 3. bayesian-breathing -> RMSMC Sequential State Estimation
+
+RMSMC adds MCMC rejuvenation to respiratory-rate estimation:
+
+```haskell
+breathingRMSMC :: MonadInfer m => [Double] -> m Double
+breathingRMSMC observations = do
+  let model = foldM (\rate obs -> do
+        rate' <- normal rate 0.05
+        factor $ Exp (normalLogProb obs (sin (2*pi*rate')) 0.1)
+        return rate') 12.0 observations
+  rmsmc (RMSMCConfig { numParticles = 200, numMCMCSteps = 5 }) model
+```
+
+### 4. DensityT -> Categorical Composition
+
+DensityT provides the categorical structure that makes traces composable:
+
+```haskell
+>>>>>>> origin/main
 traceToSkillPath :: Trace a -> [SkillInvocation]
 traceToSkillPath trace = map toSkillInv (randomVariables trace)
   where
     toSkillInv rv = SkillInvocation
       { skillId  = hashToSkill (rvName rv)
+<<<<<<< HEAD
       , trit     = sign (probDensity rv)  -- +1 if density high, -1 if low, 0 neutral
       , logProb  = probDensity rv
       }
@@ -186,6 +280,16 @@ Since asi is polyglot, use JSON-RPC to call monad-bayes from Clojure/babashka:
 
 ```clojure
 ;; babashka: launch GHCi server, call monad-bayes SMC from Clojure
+=======
+      , logProb  = probDensity rv
+      }
+```
+
+## Concrete Wiring: Haskell <-> ASI (via babashka/JSON-RPC)
+
+```clojure
+;; babashka: call monad-bayes SMC from Clojure
+>>>>>>> origin/main
 (require '[babashka.process :as p])
 
 (defn run-smc [model-name n-particles observations]
@@ -200,6 +304,7 @@ Since asi is polyglot, use JSON-RPC to call monad-bayes from Clojure/babashka:
     (-> proc :out deref (json/parse-string true))))
 ```
 
+<<<<<<< HEAD
 Or use the `monad-bayes` Python bindings via `pymc`:
 
 ```python
@@ -250,3 +355,16 @@ Gaps identified in tweag/monad-bayes tutorial coverage:
 - `catcolab-causal-loop` — causal loop diagrams; Bayesian network composition
 - `monad-bayes` (if exists) — direct Haskell skill wrapper
 - `vertex-ai-protein-interleave` — gnomAD variant-phenotype PMMH models
+=======
+## Notebook Coverage Gaps
+
+| Topic | Covered | Missing |
+|-------|---------|---------|
+| SMC basics | yes | -- |
+| MCMC (MH) | yes | -- |
+| PMMH | partial | Full worked example with real data |
+| RMSMC | no | Notebook: sequential state estimation |
+| DensityT internals | no | Notebook: trace inspection + density computation |
+| Physics emulation | no | PMMH for lolita latent parameter inference |
+| Information geometry | no | Fisher-Rao metric on posterior manifold |
+>>>>>>> origin/main

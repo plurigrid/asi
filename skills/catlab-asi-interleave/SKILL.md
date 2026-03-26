@@ -1,5 +1,6 @@
 ---
 name: catlab-asi-interleave
+<<<<<<< HEAD
 description: Bridge layer connecting AlgebraicJulia/Catlab.jl to plurigrid/asi. Wires ACSets (attributed C-sets), wiring diagrams, decorated cospans, and the AlgebraicJulia ecosystem (AlgebraicDynamics, AlgebraicPetri, AlgebraicRewriting, Decapodes) into the ASI skill graph. ACSets generalize relational databases with categorical semantics; every diagram, network, and model in the ecosystem is an ACSet.
 version: 1.0.0
 trit: 0
@@ -20,12 +21,35 @@ The universal data structure. A schema defines objects, homomorphisms (morphisms
 
 ```julia
 # SchGraph: objects V, E; morphisms src: E->V, tgt: E->V
+=======
+description: >
+  Bridge connecting AlgebraicJulia/Catlab.jl to skill graphs.
+  Triggers: ACSets, attributed C-sets, wiring diagrams, decorated cospans,
+  DPO rewriting on skill graphs, AlgebraicDynamics, AlgebraicPetri,
+  AlgebraicRewriting, Decapodes, categorical algebra in Julia.
+---
+
+# Catlab.jl Interleave
+
+Bridge connecting AlgebraicJulia/Catlab.jl (categorical algebra in Julia) to skill graphs.
+
+## Catlab Core Concepts
+
+### ACSets (Attributed C-Sets)
+
+The universal data structure. A schema defines objects, homomorphisms, and attribute types. An ACSet instance is a functor from that schema category to Set.
+
+```julia
+>>>>>>> origin/main
 @present SchGraph(FreeSchema) begin
   V::Ob; E::Ob
   src::Hom(E,V); tgt::Hom(E,V)
 end
 
+<<<<<<< HEAD
 # Attributed: add attribute types
+=======
+>>>>>>> origin/main
 @present SchWeightedGraph <: SchGraph begin
   T::AttrType
   weight::Attr(E,T)
@@ -34,6 +58,7 @@ end
 const WeightedGraph = ACSetType(SchWeightedGraph, index=[:src,:tgt])
 ```
 
+<<<<<<< HEAD
 Every diagram, network, and model in the ecosystem is an ACSet.
 
 ### Wiring Diagrams as ACSets
@@ -43,11 +68,21 @@ SchAttributedWiringDiagram with Box/InPort/OutPort/Wire. Boxes = operations/proc
 ### Decorated Cospans
 
 Functor L: A -> X gives "open" ACSets. OpenGraph with hypergraph category structure. Operations: `compose`, `otimes` (monoidal product), `mcopy`, `mmerge`, `delete`, `create`. Enable compositional modeling of open systems.
+=======
+### Wiring Diagrams as ACSets
+
+SchAttributedWiringDiagram with Box/InPort/OutPort/Wire. Boxes = operations, wires = data flow. Used to compose dynamical systems, Petri nets, and more.
+
+### Decorated Cospans
+
+Functor L: A -> X gives "open" ACSets. Operations: `compose`, `otimes` (monoidal product), `mcopy`, `mmerge`, `delete`, `create`. Enable compositional modeling of open systems.
+>>>>>>> origin/main
 
 ### Downstream Ecosystem
 
 ```
 AlgebraicJulia/Catlab.jl (foundation)
+<<<<<<< HEAD
   |- AlgebraicDynamics.jl     <- dynamical systems via decorated cospans
   |- AlgebraicPetri.jl        <- Petri nets with reaction network semantics
   |- AlgebraicRewriting.jl    <- DPO/SPO graph rewriting on ACSets
@@ -76,11 +111,30 @@ Model the ASI skill graph as an ACSet for relational querying:
 
 ```julia
 @present SchASISkills(FreeSchema) begin
+=======
+  |- AlgebraicDynamics.jl     -- dynamical systems via decorated cospans
+  |- AlgebraicPetri.jl        -- Petri nets with reaction network semantics
+  |- AlgebraicRewriting.jl    -- DPO/SPO graph rewriting on ACSets
+  |- CategoricalTensorNetworks.jl -- tensor contractions as string diagrams
+  |- CombinatorialSpaces.jl   -- simplicial sets, discrete exterior calculus
+  |- DataMigrations.jl        -- functorial data migration between schemas
+  |- DiagrammaticEquations.jl -- physics equations as decorated cospans
+  |- Decapodes.jl             -- multiphysics simulation via DEC
+```
+
+## Integration Points
+
+### Skill Graph as ACSet
+
+```julia
+@present SchSkills(FreeSchema) begin
+>>>>>>> origin/main
   Skill::Ob; Edge::Ob; Hub::Ob
   src::Hom(Edge,Skill); tgt::Hom(Edge,Skill)
   hub_ref::Hom(Hub,Skill)
   SkillName::AttrType; TritVal::AttrType; Category::AttrType
   name::Attr(Skill,SkillName)
+<<<<<<< HEAD
   trit::Attr(Skill,TritVal)        # -1, 0, +1
   category::Attr(Skill,Category)   # development | meta | ai-agents | ...
 end
@@ -99,20 +153,38 @@ end
 ### 2. algebraic-rewriting / topos-adhesive-rewriting <-> DPO/SPO Rewriting
 
 Double-pushout rewriting for safe skill graph mutation (MONOTONIC_SKILL_INVARIANT):
+=======
+  trit::Attr(Skill,TritVal)
+  category::Attr(Skill,Category)
+end
+
+const Skills = ACSetType(SchSkills, index=[:src,:tgt,:hub_ref])
+```
+
+### DPO Rewriting for Safe Skill Graph Mutation
+>>>>>>> origin/main
 
 ```julia
 using AlgebraicRewriting
 
 # DPO rule: add bridge skill to hub (never delete)
+<<<<<<< HEAD
 # L -> K <- R where |R| >= |L| always
 add_bridge_rule = Rule(
   ACSetTransformation(L, K),   # L: match hub pattern
   ACSetTransformation(R, K),   # R: hub + new bridge skill
+=======
+# L -> K <- R where |R| >= |L| always (monotonic)
+add_bridge_rule = Rule(
+  ACSetTransformation(L, K),
+  ACSetTransformation(R, K),
+>>>>>>> origin/main
 )
 new_skills = rewrite(add_bridge_rule, current_skills)
 @assert nparts(new_skills, :Skill) >= nparts(current_skills, :Skill)
 ```
 
+<<<<<<< HEAD
 SPO rewriting available for partial matches (non-adhesive contexts).
 
 ### 3. discopy / discopy-operads <-> Wiring Diagram Composition
@@ -121,12 +193,19 @@ Catlab's wiring diagrams and DisCoPy's string diagrams are the same mathematical
 
 ```julia
 # ASI skill composition as wiring diagram
+=======
+### Wiring Diagram Composition
+
+```julia
+# Skill composition as wiring diagram
+>>>>>>> origin/main
 wd = @program SchSkillOp (validator::Val, coordinator::Coord, generator::Gen) begin
   validated = validator(input)
   coordinated = coordinator(validated)
   result = generator(coordinated)
   return result
 end
+<<<<<<< HEAD
 # This WiringDiagram ACSet can be exported to DisCoPy format
 ```
 
@@ -141,15 +220,25 @@ CatColab is the web frontend to Catlab. Skills: `catcolab-ologs`, `catcolab-petr
 Decorated cospans give OpenGraph a hypergraph category structure. Operations: `compose` (sequential), `otimes` (parallel), `mcopy` (fan-out), `mmerge` (fan-in), `delete`, `create`. Interaction nets are the computational model; decorated cospans are the categorical semantics.
 
 ### 6. crn-topology <-> AlgebraicPetri Reaction Networks
+=======
+# WiringDiagram ACSet can be exported to DisCoPy format via JSON
+```
+
+### AlgebraicPetri Reaction Networks
+>>>>>>> origin/main
 
 ```julia
 using AlgebraicPetri
 
+<<<<<<< HEAD
 # Chemical reaction network as Petri net ACSet
+=======
+>>>>>>> origin/main
 sir_model = LabelledPetriNet([:S,:I,:R],
   :infection => ((:S,:I) => (:I,:I)),
   :recovery  => (:I => :R)
 )
+<<<<<<< HEAD
 # Compose via decorated cospans
 open_sir = Open(sir_model, [:S], [:R])
 ```
@@ -157,20 +246,33 @@ open_sir = Open(sir_model, [:S], [:R])
 Connects to `crn-topology` for topological analysis of reaction networks.
 
 ### 7. dynamical-system-functor / coupled-system <-> AlgebraicDynamics
+=======
+open_sir = Open(sir_model, [:S], [:R])
+```
+
+### AlgebraicDynamics
+>>>>>>> origin/main
 
 ```julia
 using AlgebraicDynamics, Catlab
 
+<<<<<<< HEAD
 # Open continuous dynamical system
+=======
+>>>>>>> origin/main
 rb_system = ContinuousResourceSharer{Float64}(
   [:temperature, :velocity, :pressure],
   (u, p, t) -> rb_dynamics(u, p, t)
 )
+<<<<<<< HEAD
 # Compose via wiring diagram
+=======
+>>>>>>> origin/main
 full_system = oapply(boundary_diagram, [rb_system, thermal_bc])
 solution = solve(ODEProblem(full_system, u0, tspan), Tsit5())
 ```
 
+<<<<<<< HEAD
 ### 8. julia-scientific <-> Julia Runtime for Catlab
 
 Catlab requires Julia >= 1.10. Entry points: `julia-scientific`, `julia-gay`. Enzyme.jl autodiff works with AlgebraicDynamics ODE solvers.
@@ -264,3 +366,18 @@ This enables: conjunctive queries over the skill graph, functorial data migratio
 - `enzyme-autodiff` -- Enzyme.jl autodiff for AlgebraicDynamics simulation
 - `wolframite-compass` -- Wolfram -> Catlab via Julia bridge
 - `string-diagram-rewriting-protocol` -- rewriting protocol for wiring diagrams
+=======
+### Runtime
+
+Catlab requires Julia >= 1.10. Enzyme.jl autodiff works with AlgebraicDynamics ODE solvers.
+
+## Gap Registry
+
+| Capability | Status | Notes |
+|-----------|--------|-------|
+| Probabilistic inference on ACSets | MISSING in Catlab | Use monad-bayes bridge |
+| GPU-accelerated ACSet operations | MISSING | Future: CUDA.jl + ACSet kernels |
+| ACSet <-> DuckDB serialization | PARTIAL | Parquet round-trip |
+| ACSet <-> JSON-RPC for MCP | MISSING | Need syrup/JSON bridge |
+| ACSet diff/merge (CRDT semantics) | MISSING | DPO rewriting approach |
+>>>>>>> origin/main

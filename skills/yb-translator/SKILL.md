@@ -188,38 +188,79 @@ SOURCE: https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl
 4. **One parallel per concept** - no tables, no frills
 5. **Run fetch script** when uncertain about term existence
 
-## Related Skills (Random Walk r=3)
+## Related Skills
 
-| Skill | Relation | Trit |
-|-------|----------|------|
-| **assembly-index** | Cronin's molecular complexity → code complexity | ⊕ |
-| **alife** | Artificial life / origin of life parallels | ○ |
-| **turing-chemputer** | Chemical computation ↔ biological computation | ⊖ |
+- `biopython` (⊕): Programmatic access to biological data; yb-translator provides the ontological frame, biopython provides the runtime
+- `alife` (○): Artificial life / origin of life parallels — overlaps on the code↔biology boundary but alife generates, yb-translator classifies
+- `assembly-index` (⊖): Cronin's molecular complexity metrics; complementary measure to ontological depth
 
-Cross-comparison: All three skills explore the code↔chemistry↔life boundary that yb-translator maps via ontologies.
-
+These three are the only skills with direct biological ontology dependencies.
+Most skills in the repo have no biological structure — that's correct.
 
 ## SDF Interleaving
 
 This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
 
-### Primary Chapter: 7. Propagators
+### Primary Chapter: 4. Pattern Matching
 
-**Concepts**: propagator, cell, constraint, bidirectional, TMS
+**Concepts**: unification, match, segment variables, pattern
 
 ### GF(3) Balanced Triad
 
 ```
-yb-translator (○) + SDF.Ch7 (○) + [balancer] (○) = 0
+yb-translator (⊕) + SDF.Ch4 (○) + assembly-index (⊖) = 0
 ```
 
-**Skill Trit**: 0 (ERGODIC - coordination)
+**Skill Trit**: +1 (PLUS - generation)
+
+yb-translator generates translations (⊕). SDF Ch4 pattern matching provides
+the structural recognition (○). assembly-index measures complexity of the
+result (⊖). The triad balances because generating a translation, recognizing
+its structure, and measuring its complexity are three independent operations
+that compose to a closed loop.
 
 ### Secondary Chapters
 
-- Ch5: Evaluation
-- Ch4: Pattern Matching
+- Ch3: Variations on an Arithmetic Theme (combinators for building translators)
+- Ch7: Propagators (bidirectional constraint flow between CS and biology domains)
 
 ### Connection Pattern
 
-Propagators flow constraints bidirectionally. This skill propagates information.
+Pattern matching unifies a programming concept with a biological term by
+structural match on the mechanism — not by keyword. The translator IS a
+pattern matcher: input a CS concept, output the ontology term whose mechanism
+matches. When the match is analogical rather than direct, the pattern matcher
+should say so.
+
+## Verification
+
+```bash
+# Self-verify translations (L0: syntactic + parallel strength)
+bb scripts/random_walk_verifier.clj verify
+
+# Inventory all ontology IDs across SKILL.md and examples
+bb scripts/random_walk_verifier.clj ids
+
+# Analyze which skills in the repo have actual biological structure
+bb scripts/analyze_all_skills.clj
+
+# Check a specific ontology ID against live EBI OLS
+bb scripts/fetch_ontology.clj verify CL:0000084
+```
+
+## What was rebuilt
+
+The previous `analyze_all_skills.clj` regex-matched any description into a
+category theory concept (99% positive rate). The previous `random_walk_verifier.clj`
+"verified" those via more regex on the same content. Both were removed.
+
+The new versions:
+- `analyze_all_skills.clj` — checks for EXPLICIT typed hierarchies or dual
+  ontological contexts. Most skills get `:none`. If >20% are classified as
+  having structure, the criteria are too loose.
+- `random_walk_verifier.clj` — verifies yb-translator's OWN translations, not
+  other skills. Checks ontology ID format (L0), flags parallel strength as
+  `:direct`, `:analogical`, or `:metaphorical`. L1 (live EBI check) delegated
+  to `fetch_ontology.clj`.
+- `skill_taxonomy.edn` — lists the 12 translations with honest parallel
+  strength ratings. 6 direct, 6 analogical, 0 metaphorical.

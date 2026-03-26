@@ -1,11 +1,20 @@
 ---
 name: neurofeedback-oracle
+<<<<<<< HEAD
 description: Formal oracle mapping EEG-derived focus scores to GF(3) trits via fixed thresholds. Implements the neurofeedback_trit function from propagator.zig as a deterministic, threshold-based oracle with specific requirements on EEG input, Fisher-Rao manifold geometry, and Cell propagation. Never returns partial information — if focus is undefined, returns CellValue.nothing.
 version: 1.0.0
 trit: -1
 role: VALIDATOR
 tags: [neurofeedback, oracle, bci, eeg, propagator, gf3, fisher-rao, cellvalue, formal]
 deployed: 2026-02-19
+=======
+description: >
+  Formal oracle mapping EEG-derived focus scores to trits via fixed thresholds.
+  Implements neurofeedback_trit from propagator.zig as a deterministic,
+  threshold-based oracle. Use when mapping EEG input to trit classification,
+  building BCI propagator networks, or computing Fisher-Rao focus metrics
+  on SPD manifolds.
+>>>>>>> origin/main
 ---
 
 # Neurofeedback Oracle
@@ -15,6 +24,7 @@ deployed: 2026-02-19
 ### Type
 
 ```
+<<<<<<< HEAD
 NeurofeedbackOracle : Focus → Trit
 Focus = f32 ∈ [0.0, 1.0]   -- EEG-derived focus score
 Trit  = {-1, 0, +1}
@@ -23,10 +33,21 @@ Thresholds (FIXED — from propagator.zig, not hyperparameters):
   f > 0.66  → +1  (high focus  → Generator)
   f < 0.33  → -1  (low focus   → Validator)
   otherwise →  0  (medium      → Coordinator)
+=======
+NeurofeedbackOracle : Focus -> Trit
+Focus = f32 in [0.0, 1.0]   -- EEG-derived focus score
+Trit  = {-1, 0, +1}
+
+Thresholds (FIXED -- from propagator.zig):
+  f > 0.66  -> +1  (high focus)
+  f < 0.33  -> -1  (low focus)
+  otherwise ->  0  (medium)
+>>>>>>> origin/main
 ```
 
 ### Preconditions
 
+<<<<<<< HEAD
 1. `focus ∈ [0.0, 1.0]` — result of EEG signal processing, NOT raw voltage
 2. Focus score is derived from at least one of:
    - 8-channel EEG band-power ratio (beta/alpha)
@@ -42,10 +63,26 @@ Thresholds (FIXED — from propagator.zig, not hyperparameters):
 4. If focus is undefined (no EEG signal): returns `CellValue.nothing` — NOT 0
 
 ---
+=======
+1. `focus in [0.0, 1.0]` -- result of EEG signal processing, NOT raw voltage
+2. Focus score derived from at least one of:
+   - 8-channel EEG band-power ratio (beta/alpha)
+   - Fisher-Rao distance from baseline EEG state on the SPD manifold
+   - Neurofeedback session score (accumulated, not instantaneous)
+3. Oracle has access to a live or recorded EEG session (port :7069 or file)
+
+### Postconditions
+
+1. Returns exactly one value in `{-1, 0, +1}` -- never null, never float
+2. Deterministic: same focus score -> same trit
+3. Boundaries are EXCLUSIVE-EXCLUSIVE: f=0.66 -> 0 (not +1); f=0.33 -> 0 (not -1)
+4. If focus is undefined (no EEG signal): returns `CellValue.nothing` -- NOT 0
+>>>>>>> origin/main
 
 ## Implementation (from propagator.zig)
 
 ```zig
+<<<<<<< HEAD
 // Requirement: focus ∈ [0.0, 1.0] (EEG-derived focus score)
 // Postcondition: trit ∈ {-1, 0, +1}, deterministic
 // Source: propagator.zig::neurofeedback_trit
@@ -57,6 +94,14 @@ fn neurofeedback_trit(focus: f32) Trit {
 }
 
 // Propagator function that CONSUMES focus Cell and PRODUCES trit Cell
+=======
+fn neurofeedback_trit(focus: f32) Trit {
+    return if (focus > 0.66) .plus
+    else if (focus < 0.33) .minus
+    else .zero;
+}
+
+>>>>>>> origin/main
 fn neurofeedback_gate(focus: Cell(f32), brightness: Cell(f32)) Propagator {
     return Propagator{
         .inputs  = &[_]*Cell{&focus},
@@ -64,10 +109,15 @@ fn neurofeedback_gate(focus: Cell(f32), brightness: Cell(f32)) Propagator {
         .function = struct {
             fn run(inputs: []CellValue(f32), outputs: []CellValue(f32)) void {
                 const f = inputs[0];
+<<<<<<< HEAD
                 // Only fire if focus is known
                 if (f == .nothing) return;  // CellValue.nothing → do nothing
                 const trit = neurofeedback_trit(f.value);
                 // Map trit to brightness: -1→dim, 0→medium, +1→bright
+=======
+                if (f == .nothing) return;
+                const trit = neurofeedback_trit(f.value);
+>>>>>>> origin/main
                 outputs[0] = .{ .value = switch (trit) {
                     .minus => 0.2,
                     .zero  => 0.5,
@@ -79,6 +129,7 @@ fn neurofeedback_gate(focus: Cell(f32), brightness: Cell(f32)) Propagator {
 }
 ```
 
+<<<<<<< HEAD
 ---
 
 ## EEG → Focus Score Pipeline
@@ -91,33 +142,49 @@ Requirement: Channels: Fp1, Fp2, F3, F4, C3, C4, P3, P4 (standard 10-20)
 Requirement: Artifact rejection applied before focus computation
 Requirement: Window size = 1.0 second (128 samples at 128 Hz)
 ```
+=======
+## EEG -> Focus Score Pipeline
+>>>>>>> origin/main
 
 ### Stage 1: Band Power
 
 ```python
+<<<<<<< HEAD
 # Requirement: signal s is 128-sample window, Fs=128 Hz
 # Postcondition: band_power ∈ ℝ≥0 for each band
 
+=======
+>>>>>>> origin/main
 from scipy.signal import welch
 import numpy as np
 
 def band_power(s: np.ndarray, Fs: float, band: tuple[float, float]) -> float:
+<<<<<<< HEAD
     """
     Requirement:  len(s) >= 64 (at least 0.5s at 128 Hz)
     Postcondition: returns power spectral density in [band[0], band[1]] Hz
     """
+=======
+    """Returns power spectral density in [band[0], band[1]] Hz."""
+>>>>>>> origin/main
     freqs, psd = welch(s, Fs=Fs, nperseg=min(len(s), 64))
     idx = np.logical_and(freqs >= band[0], freqs <= band[1])
     return float(np.trapz(psd[idx], freqs[idx]))
 
 def compute_focus(eeg_window: np.ndarray, Fs: float = 128.0) -> float:
     """
+<<<<<<< HEAD
     Requirement:  eeg_window.shape = (8, 128) — 8 channels, 1 second
     Postcondition: focus ∈ [0.0, 1.0]
 
     Focus = mean beta/alpha ratio across channels, sigmoid-normalized.
     Beta band: 13-30 Hz
     Alpha band: 8-12 Hz
+=======
+    eeg_window.shape = (8, 128) -- 8 channels, 1 second at 128 Hz
+    Returns focus in [0.0, 1.0].
+    Focus = mean beta/alpha ratio across channels, sigmoid-normalized.
+>>>>>>> origin/main
     """
     ratios = []
     for ch in range(eeg_window.shape[0]):
@@ -125,18 +192,25 @@ def compute_focus(eeg_window: np.ndarray, Fs: float = 128.0) -> float:
         alpha = band_power(eeg_window[ch], Fs, (8.0, 12.0))
         if alpha > 0:
             ratios.append(beta / alpha)
+<<<<<<< HEAD
 
     if not ratios:
         return None  # → CellValue.nothing upstream
 
     raw = np.mean(ratios)
     # Sigmoid normalization to [0,1]; scale=2.0 sets midpoint at ratio=1.0
+=======
+    if not ratios:
+        return None  # -> CellValue.nothing upstream
+    raw = np.mean(ratios)
+>>>>>>> origin/main
     return float(1.0 / (1.0 + np.exp(-2.0 * (raw - 1.0))))
 ```
 
 ### Stage 2: Fisher-Rao Distance (alternative focus metric)
 
 ```python
+<<<<<<< HEAD
 # Requirement: geomstats installed; positive-definite covariance matrices
 # Postcondition: fisher_rao_focus ∈ [0.0, 1.0]
 # Rationale: distance from baseline SPD matrix = deviation from rest state = focus
@@ -171,12 +245,32 @@ def fisher_rao_focus(current_cov: np.ndarray, baseline_cov: np.ndarray) -> float
 // Trit Cell:    CellValue(Trit)  — -1, 0, +1
 // Brightness:   CellValue(f32)   — display brightness [0,1]
 
+=======
+from geomstats.geometry.spd_matrices import SPDMatrices
+
+SPD = SPDMatrices(n=8)  # 8x8 SPD manifold for 8 EEG channels
+
+def fisher_rao_focus(current_cov: np.ndarray, baseline_cov: np.ndarray) -> float:
+    """
+    current_cov, baseline_cov: 8x8 positive-definite matrices.
+    baseline_cov computed from 30s resting-state EEG.
+    Returns focus in [0.0, 1.0] via sigmoid normalization of geodesic distance.
+    """
+    dist = SPD.metric.dist(current_cov, baseline_cov)
+    return float(1.0 / (1.0 + np.exp(-0.5 * (dist - 2.0))))
+```
+
+## Cell Integration (Propagator Network)
+
+```zig
+>>>>>>> origin/main
 const BciPropagatorNetwork = struct {
     eeg_cell:        Cell([]f32),
     focus_cell:      Cell(f32),
     trit_cell:       Cell(Trit),
     brightness_cell: Cell(f32),
 
+<<<<<<< HEAD
     // Propagator 1: EEG → Focus (Python-computed, injected as Cell update)
     // Propagator 2: Focus → Trit (neurofeedback_trit, inline Zig)
     // Propagator 3: Trit → Brightness (neurofeedback_gate, inline Zig)
@@ -188,6 +282,17 @@ const BciPropagatorNetwork = struct {
             self.focus_cell.set(.{ .value = f });
         }
         // If null: cell stays at .nothing (oracle returns nothing)
+=======
+    // Propagator 1: EEG -> Focus (Python-computed, injected as Cell update)
+    // Propagator 2: Focus -> Trit (neurofeedback_trit, inline Zig)
+    // Propagator 3: Trit -> Brightness (neurofeedback_gate, inline Zig)
+
+    fn inject_focus(self: *@This(), focus: ?f32) void {
+        if (focus) |f| {
+            std.debug.assert(f >= 0.0 and f <= 1.0);
+            self.focus_cell.set(.{ .value = f });
+        }
+>>>>>>> origin/main
     }
 
     fn read_trit(self: *@This()) CellValue(Trit) {
@@ -196,6 +301,7 @@ const BciPropagatorNetwork = struct {
 };
 ```
 
+<<<<<<< HEAD
 ---
 
 ## Oracle Failure Modes
@@ -248,17 +354,40 @@ def bci_skill_selector(focus: float) -> Optional[str]:
 
 ---
 
+=======
+## Oracle Failure Modes
+
+```
+IF focus = null (no EEG signal / artifact rejection failed):
+  -> CellValue.nothing
+  -> Do NOT propagate to downstream cells
+
+IF focus < 0.0 or focus > 1.0 (normalization bug):
+  -> CellValue.contradiction { a = Trit.zero, b = Trit.undefined }
+  -> Halt propagator network
+
+IF EEG session timeout (no data for > 5 seconds):
+  -> CellValue.nothing
+  -> Reset to baseline (trit = 0, brightness = 0.5)
+```
+
+>>>>>>> origin/main
 ## Ports and Infrastructure
 
 ```
 EEG Input:        port :7069  (raw 8-ch EEG stream, binary, 128 Hz)
 Focus Output:     port :7070  (processed focus scores, JSON, 10 Hz)
+<<<<<<< HEAD
 Trit Output:      port :7071  (GF(3) trit stream, JSON, 1 Hz)
 
+=======
+Trit Output:      port :7071  (trit stream, JSON, 1 Hz)
+>>>>>>> origin/main
 Session file:     ~/.bci/sessions/YYYYMMDD_HHMMSS.eeg
 Baseline file:    ~/.bci/baseline.npz  (30s resting-state covariance)
 ```
 
+<<<<<<< HEAD
 ---
 
 ## What This Oracle Is NOT
@@ -281,3 +410,12 @@ Baseline file:    ~/.bci/baseline.npz  (30s resting-state covariance)
 - `sheaf-cohomology-bci` — sheaf-theoretic BCI model
 - `geomstats` — Fisher-Rao distance on SPD manifold (Stage 2 pipeline)
 - `propagators` — Radul-Sussman theory underlying Cell/Propagator model
+=======
+## What This Oracle Is NOT
+
+- NOT a classifier (no training, no learned weights)
+- NOT probabilistic (no confidence interval)
+- NOT adaptive (thresholds 0.33/0.66 are fixed specifications)
+- NOT a continuous output (output in {-1, 0, +1})
+- NOT defined on raw EEG voltage (must go through band-power or Fisher-Rao pipeline first)
+>>>>>>> origin/main

@@ -16,6 +16,7 @@
               (when desc (str/trim desc)))))
         (catch Exception e nil)))))
 
+<<<<<<< HEAD
 (defn categorize [desc]
   (cond
     (nil? desc) :no-description
@@ -66,11 +67,14 @@
     :terminal-object "Single measurement point"
     :no-description "N/A"))
 
+=======
+>>>>>>> origin/main
 (defn -main [& args]
   (let [all-skills (sort (filter #(not (str/starts-with? % "."))
                                  (.list (io/file skills-dir))))]
 
     (println "========================================")
+<<<<<<< HEAD
     (println "EVERY SKILL WITH CATEGORY THEORY + BIOLOGICAL EXAMPLE")
     (println "========================================")
     (println (str "Total: " (count all-skills) " skills"))
@@ -87,6 +91,19 @@
         (println (str "**Bio Analog**: " (bio-analog cat)))
         (println (str "**Ontology Example**: " (ontology-example cat)))
         (println "---\n")))))
+=======
+    (println "SKILL INVENTORY")
+    (println "========================================")
+    (println (str "Total: " (count all-skills) " skills"))
+    (println "========================================\n")
+
+    (doseq [skill all-skills]
+      (let [desc (read-skill-description skill)]
+        (println (str "  " skill))
+        (when desc
+          (println (str "    " (subs desc 0 (min 100 (count desc))))))
+        (println)))))
+>>>>>>> origin/main
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))
