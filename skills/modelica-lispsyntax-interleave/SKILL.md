@@ -42,12 +42,15 @@ end
 Three parallel workers process the alphabet with GF(3) conservation:
 
 ```
-Worker 1 (MINUS, -1):  A, D, G, J, M, P, S, V, Y
-Worker 2 (ERGODIC, 0): B, E, H, K, N, Q, T, W, Z
-Worker 3 (PLUS, +1):   C, F, I, L, O, R, U, X
+Worker 1 (MINUS, -1):  A, D, G, J, M, P, S, V, Y     (9 letters)
+Worker 2 (ERGODIC, 0): B, E, H, K, N, Q, T, W         (8 letters)
+Worker 3 (PLUS, +1):   C, F, I, L, O, R, U, X, Z      (9 letters)
 
-Σ trits = (-1×9) + (0×9) + (+1×8) = -1 + 0 + 8 ≡ 0 (mod 3) ✓
+Σ trits = (-1×9) + (0×8) + (+1×9) = -9 + 0 + 9 = 0 ✓
 ```
+
+> **Note**: Z assigned to Worker 3 (PLUS) to conserve GF(3). Round-robin
+> 26/3 gives 9/9/8; moving Z from W2→W3 yields 9/8/9 with Σ=0.
 
 ## MCP Assignment Table
 
@@ -78,7 +81,7 @@ Worker 3 (PLUS, +1):   C, F, I, L, O, R, U, X
 | W | #C42990 | -1 | world-hopping |
 | X | #ECEF73 | +1 | xy-model |
 | Y | #7E3CEA | -1 | yielding (enzyme) |
-| Z | #F04E5B | +1 | zigzag |
+| Z | #F04E5B | +1 | zigzag | ← moved W2→W3 for GF(3) |
 
 ## LispSyntax Integration
 
@@ -226,14 +229,49 @@ The triadic workers ensure:
 - `glass-hopping` — World navigation via colors
 - `lhott-cohesive-linear` — Modal operators
 
+## Emacs Integration
+
+The `modelica-lispsyntax-interleave.el` minor mode provides interactive
+access to the full interleave system inside Emacs.
+
+### Setup
+
+```elisp
+(load "/path/to/skills/modelica-lispsyntax-interleave/modelica-lispsyntax-interleave.el")
+;; Auto-enables on .mo files; or manually:
+(mli-mode 1)
+```
+
+### Keybindings (`C-c m` prefix)
+
+| Key | Command | Description |
+|-----|---------|-------------|
+| `C-c m m` | `mli-hydra/body` | Full hydra menu (needs `hydra` pkg) |
+| `C-c m a` | `mli-show-alphabet` | 26-letter color/trit/worker/MCP table |
+| `C-c m i` | `mli-inspect-component` | Letter→color→trit for word at point |
+| `C-c m r` | `mli-rainbow-parens-mode` | Depth-colored parens (toggle) |
+| `C-c m c` | `mli-colorize-modelica-buffer` | Color Modelica keywords by initial |
+| `C-c m s` | `mli-interleave-streams` | Visualize 3 triadic worker streams |
+| `C-c m g` | `mli-generate-alphabet` | Refresh palette from Julia REPL |
+| `C-c m t` | `mli-resolve-tension` | GF(3) tension between two letters |
+
+### Features
+
+- **Hardcoded seed-137508 palette** — works without Julia; `C-c m g` refreshes live
+- **Rainbow parens** — depth 0-9 colored from the alphabet palette
+- **Modelica keyword overlays** — `model`, `connector`, `equation`, `connect`, `parameter`, `Real`, `flow`, `input`, `output`, `extends`, `replaceable` colored by initial letter
+- **ASI Agenda integration** — adds `M` key to `asi-gay-colors.el` hydra
+- **GF(3) verified** — 9/8/9 worker partition with Σ trits = 0
+
 ## Files
 
 ```
-~/.claude/skills/modelica-lispsyntax-interleave/
-├── SKILL.md              # This file
-├── alphabet_colors.jl    # Julia color generator
-├── tension_resolver.py   # OMG integration
-└── interleave.lisp       # LispSyntax examples
+skills/modelica-lispsyntax-interleave/
+├── SKILL.md                              # This file
+├── modelica-lispsyntax-interleave.el     # Emacs minor mode
+├── alphabet_colors.jl                    # Julia color generator
+├── tension_resolver.py                   # OMG integration
+└── interleave.lisp                       # LispSyntax examples
 ```
 
 ---
