@@ -1,0 +1,129 @@
+;; KMonad config for Kinesis Advantage360 Pro
+;;
+;; On macOS, kmonad needs:
+;;   1. Karabiner-DriverKit-VirtualHIDDevice (for output)
+;;   2. Input from IOKit device name
+;;
+;; Run: flox activate -- kmonad kb360pro.kbd
+;; Dry run: flox activate -- kmonad -d kb360pro.kbd
+;;
+;; When KB360 is connected via BT, change input to:
+;;   (input (iokit-name "Adv360 Pro"))
+;;
+;; For now, uses Apple Internal Keyboard as synthetic stand-in.
+
+(defcfg
+  input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  output (kext)
+  fallthrough true
+  allow-cmd false
+)
+
+;; =============================================================
+;; defsrc: Physical key layout
+;; Maps to the KB360 Pro's Base layer (76 keys)
+;; Using standard ANSI as synthetic stand-in
+;; =============================================================
+
+(defsrc
+  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft  z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl  lalt lmet           spc            rmet ralt rctl
+)
+
+;; =============================================================
+;; deflayer base: QWERTY (KB360 Pro Base 0, Layer LED off)
+;;
+;; String diagram morphism:
+;;   Key ⊗ Layer → [layer_lookup] → HID ⊗ Layer
+;; GF(3) trit: ERGODIC (0) — identity transport
+;; =============================================================
+
+(deflayer base
+  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @cap  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft  z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl  lalt lmet           spc            rmet ralt @mod
+)
+
+;; =============================================================
+;; deflayer fn: Function keys (KB360 Pro fn 2, Layer LED blue)
+;;
+;; String diagram: Event → [deflayer_fn] → HID
+;; GF(3) trit: MINUS (−1) — blue LED, cold hue ~240°
+;; =============================================================
+
+(deflayer fn
+  _     _    _    _    _    _    _    _    _    _    _    _    _
+  _     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    left down up   rght _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _
+  _     _    _              _              _    _    _
+)
+
+;; =============================================================
+;; deflayer kp: Keypad (KB360 Pro kp 1, Layer LED white)
+;;
+;; GF(3) trit: achromatic (no trit assignment — white is outside hue wheel)
+;; =============================================================
+
+(deflayer kp
+  _     _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    7    8    9    -    _    _    _
+  _     _    _    _    _    _    _    4    5    6    +    _    _    _
+  _     _    _    _    _    _    _    1    2    3    ret  _    _
+  _     _    _    _    _    _    _    0    0    .    /    _
+  _     _    _              _              _    _    _
+)
+
+;; =============================================================
+;; deflayer mod: System layer (KB360 Pro Mod 3, Layer LED green)
+;;
+;; Mod+O = battery status
+;; Mod+1..5 = BT profiles
+;; Mod+Up/Down = backlight
+;; Mod+Enter = backlight toggle
+;; Mod+Space = LED toggle
+;;
+;; GF(3) trit: ERGODIC (0) — green LED, hue ~120°
+;; =============================================================
+
+(deflayer mod
+  _     _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _
+  _     _    _              _              _    _    _
+)
+
+;; =============================================================
+;; Aliases: tap-hold behaviors
+;;
+;; String diagram: Event → [tap-hold 200ms] → HID ⊗ Layer
+;; The tap-hold box is a coproduct in the monoidal category:
+;;   tap path: produces HID keycode
+;;   hold path: produces Layer switch
+;; =============================================================
+
+(defalias
+  ;; Caps Lock as tap=Escape, hold=Control
+  ;; (Classic KMonad pattern, matches many KB360 users)
+  cap (tap-hold 200 esc lctl)
+
+  ;; Right Control as tap=_, hold=Mod layer (momentary)
+  ;; Mirrors KB360 Pro's Mod key behavior
+  mod (layer-toggle mod)
+
+  ;; fn keys as hold for fn layer
+  fn  (layer-toggle fn)
+
+  ;; kp as toggle (matches KB360 Pro's kp tap-to-toggle)
+  kp  (layer-switch kp)
+)
