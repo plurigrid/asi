@@ -14,63 +14,70 @@ Notebooks = functors from time categories to knowledge categories.
 
 ## API Reference (Discovery Engine v1alpha)
 
-Base URL: `https://discoveryengine.googleapis.com/v1alpha`
-Project: `projects/{PROJECT_NUMBER}/locations/us`
+Base URL: `https://{LOCATION}-discoveryengine.googleapis.com/v1alpha`
+Project: `projects/{PROJECT_NUMBER}/locations/{LOCATION}`
+Locations: `us`, `eu`, or `global` (use `global` for existing notebooks)
 Auth: `gcloud auth print-access-token`
+Quota header: `-H "x-goog-user-project: merovingians"`
 
 ### Notebooks (NotebookService)
 
 ```bash
 # List recent notebooks
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps:recentNotebooks" \
-  -X POST -H "Content-Type: application/json" -d '{}'
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks:listRecentlyViewed"
 
 # Create notebook
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps" \
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks" \
   -X POST -H "Content-Type: application/json" \
-  -d '{"displayName": "TITLE"}'
+  -d '{"title": "TITLE"}'
 
 # Delete notebooks (batch)
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps:batchDelete" \
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks:batchDelete" \
   -X POST -H "Content-Type: application/json" \
-  -d '{"names": ["projects/PROJECT_NUM/locations/us/notebookLmApps/NOTEBOOK_ID"]}'
+  -d '{"names": ["projects/PROJECT_NUM/locations/global/notebooks/NOTEBOOK_ID"]}'
 ```
 
 ### Sources (local sections of the narrative sheaf)
 
 ```bash
-# Add web source
+# Add web source (batch)
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps/${NOTEBOOK_ID}/notebookLmSources" \
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/sources:batchCreate" \
   -X POST -H "Content-Type: application/json" \
-  -d '{"webUri": "https://example.com/page"}'
+  -d '{"requests": [{"source": {"webUri": "https://example.com/page"}}]}'
 
-# Add inline text source
+# Add inline text source (batch)
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps/${NOTEBOOK_ID}/notebookLmSources" \
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/sources:batchCreate" \
   -X POST -H "Content-Type: application/json" \
-  -d '{"inlineSource": {"title": "TITLE", "content": "TEXT CONTENT"}}'
+  -d '{"requests": [{"source": {"inlineSource": {"title": "TITLE", "content": "TEXT"}}}]}'
 
-# Add YouTube source
+# Add YouTube source (batch)
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps/${NOTEBOOK_ID}/notebookLmSources" \
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/sources:batchCreate" \
   -X POST -H "Content-Type: application/json" \
-  -d '{"youtubeUri": "https://www.youtube.com/watch?v=VIDEO_ID"}'
-
-# Upload file source (PDF, txt, etc.)
-nblm sources upload <notebook_id> <file_path>
+  -d '{"requests": [{"source": {"youtubeUri": "https://www.youtube.com/watch?v=VIDEO_ID"}}]}'
 
 # Get source details
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps/${NOTEBOOK_ID}/notebookLmSources/${SOURCE_ID}"
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/sources/${SOURCE_ID}"
 
-# Delete source
+# Delete source (batch)
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps/${NOTEBOOK_ID}/notebookLmSources/${SOURCE_ID}" \
-  -X DELETE
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/sources:batchDelete" \
+  -X POST -H "Content-Type: application/json" \
+  -d '{"names": ["projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/sources/${SOURCE_ID}"]}'
 ```
 
 ### Audio Overviews (global section via cosheaf pushforward)
@@ -78,19 +85,22 @@ curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
 ```bash
 # Create audio overview (the narrative's global section)
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps/${NOTEBOOK_ID}/audioOverviews:create" \
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/audioOverviews:create" \
   -X POST -H "Content-Type: application/json" \
   -d '{}'
 
 # Create with custom instructions
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps/${NOTEBOOK_ID}/audioOverviews:create" \
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/audioOverviews:create" \
   -X POST -H "Content-Type: application/json" \
   -d '{"instructions": "Focus on the mathematical structure and category theory connections."}'
 
 # Delete audio overview
 curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-  "https://discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/us/notebookLmApps/${NOTEBOOK_ID}/audioOverviews" \
+  -H "x-goog-user-project: merovingians" \
+  "https://global-discoveryengine.googleapis.com/v1alpha/projects/${PROJECT_NUMBER}/locations/global/notebooks/${NOTEBOOK_ID}/audioOverviews" \
   -X DELETE
 ```
 
