@@ -1,5 +1,11 @@
 ---
 name: vertex-protein-bisimulation
+<<<<<<< HEAD
+description: Protein folding as compositional game on Vertex AI. GameOpt combinatorial Bayesian optimization over residue positions, bisimulation on conformational trajectories, monad-bayes posterior over folding pathways.
+---
+
+# vertex-protein-bisimulation Skill
+=======
 description: >
   Protein folding as compositional game on Vertex AI. GameOpt combinatorial
   Bayesian optimization over residue positions, bisimulation on conformational
@@ -10,6 +16,7 @@ description: >
 ---
 
 # vertex-protein-bisimulation
+>>>>>>> origin/main
 
 > *Folding funnel = payoff landscape. Minimal frustration = Nash equilibrium.*
 
@@ -45,12 +52,23 @@ Basin-Hedges (ParaLens 6-wire)
 -- Posterior over folding pathways
 foldingPathway :: MonadMeasure m => Sequence -> m Structure
 foldingPathway seq = do
+<<<<<<< HEAD
+  -- Prior: Ramachandran angles per residue
+=======
+>>>>>>> origin/main
   angles <- replicateM (length seq) $ do
     phi <- uniform (-pi) pi
     psi <- uniform (-pi) pi
     return (phi, psi)
+<<<<<<< HEAD
+  -- Energy function as likelihood
   let energy = forceField seq angles
   factor (Exp (negate energy / kT))
+  -- Return structure
+=======
+  let energy = forceField seq angles
+  factor (Exp (negate energy / kT))
+>>>>>>> origin/main
   return (buildStructure seq angles)
 
 -- GameOpt: combinatorial optimization as open game
@@ -60,6 +78,9 @@ proteinGame = sequentialCompose residueGames
         residueChoice i = decision "residue_i" aminoAcids ucbPayoff
 ```
 
+<<<<<<< HEAD
+## Key Papers
+=======
 ## Concrete Affordances
 
 ### AlphaFold Batch Workflow on Vertex AI
@@ -221,7 +242,28 @@ def rmsd_bisimulation(traj_a_path: str, traj_b_path: str, threshold_nm: float = 
 
 ## Key Papers
 
+>>>>>>> origin/main
 - GameOpt (2024): arxiv.org/abs/2409.18582
 - Bayesian Open Games (Bolt, Hedges, Zahn 2019): arxiv.org/abs/1910.03656
 - MELD Bayesian protein (PNAS): doi.org/10.1073/pnas.1506788112
 - AMix-1 Bayesian Flow Networks (2025): protein foundation model
+<<<<<<< HEAD
+
+## GF(3) Trit Classification
+| Component | Trit | Role |
+|-----------|------|------|
+| ESMFold/AlphaFold prediction | +1 | Generation |
+| GameOpt equilibrium search | 0 | Coordination |
+| Bisimulation equivalence check | -1 | Validation |
+
+Conservation: +1 + 0 + (-1) = 0
+
+## Edges in Interactome TUI
+- -> monad-bayes (w=0.65, Bayesian structure posterior)
+- -> geomstats (w=0.60, protein manifold geometry)
+- -> bisimulation-game (w=0.90, conformational bisimulation)
+- -> zubyul/Nikolova_lab (w=0.70, transcription factor bridge)
+
+## Trit: 0 (ERGODIC)
+=======
+>>>>>>> origin/main

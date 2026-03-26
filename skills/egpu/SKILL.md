@@ -1,11 +1,19 @@
 ---
 name: egpu
+<<<<<<< HEAD
+description: "External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, workload migration, and Project's eGPU infrastructure (gpu-display, gpu-runtime). Use when working with eGPU detection, GPU failover, Thunderbolt networking, or multi-GPU workload routing."
+=======
 description: "External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, workload migration, and Basin's eGPU infrastructure (basin-display, basin-gpu). Use when working with eGPU detection, GPU failover, Thunderbolt networking, or multi-GPU workload routing."
+>>>>>>> origin/main
 ---
 
 # eGPU Skill
 
+<<<<<<< HEAD
+External GPU knowledge for hardware detection, bandwidth analysis, hotplug recovery, and Project's GPU infrastructure.
+=======
 External GPU knowledge for hardware detection, bandwidth analysis, hotplug recovery, and Basin's GPU infrastructure.
+>>>>>>> origin/main
 
 ## Trigger Conditions
 
@@ -14,7 +22,11 @@ External GPU knowledge for hardware detection, bandwidth analysis, hotplug recov
 - Questions about Thunderbolt bandwidth, PCIe tunneling, or GPU enclosures
 - Multi-GPU routing, failover, or compute offloading
 - Apple Silicon eGPU limitations
+<<<<<<< HEAD
+- Project's `gpu-display/src/egpu.rs` or `gpu-runtime/src/workload_migrator.rs`
+=======
 - Basin's `basin-display/src/egpu.rs` or `basin-gpu/src/workload_migrator.rs`
+>>>>>>> origin/main
 
 ## What Is an eGPU?
 
@@ -106,17 +118,29 @@ device.on_uncaptured_error(|error| {
 });
 ```
 
+<<<<<<< HEAD
+## Project eGPU Infrastructure
+=======
 ## Basin eGPU Infrastructure
+>>>>>>> origin/main
 
 ### Key Files
 
 | File | Purpose |
 |------|---------|
+<<<<<<< HEAD
+| `crates/gpu-display/src/egpu.rs` | `EGpuManager`, `EGpuDevice`, `ThunderboltMesh`, `AppleSiliconEGpuInfo` |
+| `crates/gpu-runtime/src/device_lifecycle.rs` | `GpuDeviceRegistry`, `GpuDeviceState`, health scoring, simulated GPU |
+| `crates/gpu-runtime/src/workload_migrator.rs` | `WorkloadMigrator`, `MigrationConfig`, `MigrationStrategy` (Eager/Lazy/Preemptive/LoadBalanced) |
+| `crates/gpu-runtime/src/workload_checkpoint.rs` | `CheckpointManager`, `Checkpointable` trait for GPU state snapshots |
+| `foundation/hardware-layer/src/iokit.rs` | IOKit FFI for TB speed detection, `is_egpu()` |
+=======
 | `crates/basin-display/src/egpu.rs` | `EGpuManager`, `EGpuDevice`, `ThunderboltMesh`, `AppleSiliconEGpuInfo` |
 | `crates/basin-gpu/src/device_lifecycle.rs` | `GpuDeviceRegistry`, `GpuDeviceState`, health scoring, simulated GPU |
 | `crates/basin-gpu/src/workload_migrator.rs` | `WorkloadMigrator`, `MigrationConfig`, `MigrationStrategy` (Eager/Lazy/Preemptive/LoadBalanced) |
 | `crates/basin-gpu/src/workload_checkpoint.rs` | `CheckpointManager`, `Checkpointable` trait for GPU state snapshots |
 | `foundation/basin-hardware/src/iokit.rs` | IOKit FFI for TB speed detection, `is_egpu()` |
+>>>>>>> origin/main
 | `docs/design/EGPU_HOTPLUG_ROADMAP.md` | 5-phase implementation plan |
 
 ### Core Types
@@ -151,7 +175,11 @@ pub enum ThunderboltSpeed { TB1, TB2, TB3, TB4, TB5 }
 ### EGpuManager Usage
 
 ```rust
+<<<<<<< HEAD
+use gpu_display::egpu::EGpuManager;
+=======
 use basin_display::egpu::EGpuManager;
+>>>>>>> origin/main
 
 let manager = EGpuManager::new();  // Auto-enumerates
 manager.start_monitoring()?;       // Hotplug events
@@ -173,7 +201,11 @@ manager.safe_disconnect(gpu_id)?;
 ### Workload Migration
 
 ```rust
+<<<<<<< HEAD
+use gpu_runtime::workload_migrator::{WorkloadMigrator, MigrationConfig, MigrationStrategy};
+=======
 use basin_gpu::workload_migrator::{WorkloadMigrator, MigrationConfig, MigrationStrategy};
+>>>>>>> origin/main
 
 let config = MigrationConfig {
     strategy: MigrationStrategy::Eager,
@@ -203,10 +235,17 @@ let config = MigrationConfig {
 
 ### Thunderbolt Mesh Networking
 
+<<<<<<< HEAD
+Project supports TB mesh networking for GPU cluster communication (IP over Thunderbolt):
+
+```rust
+use gpu_display::egpu::ThunderboltMesh;
+=======
 Basin supports TB mesh networking for GPU cluster communication (IP over Thunderbolt):
 
 ```rust
 use basin_display::egpu::ThunderboltMesh;
+>>>>>>> origin/main
 
 let mesh = ThunderboltMesh::discover()?;
 println!("Active peers: {}", mesh.active_peer_count());
@@ -218,7 +257,11 @@ if let Some(best) = mesh.best_peer() {
 }
 ```
 
+<<<<<<< HEAD
+## Implementation Status (Project)
+=======
 ## Implementation Status (Basin)
+>>>>>>> origin/main
 
 | Component | Status |
 |-----------|--------|

@@ -1,6 +1,29 @@
 ---
 name: graft-prefer
 description: >
+<<<<<<< HEAD
+  Enforces graft as the preferred build system for fully covariant computation.
+  Activates whenever any agent attempts cargo build/test/check/clippy/fmt
+  or needs to compile, test, lint, benchmark, or manage build artifacts.
+  Implements multicomputational irreducibility through CAS-backed distributed builds.
+---
+
+# Graft-Prefer: Fully Covariant Computation
+
+## Principle: Multicomputational Irreducibility
+
+Build systems are multicomputational systems where the dependency graph cannot be
+reduced to a simpler form without losing information. Graft enforces this by:
+
+1. **Covariant caching**: Content-addressed storage preserves build artifacts covariantly --
+   the same source always produces the same artifact regardless of evaluation path
+2. **Irreducible parallelism**: Distributed compilation exploits the inherent parallelism
+   in the dependency DAG without collapsing independent computation branches
+3. **Causal consistency**: Build ordering respects the causal structure of the crate graph,
+   ensuring deterministic outcomes across all evaluation orders
+
+## MANDATORY: Use graft instead of cargo
+=======
   Enforces graft as the preferred build system for all agents working in the Basin
   codebase. Activates whenever any agent attempts cargo build/test/check/clippy/fmt
   or needs to compile, test, lint, benchmark, or manage build artifacts.
@@ -15,6 +38,7 @@ caching, distributed compilation, unified linting, resilient builds, and multi-l
 support. All agents MUST use graft instead of raw cargo.
 
 ## Command Mapping (ALWAYS apply these substitutions)
+>>>>>>> origin/main
 
 | Instead of | Use |
 |------------|-----|
@@ -24,7 +48,11 @@ support. All agents MUST use graft instead of raw cargo.
 | `cargo clippy` | `graft clippy` |
 | `cargo fmt` | `graft fmt` |
 | `cargo run` | `graft run` |
+<<<<<<< HEAD
+| `cargo bench` | `graft bench` |
+=======
 | `cargo bench` | `graft run -p basin-observatory-app --release -- sweep` |
+>>>>>>> origin/main
 | `cargo doc` | `graft doc` |
 | `cargo clean` | `graft clean` |
 | `cargo fix` | `graft fix` (NEVER use `cargo fix` -- it corrupts files) |
@@ -37,6 +65,27 @@ support. All agents MUST use graft instead of raw cargo.
 - Release: `graft build --release`
 - With features: `graft build -p <crate> -F <feature>`
 
+<<<<<<< HEAD
+## Covariant quality checking
+
+- `graft lint` -- all checks (clippy + fmt + quality + deps)
+- `graft quality run` -- full quality audit
+- `graft fix` -- auto-fix with safe transforms
+
+## Diagnostics
+
+- `graft health --verbose` -- check graft configuration
+- `graft cache validate` -- detect stale artifacts (breaks covariance)
+- `graft cache stats` -- cache hit/miss statistics (irreducibility measure)
+- `graft memory` -- check memory pressure / recommended jobs
+- `graft stream --errors` -- live error feed from builds
+
+## Anti-patterns (NEVER do these)
+
+1. NEVER run `cargo fix` directly (corrupts files)
+2. NEVER use `cargo build` when `graft build` is available
+3. NEVER skip durability labels on benchmark results
+=======
 ## Quick build aliases (via .cargo/config.toml)
 
 - `cargo kernel` -- core storage only (~30s)
@@ -89,3 +138,4 @@ When a task requires specialized build operations, delegate to these droids:
 3. NEVER run `podman/docker run -p` with host port mappings for competitors
 4. NEVER use `cargo build` when `graft build` is available
 5. NEVER skip durability labels on benchmark results
+>>>>>>> origin/main

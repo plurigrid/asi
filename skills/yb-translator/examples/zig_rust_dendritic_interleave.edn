@@ -1,0 +1,228 @@
+{:title "Zig vs Rust: Dendritic Cell Colored Operad Interleave"
+ :seed 69
+ :plastic-angle 205.14
+ :equation "x³ = x + 1"
+
+ :quad
+ {:skills ["yb-translator" "zig-systems" "cargo-rust" "sheaf-cohomology"]
+  :trits [1 0 0 -1]
+  :colors ["#100EB1" "#E6746C" "#989FE0" "#764EDD"]
+  :sum 0
+  :balanced true}
+
+ :streams
+ {:innate  {:color "#CEC51C" :language "Zig"  :trit  1 :immune "germline-encoded"}
+  :bridge  {:color "#31EC6B" :language "FFI"  :trit  0 :immune "dendritic cell"}
+  :adaptive {:color "#8AE875" :language "Rust" :trit -1 :immune "somatically-rearranged"}}
+
+ :interleave
+ [{:step 1
+   :hex "#DD3C3C"
+   :trit 1
+   :concept "Fully covariant computation"
+   :biology "Codon degeneracy / synonymous codons"
+   :ontology {:name "Gene Ontology" :term "translation" :id "GO:0006412"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0006412"
+   :stream :innate
+   :note "GCU GCC GCA GCG all → Alanine. Different codons (evaluation paths), same protein (artifact). Zig comptime evaluates the same way: same source, same output, regardless of path."
+   :operad-role "Operadic equivariance: permuting inputs (codons) preserves output (amino acid)"}
+
+  {:step 2
+   :hex "#3C99DD"
+   :trit 0
+   :concept "Multicomputational irreducibility"
+   :biology "Metabolic network essentiality"
+   :ontology {:name "Gene Ontology" :term "metabolic process" :id "GO:0008152"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0008152"
+   :stream :bridge
+   :note "~100 essential reactions in E. coli central metabolism cannot be bypassed. The dependency DAG is irreducible. DC processes antigens through irreducible enzymatic pathways -- no shortcut from phagocytosis to MHC loading."
+   :operad-role "Operadic composition is not collapsible: each processing step is a required operation"}
+
+  {:step 3
+   :hex "#DDC33C"
+   :trit 1
+   :concept "Force push (overwrite diverged history)"
+   :biology "Clonal selection / affinity maturation"
+   :ontology {:name "Gene Ontology" :term "somatic hypermutation of immunoglobulin genes" :id "GO:0016554"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0016554"
+   :stream :adaptive
+   :note "B cells with highest-affinity antibodies selected; lower-affinity lineages eliminated. Rust's borrow checker similarly force-pushes: only the lifetime-valid code survives compilation."
+   :operad-role "Selection is a natural transformation: the functor from B-cell population to antibody space factors through the fittest clone"}
+
+  {:step 4
+   :hex "#653CDD"
+   :trit -1
+   :concept "Presheaf over assurance poset"
+   :biology "Epigenetic inheritance hierarchy"
+   :ontology {:name "Gene Ontology" :term "epigenetic regulation of gene expression" :id "GO:0040029"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0040029"
+   :stream :bridge
+   :note "Chromatin marks form a presheaf over differentiation stages. H3K4me3 at progenitor pulls back to all descendants. DC maturation state is a presheaf: immature DC marks pull back through maturation to determine mature DC presentation capacity."
+   :operad-role "Presheaf = contravariant functor. The operad's algebra pulls back along maturation: operations available to mature DC ⊆ operations available at each stage"}
+
+  {:step 5
+   :hex "#70DD3C"
+   :trit 1
+   :concept "GF(3) triad harmonization"
+   :biology "Three-component complement system"
+   :ontology {:name "Gene Ontology" :term "complement activation" :id "GO:0006956"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0006956"
+   :stream :innate
+   :note "Classical(+1) + Lectin(0) + Alternative(-1) → C3 convertase. Three pathways, balanced. Zig's three guarantees: no hidden control flow (+1), no hidden allocators (0), no undefined behavior (-1)."
+   :operad-role "The complement operad has 3 colors. C3 convertase is the universal composition: all three paths converge."}
+
+  {:step 6
+   :hex "#DD3CCD"
+   :trit -1
+   :concept "Zig: innate immune system"
+   :biology "Innate immune response"
+   :ontology {:name "Gene Ontology" :term "innate immune response" :id "GO:0045087"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0045087"
+   :stream :innate
+   :note "TLRs are germline-encoded (comptime). No hidden allocators. Every memory decision explicit. TLR4 recognizes LPS directly -- no abstraction layer."
+   :operad-role "Innate operad: operations are FIXED at compile-time. The color set is {PAMP, DAMP, self}. No runtime type generation."
+   :cell-ontology {:id "CL:0000623" :name "natural killer cell"}}
+
+  {:step 7
+   :hex "#3CDD8F"
+   :trit 0
+   :concept "Rust: adaptive immune system"
+   :biology "Adaptive immune response"
+   :ontology {:name "Gene Ontology" :term "adaptive immune response" :id "GO:0002250"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0002250"
+   :stream :adaptive
+   :note "V(D)J recombination = runtime rearrangement within strict rules (borrow checker). Each T cell owns exactly one receptor (ownership). MHC restriction = trait bound. Thymic deletion = compile-time lifetime errors."
+   :operad-role "Adaptive operad: operations are GENERATED at compile-time via recombination (proc macros). Color set is open-ended: new types emerge from V(D)J. Trait bounds = MHC restriction."
+   :cell-ontology {:id "CL:0000084" :name "T cell"}}
+
+  {:step 8
+   :hex "#DD3C47"
+   :trit -1
+   :concept "Dendritic cell as colored operad"
+   :biology "Antigen processing and presentation"
+   :ontology {:name "Gene Ontology" :term "antigen processing and presentation" :id "GO:0019882"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0019882"
+   :stream :bridge
+   :note "DC is the canonical colored operad: multi-input (PAMPs, DAMPs, cytokines), typed ports (innate/adaptive), associative composition, equivariant cross-presentation."
+   :operad-role "THE BRIDGE OPERAD"
+   :operad-structure
+   {:colors ["innate" "adaptive" "self" "non-self"]
+    :operations
+    [{:name "phagocytosis"
+      :inputs [{:color "non-self" :type "pathogen"}]
+      :output {:color "bridge" :type "phagosome"}}
+     {:name "TLR-signaling"
+      :inputs [{:color "innate" :type "PAMP"}]
+      :output {:color "bridge" :type "NF-kB activation"}}
+     {:name "MHC-II-loading"
+      :inputs [{:color "bridge" :type "processed-peptide"}]
+      :output {:color "adaptive" :type "MHC-II:peptide"}}
+     {:name "cross-presentation"
+      :inputs [{:color "bridge" :type "exogenous-antigen"}]
+      :output {:color "adaptive" :type "MHC-I:peptide"}
+      :note "This is the FFI: innate-colored input → adaptive-colored output via non-standard pathway"}
+     {:name "co-stimulation"
+      :inputs [{:color "bridge" :type "B7"} {:color "adaptive" :type "CD28"}]
+      :output {:color "adaptive" :type "T-cell-activation"}}]
+    :laws
+    {:associativity "(TLR4 ⊗ NOD2) ⊗ IL-1β = TLR4 ⊗ (NOD2 ⊗ IL-1β)"
+     :equivariance "σ·(inputs) maps through cross-presentation"
+     :unit "immature DC + no signal = tolerance (identity)"}}}
+
+  {:step 9
+   :hex "#3CA4DD"
+   :trit 0
+   :concept "Zig comptime vs Rust proc macros"
+   :biology "Germline-encoded vs somatically-rearranged receptors"
+   :ontology {:name "Cell Ontology" :term "natural killer cell" :id "CL:0000623"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/cl/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCL_0000623"
+   :stream :innate
+   :note "NK cells (comptime): receptors decided before deployment. T cells (proc macros): receptors generated through V(D)J recombination machinery."
+   :operad-role "Two sub-operads with different generation strategies. NK operad is a CONSTANT functor (fixed at comptime). T cell operad is a FREE functor (generated from V/D/J gene segments)."
+   :dc-connection "DC presents to BOTH: NK via stress ligands (comptime check), T cells via MHC (runtime-generated receptor match)"}
+
+  {:step 10
+   :hex "#DDB83C"
+   :trit 1
+   :concept "Allocator-as-parameter vs global allocator"
+   :biology "Transmembrane transport vs circulatory system"
+   :ontology {:name "Gene Ontology" :term "transmembrane transport" :id "GO:0055085"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0055085"
+   :stream :innate
+   :note "Zig: every function receives allocator explicitly (GLUT4, AQP1 -- specific membrane transporters). Rust: global allocator = circulatory system, nutrients arrive implicitly."
+   :operad-role "Zig operad has an EXPLICIT resource parameter at every operation. Rust operad has an AMBIENT monoidal structure (global heap). DC uses both: specific receptor-mediated endocytosis (Zig) AND pinocytosis/bulk uptake (Rust)."
+   :dc-connection "DC phagocytosis = explicit allocator (receptor-mediated, typed). DC pinocytosis = global allocator (bulk, untyped)."}
+
+  {:step 11
+   :hex "#5B3CDD"
+   :trit -1
+   :concept "Cross-presentation (Zig calling Rust via C ABI)"
+   :biology "MHC-I loading of exogenous antigen"
+   :ontology {:name "Gene Ontology" :term "antigen processing and presentation of exogenous peptide antigen via MHC class I" :id "GO:0042590"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0042590"
+   :stream :bridge
+   :note "MHC-I normally presents endogenous (self) peptides. Cross-presentation breaks this: exogenous antigens load onto MHC-I. This is Zig's comptime calling into Rust's trait world via extern 'C'. TAP transporter = ABI boundary."
+   :operad-role "Cross-presentation is an OPERAD MORPHISM: a map from the innate operad to the adaptive operad that changes the color of the output port. φ: O_innate → O_adaptive where φ preserves composition but transforms colors."
+   :dc-connection "ONLY dendritic cells do this efficiently. They are the unique morphism between the two operads."}
+
+  {:step 12
+   :hex "#7BDD3C"
+   :trit 1
+   :concept "Operad unit (immature DC = tolerance)"
+   :biology "Tolerogenic function / negative regulation"
+   :ontology {:name "Gene Ontology" :term "negative regulation of immune response" :id "GO:0050777"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0050777"
+   :stream :bridge
+   :note "Immature DC + no danger signals → T cell anergy (tolerance). The operadic unit: compose with identity = no activation. In Zig/Rust: no-op FFI bridge that passes types through unchanged."
+   :operad-role "Unit of the DC operad: η: I → DC where I is the monoidal unit. Tolerance is the identity operation. Self-antigen presentation without co-stimulation = id."
+   :dc-connection "The unit distinguishes self from non-self. Without it, autoimmunity (use-after-free in immune terms)."}
+
+  {:step 13
+   :hex "#DD3CD8"
+   :trit -1
+   :concept "Innate-adaptive crosstalk (Zig + Rust interop)"
+   :biology "Regulation of adaptive immune response"
+   :ontology {:name "Gene Ontology" :term "regulation of adaptive immune response" :id "GO:0002819"}
+   :source "https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0002819"
+   :stream :bridge
+   :note "DC bridges innate (Zig) and adaptive (Rust): samples with germline receptors, presents via MHC to T cells. Neither system complete alone. The organism needs both."
+   :operad-role "The DC operad IS the interop layer. It is the profunctor DC: O_innate^op × O_adaptive → Set that witnesses the Zig-Rust adjunction. Left adjoint = innate priming. Right adjoint = adaptive memory."
+   :dc-connection "Dendritic cells are not just a bridge -- they are the PROOF that innate and adaptive form an adjunction. The unit (tolerance) and counit (immune response) satisfy the triangle identities."}]
+
+ :trit-conservation
+ {:steps [1 0 1 -1 1 -1 0 -1 0 1 -1 1 -1]
+  :sum 0
+  :balanced true
+  :note "13 steps on the plastic thread, GF(3) sum = 0. The interleave is self-balancing."}
+
+ :dc-operad-summary
+ {:ascii-diagram
+  "
+            COLORED OPERAD: Dendritic Cell (DC)
+            Trit: -1 (MINUS) — Verification/Validation
+
+    Colors: { innate(Zig), adaptive(Rust), self, non-self }
+
+    TLR4(LPS)──┐
+    [innate]    │
+                ▼
+    NOD2(MDP)──►┌──────────────┐  MHC-II:peptide
+    [innate]    │  DC Operad   │──────────────►CD4+ T cell
+                │  Composition │  [adaptive]
+    IL-1β──────►└──────┬───────┘
+    [innate]           │
+                       │  cross-presentation (FFI)
+                       ▼
+               MHC-I:peptide──────────────────►CD8+ T cell
+               [adaptive]
+
+    Operadic Laws:
+    - Associativity: processing order ≠ epitope
+    - Equivariance: cross-presentation permutes output color
+    - Unit: immature DC = tolerance = identity
+  "
+  :adjunction
+  {:left "innate priming: Zig comptime → extern C → Rust trait dispatch"
+   :right "adaptive memory: Rust lifetime tracking → C ABI → Zig allocator cleanup"
+   :unit "tolerance (no activation = no FFI call)"
+   :counit "immune response (full Zig↔Rust interop cycle complete)"}}}

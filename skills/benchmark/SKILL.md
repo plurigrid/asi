@@ -1,16 +1,28 @@
 ---
 name: benchmark
+<<<<<<< HEAD
+description: Run and interpret engine-stack benchmarks (Steel, ember, shale)
+model: haiku
+---
+
+# Project Engines Benchmark Skill
+=======
 description: Run and interpret basin-engines benchmarks (Steel, ember, shale)
 model: haiku
 ---
 
 # Basin Engines Benchmark Skill
+>>>>>>> origin/main
 
 Run benchmarks for Steel, ember, and shale engines.
 
 ## CRITICAL: Read Before Benchmarking
 
+<<<<<<< HEAD
+**ALWAYS read first**: `~/p/benchmark-suite/docs/BENCHMARK_FAIRNESS.md`
+=======
 **ALWAYS read first**: `~/p/basin-bench/docs/BENCHMARK_FAIRNESS.md`
+>>>>>>> origin/main
 
 This document contains hard-won lessons about benchmark fairness. Ignoring it leads to misleading claims.
 
@@ -18,7 +30,11 @@ This document contains hard-won lessons about benchmark fairness. Ignoring it le
 
 | Check | Why | How |
 |-------|-----|-----|
+<<<<<<< HEAD
+| Read BENCHMARK_FAIRNESS.md | Contains all fairness lessons | `cat ~/p/benchmark-suite/docs/BENCHMARK_FAIRNESS.md` |
+=======
 | Read BENCHMARK_FAIRNESS.md | Contains all fairness lessons | `cat ~/p/basin-bench/docs/BENCHMARK_FAIRNESS.md` |
+>>>>>>> origin/main
 | Use `--batched` for LMDB/redb | 7-24x improvement with proper config | Add `--batched --batch-size 1000` |
 | Scale sled cache | Undersized cache = 17x slower | Add `--cache-mb 2048` for 1M+ records |
 | Check dataset vs RAM | If data fits in RAM, you're measuring memory | Use larger datasets for I/O testing |
@@ -31,7 +47,11 @@ This document contains hard-won lessons about benchmark fairness. Ignoring it le
 
 ```bash
 # Build
+<<<<<<< HEAD
+cd ~/p/benchmark-suite && graft build --release -p ycsb-steel
+=======
 cd ~/p/basin-bench && graft build --release -p ycsb-steel
+>>>>>>> origin/main
 
 # Single-threaded
 ycsb-steel --fast --data-dir /tmp/bench --workload a --records 50000 --ops 200000
@@ -40,7 +60,11 @@ ycsb-steel --fast --data-dir /tmp/bench --workload a --records 50000 --ops 20000
 ycsb-steel --fast --shards 64 --threads 4 --data-dir /tmp/bench --workload a --records 50000 --ops 200000
 
 # Ultimate adversarial benchmark (vs sled)
+<<<<<<< HEAD
+cd ~/p/engine-stack/engines/steel
+=======
 cd ~/p/basin-engines/engines/steel
+>>>>>>> origin/main
 graft run --release --example ultimate_adversarial
 ```
 
@@ -48,7 +72,11 @@ graft run --release --example ultimate_adversarial
 
 ```bash
 # Use the fair comparison script (includes proper batching for all engines)
+<<<<<<< HEAD
+RECORDS=50000 OPS=200000 ~/p/benchmark-suite/scripts/steel-fair-compare.sh
+=======
 RECORDS=50000 OPS=200000 ~/p/basin-bench/scripts/steel-fair-compare.sh
+>>>>>>> origin/main
 ```
 
 ### Individual Engine Commands (Fair Config)
@@ -127,12 +155,21 @@ With 64 shards, Steel **beats sled by 2.3x**:
 
 | Purpose | Location |
 |---------|----------|
+<<<<<<< HEAD
+| Steel YCSB | `~/p/benchmark-suite/engines/ycsb-steel/` |
+| Fair script | `~/p/benchmark-suite/scripts/steel-fair-compare.sh` |
+| Fairness docs | `~/p/benchmark-suite/docs/BENCHMARK_FAIRNESS.md` |
+| Steel benchmarks | `~/p/engine-stack/engines/steel/BENCHMARKS.md` |
+| **Roadmap to #1** | `~/p/engine-stack/engines/steel/ROADMAP_BEST_KV.md` |
+| Ultimate adversarial | `~/p/engine-stack/engines/steel/examples/ultimate_adversarial.rs` |
+=======
 | Steel YCSB | `~/p/basin-bench/engines/ycsb-steel/` |
 | Fair script | `~/p/basin-bench/scripts/steel-fair-compare.sh` |
 | Fairness docs | `~/p/basin-bench/docs/BENCHMARK_FAIRNESS.md` |
 | Steel benchmarks | `~/p/basin-engines/engines/steel/BENCHMARKS.md` |
 | **Roadmap to #1** | `~/p/basin-engines/engines/steel/ROADMAP_BEST_KV.md` |
 | Ultimate adversarial | `~/p/basin-engines/engines/steel/examples/ultimate_adversarial.rs` |
+>>>>>>> origin/main
 
 ## Dialectical Improvement
 

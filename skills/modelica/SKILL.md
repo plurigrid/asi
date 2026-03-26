@@ -12,6 +12,7 @@ metadata:
     - FIXED_POINTS.md
     - NEIGHBOR_SKILLS.md
     - CONCOMITANT_SKILLS.md
+    - modelica-lispsyntax-interleave.el
 ---
 
 # Modelica Skill: Acausal Multi-Domain Modeling

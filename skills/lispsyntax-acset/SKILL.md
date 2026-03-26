@@ -201,6 +201,7 @@ end
 | slime-lisp (-1) ⊗ lispsyntax-acset (0) ⊗ cider-clojure (+1) | Sexp Serialization |
 | three-match (-1) ⊗ lispsyntax-acset (0) ⊗ gay-mcp (+1) | Colored Sexp |
 | polyglot-spi (-1) ⊗ lispsyntax-acset (0) ⊗ geiser-chicken (+1) | Scheme Bridge |
+| modelica (-1) ⊗ lispsyntax-acset (0) ⊗ emacs-mli (+1) | Emacs Interleave (see `modelica-lispsyntax-interleave`) |
 
 ## Catlab API Notes
 

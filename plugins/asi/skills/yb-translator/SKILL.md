@@ -188,6 +188,17 @@ SOURCE: https://www.ebi.ac.uk/ols4/ontologies/go/classes/http%253A%252F%252Fpurl
 4. **One parallel per concept** - no tables, no frills
 5. **Run fetch script** when uncertain about term existence
 
+<<<<<<< HEAD
+## Related Skills (Random Walk r=3)
+
+| Skill | Relation | Trit |
+|-------|----------|------|
+| **assembly-index** | Cronin's molecular complexity → code complexity | ⊕ |
+| **alife** | Artificial life / origin of life parallels | ○ |
+| **turing-chemputer** | Chemical computation ↔ biological computation | ⊖ |
+
+Cross-comparison: All three skills explore the code↔chemistry↔life boundary that yb-translator maps via ontologies.
+=======
 ## Related Skills
 
 - `biopython` (⊕): Programmatic access to biological data; yb-translator provides the ontological frame, biopython provides the runtime
@@ -264,3 +275,4 @@ The new versions:
   to `fetch_ontology.clj`.
 - `skill_taxonomy.edn` — lists the 12 translations with honest parallel
   strength ratings. 6 direct, 6 analogical, 0 metaphorical.
+>>>>>>> origin/main
