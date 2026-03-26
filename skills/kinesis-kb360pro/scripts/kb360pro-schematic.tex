@@ -1,0 +1,187 @@
+% KB360 Pro Schematic — 4-skill synthesis
+% Skills: kinesis-kb360pro, scientific-schematics, acsets, xypic-latex
+% (bmorphism-diagrams: structural inspiration, duckdb unavailable)
+\documentclass[border=10pt]{standalone}
+\usepackage[all,cmtip]{xy}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+
+% Kinesis color palette (colorblind-friendly, Okabe-Ito derived)
+\definecolor{kbase}{HTML}{3B82F6}   % Base layer - blue
+\definecolor{kkp}{HTML}{FFFFFF}     % kp layer - white (use gray for visibility)
+\definecolor{kfn}{HTML}{2563EB}     % fn layer - deep blue
+\definecolor{kmod}{HTML}{10B981}    % Mod layer - green
+\definecolor{kbt}{HTML}{A855F7}     % Bluetooth - purple
+\definecolor{kusb}{HTML}{F97316}    % USB - orange
+\definecolor{kbat}{HTML}{EF4444}    % Battery - red
+
+\begin{document}
+
+%% ============================================================
+%% DIAGRAM 1: ACSet Schema — KB360 Pro Topology
+%% Category-theoretic schema Sch(KB360) as a C-set functor
+%% ============================================================
+%%
+%% Objects: LeftMod, RightMod, Host, Layer, Profile, Battery
+%% Morphisms: wireless link, USB data, BT profiles, layer access
+%%
+%% ACSet definition (Julia/Catlab):
+%%
+%%   @present SchKB360(FreeSchema) begin
+%%     LeftMod::Ob
+%%     RightMod::Ob
+%%     Host::Ob
+%%     Layer::Ob
+%%     Profile::Ob
+%%     Battery::Ob
+%%
+%%     wireless::Hom(RightMod, LeftMod)      # R→L always wireless
+%%     usb_data::Hom(LeftMod, Host)           # L→Host via USB
+%%     bt_link::Hom(LeftMod, Host)            # L→Host via BT
+%%     active_layer::Hom(LeftMod, Layer)      # current layer
+%%     active_profile::Hom(LeftMod, Profile)  # current BT profile
+%%     left_bat::Hom(Battery, LeftMod)        # battery → left
+%%     right_bat::Hom(Battery, RightMod)      # battery → right
+%%
+%%     ProfileID::AttrType                    # 1..5
+%%     LayerID::AttrType                      # 0..3
+%%     Charge::AttrType                       # mAh
+%%     profile_id::Attr(Profile, ProfileID)
+%%     layer_id::Attr(Layer, LayerID)
+%%     charge::Attr(Battery, Charge)
+%%   end
+
+%% ============================================================
+%% DIAGRAM 2: XY-pic — Hardware Data Flow
+%% ============================================================
+
+\begin{minipage}{16cm}
+\begin{center}
+\textbf{\large Kinesis Advantage360 Pro — Hardware Data Flow}\\[6pt]
+\small ACSet Schema $\mathrm{Sch}(\text{KB360})\colon \mathcal{C} \to \mathbf{Set}$
+\end{center}
+
+\vspace{8pt}
+
+\[
+\xymatrix@R=3pc@C=4pc{
+  & *+[F]\txt{\textbf{Host (PC)}\\BT or USB} & \\
+  *+[F=]\txt{\textbf{Left Module}\\(Primary)\\1500\,mAh Li-ion}
+    \ar[ur]^{\text{USB-C}\to\text{A}}
+    \ar@/^1.5pc/[ur]|{\text{BT Profile}\;p}
+    \ar@{=>}[d]_{\text{active\_layer}}
+    \ar@{=>}[dr]|{\text{active\_profile}}
+  & &
+  *+[F]\txt{\textbf{Right Module}\\(Secondary)\\1500\,mAh Li-ion}
+    \ar@{~>}[ll]^{\text{wireless (always)}}
+    \ar@{=>}[d]
+  \\
+  *+[F-]\txt{\textbf{Layer} $\ell$\\$\{0,1,2,3\}$}
+  &
+  *+[F-]\txt{\textbf{Profile} $p$\\$\{1,2,3,4,5\}$}
+  &
+  *+[F-]\txt{\textbf{Battery}\\$\text{charge}\colon \text{mAh}$}
+    \ar@{.>}[ull]|{\text{left\_bat}}
+    \ar@{.>}[u]|{\text{right\_bat}}
+}
+\]
+
+\vspace{12pt}
+
+%% ============================================================
+%% DIAGRAM 3: XY-pic — Layer State Machine
+%% ============================================================
+
+\begin{center}
+\textbf{\large Layer Switching Automaton}\\[4pt]
+\small States = layers; transitions = key events
+\end{center}
+
+\vspace{8pt}
+
+\[
+\xymatrix@R=3.5pc@C=5pc{
+  *+[o][F=]{\txt{\textbf{Base 0}\\LED: off}}
+    \ar@/^/[r]^{\text{tap}\;\mathtt{kp}}
+    \ar@/^/[d]^{\text{hold}\;\mathtt{fn}}
+    \ar@/_2pc/[dr]_{\text{hold}\;\mathtt{Mod}}
+  &
+  *+[o][F-]{\txt{\textbf{kp 1}\\LED: white}}
+    \ar@/^/[l]^{\text{tap}\;\mathtt{kp}}
+    \ar@/^/[d]|{\text{hold}\;\mathtt{fn}}
+    \ar@/_/[dl]|{\text{hold}\;\mathtt{Mod}}
+  \\
+  *+[o][F-]{\txt{\textbf{fn 2}\\LED: blue}}
+    \ar@/^/[u]^{\text{release}\;\mathtt{fn}}
+  &
+  *+[o][F-]{\txt{\textbf{Mod 3}\\LED: green}}
+    \ar@/^/[ul]^{\text{release}\;\mathtt{Mod}}
+}
+\]
+
+\vspace{12pt}
+
+%% ============================================================
+%% DIAGRAM 4: XY-pic — Bluetooth Profile Adjunction
+%% Profile selection is an adjunction: Mod+n ⊣ disconnect
+%% ============================================================
+
+\begin{center}
+\textbf{\large Bluetooth Profile Selection}\\[4pt]
+\small $\mathrm{Mod}+n$ switches active profile; LED encodes state
+\end{center}
+
+\vspace{8pt}
+
+\[
+\xymatrix@R=2pc@C=2.5pc{
+  *+[o][F-]{\txt{P1\\white}}
+    \ar@/^/[r]^{\text{Mod+2}}
+  &
+  *+[o][F-]{\txt{P2\\blue}}
+    \ar@/^/[r]^{\text{Mod+3}}
+  &
+  *+[o][F-]{\txt{P3\\red}}
+    \ar@/^/[r]^{\text{Mod+4}}
+  &
+  *+[o][F-]{\txt{P4\\green}}
+    \ar@/^/[r]^{\text{Mod+5}}
+  &
+  *+[o][F=]{\txt{P5\\off\\(wired)}}
+  \\
+  & & *+[F.]\txt{LED states:\\fast flash = pairing\\slow flash = searching\\solid = connected}
+    \ar@{.>}[ull] \ar@{.>}[ul] \ar@{.>}[u] \ar@{.>}[ur] \ar@{.>}[urr]
+}
+\]
+
+%% ============================================================
+%% DIAGRAM 5: XY-pic — Charging Constraint (Safety)
+%% ============================================================
+
+\vspace{12pt}
+
+\begin{center}
+\textbf{\large Charging Path — Safety Constraints}\\[4pt]
+\small Only PC USB-A ports; wall chargers void warranty
+\end{center}
+
+\vspace{8pt}
+
+\[
+\xymatrix@R=2.5pc@C=3.5pc{
+  *+[F]\txt{\textbf{PC USB-A Port}\\(safe source)}
+    \ar@{->}[r]^{\text{USB-C cable}}
+    \ar@{->}[dr]_{\text{USB-C cable}}
+  &
+  *+[F=]\txt{\textbf{Left Module}\\charge + data\\6{-}8\,hrs full}
+  \\
+  *+[F]\txt{\color{red}\textbf{Wall Charger}\\{\footnotesize PROHIBITED}}
+    \ar@{-->}@[red][ur]|{\text{\color{red}$\boldsymbol\times$ damage}}
+    \ar@{-->}@[red][r]|{\text{\color{red}$\boldsymbol\times$ void warranty}}
+  &
+  *+[F]\txt{\textbf{Right Module}\\charge only\\6{-}8\,hrs full}
+}
+\]
+
+\end{minipage}
+\end{document}

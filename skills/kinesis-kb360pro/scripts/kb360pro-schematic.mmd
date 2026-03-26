@@ -1,0 +1,103 @@
+%% KB360 Pro Hardware Design Schematic
+%% Source: ZMK board defs (KinesisCorporation/Adv360-Pro-ZMK V3.0) + teardown
+
+graph TB
+    subgraph LEFT["LEFT MODULE — Primary"]
+        direction TB
+        L_CPU["nRF52840 QIAA<br/>Cortex-M4F 64MHz<br/>1MB Flash / 256KB SRAM"]
+        L_BLE["BLE 5.0 Radio"]
+        L_USB_CTRL["USB 2.0 Controller"]
+
+        L_ROWS["Row GPIOs: P1.11 P1.15<br/>P0.03 P1.14 P1.12"]
+        L_COLS["Col GPIOs: P0.25 P0.11 P0.02<br/>P0.28-31 P1.09 P0.12 P0.07"]
+
+        L_ADC["ADC Ch2 — Battery<br/>100k/100k divider"]
+        L_PWM["PWM0 P0.17 — Backlight"]
+        L_SPI["SPI3 P0.20 — WS2812 x3<br/>Caps - Profile - Layer LEDs"]
+        L_EXT["EXT_POWER P0.13"]
+        L_BAT["Li-ion 1500mAh"]
+        L_USBC["USB-C Port<br/>data + charge"]
+        L_BOOT["Bootloader Btn → UF2"]
+        L_SW["Power Switch"]
+    end
+
+    subgraph RIGHT["RIGHT MODULE — Secondary"]
+        direction TB
+        R_CPU["nRF52840 QIAA<br/>Cortex-M4F 64MHz"]
+        R_BLE["BLE 5.0 Radio"]
+
+        R_ROWS["Row GPIOs: P0.19 P0.05<br/>P0.31 P0.30 P0.29"]
+        R_COLS["Col GPIOs: P0.12 P1.09 P0.07<br/>P1.11 P1.10 P1.13 P1.15<br/>P0.03 P0.02 P0.28"]
+
+        R_ADC["ADC Ch2 — Battery<br/>100k/100k divider"]
+        R_PWM["PWM0 P0.17 — Backlight"]
+        R_SPI["SPI3 P0.20 — WS2812 x3<br/>NumLk - ScrLk - Layer LEDs"]
+        R_BAT["Li-ion 1500mAh"]
+        R_USBC["USB-C Port<br/>charge only"]
+        R_BOOT["Bootloader Btn → UF2"]
+        R_SW["Power Switch"]
+    end
+
+    subgraph MATRIX["Combined Key Matrix — 20 cols x 5 rows"]
+        M["Left cols 0-9 | Right cols 10-19<br/>col2row diodes, col-offset=10<br/>76 keys total"]
+    end
+
+    subgraph FLASH["nRF52840 Flash Layout — 1MB"]
+        F["0x00000 SoftDevice 152KB<br/>0x26000 App/ZMK 792KB<br/>0xEC000 NVS Storage 32KB<br/>0xF4000 UF2 Bootloader 48KB"]
+    end
+
+    subgraph PCB["PCB Construction — from teardown"]
+        T["Flex PCB in concave keywells<br/>Soldered switches — not hot-swap<br/>5 screws per half, no glue<br/>Battery on disconnect header<br/>Ribbon cables keywell↔main board<br/>Thumb cluster separate sub-PCB"]
+    end
+
+    subgraph HOST["Host Computer"]
+        H_USB["USB-A Port"]
+        H_BT["Bluetooth"]
+    end
+
+    %% Left wiring
+    L_ROWS --> L_CPU
+    L_COLS --> L_CPU
+    L_BAT --> L_ADC --> L_CPU
+    L_CPU --> L_PWM
+    L_CPU --> L_SPI
+    L_CPU --> L_USB_CTRL --> L_USBC
+    L_CPU --> L_EXT
+    L_CPU --> L_BLE
+    L_SW -.-> L_CPU
+
+    %% Right wiring
+    R_ROWS --> R_CPU
+    R_COLS --> R_CPU
+    R_BAT --> R_ADC --> R_CPU
+    R_CPU --> R_PWM
+    R_CPU --> R_SPI
+    R_CPU --> R_BLE
+    R_SW -.-> R_CPU
+
+    %% Split link
+    R_BLE <-.->|BLE split link — always wireless| L_BLE
+
+    %% Host
+    L_USBC -->|USB 2.0 data + 5V| H_USB
+    L_BLE -.->|BLE profiles 1-5| H_BT
+    H_USB -->|5V charge 6-8hrs PC ONLY| R_USBC
+
+    %% Matrix
+    L_ROWS & L_COLS -->|cols 0-9| M
+    R_ROWS & R_COLS -->|cols 10-19| M
+
+    %% Styles
+    classDef soc fill:#1E3A5F,color:#fff,stroke:#0D1B2A
+    classDef gpio fill:#2D4A22,color:#fff,stroke:#1B2E15
+    classDef pwr fill:#7F1D1D,color:#fff,stroke:#450A0A
+    classDef periph fill:#44403C,color:#fff,stroke:#292524
+    classDef host fill:#4338CA,color:#fff,stroke:#312E81
+    classDef info fill:#FEF3C7,color:#111,stroke:#D97706
+
+    class L_CPU,R_CPU,L_BLE,R_BLE,L_USB_CTRL soc
+    class L_ROWS,L_COLS,R_ROWS,R_COLS gpio
+    class L_BAT,R_BAT,L_ADC,R_ADC pwr
+    class L_PWM,R_PWM,L_SPI,R_SPI,L_EXT,L_USBC,R_USBC,L_BOOT,R_BOOT,L_SW,R_SW periph
+    class H_USB,H_BT host
+    class M,F,T info

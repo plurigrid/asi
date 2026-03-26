@@ -1,0 +1,120 @@
+-- KB360 Pro Substance
+
+Module leftMod
+Module rightMod
+AutoLabel All
+
+Label leftMod "Left Module"
+Label rightMod "Right Module"
+
+SoC leftCPU
+SoC rightCPU
+Label leftCPU "nRF52840"
+Label rightCPU "nRF52840"
+HasSoC(leftMod, leftCPU)
+HasSoC(rightMod, rightCPU)
+
+Peripheral leftUSB
+Peripheral leftBLE
+Peripheral leftADC
+Peripheral leftPWM
+Peripheral leftSPI
+Peripheral leftBat
+Peripheral leftBacklight
+Peripheral leftLEDs
+Label leftUSB "USB-C"
+Label leftBLE "BLE 5.0"
+Label leftADC "ADC"
+Label leftPWM "PWM"
+Label leftSPI "SPI3"
+Label leftBat "1500mAh"
+Label leftBacklight "Backlight"
+Label leftLEDs "WS2812x3"
+
+HasPeripheral(leftMod, leftUSB)
+HasPeripheral(leftMod, leftBLE)
+HasPeripheral(leftMod, leftBat)
+HasPeripheral(leftMod, leftBacklight)
+HasPeripheral(leftMod, leftLEDs)
+
+SoCToPeripheral(leftCPU, leftUSB)
+SoCToPeripheral(leftCPU, leftBLE)
+SoCToPeripheral(leftCPU, leftADC)
+SoCToPeripheral(leftCPU, leftPWM)
+SoCToPeripheral(leftCPU, leftSPI)
+PeripheralLink(leftADC, leftBat)
+PeripheralLink(leftPWM, leftBacklight)
+PeripheralLink(leftSPI, leftLEDs)
+PoweredBy(leftCPU, leftBat)
+
+Peripheral rightBLE
+Peripheral rightADC
+Peripheral rightPWM
+Peripheral rightSPI
+Peripheral rightBat
+Peripheral rightUSB
+Peripheral rightBacklight
+Peripheral rightLEDs
+Label rightBLE "BLE 5.0"
+Label rightADC "ADC"
+Label rightPWM "PWM"
+Label rightSPI "SPI3"
+Label rightBat "1500mAh"
+Label rightUSB "USB-C chg"
+Label rightBacklight "Backlight"
+Label rightLEDs "WS2812x3"
+
+HasPeripheral(rightMod, rightUSB)
+HasPeripheral(rightMod, rightBLE)
+HasPeripheral(rightMod, rightBat)
+HasPeripheral(rightMod, rightBacklight)
+HasPeripheral(rightMod, rightLEDs)
+
+SoCToPeripheral(rightCPU, rightBLE)
+SoCToPeripheral(rightCPU, rightADC)
+SoCToPeripheral(rightCPU, rightPWM)
+SoCToPeripheral(rightCPU, rightSPI)
+PeripheralLink(rightADC, rightBat)
+PeripheralLink(rightPWM, rightBacklight)
+PeripheralLink(rightSPI, rightLEDs)
+PoweredBy(rightCPU, rightBat)
+
+Matrix leftMatrix
+Matrix rightMatrix
+Label leftMatrix "5x10 Matrix"
+Label rightMatrix "5x10 Matrix"
+HasMatrix(leftMod, leftMatrix)
+HasMatrix(rightMod, rightMatrix)
+
+GPIO leftRows
+GPIO leftCols
+GPIO rightRows
+GPIO rightCols
+Label leftRows "Rows"
+Label leftCols "Cols 0-9"
+Label rightRows "Rows"
+Label rightCols "Cols 10-19"
+
+SoCToGPIO(leftCPU, leftRows)
+SoCToGPIO(leftCPU, leftCols)
+GPIOToMatrix(leftRows, leftMatrix)
+GPIOToMatrix(leftCols, leftMatrix)
+SoCToGPIO(rightCPU, rightRows)
+SoCToGPIO(rightCPU, rightCols)
+GPIOToMatrix(rightRows, rightMatrix)
+GPIOToMatrix(rightCols, rightMatrix)
+
+SplitLink(leftCPU, rightCPU)
+
+Peripheral hostUSB
+Peripheral hostBT
+Label hostUSB "Host USB"
+Label hostBT "Host BT"
+HostLink(leftUSB, hostUSB)
+HostLink(leftBLE, hostBT)
+PeripheralLink(hostUSB, rightUSB)
+
+Peripheral wallCharger
+Label wallCharger "Wall Charger"
+Prohibited(wallCharger, leftUSB)
+Prohibited(wallCharger, rightUSB)
