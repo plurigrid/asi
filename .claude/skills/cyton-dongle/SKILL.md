@@ -178,6 +178,53 @@ for ch in range(16):
 | 7 | O1 | 15 | P3 |
 | 8 | O2 | 16 | P4 |
 
+## Daisy Module (16ch)
+
+The Daisy stacks on top of the Cyton, adding a second ADS1299 for channels 9-16.
+
+**Verifying Daisy**:
+- `v` should report: `On Daisy ADS1299 Device ID: 0x3E`
+- `D` returns Daisy firmware version (e.g., `060110`)
+- `C` enables 16ch mode, returns `16`
+- `c` (lowercase) disables Daisy, returns `daisy removed`
+
+**Daisy interleaving**: In 16ch mode, the board alternates packets:
+- **Odd sample numbers** (1,3,5...): channels 1-8 (main board)
+- **Even sample numbers** (2,4,6...): channels 9-16 (Daisy)
+
+Expect ~1:1 ratio of main:daisy packets. If Daisy packets are missing or all-zero, check that the Daisy board is firmly seated on the Cyton header pins.
+
+## ADS1299 Registers
+
+Query with `?`. Key registers per channel:
+
+| Register | Default | Meaning |
+|----------|---------|---------|
+| `0x68` | Normal input, gain 24x, powered on |
+| `0xE8` | Powered down (bit 7 set) |
+| `0x60` | Normal input, gain 24x, SRB2 off |
+
+- `BIAS_SENSP = 0xFF`: All channels feeding bias drive (good)
+- `CONFIG1 = 0xB6`: 250 Hz sample rate, daisy mode
+- `CONFIG3 = 0xEC`: Internal reference, bias enabled
+
+## Electrode Quality Thresholds
+
+| Std Dev (uV) | Status | Meaning |
+|--------------|--------|---------|
+| < 1 | FLAT | Shorted to reference or no contact |
+| < 50 | CLEAN | Good signal, usable for all analysis |
+| 50-100 | OK | Usable for most band power analysis |
+| 100-200 | NOISY | May work for gross features (eye blinks) |
+| > 200 | BAD CONTACT | Electrode touching but loose |
+| mean ±187500 | RAILED | Not touching skin, pinned to ADC rail |
+
+## Session Persistence
+
+The dongle **does not persist** the channel override across serial sessions. Every time you open a new serial connection, you must re-send `0xF0 0x02 <channel>`. Keep the serial port open for the duration of your recording, or store the known channel and re-override on connect.
+
+The board also goes to **sleep after extended idle** with no streaming. Toggle the power switch OFF→PC to wake it, then re-scan.
+
 ## Troubleshooting
 
 | Symptom | Cause | Fix |
@@ -187,7 +234,12 @@ for ch in range(16):
 | Channel stuck on set | `0x01` needs board handshake | Use `0x02` override instead |
 | RAILED at ±187500 uV | Electrode not connected | Check pin seating and wire |
 | FLAT near 0 | Shorted to ref or no contact | Apply gel, press electrode |
+| FLAT at exactly 0.0 | Daisy wires not plugged in | Check header pin connections |
 | High noise (>200 uV std) | Poor electrode contact | Tighten cap, add paste |
+| 0 packets after `b` | Radio link dropped | Re-override channel, re-send `v` then `b` |
+| Daisy ch all zero | Daisy not seated or `C` not sent | Reseat Daisy, send `C` before `b` |
+| All channels railed one side | Cap too loose / wrong size | Tighten straps, try gel electrodes |
+| Commands work but stream doesn't | Board slept during idle | Toggle OFF→PC, re-pair |
 
 ## Firmware Source
 
