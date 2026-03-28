@@ -225,6 +225,17 @@ The dongle **does not persist** the channel override across serial sessions. Eve
 
 The board also goes to **sleep after extended idle** with no streaming. Toggle the power switch OFF→PC to wake it, then re-scan.
 
+## Dongle Switch Position
+
+The dongle has a small switch with two positions:
+
+| Position | Mode | Use |
+|----------|------|-----|
+| **GPIO_6** | Normal operation | **Use this for data streaming** |
+| **Reset** | Bootloader/programming | Firmware upload only |
+
+If the switch is on "Reset", commands may partially work (radio config, `v`, `?`) but **binary streaming will fail** — the RFDuino stays in bootloader mode and cannot relay continuous data. This is easy to miss because single-shot commands still get responses.
+
 ## Troubleshooting
 
 | Symptom | Cause | Fix |
@@ -236,7 +247,8 @@ The board also goes to **sleep after extended idle** with no streaming. Toggle t
 | FLAT near 0 | Shorted to ref or no contact | Apply gel, press electrode |
 | FLAT at exactly 0.0 | Daisy wires not plugged in | Check header pin connections |
 | High noise (>200 uV std) | Poor electrode contact | Tighten cap, add paste |
-| 0 packets after `b` | Radio link dropped | Re-override channel, re-send `v` then `b` |
+| 0 packets after `b` | Dongle switch on "Reset" | Set switch to **GPIO_6** position |
+| Commands work, stream doesn't | Dongle in bootloader mode | Check switch is GPIO_6, not Reset |
 | Daisy ch all zero | Daisy not seated or `C` not sent | Reseat Daisy, send `C` before `b` |
 | All channels railed one side | Cap too loose / wrong size | Tighten straps, try gel electrodes |
 | Commands work but stream doesn't | Board slept during idle | Toggle OFF→PC, re-pair |
