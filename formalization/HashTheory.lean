@@ -30,7 +30,7 @@ import Mathlib.Algebra.Order.Monoid.Defs
 import Mathlib.Data.ZMod.Basic
 import Mathlib.Data.Fin.Basic
 import Mathlib.Data.Finset.Basic
-import Mathlib.Order.CompleteLattice
+import Mathlib.Order.CompleteLattice.Basic
 
 namespace HashTheory
 
