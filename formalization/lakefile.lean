@@ -13,4 +13,4 @@ require mathlib from git
 @[default_target]
 lean_lib HashTheory where
   srcDir := "."
-  roots := #[`HashTheory]
+  roots := #[`HashTheory, `IBCCollision]
