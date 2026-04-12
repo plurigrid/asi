@@ -70,6 +70,22 @@ Side quest: `bmorphism_palette.json` — 12 colors from `0x626d6f727068`, n=7 lo
 
 **Connection to Layer 2:** brainfloj's GF(3) trit of a real session is a valid input to the `gf3_sum` field in IdentityProof. **The Siegel stack closes the loop from electrode gasket to mainnet receipt.**
 
+## Layer 5 — Regulatory (humans)
+**horse#16** open · `bcf-0058` · 615 LOC (zubyul, not Siegel — but same stack)
+
+Maps 28 BCI devices → FDA classification → IRB tier. Gates Siegel's entire L0–L4 pipeline before any human sits in the chair.
+
+| Tier | IRB? | FDA? | Timeline |
+|---|---|---|---|
+| 0 Wellness demo | No | No | Now |
+| 1 READ research | Expedited (Solutions IRB) | No | Q2 2026 |
+| 2 FUS within ITRUSST | Full board (Advarra) | NSR by IRB | Q4 2026 |
+| 3 Novel/SR | Full board + IDE | FDA IDE | 2027+ |
+
+References 21 CFR 882.5050/1400, 45 CFR 46, ITRUSST Consensus 2025 (MI ≤ 1.9, ΔT < 2°C), IEEE Std 2010-2023.
+
+**Connection to Layer 0–4:** without L5, Siegel's PCBs cannot touch human skin beyond Tier 0. L5 is the permissioning layer that turns the mainnet receipt (L4) into lawfully-reproducible signal (L1→L2 on a real subject).
+
 ## The Closure
 
 ```
@@ -113,4 +129,5 @@ Sustainable for repeated BCI-session → on-chain receipt flow.
 - nanoclj-zig#21: https://github.com/plurigrid/nanoclj-zig/pull/21
 - asi-skills#3: https://github.com/plurigrid/asi-skills/pull/3
 - asi#87: https://github.com/plurigrid/asi/pull/87
+- horse#16 (IRB/L5, zubyul): https://github.com/plurigrid/horse/pull/16
 - Mainnet tx: https://explorer.aptoslabs.com/txn/0x6383da9ed60492c5b753cc743ba3dae37474e049a8e678860f618a86372269d2?network=mainnet
