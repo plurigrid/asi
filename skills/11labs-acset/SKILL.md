@@ -1,14 +1,30 @@
 ---
 name: 11labs-acset
-description: "ElevenLabs voice synthesis as ACSet schema with Unison abilities"
+description: "Model ElevenLabs voice synthesis as an ACSet schema with Unison ability handlers for typed voice operations. Use when integrating ElevenLabs TTS into category-theoretic pipelines, building typed voice synthesis workflows, or managing multi-voice narration with GF(3) conservation."
 metadata:
   trit: -1
   seed: 1069
   api_key_env: ELEVENLABS_API_KEY
 ---
-# 11labsACSet
 
-> *Voice as typed data structure. Mitsein: Agent "is-with" Voice.*
+# 11labs-acset
+
+Wraps the ElevenLabs voice synthesis API as an ACSet (Attributed C-Set) schema, with Unison algebraic effect handlers for typed voice operations.
+
+## Use When
+
+- Integrating ElevenLabs TTS into a category-theoretic data pipeline
+- Building typed voice synthesis workflows with compile-time morphism checking
+- Managing multi-voice narration with GF(3) trit conservation across voices
+- Accessing ElevenLabs via MCP server (`uvx elevenlabs-mcp`)
+
+## Workflow
+
+1. **Set API key**: `export ELEVENLABS_API_KEY="sk_..."`
+2. **Start MCP server**: `uvx elevenlabs-mcp` (or `python3 unified_elevenlabs_mcp_server.py`)
+3. **Define voice triad**: assign trit roles to voices (+1 generator, 0 coordinator, -1 validator)
+4. **Synthesize**: call `synthesize` with text and voice, receiving typed `Audio` output
+5. **Verify conservation**: confirm `sum(trits) === 0 (mod 3)` across voice set
 
 ## ACSet Schema (from OpenAPI)
 
@@ -144,17 +160,8 @@ export ELEVENLABS_API_KEY="sk_..."  # or xi-...
 ```
 
 
----
+## Related Skills
 
-## Autopoietic Marginalia
-
-> **The interaction IS the skill improving itself.**
-
-Every use of this skill is an opportunity for worlding:
-- **MEMORY** (-1): Record what was learned
-- **REMEMBERING** (0): Connect patterns to other skills  
-- **WORLDING** (+1): Evolve the skill based on use
-
-
-
-*Add Interaction Exemplars here as the skill is used.*
+- `crossmodal-gf3` — cross-modal coordination partner
+- `gesture-hypergestures` — generation partner for GF(3) triad
+- `acsets` — base ACSet schema and theory

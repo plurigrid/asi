@@ -1,27 +1,19 @@
 ---
 name: active-inference-robotics
-description: "Second-order skill synthesizing Patrick Kenny's discrete active inference framework with K-Scale's JAX/MuJoCo robotics stack for predictive coding in robot locomotion"
+description: "Bridge active inference theory with robot control using K-Scale's JAX/MuJoCo stack. Use when connecting predictive coding to locomotion policies, mapping KL divergence minimization to RL training, applying mean field approximation to robotics state estimation, or implementing sim2real as inference about future observations."
 ---
 
-# Active Inference Robotics Skill (Second-Order)
+# active-inference-robotics
 
-> *"The agent's job is to predict its actions by predicting its sensations."* — Patrick Kenny
+Synthesizes Patrick Kenny's discrete active inference framework with K-Scale's JAX/MuJoCo robotics stack for predictive coding in robot locomotion.
 
-## Trigger Conditions
+## Use When
 
-- User asks about bridging active inference with robot control
-- Questions about predictive coding in locomotion policies
-- Connecting KL divergence minimization to RL training
-- Mean field approximation in robotics state estimation
-- Sim2Real as inference about future observations
-
-## Overview
-
-**Second-order skill** synthesizing Patrick Kenny's discrete active inference framework with K-Scale's JAX/MuJoCo robotics stack. This skill emerges from the **constructive collision** between:
-
-1. **Active Inference Institute** (ActInf ModelStream 019.1, Jan 2025)
-2. **K-Scale Labs** (ksim, kos, kinfer ecosystem)
-3. **MuJoCo Playground** (DeepMind's sim2real framework)
+- Bridging active inference theory with robot control implementations
+- Connecting KL divergence minimization to RL training loops
+- Applying mean field approximation to robotics state estimation
+- Implementing sim2real transfer as inference about future observations
+- Training locomotion policies with principled entropy regularization
 
 ## The Constructive Collision
 
@@ -271,27 +263,9 @@ end
 ```
 
 
-## SDF Interleaving
+## Related Skills
 
-This skill connects to **Software Design for Flexibility** (Hanson & Sussman, 2021):
-
-### Primary Chapter: 10. Adventure Game Example
-
-**Concepts**: autonomous agent, game, synthesis
-
-### GF(3) Balanced Triad
-
-```
-active-inference-robotics (+) + SDF.Ch10 (+) + [balancer] (+) = 0
-```
-
-**Skill Trit**: 1 (PLUS - generation)
-
-### Secondary Chapters
-
-- Ch3: Variations on an Arithmetic Theme
-- Ch4: Pattern Matching
-
-### Connection Pattern
-
-Adventure games synthesize techniques. This skill integrates multiple patterns.
+- `kscale-ksim` — simulation implementation partner
+- `mujoco-playground` — framework foundation
+- `cognitive-superposition` — team mental models
+- `reafference-corollary-discharge` — sensorimotor prediction
