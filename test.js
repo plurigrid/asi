@@ -100,7 +100,8 @@ test('all categories are valid', () => {
     'productivity',
     'infrastructure',
     'mathematics',
-    'ai-agents'
+    'ai-agents',
+    'hardware'
   ];
   const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'skills.json'), 'utf8'));
 
