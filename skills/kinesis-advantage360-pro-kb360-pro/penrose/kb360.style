@@ -1,0 +1,198 @@
+canvas {
+  width = 1200
+  height = 900
+}
+
+forall Module m {
+  m.shape = Rectangle {
+    strokeWidth: 2.0
+    strokeColor: rgba(0.1, 0.1, 0.1, 1.0)
+    fillColor: rgba(0.95, 0.95, 0.97, 0.5)
+    cornerRadius: 12.0
+  }
+  m.text = Equation {
+    string: m.label
+    fontSize: "16px"
+  }
+  m.shape above m.text
+  ensure contains(m.shape, m.text, 20.0)
+}
+
+forall SoC s {
+  s.icon = Rectangle {
+    width: 120.0
+    height: 70.0
+    fillColor: rgba(0.12, 0.23, 0.37, 1.0)
+    strokeColor: rgba(0.05, 0.11, 0.16, 1.0)
+    strokeWidth: 2.0
+    cornerRadius: 6.0
+  }
+  s.text = Equation {
+    string: s.label
+    fontSize: "11px"
+    fillColor: rgba(1.0, 1.0, 1.0, 1.0)
+  }
+  ensure contains(s.icon, s.text, 5.0)
+  s.icon above s.text
+}
+
+forall Peripheral p {
+  p.icon = Rectangle {
+    width: 90.0
+    height: 40.0
+    fillColor: rgba(0.27, 0.25, 0.24, 1.0)
+    strokeColor: rgba(0.16, 0.15, 0.14, 1.0)
+    strokeWidth: 1.5
+    cornerRadius: 4.0
+  }
+  p.text = Equation {
+    string: p.label
+    fontSize: "9px"
+    fillColor: rgba(1.0, 1.0, 1.0, 1.0)
+  }
+  ensure contains(p.icon, p.text, 3.0)
+  p.icon above p.text
+}
+
+forall GPIO g {
+  g.icon = Rectangle {
+    width: 100.0
+    height: 35.0
+    fillColor: rgba(0.18, 0.29, 0.13, 1.0)
+    strokeColor: rgba(0.11, 0.18, 0.08, 1.0)
+    strokeWidth: 1.5
+    cornerRadius: 4.0
+  }
+  g.text = Equation {
+    string: g.label
+    fontSize: "9px"
+    fillColor: rgba(1.0, 1.0, 1.0, 1.0)
+  }
+  ensure contains(g.icon, g.text, 3.0)
+  g.icon above g.text
+}
+
+forall Matrix mx {
+  mx.icon = Rectangle {
+    width: 110.0
+    height: 45.0
+    fillColor: rgba(0.96, 0.95, 0.78, 1.0)
+    strokeColor: rgba(0.85, 0.73, 0.15, 1.0)
+    strokeWidth: 2.0
+    cornerRadius: 4.0
+  }
+  mx.text = Equation {
+    string: mx.label
+    fontSize: "10px"
+    fillColor: rgba(0.1, 0.1, 0.1, 1.0)
+  }
+  ensure contains(mx.icon, mx.text, 3.0)
+  mx.icon above mx.text
+}
+
+forall SoC s; Peripheral p
+where SoCToPeripheral(s, p) {
+  wire = Line {
+    start: s.icon.center
+    end: p.icon.center
+    strokeColor: rgba(0.23, 0.51, 0.96, 0.7)
+    strokeWidth: 1.5
+  }
+  s.icon above wire
+  p.icon above wire
+}
+
+forall SoC s; GPIO g
+where SoCToGPIO(s, g) {
+  gpioWire = Line {
+    start: s.icon.center
+    end: g.icon.center
+    strokeColor: rgba(0.18, 0.55, 0.13, 0.7)
+    strokeWidth: 1.5
+  }
+  s.icon above gpioWire
+  g.icon above gpioWire
+}
+
+forall GPIO g; Matrix mx
+where GPIOToMatrix(g, mx) {
+  matWire = Line {
+    start: g.icon.center
+    end: mx.icon.center
+    strokeColor: rgba(0.85, 0.73, 0.15, 0.7)
+    strokeWidth: 1.5
+  }
+  g.icon above matWire
+  mx.icon above matWire
+}
+
+forall Peripheral a; Peripheral b
+where PeripheralLink(a, b) {
+  conn = Line {
+    start: a.icon.center
+    end: b.icon.center
+    strokeColor: rgba(0.06, 0.72, 0.51, 0.7)
+    strokeWidth: 1.5
+  }
+  a.icon above conn
+  b.icon above conn
+}
+
+forall SoC a; SoC b
+where SplitLink(a, b) {
+  split = Line {
+    start: a.icon.center
+    end: b.icon.center
+    strokeColor: rgba(0.66, 0.33, 0.97, 0.9)
+    strokeWidth: 3.0
+    strokeDasharray: "8 4"
+  }
+  a.icon above split
+  b.icon above split
+}
+
+forall Peripheral a; Peripheral b
+where HostLink(a, b) {
+  host = Line {
+    start: a.icon.center
+    end: b.icon.center
+    strokeColor: rgba(0.26, 0.22, 0.79, 0.8)
+    strokeWidth: 2.0
+  }
+  a.icon above host
+  b.icon above host
+}
+
+forall Peripheral w; Peripheral p
+where Prohibited(w, p) {
+  w.icon.fillColor = rgba(0.94, 0.27, 0.27, 1.0)
+  ban = Line {
+    start: w.icon.center
+    end: p.icon.center
+    strokeColor: rgba(0.94, 0.27, 0.27, 0.8)
+    strokeWidth: 2.5
+    strokeDasharray: "4 4"
+  }
+  w.icon above ban
+  p.icon above ban
+}
+
+forall SoC s; Peripheral p
+where PoweredBy(s, p) {
+  p.icon.fillColor = rgba(0.50, 0.11, 0.11, 1.0)
+}
+
+forall Module m; SoC s
+where HasSoC(m, s) {
+  ensure contains(m.shape, s.icon, 30.0)
+}
+
+forall Module m; Peripheral p
+where HasPeripheral(m, p) {
+  ensure contains(m.shape, p.icon, 20.0)
+}
+
+forall Module m; Matrix mx
+where HasMatrix(m, mx) {
+  ensure contains(m.shape, mx.icon, 20.0)
+}

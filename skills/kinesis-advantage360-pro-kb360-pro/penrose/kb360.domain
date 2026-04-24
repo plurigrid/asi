@@ -1,0 +1,19 @@
+-- KB360 Pro Hardware Domain
+type SoC
+type GPIO
+type Peripheral
+type Bus
+type Module
+type Matrix
+
+predicate HasSoC(Module, SoC)
+predicate HasPeripheral(Module, Peripheral)
+predicate HasMatrix(Module, Matrix)
+predicate SoCToPeripheral(SoC, Peripheral)
+predicate SoCToGPIO(SoC, GPIO)
+predicate GPIOToMatrix(GPIO, Matrix)
+predicate PeripheralLink(Peripheral, Peripheral)
+predicate SplitLink(SoC, SoC)
+predicate PoweredBy(SoC, Peripheral)
+predicate HostLink(Peripheral, Peripheral)
+predicate Prohibited(Peripheral, Peripheral)
