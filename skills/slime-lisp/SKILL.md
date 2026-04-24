@@ -23,3 +23,8 @@ SLIME integration for Common Lisp development.
 ## Integration
 
 Dual to `cider-clojure` for Common Lisp workflows.
+
+
+## REPL siblings
+
+Scheme/Lisp: `geiser-chicken` · `guile` · `guile-goblins-hoot` · `little-schemer` · `scheme` · `srfi` · `hoot`. Editor bridge: `emacs` · `alice-emacs-mods` · `bob-emacs-mods`. Atlas: `repl-commons`.

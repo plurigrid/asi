@@ -47,3 +47,8 @@ C-h v           Describe variable
 flox pull bmorphism/effective-topos
 emacs --with-profile topos
 ```
+
+
+## REPL siblings
+
+Emacs-bridged REPLs (comint / emacsclient / tramp): `elisp` · `org-babel-execution` · `alice-emacs-mods` · `bob-emacs-mods` · `xenodium-elisp` · `sexp-neighborhood` · `proofgeneral-narya`. Atlas: `repl-commons`.

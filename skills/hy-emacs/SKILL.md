@@ -346,3 +346,8 @@ emacs:
   - rainbow-delimiters (MELPA)
   - company (MELPA)
 ```
+
+
+## REPL siblings
+
+Hy dialect: `hy-regime`. Cross-family: `jupyter` · `python-development` · `cider-embedding` · `emacs`. Atlas: `repl-commons`.

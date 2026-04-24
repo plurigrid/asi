@@ -46,3 +46,8 @@ npx shadow-cljs watch app
          :test (shell "clj -M:test")
          :repl (clojure "-M:dev -m nrepl.cmdline")}}
 ```
+
+
+## REPL siblings
+
+Clojure: `babashka` · `babashka-clj` · `cider-clojure` · `cider-embedding` · `jo-clojure` · `joker-lint` · `jank` · `borkdude` · `squint-runtime` · `abductive-repl` · `clj-kondo-3color`. Full atlas: `repl-commons`.

@@ -36,3 +36,8 @@ guile [options] [script [args]]
 (use-modules (ice-9 receive)) ; Multiple values
 (use-modules (ice-9 format))  ; Formatted output
 ```
+
+
+## REPL siblings
+
+Scheme family: `slime-lisp` · `geiser-chicken` · `little-schemer` · `scheme` · `srfi` · `guile-goblins-hoot` · `hoot`. Cross-family: `unison` (codebase REPL) · `clojure` (nREPL). Atlas: `repl-commons`.

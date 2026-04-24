@@ -345,3 +345,8 @@ Every use of this skill is an opportunity for worlding:
 
 
 *Add Interaction Exemplars here as the skill is used.*
+
+
+## REPL siblings
+
+Julia family: `sicmutils` · `sicp` · `julia-scientific` · `julia-gay` · `julia-gpu-kernels` · `julia-tempering` · `quarto-julia`. Atlas: `repl-commons`.
