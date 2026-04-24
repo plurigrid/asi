@@ -1,54 +1,39 @@
 ---
 name: affective-taxis
-description: "Affective valence as directional derivative of interoceptive energy landscape (Sennesh & Ramstead 2025)"
+description: "Implement affective valence as directional derivative of interoceptive energy landscapes for AI alignment. Use when building alignment-aware RL agents, validating GF(3) conservation in reward signals, training Langevin-based policies, or analyzing fold-change detection signals in POMDP environments."
 license: MIT
 metadata:
   trit: -1
   source: arXiv:2505.17024
-  xenomodern: true
-  stars: 0
-  extensions:
-    - NEIGHBOR_SKILLS.md
-  created_with: claude-code
 ---
 
 # affective-taxis
 
-> Affective valence = directional derivative of interoceptive energy landscape
+Models affective valence as the directional derivative of an interoceptive energy landscape (Sennesh & Ramstead 2025), providing alignment validation through structural conservation laws.
 
-**Version**: 1.0.0
-**Trit**: -1 (MINUS - validates alignment via structural conservation)
-**Bundle**: alignment
-**Status**: Production (8 implementation paths, 9,500+ LOC)
+## Use When
 
----
+- Building alignment-aware RL agents that respect structural invariants
+- Validating GF(3) conservation across reward trajectories
+- Training Langevin-based policies as an alternative to PPO (which breaks conservation)
+- Implementing fold-change detection reward signals in POMDP environments
+- Bridging affective neuroscience models with RL training loops
 
-## Paper
+## Workflow
 
-**Sennesh & Ramstead (2025)**: "An Affective-Taxis Hypothesis for Alignment and Interpretability"
-arXiv:2505.17024v1
+1. **Define energy landscape**: set attractant/repellent positions, sigmas, and amplitudes
+2. **Compute fold-change detection signal**: `r(t) = nabla_z log gamma(z; beta) . v`
+3. **Run Langevin dynamics**: `dz/dt = nabla_z log gamma(z; beta) + sqrt(2) dW(t)`
+4. **Classify trit per timestep**: positive derivative → +1, orthogonal → 0, negative → -1
+5. **Verify conservation**: `sum(trits) === 0 (mod 3)` across trajectory
 
 ## Core Equations
 
-### Eq 3: Fold-Change Detection (reward = valence)
-```
-r(t) = nabla_z log gamma(z; beta) . v
-```
-The reward signal IS the directional derivative of the log-concentration along the velocity.
-
-### Eq 5: Langevin dynamics (navigation = Bayesian inference)
-```
-dz/dt = nabla_z log gamma(z; beta) + sqrt(2) dW(t)
-```
-Following the energy landscape gradient + stochastic exploration.
-
-### GF(3) Valence Classification
-```
-+1 (PLUS/GREEN)  : positive directional derivative -> approaching attractant
- 0 (ERGODIC/YELLOW): orthogonal to gradient -> neutral taxis
--1 (MINUS/RED)   : negative directional derivative -> approaching repellent
-```
-**Conservation law**: sum(trits) === 0 (mod 3) across trajectories.
+| Equation | Formula | Meaning |
+|----------|---------|---------|
+| Fold-change detection | `r(t) = nabla_z log gamma(z; beta) . v` | Reward = directional derivative of log-concentration |
+| Langevin dynamics | `dz/dt = nabla_z log gamma(z; beta) + sqrt(2) dW(t)` | Navigation = gradient ascent + stochastic exploration |
+| Trit classification | `sign(r(t))` mapped to {-1, 0, +1} | GF(3) valence of each step |
 
 ## Implementation Paths
 
