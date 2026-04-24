@@ -215,3 +215,8 @@ just captp-sturdy actor         # Get sturdy reference
 **Trit**: 0 (ERGODIC)
 **GF(3)**: Transports capabilities without amplification
 **Invariant**: Capabilities unforgeable, only invoke what you're given
+
+
+## REPL atlas
+
+Part of: `repl-commons` (REPL-using skills intermix).

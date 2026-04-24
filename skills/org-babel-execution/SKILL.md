@@ -69,3 +69,8 @@ org-babel-execution (+) + SDF.Ch2 (−) + [balancer] (○) = 0
 ### Connection Pattern
 
 DSLs embed domain knowledge. This skill defines domain-specific operations.
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `emacs`.

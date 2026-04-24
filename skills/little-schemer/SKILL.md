@@ -225,3 +225,8 @@ racket -l malt
 - [HtDP Online](https://htdp.org/)
 - [miniKanren.org](http://minikanren.org/)
 - [The Pie Language](https://github.com/the-little-typer/pie)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `guile`.

@@ -181,3 +181,8 @@ The skill participates in triads satisfying:
 ```
 
 This ensures compositional coherence in the Cat# equipment structure.
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `duckdb-guard`.

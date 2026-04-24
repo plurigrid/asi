@@ -176,3 +176,8 @@ Extend Babashka with pods:
 **Type**: Runtime Selection / ClojureScript Tooling
 **Trit**: 0 (ERGODIC)
 **Runtimes**: Babashka, SCI, Cherry, Squint, Scittle, nbb
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

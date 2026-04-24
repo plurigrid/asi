@@ -23,3 +23,8 @@ CIDER integration for Clojure development with nREPL.
 ## Integration
 
 Works with `borkdude` skill for babashka and `clj-kondo-3color` for linting.
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

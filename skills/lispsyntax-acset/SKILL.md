@@ -228,3 +228,8 @@ end
 - [ppx_sexp_conv](https://github.com/janestreet/ppx_sexp_conv) - Jane Street
 - [LispSyntax.jl](https://github.com/swadey/LispSyntax.jl)
 - [ACSets.jl](https://github.com/AlgebraicJulia/ACSets.jl)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

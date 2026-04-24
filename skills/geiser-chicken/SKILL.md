@@ -175,3 +175,8 @@ just geiser-colors      # Generate color palette in Chicken
 just geiser-3color      # 3-color a test graph
 just penrose-ascii      # Generate Penrose tiling
 ```
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `guile`.

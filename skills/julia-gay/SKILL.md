@@ -75,3 +75,8 @@ spi-parallel-verify (-1) ⊗ triad-interleave (0) ⊗ julia-gay (+1) = 0 ✓
 - `gay-mcp` - MCP server for color generation
 - `triad-interleave` - 3-stream scheduling
 - `world-hopping` - Badiou possible world navigation
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `sicm`.

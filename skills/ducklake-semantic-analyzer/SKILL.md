@@ -211,3 +211,7 @@ This skill operates in the **YELLOW (GF3=1)** structural category:
 **Color:** YELLOW
 **Polarity:** GF(3) = 1
 **Access Pattern:** Read-only analysis
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `duckdb-guard`.

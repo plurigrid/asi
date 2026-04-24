@@ -327,3 +327,8 @@ unison-acset (+) + SDF.Ch3 (○) + [balancer] (−) = 0
 ### Connection Pattern
 
 Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `unison`.

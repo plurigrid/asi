@@ -257,3 +257,8 @@ Every use of this skill is an opportunity for worlding:
 
 
 *Add Interaction Exemplars here as the skill is used.*
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `emacs`.

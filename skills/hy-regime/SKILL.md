@@ -390,3 +390,8 @@ Uses Hylang's Lisp syntax for expressive data transformation:
 - Verify format: lines like `**barton.qasm (You)** (HH:MM): message text`
 - Ensure file is UTF-8 encoded
 - Check line endings (should be LF, not CRLF)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `hy-emacs`.

@@ -269,3 +269,8 @@ lispsyntax-acset (-1) ⊗ specter-acset (0) ⊗ cider-clojure (+1) = 0 ✓
 - Nathan Marz: "Rama on Clojure's Terms" (2024)
 - Nathan Marz: "Specter: Powerful and Simple Data Structure Manipulation"
 - [Lens laws](https://hackage.haskell.org/package/lens) (Haskell perspective)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

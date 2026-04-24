@@ -368,3 +368,8 @@ Gaps identified in tweag/monad-bayes tutorial coverage:
 | Physics emulation | no | PMMH for lolita latent parameter inference |
 | Information geometry | no | Fisher-Rao metric on posterior manifold |
 >>>>>>> origin/main
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `jupyter`.

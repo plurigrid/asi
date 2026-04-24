@@ -377,3 +377,8 @@ This skill participates in the 32-skill working set assembled in /Users/alice/wo
 
 **Verified GF(3) triads containing this skill:**
 - alice-emacs-mods (-1) ⊗ bob-emacs-mods (0) ⊗ plurigrid-asi-ghostel (+1) = 0 ✓
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `emacs`.

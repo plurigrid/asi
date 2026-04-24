@@ -160,3 +160,8 @@ The skill participates in triads where:
 ```
 
 This ensures compositional coherence in the Cat# equipment structure.
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

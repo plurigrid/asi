@@ -311,3 +311,8 @@ Ensures every triadic composition maintains GF(3) sum ≡ 0 (mod 3).
 - [Babashka](https://github.com/babashka/babashka)
 - [Joker (Clojure on GCP/Go)](https://github.com/candelbp/joker)
 - [Gay.jl Color Generation](https://github.com/bmorphism/gay.jl)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

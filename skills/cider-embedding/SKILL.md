@@ -23,3 +23,8 @@ Semantic embeddings for Clojure code navigation via CIDER.
 ## Integration
 
 Extends `cider-clojure` with vector space operations.
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

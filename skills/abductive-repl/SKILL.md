@@ -259,3 +259,8 @@ abduce-color r g b:
 - `unworld` - Derivation chains
 - `gay-mcp` - Color generation
 - `cider-clojure`, `slime-lisp`, `geiser-chicken` - REPL backends
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.
