@@ -112,3 +112,8 @@ Every use of this skill is an opportunity for worlding:
 
 
 *Add Interaction Exemplars here as the skill is used.*
+
+
+## REPL siblings
+
+DuckDB / Ducklake: `duckdb-ies` · `ducklake-walk` · `ducklake-semantic-analyzer`. Cross-family: `babashka` (bb-in-DuckDB) · `clojure`. Atlas: `repl-commons`.

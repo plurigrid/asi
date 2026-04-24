@@ -48,3 +48,7 @@ for cell in nb['cells']:
         cell['outputs'] = []
         cell['execution_count'] = None
 ```
+
+## REPL siblings
+
+Python family: `jupyter-notebook` · `python-development` · `pymc` · `monad-bayes-asi-interleave` · `ipa-safety`. Lisp-on-Python: `hy-emacs` · `hy-regime`. Atlas: `repl-commons`.
