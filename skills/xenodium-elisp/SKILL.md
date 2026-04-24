@@ -220,3 +220,8 @@ just dwim-define           # Create custom dwim-shell-command
 - [xenodium.com](https://xenodium.com/) - Blog with Emacs tips
 - [YouTube: Xenodium](https://www.youtube.com/@xenodium) - Video tutorials
 - [ACP Specification](https://agentclientprotocol.com/) - Agent Client Protocol
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `emacs`.

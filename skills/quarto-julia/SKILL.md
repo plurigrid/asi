@@ -376,3 +376,8 @@ quarto-julia (○) + SDF.Ch7 (○) + [balancer] (○) = 0
 ### Connection Pattern
 
 Propagators flow constraints bidirectionally. This skill propagates information.
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `sicm`.

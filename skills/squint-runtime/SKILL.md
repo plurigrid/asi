@@ -129,3 +129,8 @@ just squint-watch              # Watch mode compilation
 **Type**: ClojureScript Compiler
 **Trit**: 0 (ERGODIC)
 **Invariant**: ✅ Deterministic compilation
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

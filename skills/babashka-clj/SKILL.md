@@ -50,3 +50,8 @@ bb run <task>
 borkdude (-1) ⊗ babashka-clj (0) ⊗ gay-mcp (+1) = 0 ✓
 cider-clojure (-1) ⊗ babashka-clj (0) ⊗ squint-runtime (+1) = 0 ✓
 ```
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

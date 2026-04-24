@@ -206,3 +206,8 @@ just measure-laxity       # Compute Bumpus laxity metrics
 - [Narya GitHub](https://github.com/mikeshulman/narya)
 - [Higher Observational Type Theory](https://ncatlab.org/nlab/show/higher+observational+type+theory)
 - [Topos Institute: Structure-Aware Version Control](https://topos.institute/blog/2024-11-13-structure-aware-version-control-via-observational-bridge-types/)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `emacs`.

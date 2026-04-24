@@ -188,3 +188,8 @@ Contributors: Jeaye Wilkerson + Saket (interop), Monty (compiler/distro), Jianli
 ## Refs
 
 [jank-lang.org](https://jank-lang.org/) | [book](https://book.jank-lang.org/) | [GitHub](https://github.com/jank-lang/jank) | [interop blog 1](https://jank-lang.org/blog/2025-05-02-starting-seamless-interop/) [2](https://jank-lang.org/blog/2025-06-06-next-phase-of-interop/) [3](https://jank-lang.org/blog/2025-07-11-jank-is-cpp/) | [SICP](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html) | [SDF](https://mitpress.mit.edu/9780262045490/)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

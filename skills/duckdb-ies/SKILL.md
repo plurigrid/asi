@@ -264,3 +264,8 @@ SELECT * FROM simultaneity_surfaces ORDER BY density DESC LIMIT 5;"
 - `acsets` - Category-theoretic schema
 - `entropy-sequencer` - Temporal arrangement
 - `bisimulation-game` - Cross-agent skill dispersal
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `duckdb-guard`.

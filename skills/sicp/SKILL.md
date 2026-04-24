@@ -151,3 +151,8 @@ bb info_to_skill_morphism.bb parse sicp.info > sicp.sexp
 - [Full text online](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
 - [MIT OCW 6.001](https://ocw.mit.edu/courses/6-001-structure-and-interpretation-of-computer-programs-spring-2005/)
 - [SICP Distilled](https://www.sicpdistilled.com/) (Clojure version)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `sicm`.

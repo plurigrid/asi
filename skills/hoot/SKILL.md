@@ -39,3 +39,8 @@ import { Hoot } from '@aspect/guile-hoot';
 const mod = await Hoot.load('out.wasm');
 mod.greet("World");
 ```
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `guile`.

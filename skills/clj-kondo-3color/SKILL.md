@@ -204,3 +204,8 @@ just clj-kondo-asi-check          # Run with ASI safety hooks
 - [clj-kondo GitHub](https://github.com/clj-kondo/clj-kondo) (1.8k ⭐)
 - [clj-kondo Configuration](https://cljdoc.org/d/clj-kondo/clj-kondo/2025.10.23/doc/configuration)
 - [Plurigrid PolicyGrid](https://resources.aigr.id/16.3_PolicyGridxAIGrid/)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `clojure`.

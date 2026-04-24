@@ -413,3 +413,8 @@ ipa-safety (-1) ⊗ chromatic-peptide-samovar (0) ⊗ topos-generate (+1) = 0 �
 **Trit**: -1 (MINUS - safety validator)  
 **Function**: Reflow all encodings to IPA-only safety  
 **Streams**: Cyrillic (-1) + Latin (0) → IPA (+1)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `jupyter`.

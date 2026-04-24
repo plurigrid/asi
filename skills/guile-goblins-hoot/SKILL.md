@@ -66,3 +66,8 @@ Goblins provides:
 geiser-chicken (-1) ⊗ sicp (0) ⊗ guile-goblins-hoot (+1) = 0 ✓
 interaction-nets (-1) ⊗ chemical-abstract-machine (0) ⊗ guile-goblins-hoot (+1) = 0 ✓
 ```
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `guile`.

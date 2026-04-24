@@ -316,3 +316,8 @@ calculus (-1) ⊗ sicmutils (0) ⊗ physics (+1) = 0 ✓
 - [SICM](https://mitpress.mit.edu/9780262028967/) - Sussman & Wisdom textbook
 - [SRFI](https://srfi.schemers.org/) - Scheme Requests for Implementation
 - [scmutils](https://groups.csail.mit.edu/mac/users/gjs/6946/installation.html) - Original MIT Scheme library
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `sicm`.

@@ -45,3 +45,8 @@ guile -c '(compile-to-wasm "app.scm")'
 flox pull bmorphism/effective-topos
 flox activate -d ~/.topos
 ```
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `guile`.

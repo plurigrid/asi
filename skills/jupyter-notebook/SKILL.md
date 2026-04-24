@@ -105,3 +105,8 @@ No required environment variables.
 - `references/tutorial-patterns.md`: tutorial structure and teaching flow.
 - `references/notebook-structure.md`: notebook JSON shape and safe editing rules.
 - `references/quality-checklist.md`: final validation checklist.
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `jupyter`.

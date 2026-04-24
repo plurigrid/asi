@@ -252,3 +252,8 @@ srfi list --status final
 - [docs.scheme.org/srfi/support](https://docs.scheme.org/srfi/support/) - Implementation matrix
 - [R7RS-Large](https://github.com/johnwcowan/r7rs-work/blob/master/R7RSHomePage.md) - Standard incorporation
 - [Practical Scheme SRFI Cross-Reference](https://practical-scheme.net/wiliki/schemexref.cgi?SRFI)
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `guile`.

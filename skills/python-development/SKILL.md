@@ -141,3 +141,8 @@ async def test_get_user(mock_db):
 - Use dataclasses or Pydantic for data structures
 - Use `asyncio` for I/O-bound operations
 - Use `contextlib.asynccontextmanager` for async resources
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `jupyter`.

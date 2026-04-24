@@ -49,3 +49,8 @@ C-h i m elisp RET
 C-h f <function>
 C-h v <variable>
 ```
+
+
+## REPL atlas
+
+Part of: `repl-commons`. Family canonical: `emacs`.
