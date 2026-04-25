@@ -54,7 +54,8 @@
 (defn convert-skill-dir [skill-dir output-dir]
   "Convert all SKILL.md files in directory"
   (fs/create-dirs output-dir)
-  (doseq [skill-path (fs/glob skill-dir "**/SKILL.md")]
+  (doseq [skill-path (fs/glob skill-dir "**/SKILL.md")
+          :when (fs/regular-file? skill-path)]
     (let [skill-name (fs/file-name (fs/parent skill-path))
           output-path (fs/path output-dir (str skill-name ".md"))
           droid-content (skill-to-droid (str skill-path))]
