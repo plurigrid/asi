@@ -86,3 +86,8 @@ predictions = predict(network, test_data)
 - [ ] Multiple variants (supervised, unsupervised)
 - [ ] Benchmark against backprop
 - [ ] Integration with predictive coding
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

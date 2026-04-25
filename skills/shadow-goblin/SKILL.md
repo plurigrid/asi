@@ -65,3 +65,7 @@ The skill participates in triads satisfying:
 ```
 
 This ensures compositional coherence in the Cat# equipment structure.
+
+## ACP atlas
+
+Part of: `acp-commons`.

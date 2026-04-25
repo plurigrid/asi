@@ -71,3 +71,8 @@ interaction-nets (-1) ⊗ chemical-abstract-machine (0) ⊗ guile-goblins-hoot (
 ## REPL atlas
 
 Part of: `repl-commons`. Family canonical: `guile`.
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

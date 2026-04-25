@@ -233,3 +233,7 @@ just discopy-gf3-verify        # GF(3) conservation check
 ---
 
 *GF(3) Category: PLUS (Generation) | Functorial evaluation of string diagrams*
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

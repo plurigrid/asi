@@ -665,3 +665,8 @@ just triad-interleave SEED N_TRIPLETS round_robin
 **Trit**: +1 (PLUS - generative/splitting)
 **GF(3)**: Conserved via trit accounting
 **Dependencies**: discopy, bisimulation-game, triad-interleave, acsets, structured-decomp
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

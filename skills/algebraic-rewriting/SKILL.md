@@ -112,3 +112,8 @@ algebraic-rewriting (-1) ⊗ acsets-hatchery (0) ⊗ gay-monte-carlo (+1) = 0 �
 - `topos-adhesive-rewriting` - Adhesive categories
 - `dpo-rewriting` - Graph transformation
 - `world-a` - AlgebraicJulia ecosystem
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

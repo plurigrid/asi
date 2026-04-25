@@ -381,3 +381,8 @@ for seed in seeds:
 **Type**: Verification / Testing
 **Trit**: 0 (ERGODIC)
 **Dependencies**: gay-mcp, triad-interleave, unworld
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

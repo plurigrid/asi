@@ -138,3 +138,8 @@ npm install @elizaos/openclaw-adapter
 git clone https://github.com/elizaOS/openclaw-adapter.git
 cd openclaw-adapter && npm install && npm run build
 ```
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

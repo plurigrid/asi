@@ -134,3 +134,8 @@ bet = kelly_fraction * bankroll * 0.25  (quarter-Kelly for safety)
 ## Script: Quick Trade
 
 See `scripts/trade.sh` for a one-liner trade helper.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

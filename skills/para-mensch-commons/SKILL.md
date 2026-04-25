@@ -140,3 +140,8 @@ The 23 domains above each unfold under Δ to a distinct ontology branch, but eve
 - **Para-mensch atlas hub**: this skill (categorical-substrate level)
 
 Three nested atlases at three levels of abstraction. Same `Δ`/`ε` shape; different `𝓒` underneath.
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

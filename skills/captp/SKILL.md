@@ -220,3 +220,8 @@ just captp-sturdy actor         # Get sturdy reference
 ## REPL atlas
 
 Part of: `repl-commons` (REPL-using skills intermix).
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

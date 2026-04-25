@@ -57,3 +57,8 @@ audit-prep-assistant (○) + SDF.Ch1 (+) + [balancer] (−) = 0
 ### Connection Pattern
 
 Combinators compose operations. This skill provides composable abstractions.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

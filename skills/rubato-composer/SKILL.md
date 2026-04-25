@@ -229,3 +229,8 @@ just rubato-export       # Export to MIDI/OSC
 - `acsets/SKILL.md` - ACSet implementation
 - `OVERTONE_TO_OSC_MAPPING.md` - Sound bridge
 - [Encyclospace](http://www.encyclospace.org) - Mazzola's concept encyclopedia
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

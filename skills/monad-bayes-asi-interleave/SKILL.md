@@ -373,3 +373,8 @@ Gaps identified in tweag/monad-bayes tutorial coverage:
 ## REPL atlas
 
 Part of: `repl-commons`. Family canonical: `jupyter`.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

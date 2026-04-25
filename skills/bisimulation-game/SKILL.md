@@ -461,3 +461,8 @@ just bisim-localsend      # Disperse via LocalSend peers
 just bisim-transcript     # Show attacker/defender transcript
 just bisim-json           # Output verification as JSON
 ```
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

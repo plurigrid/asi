@@ -563,3 +563,8 @@ Before finalizing the review, verify:
 - [ ] Tone is constructive and professional throughout
 - [ ] Review is thorough but proportionate to manuscript scope
 - [ ] Recommendation is consistent with identified issues
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

@@ -193,3 +193,7 @@ The skill participates in triads satisfying:
 ```
 
 This ensures compositional coherence in the Cat# equipment structure.
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

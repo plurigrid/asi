@@ -160,3 +160,8 @@ Tensor:
 - Capucci & Gavranović, "Actegories for Open Games"
 - Riley, "Categories of Optics"
 - CyberCat Institute tutorials
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

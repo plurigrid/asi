@@ -290,3 +290,8 @@ This creates a **skill tree** of depth N with 3^N leaves, all deterministically 
 - `gay-mcp` - Color generation backend
 - `INTERACTION_ENTROPY_FRAMEWORK.md` - Entropy metrics
 - `lib/spi_parallel.rb` - SPI implementation
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

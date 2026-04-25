@@ -502,3 +502,8 @@ See the `scripts/` directory for analysis and visualization tools:
 - `validate_cds_document.py` - Quality and compliance checks (HIPAA, statistical reporting standards)
 - `grade_evidence.py` - Automated GRADE assessment helper for treatment recommendations
 
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

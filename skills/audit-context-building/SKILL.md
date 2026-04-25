@@ -57,3 +57,8 @@ audit-context-building (−) + SDF.Ch2 (−) + [balancer] (−) = 0
 ### Connection Pattern
 
 DSLs embed domain knowledge. This skill defines domain-specific operations.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

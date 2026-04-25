@@ -183,3 +183,8 @@ just golden-rotation SEED    # Show golden angle rotation sequence
 **Type**: Meta-skill / Orchestration
 **Trit**: 0 (ERGODIC)
 **Key Property**: GF(3) = 0 per interaction, golden angle rotation
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

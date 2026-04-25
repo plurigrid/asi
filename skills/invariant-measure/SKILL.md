@@ -77,3 +77,8 @@ Geodesic Invariant:
 Möbius Inversion:
   f(n) = Σ_{d|n} g(d) ⟹ g(n) = Σ_{d|n} μ(n/d) f(d)
 ```
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

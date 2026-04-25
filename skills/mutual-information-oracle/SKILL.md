@@ -459,3 +459,8 @@ Validation (-1) × Coordination (0) × Solution (+1) = balanced game-theoretic s
 | Fault detection | max I(observations_i; fault_location) | Grid resilience |
 | Privacy (converse) | min I(action_i; private_state_j) | Agent data isolation |
 >>>>>>> origin/main
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

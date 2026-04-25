@@ -108,3 +108,8 @@ WEV is designed for Aptos Block-STM:
 - [dev/WEV_SYNTHESIS.md](file:///Users/alice/agent-o-rama/agent-o-rama/dev/WEV_SYNTHESIS.md)
 - [dev/secure_wallets.json](file:///Users/alice/agent-o-rama/agent-o-rama/dev/secure_wallets.json)
 - [SKILL_ADJUNCTIONS.md](file:///Users/alice/agent-o-rama/agent-o-rama/dev/SKILL_ADJUNCTIONS.md)
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

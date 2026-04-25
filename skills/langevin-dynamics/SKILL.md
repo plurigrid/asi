@@ -348,3 +348,8 @@ just langevin-verify-colors
 **Key Property**: Bridges continuous theory to discrete practice via empirical verification
 **Status**: ✅ Production Ready
 **Based on**: Moritz Schauer's work on SDEs and discretization
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

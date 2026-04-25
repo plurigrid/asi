@@ -26,3 +26,8 @@ Context and why fields MUST be grounded in the actual interaction — quote what
 
 ## Principle
 Exhaust tools before asking. When you do ask, ask something worth asking.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

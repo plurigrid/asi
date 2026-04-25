@@ -136,3 +136,8 @@ just kan-universal K F H
 - Mac Lane, "Categories for the Working Mathematician" Ch. X
 - Riehl, "Category Theory in Context" §6
 - nLab: https://ncatlab.org/nlab/show/Kan+extension
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

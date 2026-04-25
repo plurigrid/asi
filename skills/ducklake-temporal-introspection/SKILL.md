@@ -176,3 +176,7 @@ This skill operates in the **RED (GF3=0)** temporal navigation category:
 **Color:** RED
 **Polarity:** GF(3) = 0
 **Access Pattern:** Read-only introspection
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

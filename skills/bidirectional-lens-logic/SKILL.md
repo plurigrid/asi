@@ -245,3 +245,7 @@ The skill participates in triads satisfying:
 ```
 (-1) + (0) + (+1) ≡ 0 (mod 3)
 ```
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

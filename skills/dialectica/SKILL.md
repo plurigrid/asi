@@ -139,3 +139,8 @@ Hom_Dial((A,X,α), (B,Y,β)) =
 - Gödel, "Über eine bisher noch nicht benützte Erweiterung" (1958)
 - de Paiva, "The Dialectica Categories"
 - Shulman, "Linear Logic for Constructive Mathematics"
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

@@ -485,3 +485,8 @@ just discopy-operad        # Operad composition examples
 **Trit**: 0 (ERGODIC - coordinates categorical computation)
 **GF(3)**: Substitutes for other ERGODIC skills in triads
 **Qualified**: 2025-12-22 (8 DeepWiki interactions)
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

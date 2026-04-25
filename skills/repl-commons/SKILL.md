@@ -78,3 +78,13 @@ Specter-style navigation over REPL state: `specter-acset`. Lisp-syntax hosts for
 - Building a polyglot pipeline (REPL-to-REPL messaging via `captp` or nREPL)
 - Onboarding a new contributor: hand them this atlas first
 - Planning a skill whose primary tool is "talk to a live runtime"
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

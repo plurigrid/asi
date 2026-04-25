@@ -302,3 +302,8 @@ polyglot-spi (-1) ⊗ time-travel-crdt (0) ⊗ gay-mcp (+1) = 0 ✓
 - `temporal-coalgebra` - Coalgebraic observation of streams
 - `duckdb-temporal-versioning` - SQL time travel
 - `reversible-computing` - Janus and time-symmetric computation
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

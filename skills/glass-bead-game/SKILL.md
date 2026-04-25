@@ -232,3 +232,8 @@ just glass-bead-solo         # Single-player mode
 just glass-bead-tournament   # Multi-round competition
 just world-hop from to       # Execute world hop
 ```
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.
