@@ -46,3 +46,8 @@ Every use of this skill is an opportunity for worlding:
 
 
 *Add Interaction Exemplars here as the skill is used.*
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

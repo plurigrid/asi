@@ -142,6 +142,31 @@ The 23 domains above each unfold under Δ to a distinct ontology branch, but eve
 Three nested atlases at three levels of abstraction. Same `Δ`/`ε` shape; different `𝓒` underneath.
 
 
+## CT lattice (category-theory orphan capture)
+
+43 skills in the pure category-theory lattice are wired through para-mensch-commons as their natural home -- the Para(Optic) atom IS the categorical context for these constructions.
+
+### Monad / comonad family
+`2-monad` . `cats-focus-monad` . `graded-monad` . `just-monad`
+
+### Adjunction family
+`adjunction-algebra` . `doctrinal-adjunction` . `synthetic-adjunctions` . `right-adjoint` . `free-forgetful` . `galois-connections` . `distributive-law`
+
+### Operad family
+`bci-colored-operad` . `infinity-operads` . `operad-composition` . `operadic-composition` . `operadic-delegation` . `oapply-colimit`
+
+### Fibration / higher-category family
+`covariant-fibrations` . `grothendieck-fibration` . `infinity-categories` . `model-categories` . `derived-categories` . `quillen-model` . `elements-infinity-cats` . `oriented-simplicial-networks`
+
+### Yoneda / Segal / Rezk family
+`ctp-yoneda` . `yoneda-directed` . `yoneda-embedding` . `segal-space` . `segal-types` . `rezk-types`
+
+### Limits / colimits / universal constructions
+`end-coend` . `weighted-limit` . `coequalizers` . `hom-functor` . `join-semilattice` . `virtual-double` . `bifunctor-bridge` . `x-module-bimodule`
+
+### Cohomology / cats-for-ai
+`derham-cohomology` . `cats-for-ai` . `catsharp-galois` . `covariant-modification`
+
 ## ACP atlas
 
 Part of: `acp-commons`.

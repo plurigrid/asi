@@ -164,3 +164,8 @@ Completes the **Higher Algebra Chain**: L14 -> L19 -> L20 -> L21 -> L22
 operadic-composition (+1) x model-categories (0) x derived-categories (-1) = 0
 stochastic-resonance (+1) x model-categories (0) x sheaf-cohomology-bci (-1) = 0
 ```
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

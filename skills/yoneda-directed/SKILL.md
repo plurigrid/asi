@@ -79,3 +79,8 @@ This is analogous to:
 
 1. Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories." §5.
 2. [Rzk sHoTT library](https://rzk-lang.github.io/sHoTT/)
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

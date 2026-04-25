@@ -173,3 +173,8 @@ Extends the **Higher Algebra Chain**: L14 → L19 → L20 → L21 → L22 → L2
 infinity-categories (+1) x model-categories (0) x derived-categories (-1) = 0
 infinity-categories (+1) x information-geometry (0) x sheaf-cohomology-bci (-1) = 0
 ```
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

@@ -288,3 +288,8 @@ graded-monad (0) + SDF.Ch6 (0) + [balancer] (0) = 0
 ### Connection Pattern
 
 Layering adds metadata and provenance. Graded monads layer computational effects with grade annotations — each operation carries its "provenance" as an index from the grading category M.
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

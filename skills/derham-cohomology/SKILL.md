@@ -332,3 +332,8 @@ This triad forms a complete analytical framework:
    0: Frequency decomposition and coordination (spectral)
   -1: Differential form validation and cohomology (de Rham)
 ```
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

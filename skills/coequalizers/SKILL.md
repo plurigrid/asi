@@ -313,3 +313,8 @@ coequalizers (○) + SDF.Ch10 (+) + [balancer] (−) = 0
 ### Connection Pattern
 
 Adventure games synthesize techniques. This skill integrates multiple patterns.
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

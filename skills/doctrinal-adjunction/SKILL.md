@@ -211,3 +211,8 @@ doctrinal-adjunction (0) + SDF.Ch5 (0) + [balancer] (0) = 0
 ### Connection Pattern
 
 Evaluation interprets expressions. Doctrinal adjunction interprets T-algebra structure through the mate correspondence, transporting between lax (evaluation) and colax (co-evaluation) modes.
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

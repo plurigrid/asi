@@ -144,3 +144,8 @@ segal-types (-1) ⊗ directed-interval (0) ⊗ synthetic-adjunctions (+1) = 0 �
 **Type**: Universal Construction Generator
 **Trit**: +1 (PLUS)
 **Color**: #D82626 (Red)
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

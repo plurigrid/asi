@@ -226,3 +226,8 @@ just 2-monad-bkp-biadjoint T   # Compute BKP left biadjoint
 ### Connection Pattern
 
 Layering adds structure level by level. 2-monads layer algebraic structure on categories, with each strictness level a new layer.
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

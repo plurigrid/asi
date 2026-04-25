@@ -167,3 +167,8 @@ just covariant-modify skill=target mod=change.diff
 - [Covariant Fibrations in Directed Type Theory](https://arxiv.org/abs/2211.01602)
 - [Darwin Gödel Machine](https://hf.co/papers/2505.22954)
 - [MCP Tasks Specification](https://modelcontextprotocol.io/specification/draft/basic/utilities/tasks)
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

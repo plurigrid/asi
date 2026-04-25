@@ -153,3 +153,8 @@ just ctp-examples
 # Verify GF(3) coloring
 just ctp-colors
 ```
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

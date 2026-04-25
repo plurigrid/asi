@@ -148,3 +148,8 @@ just catsharp-play pitch-classes="0 4 7"
 - Mazzola, G. *The Topos of Music* (2002)
 - Noll, T. "Neo-Riemannian Theory and the PLR Group"
 - Heunen & van der Schaaf. "Ordered Locales" (2024)
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

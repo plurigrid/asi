@@ -144,3 +144,8 @@ composed_koopman = oapply(
 - Libkind "An Algebra of Resource Sharers" arXiv:2007.14442
 - AlgebraicJulia/AlgebraicDynamics.jl
 - Nathan Marz: Specter composition patterns
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

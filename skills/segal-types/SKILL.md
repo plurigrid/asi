@@ -129,3 +129,8 @@ end
 - Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories." *Higher Structures* 1(1):116-193.
 - [Rzk repository](https://github.com/rzk-lang/rzk)
 - [InfinityCosmos](https://github.com/emilyriehl/infinity-cosmos)
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).
