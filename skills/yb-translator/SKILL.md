@@ -264,3 +264,8 @@ The new versions:
   to `fetch_ontology.clj`.
 - `skill_taxonomy.edn` — lists the 12 translations with honest parallel
   strength ratings. 6 direct, 6 analogical, 0 metaphorical.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

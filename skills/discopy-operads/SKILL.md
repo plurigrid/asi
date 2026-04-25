@@ -365,3 +365,8 @@ inner = Hypergraph(
 ---
 
 *Chromatic seed: `0x128b6ef4564e3a00` | Color: `#64e3ec`*
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

@@ -146,3 +146,8 @@ python3 delta_key_update.py
 - `delta-key-update` - Key rotation protocol
 - `gay-mcp` - Color fingerprints
 - `bisimulation-game` - Observational equivalence
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

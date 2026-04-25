@@ -53,3 +53,8 @@ gf3-constrained-animation (○) + SDF.Ch3 (○) + [balancer] (○) = 0
 ### Connection Pattern
 
 Generic arithmetic crosses type boundaries. This skill handles heterogeneous data.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

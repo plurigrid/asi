@@ -461,3 +461,8 @@ bb scripts/wev_positions.clj wev AIP-137
 # Asymmetric bets analysis
 bb scripts/asymmetric_bets.clj
 ```
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

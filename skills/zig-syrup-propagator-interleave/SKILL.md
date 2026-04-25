@@ -329,3 +329,8 @@ xev_io
 - `polynomial-dynamics` -- homotopy continuation theory
 =======
 >>>>>>> origin/main
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

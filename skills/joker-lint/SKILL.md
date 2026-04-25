@@ -165,3 +165,8 @@ This ensures compositional coherence in the Cat# equipment structure.
 ## REPL atlas
 
 Part of: `repl-commons`. Family canonical: `clojure`.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

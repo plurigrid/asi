@@ -86,3 +86,8 @@ Lan_F_G = left_kan_extension(F, G)
 - [ ] Full Kan extension computation
 - [ ] Adjunction verification
 - [ ] Neural network parameter transfer demo
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

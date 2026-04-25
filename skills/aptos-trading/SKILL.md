@@ -80,3 +80,8 @@ Use `aptos init --private-key` to derive addresses correctly.
 - `/Users/alice/agent_scripts/wallets.yaml` - Wallet config (external)
 - `/Users/alice/agent_scripts/Holdings.md` - Live state tracker
 - `/Users/alice/agent_scripts/alpha.log` - Execution log
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

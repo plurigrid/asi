@@ -376,3 +376,8 @@ Every use of this skill is an opportunity for worlding:
 - **WORLDING** (+1): Discover new fusion patterns
 
 *Add Interaction Exemplars here as the skill is used.*
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

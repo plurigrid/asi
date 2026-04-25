@@ -93,3 +93,8 @@ captp (0) ⊗ openclaw-goblins-adapter (0) ⊗ gay-mcp (+1) → needs -1
 shadow-goblin (-1) ⊗ this (0) ⊗ agent-o-rama (+1) = 0 ✓
 keychain-secure (-1) ⊗ this (0) ⊗ pulse-mcp-stream (+1) = 0 ✓
 ```
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

@@ -209,3 +209,8 @@ just clj-kondo-asi-check          # Run with ASI safety hooks
 ## REPL atlas
 
 Part of: `repl-commons`. Family canonical: `clojure`.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

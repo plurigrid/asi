@@ -391,3 +391,8 @@ fn neurofeedback_trit(focus: f32) Trit {
 - NOT partial -- a trit is known (value) or unknown (nothing), never "0.7"
 - NOT overridable -- once `CellValue.contradiction`, it stays
 >>>>>>> origin/main
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

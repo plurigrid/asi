@@ -43,3 +43,8 @@ Object Capability Network for secure p2p via CapTP.
 ## REPL atlas
 
 Part of: `repl-commons` (REPL-using skills intermix).
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

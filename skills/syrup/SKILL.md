@@ -228,3 +228,8 @@ cd syrup/impls/racket && raco pkg install syrup/
 **Trit**: -1 (MINUS)  
 **GF(3)**: Constrains data to canonical form  
 **Invariant**: Same data → same bytes, always
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

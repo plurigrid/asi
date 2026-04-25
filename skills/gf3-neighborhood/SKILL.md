@@ -262,3 +262,8 @@ Created to enable **prompt hacking** of all skills with:
 
 Pattern discovered: 693/697 skills already have marginalia template.
 Gap: Most lack **neighbor awareness** section.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

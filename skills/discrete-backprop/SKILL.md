@@ -347,3 +347,8 @@ def color_guided_optimization(seed: int, loss_fn, params: List[float]):
 **Trit**: +1 (PLUS)
 **GF(3)**: Native conservation via trit gradients
 **Use Case**: Non-differentiable optimization, ternary networks, combinatorial search
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

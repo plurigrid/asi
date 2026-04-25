@@ -1125,3 +1125,8 @@ Before finalizing any clinical report, verify:
 
 **Final Note**: Clinical report writing requires attention to detail, medical accuracy, regulatory compliance, and clear communication. Whether documenting patient care, reporting research findings, or communicating diagnostic results, the quality of clinical reports directly impacts patient safety, healthcare delivery, and medical knowledge advancement. Always prioritize accuracy, privacy, and professionalism in all clinical documentation.
 
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

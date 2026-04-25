@@ -36,3 +36,8 @@ bb ~/.claude/skills/reverse-derivative-validator/run.bb
 ## GF(3) Conservation
 
 This skill participates in triadic composition: Σ trits ≡ 0 (mod 3)
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

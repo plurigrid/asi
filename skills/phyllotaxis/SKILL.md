@@ -197,3 +197,8 @@ succulents (+1) ⊗ bridge-9 (0) ⊗ BCI (-1) = 0 ✓
 - Hanson & Sussman, "Software Design for Flexibility" Ch7 (2021)
 - Ghani, Hedges et al., "Compositional Game Theory" (2018)
 - Sennesh & Ramstead, "Affective-Taxis Hypothesis" (2025)
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

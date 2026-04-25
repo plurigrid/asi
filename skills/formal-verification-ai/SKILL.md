@@ -82,3 +82,8 @@ proof = prove_property(network, property, timeout=60)
 - [ ] Full neural network encoding
 - [ ] Categorical correctness verification
 - [ ] Benchmark on standard verification tasks
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

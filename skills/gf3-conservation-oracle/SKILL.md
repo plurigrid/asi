@@ -494,3 +494,8 @@ function third_trit(t1: int, t2: int): int
 - NOT approximate -- exact mod 3, no tolerance
 - NOT transitive -- CONSERVED for subgraph does NOT imply CONSERVED for full graph
 >>>>>>> origin/main
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

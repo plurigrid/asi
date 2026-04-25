@@ -172,3 +172,8 @@ See [scripts/triadic_skill_orchestrator.bb](file:///Users/alice/agent-o-rama/age
 **Type**: Skill Composition / Parallel Dispatch  
 **Trit**: 0 (ERGODIC - coordinator)  
 **GF(3)**: Enforced via third-trit correction
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

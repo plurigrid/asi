@@ -342,3 +342,8 @@ fn eeg_state_bisim(s1: EEGState, s2: EEGState) bool {
 - NOT defined on strings -- systems must be LTSes
 - NOT a heuristic -- if unknown, says `unknown`, not its best guess
 >>>>>>> origin/main
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

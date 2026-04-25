@@ -204,3 +204,8 @@ quantum_music_performance:
 **Condition**: μ(n) ≠ 0 (Möbius squarefree)
 
 This skill is qualified for non-backtracking geodesic traversal.
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

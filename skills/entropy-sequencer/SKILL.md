@@ -241,3 +241,8 @@ just entropy-export optimized_sequence.json
 - `agent-o-rama` (Layer 4) - Consumes optimized sequences
 - `gay-mcp` - Deterministic seeding
 - `three-match` - Constraint validation
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

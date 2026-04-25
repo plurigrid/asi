@@ -444,3 +444,8 @@ for i, schedule in enumerate(chain):
 **Trit**: +1 (PLUS)
 **Dependencies**: gay-mcp, unworld
 **Related**: spi-parallel-verify (for verification)
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

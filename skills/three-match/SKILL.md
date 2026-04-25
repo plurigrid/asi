@@ -248,3 +248,8 @@ The 93-113x speedup validates correct-by-construction:
 **GF(3)**: Conserved by construction
 **Geodesics**: Non-backtracking (prime paths only)
 **Caching**: Type-stable paths as non-backtracking geodesics
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

@@ -371,3 +371,8 @@ class FF_NCA(nn.Module):
   year={2024}
 }
 ```
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

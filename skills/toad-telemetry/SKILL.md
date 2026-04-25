@@ -204,3 +204,8 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318 toadia -a claude .
 
 - `otel-cli` - Command-line OTEL span emission
 - `claude_telemetry` - Similar instrumentation for Claude Code CLI
+
+
+## ACP atlas
+
+Part of: `acp-commons`.

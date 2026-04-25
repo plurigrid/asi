@@ -51,3 +51,8 @@ temporal-coalgebra (-1) ⊗ acsets (0) ⊗ koopman-generator (+1) = 0 ✓
 - Brunton et al. "Modern Koopman Theory" (2021)
 - Mezić "Spectral Properties of Dynamical Systems" (2005)
 - PyDMD: https://github.com/mathLab/PyDMD
+
+
+## Para(Optic) atlas
+
+Part of: `para-mensch-commons`.

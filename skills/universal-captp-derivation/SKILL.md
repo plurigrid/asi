@@ -86,3 +86,8 @@ python3 -c "import duckdb; c=duckdb.connect('culture_evolution.duckdb'); print(c
 | -1 | Validator | Blue | Hedges, Egolf, Betweenness |
 | 0 | Coordinator | Green | Baez, Shulman, Mantissa |
 | +1 | Generator | Red | Genovese, sarahzrf, ModalNoah |
+
+
+## ACP atlas
+
+Part of: `acp-commons`.
