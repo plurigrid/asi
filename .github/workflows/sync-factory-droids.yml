@@ -10,14 +10,11 @@ on:
       - 'skills/**/SKILL.md'
   workflow_dispatch:
 
-env:
-  BB_VERSION: '1.4.192'
-
 jobs:
   convert-skills:
-    runs-on: ubuntu-24.04  # Use latest LTS for better perf
+    runs-on: ubuntu-24.04
     container:
-      image: ghcr.io/babashka/babashka:${{ env.BB_VERSION }}
+      image: ghcr.io/babashka/babashka:1.4.192
     
     steps:
       - uses: actions/checkout@v4
