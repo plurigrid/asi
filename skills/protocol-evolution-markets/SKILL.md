@@ -366,3 +366,7 @@ bisimulation-game (-1) ⊗ protocol-evolution-markets (0) ⊗ gay-mcp (+1) = 0 �
 - `multiverse-color-game` - Dave White's verse operations
 - `prediction_market_proofs.rb` - Mixing proofs in hyperbolic space
 - `entropy-sequencer` - Information-gain ordering for market events
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `protocol-evolution`. Canonical: `protocol-evolution-markets`.

@@ -351,3 +351,7 @@ Every use of this skill is an opportunity for worlding:
 
 
 *Add Interaction Exemplars here as the skill is used.*
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `open-ended-evolution`. Canonical: `alife`.

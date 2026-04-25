@@ -387,3 +387,7 @@ true-alife (○) + SDF.Ch7 (○) + [balancer] (○) = 0
 ### Connection Pattern
 
 Propagators flow constraints bidirectionally. This skill propagates information.
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `open-ended-evolution`. Canonical: `alife`.

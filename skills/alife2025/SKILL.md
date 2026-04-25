@@ -210,3 +210,7 @@ just alife-theme "nca"      # List NCA papers
 
 **Extraction**: Mathpix PDF ID `fed660c6-4d3d-4bb6-bb3c-f9b039187660`
 **Source**: `/Users/bob/Downloads/ALIFE2025ProceedingsCompanion (1).pdf`
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `open-ended-evolution`. Canonical: `alife`.

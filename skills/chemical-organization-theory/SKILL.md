@@ -84,3 +84,7 @@ is_autopoietic = check_autopoiesis(network, orgs[1])
 - [ ] Full organization detection algorithm
 - [ ] Reaction-diffusion solver
 - [ ] Autopoiesis verification metrics
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `chemical-reaction-networks`. Canonical: `catalyst-chemical`.

@@ -156,3 +156,7 @@ persistent-homology (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓ 
 **Type**: Chemical Synthesis Coordinator
 **Trit**: 0 (ERGODIC)
 **Color**: #26D826 (Green)
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `chemical-reaction-networks`. Canonical: `catalyst-chemical`.

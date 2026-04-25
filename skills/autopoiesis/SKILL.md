@@ -294,3 +294,7 @@ just autopoi-sync
 2. **Dittrich & di Fenizio** — *Chemical Organization Theory* (2007)
 3. **Kock** — *Decomposition Spaces, Incidence Algebras and Möbius Inversion* (2018)
 4. **Libkind & Spivak** — *Pattern Runs on Matter* (ACT 2024)
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `self-organization`. Canonical: `autopoiesis`.
