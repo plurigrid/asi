@@ -521,3 +521,7 @@ p(g) = \text{softmax}(\theta_g) \quad g \in \{\text{AND}, \text{OR}, \text{XOR},
 - [ALIEN Project](https://alien-project.org)
 
 **Exa Index**: `/Users/bob/ies/ALIFE_EXA_REFINED_INDEX.md`
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `open-ended-evolution`. Canonical: `alife`.

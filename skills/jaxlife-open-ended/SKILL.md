@@ -404,3 +404,7 @@ From JaxLife paper:
   year={2025}
 }
 ```
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `open-ended-evolution`. Canonical: `alife`.

@@ -232,3 +232,7 @@ end
 - `skill-specification` - Formal SKILL.md schema
 - `godel-machine` - Self-improving system theory
 - `bisimulation-game` - Skill equivalence testing
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `open-ended-evolution`. Canonical: `alife`.

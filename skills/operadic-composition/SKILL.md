@@ -171,3 +171,8 @@ Completes the **Higher Algebra Chain**: L14 -> L19 -> L20
 operadic-composition (+1) x information-geometry (0) x sheaf-cohomology-bci (-1) = 0
 operadic-composition (+1) x spectral-methods (0) x derham-cohomology (-1) = 0
 ```
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

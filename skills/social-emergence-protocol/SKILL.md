@@ -54,3 +54,7 @@ social-emergence-protocol (+) + SDF.Ch10 (+) + [balancer] (+) = 0
 ### Connection Pattern
 
 Adventure games synthesize techniques. This skill integrates multiple patterns.
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `self-organization`. Canonical: `autopoiesis`.

@@ -122,3 +122,8 @@ end
 - Rezk, C. (2001). "A model for the homotopy theory of homotopy theory." *Trans. AMS*.
 - Riehl, E. & Shulman, M. (2017). "A type theory for synthetic ∞-categories."
 - [sHoTT library](https://rzk-lang.github.io/sHoTT/)
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

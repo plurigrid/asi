@@ -421,3 +421,8 @@ class LazyACSetMaterializer:
 - `kinetic-block` — Dendroidal stratification patterns
 - `segal-types` — ∞-category Segal conditions
 - `rezk-types` — Complete Segal spaces
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

@@ -114,3 +114,7 @@ assembly-index (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓  [Mol
 **Type**: Complexity Validator
 **Trit**: -1 (MINUS)
 **Color**: #2626D8 (Blue)
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `complexity-measurement`. Canonical: `assembly-index`.

@@ -280,3 +280,7 @@ just catalyst-gf3            # GF(3) conservation check
 ---
 
 *GF(3) Category: ZERO (Coordination/Ergodic) | Chemical computing for multi-agent dynamics*
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `chemical-reaction-networks`. Canonical: `catalyst-chemical`.

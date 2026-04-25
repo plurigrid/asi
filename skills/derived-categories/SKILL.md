@@ -159,3 +159,8 @@ Completes the **Homological Chain**: L8 -> L13 -> L14 -> L21
 operadic-composition (+1) x information-geometry (0) x derived-categories (-1) = 0
 stochastic-resonance (+1) x spectral-methods (0) x derived-categories (-1) = 0
 ```
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

@@ -80,3 +80,8 @@ train!(model, complex, labels; track_topology=true)
 - [ ] Full E(n)-equivariance
 - [ ] Persistent homology integration
 - [ ] Benchmark suite
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

@@ -127,3 +127,8 @@ covariant-fibrations (-1) ⊗ elements-infinity-cats (0) ⊗ rezk-types (+1) = 0
 **Type**: ∞-Cosmos Coordinator
 **Trit**: 0 (ERGODIC)
 **Color**: #26D826 (Green)
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).

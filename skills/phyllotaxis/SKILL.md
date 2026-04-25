@@ -202,3 +202,7 @@ succulents (+1) ⊗ bridge-9 (0) ⊗ BCI (-1) = 0 ✓
 ## Para(Optic) atlas
 
 Part of: `para-mensch-commons`.
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `morphogenesis-and-growth`. Canonical: `lindenmayer-systems`.

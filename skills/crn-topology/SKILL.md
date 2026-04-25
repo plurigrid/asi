@@ -138,3 +138,7 @@ persistent-homology (-1) ⊗ turing-chemputer (0) ⊗ crn-topology (+1) = 0 ✓ 
 **Type**: Reaction Network Generator
 **Trit**: +1 (PLUS)
 **Color**: #D82626 (Red)
+
+## ALife atlas
+
+Part of: `alife-commons`. Family: `chemical-reaction-networks`. Canonical: `catalyst-chemical`.

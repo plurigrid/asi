@@ -111,3 +111,8 @@ covariant-fibrations (-1) ⊗ elements-infinity-cats (0) ⊗ rezk-types (+1) = 0
 **Type**: Directed Transport Validator
 **Trit**: -1 (MINUS)
 **Color**: #2626D8 (Blue)
+
+
+## CT lattice atlas
+
+Part of: `para-mensch-commons` (CT lattice family).
