@@ -326,3 +326,11 @@ args = ["hf-mcp-server/dist/server/stdio.js"]
 **Type**: MCP Integration / Orchestration
 **Trit**: 0 (ERGODIC) - coordinates across triads
 **GF(3)**: Conserved by design
+
+## Pattern catalog (added 2026-04-30)
+
+See `PATTERNS.md` at repo root for the 11-pattern catalog distilled from
+shipped precedents: Ghostty, Mach, TigerBeetle, Vello, Bevy, River, Roc,
+Wave Terminal, Nushell, Zellij, Slint.
+
+CRDT-terminal upgrade exemplars: `skills/crdt-vterm`, `skills/crdt-zigger-oneshot`.
