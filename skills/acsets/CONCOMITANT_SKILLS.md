@@ -1,288 +1,149 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2600-magazine` — invoked by — Query and explore the 2600: The Hacker Quarterly magazine archive (1984 present) via Duck…
+- `_integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `acset-taxonomy` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Taxonomy of ACSet skills with morphisms to semantically similar categorical relational sk…
+- `acsets-algebraic-databases` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional navigati…
+- `acsets-dynamic-loader` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Dynamically discover and load ACSet reference skills in dependency optimal order using Gi…
+- `acsets-hatchery` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Attributed C Sets as algebraic databases.
+- `acsets-relational-thinking` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — ACSets (Attributed C Sets) for categorical database design and DPO rewriting
+- `anima-theory` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ANIMA as limit construction over condensed skill applications.
+- `ar` — builds on — Augmented reality (AR) reality tech.
+- `asi-integrated` — sibling in the multi agent orchestration cluster — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `autopoiesis` — sibling in the multi agent orchestration cluster — Self modifying AI agent configuration via ruler + MCP + DuckDB.
+- `bmorphism-ies-env` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Documentation and orchestration for the bmorphism ies flox environment toolkit
+- `bmorphism-interactome` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — GitHub interactome explorer for bmorphism plurigrid ecosystem.
+- `bmorphism-video-interleave` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — bmorphism Video Archive Interleave
+- `boneh-roughgarden-wev` — invoked by — Stanford FDCI research bridge connecting Dan Boneh's cryptographic primitives (ZK proofs,…
+- `browser-history-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Browser History ACSet
+- `cargo-rust` — invoked by — Rust package manager and build system.
+- `cat-three-homes` — sibling in the topos theory, sheaves & categorical logic cluster — The double category of polynomial comonads where:
+- `catcolab-ologs` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — CatColab Ologs (Ontology Logs) - category theoretic knowledge representation where object…
+- `catcolab-petri-nets` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — CatColab Petri Nets - concurrent system modeling via places (states), transitions (events…
+- `catcolab-schemas` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — CatColab Schemas - database schema modeling distinguishing entities (tables) from attribu…
+- `catlab-asi-interleave` — invoked by — Bridge layer connecting AlgebraicJulia Catlab.jl to plurigrid asi.
+- `cats-for-ai` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — cats.for" (Categories for AI)
+- `chatgpt-export-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Transform ChatGPT ZIP exports into ACSets (Attributed C Sets) for:
+- `clifford-acset-bridge` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Bridge between Clifford Algebras (ganja.js Grassmann.jl) and ACSets with grade preserving…
+- `coequalizers` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Quotient redundant skill paths via coequalizers, preserving GF(3) conservation
+- `cognitive-surrogate` — sibling in the multi agent orchestration cluster — yaml
+- `compositional-acset-comparison` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Compositional algorithm and data analysis via algebraic databases
+- `condensed-analytic-stacks` — sibling in the topos theory, sheaves & categorical logic cluster — Scholze Clausen condensed mathematics bridge to sheaf neural networks
+- `crdt-color` — invoked by — Color aware CRDT operations with GF(3) conservation, Narya proofs, ACSet schemas, and Bum…
+- `crn-topology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Chemical Reaction Network topology for generating and analyzing reaction
+- `ctp-yoneda` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — CTP Yoneda Skill
+- `cybernetic-open-game` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Cybernetic Open Game Skill
+- `dafny-zig` — invoked by — Dafny to Zig compiler backend development skill with verified runtime safety ("Zig syrup")
+- `deepwiki-mcp` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — DeepWiki MCP server for AI powered GitHub repository documentation and
+- `delta-derivation` — invoked by — Extract information delta between Claude.ai conversation exports using ACSets morphisms a…
+- `derham-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Differential forms on signal manifolds with exterior algebra, Hodge star, and de Rham com…
+- `deterministic-color-generation` — invoked by — Instead, they are **deterministically computed from cryptographic hash functions** applie…
+- `docs-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Google Docs Sheets management via ACSet condensation.
+- `documentation-indexing` — invoked by — Provide **full text search, semantic indexing, and relevance ranking** across all documen…
+- `duck-agent` — invoked by — DuckDB file discovery agent with verified absolute paths
+- `duck-time-travel` — invoked by — DuckDB time travel queries for temporal versioning and causality tracking
+- `duckdb-ies` — invoked by — Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking
+- `duckdb-quadruple-interleave` — invoked by — Chaotic interleaving across local DuckDB databases modeled as coupled quadruple pendula.
+- `duckdb-temporal-versioning` — invoked by — Temporal versioning and interaction history with time travel queries,
+- `ducklake-categorical-model` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Categorical modeling for DuckLake with ACSet schemas
+- `ducklake-pattern-expansion` — invoked by — Pattern expansion and schema evolution for DuckLake databases
+- `ducklake-walk` — invoked by — Ergodic random walks over DuckLake lakehouses with GF(3) triadic concurrent walkers.
+- `dynamic-sufficiency-goblin` — invoked by — Self regulating Goblins actor implementing Ivan Illich's dynamic sufficiency
+- `energy-dynamics-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — The Energy Dynamics ACSet integrates three complementary frameworks for measuring and com…
+- `exa-11-directions` — invoked by — 1.
+- `excellence-gradient` — invoked by — Measure quality.
+- `galois-connections` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Galois connections for lawful conversions and bi Heyting topos logic.
+- `gap-language` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — GAP (Groups, Algorithms, Programming) system integration for computational discrete algeb…
+- `gay-mcp` — sibling in the multi agent orchestration cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `geohash-coloring` — invoked by — Geohash Coloring Skill
+- `gf3-pr-verify` — invoked by — Verify GF(3) skill conservation on pull requests.
+- `gh-interactome` — invoked by — GitHub author interaction network discovery.
+- `gh-skill-explorer` — invoked by — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `glass-line` — invoked by — Physical substrate layer for Plurigrid ASI — co deployed fiber optic + geothermal infrast…
+- `gmra-matlab` — invoked by — Gay.jl''s SplitMix64 provides the **homogeneous property** required for sharding:
+- `hatchery-index` — invoked by — Index of 1057 hatchery repos with GAY.md color assignments.
+- `homoiconic-rewriting` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Unified homoiconic graph rewriting - λ calculus, interaction nets, ACSets, CUDA paralleli…
+- `ies-triadic` — invoked by — IES Triadic Skill
+- `ihara-zeta` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Ihara zeta function for graphs: non backtracking walks, prime cycles, and spectral analys…
+- `infinity-operads` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ∞-Operads for pairwise tritwise Cat# interactions with lazy ACSet materialization unifyin…
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `interactome-rl-env` — invoked by — ACSet native reinforcement learning environment for contributor network dynamics.
+- `julia-gay` — invoked by — Gay.jl integration for deterministic color generation.
+- `julia-scientific` — mutually referenced — Julia package equivalents for 137 K Dense AI scientific skills.
+- `kan-extensions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Kan Extensions Skill (ERGODIC 0)
+- `keychain-secure` — invoked by — macOS Keychain credential management with GF(3) balanced operations
+- `koopman-generator` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Koopman operator theory for infinite dimensional linear lifting of nonlinear dynamics.
+- `lhott-cohesive-linear` — invoked by — Cohesive Linear HoTT patterns for interaction entropy with diagram generation.
+- `linear` — builds on — Manage issues, projects & team workflows in Linear.
+- `lispsyntax-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv style
+- `live-recording` — invoked by — Always on audio capture via whisper cpp to org file with Emacs live display
+- `local-finetune` — invoked by — local finetune
+- `markov-game-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — markov game acset skill
+- `mlx-color-traceroute` — invoked by — Deploy Clojure MCP ecosystem integrations with MLX JAX inference and Gay.jl deterministic…
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `modelica-lispsyntax-interleave` — invoked by — This skill unifies three systems through **alphabet color assignment**:
+- `moebius-inversion` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Möbius inversion on posets and lattices: alternating sums, chromatic polynomials, inciden…
+- `mutual-awareness-backlink` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Formalize mutual awareness via structured decompositions on awareness graphs.
+- `nashator-plurigrid-interleave` — invoked by — NASHator omnichain × Plurigrid compositional energy framing.
+- `nuclear-smr` — invoked by — Small Modular Reactor integration for Plurigrid energy dominance.
+- `oapply-colimit` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — oapply operad algebra evaluation via colimits with Specter style composition patterns
+- `omg-tension-resolver` — invoked by — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
+- `open-location-code-zig` — invoked by — First ever Zig implementation of Google's Open Location Code (Plus Codes) with GF(3) spat…
+- `openai-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — OpenAI's ChatGPT export has a **tree structured mapping** where messages form a DAG via …
+- `operad-compose` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Operad Composition Skill (PLUS +1)
+- `ordered-locale` — invoked by — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `ordered-locale-proper` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `org` — builds on — Org mode manual (25K lines info).
+- `osm-topology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — OSM Topology Skill
+- `parallel-fanout` — invoked by — Metaskill that fans out on every interaction, using interaction entropy
+- `parallel-subagent-split` — invoked by — In a traced monoidal category, the trace operation models feedback:
+- `parametrised-optics-cybernetics` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Parametrised optics model cybernetic systems - dynamical systems steered by agents.
+- `partiful` — invoked by — Access Partiful events, invites, and RSVPs via reverse engineered API.
+- `persistent-homology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Topological data analysis for stable feature verification across filtrations
+- `phylogenetic-operad-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Baez Otter phylogenetic operad Phyl = Com + [0,∞) as ACSet schema, with mathpix gem extra…
+- `plurigrid-asi-integrated` — invoked by — Unified Plurigrid ASI skill combining ACSets, Gay MCP colors, bisimulation games, world h…
+- `propagators` — mutually referenced — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
+- `pun-decomposition` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Pun Decomposition Skill (MINUS -1)
+- `py-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Python native Attributed C Sets with:
+- `py-acsets-rewriting` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Python bridge to AlgebraicRewriting.jl for DPO SPO SqPO graph rewriting over ACSets.
+- `quarto-julia` — invoked by — Quarto + Julia Skill
+- `ramanujan-expander` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Ramanujan graphs and Alon Boppana spectral optimality for edge growth
+- `random-walk-fusion` — invoked by — Navigate skill graphs via deterministic random walks.
+- `rg-flow-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — RG Flow ACSet Skill
+- `rubato-composer` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Rubato Composer integration for Mazzola's mathematical music theory
+- `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `sdr-borges-reafference` — invoked by — SDR (GNU Radio) as self learning REPL with Borges infinite library exploration, reafferen…
+- `sense` — invoked by — sense - Diagrammatic Video Extraction with Subtitle Alignment
+- `sheaf-cohomology` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Čech cohomology for local to global consistency verification in code
+- `sheaf-laplacian-coordination` — invoked by — Sheaf neural network coordination via graph Laplacians for distributed
+- `skill-bonds` — invoked by — Skill Bonds Registry
+- `skill-dispatch` — invoked by — GF(3) Triadic Task Routing for Subagent Orchestration
+- `skill-taxonomy` — invoked by — Provide a centralized registry and discovery system for all 69 ASI skills.
+- `skill-tour` — invoked by — L shaped hops through skill space, maintaining triadic balance:
+- `snix` — invoked by — Rust Nix reimplementation for content addressed rootfs builds.
+- `string-diagram-rewriting-protocol` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Kernel protocol for compositional string diagram rewriting across all skills
+- `structured-decomp` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — StructuredDecompositions.jl sheaves on tree decompositions for FPT algorithms with bidire…
+- `superelastic-quotient` — invoked by — Superelastic skills with maximum quotienting resolution for spatial decomposition.
+- `syrup` — invoked by — Syrup binary serialization for OCapN CapTP wire format.
+- `temporal-coalgebra` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Coalgebraic observation of derivation streams with final coalgebra bisimulation
+- `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
+- `topos-catcolab` — sibling in the topos theory, sheaves & categorical logic cluster — Topos Institute's CatColab for collaborative category theory - community model building, …
+- `topos-generate` — sibling in the topos theory, sheaves & categorical logic cluster — Topos Generation Skill (PLUS +1)
+- `topos-unified` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Topos Unified Skill
+- `trajectory` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Path traced by solution through phase space
+- `tripartite-decompositions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — GF(3)-balanced structured decompositions for parallel computation.
+- `turing-chemputer` — invoked by — Cronin's Turing complete chemputer for programmable chemical synthesis
+- `unison-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Unison language ACSet structured skill with hierarchical documentation parsing, SPI traje…
+- `uv-discohy` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — UV UVX Ruff toolchain for DiscoHy Thread Operad with Python packaging and linting
+- `workspace-unified` — invoked by — Unified Google Workspace management via WorkspaceACSet.
+- `world-a` — invoked by — AlgebraicJulia ecosystem world (ACSets.jl, Catlab.jl).
+- `world-memory-worlding` — invoked by — World memory is world remembering is world worlding - the autopoietic loop where memory e…
+- `world-runtime` — invoked by — Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution.
+- `zig` — invoked by — Zig ecosystem skill with emerging patterns from zig syrup
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2600-magazine`
-- `_integrated`
-- `acset-taxonomy`
-- `acsets-algebraic-databases`
-- `acsets-dynamic-loader`
-- `acsets-hatchery`
-- `acsets-relational-thinking`
-- `anima-theory`
-- `ar`
-- `asi-integrated`
-- `autopoiesis`
-- `bmorphism-ies-env`
-- `bmorphism-interactome`
-- `bmorphism-video-interleave`
-- `boneh-roughgarden-wev`
-- `browser-history-acset`
-- `cargo-rust`
-- `cat-three-homes`
-- `catcolab-ologs`
-- `catcolab-petri-nets`
-- `catcolab-schemas`
-- `catlab-asi-interleave`
-- `cats-for-ai`
-- `chatgpt-export-acset`
-- `clifford-acset-bridge`
-- `coequalizers`
-- `cognitive-surrogate`
-- `compositional-acset-comparison`
-- `condensed-analytic-stacks`
-- `crdt-color`
-- `crn-topology`
-- `ctp-yoneda`
-- `cybernetic-open-game`
-- `dafny-zig`
-- `deepwiki-mcp`
-- `delta-derivation`
-- `derham-cohomology`
-- `deterministic-color-generation`
-- `docs-acset`
-- `documentation-indexing`
-- `duck-agent`
-- `duck-time-travel`
-- `duckdb-ies`
-- `duckdb-quadruple-interleave`
-- `duckdb-temporal-versioning`
-- `ducklake-categorical-model`
-- `ducklake-pattern-expansion`
-- `ducklake-walk`
-- `dynamic-sufficiency-goblin`
-- `energy-dynamics-acset`
-- `exa-11-directions`
-- `excellence-gradient`
-- `galois-connections`
-- `gap-language`
-- `gay-mcp`
-- `geohash-coloring`
-- `gf3-pr-verify`
-- `gh-interactome`
-- `gh-skill-explorer`
-- `glass-line`
-- `gmra-matlab`
-- `hatchery-index`
-- `homoiconic-rewriting`
-- `ies-triadic`
-- `ihara-zeta`
-- `infinity-operads`
-- `init`
-- `interactome-rl-env`
-- `julia-gay`
-- `julia-scientific`
-- `kan-extensions`
-- `keychain-secure`
-- `koopman-generator`
-- `lhott-cohesive-linear`
-- `linear`
-- `lispsyntax-acset`
-- `live-recording`
-- `local-finetune`
-- `markov-game-acset`
-- `mlx-color-traceroute`
-- `modelica`
-- `modelica-lispsyntax-interleave`
-- `moebius-inversion`
-- `mutual-awareness-backlink`
-- `nashator-plurigrid-interleave`
-- `nuclear-smr`
-- `oapply-colimit`
-- `omg-tension-resolver`
-- `open-location-code-zig`
-- `openai-acset`
-- `operad-compose`
-- `ordered-locale`
-- `ordered-locale-proper`
-- `org`
-- `osm-topology`
-- `parallel-fanout`
-- `parallel-subagent-split`
-- `parametrised-optics-cybernetics`
-- `partiful`
-- `persistent-homology`
-- `phylogenetic-operad-acset`
-- `plurigrid-asi-integrated`
-- `propagators`
-- `pun-decomposition`
-- `py-acset`
-- `py-acsets-rewriting`
-- `quarto-julia`
-- `ramanujan-expander`
-- `random-walk-fusion`
-- `rg-flow-acset`
-- `rubato-composer`
-- `scheme`
-- `sdf`
-- `sdr-borges-reafference`
-- `sense`
-- `sheaf-cohomology`
-- `sheaf-laplacian-coordination`
-- `skill-bonds`
-- `skill-dispatch`
-- `skill-taxonomy`
-- `skill-tour`
-- `snix`
-- `string-diagram-rewriting-protocol`
-- `structured-decomp`
-- `superelastic-quotient`
-- `syrup`
-- `temporal-coalgebra`
-- `terminal`
-- `topos-catcolab`
-- `topos-generate`
-- `topos-unified`
-- `trajectory`
-- `tripartite-decompositions`
-- `turing-chemputer`
-- `unison-acset`
-- `uv-discohy`
-- `workspace-unified`
-- `world-a`
-- `world-memory-worlding`
-- `world-runtime`
-- `zig`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `2600-magazine`
-- `_integrated`
-- `acset-taxonomy`
-- `acsets-algebraic-databases`
-- `acsets-dynamic-loader`
-- `acsets-hatchery`
-- `acsets-relational-thinking`
-- `anima-theory`
-- `asi-integrated`
-- `autopoiesis`
-- `bmorphism-ies-env`
-- `bmorphism-interactome`
-- `bmorphism-video-interleave`
-- `boneh-roughgarden-wev`
-- `browser-history-acset`
-- `cargo-rust`
-- `cat-three-homes`
-- `catcolab-schemas`
-- `catlab-asi-interleave`
-- `cats-for-ai`
-- `chatgpt-export-acset`
-- `clifford-acset-bridge`
-- `coequalizers`
-- `cognitive-surrogate`
-- `compositional-acset-comparison`
-- `condensed-analytic-stacks`
-- `crdt-color`
-- `crn-topology`
-- `ctp-yoneda`
-- `cybernetic-open-game`
-- `dafny-zig`
-- `deepwiki-mcp`
-- `delta-derivation`
-- `derham-cohomology`
-- `deterministic-color-generation`
-- `docs-acset`
-- `documentation-indexing`
-- `duck-agent`
-- `duck-time-travel`
-- `duckdb-ies`
-- `duckdb-quadruple-interleave`
-- `duckdb-temporal-versioning`
-- `ducklake-categorical-model`
-- `ducklake-pattern-expansion`
-- `ducklake-walk`
-- `dynamic-sufficiency-goblin`
-- `energy-dynamics-acset`
-- `exa-11-directions`
-- `excellence-gradient`
-- `galois-connections`
-- `gap-language`
-- `geohash-coloring`
-- `gf3-pr-verify`
-- `gh-interactome`
-- `gh-skill-explorer`
-- `glass-line`
-- `gmra-matlab`
-- `hatchery-index`
-- `homoiconic-rewriting`
-- `ies-triadic`
-- `infinity-operads`
-- `interactome-rl-env`
-- `julia-gay`
-- `julia-scientific`
-- `kan-extensions`
-- `keychain-secure`
-- `koopman-generator`
-- `lhott-cohesive-linear`
-- `lispsyntax-acset`
-- `live-recording`
-- `local-finetune`
-- `markov-game-acset`
-- `mlx-color-traceroute`
-- `modelica`
-- `modelica-lispsyntax-interleave`
-- `mutual-awareness-backlink`
-- `nashator-plurigrid-interleave`
-- `nuclear-smr`
-- `oapply-colimit`
-- `omg-tension-resolver`
-- `open-location-code-zig`
-- `openai-acset`
-- `operad-compose`
-- `ordered-locale`
-- `ordered-locale-proper`
-- `osm-topology`
-- `parallel-fanout`
-- `parallel-subagent-split`
-- `parametrised-optics-cybernetics`
-- `partiful`
-- `persistent-homology`
-- `phylogenetic-operad-acset`
-- `plurigrid-asi-integrated`
-- `propagators`
-- `pun-decomposition`
-- `py-acset`
-- `py-acsets-rewriting`
-- `quarto-julia`
-- `ramanujan-expander`
-- `random-walk-fusion`
-- `rg-flow-acset`
-- `rubato-composer`
-- `sdr-borges-reafference`
-- `sense`
-- `sheaf-cohomology`
-- `sheaf-laplacian-coordination`
-- `skill-bonds`
-- `skill-dispatch`
-- `skill-taxonomy`
-- `skill-tour`
-- `snix`
-- `string-diagram-rewriting-protocol`
-- `structured-decomp`
-- `superelastic-quotient`
-- `syrup`
-- `temporal-coalgebra`
-- `topos-catcolab`
-- `topos-generate`
-- `topos-unified`
-- `tripartite-decompositions`
-- `turing-chemputer`
-- `unison-acset`
-- `uv-discohy`
-- `workspace-unified`
-- `world-a`
-- `world-memory-worlding`
-- `world-runtime`
-- `zig`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

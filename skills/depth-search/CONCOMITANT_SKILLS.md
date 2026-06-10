@@ -1,30 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `anna-archive` — sibling in the skill routing & dispatch cluster — Anna's Archive integration for academic paper and book retrieval.
+- `dune-analytics` — invoked by — Query Dune Analytics API for blockchain data, pyUSD flows, stablecoin metrics, and on cha…
+- `gf3-pr-verify` — invoked by — Verify GF(3) skill conservation on pull requests.
+- `hatchery-index` — invoked by — Index of 1057 hatchery repos with GAY.md color assignments.
+- `org` — builds on — Org mode manual (25K lines info).
+- `ruler-maximal` — sibling in the skill routing & dispatch cluster — Ruler Maximal Skill
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `anna-archive`
-- `dune-analytics`
-- `gf3-pr-verify`
-- `hatchery-index`
-- `org`
-- `ruler-maximal`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `anna-archive`
-- `dune-analytics`
-- `gf3-pr-verify`
-- `hatchery-index`
-- `ruler-maximal`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

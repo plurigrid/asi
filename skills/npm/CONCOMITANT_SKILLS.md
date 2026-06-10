@@ -1,147 +1,72 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `12-factor-app-modernization` — sibling in the reproducible environments & deployment cluster — |
+- `bmorphism-ies-env` — invoked by — Documentation and orchestration for the bmorphism ies flox environment toolkit
+- `borkdude` — invoked by — Babashka and ClojureScript runtime selection guidance by @borkdude
+- `browser-navigation` — invoked by — |
+- `cat` — invoked by — cat Skill: Derivational Pipe Chaining
+- `cloudflare-deploy` — sibling in the reproducible environments & deployment cluster — Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related pl…
+- `cloudflare-tunnel-ec2-deployment` — sibling in the reproducible environments & deployment cluster — |
+- `cloudflare-workers` — sibling in the reproducible environments & deployment cluster — |
+- `code-reviewer` — invoked by — Use this skill to review code.
+- `command-development` — invoked by — This skill should be used when the user asks to "create a slash command", "add a command"…
+- `devcontainer-setup` — sibling in the reproducible environments & deployment cluster — Creates devcontainers with Claude Code, language specific tooling (Python Node Rust Go), …
+- `develop-web-game` — invoked by — Use when Codex is building or iterating on a web game (HTML JS) and needs a reliable deve…
+- `docs-writer` — invoked by — Always use this skill when the task involves writing, reviewing, or editing
+- `exa-11-directions` — invoked by — 1.
+- `flow-nexus-platform` — sibling in the reproducible environments & deployment cluster — Comprehensive Flow Nexus platform management - authentication, sandboxes, app deployment,…
+- `flow-nexus-swarm` — sibling in the reproducible environments & deployment cluster — Cloud based AI swarm deployment and event driven workflow automation with Flow Nexus plat…
+- `flox` — sibling in the reproducible environments & deployment cluster — Reproducible development environments powered by Nix.
+- `flox-builds` — sibling in the reproducible environments & deployment cluster — Building and packaging applications with Flox.
+- `flox-containers` — sibling in the reproducible environments & deployment cluster — Containerizing Flox environments with Docker Podman.
+- `flox-environments` — sibling in the reproducible environments & deployment cluster — Manage reproducible development environments with Flox.
+- `flox-services` — sibling in the reproducible environments & deployment cluster — Running services and background processes in Flox environments.
+- `flox-sharing` — sibling in the reproducible environments & deployment cluster — Sharing and composing Flox environments.
+- `full-stack-playbook` — invoked by — |
+- `ganja-wedge-game` — invoked by — Geometric Algebra game mechanics via ganja.js with implicit player skills for wedge vee d…
+- `github-code-review` — invoked by — Comprehensive GitHub code review with AI powered swarm coordination
+- `github-multi-repo` — invoked by — Multi repository coordination, synchronization, and architecture management with AI swarm…
+- `github-release-management` — invoked by — Comprehensive GitHub release orchestration with AI swarm coordination for automated versi…
+- `github-workflow-automation` — invoked by — Advanced GitHub Actions workflow automation with AI swarm coordination, intelligent CI CD…
+- `hooks-automation` — invoked by — Automated coordination, formatting, and learning from Claude Code operations using intell…
+- `layerchart-svelte5` — sibling in the reproducible environments & deployment cluster — LayerChart Svelte 5 patterns.
+- `llms-txt-discovery` — invoked by — Create the **largest indexed directory of AI documentation** by:
+- `mcp-builder` — invoked by — Guide for creating high quality MCP (Model Context Protocol) servers
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `netlify-deploy` — sibling in the reproducible environments & deployment cluster — Deploy web projects to Netlify using the Netlify CLI (npx netlify).
+- `next-upgrade` — sibling in the reproducible environments & deployment cluster — Upgrade Next.js to the latest version following official migration guides and codemods
+- `openclaw-goblins-adapter` — invoked by — Bridge ElizaOS OpenClaw plugins to Goblins OCapN actors.
+- `owasp-security-check` — invoked by — Security audit guidelines for web applications and REST APIs based on OWASP Top 10 and we…
+- `pair-programming` — invoked by — AI assisted pair programming with multiple modes (driver navigator switch), real time ver…
+- `paperproof-validator` — invoked by — Formal Proof Visualization and Verification for Lean 4
+- `plugin-structure` — invoked by — This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "…
+- `pr-creator` — invoked by — Use this skill when asked to create a pull request (PR).
+- `pump-bonding-curve` — invoked by — Bonding curve math for Pump.fun SDK — quote, slippage, market cap, graduation progress
+- `qa-regression` — invoked by — Automate QA regression testing with reusable test skills.
+- `refactoring-playbook` — invoked by — |
+- `render-deploy` — sibling in the reproducible environments & deployment cluster — Deploy applications to Render by analyzing codebases, generating render.yaml Blueprints, …
+- `ruler` — invoked by — Unified AI agent configuration propagation across 18+ coding assistants.
+- `security-review` — invoked by — Scan code changes for security vulnerabilities using STRIDE threat modeling, validate fin…
+- `shell-guard` — invoked by — Shell ENOENT prevention with fallback chain and environment validation
+- `skill-builder` — invoked by — Create new Claude Code Skills with proper YAML frontmatter, progressive disclosure struct…
+- `skill-taxonomy` — invoked by — Provide a centralized registry and discovery system for all 69 ASI skills.
+- `sonification-collaborative` — invoked by — 1.
+- `sparc-methodology` — invoked by — SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) comprehensive dev…
+- `squint-runtime` — invoked by — Squint ClojureScript runtime for minimal JS output compilation
+- `storage-reclaim` — invoked by — Rapidly find and reclaim disk storage by identifying build artifacts, git garbage, temp f…
+- `swarm-advanced` — invoked by — Advanced swarm orchestration patterns for research, development, testing, and complex dis…
+- `time-travel-crdt` — invoked by — Time Travel CRDT Skill
+- `trialectical-coin` — invoked by — Extends TeglonLabs coin flip mcp with GF(3) ternary decision logic.
+- `tuistory` — invoked by — |
+- `verification-quality` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `verification-quality-assurance` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `visual-design` — invoked by — |
+- `webapp-testing` — invoked by — Toolkit for interacting with and testing local web applications using
+- `wrangler` — sibling in the reproducible environments & deployment cluster — Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vecto…
+- `yara-rule-authoring` — invoked by — >
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `12-factor-app-modernization`
-- `bmorphism-ies-env`
-- `borkdude`
-- `browser-navigation`
-- `cat`
-- `cloudflare-deploy`
-- `cloudflare-tunnel-ec2-deployment`
-- `cloudflare-workers`
-- `code-reviewer`
-- `command-development`
-- `devcontainer-setup`
-- `develop-web-game`
-- `docs-writer`
-- `exa-11-directions`
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `flox`
-- `flox-builds`
-- `flox-containers`
-- `flox-environments`
-- `flox-services`
-- `flox-sharing`
-- `full-stack-playbook`
-- `ganja-wedge-game`
-- `github-code-review`
-- `github-multi-repo`
-- `github-release-management`
-- `github-workflow-automation`
-- `hooks-automation`
-- `layerchart-svelte5`
-- `llms-txt-discovery`
-- `mcp-builder`
-- `modding-ghostty`
-- `netlify-deploy`
-- `next-upgrade`
-- `openclaw-goblins-adapter`
-- `owasp-security-check`
-- `pair-programming`
-- `paperproof-validator`
-- `plugin-structure`
-- `pr-creator`
-- `pump-bonding-curve`
-- `qa-regression`
-- `refactoring-playbook`
-- `render-deploy`
-- `ruler`
-- `security-review`
-- `shell-guard`
-- `skill-builder`
-- `skill-taxonomy`
-- `sonification-collaborative`
-- `sparc-methodology`
-- `squint-runtime`
-- `storage-reclaim`
-- `swarm-advanced`
-- `time-travel-crdt`
-- `trialectical-coin`
-- `tuistory`
-- `verification-quality`
-- `verification-quality-assurance`
-- `visual-design`
-- `webapp-testing`
-- `wrangler`
-- `yara-rule-authoring`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `12-factor-app-modernization`
-- `bmorphism-ies-env`
-- `borkdude`
-- `browser-navigation`
-- `cat`
-- `cloudflare-deploy`
-- `cloudflare-tunnel-ec2-deployment`
-- `cloudflare-workers`
-- `code-reviewer`
-- `command-development`
-- `devcontainer-setup`
-- `develop-web-game`
-- `docs-writer`
-- `exa-11-directions`
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `flox`
-- `flox-builds`
-- `flox-containers`
-- `flox-environments`
-- `flox-services`
-- `flox-sharing`
-- `full-stack-playbook`
-- `ganja-wedge-game`
-- `github-code-review`
-- `github-multi-repo`
-- `github-release-management`
-- `github-workflow-automation`
-- `hooks-automation`
-- `layerchart-svelte5`
-- `llms-txt-discovery`
-- `mcp-builder`
-- `modding-ghostty`
-- `netlify-deploy`
-- `next-upgrade`
-- `openclaw-goblins-adapter`
-- `owasp-security-check`
-- `pair-programming`
-- `paperproof-validator`
-- `plugin-structure`
-- `pr-creator`
-- `pump-bonding-curve`
-- `qa-regression`
-- `refactoring-playbook`
-- `render-deploy`
-- `ruler`
-- `security-review`
-- `shell-guard`
-- `skill-builder`
-- `skill-taxonomy`
-- `sonification-collaborative`
-- `sparc-methodology`
-- `squint-runtime`
-- `storage-reclaim`
-- `swarm-advanced`
-- `time-travel-crdt`
-- `trialectical-coin`
-- `tuistory`
-- `verification-quality`
-- `verification-quality-assurance`
-- `visual-design`
-- `webapp-testing`
-- `wrangler`
-- `yara-rule-authoring`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

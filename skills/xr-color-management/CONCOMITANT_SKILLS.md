@@ -1,28 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `ar-vr-xr` — invoked by — Reality tech (AR VR XR).
+- `reality-tech` — mutually referenced — Reality tech umbrella for AR VR XR.
+- `steamvr-tracking` — builds on — SteamVR Tracking (Lighthouse Base Stations) setup + specs.
+- `varjo-xr-4` — mutually referenced — Varjo XR 4 Series device profile for reality tech.
+- `visual-design` — builds on — |
+- `xr` — builds on — Extended reality (XR MR) reality tech.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `ar-vr-xr`
-- `reality-tech`
-- `steamvr-tracking`
-- `varjo-xr-4`
-- `visual-design`
-- `xr`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `ar-vr-xr`
-- `reality-tech`
-- `varjo-xr-4`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

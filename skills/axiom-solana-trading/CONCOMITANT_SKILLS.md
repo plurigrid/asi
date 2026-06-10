@@ -1,31 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `aptos-trading` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Execute trades on Aptos mainnet with price triggered profit taking and dip buying strateg…
+- `assets` — builds on — Assets skill
+- `constant-time-analysis` — builds on — Detects timing side channel vulnerabilities in cryptographic code.
+- `insecure-defaults` — builds on — Detects fail open insecure defaults (hardcoded secrets, weak auth, permissive security) t…
+- `ostium-arbitrum-perps` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Interact with Ostium Protocol -- a decentralized perpetual exchange on Arbitrum for RWA (…
+- `property-based-testing` — builds on — Provides guidance for property based testing across multiple languages and smart contract…
+- `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
+- `secure-workflow-guide` — builds on — Guide you through Trail of Bits' 5 step secure development workflow.
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `semgrep` — builds on — Run Semgrep static analysis for fast security scanning and pattern matching.
+- `solana-vulnerability-scanner` — builds on — Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PD…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `aptos-trading`
-- `assets`
-- `constant-time-analysis`
-- `insecure-defaults`
-- `ostium-arbitrum-perps`
-- `property-based-testing`
-- `rust`
-- `secure-workflow-guide`
-- `security`
-- `semgrep`
-- `solana-vulnerability-scanner`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

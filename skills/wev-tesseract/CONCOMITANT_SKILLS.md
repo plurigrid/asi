@@ -1,30 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bisimulation-game` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Bisimulation game for resilient skill dispersal across AI agents with
+- `cat` — builds on — cat Skill: Derivational Pipe Chaining
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `epistemic-arbitrage` — builds on — Propagator based parallel structure for exploiting knowledge differentials
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `sheaf-cohomology` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Čech cohomology for local to global consistency verification in code
+- `triad-interleave` — builds on — Interleave three deterministic color streams into balanced schedules
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bisimulation-game`
-- `cat`
-- `clojure`
-- `epistemic-arbitrage`
-- `gay-mcp`
-- `k-dense-ai`
-- `networkx`
-- `sdf`
-- `sheaf-cohomology`
-- `triad-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

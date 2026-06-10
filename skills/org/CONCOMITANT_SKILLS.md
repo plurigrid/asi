@@ -1,411 +1,211 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `#E847C0` — invoked by — #E847C0
+- `2600-magazine` — invoked by — Query and explore the 2600: The Hacker Quarterly magazine archive (1984 present) via Duck…
+- `_integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `acsets` — invoked by — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `acsets-algebraic-databases` — invoked by — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional navigati…
+- `acsets-hatchery` — invoked by — Attributed C Sets as algebraic databases.
+- `active-inference-robotics` — invoked by — Bridge active inference theory with robot control using K Scale's JAX MuJoCo stack.
+- `algebraic-rewriting` — invoked by — Category theoretic graph rewriting with DPO, SPO, and SqPO pushouts for C Sets.
+- `alice-emacs-mods` — sibling in the Emacs elisp tooling cluster — Tour of Alice's heavily customized terminal Emacs — Causal transients, Worlding org, proo…
+- `alife` — invoked by — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `alphafold-database` — invoked by — Access AlphaFold's 200M+ AI predicted protein structures.
+- `amazon-shopping-mcp` — invoked by — Amazon product search, cart management, price tracking, and shopping list via Playwright …
+- `amp-skill` — invoked by — Interruption pattern detection and retrieval from Amp thread history.
+- `amp-team-usage` — invoked by — Amp Team Usage
+- `anna-archive` — invoked by — Anna's Archive integration for academic paper and book retrieval.
+- `asi-integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `astropy` — invoked by — Comprehensive Python library for astronomy and astrophysics.
+- `azure-devops` — invoked by — Interact with Azure DevOps repositories, pull requests, and APIs using the AZURE_DEVOPS_T…
+- `behaviour-surprisal-analysis` — invoked by — Behaviour Surprisal Analysis
+- `biomni` — invoked by — Autonomous biomedical AI agent framework for executing complex research tasks across geno…
+- `biopython` — invoked by — Primary Python toolkit for molecular biology.
+- `biorxiv-database` — invoked by — Efficient database search tool for bioRxiv preprint server.
+- `bitbucket` — invoked by — Interact with Bitbucket repositories and pull requests using the BITBUCKET_TOKEN environm…
+- `blackhat-go` — invoked by — Go based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT,…
+- `bluesky-jetstream` — invoked by — Bluesky Jetstream Firehose Skill
+- `bmorphism-ies-env` — invoked by — Documentation and orchestration for the bmorphism ies flox environment toolkit
+- `bmorphism-video-interleave` — invoked by — bmorphism Video Archive Interleave
+- `bmorphism__cc-trace` — invoked by — Interactive assistant for intercepting, debugging, analyzing and reviewing Claude Code AP…
+- `bob-emacs-mods` — sibling in the Emacs elisp tooling cluster — Complement to alice emacs mods.
+- `borkdude` — invoked by — Babashka and ClojureScript runtime selection guidance by @borkdude
+- `botnet-disruption` — invoked by — Coordinated botnet takedown methodologies — sinkholing, infrastructure mapping, legal fra…
+- `brenda-database` — invoked by — Access BRENDA enzyme database via SOAP API.
+- `browser-history-acset` — invoked by — Browser History ACSet
+- `cantordust-viz` — invoked by — Binary visualization for human pattern recognition - Ghidra plugin by Chris Domas (xoreax…
+- `captp` — invoked by — CapTP: Capability Transfer Protocol
+- `cat-three-homes` — invoked by — The double category of polynomial comonads where:
+- `catalyst-chemical` — invoked by — Chemical reaction network modeling with Catalyst.jl.
+- `catcolab-causal-loop` — invoked by — CatColab Causal Loop Diagrams - systems dynamics modeling with reinforcing (R) and balanc…
+- `catcolab-decapodes` — invoked by — CatColab Decapodes - Discrete Exterior Calculus for PDE modeling on meshes via Decapodes.…
+- `catcolab-ologs` — invoked by — CatColab Ologs (Ontology Logs) - category theoretic knowledge representation where object…
+- `catcolab-petri-nets` — invoked by — CatColab Petri Nets - concurrent system modeling via places (states), transitions (events…
+- `catcolab-regulatory-networks` — invoked by — CatColab Regulatory Networks - signed graphs for molecular biology modeling gene regulato…
+- `catcolab-schemas` — invoked by — CatColab Schemas - database schema modeling distinguishing entities (tables) from attribu…
+- `catcolab-stock-flow` — invoked by — CatColab Stock and Flow Diagrams - epidemiological and ecological modeling with stocks (a…
+- `cats-focus-monad` — invoked by — Cats Focus + Monad: Lawful composition for effect management
+- `chain-of-states` — invoked by — CoSProver framework for translating informal proofs to Lean4 via intermediate formal proo…
+- `citation-management` — invoked by — Comprehensive citation management for academic research.
+- `citizen-lab-forensics` — invoked by — Digital forensics techniques for detecting device compromise, analyzing malware indicator…
+- `clinpgx-database` — invoked by — Access ClinPGx pharmacogenomics data (successor to PharmGKB).
+- `clj-kondo-3color` — invoked by — clj kondo linter with Gay.jl 3 color integration for GF(3) conservation
+- `clojure` — invoked by — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `code-documentation` — invoked by — Writing effective code documentation - API docs, README files, inline
+- `coequalizers` — invoked by — Quotient redundant skill paths via coequalizers, preserving GF(3) conservation
+- `collaborative-emacs` — sibling in the Emacs elisp tooling cluster — Claude Code runs an Emacs daemon, starts a CRDT server, shares buffers.
+- `coq-of-rust` — invoked by — Formal verification of Rust programs via translation to Coq Rocq.
+- `coqgym` — invoked by — Machine learning environment for automated theorem proving with Coq.
+- `counter-surveillance` — invoked by — Assess and harden operational security (OPSEC) posture for applications, communications, …
+- `covariant-modification` — invoked by — Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and …
+- `ctp-yoneda` — invoked by — CTP Yoneda Skill
+- `cue-lang` — invoked by — CUE: Lattice based configuration language with unification, constraint
+- `dafny-formal-verification` — invoked by — Formally verified SPI colors, Galois connections, and p adic number theory in Dafny
+- `datacommons-client` — invoked by — Work with Data Commons, a platform providing programmatic access to public statistical da…
+- `deep-analysis` — invoked by — Performs focused, depth first investigation of specific reverse engineering questions thr…
+- `depth-search` — invoked by — Deep multi source research combining academic MCPs (arxiv, semantic scholar, paper search…
+- `did-passport-interleave` — invoked by — Formal bridge between W3C Decentralized Identifiers (did:wba, ANP) and passport.gay (Spli…
+- `discopy-functor` — invoked by — Monoidal functor evaluation for string diagrams.
+- `discopy-operads` — invoked by — DiscoPy Operads Skill
+- `documentation-indexing` — invoked by — Provide **full text search, semantic indexing, and relevance ranking** across all documen…
+- `effective-topos` — invoked by — FloxHub publication bmorphism effective topos - a comprehensive development
+- `elisp` — sibling in the Emacs elisp tooling cluster — Emacs Lisp reference (106K lines info).
+- `emacs` — sibling in the Emacs elisp tooling cluster — Emacs ecosystem = elisp + org + gnus + tramp + eglot.
+- `emacs-info` — invoked by — Emacs Info documentation system.
+- `embedded-medical-device` — invoked by — Firmware development for STM32, nRF52840, and RP2040 medical devices with BLE USB communi…
+- `ensembl-database` — invoked by — Query Ensembl genome database REST API for 250+ species.
+- `entropy-regularized-inference` — invoked by — - User asks about connecting active inference to practical RL
+- `firecrawl-patterns` — invoked by — Firecrawl MCP for web scraping and search.
+- `flox-cuda` — invoked by — CUDA and GPU development with Flox.
+- `flox-publish` — invoked by — Use for publishing user packages to flox for use in Flox environments.
+- `flox-sharing` — invoked by — Sharing and composing Flox environments.
+- `galois-connections` — invoked by — Galois connections for lawful conversions and bi Heyting topos logic.
+- `geniml` — invoked by — This skill should be used when working with genomic interval data (BED files) for machine…
+- `gh-complete` — invoked by — gh complete
+- `gh-emacs` — sibling in the Emacs elisp tooling cluster — GitHub Actions as a **decentralized Emacs compute fabric**:
+- `gh-fix-ci` — invoked by — Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions;
+- `github-api` — invoked by — Orchestrates comprehensive GitHub API access across all services.
+- `github-multi-repo` — invoked by — Multi repository coordination, synchronization, and architecture management with AI swarm…
+- `github-project-management` — invoked by — Comprehensive GitHub project management with swarm coordinated issue tracking, project bo…
+- `github-release-management` — invoked by — Comprehensive GitHub release orchestration with AI swarm coordination for automated versi…
+- `github-workflow-automation` — invoked by — Advanced GitHub Actions workflow automation with AI swarm coordination, intelligent CI CD…
+- `gitlab` — invoked by — Interact with GitLab repositories, merge requests, and APIs using the GITLAB_TOKEN enviro…
+- `glamorous-moldable-multiplatform` — invoked by — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
+- `google-cloud-ocapn-vats` — invoked by — Google Cloud Platform project and API management for plurigrid.com org.
+- `graph-investigation` — invoked by — Large scale graph analytics for entity resolution, network analysis, and relationship map…
+- `gwern-emacs` — sibling in the Emacs elisp tooling cluster — The Bitter Lesson: *General methods leveraging compute beat specialized methods.*
+- `gym` — invoked by — Each gym domain resolves specific skill tensions:
+- `hatchery-papers` — invoked by — Chicken Scheme Hatchery eggs and academic papers for color logic, 2TDX,
+- `hy-regime` — invoked by — Hylang regime detection and anticipation for message streams.
+- `hydra-graphql-interactome` — invoked by — Every Hydra query expansion must conserve:
+- `hypogenic` — invoked by — Automated hypothesis generation and testing using large language models.
+- `icij-document-analysis` — invoked by — Document processing pipeline for large scale leak analysis.
+- `ies` — invoked by — ies
+- `ies-flox` — invoked by — FloxHub publication bmorphism ies - a focused development environment
+- `ies-triadic` — invoked by — IES Triadic Skill
+- `iroh-p2p` — invoked by — Build modern peer to peer applications with Iroh.
+- `iso-13485-certification` — invoked by — Comprehensive toolkit for preparing ISO 13485 certification documentation for medical dev…
+- `jank` — invoked by — jank lang: native Clojure on LLVM with seamless C++ interop.
+- `jank-llvm` — invoked by — Jank - Clojure dialect targeting LLVM with seamless C++ interoperability
+- `jo-clojure` — invoked by — Clojure skill orchestration and polyglot bridge.
+- `julia-scientific` — invoked by — Julia package equivalents for 137 K Dense AI scientific skills.
+- `kan-extensions` — invoked by — Kan Extensions Skill (ERGODIC 0)
+- `koho-sheafnn` — invoked by — Rust sheaf neural networks on k cells.
+- `kscale-biomimetic-supply` — invoked by — - User asks about supply chain resilience for humanoid robotics
+- `kscale-ksim` — invoked by — - User asks about robot simulation, humanoid locomotion, or RL policy training
+- `latex-posters` — invoked by — Create professional research posters in LaTeX using beamerposter, tikzposter, or baposter.
+- `levin-levity` — invoked by — Leonid Levin''''s algorithmic complexity meets playful mutual ingression.
+- `libghostty-recording` — sibling in the Emacs elisp tooling cluster — Record, stream, and replay libghostty vt terminal sessions for documentation, debugging, …
+- `libghostty-streaming` — sibling in the Emacs elisp tooling cluster — The **white hole** dual to libghostty recording.
+- `libghostty-vt` — sibling in the Emacs elisp tooling cluster — libghostty vt
+- `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
+- `little-schemer` — invoked by — Little Schemer Skill
+- `live-recording` — invoked by — Always on audio capture via whisper cpp to org file with Emacs live display
+- `livestream` — invoked by — Warehouse audio pipeline for live capture, transcription, and narration from meeting room…
+- `llms-txt-discovery` — invoked by — Create the **largest indexed directory of AI documentation** by:
+- `lojban` — invoked by — Lojban: the logical language designed for unambiguous machine parseable human expression …
+- `magic-todo` — invoked by — Add TODOs to org files and generate ADHD friendly task breakdowns with local MLX models o…
+- `magic-todo-watch-deploy` — invoked by — Build, deploy, and manage the MagicTodoWatch iOS watchOS voice to task pipeline app.
+- `markitdown` — invoked by — Convert files and office documents to Markdown.
+- `messaging-world` — invoked by — ACSet structured messaging world with real social graph resources from Outlook, Gmail, an…
+- `metabolomics-workbench-database` — invoked by — Access NIH Metabolomics Workbench via REST API (4,200+ studies).
+- `mlx-bitnet-gf3` — invoked by — BitNet 1.58 bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `modern-python` — invoked by — Modern Python best practices.
+- `move-fuzzing` — invoked by — Comprehensive fuzzing toolkit for Move smart contracts on Aptos, Sui, and Movement chains.
+- `nblm-flashcards` — invoked by — Generate and drill flashcards from NotebookLM Enterprise notebooks via Gemini (Vertex AI)…
+- `neuro-symbolic-bridge` — invoked by — High tension pairs (d ≈ 1.85):
+- `notebooklm-enterprise` — invoked by — NotebookLM Enterprise API via Discovery Engine — notebook CRUD, source management, audio …
+- `olmoearth-mlx` — invoked by — OlmoEarth MLX: Spatio Temporal Earth Intelligence
+- `omg-tension-resolver` — invoked by — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
+- `openalex-database` — invoked by — Query and analyze scholarly literature using the OpenAlex database.
+- `org-babel-execution` — sibling in the Emacs elisp tooling cluster — Literate programming execution engine via org babel for polyglot skill execution
+- `own-goal` — invoked by — Save session goals to org files in the goals-*.org format.
+- `pdb-database` — invoked by — Access RCSB PDB for 3D protein nucleic acid structures.
+- `pijul` — invoked by — Pijul patch based VCS with categorical patch theory for skill versioning
+- `plurigrid-polyglot` — invoked by — Polyglot skill orchestration system integrating Go, Clojure, Hy, and Zig.
+- `pr-creator` — invoked by — Use this skill when asked to create a pull request (PR).
+- `proofgeneral-narya` — sibling in the Emacs elisp tooling cluster — Proof General + Narya: Higher dimensional type theory proof assistant with observational …
+- `protocol-acset` — invoked by — Model decentralized protocols as attributed C sets for compositional analysis, interopera…
+- `pylabrobot` — invoked by — Laboratory automation toolkit for controlling liquid handlers, plate readers, pumps, heat…
+- `pymatgen` — invoked by — Materials science toolkit.
+- `pymoo` — invoked by — Multi objective optimization framework.
+- `pyopenms` — invoked by — Python interface to OpenMS for mass spectrometry data analysis.
+- `qri-valence` — invoked by — qri valence skill Qualia Research Institute''s Symmetry Theory of Valence (STV) for consc…
+- `quarto-julia` — invoked by — Quarto + Julia Skill
+- `quic-channel-grading` — invoked by — |
+- `r2frida` — invoked by — Dynamic instrumentation bridge — radare2 static analysis meets Frida runtime hooking via …
+- `reactome-database` — invoked by — Query Reactome REST API for pathway analysis, enrichment, gene pathway mapping, disease p…
+- `reverse-engineering` — invoked by — Reverse Engineering Skill
+- `riehl-post-rigorous` — invoked by — Emily Riehl''s post rigorous mathematics framework: formalizing arguments that are "local…
+- `rubato-composer` — invoked by — Rubato Composer integration for Mazzola's mathematical music theory
+- `scanpy` — invoked by — Single cell RNA seq analysis.
+- `scientific-schematics` — invoked by — Create publication quality scientific diagrams using Nano Banana Pro AI with smart iterat…
+- `scvi-tools` — invoked by — This skill should be used when working with single cell omics data analysis using scvi to…
+- `sdr-borges-reafference` — invoked by — SDR (GNU Radio) as self learning REPL with Borges infinite library exploration, reafferen…
+- `security-review` — invoked by — Scan code changes for security vulnerabilities using STRIDE threat modeling, validate fin…
+- `sentry` — invoked by — Use when the user asks to inspect Sentry issues or events, summarize recent production er…
+- `servo-ghostty` — invoked by — Servo browser engine integration with ghostty web for full color terminal tiles
+- `sheaf-uncertainty` — invoked by — Bayesian sheaf neural networks for uncertainty quantification.
+- `sicm` — invoked by — - **Generic arithmetic** extensible across numeric types
+- `sicmutils` — invoked by — SICMUtils Emmy - Clojure library for symbolic mathematics, automatic differentiation, and…
+- `siggraph` — invoked by — SIGGRAPH is the premier venue for computer graphics research.
+- `signal-isolated-auth` — invoked by — Maximally isolated Signal authentication via colored operad security boundaries.
+- `sim2real-predictive-coding` — invoked by — - User asks about sim2real transfer mechanisms
+- `skill-taxonomy` — invoked by — Provide a centralized registry and discovery system for all 69 ASI skills.
+- `specter-acset` — invoked by — Specter style bidirectional navigation for Julia Collections, S expressions, and ACSets w…
+- `srfi` — invoked by — SRFI Skill
+- `string-database` — invoked by — Query STRING API for protein protein interactions (59M proteins, 20B interactions).
+- `swift-linux` — invoked by — Install and configure Swift programming language on Debian Linux for server side developm…
+- `threat-model-generation` — invoked by — Generate a STRIDE based security threat model for a repository.
+- `time-travel-crdt` — invoked by — Time Travel CRDT Skill
+- `topomodelx-hodge` — invoked by — Hodge Laplacian neural networks for simplicial cell hypergraph complexes.
+- `topos-catcolab` — invoked by — Topos Institute's CatColab for collaborative category theory - community model building, …
+- `torch-geometric` — invoked by — Graph Neural Networks (PyG).
+- `torch_geometric` — invoked by — Graph Neural Networks (PyG).
+- `treatment-plans` — invoked by — Generate concise (3 4 page), focused medical treatment plans in LaTeX PDF format for all …
+- `trialectical-coin` — invoked by — Extends TeglonLabs coin flip mcp with GF(3) ternary decision logic.
+- `truealife` — invoked by — Comprehensive index of Artificial Life repositories across history, with special focus on…
+- `unwiring-arena` — invoked by — Play Coplay arena theory for autopoietic closure with GF(3) conservation
+- `uspto-database` — invoked by — Access USPTO APIs for patent trademark searches, examination history (PEDS), assignments,…
+- `uv-oneliners` — invoked by — UV UVX awesome one liners for ephemeral Python environments with multi package
+- `venue-templates` — invoked by — Access comprehensive LaTeX templates, formatting requirements, and submission guidelines …
+- `voice-channel-uwd` — invoked by — Voice Channel UWD Skill
+- `vulnerability-validation` — invoked by — Validate security findings from commit security scan by assessing exploitability, filteri…
+- `wolframite-compass` — invoked by — GitHub interactome navigator for Wolframite ecosystem.
+- `worlding-calendar` — invoked by — Calendar events tied to 26 letter worlds via org mode.
+- `xypic-latex` — invoked by — XY pic commutative diagrams in LaTeX with Emacs AUCTeX preview
+- `yara-rule-authoring` — invoked by — >
+- `yb-translator` — invoked by — Translate programming concepts to biological parallels using real ontology terms from EBI…
+- `zig-syrup-bci` — invoked by — Multimodal BCI pipeline in Zig: DSI 24 EEG, fNIRS mBLL, eye tracking IVT, LSL sync, EDF r…
+- `zig-systems` — invoked by — Systems programming and performance optimization using Zig.
+- `zinc-database` — invoked by — Access ZINC (230M+ purchasable compounds).
+- `zls-integration` — invoked by — zls integration skill Zig Language Server (ZLS) integration for IDE features - autocomple…
+- `zubyul-connectome` — invoked by — Human Connectome Project analysis bridging cortical thickness, transcription factors, and…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `#E847C0`
-- `2600-magazine`
-- `_integrated`
-- `acsets`
-- `acsets-algebraic-databases`
-- `acsets-hatchery`
-- `active-inference-robotics`
-- `algebraic-rewriting`
-- `alice-emacs-mods`
-- `alife`
-- `alphafold-database`
-- `amazon-shopping-mcp`
-- `amp-skill`
-- `amp-team-usage`
-- `anna-archive`
-- `asi-integrated`
-- `astropy`
-- `azure-devops`
-- `behaviour-surprisal-analysis`
-- `biomni`
-- `biopython`
-- `biorxiv-database`
-- `bitbucket`
-- `blackhat-go`
-- `bluesky-jetstream`
-- `bmorphism-ies-env`
-- `bmorphism-video-interleave`
-- `bmorphism__cc-trace`
-- `bob-emacs-mods`
-- `borkdude`
-- `botnet-disruption`
-- `brenda-database`
-- `browser-history-acset`
-- `cantordust-viz`
-- `captp`
-- `cat-three-homes`
-- `catalyst-chemical`
-- `cats-focus-monad`
-- `cc-trace`
-- `chain-of-states`
-- `citation-management`
-- `citizen-lab-forensics`
-- `clinpgx-database`
-- `clj-kondo-3color`
-- `clojure`
-- `code-documentation`
-- `coequalizers`
-- `collaborative-emacs`
-- `coq-of-rust`
-- `coqgym`
-- `counter-surveillance`
-- `covariant-modification`
-- `ctp-yoneda`
-- `cue-lang`
-- `dafny-formal-verification`
-- `datacommons-client`
-- `deep-analysis`
-- `depth-search`
-- `did-passport-interleave`
-- `discopy-functor`
-- `discopy-operads`
-- `documentation-indexing`
-- `effective-topos`
-- `elisp`
-- `emacs`
-- `emacs-info`
-- `embedded-medical-device`
-- `ensembl-database`
-- `entropy-regularized-inference`
-- `firecrawl-patterns`
-- `flox-cuda`
-- `flox-publish`
-- `flox-sharing`
-- `galois-connections`
-- `geniml`
-- `gh-complete`
-- `gh-emacs`
-- `gh-fix-ci`
-- `github-api`
-- `github-multi-repo`
-- `github-project-management`
-- `github-release-management`
-- `github-workflow-automation`
-- `gitlab`
-- `glamorous-moldable-multiplatform`
-- `google-cloud-ocapn-vats`
-- `graph-investigation`
-- `gwern-emacs`
-- `gym`
-- `hatchery-papers`
-- `hy-regime`
-- `hydra-graphql-interactome`
-- `hypogenic`
-- `icij-document-analysis`
-- `ies`
-- `ies-flox`
-- `ies-triadic`
-- `iroh-p2p`
-- `iso-13485-certification`
-- `jank`
-- `jank-llvm`
-- `jo-clojure`
-- `julia-scientific`
-- `kan-extensions`
-- `koho-sheafnn`
-- `kscale-biomimetic-supply`
-- `kscale-ksim`
-- `latex-posters`
-- `levin-levity`
-- `libghostty-recording`
-- `libghostty-streaming`
-- `libghostty-vt`
-- `literature-review`
-- `little-schemer`
-- `live-recording`
-- `livestream`
-- `llms-txt-discovery`
-- `lojban`
-- `magic-todo`
-- `magic-todo-watch-deploy`
-- `markitdown`
-- `messaging-world`
-- `metabolomics-workbench-database`
-- `mlx-bitnet-gf3`
-- `modding-ghostty`
-- `modelica`
-- `modern-python`
-- `move-fuzzing`
-- `nblm-flashcards`
-- `neuro-symbolic-bridge`
-- `notebooklm-enterprise`
-- `olmoearth-mlx`
-- `omg-tension-resolver`
-- `openalex-database`
-- `org-babel-execution`
-- `own-goal`
-- `pdb-database`
-- `pijul`
-- `plurigrid-polyglot`
-- `pr-creator`
-- `proofgeneral-narya`
-- `protocol-acset`
-- `pylabrobot`
-- `pymatgen`
-- `pymoo`
-- `pyopenms`
-- `qri-valence`
-- `quarto-julia`
-- `quic-channel-grading`
-- `r2frida`
-- `reactome-database`
-- `reverse-engineering`
-- `riehl-post-rigorous`
-- `rubato-composer`
-- `scanpy`
-- `scientific-schematics`
-- `scvi-tools`
-- `sdr-borges-reafference`
-- `security-review`
-- `sentry`
-- `servo-ghostty`
-- `sheaf-uncertainty`
-- `sicm`
-- `sicmutils`
-- `siggraph`
-- `signal-isolated-auth`
-- `sim2real-predictive-coding`
-- `skill-taxonomy`
-- `specter-acset`
-- `srfi`
-- `string-database`
-- `swift-linux`
-- `threat-model-generation`
-- `time-travel-crdt`
-- `topomodelx-hodge`
-- `topos-catcolab`
-- `torch-geometric`
-- `torch_geometric`
-- `treatment-plans`
-- `trialectical-coin`
-- `truealife`
-- `unwiring-arena`
-- `uspto-database`
-- `uv-oneliners`
-- `venue-templates`
-- `voice-channel-uwd`
-- `vulnerability-validation`
-- `wolframite-compass`
-- `worlding-calendar`
-- `xypic-latex`
-- `yara-rule-authoring`
-- `yb-translator`
-- `zig-syrup-bci`
-- `zig-systems`
-- `zinc-database`
-- `zls-integration`
-- `zubyul-connectome`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `#E847C0`
-- `2600-magazine`
-- `_integrated`
-- `acsets`
-- `acsets-algebraic-databases`
-- `acsets-hatchery`
-- `active-inference-robotics`
-- `algebraic-rewriting`
-- `alice-emacs-mods`
-- `alife`
-- `alphafold-database`
-- `amazon-shopping-mcp`
-- `amp-skill`
-- `amp-team-usage`
-- `anna-archive`
-- `asi-integrated`
-- `astropy`
-- `azure-devops`
-- `behaviour-surprisal-analysis`
-- `biomni`
-- `biopython`
-- `biorxiv-database`
-- `bitbucket`
-- `blackhat-go`
-- `bluesky-jetstream`
-- `bmorphism-ies-env`
-- `bmorphism-video-interleave`
-- `bmorphism__cc-trace`
-- `bob-emacs-mods`
-- `borkdude`
-- `botnet-disruption`
-- `brenda-database`
-- `browser-history-acset`
-- `cantordust-viz`
-- `captp`
-- `cat-three-homes`
-- `catalyst-chemical`
-- `cats-focus-monad`
-- `chain-of-states`
-- `citation-management`
-- `citizen-lab-forensics`
-- `clinpgx-database`
-- `clj-kondo-3color`
-- `clojure`
-- `code-documentation`
-- `coequalizers`
-- `collaborative-emacs`
-- `coq-of-rust`
-- `coqgym`
-- `counter-surveillance`
-- `covariant-modification`
-- `ctp-yoneda`
-- `cue-lang`
-- `dafny-formal-verification`
-- `datacommons-client`
-- `deep-analysis`
-- `depth-search`
-- `did-passport-interleave`
-- `discopy-functor`
-- `discopy-operads`
-- `documentation-indexing`
-- `effective-topos`
-- `emacs`
-- `emacs-info`
-- `embedded-medical-device`
-- `ensembl-database`
-- `entropy-regularized-inference`
-- `firecrawl-patterns`
-- `flox-cuda`
-- `flox-publish`
-- `flox-sharing`
-- `galois-connections`
-- `geniml`
-- `gh-complete`
-- `gh-emacs`
-- `gh-fix-ci`
-- `github-api`
-- `github-multi-repo`
-- `github-project-management`
-- `github-release-management`
-- `github-workflow-automation`
-- `gitlab`
-- `glamorous-moldable-multiplatform`
-- `google-cloud-ocapn-vats`
-- `graph-investigation`
-- `gwern-emacs`
-- `gym`
-- `hatchery-papers`
-- `hy-regime`
-- `hydra-graphql-interactome`
-- `hypogenic`
-- `icij-document-analysis`
-- `ies`
-- `ies-flox`
-- `ies-triadic`
-- `iroh-p2p`
-- `iso-13485-certification`
-- `jank`
-- `jank-llvm`
-- `jo-clojure`
-- `julia-scientific`
-- `kan-extensions`
-- `koho-sheafnn`
-- `kscale-biomimetic-supply`
-- `kscale-ksim`
-- `latex-posters`
-- `levin-levity`
-- `libghostty-recording`
-- `libghostty-streaming`
-- `libghostty-vt`
-- `literature-review`
-- `little-schemer`
-- `live-recording`
-- `livestream`
-- `llms-txt-discovery`
-- `lojban`
-- `magic-todo`
-- `magic-todo-watch-deploy`
-- `markitdown`
-- `messaging-world`
-- `metabolomics-workbench-database`
-- `mlx-bitnet-gf3`
-- `modding-ghostty`
-- `modelica`
-- `modern-python`
-- `move-fuzzing`
-- `nblm-flashcards`
-- `neuro-symbolic-bridge`
-- `notebooklm-enterprise`
-- `olmoearth-mlx`
-- `omg-tension-resolver`
-- `openalex-database`
-- `org-babel-execution`
-- `own-goal`
-- `pdb-database`
-- `pijul`
-- `plurigrid-polyglot`
-- `pr-creator`
-- `proofgeneral-narya`
-- `protocol-acset`
-- `pylabrobot`
-- `pymatgen`
-- `pymoo`
-- `pyopenms`
-- `qri-valence`
-- `quarto-julia`
-- `quic-channel-grading`
-- `r2frida`
-- `reactome-database`
-- `reverse-engineering`
-- `riehl-post-rigorous`
-- `rubato-composer`
-- `scanpy`
-- `scientific-schematics`
-- `scvi-tools`
-- `sdr-borges-reafference`
-- `security-review`
-- `sentry`
-- `servo-ghostty`
-- `sheaf-uncertainty`
-- `sicm`
-- `sicmutils`
-- `siggraph`
-- `signal-isolated-auth`
-- `sim2real-predictive-coding`
-- `skill-taxonomy`
-- `specter-acset`
-- `srfi`
-- `string-database`
-- `swift-linux`
-- `threat-model-generation`
-- `time-travel-crdt`
-- `topomodelx-hodge`
-- `topos-catcolab`
-- `torch-geometric`
-- `torch_geometric`
-- `treatment-plans`
-- `trialectical-coin`
-- `truealife`
-- `unwiring-arena`
-- `uspto-database`
-- `uv-oneliners`
-- `venue-templates`
-- `voice-channel-uwd`
-- `vulnerability-validation`
-- `wolframite-compass`
-- `worlding-calendar`
-- `xypic-latex`
-- `yara-rule-authoring`
-- `yb-translator`
-- `zig-syrup-bci`
-- `zig-systems`
-- `zinc-database`
-- `zls-integration`
-- `zubyul-connectome`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

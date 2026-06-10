@@ -1,282 +1,143 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acp-commons` — invoked by — Atlas of Agent Client Protocol (ACP) clients, agents, and OCapN CapTP grounded actors.
+- `acset-superior-measurement` — invoked by — Measure ACSets better than authors via surjectivity gadgets, Betti numbers,
+- `acset-taxonomy` — invoked by — Taxonomy of ACSet skills with morphisms to semantically similar categorical relational sk…
+- `alice-emacs-mods` — invoked by — Tour of Alice's heavily customized terminal Emacs — Causal transients, Worlding org, proo…
+- `alife` — invoked by — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `alife2025` — invoked by — ALIFE 2025 Proceedings - 337 pages, 80+ papers on artificial life, evolution, emergence, …
+- `aptos-agent` — sibling in the skill routing & dispatch cluster — Interact with Aptos blockchain - check balances, transfer APT, swap tokens, stake, and ex…
+- `aptos-wallet-mcp` — sibling in the skill routing & dispatch cluster — Aptos Wallet MCP Skill
+- `ar-vr-xr` — invoked by — Reality tech (AR VR XR).
+- `beacon-repeater` — sibling in the skill routing & dispatch cluster — MLX↔JAX bidirectional beacon repeater with spectral gap random walk,
+- `beads-issue-tracker` — sibling in the skill routing & dispatch cluster — |
+- `bigquery-patent-search` — invoked by — Compressed BigQuery patent search carrier routed through bigquery asi interleave.
+- `bigquery-table-creator` — invoked by — Compressed BigQuery table lifecycle carrier routed through bigquery asi interleave.
+- `bob-emacs-mods` — invoked by — Complement to alice emacs mods.
+- `braindance-worlds` — invoked by — GF(3)-conserved distribution of Claude threads across Aptos worlds
+- `browser-history-acset` — invoked by — Browser History ACSet
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `cat-structure-rank` — invoked by — Ranked taxonomy of categorical structures from sets to ∞-topoi with gap analysis and Duck…
+- `cat-tripartite` — invoked by — Category Theory Tripartite: SICP generic dispatch, CTP Racket categories,
+- `catcolab-schemas` — invoked by — CatColab Schemas - database schema modeling distinguishing entities (tables) from attribu…
+- `chatgpt-export-acset` — invoked by — Transform ChatGPT ZIP exports into ACSets (Attributed C Sets) for:
+- `clifford-acset-bridge` — sibling in the skill routing & dispatch cluster — Bridge between Clifford Algebras (ganja.js Grassmann.jl) and ACSets with grade preserving…
+- `comfy-skills` — sibling in the skill routing & dispatch cluster — Manage and deploy ComfyUI workflow skills using the comfy skills CLI.
+- `commitment-tracker` — invoked by — The **Commitment Tracker** skill extracts and makes explicit the **ontological commitment…
+- `comrade-vlbi` — sibling in the skill routing & dispatch cluster — Event Horizon Telescope black hole imaging with deterministic coloring via Gay.jl integra…
+- `cq-ai` — invoked by — Code Query with AI enhanced deterministic analysis via SplitMix ternary classification
+- `crdt` — invoked by — crdt skill
+- `crdt-color` — invoked by — Color aware CRDT operations with GF(3) conservation, Narya proofs, ACSet schemas, and Bum…
+- `data-science-cli` — sibling in the skill routing & dispatch cluster — Unix command line tools for data science workflows.
+- `dd3c3c` — invoked by — Worldmat TiDAR: 3×3×3 matrix of diffusion draft + AR verify executions
+- `derivational-coalgebra` — invoked by — The highest tension in skill space (d=2.131):
+- `discopy` — invoked by — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `documentation-indexing` — sibling in the skill routing & dispatch cluster — Provide **full text search, semantic indexing, and relevance ranking** across all documen…
+- `duck-agent` — sibling in the skill routing & dispatch cluster — DuckDB file discovery agent with verified absolute paths
+- `duck-time-travel` — sibling in the skill routing & dispatch cluster — DuckDB time travel queries for temporal versioning and causality tracking
+- `duckdb-ies` — invoked by — Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking
+- `duckdb-temporal-versioning` — invoked by — Temporal versioning and interaction history with time travel queries,
+- `ducklake-categorical-model` — invoked by — Categorical modeling for DuckLake with ACSet schemas
+- `ducklake-meta-cognitive` — invoked by — Meta cognitive analysis patterns for DuckLake temporal introspection
+- `ducklake-pattern-expansion` — invoked by — Pattern expansion and schema evolution for DuckLake databases
+- `ducklake-semantic-analyzer` — invoked by — Semantic analysis for DuckLake ACSet models with GF(3) conservation
+- `ducklake-temporal-introspection` — invoked by — Time travel queries and temporal versioning for DuckLake
+- `effective-topos` — invoked by — FloxHub publication bmorphism effective topos - a comprehensive development
+- `energy-dominance` — invoked by — US National Energy Dominance Council framework integrated with Plurigrid decentralized in…
+- `energy-dynamics-acset` — invoked by — The Energy Dynamics ACSet integrates three complementary frameworks for measuring and com…
+- `firebase-vertex-ai` — invoked by — Compressed Firebase plus Vertex AI carrier routed through vertex asi interleave.
+- `ganja-wedge-game` — invoked by — Geometric Algebra game mechanics via ganja.js with implicit player skills for wedge vee d…
+- `gay-mcp` — sibling in the skill routing & dispatch cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `ghidra-mcp` — sibling in the skill routing & dispatch cluster — Ghidra reverse engineering via GhidraMCP + radare2 MCP with port resurrection.
+- `gmra-matlab` — sibling in the skill routing & dispatch cluster — Gay.jl''s SplitMix64 provides the **homogeneous property** required for sharding:
+- `go-1fps` — sibling in the skill routing & dispatch cluster — Every agent interaction is:
+- `graph-grafting` — sibling in the skill routing & dispatch cluster — Graph Grafting Skill
+- `gwern-simonw-emacs` — invoked by — - [simonw llm](https: github.com simonw llm) - LLM CLI with tool support
+- `gworkspace-mcp` — sibling in the skill routing & dispatch cluster — gworkspace mcp - Google Workspace MCP Integration with Temporal Consistency
+- `haskell-diagrams` — invoked by — haskell diagrams - Declarative Vector Graphics with Diagrams DSL
+- `hatchery-index` — invoked by — Index of 1057 hatchery repos with GAY.md color assignments.
+- `hermes-acp-over-captp` — invoked by — Bridge Hermes' ACP (Agent Client Protocol) transport onto OCapN CapTP for RPC and Syndica…
+- `hermes-approval-as-revocable` — invoked by — Replace Hermes' regex based dangerous command detector + per session approval state with …
+- `hermes-cred-as-sturdy` — invoked by — Replace Hermes' multi credential pool (raw API keys in process memory + file store) with …
+- `hermes-cron-as-dataspace` — invoked by — Replace Hermes' cron scheduler (jobs.py + scheduler.py) with scheduled facts in a Syndica…
+- `hermes-ctx-engine-shim` — invoked by — Re ground Hermes' ContextEngine plugin lifecycle (on_session_start update_from_response…
+- `hermes-fs-as-cap` — invoked by — Replace Hermes' ambient filesystem authority (validate then open) with a Goblins single d…
+- `hermes-goblins-bridge` — sibling in the skill routing & dispatch cluster — Interface compatible bridges from Hermes Agent harness (~ i hermes agent) to Spritely Gob…
+- `hermes-mcp-as-sealed` — invoked by — Replace Hermes' MCP OAuth token storage + per tool authorization with Goblins sealer unse…
+- `hermes-mem-as-dataspace` — invoked by — Collapse Hermes' 8 memory backends (honcho mem0 supermemory hindsight retaindb openviking…
+- `hermes-net-as-cap` — invoked by — Replace Hermes' SSRF blocklist (resolve then connect with documented DNS rebinding TOCTOU…
+- `hermes-session-as-snapshot` — sibling in the skill routing & dispatch cluster — Replace Hermes' session trajectory persistence (JSON files + in memory dict + flush point…
+- `hermes-tool-as-cap` — invoked by — Replace Hermes' singleton ToolRegistry (name handler dispatch with ambient authority) w…
+- `hijaling` — sibling in the skill routing & dispatch cluster — This skill extends [mlegls hyjax](https: github.com mlegls hyjax) with:
+- `hyjax-relational` — sibling in the skill routing & dispatch cluster — HyJAX Relational Thinking Skill
+- `icij-document-analysis` — invoked by — Document processing pipeline for large scale leak analysis.
+- `ies` — sibling in the skill routing & dispatch cluster — ies
+- `ies-triadic` — sibling in the skill routing & dispatch cluster — IES Triadic Skill
+- `infinity-topos` — invoked by — ∞-Topos theory unifying hatchery repos, worlds, and GA abelian extensions.
+- `influence-propagation` — sibling in the skill routing & dispatch cluster — Layer 7: Interperspectival Network Analysis and Influence Flow
+- `interverse-bundle` — sibling in the skill routing & dispatch cluster — This skill bundles the Interverse Engineering & Acrobatics research program:
+- `jank-llvm` — invoked by — Jank - Clojure dialect targeting LLVM with seamless C++ interoperability
+- `jo-clojure` — invoked by — Clojure skill orchestration and polyglot bridge.
+- `k-dense-ai` — sibling in the skill routing & dispatch cluster — - alphafold database - Protein structure prediction
+- `libghostty-recording` — invoked by — Record, stream, and replay libghostty vt terminal sessions for documentation, debugging, …
+- `looker-studio-bigquery` — invoked by — Compressed Looker Studio plus BigQuery dashboard carrier routed through bigquery asi inte…
+- `mirror` — invoked by — Social self persistence via mutual cognitive surrogates.
+- `naturality-factor` — invoked by — Naturality Factor Skill
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `neuro-symbolic-bridge` — sibling in the skill routing & dispatch cluster — High tension pairs (d ≈ 1.85):
+- `nuclear-smr` — sibling in the skill routing & dispatch cluster — Small Modular Reactor integration for Plurigrid energy dominance.
+- `opacity-detector` — invoked by — The **Opacity Detector** maps what can and cannot be known in a system, given an observer…
+- `openai-acset` — sibling in the skill routing & dispatch cluster — OpenAI's ChatGPT export has a **tree structured mapping** where messages form a DAG via …
+- `padic-ultrametric` — invoked by — P adic ultrametric distance as foundation for UMAP itUMAP HNSW Snowflake MLX SPI
+- `phylogenetic-operad-acset` — invoked by — Baez Otter phylogenetic operad Phyl = Com + [0,∞) as ACSet schema, with mathpix gem extra…
+- `plurigrid-asi-integrated` — sibling in the skill routing & dispatch cluster — Unified Plurigrid ASI skill combining ACSets, Gay MCP colors, bisimulation games, world h…
+- `plurigrid-polyglot` — sibling in the skill routing & dispatch cluster — Polyglot skill orchestration system integrating Go, Clojure, Hy, and Zig.
+- `polars` — invoked by — Fast DataFrame library (Apache Arrow).
+- `polyglot-orchestration` — sibling in the skill routing & dispatch cluster — Enable seamless execution and coordination of code across **5 language ecosystems** (Baba…
+- `polynomial-social-cognition` — invoked by — Social cognition via polynomial functors - "Agent" IS a polynomial p(y) = Σᵢy^{Aᵢ} with p…
+- `port-resurrection` — invoked by — Derive service ports from Gay.jl color sequence.
+- `protocol-acset` — invoked by — Model decentralized protocols as attributed C sets for compositional analysis, interopera…
+- `pun-decomposition` — invoked by — Pun Decomposition Skill (MINUS -1)
+- `py-acsets-rewriting` — invoked by — Python bridge to AlgebraicRewriting.jl for DPO SPO SqPO graph rewriting over ACSets.
+- `quantum-balalaika` — sibling in the skill routing & dispatch cluster — - **Contraction**: Remove belief WRONG, beliefs persist
+- `raffle-winner-picker` — sibling in the skill routing & dispatch cluster — Picks random winners from lists, spreadsheets, or Google Sheets for giveaways,
+- `reflow` — sibling in the skill routing & dispatch cluster — Information Reflow Skill (ERGODIC 0)
+- `repeng-gay` — invoked by — Representation engineering with Gay.jl deterministic coloring for control vectors.
+- `say-ducklake-xor` — sibling in the skill routing & dispatch cluster — Parallel thread DuckLake discovery with XOR uniqueness from gay_seed.
+- `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `sense` — sibling in the skill routing & dispatch cluster — sense - Diagrammatic Video Extraction with Subtitle Alignment
+- `servo-ghostty` — invoked by — Servo browser engine integration with ghostty web for full color terminal tiles
+- `shell-guard` — invoked by — Shell ENOENT prevention with fallback chain and environment validation
+- `skill-bonds` — sibling in the skill routing & dispatch cluster — Skill Bonds Registry
+- `sonification-collaborative` — invoked by — 1.
+- `specter-navigator-gadget` — sibling in the skill routing & dispatch cluster — Unified Specter Navigator 3 MATCH architecture with bidirectional path compilation
+- `spectre-worldmat` — invoked by — Spectre monotile principles applied to Worldmat thread evolution with GF(3) conservation
+- `sqlite-scanner` — invoked by — Scan filesystems for SQLite databases by magic byte detection.
+- `structured-decompositions` — invoked by — Functorial structured decompositions for compositional problem solving via sheaf theoreti…
+- `tailscale-file-transfer` — invoked by — Tailscale mesh VPN file transfer with open games semantics (play coplay)
+- `teglon-duck-ui` — invoked by — Duck UI provides browser based DuckDB via WebAssembly:
+- `transcribe` — sibling in the skill routing & dispatch cluster — Transcribe audio files to text with optional diarization and known speaker hints.
+- `triangle-sparsifier` — sibling in the skill routing & dispatch cluster — Triangle inequality for maximally correct world choice sparsification
+- `tritwies-trace` — invoked by — Trace of Tritwies GitHub org activities - Omega, DisCoPy, Wasm SpecTec, and MCP SDK integ…
+- `truealife` — invoked by — Comprehensive index of Artificial Life repositories across history, with special focus on…
+- `tuple-nav-composition` — invoked by — Tuple and product structure navigation with composition
+- `unwiring-arena` — sibling in the skill routing & dispatch cluster — Play Coplay arena theory for autopoietic closure with GF(3) conservation
+- `uv-oneliners` — sibling in the skill routing & dispatch cluster — UV UVX awesome one liners for ephemeral Python environments with multi package
+- `vertex-ai-deployer` — invoked by — Compressed Vertex AI model deployment carrier routed through vertex asi interleave.
+- `vertex-ai-endpoint-config` — invoked by — Compressed Vertex AI endpoint configuration carrier routed through vertex asi interleave.
+- `vertex-ai-media-master` — invoked by — Compressed Vertex AI media generation carrier routed through vertex asi interleave.
+- `vertex-ai-pipeline-creator` — sibling in the skill routing & dispatch cluster — Compressed Vertex AI pipeline carrier routed through vertex asi interleave.
+- `vertex-engine-inspector` — invoked by — Compressed Vertex Agent Engine inspection carrier routed through vertex asi interleave.
+- `video-analysis-gf3` — sibling in the skill routing & dispatch cluster — Analyze video files from chaotic_media_lake.duckdb with deterministic color assignment an…
+- `voice-channel-uwd` — invoked by — Voice Channel UWD Skill
+- `vr-steam-ssh` — sibling in the skill routing & dispatch cluster — Diagnose and fix SteamVR + eGPU issues on remote Windows machines via SSH.
+- `wev-verification` — invoked by — WEV Verification Skill
+- `worlding` — invoked by — Gay.jl world_ pattern: persistent composable state builders with GF(3) conservation, Möbi…
+- `worldmat-tidar` — invoked by — worldmat tidar
+- `x-twitter-mcp` — sibling in the skill routing & dispatch cluster — MCP server for X Twitter interaction - profile analysis, thread tracking, and social grap…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acp-commons`
-- `acset-superior-measurement`
-- `acset-taxonomy`
-- `alice-emacs-mods`
-- `alife`
-- `alife2025`
-- `aptos-agent`
-- `aptos-wallet-mcp`
-- `ar-vr-xr`
-- `beacon-repeater`
-- `beads-issue-tracker`
-- `bigquery-patent-search`
-- `bigquery-table-creator`
-- `bob-emacs-mods`
-- `braindance-worlds`
-- `browser-history-acset`
-- `cat`
-- `cat-structure-rank`
-- `cat-tripartite`
-- `catcolab-schemas`
-- `chatgpt-export-acset`
-- `clifford-acset-bridge`
-- `comfy-skills`
-- `commitment-tracker`
-- `comrade-vlbi`
-- `cq-ai`
-- `crdt`
-- `crdt-color`
-- `data-science-cli`
-- `dd3c3c`
-- `derivational-coalgebra`
-- `discopy`
-- `documentation-indexing`
-- `duck-agent`
-- `duck-time-travel`
-- `duckdb-ies`
-- `duckdb-temporal-versioning`
-- `ducklake-categorical-model`
-- `ducklake-meta-cognitive`
-- `ducklake-pattern-expansion`
-- `ducklake-semantic-analyzer`
-- `ducklake-temporal-introspection`
-- `effective-topos`
-- `energy-dominance`
-- `energy-dynamics-acset`
-- `firebase-vertex-ai`
-- `ganja-wedge-game`
-- `gay-mcp`
-- `ghidra-mcp`
-- `gmra-matlab`
-- `go-1fps`
-- `graph-grafting`
-- `gwern-simonw-emacs`
-- `gworkspace-mcp`
-- `haskell-diagrams`
-- `hatchery-index`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `hijaling`
-- `hyjax-relational`
-- `icij-document-analysis`
-- `ies`
-- `ies-triadic`
-- `infinity-topos`
-- `influence-propagation`
-- `interverse-bundle`
-- `jank-llvm`
-- `jo-clojure`
-- `k-dense-ai`
-- `libghostty-recording`
-- `looker-studio-bigquery`
-- `mirror`
-- `naturality-factor`
-- `networkx`
-- `neuro-symbolic-bridge`
-- `nuclear-smr`
-- `opacity-detector`
-- `openai-acset`
-- `padic-ultrametric`
-- `phylogenetic-operad-acset`
-- `plurigrid-asi-integrated`
-- `plurigrid-polyglot`
-- `polars`
-- `polyglot-orchestration`
-- `polynomial-social-cognition`
-- `port-resurrection`
-- `protocol-acset`
-- `pun-decomposition`
-- `py-acsets-rewriting`
-- `quantum-balalaika`
-- `raffle-winner-picker`
-- `reflow`
-- `repeng-gay`
-- `say-ducklake-xor`
-- `sdf`
-- `sense`
-- `servo-ghostty`
-- `shell-guard`
-- `skill-bonds`
-- `sonification-collaborative`
-- `specter-navigator-gadget`
-- `spectre-worldmat`
-- `sqlite-scanner`
-- `structured-decompositions`
-- `tailscale-file-transfer`
-- `teglon-duck-ui`
-- `transcribe`
-- `triangle-sparsifier`
-- `tritwies-trace`
-- `truealife`
-- `tuple-nav-composition`
-- `unwiring-arena`
-- `uv-oneliners`
-- `vertex-ai-deployer`
-- `vertex-ai-endpoint-config`
-- `vertex-ai-media-master`
-- `vertex-ai-pipeline-creator`
-- `vertex-engine-inspector`
-- `video-analysis-gf3`
-- `voice-channel-uwd`
-- `vr-steam-ssh`
-- `wev-verification`
-- `worlding`
-- `worldmat-tidar`
-- `x-twitter-mcp`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `acp-commons`
-- `acset-superior-measurement`
-- `acset-taxonomy`
-- `alice-emacs-mods`
-- `alife`
-- `alife2025`
-- `aptos-wallet-mcp`
-- `ar-vr-xr`
-- `beacon-repeater`
-- `beads-issue-tracker`
-- `bigquery-patent-search`
-- `bigquery-table-creator`
-- `bob-emacs-mods`
-- `braindance-worlds`
-- `browser-history-acset`
-- `cat-structure-rank`
-- `cat-tripartite`
-- `catcolab-schemas`
-- `chatgpt-export-acset`
-- `clifford-acset-bridge`
-- `comfy-skills`
-- `commitment-tracker`
-- `comrade-vlbi`
-- `cq-ai`
-- `crdt`
-- `crdt-color`
-- `data-science-cli`
-- `dd3c3c`
-- `derivational-coalgebra`
-- `discopy`
-- `documentation-indexing`
-- `duck-agent`
-- `duck-time-travel`
-- `duckdb-ies`
-- `duckdb-temporal-versioning`
-- `ducklake-categorical-model`
-- `ducklake-meta-cognitive`
-- `ducklake-pattern-expansion`
-- `ducklake-semantic-analyzer`
-- `ducklake-temporal-introspection`
-- `effective-topos`
-- `energy-dominance`
-- `energy-dynamics-acset`
-- `firebase-vertex-ai`
-- `ganja-wedge-game`
-- `ghidra-mcp`
-- `gmra-matlab`
-- `go-1fps`
-- `graph-grafting`
-- `gwern-simonw-emacs`
-- `gworkspace-mcp`
-- `haskell-diagrams`
-- `hatchery-index`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `hijaling`
-- `hyjax-relational`
-- `icij-document-analysis`
-- `ies`
-- `ies-triadic`
-- `infinity-topos`
-- `influence-propagation`
-- `interverse-bundle`
-- `jank-llvm`
-- `jo-clojure`
-- `libghostty-recording`
-- `looker-studio-bigquery`
-- `mirror`
-- `naturality-factor`
-- `neuro-symbolic-bridge`
-- `nuclear-smr`
-- `opacity-detector`
-- `openai-acset`
-- `padic-ultrametric`
-- `phylogenetic-operad-acset`
-- `plurigrid-polyglot`
-- `polars`
-- `polyglot-orchestration`
-- `polynomial-social-cognition`
-- `port-resurrection`
-- `protocol-acset`
-- `pun-decomposition`
-- `py-acsets-rewriting`
-- `quantum-balalaika`
-- `raffle-winner-picker`
-- `reflow`
-- `repeng-gay`
-- `say-ducklake-xor`
-- `sense`
-- `servo-ghostty`
-- `shell-guard`
-- `skill-bonds`
-- `sonification-collaborative`
-- `specter-navigator-gadget`
-- `spectre-worldmat`
-- `sqlite-scanner`
-- `structured-decompositions`
-- `tailscale-file-transfer`
-- `teglon-duck-ui`
-- `transcribe`
-- `triangle-sparsifier`
-- `tritwies-trace`
-- `truealife`
-- `tuple-nav-composition`
-- `unwiring-arena`
-- `uv-oneliners`
-- `vertex-ai-deployer`
-- `vertex-ai-endpoint-config`
-- `vertex-ai-media-master`
-- `vertex-ai-pipeline-creator`
-- `vertex-engine-inspector`
-- `video-analysis-gf3`
-- `voice-channel-uwd`
-- `vr-steam-ssh`
-- `wev-verification`
-- `worlding`
-- `worldmat-tidar`
-- `x-twitter-mcp`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

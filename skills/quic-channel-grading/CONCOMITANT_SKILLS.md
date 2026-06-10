@@ -1,33 +1,21 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `babashka` — builds on — Clojure scripting without JVM startup.
+- `bisimulation-game` — builds on — Bisimulation game for resilient skill dispersal across AI agents with
+- `cat` — builds on — cat Skill: Derivational Pipe Chaining
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `doc` — builds on — Use when the task involves reading, creating, or editing .docx documents, especially wh…
+- `iroh-p2p` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Build modern peer to peer applications with Iroh.
+- `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
+- `localsend-analysis` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Analyze LocalSend repos with tree sitter tags, gh GraphQL contributor snapshots, and prot…
+- `networkx` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `org` — builds on — Org mode manual (25K lines info).
+- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `protocol-acset` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Model decentralized protocols as attributed C sets for compositional analysis, interopera…
+- `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `babashka`
-- `bisimulation-game`
-- `cat`
-- `clojure`
-- `doc`
-- `iroh-p2p`
-- `k-dense-ai`
-- `localsend-analysis`
-- `networkx`
-- `org`
-- `pdf`
-- `protocol-acset`
-- `rust`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

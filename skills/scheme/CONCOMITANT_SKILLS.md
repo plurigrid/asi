@@ -1,242 +1,120 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `able-markets` — invoked by — Skill able markets
+- `acsets` — invoked by — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `adjunction-algebra` — invoked by — Adjunctions as universal arrows.
+- `bafishka` — sibling in the interactive REPLs & Lisp tooling cluster — 🐟 Rust native Fish shell friendly file operations with Steel backed SCI
+- `beeper-mcp` — invoked by — Unified messaging via Beeper Desktop MCP.
+- `bifunctor-bridge` — invoked by — Bifunctors: two argument functors for product categories.
+- `bmorphism-stars` — invoked by — bmorphism's GitHub stars (2155 repos) and created repos - a curated index
+- `botnet-disruption` — invoked by — Coordinated botnet takedown methodologies — sinkholing, infrastructure mapping, legal fra…
+- `botnet-studies` — invoked by — Botnet architecture taxonomy, detection techniques, and defensive analysis.
+- `browser-navigation` — invoked by — |
+- `captp` — invoked by — CapTP: Capability Transfer Protocol
+- `cat-tripartite` — invoked by — Category Theory Tripartite: SICP generic dispatch, CTP Racket categories,
+- `cheerpx-self-hosting` — invoked by — Run x86 Linux binaries in the browser via WebAssembly.
+- `comonad-context` — invoked by — Comonads: dual to Monad.
+- `condensed-anima-qc` — invoked by — Condensed ANIMA on quantum classical and classical quantum networks.
+- `ctf-rev` — invoked by — Solve CTF reverse engineering challenges using systematic analysis to find flags, keys, o…
+- `distributive-law` — invoked by — Distributive laws: monad comonad composition.
+- `documentation-indexing` — invoked by — Provide **full text search, semantic indexing, and relevance ranking** across all documen…
+- `dynamic-sufficiency-goblin` — invoked by — Self regulating Goblins actor implementing Ivan Illich's dynamic sufficiency
+- `effective-topos` — mutually referenced — FloxHub publication bmorphism effective topos - a comprehensive development
+- `end-coend` — invoked by — Ends and Coends: universal (co)wedges.
+- `flox` — builds on — Reproducible development environments powered by Nix.
+- `free-forgetful` — invoked by — Free Forgetful adjunctions.
+- `geb` — invoked by — Anoma''s Geb: Categorical semantics via S expressions, polynomial functors
+- `geiser-chicken` — sibling in the interactive REPLs & Lisp tooling cluster — Geiser REPL integration for Chicken Scheme with SplitMixTernary 3 coloring and crdt.el se…
+- `gh-skill-explorer` — invoked by — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `glamorous-moldable-multiplatform` — invoked by — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
+- `goblins` — mutually referenced — Distributed object capability system (6.5K lines info).
+- `goblins-adapter` — invoked by — ElizaOS OpenClaw Goblins OCapN adapter (study + bridge)
+- `grothendieck-fibration` — invoked by — Fibrations and indexed categories.
+- `guile` — sibling in the interactive REPLs & Lisp tooling cluster — GNU Scheme interpreter (67K lines info).
+- `guile-goblins-hoot` — sibling in the interactive REPLs & Lisp tooling cluster — Spritely Goblins distributed actor system with Hoot WebAssembly compiler.
+- `ha-load-balancing` — invoked by — |
+- `hatchery-papers` — sibling in the interactive REPLs & Lisp tooling cluster — Chicken Scheme Hatchery eggs and academic papers for color logic, 2TDX,
+- `hermes-acp-over-captp` — invoked by — Bridge Hermes' ACP (Agent Client Protocol) transport onto OCapN CapTP for RPC and Syndica…
+- `hermes-approval-as-revocable` — invoked by — Replace Hermes' regex based dangerous command detector + per session approval state with …
+- `hermes-cred-as-sturdy` — invoked by — Replace Hermes' multi credential pool (raw API keys in process memory + file store) with …
+- `hermes-cron-as-dataspace` — invoked by — Replace Hermes' cron scheduler (jobs.py + scheduler.py) with scheduled facts in a Syndica…
+- `hermes-ctx-engine-shim` — invoked by — Re ground Hermes' ContextEngine plugin lifecycle (on_session_start update_from_response…
+- `hermes-fs-as-cap` — invoked by — Replace Hermes' ambient filesystem authority (validate then open) with a Goblins single d…
+- `hermes-goblins-bridge` — invoked by — Interface compatible bridges from Hermes Agent harness (~ i hermes agent) to Spritely Gob…
+- `hermes-mcp-as-sealed` — invoked by — Replace Hermes' MCP OAuth token storage + per tool authorization with Goblins sealer unse…
+- `hermes-mem-as-dataspace` — invoked by — Collapse Hermes' 8 memory backends (honcho mem0 supermemory hindsight retaindb openviking…
+- `hermes-net-as-cap` — invoked by — Replace Hermes' SSRF blocklist (resolve then connect with documented DNS rebinding TOCTOU…
+- `hermes-session-as-snapshot` — invoked by — Replace Hermes' session trajectory persistence (JSON files + in memory dict + flush point…
+- `hermes-tool-as-cap` — invoked by — Replace Hermes' singleton ToolRegistry (name handler dispatch with ambient authority) w…
+- `hom-functor` — invoked by — Hom(A,-) and Hom(-,B) representables.
+- `hoot` — sibling in the interactive REPLs & Lisp tooling cluster — Scheme WebAssembly compiler (4K lines info).
+- `hy-emacs` — sibling in the interactive REPLs & Lisp tooling cluster — Hylang Emacs integration with hy mode, Hyuga LSP, and DisCoPy sexp coloring
+- `initial-terminal` — sibling in the interactive REPLs & Lisp tooling cluster — Initial Terminal objects.
+- `iso-13485-certification` — invoked by — Comprehensive toolkit for preparing ISO 13485 certification documentation for medical dev…
+- `join-semilattice` — invoked by — Join semilattices and sup preservation.
+- `julia-scientific` — sibling in the interactive REPLs & Lisp tooling cluster — Julia package equivalents for 137 K Dense AI scientific skills.
+- `kan-extension` — invoked by — Left Right Kan extensions.
+- `latex-posters` — sibling in the interactive REPLs & Lisp tooling cluster — Create professional research posters in LaTeX using beamerposter, tikzposter, or baposter.
+- `lawvere-theory` — invoked by — Lawvere theories: categorical universal algebra.
+- `leapity-frog` — invoked by — When conservation is locally violated:
+- `lispsyntax-acset` — sibling in the interactive REPLs & Lisp tooling cluster — LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv style
+- `little-schemer` — sibling in the interactive REPLs & Lisp tooling cluster — Little Schemer Skill
+- `lojban` — invoked by — Lojban: the logical language designed for unambiguous machine parseable human expression …
+- `magic-todo-watch-deploy` — invoked by — Build, deploy, and manage the MagicTodoWatch iOS watchOS voice to task pipeline app.
+- `market-research-reports` — invoked by — Generate comprehensive market research reports (50+ pages) in the style of top consulting…
+- `mcp-inspector` — invoked by — Test Model Context Protocol (MCP) servers using the MCP Inspector CLI with correct syntax
+- `mcp-tripartite` — invoked by — MCP tripartite integration for orchestrating distributed tool protocols
+- `modding-ghostty` — sibling in the interactive REPLs & Lisp tooling cluster — Defensive security map of Ghostty terminal escape sequences.
+- `monoidal-category` — invoked by — Monoidal categories: ⊗, I, α, λ, ρ.
+- `natural-transformation` — invoked by — Natural transformations: morphisms of functors.
+- `onepassword-cli` — sibling in the interactive REPLs & Lisp tooling cluster — 1Password CLI (op) for secure secret management, credential injection, and shell plugin a…
+- `openclaw-goblins-adapter` — invoked by — Bridge ElizaOS OpenClaw plugins to Goblins OCapN actors.
+- `operad-composition` — invoked by — Operads: multi input operations.
+- `paper-2-web` — invoked by — This skill should be used when converting academic papers into promotional and presentati…
+- `paperproof-validator` — invoked by — Formal Proof Visualization and Verification for Lean 4
+- `peer-review` — invoked by — Systematic peer review toolkit.
+- `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
+- `plurigrid-polyglot` — invoked by — Polyglot skill orchestration system integrating Go, Clojure, Hy, and Zig.
+- `polyglot-orchestration` — invoked by — Enable seamless execution and coordination of code across **5 language ecosystems** (Baba…
+- `polyglot-spi` — invoked by — Cross Language Strong Parallelism Invariance Verification
+- `presheaf-topos` — invoked by — Presheaves: contravariant Set valued functors.
+- `propagators` — invoked by — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
+- `quillen-model` — invoked by — Quillen model categories: (C,W,F) structures.
+- `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
+- `right-adjoint` — invoked by — Right adjoints preserve limits.
+- `rubato-composer` — invoked by — Rubato Composer integration for Mazzola's mathematical music theory
+- `say-ducklake-xor` — invoked by — Parallel thread DuckLake discovery with XOR uniqueness from gay_seed.
+- `scientific-slides` — invoked by — Build slide decks and presentations for research talks.
+- `sdf` — invoked by — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `sdr-borges-reafference` — invoked by — SDR (GNU Radio) as self learning REPL with Borges infinite library exploration, reafferen…
+- `seatbelt-sandboxer` — invoked by — Generates minimal macOS Seatbelt sandbox configurations.
+- `segal-space` — invoked by — Segal spaces: ∞-categories via simplicial spaces.
+- `semi-reliable-nashator` — invoked by — This skill implements the **morphisms of open games** paper''s insight: lenses connect co…
+- `sexp-neighborhood` — sibling in the interactive REPLs & Lisp tooling cluster — Exhaustive index of S expression using skills with GF(3) triadic classification and bridg…
+- `sicm` — sibling in the interactive REPLs & Lisp tooling cluster — - **Generic arithmetic** extensible across numeric types
+- `sicmutils` — sibling in the interactive REPLs & Lisp tooling cluster — SICMUtils Emmy - Clojure library for symbolic mathematics, automatic differentiation, and…
+- `slime-lisp` — sibling in the interactive REPLs & Lisp tooling cluster — SLIME integration for Common Lisp development
+- `srfi` — sibling in the interactive REPLs & Lisp tooling cluster — SRFI Skill
+- `stahl-bersetzer` — invoked by — Steel to Stahl (mattwparas steel Scheme) German translation validator with semantic prese…
+- `stahl-übersetzer` — invoked by — Steel Stahl Übersetzungsvalidierung mit semantischer Erhaltung und Typ Äquivalenz
+- `stellogen` — invoked by — Stellogen Skill
+- `syrup` — invoked by — Syrup binary serialization for OCapN CapTP wire format.
+- `theorem-prover-orchestration` — invoked by — Unified theorem prover ecosystem dispatcher - routes proofs across Dafny, Lean4, Coq, Agd…
+- `topos-logic` — invoked by — Topoi: cartesian closed + subobject classifier.
+- `torch-geometric` — invoked by — Graph Neural Networks (PyG).
+- `torch_geometric` — invoked by — Graph Neural Networks (PyG).
+- `treatment-plans` — sibling in the interactive REPLs & Lisp tooling cluster — Generate concise (3 4 page), focused medical treatment plans in LaTeX PDF format for all …
+- `universal-property` — invoked by — Universal properties: unique factorization.
+- `virtual-double` — invoked by — Virtual double categories: loose morphisms.
+- `wasm-goblins` — invoked by — Goblins ↔ WASM runtime interactions across verified runtimes.
+- `weighted-limit` — invoked by — Weighted (co)limits: J indexed diagrams.
+- `worlding-calendar` — invoked by — Calendar events tied to 26 letter worlds via org mode.
+- `x-module-bimodule` — invoked by — Bimodules and profunctors.
+- `yoneda-embedding` — invoked by — Yoneda: C [Cᵒᵖ, Set] fully faithful.
+- `zigzag-equivalence` — invoked by — Zigzag equivalences: localization paths.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `able-markets`
-- `acsets`
-- `adjunction-algebra`
-- `bafishka`
-- `beeper-mcp`
-- `bifunctor-bridge`
-- `bmorphism-stars`
-- `botnet-disruption`
-- `botnet-studies`
-- `browser-navigation`
-- `captp`
-- `cat-tripartite`
-- `cheerpx-self-hosting`
-- `comonad-context`
-- `condensed-anima-qc`
-- `ctf-rev`
-- `distributive-law`
-- `documentation-indexing`
-- `dynamic-sufficiency-goblin`
-- `effective-topos`
-- `end-coend`
-- `flox`
-- `free-forgetful`
-- `geb`
-- `geiser-chicken`
-- `gh-skill-explorer`
-- `glamorous-moldable-multiplatform`
-- `goblins`
-- `goblins-adapter`
-- `grothendieck-fibration`
-- `guile`
-- `guile-goblins-hoot`
-- `ha-load-balancing`
-- `hatchery-papers`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `hom-functor`
-- `hoot`
-- `hy-emacs`
-- `initial-terminal`
-- `iso-13485-certification`
-- `join-semilattice`
-- `julia-scientific`
-- `kan-extension`
-- `latex-posters`
-- `lawvere-theory`
-- `leapity-frog`
-- `lispsyntax-acset`
-- `little-schemer`
-- `lojban`
-- `magic-todo-watch-deploy`
-- `market-research-reports`
-- `mcp-inspector`
-- `mcp-tripartite`
-- `modding-ghostty`
-- `monoidal-category`
-- `natural-transformation`
-- `onepassword-cli`
-- `openclaw-goblins-adapter`
-- `operad-composition`
-- `paper-2-web`
-- `paperproof-validator`
-- `peer-review`
-- `phyllotaxis`
-- `plurigrid-polyglot`
-- `polyglot-orchestration`
-- `polyglot-spi`
-- `presheaf-topos`
-- `propagators`
-- `quillen-model`
-- `repl-commons`
-- `right-adjoint`
-- `rubato-composer`
-- `say-ducklake-xor`
-- `scientific-slides`
-- `sdf`
-- `sdr-borges-reafference`
-- `seatbelt-sandboxer`
-- `segal-space`
-- `semi-reliable-nashator`
-- `sexp-neighborhood`
-- `sicm`
-- `sicmutils`
-- `slime-lisp`
-- `srfi`
-- `stahl-bersetzer`
-- `stahl-übersetzer`
-- `stellogen`
-- `syrup`
-- `theorem-prover-orchestration`
-- `topos-logic`
-- `torch-geometric`
-- `torch_geometric`
-- `treatment-plans`
-- `universal-property`
-- `virtual-double`
-- `wasm-goblins`
-- `weighted-limit`
-- `worlding-calendar`
-- `x-module-bimodule`
-- `yoneda-embedding`
-- `zigzag-equivalence`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `able-markets`
-- `acsets`
-- `adjunction-algebra`
-- `bafishka`
-- `beeper-mcp`
-- `bifunctor-bridge`
-- `bmorphism-stars`
-- `botnet-disruption`
-- `botnet-studies`
-- `browser-navigation`
-- `captp`
-- `cat-tripartite`
-- `cheerpx-self-hosting`
-- `comonad-context`
-- `condensed-anima-qc`
-- `ctf-rev`
-- `distributive-law`
-- `documentation-indexing`
-- `dynamic-sufficiency-goblin`
-- `effective-topos`
-- `end-coend`
-- `free-forgetful`
-- `geb`
-- `geiser-chicken`
-- `gh-skill-explorer`
-- `glamorous-moldable-multiplatform`
-- `goblins`
-- `goblins-adapter`
-- `grothendieck-fibration`
-- `guile`
-- `guile-goblins-hoot`
-- `ha-load-balancing`
-- `hatchery-papers`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `hom-functor`
-- `hoot`
-- `hy-emacs`
-- `initial-terminal`
-- `iso-13485-certification`
-- `join-semilattice`
-- `julia-scientific`
-- `kan-extension`
-- `latex-posters`
-- `lawvere-theory`
-- `leapity-frog`
-- `lispsyntax-acset`
-- `little-schemer`
-- `lojban`
-- `magic-todo-watch-deploy`
-- `market-research-reports`
-- `mcp-inspector`
-- `mcp-tripartite`
-- `modding-ghostty`
-- `monoidal-category`
-- `natural-transformation`
-- `onepassword-cli`
-- `openclaw-goblins-adapter`
-- `operad-composition`
-- `paper-2-web`
-- `paperproof-validator`
-- `peer-review`
-- `phyllotaxis`
-- `plurigrid-polyglot`
-- `polyglot-orchestration`
-- `polyglot-spi`
-- `presheaf-topos`
-- `propagators`
-- `quillen-model`
-- `repl-commons`
-- `right-adjoint`
-- `rubato-composer`
-- `say-ducklake-xor`
-- `scientific-slides`
-- `sdf`
-- `sdr-borges-reafference`
-- `seatbelt-sandboxer`
-- `segal-space`
-- `semi-reliable-nashator`
-- `sexp-neighborhood`
-- `sicm`
-- `sicmutils`
-- `slime-lisp`
-- `srfi`
-- `stahl-bersetzer`
-- `stahl-übersetzer`
-- `stellogen`
-- `syrup`
-- `theorem-prover-orchestration`
-- `topos-logic`
-- `torch-geometric`
-- `torch_geometric`
-- `treatment-plans`
-- `universal-property`
-- `virtual-double`
-- `wasm-goblins`
-- `weighted-limit`
-- `worlding-calendar`
-- `x-module-bimodule`
-- `yoneda-embedding`
-- `zigzag-equivalence`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

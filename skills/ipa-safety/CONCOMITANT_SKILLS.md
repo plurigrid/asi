@@ -1,30 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `chromatic-peptide-samovar` — sibling in the interactive REPLs & Lisp tooling cluster — A **samovar** (самовар) keeps water hot indefinitely through self contained combustion.
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `jupyter` — sibling in the interactive REPLs & Lisp tooling cluster — Read, modify, execute, and convert Jupyter notebooks programmatically.
+- `quantum-balalaika` — builds on — - **Contraction**: Remove belief WRONG, beliefs persist
+- `reflow` — builds on — Information Reflow Skill (ERGODIC 0)
+- `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
+- `ruler` — builds on — Unified AI agent configuration propagation across 18+ coding assistants.
+- `topos-generate` — builds on — Topos Generation Skill (PLUS +1)
+- `transcribe` — builds on — Transcribe audio files to text with optional diarization and known speaker hints.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `chromatic-peptide-samovar`
-- `gay-mcp`
-- `jupyter`
-- `quantum-balalaika`
-- `reflow`
-- `repl-commons`
-- `ruler`
-- `topos-generate`
-- `transcribe`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `jupyter`
-- `repl-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

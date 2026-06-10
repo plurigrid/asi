@@ -1,26 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `kinesis-advantage360-pro-kb360-pro` — sibling in the skill routing & dispatch cluster — Official Kinesis Advantage360 Professional (ZMK Clique) keyboard usage: layers, Bluetoo…
+- `kinesis-kb360pro` — sibling in the skill routing & dispatch cluster — Official Kinesis Advantage360 Professional (ZMK Clique) keyboard usage: layers, Bluetoo…
+- `rank-polymorphism` — builds on — APL BQN rank polymorphism: implicit iteration via array rank, no explicit
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `cat`
-- `init`
-- `kinesis-advantage360-pro-kb360-pro`
-- `kinesis-kb360pro`
-- `rank-polymorphism`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `kinesis-advantage360-pro-kb360-pro`
-- `kinesis-kb360pro`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

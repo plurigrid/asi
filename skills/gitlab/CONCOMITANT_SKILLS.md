@@ -1,40 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `flox-containers` — invoked by — Containerizing Flox environments with Docker Podman.
+- `flox-publish` — invoked by — Use for publishing user packages to flox for use in Flox environments.
+- `gh-emacs` — sibling in the skill routing & dispatch cluster — GitHub Actions as a **decentralized Emacs compute fabric**:
+- `hermes-mcp-as-sealed` — invoked by — Replace Hermes' MCP OAuth token storage + per tool authorization with Goblins sealer unse…
+- `openclaw-goblins-adapter` — invoked by — Bridge ElizaOS OpenClaw plugins to Goblins OCapN actors.
+- `org` — builds on — Org mode manual (25K lines info).
+- `osint-exposure-audit` — invoked by — >
+- `render-deploy` — invoked by — Deploy applications to Render by analyzing codebases, generating render.yaml Blueprints, …
+- `syrup` — invoked by — Syrup binary serialization for OCapN CapTP wire format.
+- `verification-quality` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `verification-quality-assurance` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `flox-containers`
-- `flox-publish`
-- `gh-emacs`
-- `hermes-mcp-as-sealed`
-- `openclaw-goblins-adapter`
-- `org`
-- `osint-exposure-audit`
-- `render-deploy`
-- `syrup`
-- `verification-quality`
-- `verification-quality-assurance`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `flox-containers`
-- `flox-publish`
-- `gh-emacs`
-- `hermes-mcp-as-sealed`
-- `openclaw-goblins-adapter`
-- `osint-exposure-audit`
-- `render-deploy`
-- `syrup`
-- `verification-quality`
-- `verification-quality-assurance`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

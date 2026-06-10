@@ -1,26 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
+- `cq-ai` — sibling in the security auditing, fuzzing & pentest cluster — Code Query with AI enhanced deterministic analysis via SplitMix ternary classification
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
+- `security` — sibling in the security auditing, fuzzing & pentest cluster — Security best practices for secure coding, authentication, authorization, and data protec…
+- `semgrep` — sibling in the security auditing, fuzzing & pentest cluster — Run Semgrep static analysis for fast security scanning and pattern matching.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `cq-ai`
-- `init`
-- `rust`
-- `security`
-- `semgrep`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,26 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — sibling in the skill routing & dispatch cluster — Primary Aptos testnet wallet for transaction origination.
+- `assets` — sibling in the skill routing & dispatch cluster — Assets skill
+- `jj` — builds on — Jujutsu (jj) — Git compatible VCS with automatic change tracking, conflict aware rebasing…
+- `orchestrate` — sibling in the skill routing & dispatch cluster — Orchestrate multiple AI agents across Vers VMs for parallel task execution
+- `org` — builds on — Org mode manual (25K lines info).
+- `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `assets`
-- `jj`
-- `orchestrate`
-- `org`
-- `scheme`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

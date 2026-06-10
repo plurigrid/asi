@@ -1,432 +1,221 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2-monad` — invoked by — A **2 monad** is a monad internal to a 2 category K.
+- `_integrated` — sibling in the skill routing & dispatch cluster — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `academic-research` — sibling in the skill routing & dispatch cluster — Search academic papers across arXiv, PubMed, Semantic Scholar, bioRxiv, medRxiv, Google S…
+- `acsets` — invoked by — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `address-sanitizer` — invoked by — Use AddressSanitizer to detect memory safety bugs in C C++ programs.
+- `aflpp` — invoked by — Fuzzing with AFL++ for comprehensive binary and source code fuzzing.
+- `algebraic-rewriting` — builds on — Category theoretic graph rewriting with DPO, SPO, and SqPO pushouts for C Sets.
+- `algorand-vulnerability-scanner` — invoked by — Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, …
+- `amp-api-awareness` — invoked by — Extract hidden Amp API patterns from local thread data via DuckDB analysis
+- `amp-team-usage` — invoked by — Amp Team Usage
+- `aptos-wallet-mcp` — sibling in the skill routing & dispatch cluster — Aptos Wallet MCP Skill
+- `aristotle-lean` — invoked by — IMO Gold Medal level Lean4 theorem proving via Harmonic API
+- `asi-integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `ask-questions-if-underspecified` — invoked by — Clarify requirements before implementing.
+- `assembly-index` — invoked by — Lee Cronin's Assembly Theory for molecular complexity measurement and
+- `atheris` — invoked by — Python fuzzing with Atheris for discovering vulnerabilities in Python code.
+- `audit-context-building` — invoked by — Enables ultra granular, line by line code analysis to build deep architectural context be…
+- `audit-prep-assistant` — invoked by — Prepare your codebase for security review using Trail of Bits' checklist.
+- `behaviour-surprisal-analysis` — invoked by — Behaviour Surprisal Analysis
+- `bidirectional-lens-logic` — invoked by — Hedges' 4 kind lattice for bidirectional programming - covariant contravariant invariant …
+- `bkp-interleaving` — invoked by — This skill is the **deep interleaving** of the five BKP 2 monad theory skills:
+- `blackhat-go` — invoked by — Go based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT,…
+- `bluesky-jetstream` — invoked by — Bluesky Jetstream Firehose Skill
+- `bmorphism-diagrams` — sibling in the skill routing & dispatch cluster — bmorphism Diagrams
+- `bob` — sibling in the skill routing & dispatch cluster — World BOB Skill
+- `browser-history-acset` — invoked by — Browser History ACSet
+- `burp-suite` — invoked by — Web application security testing with Burp Suite.
+- `burpsuite-project-parser` — invoked by — Searches and explores Burp Suite project files (.burp) from the command line.
+- `cairo-vulnerability-scanner` — invoked by — Scans Cairo StarkNet smart contracts for 6 critical vulnerabilities including felt252 ari…
+- `cargo-fuzz` — sibling in the skill routing & dispatch cluster — Rust fuzzing with cargo fuzz (libFuzzer).
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `cat-tripartite` — invoked by — Category Theory Tripartite: SICP generic dispatch, CTP Racket categories,
+- `categorical-rewriting-triad4` — invoked by — Categorical Rewriting: Triad 4 (World Transformation)
+- `cats-for-ai` — invoked by — cats.for" (Categories for AI)
+- `code-maturity-assessor` — invoked by — Systematic code maturity assessment using Trail of Bits' 9 category framework.
+- `codeql` — invoked by — Run CodeQL static analysis for security vulnerability detection, taint tracking, and data…
+- `codescent` — invoked by — A **codescent object** is the 2 categorical analogue of a coequalizer.
+- `coequalizers` — invoked by — Quotient redundant skill paths via coequalizers, preserving GF(3) conservation
+- `constant-time-analysis` — invoked by — Detects timing side channel vulnerabilities in cryptographic code.
+- `constant-time-testing` — invoked by — Testing for timing side channels and constant time implementation verification.
+- `cosmos-vulnerability-scanner` — invoked by — Scans Cosmos SDK blockchains for 9 consensus critical vulnerabilities including non deter…
+- `coverage-analysis` — invoked by — Code coverage analysis for testing quality assessment.
+- `crdt` — invoked by — crdt skill
+- `critical-opalescence` — invoked by — Critical opalescence at phase transitions: diverging correlation length, light scattering…
+- `crossmodal-gf3` — invoked by — GF(3) {Tactile, Auditory, Haptic} universal bridge for accessible color perception
+- `cybernetic-open-game` — invoked by — Cybernetic Open Game Skill
+- `cynara-policy-checker` — invoked by — Queries Cynara database and validates runtime privilege policies.
+- `cynara-policy-validator` — invoked by — Validates Cynara privilege access control policies.
+- `datamol` — invoked by — Pythonic wrapper around RDKit with simplified interface and sensible defaults.
+- `deepchem` — invoked by — Molecular machine learning toolkit.
+- `delta-derivation` — sibling in the skill routing & dispatch cluster — Extract information delta between Claude.ai conversation exports using ACSets morphisms a…
+- `derangement-crdt` — invoked by — Derangement CRDT Skill
+- `diffdock` — invoked by — Diffusion based molecular docking.
+- `differential-review` — invoked by — Security focused code review of diffs and pull requests using Trail of Bits expertise.
+- `doctrinal-adjunction` — sibling in the skill routing & dispatch cluster — A **doctrinal adjunction** is Kelly''s 1974 theorem establishing a canonical bijection be…
+- `duck-agent` — sibling in the skill routing & dispatch cluster — DuckDB file discovery agent with verified absolute paths
+- `dwarf-expert` — invoked by — Provides expertise for analyzing DWARF debug files and understanding the DWARF debug form…
+- `entropy-sim2real` — invoked by — Entropy driven sim2real transfer.
+- `entry-point-analyzer` — invoked by — Analyzes smart contract codebases to identify state changing entry points for security au…
+- `evla-vla` — invoked by — EdgeVLA - Open source edge vision language action model for robotics.
+- `exploratory-data-analysis` — invoked by — Perform comprehensive exploratory data analysis on scientific data files across 200+ file…
+- `external` — sibling in the skill routing & dispatch cluster — External skill interface for integration with external systems
+- `fix-review` — invoked by — Review security fixes and patches for completeness and correctness.
+- `flexible-algebra` — invoked by — A **flexible T algebra** is a strict T algebra that admits enough "room to move" — it is …
+- `flow` — builds on — One parameter group of diffeomorphisms generated by vector field
+- `flowglad-integration` — sibling in the skill routing & dispatch cluster — Zero webhook billing for AI agents
+- `flox-mcp` — sibling in the skill routing & dispatch cluster — MCP server wrapper for flox CLI operations - environment management via JSON RPC
+- `frustration-eradication` — sibling in the skill routing & dispatch cluster — Frustration Eradication Skill
+- `fuzzing-dictionary` — invoked by — Building effective fuzzing dictionaries for improved fuzzer performance.
+- `fuzzing-obstacles` — invoked by — Overcoming fuzzing obstacles and improving fuzzer effectiveness.
+- `gay-monte-carlo` — invoked by — Gay Monte Carlo Measurements
+- `gestalt-hacking` — sibling in the skill routing & dispatch cluster — Gestalt Hacking Skill (ERGODIC 0)
+- `gesture-hypergestures` — invoked by — Gesture Hypergestures Skill
+- `gf3-constrained-animation` — invoked by — A skill for creating minimal, GF(3)-constrained animations optimized for Slack emoji GIFs
+- `gf3-tripartite` — invoked by — GF(3) Tripartite Orchestration
+- `gh-interactome` — sibling in the skill routing & dispatch cluster — GitHub author interaction network discovery.
+- `glass-bead-game` — builds on — Hesse inspired interdisciplinary synthesis game with Badiou triangle
+- `google-workspace` — sibling in the skill routing & dispatch cluster — Google Workspace MCP integration for Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms,…
+- `graded-monad` — invoked by — A **graded monad** (also called an **indexed monad** or **parametrized monad**) is a mona…
+- `graph-grafting` — sibling in the skill routing & dispatch cluster — Graph Grafting Skill
+- `guidelines-advisor` — invoked by — Comprehensive smart contract development advisor based on Trail of Bits' best practices.
+- `harness-writing` — invoked by — Writing effective fuzzing harnesses for security testing.
+- `homoiconic-rewriting` — invoked by — Unified homoiconic graph rewriting - λ calculus, interaction nets, ACSets, CUDA paralleli…
+- `hyperbolic-bulk` — invoked by — On chain GF(3) entropy storage via Aptos Move - bulk boundary correspondence where entrop…
+- `hythermal` — sibling in the skill routing & dispatch cluster — HyThermal Skill
+- `interpreting-culture-index` — sibling in the skill routing & dispatch cluster — Use when interpreting Culture Index surveys, CI profiles, behavioral assessments, or pers…
+- `iot-device-provisioning` — sibling in the skill routing & dispatch cluster — Secure provisioning for TizenRT ARTIK IoT devices.
+- `iroh-p2p` — invoked by — Build modern peer to peer applications with Iroh.
+- `jank` — invoked by — jank lang: native Clojure on LLVM with seamless C++ interop.
+- `jira-issues` — sibling in the skill routing & dispatch cluster — Create, update, and manage Jira issues from natural language.
+- `joker` — invoked by — DBPF package parser and validator for The Sims save files
+- `julia-scientific` — invoked by — Julia package equivalents for 137 K Dense AI scientific skills.
+- `k-dense-ai` — sibling in the skill routing & dispatch cluster — - alphafold database - Protein structure prediction
+- `kbot-humanoid` — invoked by — K Bot humanoid robot platform - hardware specs, MJCF models, and deployment configuration…
+- `kinfer-runtime` — sibling in the skill routing & dispatch cluster — K Scale kinfer model inference engine for deploying trained RL policies to real robots vi…
+- `kolmogorov-codex-quest` — sibling in the skill routing & dispatch cluster — Kolmogorov Codex Quest
+- `kolmogorov-onsager-hurst` — sibling in the skill routing & dispatch cluster — Turbulence scaling theory: K41 energy cascade, Onsager's anomalous dissipation, and Hurst…
+- `kos-firmware` — invoked by — K Scale Operating System - Rust based robot firmware with gRPC services for actuator cont…
+- `kscale` — invoked by — K Scale Labs robotics skill collection - unified index for humanoid robot development, RL…
+- `kscale-actuator` — invoked by — Rust library for controlling actuators (Robstride servo motors) on K Scale robots.
+- `ksim-rl` — invoked by — RL training library for humanoid locomotion and manipulation built on MuJoCo and JAX.
+- `lambda-calculus` — builds on — Lambda Calculus Skill
+- `latent-latency` — invoked by — Latent Latency Skill
+- `levin-levity` — invoked by — Leonid Levin''''s algorithmic complexity meets playful mutual ingression.
+- `levity-levin` — invoked by — Playful mutual ingression meets Leonid Levin's algorithmic bounds.
+- `libafl` — invoked by — Fuzzing framework LibAFL for custom fuzzing campaigns.
+- `libfuzzer` — invoked by — Fuzzing with libFuzzer for finding vulnerabilities in code.
+- `lispsyntax-acset` — builds on — LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv style
+- `livekit-omnimodal` — sibling in the skill routing & dispatch cluster — LiveKit omni modal continuous coaching with stick breaking color selection,
+- `livestream` — invoked by — Warehouse audio pipeline for live capture, transcription, and narration from meeting room…
+- `load-skills` — sibling in the skill routing & dispatch cluster — Bootstrap skill loader for instance startup.
+- `local-finetune` — sibling in the skill routing & dispatch cluster — local finetune
+- `localsend-analysis` — invoked by — Analyze LocalSend repos with tree sitter tags, gh GraphQL contributor snapshots, and prot…
+- `low-discrepancy-sequences` — sibling in the skill routing & dispatch cluster — low discrepancy sequences skill
+- `manifest-privilege-validator` — invoked by — Validates tizen manifest.xml privilege declarations.
+- `markov-game-acset` — invoked by — markov game acset skill
+- `medchem` — invoked by — Medicinal chemistry filters.
+- `mitm` — invoked by — Track and summarize man in the middle mentions across local corpora and history;
+- `modelica` — sibling in the skill routing & dispatch cluster — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `moebius-color-duality` — invoked by — Möbius inversion for Gay.jl color duality - closes sparsification spine gap
+- `mujoco-scenes` — invoked by — Package for creating different scenes in MuJoCo.
+- `möbius-color-duality` — invoked by — Möbius inversion for Gay.jl color duality - closes sparsification spine gap
+- `narya-hatchery` — invoked by — Narya Hatchery
+- `nashator` — invoked by — Open games DSL Nash equilibrium solver via PyTorch autodiff.
+- `olmoearth-mlx` — sibling in the skill routing & dispatch cluster — OlmoEarth MLX: Spatio Temporal Earth Intelligence
+- `ordered-locale-fanout` — invoked by — UPDATED: Now uses proper ordered locale (Heunen van der Schaaf 2024).
+- `ordered-locale-proper` — invoked by — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `org-babel-execution` — invoked by — Literate programming execution engine via org babel for polyglot skill execution
+- `ossfuzz` — invoked by — Integration with OSS Fuzz for continuous fuzzing.
+- `partiful` — invoked by — Access Partiful events, invites, and RSVPs via reverse engineered API.
+- `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
+- `pijul` — invoked by — Pijul patch based VCS with categorical patch theory for skill versioning
+- `pijul-sparse-skills` — sibling in the skill routing & dispatch cluster — Sparsity preserving skill versioning via Pijul patches with GF(3) projection gates
+- `planar-isotopy-screen` — sibling in the skill routing & dispatch cluster — Planar Isotopy Screen Mapping
+- `privilege-declaration-generator` — invoked by — Generates tizen manifest.xml and config.xml privilege declarations.
+- `proof-of-frog` — invoked by — Proof of Frog Skill 🐸
+- `propagators` — builds on — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
+- `property-based-testing` — invoked by — Provides guidance for property based testing across multiple languages and smart contract…
+- `protocol-acset` — invoked by — Model decentralized protocols as attributed C sets for compositional analysis, interopera…
+- `pubchem-database` — invoked by — Query PubChem via PUG REST API PubChemPy (110M+ compounds).
+- `pun-decomposition` — invoked by — Pun Decomposition Skill (MINUS -1)
+- `qri-valence` — sibling in the skill routing & dispatch cluster — qri valence skill Qualia Research Institute''s Symmetry Theory of Valence (STV) for consc…
+- `quackbot-duckoid` — invoked by — Mechanic wobbling duckoid robot that quacks and generates nonstandard musical scale compo…
+- `quarto-julia` — invoked by — Quarto + Julia Skill
+- `r2frida` — sibling in the skill routing & dispatch cluster — Dynamic instrumentation bridge — radare2 static analysis meets Frida runtime hooking via …
+- `radare2-hatchery` — invoked by — Radare2 Hatchery
+- `rdkit` — invoked by — Cheminformatics toolkit for fine grained molecular control.
+- `recursive-string-diagrams` — sibling in the skill routing & dispatch cluster — recursive string diagrams
+- `reflow` — sibling in the skill routing & dispatch cluster — Information Reflow Skill (ERGODIC 0)
+- `reverse-engineering` — invoked by — Reverse Engineering Skill
+- `rust` — sibling in the skill routing & dispatch cluster — Rust ecosystem = cargo + rustc + clippy + rustfmt.
+- `ruzzy` — invoked by — Rust fuzzing with Ruzzy for automated vulnerability discovery.
+- `sandbox-escape-detector` — invoked by — Tests Tizen application sandboxes for privilege escalation and escape vulnerabilities.
+- `sarif-parsing` — invoked by — Parse, analyze, and process SARIF (Static Analysis Results Interchange Format) files.
+- `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+- `secure-storage-template` — sibling in the skill routing & dispatch cluster — Boilerplate code templates for Tizen KeyManager integration.
+- `secure-workflow-guide` — sibling in the skill routing & dispatch cluster — Guide you through Trail of Bits' 5 step secure development workflow.
+- `semgrep` — invoked by — Run Semgrep static analysis for fast security scanning and pattern matching.
+- `semgrep-rule-creator` — invoked by — Create custom Semgrep rules for detecting bug patterns and security vulnerabilities.
+- `shadow-goblin` — invoked by — shadow goblin
+- `sharp-edges` — invoked by — Identifies error prone APIs, dangerous configurations, and footgun designs that enable se…
+- `sicp` — sibling in the skill routing & dispatch cluster — SICP: Structure and Interpretation of Computer Programs - computational processes, abstra…
+- `signal-isolated-auth` — sibling in the skill routing & dispatch cluster — Maximally isolated Signal authentication via colored operad security boundaries.
+- `skill-bonds` — sibling in the skill routing & dispatch cluster — Skill Bonds Registry
+- `skill-repo-sync` — sibling in the skill routing & dispatch cluster — Push local skills to plurigrid asi repo, remove skills by agreement (with full history pu…
+- `smack-label-orchestrator` — sibling in the skill routing & dispatch cluster — Manages SMACK label assignments across apps and kernel.
+- `smack-policy-auditor` — invoked by — Analyzes SMACK policy files for correctness, label conflicts, and access control issues.
+- `smack-policy-generator` — invoked by — Generates SMACK policy files from app requirements.
+- `snix` — invoked by — Rust Nix reimplementation for content addressed rootfs builds.
+- `social-emergence-protocol` — sibling in the skill routing & dispatch cluster — Minimal interaction patterns that bootstrap complex social behaviors in distributed syste…
+- `solana-vulnerability-scanner` — invoked by — Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PD…
+- `spec-to-code-compliance` — invoked by — Verifies code implements exactly what documentation specifies for blockchain audits.
+- `spectral-locale-debugging` — invoked by — Debug and simulate ghostly phenomena using ordered locale theory and trifurcated interact…
+- `static-security-analyzer` — invoked by — Wrapper around Tizen Studio static analyzer.
+- `stellogen` — invoked by — Stellogen Skill
+- `string-diagram-rewriting-protocol` — invoked by — Kernel protocol for compositional string diagram rewriting across all skills
+- `structural-rewilding` — invoked by — Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs).
+- `substrate-vulnerability-scanner` — invoked by — Scans Substrate Polkadot pallets for 7 critical vulnerabilities including arithmetic over…
+- `sufficiency-probe` — invoked by — Probes context setting tooling sufficiency at every interaction.
+- `tenderloin` — invoked by — Tenderloin: Manifest Destiny Fund for Protocol Labs
+- `testing-handbook-generator` — invoked by — Generates comprehensive testing handbooks and guides for security testing strategies.
+- `tidar-thread-probe` — invoked by — TIDAR Thread Probe Skill
+- `tizen-app-scaffold` — invoked by — Generates secure Tizen app projects (native web .NET) with privilege declarations, SMACK …
+- `tizen-certification-coordinator` — invoked by — Orchestrates Tizen certification workflow.
+- `tizen-compliance-checker` — invoked by — Validates Tizen app compliance with TCT (Tizen Compliance Tests).
+- `tizen-cve-scanner` — invoked by — Scans for known Tizen CVEs in app dependencies and kernel.
+- `tizen-security-compliance` — invoked by — Maps security requirements to implementation.
+- `token-integration-analyzer` — sibling in the skill routing & dispatch cluster — Comprehensive token integration and implementation analyzer based on Trail of Bits' token…
+- `ton-vulnerability-scanner` — invoked by — Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including int…
+- `topoi-hatchery` — invoked by — Topoi Hatchery
+- `triangle-metrics` — invoked by — Triangle Metrics Skill
+- `trifurcated-transfer` — sibling in the skill routing & dispatch cluster — Trifurcated Transfer Skill
+- `true-alife` — invoked by — TrueALIFE: Self Indexing Automata at the Edge of Chaos
+- `unison-acset` — invoked by — Unison language ACSet structured skill with hierarchical documentation parsing, SPI traje…
+- `urdf2mjcf` — invoked by — Convert URDF robot descriptions to MJCF format for MuJoCo simulation.
+- `variant-analysis` — invoked by — Find similar vulnerabilities and bugs across codebases using pattern based analysis.
+- `vertex-ai-protein-interleave` — sibling in the skill routing & dispatch cluster — Bridge layer connecting Vertex AI Google Cloud to plurigrid asi protein scale biology s…
+- `voice-channel-uwd` — invoked by — Voice Channel UWD Skill
+- `waddington-landscape` — invoked by — Waddington's epigenetic landscape: cell fate as gradient flow on potential surfaces, conn…
+- `wev-tesseract` — invoked by — WEV Tesseract Skill
+- `wev-verification` — invoked by — WEV Verification Skill
+- `world-hopping` — builds on — Badiou inspired possible world navigation using triangle inequality constraints,
+- `world-memory-worlding` — invoked by — World memory is world remembering is world worlding - the autopoietic loop where memory e…
+- `worlding` — invoked by — Gay.jl world_ pattern: persistent composable state builders with GF(3) conservation, Möbi…
+- `wycheproof` — invoked by — Google's Wycheproof test vectors for cryptographic implementation testing.
+- `yb-translator` — invoked by — Translate programming concepts to biological parallels using real ontology terms from EBI…
+- `zeroth-bot` — invoked by — Zeroth Bot - 3D printed open source humanoid robot platform for sim to real and RL resear…
+- `zig` — mutually referenced — Zig ecosystem skill with emerging patterns from zig syrup
+- `zig-programming` — builds on — >
+- `zig-syrup-bci` — invoked by — Multimodal BCI pipeline in Zig: DSI 24 EEG, fNIRS mBLL, eye tracking IVT, LSL sync, EDF r…
+- `zinc-database` — invoked by — Access ZINC (230M+ purchasable compounds).
+- `zls-integration` — sibling in the skill routing & dispatch cluster — zls integration skill Zig Language Server (ZLS) integration for IDE features - autocomple…
+- `zulip-cogen` — invoked by — Zulip Cogen Skill 🐸⚡
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2-monad`
-- `_integrated`
-- `academic-research`
-- `acsets`
-- `address-sanitizer`
-- `aflpp`
-- `algebraic-rewriting`
-- `algorand-vulnerability-scanner`
-- `amp-api-awareness`
-- `amp-team-usage`
-- `aptos-wallet-mcp`
-- `aristotle-lean`
-- `asi-integrated`
-- `ask-questions-if-underspecified`
-- `assembly-index`
-- `atheris`
-- `audit-context-building`
-- `audit-prep-assistant`
-- `behaviour-surprisal-analysis`
-- `bidirectional-lens-logic`
-- `bkp-interleaving`
-- `blackhat-go`
-- `bluesky-jetstream`
-- `bmorphism-diagrams`
-- `bob`
-- `browser-history-acset`
-- `burp-suite`
-- `burpsuite-project-parser`
-- `cairo-vulnerability-scanner`
-- `cargo-fuzz`
-- `cat`
-- `cat-tripartite`
-- `categorical-rewriting-triad4`
-- `cats-for-ai`
-- `code-maturity-assessor`
-- `codeql`
-- `codescent`
-- `coequalizers`
-- `constant-time-analysis`
-- `constant-time-testing`
-- `cosmos-vulnerability-scanner`
-- `coverage-analysis`
-- `crdt`
-- `critical-opalescence`
-- `crossmodal-gf3`
-- `cybernetic-open-game`
-- `cynara-policy-checker`
-- `cynara-policy-validator`
-- `datamol`
-- `deepchem`
-- `delta-derivation`
-- `derangement-crdt`
-- `diffdock`
-- `differential-review`
-- `doctrinal-adjunction`
-- `duck-agent`
-- `dwarf-expert`
-- `entropy-sim2real`
-- `entry-point-analyzer`
-- `evla-vla`
-- `exploratory-data-analysis`
-- `external`
-- `fix-review`
-- `flexible-algebra`
-- `flow`
-- `flowglad-integration`
-- `flox-mcp`
-- `frustration-eradication`
-- `fuzzing-dictionary`
-- `fuzzing-obstacles`
-- `gay-monte-carlo`
-- `gestalt-hacking`
-- `gesture-hypergestures`
-- `gf3-constrained-animation`
-- `gf3-tripartite`
-- `gh-interactome`
-- `glass-bead-game`
-- `google-workspace`
-- `graded-monad`
-- `graph-grafting`
-- `guidelines-advisor`
-- `harness-writing`
-- `homoiconic-rewriting`
-- `hyperbolic-bulk`
-- `hythermal`
-- `interpreting-culture-index`
-- `iot-device-provisioning`
-- `iroh-p2p`
-- `jank`
-- `jira-issues`
-- `joker`
-- `julia-scientific`
-- `k-dense-ai`
-- `kbot-humanoid`
-- `kinfer-runtime`
-- `kolmogorov-codex-quest`
-- `kolmogorov-onsager-hurst`
-- `kos-firmware`
-- `kscale`
-- `kscale-actuator`
-- `ksim-rl`
-- `lambda-calculus`
-- `latent-latency`
-- `levin-levity`
-- `levity-levin`
-- `libafl`
-- `libfuzzer`
-- `lispsyntax-acset`
-- `livekit-omnimodal`
-- `livestream`
-- `load-skills`
-- `local-finetune`
-- `localsend-analysis`
-- `low-discrepancy-sequences`
-- `manifest-privilege-validator`
-- `markov-game-acset`
-- `medchem`
-- `mitm`
-- `modelica`
-- `moebius-color-duality`
-- `mujoco-scenes`
-- `möbius-color-duality`
-- `narya-hatchery`
-- `nashator`
-- `olmoearth-mlx`
-- `ordered-locale-fanout`
-- `ordered-locale-proper`
-- `org-babel-execution`
-- `ossfuzz`
-- `partiful`
-- `phyllotaxis`
-- `pijul`
-- `pijul-sparse-skills`
-- `planar-isotopy-screen`
-- `privilege-declaration-generator`
-- `proof-of-frog`
-- `propagators`
-- `property-based-testing`
-- `protocol-acset`
-- `pubchem-database`
-- `pun-decomposition`
-- `qri-valence`
-- `quackbot-duckoid`
-- `quarto-julia`
-- `r2frida`
-- `radare2-hatchery`
-- `rdkit`
-- `recursive-string-diagrams`
-- `reflow`
-- `reverse-engineering`
-- `rust`
-- `ruzzy`
-- `sandbox-escape-detector`
-- `sarif-parsing`
-- `scheme`
-- `secure-storage-template`
-- `secure-workflow-guide`
-- `semgrep`
-- `semgrep-rule-creator`
-- `shadow-goblin`
-- `sharp-edges`
-- `sicp`
-- `signal-isolated-auth`
-- `skill-bonds`
-- `skill-repo-sync`
-- `smack-label-orchestrator`
-- `smack-policy-auditor`
-- `smack-policy-generator`
-- `snix`
-- `social-emergence-protocol`
-- `solana-vulnerability-scanner`
-- `spec-to-code-compliance`
-- `spectral-locale-debugging`
-- `static-security-analyzer`
-- `stellogen`
-- `string-diagram-rewriting-protocol`
-- `structural-rewilding`
-- `substrate-vulnerability-scanner`
-- `sufficiency-probe`
-- `tenderloin`
-- `testing-handbook-generator`
-- `tidar-thread-probe`
-- `tizen-app-scaffold`
-- `tizen-certification-coordinator`
-- `tizen-compliance-checker`
-- `tizen-cve-scanner`
-- `tizen-security-compliance`
-- `token-integration-analyzer`
-- `ton-vulnerability-scanner`
-- `topoi-hatchery`
-- `triangle-metrics`
-- `trifurcated-transfer`
-- `true-alife`
-- `unison-acset`
-- `urdf2mjcf`
-- `variant-analysis`
-- `vertex-ai-protein-interleave`
-- `voice-channel-uwd`
-- `waddington-landscape`
-- `wev-tesseract`
-- `wev-verification`
-- `world-hopping`
-- `world-memory-worlding`
-- `worlding`
-- `wycheproof`
-- `yb-translator`
-- `zeroth-bot`
-- `zig`
-- `zig-programming`
-- `zig-syrup-bci`
-- `zinc-database`
-- `zls-integration`
-- `zulip-cogen`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `2-monad`
-- `_integrated`
-- `academic-research`
-- `acsets`
-- `address-sanitizer`
-- `aflpp`
-- `algorand-vulnerability-scanner`
-- `amp-api-awareness`
-- `amp-team-usage`
-- `aptos-wallet-mcp`
-- `aristotle-lean`
-- `asi-integrated`
-- `ask-questions-if-underspecified`
-- `assembly-index`
-- `atheris`
-- `audit-context-building`
-- `audit-prep-assistant`
-- `behaviour-surprisal-analysis`
-- `bidirectional-lens-logic`
-- `bkp-interleaving`
-- `blackhat-go`
-- `bluesky-jetstream`
-- `bmorphism-diagrams`
-- `bob`
-- `browser-history-acset`
-- `burp-suite`
-- `burpsuite-project-parser`
-- `cairo-vulnerability-scanner`
-- `cargo-fuzz`
-- `cat`
-- `cat-tripartite`
-- `categorical-rewriting-triad4`
-- `cats-for-ai`
-- `code-maturity-assessor`
-- `codeql`
-- `codescent`
-- `coequalizers`
-- `constant-time-analysis`
-- `constant-time-testing`
-- `cosmos-vulnerability-scanner`
-- `coverage-analysis`
-- `crdt`
-- `critical-opalescence`
-- `crossmodal-gf3`
-- `cybernetic-open-game`
-- `cynara-policy-checker`
-- `cynara-policy-validator`
-- `datamol`
-- `deepchem`
-- `delta-derivation`
-- `derangement-crdt`
-- `diffdock`
-- `differential-review`
-- `doctrinal-adjunction`
-- `duck-agent`
-- `dwarf-expert`
-- `entropy-sim2real`
-- `entry-point-analyzer`
-- `evla-vla`
-- `exploratory-data-analysis`
-- `fix-review`
-- `flexible-algebra`
-- `flowglad-integration`
-- `flox-mcp`
-- `frustration-eradication`
-- `fuzzing-dictionary`
-- `fuzzing-obstacles`
-- `gay-monte-carlo`
-- `gestalt-hacking`
-- `gesture-hypergestures`
-- `gf3-constrained-animation`
-- `gf3-tripartite`
-- `gh-interactome`
-- `google-workspace`
-- `graded-monad`
-- `graph-grafting`
-- `guidelines-advisor`
-- `harness-writing`
-- `homoiconic-rewriting`
-- `hyperbolic-bulk`
-- `hythermal`
-- `interpreting-culture-index`
-- `iot-device-provisioning`
-- `iroh-p2p`
-- `jank`
-- `jira-issues`
-- `joker`
-- `julia-scientific`
-- `kbot-humanoid`
-- `kinfer-runtime`
-- `kolmogorov-codex-quest`
-- `kolmogorov-onsager-hurst`
-- `kos-firmware`
-- `kscale`
-- `kscale-actuator`
-- `ksim-rl`
-- `latent-latency`
-- `levin-levity`
-- `levity-levin`
-- `libafl`
-- `libfuzzer`
-- `livekit-omnimodal`
-- `livestream`
-- `load-skills`
-- `local-finetune`
-- `localsend-analysis`
-- `low-discrepancy-sequences`
-- `manifest-privilege-validator`
-- `markov-game-acset`
-- `medchem`
-- `mitm`
-- `modelica`
-- `moebius-color-duality`
-- `mujoco-scenes`
-- `möbius-color-duality`
-- `narya-hatchery`
-- `nashator`
-- `olmoearth-mlx`
-- `ordered-locale-fanout`
-- `ordered-locale-proper`
-- `org-babel-execution`
-- `ossfuzz`
-- `partiful`
-- `phyllotaxis`
-- `pijul`
-- `pijul-sparse-skills`
-- `planar-isotopy-screen`
-- `privilege-declaration-generator`
-- `proof-of-frog`
-- `property-based-testing`
-- `protocol-acset`
-- `pubchem-database`
-- `pun-decomposition`
-- `qri-valence`
-- `quackbot-duckoid`
-- `quarto-julia`
-- `r2frida`
-- `radare2-hatchery`
-- `rdkit`
-- `recursive-string-diagrams`
-- `reflow`
-- `reverse-engineering`
-- `ruzzy`
-- `sandbox-escape-detector`
-- `sarif-parsing`
-- `secure-storage-template`
-- `secure-workflow-guide`
-- `semgrep`
-- `semgrep-rule-creator`
-- `shadow-goblin`
-- `sharp-edges`
-- `signal-isolated-auth`
-- `skill-bonds`
-- `skill-repo-sync`
-- `smack-label-orchestrator`
-- `smack-policy-auditor`
-- `smack-policy-generator`
-- `snix`
-- `social-emergence-protocol`
-- `solana-vulnerability-scanner`
-- `spec-to-code-compliance`
-- `spectral-locale-debugging`
-- `static-security-analyzer`
-- `stellogen`
-- `string-diagram-rewriting-protocol`
-- `structural-rewilding`
-- `substrate-vulnerability-scanner`
-- `sufficiency-probe`
-- `tenderloin`
-- `testing-handbook-generator`
-- `tidar-thread-probe`
-- `tizen-app-scaffold`
-- `tizen-certification-coordinator`
-- `tizen-compliance-checker`
-- `tizen-cve-scanner`
-- `tizen-security-compliance`
-- `token-integration-analyzer`
-- `ton-vulnerability-scanner`
-- `topoi-hatchery`
-- `triangle-metrics`
-- `trifurcated-transfer`
-- `true-alife`
-- `unison-acset`
-- `urdf2mjcf`
-- `variant-analysis`
-- `vertex-ai-protein-interleave`
-- `voice-channel-uwd`
-- `waddington-landscape`
-- `wev-tesseract`
-- `wev-verification`
-- `world-memory-worlding`
-- `worlding`
-- `wycheproof`
-- `yb-translator`
-- `zeroth-bot`
-- `zig`
-- `zig-syrup-bci`
-- `zinc-database`
-- `zls-integration`
-- `zulip-cogen`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

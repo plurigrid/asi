@@ -1,26 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `color-envelope-preserving` — builds on — GF(3) color envelope preservation across navigator compositions
+- `specter-navigator-gadget` — sibling in the skill routing & dispatch cluster — Unified Specter Navigator 3 MATCH architecture with bidirectional path compilation
+- `three-match` — sibling in the skill routing & dispatch cluster — 3 MATCH colored subgraph isomorphism gadget for 3 SAT reduction
+- `tuple-nav-composition` — mutually referenced — Tuple and product structure navigation with composition
+- `type-inference-validation` — mutually referenced — Static type inference and validation for navigation paths
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `color-envelope-preserving`
-- `specter-navigator-gadget`
-- `three-match`
-- `tuple-nav-composition`
-- `type-inference-validation`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `tuple-nav-composition`
-- `type-inference-validation`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

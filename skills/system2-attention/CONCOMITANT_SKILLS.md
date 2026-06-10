@@ -1,28 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `causal-inference` — builds on — Bengio's causal inference for AI: Interventional reasoning, counterfactuals, and System 2…
+- `cognitive-superposition` — mutually referenced — Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
+- `forward-forward-learning` — builds on — Hinton's Forward Forward algorithm for local learning without backpropagation.
+- `gflownet` — builds on — Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward.
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `omg-tension-resolver` — sibling in the skill routing & dispatch cluster — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
+- `proofgeneral-narya` — builds on — Proof General + Narya: Higher dimensional type theory proof assistant with observational …
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `causal-inference`
-- `cognitive-superposition`
-- `forward-forward-learning`
-- `gflownet`
-- `init`
-- `omg-tension-resolver`
-- `proofgeneral-narya`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `cognitive-superposition`
-- `omg-tension-resolver`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

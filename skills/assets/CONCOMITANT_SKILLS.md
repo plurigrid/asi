@@ -1,121 +1,59 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `aptos-ecosystem` — invoked by — Skill aptos ecosystem
+- `ar-vr-xr` — invoked by — Reality tech (AR VR XR).
+- `axiom-solana-trading` — invoked by — Interact with Axiom.trade -- a Y Combinator backed (W25) DEX aggregator and trading platf…
+- `beeper` — sibling in the skill routing & dispatch cluster — Unified messaging via three access tiers — MCP (live API), beeper cli (authenticated CLI)…
+- `citation-management` — sibling in the skill routing & dispatch cluster — Comprehensive citation management for academic research.
+- `clinical-reports` — invoked by — Write comprehensive clinical reports including case reports (CARE guidelines), diagnostic…
+- `cloudflare` — invoked by — Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI…
+- `cloudflare-deploy` — invoked by — Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related pl…
+- `deeptools` — invoked by — NGS analysis toolkit.
+- `diffdock` — invoked by — Diffusion based molecular docking.
+- `exploratory-data-analysis` — invoked by — Perform comprehensive exploratory data analysis on scientific data files across 200+ file…
+- `figma-implement-design` — sibling in the skill routing & dispatch cluster — Translate Figma nodes into production ready code with 1:1 visual fidelity using the Figma…
+- `firebase-apk-scanner` — invoked by — Scans Android APKs for Firebase security misconfigurations including open databases, stor…
+- `flox-builds` — invoked by — Building and packaging applications with Flox.
+- `flox-publish` — invoked by — Use for publishing user packages to flox for use in Flox environments.
+- `gx10-cluster` — invoked by — 3 node DGX Spark cluster networking: ConnectX 7 QSFP multi host configuration, link local…
+- `how-to-publish-paks` — sibling in the skill routing & dispatch cluster — |
+- `hypothesis-generation` — invoked by — Generate testable hypotheses.
+- `imagegen` — sibling in the skill routing & dispatch cluster — Use when the user asks to generate or edit images via the OpenAI Image API (for example: …
+- `iso-13485-certification` — sibling in the skill routing & dispatch cluster — Comprehensive toolkit for preparing ISO 13485 certification documentation for medical dev…
+- `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
+- `magic-todo-watch-deploy` — sibling in the skill routing & dispatch cluster — Build, deploy, and manage the MagicTodoWatch iOS watchOS voice to task pipeline app.
+- `market-research-reports` — invoked by — Generate comprehensive market research reports (50+ pages) in the style of top consulting…
+- `netlify-deploy` — invoked by — Deploy web projects to Netlify using the Netlify CLI (npx netlify).
+- `neuropixels-analysis` — invoked by — Neuropixels neural recording analysis.
+- `nhero` — sibling in the skill routing & dispatch cluster — Aftermarket cybernetic network device framework.
+- `nuclear-smr` — sibling in the skill routing & dispatch cluster — Small Modular Reactor integration for Plurigrid energy dominance.
+- `paper-2-web` — sibling in the skill routing & dispatch cluster — This skill should be used when converting academic papers into promotional and presentati…
+- `perplexity-search` — sibling in the skill routing & dispatch cluster — Perform AI powered web searches with real time information using Perplexity models via Li…
+- `plugin-structure` — sibling in the skill routing & dispatch cluster — This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "…
+- `render-deploy` — invoked by — Deploy applications to Render by analyzing codebases, generating render.yaml Blueprints, …
+- `research-grants` — invoked by — Write competitive research proposals for NSF, NIH, DOE, and DARPA.
+- `scanpy` — invoked by — Single cell RNA seq analysis.
+- `scientific-slides` — invoked by — Build slide decks and presentations for research talks.
+- `scientific-visualization` — invoked by — Create publication figures with matplotlib seaborn plotly.
+- `sim2real-predictive-coding` — sibling in the skill routing & dispatch cluster — - User asks about sim2real transfer mechanisms
+- `skill-creator` — sibling in the skill routing & dispatch cluster — Guide for creating effective skills.
+- `skill-development` — sibling in the skill routing & dispatch cluster — This skill should be used when the user wants to "create a skill", "add a skill to plugin…
+- `skill-finder-verifier` — sibling in the skill routing & dispatch cluster — Find locally created skills and verify provenance.
+- `skill-specification` — sibling in the skill routing & dispatch cluster — Agent Skills formal specification for cross platform compatibility.
+- `sora` — sibling in the skill routing & dispatch cluster — Use when the user asks to generate, remix, poll, list, download, or delete Sora videos vi…
+- `threat-model-generation` — invoked by — Generate a STRIDE based security threat model for a repository.
+- `treatment-plans` — invoked by — Generate concise (3 4 page), focused medical treatment plans in LaTeX PDF format for all …
+- `tulipa-energy` — invoked by — TulipaEnergyModel.jl — Julia energy system optimization for investment + operation decisi…
+- `universal-learning-signature` — invoked by — Framework for measuring learning dynamics in multi agent systems and communication networ…
+- `venue-templates` — sibling in the skill routing & dispatch cluster — Access comprehensive LaTeX templates, formatting requirements, and submission guidelines …
+- `visual-design` — sibling in the skill routing & dispatch cluster — |
+- `wrangler` — invoked by — Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vecto…
+- `xogot` — sibling in the skill routing & dispatch cluster — Debug Godot games on iPhone iPad via USB:
+- `yara-rule-authoring` — invoked by — >
+- `zig-systems` — invoked by — Systems programming and performance optimization using Zig.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `aptos-ecosystem`
-- `ar-vr-xr`
-- `axiom-solana-trading`
-- `beeper`
-- `citation-management`
-- `clinical-reports`
-- `cloudflare`
-- `cloudflare-deploy`
-- `deeptools`
-- `diffdock`
-- `exploratory-data-analysis`
-- `figma-implement-design`
-- `firebase-apk-scanner`
-- `flox-builds`
-- `flox-publish`
-- `gx10-cluster`
-- `how-to-publish-paks`
-- `hypothesis-generation`
-- `imagegen`
-- `iso-13485-certification`
-- `literature-review`
-- `magic-todo-watch-deploy`
-- `market-research-reports`
-- `netlify-deploy`
-- `neuropixels-analysis`
-- `nhero`
-- `nuclear-smr`
-- `paper-2-web`
-- `perplexity-search`
-- `plugin-structure`
-- `render-deploy`
-- `research-grants`
-- `scanpy`
-- `scientific-slides`
-- `scientific-visualization`
-- `sim2real-predictive-coding`
-- `skill-creator`
-- `skill-development`
-- `skill-finder-verifier`
-- `skill-specification`
-- `sora`
-- `threat-model-generation`
-- `treatment-plans`
-- `tulipa-energy`
-- `universal-learning-signature`
-- `venue-templates`
-- `visual-design`
-- `wrangler`
-- `xogot`
-- `yara-rule-authoring`
-- `zig-systems`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `aptos-ecosystem`
-- `ar-vr-xr`
-- `axiom-solana-trading`
-- `beeper`
-- `citation-management`
-- `clinical-reports`
-- `cloudflare`
-- `cloudflare-deploy`
-- `deeptools`
-- `diffdock`
-- `exploratory-data-analysis`
-- `figma-implement-design`
-- `firebase-apk-scanner`
-- `flox-builds`
-- `flox-publish`
-- `gx10-cluster`
-- `how-to-publish-paks`
-- `hypothesis-generation`
-- `imagegen`
-- `iso-13485-certification`
-- `literature-review`
-- `magic-todo-watch-deploy`
-- `market-research-reports`
-- `netlify-deploy`
-- `neuropixels-analysis`
-- `nhero`
-- `nuclear-smr`
-- `paper-2-web`
-- `perplexity-search`
-- `plugin-structure`
-- `render-deploy`
-- `research-grants`
-- `scanpy`
-- `scientific-slides`
-- `scientific-visualization`
-- `sim2real-predictive-coding`
-- `skill-creator`
-- `skill-development`
-- `skill-finder-verifier`
-- `skill-specification`
-- `sora`
-- `threat-model-generation`
-- `treatment-plans`
-- `tulipa-energy`
-- `universal-learning-signature`
-- `venue-templates`
-- `visual-design`
-- `wrangler`
-- `xogot`
-- `yara-rule-authoring`
-- `zig-systems`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

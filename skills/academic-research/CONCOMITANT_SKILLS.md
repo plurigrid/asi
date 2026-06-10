@@ -1,29 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — sibling in the skill routing & dispatch cluster — Primary Aptos testnet wallet for transaction origination.
+- `anna-archive` — sibling in the skill routing & dispatch cluster — Anna's Archive integration for academic paper and book retrieval.
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `k-dense-ai` — sibling in the skill routing & dispatch cluster — - alphafold database - Protein structure prediction
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `ruler-maximal` — sibling in the skill routing & dispatch cluster — Ruler Maximal Skill
+- `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `anna-archive`
-- `cat`
-- `k-dense-ai`
-- `networkx`
-- `pdf`
-- `ruler-maximal`
-- `sdf`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `anna-archive`
-- `ruler-maximal`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,218 +1,108 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `_integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `accept-no-substitutes` — invoked by — This skill should be used when agents generate placeholder tokens like "pseudo-", "mock-"…
+- `active-interleave` — invoked by — Interleaves context from recently active Claude Amp threads into current activity via ran…
+- `anna-archive` — invoked by — Anna's Archive integration for academic paper and book retrieval.
+- `aptos-orderless-wev` — invoked by — World Extractable Value via Aptos orderless transactions with Strong Parallelism Invarian…
+- `asi-integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `asi-skill-selector` — invoked by — Plurigrid ASI CLI for GF(3)-balanced skill selection and dispatch
+- `autopoiesis` — invoked by — Self modifying AI agent configuration via ruler + MCP + DuckDB.
+- `babashka-clj` — sibling in the Clojure babashka scripting cluster — Babashka scripting for fast Clojure execution.
+- `bafishka` — sibling in the interactive REPLs & Lisp tooling cluster — 🐟 Rust native Fish shell friendly file operations with Steel backed SCI
+- `bci-colored-operad` — invoked by — Brain Computer Interface with colored operad security boundaries.
+- `bifurcation` — invoked by — Hopf bifurcation detection for dynamical system state transitions with GF(3) phase portra…
+- `bluesky-jetstream` — invoked by — Bluesky Jetstream Firehose Skill
+- `bmorphism-ies-env` — invoked by — Documentation and orchestration for the bmorphism ies flox environment toolkit
+- `bmorphism-interactome` — invoked by — GitHub interactome explorer for bmorphism plurigrid ecosystem.
+- `bmorphism-video-interleave` — invoked by — bmorphism Video Archive Interleave
+- `bob-emacs-mods` — sibling in the interactive REPLs & Lisp tooling cluster — Complement to alice emacs mods.
+- `borkdude` — sibling in the Clojure babashka scripting cluster — Babashka and ClojureScript runtime selection guidance by @borkdude
+- `cat` — invoked by — cat Skill: Derivational Pipe Chaining
+- `cats-for-ai` — invoked by — cats.for" (Categories for AI)
+- `catsharp-sonification` — invoked by — Sonify GF(3) color streams via CatSharp scale.
+- `clojure` — sibling in the Clojure babashka scripting cluster — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `coherence-composer` — invoked by — The **Coherence Composer** is an epistemological skill that validates structural consiste…
+- `commitment-tracker` — invoked by — The **Commitment Tracker** skill extracts and makes explicit the **ontological commitment…
+- `condensed-anima-qc` — invoked by — Condensed ANIMA on quantum classical and classical quantum networks.
+- `cross-runtime-exchange` — invoked by — This skill enables content addressed interoperability between three Syrup implementations:
+- `deep-inference-interleave` — invoked by — Compositional passive inference vs emergent active inference (Hedges Feb 2024) — chain ru…
+- `derangement-crdt` — invoked by — Derangement CRDT Skill
+- `documentation-indexing` — invoked by — Provide **full text search, semantic indexing, and relevance ranking** across all documen…
+- `duck-time-travel` — invoked by — DuckDB time travel queries for temporal versioning and causality tracking
+- `duckdb-guard` — sibling in the interactive REPLs & Lisp tooling cluster — Pre query schema validation for DuckDB to prevent column not found errors, constraint vio…
+- `duckdb-quadruple-interleave` — sibling in the interactive REPLs & Lisp tooling cluster — Chaotic interleaving across local DuckDB databases modeled as coupled quadruple pendula.
+- `ducklake-walk` — sibling in the interactive REPLs & Lisp tooling cluster — Ergodic random walks over DuckLake lakehouses with GF(3) triadic concurrent walkers.
+- `energy-awareness` — invoked by — Battery cycle clock with interaction entropy and ontology reconfiguration for computation…
+- `exa-11-directions` — invoked by — 1.
+- `flox` — invoked by — Reproducible development environments powered by Nix.
+- `flox-mcp` — invoked by — MCP server wrapper for flox CLI operations - environment management via JSON RPC
+- `fswatch-duckdb` — invoked by — FileSystemWatcher over tmp with DuckDB DuckLake persistence.
+- `geb` — invoked by — Anoma''s Geb: Categorical semantics via S expressions, polynomial functors
+- `gh-skill-explorer` — invoked by — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `go-1fps` — invoked by — Every agent interaction is:
+- `hof` — invoked by — Hofstadter io hof: CUE powered code generation with flow engine and
+- `ies` — invoked by — ies
+- `ies-flox` — sibling in the interactive REPLs & Lisp tooling cluster — FloxHub publication bmorphism ies - a focused development environment
+- `implicit-coordination` — invoked by — Stigmergic agent coordination through environment modification, not messages.
+- `ios-wifi-provenance-diff` — invoked by — Diagnose why an iPhone's Wi Fi password row shows but cannot be copied.
+- `jank` — sibling in the interactive REPLs & Lisp tooling cluster — jank lang: native Clojure on LLVM with seamless C++ interop.
+- `jank-llvm` — sibling in the interactive REPLs & Lisp tooling cluster — Jank - Clojure dialect targeting LLVM with seamless C++ interoperability
+- `jo-clojure` — sibling in the interactive REPLs & Lisp tooling cluster — Clojure skill orchestration and polyglot bridge.
+- `joker-lint` — sibling in the Clojure babashka scripting cluster — Joker Lint Skill
+- `leapity-frog` — invoked by — When conservation is locally violated:
+- `llms-txt-discovery` — invoked by — Create the **largest indexed directory of AI documentation** by:
+- `load-skills` — invoked by — Bootstrap skill loader for instance startup.
+- `macos-use` — invoked by — macOS automation with **activation energy** for machine skill rediscovery:
+- `mathpix-ocr` — invoked by — Mathpix OCR for LaTeX extraction with balanced ternary checkpoints
+- `mcp-tripartite` — invoked by — MCP tripartite integration for orchestrating distributed tool protocols
+- `mlx-color-traceroute` — invoked by — Deploy Clojure MCP ecosystem integrations with MLX JAX inference and Gay.jl deterministic…
+- `modelica-lispsyntax-interleave` — sibling in the interactive REPLs & Lisp tooling cluster — This skill unifies three systems through **alphabet color assignment**:
+- `monad-bayes-asi-interleave` — invoked by — Bridge layer connecting tweag monad bayes to plurigrid asi.
+- `nerv` — invoked by — NERV - Rapid LocalSend Test with Voice
+- `notebooklm-enterprise` — sibling in the interactive REPLs & Lisp tooling cluster — NotebookLM Enterprise API via Discovery Engine — notebook CRUD, source management, audio …
+- `opacity-detector` — invoked by — The **Opacity Detector** maps what can and cannot be known in a system, given an observer…
+- `ordered-locale-fanout` — invoked by — UPDATED: Now uses proper ordered locale (Heunen van der Schaaf 2024).
+- `polyglot-orchestration` — invoked by — Enable seamless execution and coordination of code across **5 language ecosystems** (Baba…
+- `polyglot-spi` — invoked by — Cross Language Strong Parallelism Invariance Verification
+- `port-resurrection` — invoked by — Derive service ports from Gay.jl color sequence.
+- `quic-channel-grading` — invoked by — |
+- `relational-thinking` — invoked by — Intent taxonomy and morphisms across 15 amp threads
+- `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
+- `resource-sharing` — invoked by — Resource Sharing Skill
+- `ruler` — invoked by — Unified AI agent configuration propagation across 18+ coding assistants.
+- `ruler-maximal` — invoked by — Ruler Maximal Skill
+- `scum-resource` — invoked by — SCUM Resource Skill
+- `scum-score` — invoked by — SCUM Score Skill
+- `semilattice-discovery` — invoked by — Compositional skill discovery via join semilattice fiber (color × trit × hash)
+- `servo-ghostty` — sibling in the interactive REPLs & Lisp tooling cluster — Servo browser engine integration with ghostty web for full color terminal tiles
+- `sexp-neighborhood` — sibling in the interactive REPLs & Lisp tooling cluster — Exhaustive index of S expression using skills with GF(3) triadic classification and bridg…
+- `shell-guard` — sibling in the interactive REPLs & Lisp tooling cluster — Shell ENOENT prevention with fallback chain and environment validation
+- `sicm` — sibling in the interactive REPLs & Lisp tooling cluster — - **Generic arithmetic** extensible across numeric types
+- `skill-bonds` — invoked by — Skill Bonds Registry
+- `skill-connectivity-hub` — invoked by — Skill Connectivity Hub
+- `skill-embedding-vss` — invoked by — P adic ultrametric skill embeddings with MLX Snowflake Arctic, DuckDB
+- `specter-acset` — sibling in the interactive REPLs & Lisp tooling cluster — Specter style bidirectional navigation for Julia Collections, S expressions, and ACSets w…
+- `spectral-embedding-learner` — invoked by — Self learning topological embedding with configurable gamut for optimal spectral gap and …
+- `splitmixternary-opine` — invoked by — Political Repetition as Hyperrealpolitik - deterministic opinion formation via SplitMixTe…
+- `superelastic-quotient` — invoked by — Superelastic skills with maximum quotienting resolution for spatial decomposition.
+- `tmp-filesystem-watcher` — invoked by — Real time filesystem watcher for tmp using Babashka fs.
+- `topoi-hatchery` — sibling in the interactive REPLs & Lisp tooling cluster — Topoi Hatchery
+- `topos-unified` — invoked by — Topos Unified Skill
+- `triadic-skill-loader` — invoked by — Triadic Skill Loader
+- `triangle-sparsifier` — invoked by — Triangle inequality for maximally correct world choice sparsification
+- `trifurcated-transfer` — invoked by — Trifurcated Transfer Skill
+- `unison-acset` — sibling in the interactive REPLs & Lisp tooling cluster — Unison language ACSet structured skill with hierarchical documentation parsing, SPI traje…
+- `video-processor` — invoked by — Automated video processing: metadata extraction, thumbnails, transcoding, audio extractio…
+- `wolframite-compass` — invoked by — GitHub interactome navigator for Wolframite ecosystem.
+- `world-extractable-value` — invoked by — Extract value from world transitions via Markov blanket arbitrage.
+- `world-runtime` — invoked by — Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution.
+- `x-twitter-mcp` — invoked by — MCP server for X Twitter interaction - profile analysis, thread tracking, and social grap…
+- `yt-playlist-acset` — invoked by — Extract transcripts from YouTube playlists into DuckDB ACSet schema.
+- `zig` — invoked by — Zig ecosystem skill with emerging patterns from zig syrup
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `_integrated`
-- `accept-no-substitutes`
-- `active-interleave`
-- `anna-archive`
-- `aptos-orderless-wev`
-- `asi-integrated`
-- `asi-skill-selector`
-- `autopoiesis`
-- `babashka-clj`
-- `bafishka`
-- `bci-colored-operad`
-- `bifurcation`
-- `bluesky-jetstream`
-- `bmorphism-ies-env`
-- `bmorphism-interactome`
-- `bmorphism-video-interleave`
-- `bob-emacs-mods`
-- `borkdude`
-- `cat`
-- `cats-for-ai`
-- `catsharp-sonification`
-- `clojure`
-- `coherence-composer`
-- `commitment-tracker`
-- `condensed-anima-qc`
-- `cross-runtime-exchange`
-- `deep-inference-interleave`
-- `derangement-crdt`
-- `documentation-indexing`
-- `duck-time-travel`
-- `duckdb-guard`
-- `duckdb-quadruple-interleave`
-- `ducklake-walk`
-- `energy-awareness`
-- `exa-11-directions`
-- `flox`
-- `flox-mcp`
-- `fswatch-duckdb`
-- `geb`
-- `gh-skill-explorer`
-- `go-1fps`
-- `hof`
-- `ies`
-- `ies-flox`
-- `implicit-coordination`
-- `ios-wifi-provenance-diff`
-- `jank`
-- `jank-llvm`
-- `jo-clojure`
-- `joker-lint`
-- `leapity-frog`
-- `llms-txt-discovery`
-- `load-skills`
-- `macos-use`
-- `mathpix-ocr`
-- `mcp-tripartite`
-- `mlx-color-traceroute`
-- `modelica-lispsyntax-interleave`
-- `monad-bayes-asi-interleave`
-- `nerv`
-- `notebooklm-enterprise`
-- `opacity-detector`
-- `ordered-locale-fanout`
-- `polyglot-orchestration`
-- `polyglot-spi`
-- `port-resurrection`
-- `quic-channel-grading`
-- `relational-thinking`
-- `repl-commons`
-- `resource-sharing`
-- `ruler`
-- `ruler-maximal`
-- `scum-resource`
-- `scum-score`
-- `semilattice-discovery`
-- `servo-ghostty`
-- `sexp-neighborhood`
-- `shell-guard`
-- `sicm`
-- `skill-bonds`
-- `skill-connectivity-hub`
-- `skill-embedding-vss`
-- `specter-acset`
-- `spectral-embedding-learner`
-- `splitmixternary-opine`
-- `superelastic-quotient`
-- `tmp-filesystem-watcher`
-- `topoi-hatchery`
-- `topos-unified`
-- `triadic-skill-loader`
-- `triangle-sparsifier`
-- `trifurcated-transfer`
-- `unison-acset`
-- `video-processor`
-- `wolframite-compass`
-- `world-extractable-value`
-- `world-runtime`
-- `x-twitter-mcp`
-- `yt-playlist-acset`
-- `zig`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `_integrated`
-- `accept-no-substitutes`
-- `active-interleave`
-- `anna-archive`
-- `aptos-orderless-wev`
-- `asi-integrated`
-- `asi-skill-selector`
-- `autopoiesis`
-- `babashka-clj`
-- `bafishka`
-- `bci-colored-operad`
-- `bifurcation`
-- `bluesky-jetstream`
-- `bmorphism-ies-env`
-- `bmorphism-interactome`
-- `bmorphism-video-interleave`
-- `bob-emacs-mods`
-- `borkdude`
-- `cat`
-- `cats-for-ai`
-- `catsharp-sonification`
-- `coherence-composer`
-- `commitment-tracker`
-- `condensed-anima-qc`
-- `cross-runtime-exchange`
-- `deep-inference-interleave`
-- `derangement-crdt`
-- `documentation-indexing`
-- `duck-time-travel`
-- `duckdb-guard`
-- `duckdb-quadruple-interleave`
-- `ducklake-walk`
-- `energy-awareness`
-- `exa-11-directions`
-- `flox`
-- `flox-mcp`
-- `fswatch-duckdb`
-- `geb`
-- `gh-skill-explorer`
-- `go-1fps`
-- `hof`
-- `ies`
-- `ies-flox`
-- `implicit-coordination`
-- `ios-wifi-provenance-diff`
-- `jank`
-- `jank-llvm`
-- `jo-clojure`
-- `joker-lint`
-- `leapity-frog`
-- `llms-txt-discovery`
-- `load-skills`
-- `macos-use`
-- `mathpix-ocr`
-- `mcp-tripartite`
-- `mlx-color-traceroute`
-- `modelica-lispsyntax-interleave`
-- `monad-bayes-asi-interleave`
-- `nerv`
-- `notebooklm-enterprise`
-- `opacity-detector`
-- `ordered-locale-fanout`
-- `polyglot-orchestration`
-- `polyglot-spi`
-- `port-resurrection`
-- `quic-channel-grading`
-- `relational-thinking`
-- `repl-commons`
-- `resource-sharing`
-- `ruler`
-- `ruler-maximal`
-- `scum-resource`
-- `scum-score`
-- `semilattice-discovery`
-- `servo-ghostty`
-- `sexp-neighborhood`
-- `shell-guard`
-- `sicm`
-- `skill-bonds`
-- `skill-connectivity-hub`
-- `skill-embedding-vss`
-- `specter-acset`
-- `spectral-embedding-learner`
-- `splitmixternary-opine`
-- `superelastic-quotient`
-- `tmp-filesystem-watcher`
-- `topoi-hatchery`
-- `topos-unified`
-- `triadic-skill-loader`
-- `triangle-sparsifier`
-- `trifurcated-transfer`
-- `unison-acset`
-- `video-processor`
-- `wolframite-compass`
-- `world-extractable-value`
-- `world-runtime`
-- `x-twitter-mcp`
-- `yt-playlist-acset`
-- `zig`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,190 +1,94 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `axiom-solana-trading` — invoked by — Interact with Axiom.trade -- a Y Combinator backed (W25) DEX aggregator and trading platf…
+- `bafishka` — invoked by — 🐟 Rust native Fish shell friendly file operations with Steel backed SCI
+- `bandwidth-benchmark` — invoked by — Measure encoding decoding throughput across Syrup implementations.
+- `blackhat-go` — invoked by — Go based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT,…
+- `bmorphism-ies-env` — sibling in the skill routing & dispatch cluster — Documentation and orchestration for the bmorphism ies flox environment toolkit
+- `bmorphism-interactome` — sibling in the skill routing & dispatch cluster — GitHub interactome explorer for bmorphism plurigrid ecosystem.
+- `cargo` — builds on — Rust package manager (36 subcommands).
+- `cargo-rust` — sibling in the skill routing & dispatch cluster — Rust package manager and build system.
+- `cat-tripartite` — invoked by — Category Theory Tripartite: SICP generic dispatch, CTP Racket categories,
+- `catcolab-causal-loop` — invoked by — CatColab Causal Loop Diagrams - systems dynamics modeling with reinforcing (R) and balanc…
+- `catcolab-decapodes` — invoked by — CatColab Decapodes - Discrete Exterior Calculus for PDE modeling on meshes via Decapodes.…
+- `catcolab-ologs` — invoked by — CatColab Ologs (Ontology Logs) - category theoretic knowledge representation where object…
+- `catcolab-petri-nets` — invoked by — CatColab Petri Nets - concurrent system modeling via places (states), transitions (events…
+- `catcolab-regulatory-networks` — invoked by — CatColab Regulatory Networks - signed graphs for molecular biology modeling gene regulato…
+- `catcolab-schemas` — invoked by — CatColab Schemas - database schema modeling distinguishing entities (tables) from attribu…
+- `catcolab-stock-flow` — invoked by — CatColab Stock and Flow Diagrams - epidemiological and ecological modeling with stocks (a…
+- `compositional-acset-comparison` — invoked by — Compositional algorithm and data analysis via algebraic databases
+- `coq-of-rust` — invoked by — Formal verification of Rust programs via translation to Coq Rocq.
+- `coqgym` — invoked by — Machine learning environment for automated theorem proving with Coq.
+- `counter-surveillance` — invoked by — Assess and harden operational security (OPSEC) posture for applications, communications, …
+- `cq-ai` — invoked by — Code Query with AI enhanced deterministic analysis via SplitMix ternary classification
+- `cq-ai-deterministic-security-scanning-with-ternary-polarity` — invoked by — Deterministic code security scanner using SplitMix64 seeding.
+- `crdt` — invoked by — crdt skill
+- `cross-runtime-exchange` — sibling in the skill routing & dispatch cluster — This skill enables content addressed interoperability between three Syrup implementations:
+- `devcontainer-setup` — invoked by — Creates devcontainers with Claude Code, language specific tooling (Python Node Rust Go), …
+- `ducklake-semantic-analyzer` — invoked by — Semantic analysis for DuckLake ACSet models with GF(3) conservation
+- `effective-topos` — invoked by — FloxHub publication bmorphism effective topos - a comprehensive development
+- `egpu` — sibling in the skill routing & dispatch cluster — External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, work…
+- `embedded-medical-device` — invoked by — Firmware development for STM32, nRF52840, and RP2040 medical devices with BLE USB communi…
+- `entry-point-analyzer` — invoked by — Analyzes smart contract codebases to identify state changing entry points for security au…
+- `flecs-dylib-modules` — sibling in the skill routing & dispatch cluster — Hot reloadable Flecs modules as Rust dylibs.
+- `flox` — invoked by — Reproducible development environments powered by Nix.
+- `flox-builds` — invoked by — Building and packaging applications with Flox.
+- `ga-codegen` — invoked by — Geometric Algebra code generation for C++, C#, Rust, Python from ganja.js templates
+- `gestalt-hacking` — sibling in the skill routing & dispatch cluster — Gestalt Hacking Skill (ERGODIC 0)
+- `gh-complete` — sibling in the skill routing & dispatch cluster — gh complete
+- `gh-skill-explorer` — sibling in the skill routing & dispatch cluster — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `glamorous-moldable-multiplatform` — sibling in the skill routing & dispatch cluster — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
+- `gtars` — invoked by — High performance toolkit for genomic interval analysis in Rust with Python bindings.
+- `gx10-offload` — invoked by — Offload inference, code generation, and batch processing to local GX10 DGX Spark (GB10 Bl…
+- `hvm-runtime` — sibling in the skill routing & dispatch cluster — HVM Runtime Skill
+- `interaction-nets` — invoked by — Interaction Nets Skill
+- `iroh-p2p` — invoked by — Build modern peer to peer applications with Iroh.
+- `just-monad` — invoked by — The **Just Monad** treats just recipes as monadic actions:
+- `kinfer-runtime` — sibling in the skill routing & dispatch cluster — K Scale kinfer model inference engine for deploying trained RL policies to real robots vi…
+- `koho-sheafnn` — invoked by — Rust sheaf neural networks on k cells.
+- `kscale-actuator` — invoked by — Rust library for controlling actuators (Robstride servo motors) on K Scale robots.
+- `kscale-ecosystem` — invoked by — - User asks about K Scale Labs, their robots, or open source robotics stack
+- `kscale-kinfer` — invoked by — - User asks about deploying RL policies to real robots
+- `kscale-kos` — invoked by — - User asks about robot operating systems, firmware, or low level control
+- `leapity-frog` — invoked by — When conservation is locally violated:
+- `libghostty-aci` — invoked by — Integrates libghostty terminal emulation with Agent Computer Interface (ACI) patterns:
+- `linear-logic` — sibling in the skill routing & dispatch cluster — Linear Logic Skill
+- `little-schemer` — invoked by — Little Schemer Skill
+- `move-fuzzing` — invoked by — Comprehensive fuzzing toolkit for Move smart contracts on Aptos, Sui, and Movement chains.
+- `mutual-information-oracle` — invoked by — > Formal oracle quantifying coordination between agents in multi agent reinforcement lear…
+- `nbt` — invoked by — Use the nbt! macro from mc_protocol for creating NBT (Named Binary Tag) data for Minecraf…
+- `nix-acset-worlding` — invoked by — Model Nix store as Attributed C Set for dependency verification, GC analysis,
+- `norvidize` — sibling in the skill routing & dispatch cluster — Extract and audit claims for norvid tracking system
+- `ontology-asi-interleave` — sibling in the skill routing & dispatch cluster — > Bridge connecting plurigrid ontology to ASI skill graph.
+- `open-location-code-zig` — invoked by — First ever Zig implementation of Google's Open Location Code (Plus Codes) with GF(3) spat…
+- `plurigrid-polyglot` — sibling in the skill routing & dispatch cluster — Polyglot skill orchestration system integrating Go, Clojure, Hy, and Zig.
+- `polyglot-spi` — invoked by — Cross Language Strong Parallelism Invariance Verification
+- `pun-decomposition` — invoked by — Pun Decomposition Skill (MINUS -1)
+- `quic-channel-grading` — invoked by — |
+- `reverse-engineering` — invoked by — Reverse Engineering Skill
+- `rio-webgpu-tiles` — invoked by — WebGPU tile rendering for Rio Terminal via wgpu and sugarloaf.
+- `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `security-review` — invoked by — Scan code changes for security vulnerabilities using STRIDE threat modeling, validate fin…
+- `servo-ghostty` — invoked by — Servo browser engine integration with ghostty web for full color terminal tiles
+- `signal-isolated-auth` — sibling in the skill routing & dispatch cluster — Maximally isolated Signal authentication via colored operad security boundaries.
+- `signal-messaging` — sibling in the skill routing & dispatch cluster — Send and receive Signal messages via MCP.
+- `skill-connectivity-hub` — sibling in the skill routing & dispatch cluster — Skill Connectivity Hub
+- `skill-maker` — sibling in the skill routing & dispatch cluster — Meta skill that generates domain specific AI skills from tool documentation
+- `skill-maker-ai-skill-factory-for-tools` — sibling in the skill routing & dispatch cluster — Meta skill that generates domain specific AI skills from tool documentation
+- `snix` — invoked by — Rust Nix reimplementation for content addressed rootfs builds.
+- `sora` — sibling in the skill routing & dispatch cluster — Use when the user asks to generate, remix, poll, list, download, or delete Sora videos vi…
+- `stahl-übersetzer` — sibling in the skill routing & dispatch cluster — Steel Stahl Übersetzungsvalidierung mit semantischer Erhaltung und Typ Äquivalenz
+- `storage-reclaim` — invoked by — Rapidly find and reclaim disk storage by identifying build artifacts, git garbage, temp f…
+- `time-travel-crdt` — invoked by — Time Travel CRDT Skill
+- `topos-catcolab` — invoked by — Topos Institute's CatColab for collaborative category theory - community model building, …
+- `truealife` — invoked by — Comprehensive index of Artificial Life repositories across history, with special focus on…
+- `unison-acset` — invoked by — Unison language ACSet structured skill with hierarchical documentation parsing, SPI traje…
+- `world-runtime` — sibling in the skill routing & dispatch cluster — Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution.
+- `world-runtime-capability` — sibling in the skill routing & dispatch cluster — wasmCloud style capability providers for verse execution.
+- `zeroize-audit` — invoked by — Detects missing zeroization of sensitive data in source code and identifies zeroization r…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `axiom-solana-trading`
-- `bafishka`
-- `bandwidth-benchmark`
-- `blackhat-go`
-- `bmorphism-ies-env`
-- `bmorphism-interactome`
-- `cargo`
-- `cargo-rust`
-- `cat-tripartite`
-- `catcolab-causal-loop`
-- `catcolab-decapodes`
-- `catcolab-ologs`
-- `catcolab-petri-nets`
-- `catcolab-regulatory-networks`
-- `catcolab-schemas`
-- `catcolab-stock-flow`
-- `compositional-acset-comparison`
-- `coq-of-rust`
-- `coqgym`
-- `counter-surveillance`
-- `cq-ai`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `crdt`
-- `cross-runtime-exchange`
-- `devcontainer-setup`
-- `ducklake-semantic-analyzer`
-- `effective-topos`
-- `egpu`
-- `embedded-medical-device`
-- `entry-point-analyzer`
-- `flecs-dylib-modules`
-- `flox`
-- `flox-builds`
-- `ga-codegen`
-- `gestalt-hacking`
-- `gh-complete`
-- `gh-skill-explorer`
-- `glamorous-moldable-multiplatform`
-- `gtars`
-- `gx10-offload`
-- `hvm-runtime`
-- `interaction-nets`
-- `iroh-p2p`
-- `just-monad`
-- `kinfer-runtime`
-- `koho-sheafnn`
-- `kscale-actuator`
-- `kscale-ecosystem`
-- `kscale-kinfer`
-- `kscale-kos`
-- `leapity-frog`
-- `libghostty-aci`
-- `linear-logic`
-- `little-schemer`
-- `move-fuzzing`
-- `mutual-information-oracle`
-- `nbt`
-- `nix-acset-worlding`
-- `norvidize`
-- `ontology-asi-interleave`
-- `open-location-code-zig`
-- `plurigrid-polyglot`
-- `polyglot-spi`
-- `pun-decomposition`
-- `quic-channel-grading`
-- `reverse-engineering`
-- `rio-webgpu-tiles`
-- `sdf`
-- `security-review`
-- `servo-ghostty`
-- `signal-isolated-auth`
-- `signal-messaging`
-- `skill-connectivity-hub`
-- `skill-maker`
-- `skill-maker-ai-skill-factory-for-tools`
-- `snix`
-- `sora`
-- `stahl-übersetzer`
-- `storage-reclaim`
-- `time-travel-crdt`
-- `topos-catcolab`
-- `truealife`
-- `unison-acset`
-- `world-runtime`
-- `world-runtime-capability`
-- `zeroize-audit`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `axiom-solana-trading`
-- `bafishka`
-- `bandwidth-benchmark`
-- `blackhat-go`
-- `bmorphism-ies-env`
-- `bmorphism-interactome`
-- `cargo-rust`
-- `cat-tripartite`
-- `catcolab-causal-loop`
-- `catcolab-decapodes`
-- `catcolab-ologs`
-- `catcolab-petri-nets`
-- `catcolab-regulatory-networks`
-- `catcolab-schemas`
-- `catcolab-stock-flow`
-- `compositional-acset-comparison`
-- `coq-of-rust`
-- `coqgym`
-- `counter-surveillance`
-- `cq-ai`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `crdt`
-- `cross-runtime-exchange`
-- `devcontainer-setup`
-- `ducklake-semantic-analyzer`
-- `effective-topos`
-- `egpu`
-- `embedded-medical-device`
-- `entry-point-analyzer`
-- `flecs-dylib-modules`
-- `flox`
-- `flox-builds`
-- `ga-codegen`
-- `gestalt-hacking`
-- `gh-complete`
-- `gh-skill-explorer`
-- `glamorous-moldable-multiplatform`
-- `gtars`
-- `gx10-offload`
-- `hvm-runtime`
-- `interaction-nets`
-- `iroh-p2p`
-- `just-monad`
-- `kinfer-runtime`
-- `koho-sheafnn`
-- `kscale-actuator`
-- `kscale-ecosystem`
-- `kscale-kinfer`
-- `kscale-kos`
-- `leapity-frog`
-- `libghostty-aci`
-- `linear-logic`
-- `little-schemer`
-- `move-fuzzing`
-- `mutual-information-oracle`
-- `nbt`
-- `nix-acset-worlding`
-- `norvidize`
-- `ontology-asi-interleave`
-- `open-location-code-zig`
-- `plurigrid-polyglot`
-- `polyglot-spi`
-- `pun-decomposition`
-- `quic-channel-grading`
-- `reverse-engineering`
-- `rio-webgpu-tiles`
-- `sdf`
-- `security-review`
-- `servo-ghostty`
-- `signal-isolated-auth`
-- `signal-messaging`
-- `skill-connectivity-hub`
-- `skill-maker`
-- `skill-maker-ai-skill-factory-for-tools`
-- `snix`
-- `sora`
-- `stahl-übersetzer`
-- `storage-reclaim`
-- `time-travel-crdt`
-- `topos-catcolab`
-- `truealife`
-- `unison-acset`
-- `world-runtime`
-- `world-runtime-capability`
-- `zeroize-audit`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

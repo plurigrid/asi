@@ -1,43 +1,23 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **2 monad** is a monad internal to a 2 category K.
+- `bkp-interleaving` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — This skill is the **deep interleaving** of the five BKP 2 monad theory skills:
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `datalog-fixpoint` — builds on — Datalog bottom up fixpoint iteration for recursive queries
+- `discopy` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `doctrinal-adjunction` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **doctrinal adjunction** is Kelly''s 1974 theorem establishing a canonical bijection be…
+- `flexible-algebra` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **flexible T algebra** is a strict T algebra that admits enough "room to move" — it is …
+- `graded-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **graded monad** (also called an **indexed monad** or **parametrized monad**) is a mona…
+- `hvm-runtime` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — HVM Runtime Skill
+- `interaction-nets` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Interaction Nets Skill
+- `lambda-calculus` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Lambda Calculus Skill
+- `linear` — sibling in the skill routing & dispatch cluster — Manage issues, projects & team workflows in Linear.
+- `ocaml` — builds on — OCaml ecosystem = opam + dune + merlin + ocamlformat.
+- `rust` — sibling in the skill routing & dispatch cluster — Rust ecosystem = cargo + rustc + clippy + rustfmt.
+- `string-diagram-rewriting-protocol` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Kernel protocol for compositional string diagram rewriting across all skills
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2-monad`
-- `bkp-interleaving`
-- `cat`
-- `datalog-fixpoint`
-- `discopy`
-- `doctrinal-adjunction`
-- `flexible-algebra`
-- `graded-monad`
-- `hvm-runtime`
-- `interaction-nets`
-- `lambda-calculus`
-- `linear`
-- `ocaml`
-- `rust`
-- `string-diagram-rewriting-protocol`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `2-monad`
-- `bkp-interleaving`
-- `doctrinal-adjunction`
-- `flexible-algebra`
-- `graded-monad`
-- `hvm-runtime`
-- `interaction-nets`
-- `lambda-calculus`
-- `string-diagram-rewriting-protocol`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

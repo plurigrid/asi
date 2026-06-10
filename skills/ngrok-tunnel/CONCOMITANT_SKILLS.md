@@ -1,27 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bisimulation-game` — builds on — Bisimulation game for resilient skill dispersal across AI agents with
+- `localsend-mcp` — sibling in the skill routing & dispatch cluster — LocalSend based P2P transfer with MCP server design for NATS Tailscale
+- `mcp-builder` — sibling in the skill routing & dispatch cluster — Guide for creating high quality MCP (Model Context Protocol) servers
+- `skill-validation-gf3` — sibling in the skill routing & dispatch cluster — Skill Validation GF(3) - SLAVE (-1)
+- `tailscale-file-transfer` — builds on — Tailscale mesh VPN file transfer with open games semantics (play coplay)
+- `tailscale-mesh` — builds on — Tailscale mesh VPN for secure peer to peer networking.
+- `vers-agent` — sibling in the skill routing & dispatch cluster — ACP compliant AI agent harness with CLI HTTP interface.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bisimulation-game`
-- `localsend-mcp`
-- `mcp-builder`
-- `skill-validation-gf3`
-- `tailscale-file-transfer`
-- `tailscale-mesh`
-- `vers-agent`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

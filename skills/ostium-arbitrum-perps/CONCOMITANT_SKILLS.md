@@ -1,32 +1,20 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `aptos-trading` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Execute trades on Aptos mainnet with price triggered profit taking and dip buying strateg…
+- `audit-context-building` — builds on — Enables ultra granular, line by line code analysis to build deep architectural context be…
+- `axiom-solana-trading` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Interact with Axiom.trade -- a Y Combinator backed (W25) DEX aggregator and trading platf…
+- `entry-point-analyzer` — builds on — Analyzes smart contract codebases to identify state changing entry points for security au…
+- `external` — builds on — External skill interface for integration with external systems
+- `harness-writing` — builds on — Writing effective fuzzing harnesses for security testing.
+- `property-based-testing` — builds on — Provides guidance for property based testing across multiple languages and smart contract…
+- `secure-workflow-guide` — builds on — Guide you through Trail of Bits' 5 step secure development workflow.
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `semgrep-rule-creator` — builds on — Create custom Semgrep rules for detecting bug patterns and security vulnerabilities.
+- `token-integration-analyzer` — builds on — Comprehensive token integration and implementation analyzer based on Trail of Bits' token…
+- `variant-analysis` — builds on — Find similar vulnerabilities and bugs across codebases using pattern based analysis.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `aptos-trading`
-- `audit-context-building`
-- `axiom-solana-trading`
-- `entry-point-analyzer`
-- `external`
-- `harness-writing`
-- `property-based-testing`
-- `secure-workflow-guide`
-- `security`
-- `semgrep-rule-creator`
-- `token-integration-analyzer`
-- `variant-analysis`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `axiom-solana-trading`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

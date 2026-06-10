@@ -1,33 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `cat-structure-rank` — invoked by — Ranked taxonomy of categorical structures from sets to ∞-topoi with gap analysis and Duck…
+- `catsharp-galois` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — CatSharp Scale Galois Connections between agent o rama and Plurigrid ACT via Mazzola's ca…
+- `discopy` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `gh-interactome` — invoked by — GitHub author interaction network discovery.
+- `gh-skill-explorer` — builds on — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `moebius-inversion` — builds on — Möbius inversion on posets and lattices: alternating sums, chromatic polynomials, inciden…
+- `org` — builds on — Org mode manual (25K lines info).
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `plurigrid-asi-integrated` — builds on — Unified Plurigrid ASI skill combining ACSets, Gay MCP colors, bisimulation games, world h…
+- `worlding` — builds on — Gay.jl world_ pattern: persistent composable state builders with GF(3) conservation, Möbi…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets`
-- `cat-structure-rank`
-- `catsharp-galois`
-- `discopy`
-- `gh-interactome`
-- `gh-skill-explorer`
-- `moebius-inversion`
-- `org`
-- `para-mensch-commons`
-- `plurigrid-asi-integrated`
-- `worlding`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `cat-structure-rank`
-- `gh-interactome`
-- `para-mensch-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

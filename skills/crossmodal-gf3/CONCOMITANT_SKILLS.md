@@ -1,41 +1,24 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `11labs-acset` — invoked by — Model ElevenLabs voice synthesis as an ACSet schema with Unison ability handlers for type…
+- `affective-taxis` — invoked by — Implement affective valence as directional derivative of interoceptive energy landscapes …
+- `buberian-relations` — builds on — Buberian Relations Skill
+- `catsharp-sonification` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Sonify GF(3) color streams via CatSharp scale.
+- `dd3c3c` — builds on — Worldmat TiDAR: 3×3×3 matrix of diffusion draft + AR verify executions
+- `elevenlabs-acset` — mutually referenced — Skill elevenlabs acset
+- `gay-julia` — builds on — Wide gamut color sampling with splittable determinism using Pigeons.jl
+- `gesture-hypergestures` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Gesture Hypergestures Skill
+- `gf3-neighborhood` — invoked by — GF(3) neighborhood awareness with harmonic centrality - every skill knows its neighbors a…
+- `moebius-inversion` — builds on — Möbius inversion on posets and lattices: alternating sums, chromatic polynomials, inciden…
+- `open-location-code-zig` — invoked by — First ever Zig implementation of Google's Open Location Code (Plus Codes) with GF(3) spat…
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `sedonadb-geoacset` — invoked by — SedonaDB spatial engine enabling GeoACSets.jl categorical geospatial operations with O(lo…
+- `sense` — builds on — sense - Diagrammatic Video Extraction with Subtitle Alignment
+- `unison` — builds on — Unison language - content addressed functional programming with abilities for effects, di…
+- `worlding` — invoked by — Gay.jl world_ pattern: persistent composable state builders with GF(3) conservation, Möbi…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `11labs-acset`
-- `affective-taxis`
-- `buberian-relations`
-- `catsharp-sonification`
-- `dd3c3c`
-- `elevenlabs-acset`
-- `gay-julia`
-- `gesture-hypergestures`
-- `gf3-neighborhood`
-- `moebius-inversion`
-- `open-location-code-zig`
-- `sdf`
-- `sedonadb-geoacset`
-- `sense`
-- `unison`
-- `worlding`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `11labs-acset`
-- `elevenlabs-acset`
-- `gf3-neighborhood`
-- `open-location-code-zig`
-- `sedonadb-geoacset`
-- `worlding`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

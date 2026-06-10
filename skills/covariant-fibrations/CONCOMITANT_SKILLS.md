@@ -1,46 +1,23 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **2 monad** is a monad internal to a 2 category K.
+- `acset-taxonomy` — invoked by — Taxonomy of ACSet skills with morphisms to semantically similar categorical relational sk…
+- `bkp-interleaving` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — This skill is the **deep interleaving** of the five BKP 2 monad theory skills:
+- `cat-structure-rank` — invoked by — Ranked taxonomy of categorical structures from sets to ∞-topoi with gap analysis and Duck…
+- `cognitive-superposition` — invoked by — Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
+- `covariant-modification` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and …
+- `directed-interval` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Directed interval type 2 axiomatizing (0 1).
+- `doctrinal-adjunction` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **doctrinal adjunction** is Kelly''s 1974 theorem establishing a canonical bijection be…
+- `elements-infinity-cats` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Elements of ∞-Category Theory (Riehl Verity) for foundational ∞-categorical
+- `flexible-algebra` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **flexible T algebra** is a strict T algebra that admits enough "room to move" — it is …
+- `graded-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **graded monad** (also called an **indexed monad** or **parametrized monad**) is a mona…
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `rezk-types` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Rezk types (complete Segal spaces).
+- `segal-types` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Segal types for synthetic ∞-categories.
+- `synthetic-adjunctions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Synthetic adjunctions in directed type theory for ∞-categorical universal
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2-monad`
-- `acset-taxonomy`
-- `bkp-interleaving`
-- `cat-structure-rank`
-- `cognitive-superposition`
-- `covariant-modification`
-- `directed-interval`
-- `doctrinal-adjunction`
-- `elements-infinity-cats`
-- `flexible-algebra`
-- `graded-monad`
-- `para-mensch-commons`
-- `rezk-types`
-- `segal-types`
-- `synthetic-adjunctions`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `2-monad`
-- `acset-taxonomy`
-- `bkp-interleaving`
-- `cat-structure-rank`
-- `cognitive-superposition`
-- `covariant-modification`
-- `doctrinal-adjunction`
-- `elements-infinity-cats`
-- `flexible-algebra`
-- `graded-monad`
-- `para-mensch-commons`
-- `synthetic-adjunctions`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

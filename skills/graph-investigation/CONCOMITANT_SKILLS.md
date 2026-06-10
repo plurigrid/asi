@@ -1,26 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `citizen-lab-forensics` — mutually referenced — Digital forensics techniques for detecting device compromise, analyzing malware indicator…
+- `duckdb-ies` — builds on — Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking
+- `icij-document-analysis` — mutually referenced — Document processing pipeline for large scale leak analysis.
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `org` — builds on — Org mode manual (25K lines info).
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `citizen-lab-forensics`
-- `duckdb-ies`
-- `icij-document-analysis`
-- `networkx`
-- `org`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `citizen-lab-forensics`
-- `icij-document-analysis`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

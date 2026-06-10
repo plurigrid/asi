@@ -1,27 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `gay-mcp` — sibling in the skill routing & dispatch cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gh` — sibling in the skill routing & dispatch cluster — GitHub CLI (212 man pages).
+- `sheaf-cohomology` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Čech cohomology for local to global consistency verification in code
+- `skill-dispatch` — sibling in the skill routing & dispatch cluster — GF(3) Triadic Task Routing for Subagent Orchestration
+- `structured-decomp` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — StructuredDecompositions.jl sheaves on tree decompositions for FPT algorithms with bidire…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets`
-- `clojure`
-- `gay-mcp`
-- `gh`
-- `sheaf-cohomology`
-- `skill-dispatch`
-- `structured-decomp`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

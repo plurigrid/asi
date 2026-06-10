@@ -1,31 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bisimulation-game` — builds on — Bisimulation game for resilient skill dispersal across AI agents with
+- `localsend-mcp` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — LocalSend based P2P transfer with MCP server design for NATS Tailscale
+- `ngrok-tunnel` — invoked by — Secure tunnel for exposing local MCP servers to Claude, remote agents, and external clien…
+- `resource-sharing` — invoked by — Resource Sharing Skill
+- `scum-score` — invoked by — SCUM Score Skill
+- `spi-parallel-verify` — builds on — Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for
+- `ssh` — builds on — Establish and manage SSH connections to remote machines, including key generation, config…
+- `tailscale` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Mesh VPN.
+- `tailscale-file-transfer` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Tailscale mesh VPN file transfer with open games semantics (play coplay)
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bisimulation-game`
-- `localsend-mcp`
-- `ngrok-tunnel`
-- `resource-sharing`
-- `scum-score`
-- `spi-parallel-verify`
-- `ssh`
-- `tailscale`
-- `tailscale-file-transfer`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `ngrok-tunnel`
-- `resource-sharing`
-- `scum-score`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,151 +1,82 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `adjunction-algebra` — invoked by — Adjunctions as universal arrows.
+- `alife` — builds on — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `bci-colored-operad` — invoked by — Brain Computer Interface with colored operad security boundaries.
+- `bifunctor-bridge` — invoked by — Bifunctors: two argument functors for product categories.
+- `bisimulation-game` — builds on — Bisimulation game for resilient skill dispersal across AI agents with
+- `bmorphism-interactome` — invoked by — GitHub interactome explorer for bmorphism plurigrid ecosystem.
+- `bob` — builds on — World BOB Skill
+- `braindance-validator` — invoked by — Validates GF(3) conservation across triadic braindance replays.
+- `catlab-asi-interleave` — invoked by — Bridge layer connecting AlgebraicJulia Catlab.jl to plurigrid asi.
+- `cats-focus-monad` — invoked by — Cats Focus + Monad: Lawful composition for effect management
+- `chemical-abstract-machine` — invoked by — Berry & Boudol''s CHAM: computation as chemical reactions on multisets.
+- `comonad-context` — invoked by — Comonads: dual to Monad.
+- `consensus` — builds on — Agreement protocol in multi agent systems
+- `crossmodal-gf3` — builds on — GF(3) {Tactile, Auditory, Haptic} universal bridge for accessible color perception
+- `distributive-law` — invoked by — Distributive laws: monad comonad composition.
+- `duckdb-guard` — invoked by — Pre query schema validation for DuckDB to prevent column not found errors, constraint vio…
+- `duckdb-timetravel` — builds on — Layer 3: Temporal Versioning and ACSet Schema Generation for DuckDB
+- `effective-parallelism` — invoked by — GF(3)-balanced parallel agent orchestration with operad composition and prediction market…
+- `end-coend` — invoked by — Ends and Coends: universal (co)wedges.
+- `free-forgetful` — invoked by — Free Forgetful adjunctions.
+- `galois-connections` — invoked by — Galois connections for lawful conversions and bi Heyting topos logic.
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gf3-neighborhood` — invoked by — GF(3) neighborhood awareness with harmonic centrality - every skill knows its neighbors a…
+- `gh-skill-explorer` — invoked by — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `grothendieck-fibration` — invoked by — Fibrations and indexed categories.
+- `hom-functor` — invoked by — Hom(A,-) and Hom(-,B) representables.
+- `hyperbolic-bulk` — invoked by — On chain GF(3) entropy storage via Aptos Move - bulk boundary correspondence where entrop…
+- `ies` — builds on — ies
+- `interactome-rl-env` — invoked by — ACSet native reinforcement learning environment for contributor network dynamics.
+- `jank-llvm` — invoked by — Jank - Clojure dialect targeting LLVM with seamless C++ interoperability
+- `join-semilattice` — invoked by — Join semilattices and sup preservation.
+- `julia-gpu-kernels` — invoked by — KernelAbstractions.jl: Backend agnostic GPU kernel programming for Julia.
+- `julia-tempering` — invoked by — Splittable RNG infrastructure for parallel tempering and distributed sampling with determ…
+- `just-monad` — invoked by — The **Just Monad** treats just recipes as monadic actions:
+- `kan-extension` — invoked by — Left Right Kan extensions.
+- `latent-latency` — invoked by — Latent Latency Skill
+- `lawvere-theory` — invoked by — Lawvere theories: categorical universal algebra.
+- `lindenmayer-systems` — invoked by — L systems: parallel string rewriting for fractals, plants, and morphogenesis.
+- `max-kajiwara-oloog` — sibling in the world: navigation cluster — Skill max kajiwara oloog
+- `mirror` — invoked by — Social self persistence via mutual cognitive surrogates.
+- `mlx-bitnet-gf3` — invoked by — BitNet 1.58 bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `modelica-lispsyntax-interleave` — invoked by — This skill unifies three systems through **alphabet color assignment**:
+- `monoidal-category` — invoked by — Monoidal categories: ⊗, I, α, λ, ρ.
+- `natural-transformation` — invoked by — Natural transformations: morphisms of functors.
+- `nix-acset-worlding` — sibling in the world: navigation cluster — Model Nix store as Attributed C Set for dependency verification, GC analysis,
+- `omniglot` — invoked by — The Lake Salakhutdinov Tenenbaum challenge for human level concept learning through proba…
+- `operad-composition` — invoked by — Operads: multi input operations.
+- `operadic-delegation` — invoked by — From Interverse transcript (Aug 2025):
+- `parametrised-optics-cybernetics` — invoked by — Parametrised optics model cybernetic systems - dynamical systems steered by agents.
+- `quantum-balalaika` — invoked by — - **Contraction**: Remove belief WRONG, beliefs persist
+- `quillen-model` — invoked by — Quillen model categories: (C,W,F) structures.
+- `right-adjoint` — invoked by — Right adjoints preserve limits.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `segal-space` — invoked by — Segal spaces: ∞-categories via simplicial spaces.
+- `sexp-neighborhood` — invoked by — Exhaustive index of S expression using skills with GF(3) triadic classification and bridg…
+- `sicm` — invoked by — - **Generic arithmetic** extensible across numeric types
+- `string-diagram-rewriting-protocol` — invoked by — Kernel protocol for compositional string diagram rewriting across all skills
+- `sufficiency-probe` — sibling in the world: navigation cluster — Probes context setting tooling sufficiency at every interaction.
+- `teglon-acp` — invoked by — - α: Message dispatch | β: Protocol switch | γ: Identity preservation
+- `truealife` — invoked by — Comprehensive index of Artificial Life repositories across history, with special focus on…
+- `unworld` — sibling in the world: navigation cluster — Layer 4: Derivational Pattern Generation via Seed Chaining
+- `virtual-double` — invoked by — Virtual double categories: loose morphisms.
+- `wasm-goblins` — invoked by — Goblins ↔ WASM runtime interactions across verified runtimes.
+- `weighted-limit` — invoked by — Weighted (co)limits: J indexed diagrams.
+- `world-extractable-value` — sibling in the world: navigation cluster — Extract value from world transitions via Markov blanket arbitrage.
+- `world-hopping` — sibling in the world: navigation cluster — Badiou inspired possible world navigation using triangle inequality constraints,
+- `world-memory-worlding` — sibling in the world: navigation cluster — World memory is world remembering is world worlding - the autopoietic loop where memory e…
+- `world-replay-buffer` — sibling in the world: navigation cluster — Maximally snapshotted replay buffer with DuckLake embedding VSS and moments of interactio…
+- `world-runtime` — sibling in the world: navigation cluster — Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution.
+- `worlding-calendar` — sibling in the world: navigation cluster — Calendar events tied to 26 letter worlds via org mode.
+- `x-module-bimodule` — invoked by — Bimodules and profunctors.
+- `yang-baxter-integrability` — invoked by — Yang Baxter equation for quantum integrable systems.
+- `yoneda-embedding` — invoked by — Yoneda: C [Cᵒᵖ, Set] fully faithful.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `adjunction-algebra`
-- `alife`
-- `bci-colored-operad`
-- `bifunctor-bridge`
-- `bisimulation-game`
-- `bmorphism-interactome`
-- `bob`
-- `braindance-validator`
-- `catlab-asi-interleave`
-- `cats-focus-monad`
-- `chemical-abstract-machine`
-- `comonad-context`
-- `consensus`
-- `crossmodal-gf3`
-- `distributive-law`
-- `duckdb-guard`
-- `duckdb-timetravel`
-- `effective-parallelism`
-- `end-coend`
-- `free-forgetful`
-- `galois-connections`
-- `gay-mcp`
-- `gf3-neighborhood`
-- `gh-skill-explorer`
-- `grothendieck-fibration`
-- `hom-functor`
-- `hyperbolic-bulk`
-- `ies`
-- `interactome-rl-env`
-- `jank-llvm`
-- `join-semilattice`
-- `julia-gpu-kernels`
-- `julia-tempering`
-- `just-monad`
-- `kan-extension`
-- `latent-latency`
-- `lawvere-theory`
-- `lindenmayer-systems`
-- `max-kajiwara-oloog`
-- `mirror`
-- `mlx-bitnet-gf3`
-- `modelica-lispsyntax-interleave`
-- `monoidal-category`
-- `natural-transformation`
-- `nix-acset-worlding`
-- `omniglot`
-- `operad-composition`
-- `operadic-delegation`
-- `parametrised-optics-cybernetics`
-- `quantum-balalaika`
-- `quillen-model`
-- `right-adjoint`
-- `sdf`
-- `segal-space`
-- `sexp-neighborhood`
-- `sicm`
-- `string-diagram-rewriting-protocol`
-- `sufficiency-probe`
-- `teglon-acp`
-- `truealife`
-- `unworld`
-- `virtual-double`
-- `wasm-goblins`
-- `weighted-limit`
-- `world-extractable-value`
-- `world-hopping`
-- `world-memory-worlding`
-- `world-replay-buffer`
-- `world-runtime`
-- `worlding-calendar`
-- `x-module-bimodule`
-- `yang-baxter-integrability`
-- `yoneda-embedding`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `adjunction-algebra`
-- `bci-colored-operad`
-- `bifunctor-bridge`
-- `bmorphism-interactome`
-- `braindance-validator`
-- `catlab-asi-interleave`
-- `cats-focus-monad`
-- `chemical-abstract-machine`
-- `comonad-context`
-- `distributive-law`
-- `duckdb-guard`
-- `effective-parallelism`
-- `end-coend`
-- `free-forgetful`
-- `galois-connections`
-- `gf3-neighborhood`
-- `gh-skill-explorer`
-- `grothendieck-fibration`
-- `hom-functor`
-- `hyperbolic-bulk`
-- `interactome-rl-env`
-- `jank-llvm`
-- `join-semilattice`
-- `julia-gpu-kernels`
-- `julia-tempering`
-- `just-monad`
-- `kan-extension`
-- `latent-latency`
-- `lawvere-theory`
-- `lindenmayer-systems`
-- `max-kajiwara-oloog`
-- `mirror`
-- `mlx-bitnet-gf3`
-- `modelica-lispsyntax-interleave`
-- `monoidal-category`
-- `natural-transformation`
-- `omniglot`
-- `operad-composition`
-- `operadic-delegation`
-- `parametrised-optics-cybernetics`
-- `quantum-balalaika`
-- `quillen-model`
-- `right-adjoint`
-- `segal-space`
-- `sexp-neighborhood`
-- `sicm`
-- `string-diagram-rewriting-protocol`
-- `sufficiency-probe`
-- `teglon-acp`
-- `truealife`
-- `virtual-double`
-- `wasm-goblins`
-- `weighted-limit`
-- `world-memory-worlding`
-- `world-replay-buffer`
-- `worlding-calendar`
-- `x-module-bimodule`
-- `yang-baxter-integrability`
-- `yoneda-embedding`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

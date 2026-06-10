@@ -1,50 +1,25 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acp-commons` — mutually referenced — Atlas of Agent Client Protocol (ACP) clients, agents, and OCapN CapTP grounded actors.
+- `aqua-voice-malleability` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Adversarial malleability analysis of Aqua Voice Electron app with IPC injection, WebSocke…
+- `captp` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — CapTP: Capability Transfer Protocol
+- `cat` — builds on — cat Skill: Derivational Pipe Chaining
+- `chromatic-walk` — invoked by — 3 parallel agents explore codebase improvements via GF(3) balanced prime geodesics
+- `cybernetic-immune` — invoked by — Cybernetic immune system with Varela+Friston+Powers for Self Non Self discrimination via …
+- `gestalt-hacking` — invoked by — Gestalt Hacking Skill (ERGODIC 0)
+- `goblins-adapter` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — ElizaOS OpenClaw Goblins OCapN adapter (study + bridge)
+- `gworkspace-mcp` — invoked by — gworkspace mcp - Google Workspace MCP Integration with Temporal Consistency
+- `implicit-coordination` — invoked by — Stigmergic agent coordination through environment modification, not messages.
+- `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
+- `multiversal-finance` — invoked by — Multiversal Finance: Prediction Markets for Interesting Observations
+- `pkg-memory-bridge` — invoked by — Bridge to PKG systems (Mem0, Graphiti, Solid PODs, Logseq) for individuated information i…
+- `reflow` — invoked by — Information Reflow Skill (ERGODIC 0)
+- `refuse-mediocrity` — invoked by — Reject complacency.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `world-runtime` — invoked by — Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acp-commons`
-- `aqua-voice-malleability`
-- `captp`
-- `cat`
-- `chromatic-walk`
-- `cybernetic-immune`
-- `gestalt-hacking`
-- `goblins-adapter`
-- `gworkspace-mcp`
-- `implicit-coordination`
-- `k-dense-ai`
-- `multiversal-finance`
-- `pkg-memory-bridge`
-- `reflow`
-- `refuse-mediocrity`
-- `sdf`
-- `world-runtime`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `acp-commons`
-- `aqua-voice-malleability`
-- `captp`
-- `chromatic-walk`
-- `cybernetic-immune`
-- `gestalt-hacking`
-- `goblins-adapter`
-- `gworkspace-mcp`
-- `implicit-coordination`
-- `multiversal-finance`
-- `pkg-memory-bridge`
-- `reflow`
-- `refuse-mediocrity`
-- `world-runtime`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,27 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `equilibrium` — builds on — Fixed points where vector field vanishes
+- `ga-abelian-extensions` — sibling in the topos theory, sheaves & categorical logic cluster — Abelian extensions for Clifford algebra grade filtrations via Ext functors.
+- `ga-derived-category` — sibling in the topos theory, sheaves & categorical logic cluster — Derived categories and derived functors for graded Clifford modules.
+- `infinity-topos` — invoked by — ∞-Topos theory unifying hatchery repos, worlds, and GA abelian extensions.
+- `pga-motor-interpolation` — builds on — Motor interpolation (slerp nlerp) for smooth rigid body transformations in PGA
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `clojure`
-- `equilibrium`
-- `ga-abelian-extensions`
-- `ga-derived-category`
-- `infinity-topos`
-- `pga-motor-interpolation`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `ga-derived-category`
-- `infinity-topos`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

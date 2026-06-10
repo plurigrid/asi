@@ -1,195 +1,96 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `_integrated` — sibling in the skill routing & dispatch cluster — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `acsets` — invoked by — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `acsets-algebraic-databases` — invoked by — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional navigati…
+- `agentdb-optimization` — invoked by — Optimize AgentDB performance with quantization (4 32x memory reduction), HNSW indexing (1…
+- `alife2025` — invoked by — ALIFE 2025 Proceedings - 337 pages, 80+ papers on artificial life, evolution, emergence, …
+- `amp-continue` — invoked by — Combines AMP thread export with GF(3)-classified continuation for skill orchestration.
+- `amp-gf3-continuation` — invoked by — Combines AMP thread export with GF(3)-classified continuation for skill orchestration.
+- `asi-integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `asi-polynomial-operads` — invoked by — ASI skill integrating polynomial functors, free monad cofree comonad
+- `bidirectional-lens-logic` — invoked by — Hedges' 4 kind lattice for bidirectional programming - covariant contravariant invariant …
+- `bidirectional-navigator` — sibling in the skill routing & dispatch cluster — Safe proof ↔ theorem navigation with non backtracking constraint.
+- `bigquery` — invoked by — |
+- `bkp-interleaving` — invoked by — This skill is the **deep interleaving** of the five BKP 2 monad theory skills:
+- `cat-three-homes` — invoked by — The double category of polynomial comonads where:
+- `compositional-acset-comparison` — invoked by — Compositional algorithm and data analysis via algebraic databases
+- `crdt` — invoked by — crdt skill
+- `critical-opalescence` — invoked by — Critical opalescence at phase transitions: diverging correlation length, light scattering…
+- `dask` — invoked by — Parallel distributed computing.
+- `derivational-coalgebra` — invoked by — The highest tension in skill space (d=2.131):
+- `designing-workflow-skills` — sibling in the skill routing & dispatch cluster — >-
+- `dialectica` — invoked by — Dialectica Skill (ERGODIC 0)
+- `doctrinal-adjunction` — sibling in the skill routing & dispatch cluster — A **doctrinal adjunction** is Kelly''s 1974 theorem establishing a canonical bijection be…
+- `entropy-regularized-inference` — invoked by — - User asks about connecting active inference to practical RL
+- `flow-nexus-neural` — invoked by — Train and deploy neural networks in distributed E2B sandboxes with Flow Nexus
+- `flox-cuda` — invoked by — CUDA and GPU development with Flox.
+- `forward-forward-learning` — invoked by — Hinton's Forward Forward algorithm for local learning without backpropagation.
+- `gay-mcp` — sibling in the skill routing & dispatch cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gestalt-hacking` — sibling in the skill routing & dispatch cluster — Gestalt Hacking Skill (ERGODIC 0)
+- `gget` — invoked by — CLI Python toolkit for rapid bioinformatics queries.
+- `glass-bead-game` — invoked by — Hesse inspired interdisciplinary synthesis game with Badiou triangle
+- `graded-monad` — invoked by — A **graded monad** (also called an **indexed monad** or **parametrized monad**) is a mona…
+- `hijaling` — sibling in the skill routing & dispatch cluster — This skill extends [mlegls hyjax](https: github.com mlegls hyjax) with:
+- `homoiconic-rewriting` — invoked by — Unified homoiconic graph rewriting - λ calculus, interaction nets, ACSets, CUDA paralleli…
+- `indefinite-causal-order` — sibling in the skill routing & dispatch cluster — Indefinite causal order (ICO) is the framework where the causal relationship
+- `julia-gpu-kernels` — invoked by — KernelAbstractions.jl: Backend agnostic GPU kernel programming for Julia.
+- `julia-scientific` — invoked by — Julia package equivalents for 137 K Dense AI scientific skills.
+- `kolmogorov-onsager-hurst` — sibling in the skill routing & dispatch cluster — Turbulence scaling theory: K41 energy cascade, Onsager's anomalous dissipation, and Hurst…
+- `koopman-generator` — invoked by — Koopman operator theory for infinite dimensional linear lifting of nonlinear dynamics.
+- `levity-levin` — invoked by — Playful mutual ingression meets Leonid Levin's algorithmic bounds.
+- `lhott-cohesive-linear` — invoked by — Cohesive Linear HoTT patterns for interaction entropy with diagram generation.
+- `linear-logic` — sibling in the skill routing & dispatch cluster — Linear Logic Skill
+- `louisville-quantum-gravity` — sibling in the skill routing & dispatch cluster — Louisville Liouville quantum gravity measure for KPZ stationary measures.
+- `mlx-apple-silicon` — invoked by — Run LLMs on Apple Silicon with MLX mlx_lm - unified memory, 4 bit quantization, streaming…
+- `mlx-bitnet-gf3` — invoked by — BitNet 1.58 bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:
+- `mlx-jax-splitmix` — invoked by — MLX on Apple Silicon with JAX style SplitMix64 PRNG.
+- `mobius-path-filter` — invoked by — Identifies tangled geodesics in proof dependency graphs via Möbius inversion.
+- `move-narya-bridge` — sibling in the skill routing & dispatch cluster — Observational bridge between Move smart contracts and Narya proof verification.
+- `mutual-information-oracle` — invoked by — > Formal oracle quantifying coordination between agents in multi agent reinforcement lear…
+- `neuro-symbolic-bridge` — sibling in the skill routing & dispatch cluster — High tension pairs (d ≈ 1.85):
+- `oapply-colimit` — invoked by — oapply operad algebra evaluation via colimits with Specter style composition patterns
+- `olmoearth-mlx` — sibling in the skill routing & dispatch cluster — OlmoEarth MLX: Spatio Temporal Earth Intelligence
+- `omg-tension-resolver` — sibling in the skill routing & dispatch cluster — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
+- `ontology-asi-interleave` — sibling in the skill routing & dispatch cluster — > Bridge connecting plurigrid ontology to ASI skill graph.
+- `openai-acset` — sibling in the skill routing & dispatch cluster — OpenAI's ChatGPT export has a **tree structured mapping** where messages form a DAG via …
+- `pga-motor-interpolation` — sibling in the skill routing & dispatch cluster — Motor interpolation (slerp nlerp) for smooth rigid body transformations in PGA
+- `pufferlib` — invoked by — This skill should be used when working with reinforcement learning tasks including high p…
+- `pymc` — invoked by — Bayesian modeling with PyMC.
+- `pymc-bayesian-modeling` — sibling in the skill routing & dispatch cluster — Bayesian modeling with PyMC.
+- `scientific-schematics` — invoked by — Create publication quality scientific diagrams using Nano Banana Pro AI with smart iterat…
+- `scikit-bio` — invoked by — Biological data toolkit.
+- `scikit-learn` — invoked by — Machine learning in Python with scikit learn.
+- `scikit-survival` — invoked by — Comprehensive toolkit for survival analysis and time to event modeling in Python using sc…
+- `seaborn` — invoked by — Statistical visualization.
+- `sense` — sibling in the skill routing & dispatch cluster — sense - Diagrammatic Video Extraction with Subtitle Alignment
+- `shap` — sibling in the skill routing & dispatch cluster — Model interpretability and explainability using SHAP (SHapley Additive exPlanations).
+- `sheaf-laplacian-coordination` — invoked by — Sheaf neural network coordination via graph Laplacians for distributed
+- `sheaf-uncertainty` — invoked by — Bayesian sheaf neural networks for uncertainty quantification.
+- `sicm` — invoked by — - **Generic arithmetic** extensible across numeric types
+- `slack-gif-creator` — sibling in the skill routing & dispatch cluster — Toolkit for creating animated GIFs optimized for Slack, with validators
+- `slowtime-mcp` — sibling in the skill routing & dispatch cluster — Asymmetric time dilation for MCP operations - deliberate slow paths enable capability acc…
+- `soliton-detection` — invoked by — Topological soliton detection and agency bridge with anyonic fusion algebra for concept c…
+- `sonification-collaborative` — invoked by — 1.
+- `specter-navigator-gadget` — sibling in the skill routing & dispatch cluster — Unified Specter Navigator 3 MATCH architecture with bidirectional path compilation
+- `stable-baselines3` — invoked by — Use this skill for reinforcement learning tasks including training RL agents (PPO, SAC, D…
+- `statistical-analysis` — invoked by — Statistical analysis toolkit.
+- `statsmodels` — invoked by — Statistical modeling toolkit.
+- `stellogen` — invoked by — Stellogen Skill
+- `stellogen-proof-search` — invoked by — Automated resolution based proof search via stellar resolution and bidirectional unificat…
+- `string-diagram-rewriting-protocol` — invoked by — Kernel protocol for compositional string diagram rewriting across all skills
+- `substitute-eraser` — invoked by — This skill should be used when the user asks to "scan for TODOs", "find placeholders", "c…
+- `sympy` — invoked by — Use this skill when working with symbolic mathematics in Python.
+- `tailscale-file-transfer` — invoked by — Tailscale mesh VPN file transfer with open games semantics (play coplay)
+- `topomodelx-hodge` — invoked by — Hodge Laplacian neural networks for simplicial cell hypergraph complexes.
+- `torch-geometric` — invoked by — Graph Neural Networks (PyG).
+- `torch_geometric` — invoked by — Graph Neural Networks (PyG).
+- `tulipa-energy` — invoked by — TulipaEnergyModel.jl — Julia energy system optimization for investment + operation decisi…
+- `wasm-goblins` — invoked by — Goblins ↔ WASM runtime interactions across verified runtimes.
+- `zubyul-gene-networks` — invoked by — Gene correlation network analysis bridging WGCNA, pgmpy Bayesian networks, and monad baye…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `_integrated`
-- `acsets`
-- `acsets-algebraic-databases`
-- `agentdb-optimization`
-- `alife2025`
-- `amp-continue`
-- `amp-gf3-continuation`
-- `asi-integrated`
-- `asi-polynomial-operads`
-- `bidirectional-lens-logic`
-- `bidirectional-navigator`
-- `bigquery`
-- `bkp-interleaving`
-- `cat-three-homes`
-- `compositional-acset-comparison`
-- `crdt`
-- `critical-opalescence`
-- `dask`
-- `derivational-coalgebra`
-- `designing-workflow-skills`
-- `dialectica`
-- `doctrinal-adjunction`
-- `entropy-regularized-inference`
-- `flow-nexus-neural`
-- `flox-cuda`
-- `forward-forward-learning`
-- `gay-mcp`
-- `gestalt-hacking`
-- `gget`
-- `glass-bead-game`
-- `graded-monad`
-- `hijaling`
-- `homoiconic-rewriting`
-- `indefinite-causal-order`
-- `julia-gpu-kernels`
-- `julia-scientific`
-- `kolmogorov-onsager-hurst`
-- `koopman-generator`
-- `levity-levin`
-- `lhott-cohesive-linear`
-- `linear-logic`
-- `louisville-quantum-gravity`
-- `mlx-apple-silicon`
-- `mlx-bitnet-gf3`
-- `mlx-jax-splitmix`
-- `mobius-path-filter`
-- `move-narya-bridge`
-- `mutual-information-oracle`
-- `neuro-symbolic-bridge`
-- `oapply-colimit`
-- `olmoearth-mlx`
-- `omg-tension-resolver`
-- `ontology-asi-interleave`
-- `openai-acset`
-- `pga-motor-interpolation`
-- `pufferlib`
-- `pymc`
-- `pymc-bayesian-modeling`
-- `scientific-schematics`
-- `scikit-bio`
-- `scikit-learn`
-- `scikit-survival`
-- `seaborn`
-- `sense`
-- `shap`
-- `sheaf-laplacian-coordination`
-- `sheaf-uncertainty`
-- `sicm`
-- `slack-gif-creator`
-- `slowtime-mcp`
-- `soliton-detection`
-- `sonification-collaborative`
-- `specter-navigator-gadget`
-- `stable-baselines3`
-- `statistical-analysis`
-- `statsmodels`
-- `stellogen`
-- `stellogen-proof-search`
-- `string-diagram-rewriting-protocol`
-- `substitute-eraser`
-- `sympy`
-- `tailscale-file-transfer`
-- `topomodelx-hodge`
-- `torch-geometric`
-- `torch_geometric`
-- `tulipa-energy`
-- `wasm-goblins`
-- `zubyul-gene-networks`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `_integrated`
-- `acsets`
-- `acsets-algebraic-databases`
-- `agentdb-optimization`
-- `alife2025`
-- `amp-continue`
-- `amp-gf3-continuation`
-- `asi-integrated`
-- `asi-polynomial-operads`
-- `bidirectional-lens-logic`
-- `bidirectional-navigator`
-- `bigquery`
-- `bkp-interleaving`
-- `cat-three-homes`
-- `compositional-acset-comparison`
-- `crdt`
-- `critical-opalescence`
-- `dask`
-- `derivational-coalgebra`
-- `designing-workflow-skills`
-- `dialectica`
-- `doctrinal-adjunction`
-- `entropy-regularized-inference`
-- `flow-nexus-neural`
-- `flox-cuda`
-- `forward-forward-learning`
-- `gay-mcp`
-- `gestalt-hacking`
-- `gget`
-- `glass-bead-game`
-- `graded-monad`
-- `hijaling`
-- `homoiconic-rewriting`
-- `indefinite-causal-order`
-- `julia-gpu-kernels`
-- `julia-scientific`
-- `kolmogorov-onsager-hurst`
-- `koopman-generator`
-- `levity-levin`
-- `lhott-cohesive-linear`
-- `linear-logic`
-- `louisville-quantum-gravity`
-- `mlx-apple-silicon`
-- `mlx-bitnet-gf3`
-- `mlx-jax-splitmix`
-- `mobius-path-filter`
-- `move-narya-bridge`
-- `mutual-information-oracle`
-- `neuro-symbolic-bridge`
-- `oapply-colimit`
-- `olmoearth-mlx`
-- `omg-tension-resolver`
-- `ontology-asi-interleave`
-- `openai-acset`
-- `pga-motor-interpolation`
-- `pufferlib`
-- `pymc`
-- `pymc-bayesian-modeling`
-- `scientific-schematics`
-- `scikit-bio`
-- `scikit-learn`
-- `scikit-survival`
-- `seaborn`
-- `sense`
-- `shap`
-- `sheaf-laplacian-coordination`
-- `sheaf-uncertainty`
-- `sicm`
-- `slack-gif-creator`
-- `slowtime-mcp`
-- `soliton-detection`
-- `sonification-collaborative`
-- `specter-navigator-gadget`
-- `stable-baselines3`
-- `statistical-analysis`
-- `statsmodels`
-- `stellogen`
-- `stellogen-proof-search`
-- `string-diagram-rewriting-protocol`
-- `substitute-eraser`
-- `sympy`
-- `tailscale-file-transfer`
-- `topomodelx-hodge`
-- `torch-geometric`
-- `torch_geometric`
-- `tulipa-energy`
-- `wasm-goblins`
-- `zubyul-gene-networks`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

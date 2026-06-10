@@ -1,36 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `datalog-fixpoint` — builds on — Datalog bottom up fixpoint iteration for recursive queries
+- `interaction-nets` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Interaction Nets Skill
+- `linear-logic` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Linear Logic Skill
+- `narya-proofs` — builds on — Mechanically verified proofs from Narya event logs.
+- `ontology-asi-interleave` — sibling in the skill routing & dispatch cluster — > Bridge connecting plurigrid ontology to ASI skill graph.
+- `rust` — sibling in the skill routing & dispatch cluster — Rust ecosystem = cargo + rustc + clippy + rustfmt.
+- `skill-bonds` — sibling in the skill routing & dispatch cluster — Skill Bonds Registry
+- `snix` — invoked by — Rust Nix reimplementation for content addressed rootfs builds.
+- `triadic-skill-orchestrator` — sibling in the skill routing & dispatch cluster — Orchestrates multiple skills in GF(3)-balanced triplets.
+- `type-checker` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Type Checker Skill
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `cat`
-- `datalog-fixpoint`
-- `interaction-nets`
-- `linear-logic`
-- `narya-proofs`
-- `ontology-asi-interleave`
-- `rust`
-- `skill-bonds`
-- `snix`
-- `triadic-skill-orchestrator`
-- `type-checker`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `interaction-nets`
-- `linear-logic`
-- `ontology-asi-interleave`
-- `skill-bonds`
-- `snix`
-- `type-checker`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,31 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
+- `bisimulation-game` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Bisimulation game for resilient skill dispersal across AI agents with
+- `condensed-analytic-stacks` — builds on — Scholze Clausen condensed mathematics bridge to sheaf neural networks
+- `equilibrium` — builds on — Fixed points where vector field vanishes
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `ordered-locale` — builds on — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `ordered-locale-proper` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `sheaf-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Čech cohomology for local to global consistency verification in code
+- `trajectory` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Path traced by solution through phase space
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets`
-- `alice`
-- `bisimulation-game`
-- `condensed-analytic-stacks`
-- `equilibrium`
-- `gay-mcp`
-- `init`
-- `ordered-locale`
-- `ordered-locale-proper`
-- `sheaf-cohomology`
-- `trajectory`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

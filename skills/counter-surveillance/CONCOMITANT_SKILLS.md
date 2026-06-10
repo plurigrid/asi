@@ -1,30 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
+- `botnet-disruption` — sibling in the security auditing, fuzzing & pentest cluster — Coordinated botnet takedown methodologies — sinkholing, infrastructure mapping, legal fra…
+- `botnet-studies` — sibling in the security auditing, fuzzing & pentest cluster — Botnet architecture taxonomy, detection techniques, and defensive analysis.
+- `org` — builds on — Org mode manual (25K lines info).
+- `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
+- `secure-workflow-guide` — builds on — Guide you through Trail of Bits' 5 step secure development workflow.
+- `security` — sibling in the security auditing, fuzzing & pentest cluster — Security best practices for secure coding, authentication, authorization, and data protec…
+- `static-security-analyzer` — builds on — Wrapper around Tizen Studio static analyzer.
+- `webapp-testing` — builds on — Toolkit for interacting with and testing local web applications using
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `botnet-disruption`
-- `botnet-studies`
-- `org`
-- `rust`
-- `secure-workflow-guide`
-- `security`
-- `static-security-analyzer`
-- `webapp-testing`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `botnet-disruption`
-- `botnet-studies`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

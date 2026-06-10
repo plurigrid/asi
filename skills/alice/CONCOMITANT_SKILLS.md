@@ -1,207 +1,105 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2600-magazine` — sibling in the skill routing & dispatch cluster — Query and explore the 2600: The Hacker Quarterly magazine archive (1984 present) via Duck…
+- `aaif-governance-interleave` — sibling in the skill routing & dispatch cluster — Bridge layer connecting the Agentic AI Foundation (AAIF) governance structure — Linux Fou…
+- `abd` — invoked by — Attiya Bar Noy Dolev atomic register emulation over message passing.
+- `academic-research` — sibling in the skill routing & dispatch cluster — Search academic papers across arXiv, PubMed, Semantic Scholar, bioRxiv, medRxiv, Google S…
+- `alice-chirality` — sibling in the skill routing & dispatch cluster — From Interverse transcript (Dec 12, 2025):
+- `alice-emacs-mods` — invoked by — Tour of Alice's heavily customized terminal Emacs — Causal transients, Worlding org, proo…
+- `amazon-shopping-mcp` — sibling in the skill routing & dispatch cluster — Amazon product search, cart management, price tracking, and shopping list via Playwright …
+- `anima-theory` — invoked by — ANIMA as limit construction over condensed skill applications.
+- `aptos-agent` — sibling in the skill routing & dispatch cluster — Interact with Aptos blockchain - check balances, transfer APT, swap tokens, stake, and ex…
+- `aptos-trading` — invoked by — Execute trades on Aptos mainnet with price triggered profit taking and dip buying strateg…
+- `aptos-wallet-mcp` — sibling in the skill routing & dispatch cluster — Aptos Wallet MCP Skill
+- `beads-issue-tracker` — sibling in the skill routing & dispatch cluster — |
+- `beeper-mcp` — sibling in the skill routing & dispatch cluster — Unified messaging via Beeper Desktop MCP.
+- `bluesky-jetstream` — invoked by — Bluesky Jetstream Firehose Skill
+- `bob-emacs-mods` — invoked by — Complement to alice emacs mods.
+- `braindance-worlds` — invoked by — GF(3)-conserved distribution of Claude threads across Aptos worlds
+- `calendar-acset` — invoked by — Google Calendar management via CalendarACSet.
+- `captp` — invoked by — CapTP: Capability Transfer Protocol
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `catcolab-schemas` — invoked by — CatColab Schemas - database schema modeling distinguishing entities (tables) from attribu…
+- `claude-questions-leaderboard` — sibling in the skill routing & dispatch cluster — Track Claude''s best and worst questions in DuckDB.
+- `collaborative-emacs` — invoked by — Claude Code runs an Emacs daemon, starts a CRDT server, shares buffers.
+- `command-development` — sibling in the skill routing & dispatch cluster — This skill should be used when the user asks to "create a slash command", "add a command"…
+- `counter-surveillance` — invoked by — Assess and harden operational security (OPSEC) posture for applications, communications, …
+- `cq-ai-deterministic-security-scanning-with-ternary-polarity` — invoked by — Deterministic code security scanner using SplitMix64 seeding.
+- `crdt` — invoked by — crdt skill
+- `crdt-color` — invoked by — Color aware CRDT operations with GF(3) conservation, Narya proofs, ACSet schemas, and Bum…
+- `crypto-fiat-bridge` — sibling in the skill routing & dispatch cluster — Automated APT to fiat payment pipeline via PYUSD stablecoin bridge.
+- `cue-lang` — sibling in the skill routing & dispatch cluster — CUE: Lattice based configuration language with unification, constraint
+- `discopy` — invoked by — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `docs-acset` — sibling in the skill routing & dispatch cluster — Google Docs Sheets management via ACSet condensation.
+- `drive-acset` — invoked by — Google Drive management via DriveACSet schema with GF(3) triadic routing.
+- `duckdb-temporal-versioning` — invoked by — Temporal versioning and interaction history with time travel queries,
+- `ducklake` — invoked by — Create, query, migrate, and maintain DuckLake lakehouse databases using the DuckDB duckla…
+- `emacspeak-binaural` — invoked by — Replace emacspeak auditory icons with binaural beats using the sound theme system.
+- `finder-color-walk` — invoked by — Deterministic triadic fanout over file sets with macOS Finder label coloring, GF(3) conse…
+- `flox-publish` — invoked by — Use for publishing user packages to flox for use in Flox environments.
+- `fnox-secrets` — sibling in the skill routing & dispatch cluster — fnox Secrets Management Skill - DIRECT PIPE ONLY
+- `frustration-eradication` — sibling in the skill routing & dispatch cluster — Frustration Eradication Skill
+- `gay-mcp` — sibling in the skill routing & dispatch cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `geomstats-fisher-rao` — invoked by — Information geometry for Bayesian inference.
+- `gmail-anima` — sibling in the skill routing & dispatch cluster — Gmail inbox management via ANIMA condensation.
+- `google-workspace` — sibling in the skill routing & dispatch cluster — Google Workspace MCP integration for Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms,…
+- `graph-grafting` — sibling in the skill routing & dispatch cluster — Graph Grafting Skill
+- `hero-dispenser-mod` — invoked by — Hero Health smart pill dispenser after market firmware mod with scrambled medication inde…
+- `influence-propagation` — sibling in the skill routing & dispatch cluster — Layer 7: Interperspectival Network Analysis and Influence Flow
+- `k-dense-ai` — sibling in the skill routing & dispatch cluster — - alphafold database - Protein structure prediction
+- `l-space` — sibling in the skill routing & dispatch cluster — L Space Skill: The Library of All Libraries
+- `livestream` — invoked by — Warehouse audio pipeline for live capture, transcription, and narration from meeting room…
+- `magic-todo` — sibling in the skill routing & dispatch cluster — Add TODOs to org files and generate ADHD friendly task breakdowns with local MLX models o…
+- `magic-todo-watch-deploy` — sibling in the skill routing & dispatch cluster — Build, deploy, and manage the MagicTodoWatch iOS watchOS voice to task pipeline app.
+- `mcp-from-prompt` — sibling in the skill routing & dispatch cluster — Generate a complete MCP server + skill from an API description, following the ExoPriors S…
+- `mcp-spec-checker` — sibling in the skill routing & dispatch cluster — Predicate level semantic diff for MCP protocol specs.
+- `mirror` — invoked by — Social self persistence via mutual cognitive surrogates.
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `narya-proofs` — invoked by — Mechanically verified proofs from Narya event logs.
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `neuro-symbolic-bridge` — sibling in the skill routing & dispatch cluster — High tension pairs (d ≈ 1.85):
+- `nhero-pyhole` — sibling in the skill routing & dispatch cluster — DNS style medication routing layer for nhero devices.
+- `olmo-earth-skill` — sibling in the skill routing & dispatch cluster — Sentinel 2 satellite imagery to OlmoEarth embeddings on geodesic tiles, serialized via zi…
+- `ontology-asi-interleave` — sibling in the skill routing & dispatch cluster — > Bridge connecting plurigrid ontology to ASI skill graph.
+- `openclaw-goblins-adapter` — invoked by — Bridge ElizaOS OpenClaw plugins to Goblins OCapN actors.
+- `plurigrid-asi-integrated` — sibling in the skill routing & dispatch cluster — Unified Plurigrid ASI skill combining ACSets, Gay MCP colors, bisimulation games, world h…
+- `polars` — invoked by — Fast DataFrame library (Apache Arrow).
+- `pre-agent-ontology` — sibling in the skill routing & dispatch cluster — Pre Agent Ontology Skill
+- `protocol-acset` — invoked by — Model decentralized protocols as attributed C sets for compositional analysis, interopera…
+- `raffle-winner-picker` — sibling in the skill routing & dispatch cluster — Picks random winners from lists, spreadsheets, or Google Sheets for giveaways,
+- `relational-filter` — invoked by — Evaluates messages and actions against 23 empirically grounded relational norms from Mill…
+- `ruler-maximal` — sibling in the skill routing & dispatch cluster — Ruler Maximal Skill
+- `say-narration` — sibling in the skill routing & dispatch cluster — Use macOS text to speech for agent narration and announcements.
+- `security-ownership-map` — invoked by — Analyze git repositories to build a security ownership topology (people to file), compute…
+- `signal-messaging` — sibling in the skill routing & dispatch cluster — Send and receive Signal messages via MCP.
+- `skill-bonds` — sibling in the skill routing & dispatch cluster — Skill Bonds Registry
+- `skill-connectivity-hub` — sibling in the skill routing & dispatch cluster — Skill Connectivity Hub
+- `skill-finder-verifier` — sibling in the skill routing & dispatch cluster — Find locally created skills and verify provenance.
+- `skill-repo-sync` — sibling in the skill routing & dispatch cluster — Push local skills to plurigrid asi repo, remove skills by agreement (with full history pu…
+- `specter-navigator-gadget` — sibling in the skill routing & dispatch cluster — Unified Specter Navigator 3 MATCH architecture with bidirectional path compilation
+- `spotify` — sibling in the skill routing & dispatch cluster — Control Spotify playback and manage playlists.
+- `syrup` — invoked by — Syrup binary serialization for OCapN CapTP wire format.
+- `tailscale-file-transfer` — invoked by — Tailscale mesh VPN file transfer with open games semantics (play coplay)
+- `tasks-acset` — invoked by — Google Tasks management via TasksACSet.
+- `transcribe` — sibling in the skill routing & dispatch cluster — Transcribe audio files to text with optional diarization and known speaker hints.
+- `tree-sitter` — invoked by — AST based code analysis using tree sitter.
+- `triadic-skill-orchestrator` — sibling in the skill routing & dispatch cluster — Orchestrates multiple skills in GF(3)-balanced triplets.
+- `tuple-nav-composition` — invoked by — Tuple and product structure navigation with composition
+- `unironic-sun-emoji` — sibling in the skill routing & dispatch cluster — NaNoWriMo novel project database.
+- `uv-oneliners` — sibling in the skill routing & dispatch cluster — UV UVX awesome one liners for ephemeral Python environments with multi package
+- `venue-templates` — sibling in the skill routing & dispatch cluster — Access comprehensive LaTeX templates, formatting requirements, and submission guidelines …
+- `vertex-protein-bisimulation` — invoked by — Protein folding as compositional game on Vertex AI.
+- `vibe-snipe` — sibling in the skill routing & dispatch cluster — From Interverse transcript (Dec 12, 2025 - Alice Through the Looking Glass):
+- `voice-channel-uwd` — invoked by — Voice Channel UWD Skill
+- `wev-orderless` — invoked by — WEV Orderless — World Extractable Value
+- `wev-verification` — invoked by — WEV Verification Skill
+- `workspace-unified` — sibling in the skill routing & dispatch cluster — Unified Google Workspace management via WorkspaceACSet.
+- `world-replay-buffer` — invoked by — Maximally snapshotted replay buffer with DuckLake embedding VSS and moments of interactio…
+- `zubyul-connectome` — invoked by — Human Connectome Project analysis bridging cortical thickness, transcription factors, and…
+- `zubyul-gene-networks` — invoked by — Gene correlation network analysis bridging WGCNA, pgmpy Bayesian networks, and monad baye…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2600-magazine`
-- `aaif-governance-interleave`
-- `abd`
-- `academic-research`
-- `alice-chirality`
-- `alice-emacs-mods`
-- `amazon-shopping-mcp`
-- `anima-theory`
-- `aptos-agent`
-- `aptos-trading`
-- `aptos-wallet-mcp`
-- `beads-issue-tracker`
-- `beeper-mcp`
-- `bluesky-jetstream`
-- `bob-emacs-mods`
-- `braindance-worlds`
-- `calendar-acset`
-- `captp`
-- `cat`
-- `catcolab-schemas`
-- `claude-questions-leaderboard`
-- `collaborative-emacs`
-- `command-development`
-- `counter-surveillance`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `crdt`
-- `crdt-color`
-- `crypto-fiat-bridge`
-- `cue-lang`
-- `discopy`
-- `docs-acset`
-- `drive-acset`
-- `duckdb-temporal-versioning`
-- `ducklake`
-- `emacspeak-binaural`
-- `finder-color-walk`
-- `flox-publish`
-- `fnox-secrets`
-- `frustration-eradication`
-- `gay-mcp`
-- `geomstats-fisher-rao`
-- `gmail-anima`
-- `google-workspace`
-- `graph-grafting`
-- `hero-dispenser-mod`
-- `influence-propagation`
-- `k-dense-ai`
-- `l-space`
-- `livestream`
-- `magic-todo`
-- `magic-todo-watch-deploy`
-- `mcp-from-prompt`
-- `mcp-spec-checker`
-- `mirror`
-- `modding-ghostty`
-- `narya-proofs`
-- `networkx`
-- `neuro-symbolic-bridge`
-- `nhero-pyhole`
-- `olmo-earth-skill`
-- `ontology-asi-interleave`
-- `openclaw-goblins-adapter`
-- `plurigrid-asi-integrated`
-- `polars`
-- `pre-agent-ontology`
-- `protocol-acset`
-- `raffle-winner-picker`
-- `relational-filter`
-- `ruler-maximal`
-- `say-narration`
-- `security-ownership-map`
-- `signal-messaging`
-- `skill-bonds`
-- `skill-connectivity-hub`
-- `skill-finder-verifier`
-- `skill-repo-sync`
-- `specter-navigator-gadget`
-- `spotify`
-- `syrup`
-- `tailscale-file-transfer`
-- `tasks-acset`
-- `transcribe`
-- `tree-sitter`
-- `triadic-skill-orchestrator`
-- `tuple-nav-composition`
-- `unironic-sun-emoji`
-- `uv-oneliners`
-- `venue-templates`
-- `vertex-protein-bisimulation`
-- `vibe-snipe`
-- `voice-channel-uwd`
-- `wev-orderless`
-- `wev-verification`
-- `workspace-unified`
-- `world-replay-buffer`
-- `zubyul-connectome`
-- `zubyul-gene-networks`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `2600-magazine`
-- `aaif-governance-interleave`
-- `abd`
-- `academic-research`
-- `alice-chirality`
-- `alice-emacs-mods`
-- `amazon-shopping-mcp`
-- `anima-theory`
-- `aptos-trading`
-- `aptos-wallet-mcp`
-- `beads-issue-tracker`
-- `beeper-mcp`
-- `bluesky-jetstream`
-- `bob-emacs-mods`
-- `braindance-worlds`
-- `calendar-acset`
-- `captp`
-- `catcolab-schemas`
-- `claude-questions-leaderboard`
-- `collaborative-emacs`
-- `command-development`
-- `counter-surveillance`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `crdt`
-- `crdt-color`
-- `crypto-fiat-bridge`
-- `cue-lang`
-- `discopy`
-- `docs-acset`
-- `drive-acset`
-- `duckdb-temporal-versioning`
-- `ducklake`
-- `emacspeak-binaural`
-- `finder-color-walk`
-- `flox-publish`
-- `fnox-secrets`
-- `frustration-eradication`
-- `geomstats-fisher-rao`
-- `gmail-anima`
-- `google-workspace`
-- `graph-grafting`
-- `hero-dispenser-mod`
-- `influence-propagation`
-- `l-space`
-- `livestream`
-- `magic-todo`
-- `magic-todo-watch-deploy`
-- `mcp-from-prompt`
-- `mcp-spec-checker`
-- `mirror`
-- `modding-ghostty`
-- `narya-proofs`
-- `neuro-symbolic-bridge`
-- `nhero-pyhole`
-- `olmo-earth-skill`
-- `ontology-asi-interleave`
-- `openclaw-goblins-adapter`
-- `polars`
-- `pre-agent-ontology`
-- `protocol-acset`
-- `raffle-winner-picker`
-- `relational-filter`
-- `ruler-maximal`
-- `say-narration`
-- `security-ownership-map`
-- `signal-messaging`
-- `skill-bonds`
-- `skill-connectivity-hub`
-- `skill-finder-verifier`
-- `skill-repo-sync`
-- `specter-navigator-gadget`
-- `spotify`
-- `syrup`
-- `tailscale-file-transfer`
-- `tasks-acset`
-- `transcribe`
-- `tree-sitter`
-- `triadic-skill-orchestrator`
-- `tuple-nav-composition`
-- `unironic-sun-emoji`
-- `uv-oneliners`
-- `venue-templates`
-- `vertex-protein-bisimulation`
-- `vibe-snipe`
-- `voice-channel-uwd`
-- `wev-orderless`
-- `wev-verification`
-- `workspace-unified`
-- `world-replay-buffer`
-- `zubyul-connectome`
-- `zubyul-gene-networks`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

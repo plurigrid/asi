@@ -1,59 +1,33 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acp-commons` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Atlas of Agent Client Protocol (ACP) clients, agents, and OCapN CapTP grounded actors.
+- `agent-o-rama` — builds on — Layer 4: Learning and Pattern Extraction for Cognitive Surrogate Systems
+- `botnet-disruption` — invoked by — Coordinated botnet takedown methodologies — sinkholing, infrastructure mapping, legal fra…
+- `botnet-studies` — invoked by — Botnet architecture taxonomy, detection techniques, and defensive analysis.
+- `captp` — sibling in the agent & capability protocols (CapTP OCapN) cluster — CapTP: Capability Transfer Protocol
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `goblins` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Distributed object capability system (6.5K lines info).
+- `hermes-acp-over-captp` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Bridge Hermes' ACP (Agent Client Protocol) transport onto OCapN CapTP for RPC and Syndica…
+- `hermes-approval-as-revocable` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' regex based dangerous command detector + per session approval state with …
+- `hermes-cred-as-sturdy` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' multi credential pool (raw API keys in process memory + file store) with …
+- `hermes-cron-as-dataspace` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' cron scheduler (jobs.py + scheduler.py) with scheduled facts in a Syndica…
+- `hermes-ctx-engine-shim` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Re ground Hermes' ContextEngine plugin lifecycle (on_session_start update_from_response…
+- `hermes-fs-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' ambient filesystem authority (validate then open) with a Goblins single d…
+- `hermes-goblins-bridge` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Interface compatible bridges from Hermes Agent harness (~ i hermes agent) to Spritely Gob…
+- `hermes-mcp-as-sealed` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' MCP OAuth token storage + per tool authorization with Goblins sealer unse…
+- `hermes-mem-as-dataspace` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Collapse Hermes' 8 memory backends (honcho mem0 supermemory hindsight retaindb openviking…
+- `hermes-net-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' SSRF blocklist (resolve then connect with documented DNS rebinding TOCTOU…
+- `hermes-session-as-snapshot` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' session trajectory persistence (JSON files + in memory dict + flush point…
+- `hermes-tool-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' singleton ToolRegistry (name handler dispatch with ambient authority) w…
+- `keychain-secure` — builds on — macOS Keychain credential management with GF(3) balanced operations
+- `openclaw-goblins-adapter` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Bridge ElizaOS OpenClaw plugins to Goblins OCapN actors.
+- `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
+- `pulse-mcp-stream` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Layer 1: Real Time Social Stream Monitoring via MCP
+- `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+- `shadow-goblin` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — shadow goblin
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acp-commons`
-- `agent-o-rama`
-- `botnet-disruption`
-- `botnet-studies`
-- `captp`
-- `gay-mcp`
-- `goblins`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `keychain-secure`
-- `openclaw-goblins-adapter`
-- `phyllotaxis`
-- `pulse-mcp-stream`
-- `scheme`
-- `shadow-goblin`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `acp-commons`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `openclaw-goblins-adapter`
-- `phyllotaxis`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

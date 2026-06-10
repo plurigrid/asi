@@ -1,26 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bob` — builds on — World BOB Skill
+- `cats-for-ai` — builds on — cats.for" (Categories for AI)
+- `gay-mcp` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `ies` — builds on — ies
+- `mlx-apple-silicon` — builds on — Run LLMs on Apple Silicon with MLX mlx_lm - unified memory, 4 bit quantization, streaming…
+- `port-resurrection` — builds on — Derive service ports from Gay.jl color sequence.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bob`
-- `cats-for-ai`
-- `gay-mcp`
-- `ies`
-- `mlx-apple-silicon`
-- `port-resurrection`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

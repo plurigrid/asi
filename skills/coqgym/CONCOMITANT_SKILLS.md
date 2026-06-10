@@ -1,28 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `coq-of-rust` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Formal verification of Rust programs via translation to Coq Rocq.
+- `external` — builds on — External skill interface for integration with external systems
+- `forward-forward-learning` — builds on — Hinton's Forward Forward algorithm for local learning without backpropagation.
+- `narya-proofs` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Mechanically verified proofs from Narya event logs.
+- `opam` — builds on — OCaml package manager (45 subcommands).
+- `org` — builds on — Org mode manual (25K lines info).
+- `proofgeneral-narya` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Proof General + Narya: Higher dimensional type theory proof assistant with observational …
+- `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `coq-of-rust`
-- `external`
-- `forward-forward-learning`
-- `narya-proofs`
-- `opam`
-- `org`
-- `proofgeneral-narya`
-- `rust`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

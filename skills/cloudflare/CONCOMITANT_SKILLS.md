@@ -1,46 +1,23 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `aaif-governance-interleave` — invoked by — Bridge layer connecting the Agentic AI Foundation (AAIF) governance structure — Linux Fou…
+- `agent-protocol-interleave` — invoked by — Bridge layer connecting the emerging agentic coordination protocol ecosystem (MCP, A2A, A…
+- `agents-sdk` — mutually referenced — Build AI agents on Cloudflare Workers using the Agents SDK.
+- `assets` — builds on — Assets skill
+- `botnet-disruption` — invoked by — Coordinated botnet takedown methodologies — sinkholing, infrastructure mapping, legal fra…
+- `cloudflare-deploy` — sibling in the reproducible environments & deployment cluster — Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related pl…
+- `cloudflare-tunnel-ec2-deployment` — sibling in the reproducible environments & deployment cluster — |
+- `cloudflare-workers` — sibling in the reproducible environments & deployment cluster — |
+- `deepwiki-mcp` — invoked by — DeepWiki MCP server for AI powered GitHub repository documentation and
+- `mcp-from-prompt` — invoked by — Generate a complete MCP server + skill from an API description, following the ExoPriors S…
+- `media` — builds on — Media processing = ffmpeg + imagemagick + sox.
+- `oauth-integrations` — invoked by — |
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `svelte-deployment` — sibling in the reproducible environments & deployment cluster — Svelte deployment guidance.
+- `wrangler` — sibling in the reproducible environments & deployment cluster — Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vecto…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `aaif-governance-interleave`
-- `agent-protocol-interleave`
-- `agents-sdk`
-- `assets`
-- `botnet-disruption`
-- `cloudflare-deploy`
-- `cloudflare-tunnel-ec2-deployment`
-- `cloudflare-workers`
-- `deepwiki-mcp`
-- `mcp-from-prompt`
-- `media`
-- `oauth-integrations`
-- `security`
-- `svelte-deployment`
-- `wrangler`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `aaif-governance-interleave`
-- `agent-protocol-interleave`
-- `agents-sdk`
-- `botnet-disruption`
-- `cloudflare-deploy`
-- `cloudflare-tunnel-ec2-deployment`
-- `cloudflare-workers`
-- `deepwiki-mcp`
-- `mcp-from-prompt`
-- `oauth-integrations`
-- `svelte-deployment`
-- `wrangler`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

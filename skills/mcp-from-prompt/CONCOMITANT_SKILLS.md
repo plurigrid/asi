@@ -1,25 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — sibling in the skill routing & dispatch cluster — Primary Aptos testnet wallet for transaction origination.
+- `cargo` — builds on — Rust package manager (36 subcommands).
+- `cloudflare` — builds on — Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI…
+- `external` — sibling in the skill routing & dispatch cluster — External skill interface for integration with external systems
+- `tailscale` — builds on — Mesh VPN.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `cargo`
-- `cloudflare`
-- `external`
-- `tailscale`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

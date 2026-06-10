@@ -1,93 +1,46 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acp-commons` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Atlas of Agent Client Protocol (ACP) clients, agents, and OCapN CapTP grounded actors.
+- `asi-transient-agenda` — invoked by — Org agenda like transient views for ASI skill orchestration via nbb squint + Emacs hydra
+- `botnet-disruption` — invoked by — Coordinated botnet takedown methodologies — sinkholing, infrastructure mapping, legal fra…
+- `botnet-studies` — invoked by — Botnet architecture taxonomy, detection techniques, and defensive analysis.
+- `captp` — sibling in the agent & capability protocols (CapTP OCapN) cluster — CapTP: Capability Transfer Protocol
+- `cheerpx-self-hosting` — invoked by — Run x86 Linux binaries in the browser via WebAssembly.
+- `codex-ocapn-correspondence` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — >-
+- `dynamic-sufficiency-goblin` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Self regulating Goblins actor implementing Ivan Illich's dynamic sufficiency
+- `effective-topos` — invoked by — FloxHub publication bmorphism effective topos - a comprehensive development
+- `gay-fokker-planck-staging` — invoked by — Two Fokker Plancks per staging gate, conditioned on (rama OR goblins)
+- `glamorous-moldable-multiplatform` — invoked by — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
+- `goblins-adapter` — sibling in the agent & capability protocols (CapTP OCapN) cluster — ElizaOS OpenClaw Goblins OCapN adapter (study + bridge)
+- `greeter` — builds on — A friendly greeter skill
+- `guile-goblins-hoot` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Spritely Goblins distributed actor system with Hoot WebAssembly compiler.
+- `hermes-acp-over-captp` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Bridge Hermes' ACP (Agent Client Protocol) transport onto OCapN CapTP for RPC and Syndica…
+- `hermes-approval-as-revocable` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' regex based dangerous command detector + per session approval state with …
+- `hermes-cred-as-sturdy` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' multi credential pool (raw API keys in process memory + file store) with …
+- `hermes-cron-as-dataspace` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' cron scheduler (jobs.py + scheduler.py) with scheduled facts in a Syndica…
+- `hermes-ctx-engine-shim` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Re ground Hermes' ContextEngine plugin lifecycle (on_session_start update_from_response…
+- `hermes-fs-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' ambient filesystem authority (validate then open) with a Goblins single d…
+- `hermes-goblins-bridge` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Interface compatible bridges from Hermes Agent harness (~ i hermes agent) to Spritely Gob…
+- `hermes-mcp-as-sealed` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' MCP OAuth token storage + per tool authorization with Goblins sealer unse…
+- `hermes-mem-as-dataspace` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Collapse Hermes' 8 memory backends (honcho mem0 supermemory hindsight retaindb openviking…
+- `hermes-net-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' SSRF blocklist (resolve then connect with documented DNS rebinding TOCTOU…
+- `hermes-session-as-snapshot` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' session trajectory persistence (JSON files + in memory dict + flush point…
+- `hermes-tool-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' singleton ToolRegistry (name handler dispatch with ambient authority) w…
+- `libghostty-aci` — invoked by — Integrates libghostty terminal emulation with Agent Computer Interface (ACI) patterns:
+- `libghostty-embed` — invoked by — libghostty terminal embedding for per vat REPLs with Goblins integration
+- `nashator` — invoked by — Open games DSL Nash equilibrium solver via PyTorch autodiff.
+- `openclaw-goblins-adapter` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Bridge ElizaOS OpenClaw plugins to Goblins OCapN actors.
+- `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
+- `repl-commons` — mutually referenced — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
+- `scheme` — mutually referenced — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+- `structural-rewilding` — invoked by — Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs).
+- `terminal-css` — invoked by — Provides Textual TCSS patterns for terminal widgets and ACP content styling.
+- `tidar` — invoked by — Triadic Interleaving Dispatch with Agents for Reading writing.
+- `wasm-goblins` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Goblins ↔ WASM runtime interactions across verified runtimes.
+- `worlding-calendar` — invoked by — Calendar events tied to 26 letter worlds via org mode.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acp-commons`
-- `asi-transient-agenda`
-- `botnet-disruption`
-- `botnet-studies`
-- `captp`
-- `cheerpx-self-hosting`
-- `codex-ocapn-correspondence`
-- `dynamic-sufficiency-goblin`
-- `effective-topos`
-- `gay-fokker-planck-staging`
-- `glamorous-moldable-multiplatform`
-- `goblins-adapter`
-- `greeter`
-- `guile-goblins-hoot`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `libghostty-aci`
-- `libghostty-embed`
-- `nashator`
-- `openclaw-goblins-adapter`
-- `phyllotaxis`
-- `repl-commons`
-- `scheme`
-- `structural-rewilding`
-- `terminal-css`
-- `tidar`
-- `wasm-goblins`
-- `worlding-calendar`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `asi-transient-agenda`
-- `botnet-disruption`
-- `botnet-studies`
-- `captp`
-- `cheerpx-self-hosting`
-- `codex-ocapn-correspondence`
-- `dynamic-sufficiency-goblin`
-- `effective-topos`
-- `gay-fokker-planck-staging`
-- `glamorous-moldable-multiplatform`
-- `goblins-adapter`
-- `guile-goblins-hoot`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `libghostty-aci`
-- `libghostty-embed`
-- `nashator`
-- `openclaw-goblins-adapter`
-- `phyllotaxis`
-- `repl-commons`
-- `scheme`
-- `structural-rewilding`
-- `terminal-css`
-- `tidar`
-- `wasm-goblins`
-- `worlding-calendar`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,32 +1,20 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bob` — builds on — World BOB Skill
+- `gh` — builds on — GitHub CLI (212 man pages).
+- `ghostty` — sibling in the interactive REPLs & Lisp tooling cluster — Control Ghostty terminal emulator via CLI.
+- `ies` — builds on — ies
+- `init` — sibling in the interactive REPLs & Lisp tooling cluster — Initialize a new repository with AGENTS.md
+- `libghostty-streaming` — sibling in the Emacs elisp tooling cluster — The **white hole** dual to libghostty recording.
+- `libghostty-vt` — sibling in the Emacs elisp tooling cluster — libghostty vt
+- `modal` — builds on — Run Python code in the cloud with serverless containers, GPUs, and autoscaling.
+- `omniglot` — builds on — The Lake Salakhutdinov Tenenbaum challenge for human level concept learning through proba…
+- `org` — sibling in the Emacs elisp tooling cluster — Org mode manual (25K lines info).
+- `terminal` — sibling in the interactive REPLs & Lisp tooling cluster — Terminal tools = tmux + zsh + fzf + ripgrep.
+- `zig` — builds on — Zig ecosystem skill with emerging patterns from zig syrup
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bob`
-- `gh`
-- `ghostty`
-- `ies`
-- `init`
-- `libghostty-streaming`
-- `libghostty-vt`
-- `modal`
-- `omniglot`
-- `org`
-- `terminal`
-- `zig`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `libghostty-streaming`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

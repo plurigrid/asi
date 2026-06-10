@@ -1,29 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `implicit-coordination` — sibling in the skill routing & dispatch cluster — Stigmergic agent coordination through environment modification, not messages.
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `modal` — builds on — Run Python code in the cloud with serverless containers, GPUs, and autoscaling.
+- `ontology-asi-interleave` — sibling in the skill routing & dispatch cluster — > Bridge connecting plurigrid ontology to ASI skill graph.
+- `ramanujan-expander` — builds on — Ramanujan graphs and Alon Boppana spectral optimality for edge growth
+- `rust` — sibling in the skill routing & dispatch cluster — Rust ecosystem = cargo + rustc + clippy + rustfmt.
+- `world-extractable-value` — sibling in the world: navigation cluster — Extract value from world transitions via Markov blanket arbitrage.
+- `world-runtime` — sibling in the skill routing & dispatch cluster — Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `clojure`
-- `implicit-coordination`
-- `init`
-- `modal`
-- `ontology-asi-interleave`
-- `ramanujan-expander`
-- `rust`
-- `world-extractable-value`
-- `world-runtime`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `ontology-asi-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

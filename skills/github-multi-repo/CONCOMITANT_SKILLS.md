@@ -1,29 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `consensus` — builds on — Agreement protocol in multi agent systems
+- `gh` — sibling in the skill routing & dispatch cluster — GitHub CLI (212 man pages).
+- `gh-cli` — sibling in the skill routing & dispatch cluster — GitHub CLI for repository management.
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
+- `orchestrate` — sibling in the skill routing & dispatch cluster — Orchestrate multiple AI agents across Vers VMs for parallel task execution
+- `org` — builds on — Org mode manual (25K lines info).
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `synchronization` — builds on — Convergence to common trajectory in coupled systems
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `consensus`
-- `gh`
-- `gh-cli`
-- `init`
-- `npm`
-- `orchestrate`
-- `org`
-- `security`
-- `synchronization`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

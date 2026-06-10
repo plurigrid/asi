@@ -1,33 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `audit-context-building` — sibling in the security auditing, fuzzing & pentest cluster — Enables ultra granular, line by line code analysis to build deep architectural context be…
+- `axiom-solana-trading` — invoked by — Interact with Axiom.trade -- a Y Combinator backed (W25) DEX aggregator and trading platf…
+- `cq-ai-deterministic-security-scanning-with-ternary-polarity` — sibling in the security auditing, fuzzing & pentest cluster — Deterministic code security scanner using SplitMix64 seeding.
+- `move-smart-contract-audit` — sibling in the security auditing, fuzzing & pentest cluster — Comprehensive Move Aptos smart contract security audit pipeline
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `semgrep-rule-variant-creator` — sibling in the security auditing, fuzzing & pentest cluster — Creates language variants of existing Semgrep rules.
+- `trailofbits-security` — invoked by — - codeql - GitHub''s semantic code analysis
+- `variant-analysis` — mutually referenced — Find similar vulnerabilities and bugs across codebases using pattern based analysis.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `audit-context-building`
-- `axiom-solana-trading`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `move-smart-contract-audit`
-- `sdf`
-- `semgrep-rule-variant-creator`
-- `trailofbits-security`
-- `variant-analysis`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `axiom-solana-trading`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `move-smart-contract-audit`
-- `semgrep-rule-variant-creator`
-- `trailofbits-security`
-- `variant-analysis`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,34 +1,20 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bisimulation-game` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Bisimulation game for resilient skill dispersal across AI agents with
+- `bob` — builds on — World BOB Skill
+- `chromatic-walk` — builds on — 3 parallel agents explore codebase improvements via GF(3) balanced prime geodesics
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `gay-mcp` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gf3-neighborhood` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — GF(3) neighborhood awareness with harmonic centrality - every skill knows its neighbors a…
+- `glass-bead-game` — builds on — Hesse inspired interdisciplinary synthesis game with Badiou triangle
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `open-location-code-zig` — invoked by — First ever Zig implementation of Google's Open Location Code (Plus Codes) with GF(3) spat…
+- `sedonadb-geoacset` — invoked by — SedonaDB spatial engine enabling GeoACSets.jl categorical geospatial operations with O(lo…
+- `skill-embedding-vss` — builds on — P adic ultrametric skill embeddings with MLX Snowflake Arctic, DuckDB
+- `stability` — builds on — Qualitative behavior of solutions near equilibria
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bisimulation-game`
-- `bob`
-- `chromatic-walk`
-- `clojure`
-- `gay-mcp`
-- `gf3-neighborhood`
-- `glass-bead-game`
-- `init`
-- `open-location-code-zig`
-- `sedonadb-geoacset`
-- `skill-embedding-vss`
-- `stability`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `gf3-neighborhood`
-- `open-location-code-zig`
-- `sedonadb-geoacset`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,230 +1,118 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `able-markets` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Skill able markets
+- `agent-o-rama` — sibling in the multi agent orchestration cluster — Layer 4: Learning and Pattern Extraction for Cognitive Surrogate Systems
+- `agentic-coordination-protocols` — sibling in the multi agent orchestration cluster — Comprehensive research corpus covering 40+ agentic coordination protocols and ecosystems …
+- `alife` — invoked by — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `anima-theory` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ANIMA as limit construction over condensed skill applications.
+- `asi-agent-orama` — sibling in the multi agent orchestration cluster — ASI Agent O Rama Skill
+- `autopoiesis` — sibling in the multi agent orchestration cluster — Self modifying AI agent configuration via ruler + MCP + DuckDB.
+- `bdd-mathematical-verification` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — BDD Driven Mathematical Content Verification Skill
+- `benchmark` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Run and interpret engine stack benchmarks (Steel, ember, shale)
+- `bisimulation-oracle` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — > Formal oracle for behavioral equivalence via bisimulation games.
+- `bmorphism-video-interleave` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — bmorphism Video Archive Interleave
+- `boneh-roughgarden-wev` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Stanford FDCI research bridge connecting Dan Boneh's cryptographic primitives (ZK proofs,…
+- `cat-three-homes` — sibling in the topos theory, sheaves & categorical logic cluster — The double category of polynomial comonads where:
+- `coequalizers` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Quotient redundant skill paths via coequalizers, preserving GF(3) conservation
+- `cognitive-surrogate` — sibling in the multi agent orchestration cluster — yaml
+- `covariant-modification` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and …
+- `crdt-vterm` — invoked by — Collaborative terminal session sharing using CRDT style s expressions
+- `cybernetic-open-game` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Cybernetic Open Game Skill
+- `delta-derivation` — invoked by — Extract information delta between Claude.ai conversation exports using ACSets morphisms a…
+- `derangement-reflow` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — >
+- `discopy` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `duckdb-ies` — invoked by — Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking
+- `dynamic-sufficiency` — sibling in the intent & sufficiency propagation (SPI) cluster — Causal state gating via ε machine.
+- `energy-awareness` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Battery cycle clock with interaction entropy and ontology reconfiguration for computation…
+- `ewig-editor` — invoked by — The eternal text editor — Didactic Ersatz Emacs demonstrating immutable
+- `exo-distributed` — invoked by — Distributed LLM inference across Apple Silicon clusters with exo.
+- `finder-color-walk` — sibling in the triadic GF(3) skill loading cluster — Deterministic triadic fanout over file sets with macOS Finder label coloring, GF(3) conse…
+- `frustration-eradication` — invoked by — Frustration Eradication Skill
+- `ganja-wedge-game` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Geometric Algebra game mechanics via ganja.js with implicit player skills for wedge vee d…
+- `gay-integration` — invoked by — Gay.jl integration for bisimulation games with proper hue based trit derivation and GF(3)…
+- `gay-julia` — invoked by — Wide gamut color sampling with splittable determinism using Pigeons.jl
+- `gay-mcp` — sibling in the multi agent orchestration cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gf3-trit-oracle` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — > The fundamental GF(3) trit oracle.
+- `gh-cli` — invoked by — GitHub CLI for repository management.
+- `gmail-anima` — invoked by — Gmail inbox management via ANIMA condensation.
+- `google-workspace` — sibling in the triadic GF(3) skill loading cluster — Google Workspace MCP integration for Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms,…
+- `graph-grafting` — invoked by — Graph Grafting Skill
+- `hyperbolic-bulk` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — On chain GF(3) entropy storage via Aptos Move - bulk boundary correspondence where entrop…
+- `influence-propagation` — sibling in the multi agent orchestration cluster — Layer 7: Interperspectival Network Analysis and Influence Flow
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `interverse-bundle` — invoked by — This skill bundles the Interverse Engineering & Acrobatics research program:
+- `julia-gay` — invoked by — Gay.jl integration for deterministic color generation.
+- `kinetic-block` — invoked by — Kinetic Block Skill
+- `kolmogorov-codex-quest` — invoked by — Kolmogorov Codex Quest
+- `load-skills` — sibling in the intent & sufficiency propagation (SPI) cluster — Bootstrap skill loader for instance startup.
+- `localsend-mcp` — builds on — LocalSend based P2P transfer with MCP server design for NATS Tailscale
+- `macos-use` — invoked by — macOS automation with **activation energy** for machine skill rediscovery:
+- `markov-game-acset` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — markov game acset skill
+- `mcp-spec-checker` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Predicate level semantic diff for MCP protocol specs.
+- `mirror` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Social self persistence via mutual cognitive surrogates.
+- `mlx-apple-silicon` — invoked by — Run LLMs on Apple Silicon with MLX mlx_lm - unified memory, 4 bit quantization, streaming…
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `mruler` — invoked by — mruler - Meta Ruler Skill Governance
+- `mutual-awareness-backlink` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Formalize mutual awareness via structured decompositions on awareness graphs.
+- `narya-proofs` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Mechanically verified proofs from Narya event logs.
+- `ngrok-tunnel` — invoked by — Secure tunnel for exposing local MCP servers to Claude, remote agents, and external clien…
+- `open-games-plurigrid` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — This skill unifies:
+- `padic-ultrametric` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — P adic ultrametric distance as foundation for UMAP itUMAP HNSW Snowflake MLX SPI
+- `padic-ultrametric-embedding` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — P adic ultrametric distance for UMAP itUMAP HNSW with Snowflake Arctic
+- `paperproof-validator` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Formal Proof Visualization and Verification for Lean 4
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `parallel-fanout` — sibling in the triadic GF(3) skill loading cluster — Metaskill that fans out on every interaction, using interaction entropy
+- `parallel-subagent-split` — invoked by — In a traced monoidal category, the trace operation models feedback:
+- `pga-motor-interpolation` — invoked by — Motor interpolation (slerp nlerp) for smooth rigid body transformations in PGA
+- `planar-isotopy-screen` — invoked by — Planar Isotopy Screen Mapping
+- `pre-agent-ontology` — invoked by — Pre Agent Ontology Skill
+- `protocol-evolution-markets` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Prediction markets for protocol standard evolution.
+- `pulse-mcp-stream` — invoked by — Layer 1: Real Time Social Stream Monitoring via MCP
+- `quic-channel-grading` — invoked by — |
+- `random-walk-fusion` — invoked by — Navigate skill graphs via deterministic random walks.
+- `ruler` — builds on — Unified AI agent configuration propagation across 18+ coding assistants.
+- `ruler-maximal` — invoked by — Ruler Maximal Skill
+- `self-evolving-agent` — sibling in the multi agent orchestration cluster — Darwin Gödel Machine patterns for self improving AI agents with open ended
+- `self-under-siege` — sibling in the multi agent orchestration cluster — Agent identity preservation under adversarial conditions via RepEng control vectors, Mark…
+- `semi-reliable-nashator` — invoked by — This skill implements the **morphisms of open games** paper''s insight: lenses connect co…
+- `semilattice-discovery` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Compositional skill discovery via join semilattice fiber (color × trit × hash)
+- `skill-connectivity-hub` — invoked by — Skill Connectivity Hub
+- `skill-dispatch` — sibling in the intent & sufficiency propagation (SPI) cluster — GF(3) Triadic Task Routing for Subagent Orchestration
+- `skill-embedding-vss` — invoked by — P adic ultrametric skill embeddings with MLX Snowflake Arctic, DuckDB
+- `skill-evolution` — invoked by — Patterns for evolutionarily robust skills that adapt across agent generations.
+- `skill-stats` — invoked by — Skill statistics, thread usage analysis, GF(3) conservation tracking, and probe verificat…
+- `skill-tour` — invoked by — L shaped hops through skill space, maintaining triadic balance:
+- `spectral-methods` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Fourier Laplacian eigenmodes for frequency domain analysis of graph and signal structures
+- `sprachgefuehl-string-rewriting` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Counterfactual conceptual string rewriting with trapezoid termination for recursive rende…
+- `stellogen` — invoked by — Stellogen Skill
+- `string-diagram-rewriting-protocol` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Kernel protocol for compositional string diagram rewriting across all skills
+- `structured-decompositions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Functorial structured decompositions for compositional problem solving via sheaf theoreti…
+- `superelastic-quotient` — invoked by — Superelastic skills with maximum quotienting resolution for spatial decomposition.
+- `synchronization` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Convergence to common trajectory in coupled systems
+- `tailscale` — builds on — Mesh VPN.
+- `tailscale-mesh` — invoked by — Tailscale mesh VPN for secure peer to peer networking.
+- `teglon-bison` — sibling in the topos theory, sheaves & categorical logic cluster — Bison extends Unison''s content addressed code with **bisimulation** semantics:
+- `topos-unified` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Topos Unified Skill
+- `transitive-weep` — invoked by — Each world is an **open game** with:
+- `triadic-skill-loader` — sibling in the intent & sufficiency propagation (SPI) cluster — Triadic Skill Loader
+- `triadic-skill-orchestrator` — sibling in the triadic GF(3) skill loading cluster — Orchestrates multiple skills in GF(3)-balanced triplets.
+- `trialectical-coin` — invoked by — Extends TeglonLabs coin flip mcp with GF(3) ternary decision logic.
+- `tripartite-decompositions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — GF(3)-balanced structured decompositions for parallel computation.
+- `unworld` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Layer 4: Derivational Pattern Generation via Seed Chaining
+- `unworld-ombudsman` — invoked by — Neutral arbiter for derivational chains - verifies GF(3) conservation,
+- `vertex-protein-bisimulation` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Protein folding as compositional game on Vertex AI.
+- `vibe-snipe` — invoked by — From Interverse transcript (Dec 12, 2025 - Alice Through the Looking Glass):
+- `voice-channel-uwd` — invoked by — Voice Channel UWD Skill
+- `wev-tesseract` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — WEV Tesseract Skill
+- `workspace-unified` — invoked by — Unified Google Workspace management via WorkspaceACSet.
+- `world-memory-worlding` — invoked by — World memory is world remembering is world worlding - the autopoietic loop where memory e…
+- `world-sufficiency-prompt` — invoked by — First interaction system prompt generator for Gemini, Codex, and Claude.
+- `worlding` — invoked by — Gay.jl world_ pattern: persistent composable state builders with GF(3) conservation, Möbi…
+- `x-twitter-mcp` — invoked by — MCP server for X Twitter interaction - profile analysis, thread tracking, and social grap…
+- `zig-syrup-propagator-interleave` — invoked by — > Bridge connecting zig syrup advanced computational modules (propagator networks, homoto…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `able-markets`
-- `agent-o-rama`
-- `agentic-coordination-protocols`
-- `alife`
-- `anima-theory`
-- `asi-agent-orama`
-- `autopoiesis`
-- `bdd-mathematical-verification`
-- `benchmark`
-- `bisimulation-oracle`
-- `bmorphism-video-interleave`
-- `boneh-roughgarden-wev`
-- `cat-three-homes`
-- `coequalizers`
-- `cognitive-surrogate`
-- `covariant-modification`
-- `crdt-vterm`
-- `cybernetic-open-game`
-- `delta-derivation`
-- `derangement-reflow`
-- `discopy`
-- `duckdb-ies`
-- `dynamic-sufficiency`
-- `energy-awareness`
-- `ewig-editor`
-- `exo-distributed`
-- `finder-color-walk`
-- `frustration-eradication`
-- `ganja-wedge-game`
-- `gay-integration`
-- `gay-julia`
-- `gay-mcp`
-- `gf3-trit-oracle`
-- `gh-cli`
-- `gmail-anima`
-- `google-workspace`
-- `graph-grafting`
-- `hyperbolic-bulk`
-- `influence-propagation`
-- `init`
-- `interverse-bundle`
-- `julia-gay`
-- `kinetic-block`
-- `kolmogorov-codex-quest`
-- `load-skills`
-- `localsend-mcp`
-- `macos-use`
-- `markov-game-acset`
-- `mcp-spec-checker`
-- `mirror`
-- `mlx-apple-silicon`
-- `modding-ghostty`
-- `mruler`
-- `mutual-awareness-backlink`
-- `narya-proofs`
-- `ngrok-tunnel`
-- `open-games-plurigrid`
-- `padic-ultrametric`
-- `padic-ultrametric-embedding`
-- `paperproof-validator`
-- `para-mensch-commons`
-- `parallel-fanout`
-- `parallel-subagent-split`
-- `pga-motor-interpolation`
-- `planar-isotopy-screen`
-- `pre-agent-ontology`
-- `protocol-evolution-markets`
-- `pulse-mcp-stream`
-- `quic-channel-grading`
-- `random-walk-fusion`
-- `ruler`
-- `ruler-maximal`
-- `self-evolving-agent`
-- `self-under-siege`
-- `semi-reliable-nashator`
-- `semilattice-discovery`
-- `skill-connectivity-hub`
-- `skill-dispatch`
-- `skill-embedding-vss`
-- `skill-evolution`
-- `skill-stats`
-- `skill-tour`
-- `spectral-methods`
-- `sprachgefuehl-string-rewriting`
-- `stellogen`
-- `string-diagram-rewriting-protocol`
-- `structured-decompositions`
-- `superelastic-quotient`
-- `synchronization`
-- `tailscale`
-- `tailscale-mesh`
-- `teglon-bison`
-- `topos-unified`
-- `transitive-weep`
-- `triadic-skill-loader`
-- `triadic-skill-orchestrator`
-- `trialectical-coin`
-- `tripartite-decompositions`
-- `unworld`
-- `unworld-ombudsman`
-- `vertex-protein-bisimulation`
-- `vibe-snipe`
-- `voice-channel-uwd`
-- `wev-tesseract`
-- `workspace-unified`
-- `world-memory-worlding`
-- `world-sufficiency-prompt`
-- `worlding`
-- `x-twitter-mcp`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `able-markets`
-- `agentic-coordination-protocols`
-- `alife`
-- `anima-theory`
-- `asi-agent-orama`
-- `autopoiesis`
-- `bdd-mathematical-verification`
-- `bisimulation-oracle`
-- `bmorphism-video-interleave`
-- `boneh-roughgarden-wev`
-- `cat-three-homes`
-- `coequalizers`
-- `cognitive-surrogate`
-- `covariant-modification`
-- `crdt-vterm`
-- `cybernetic-open-game`
-- `delta-derivation`
-- `derangement-reflow`
-- `duckdb-ies`
-- `dynamic-sufficiency`
-- `energy-awareness`
-- `ewig-editor`
-- `exo-distributed`
-- `finder-color-walk`
-- `frustration-eradication`
-- `ganja-wedge-game`
-- `gay-integration`
-- `gay-julia`
-- `gf3-trit-oracle`
-- `gh-cli`
-- `gmail-anima`
-- `google-workspace`
-- `graph-grafting`
-- `hyperbolic-bulk`
-- `influence-propagation`
-- `interverse-bundle`
-- `julia-gay`
-- `kinetic-block`
-- `kolmogorov-codex-quest`
-- `load-skills`
-- `macos-use`
-- `markov-game-acset`
-- `mcp-spec-checker`
-- `mirror`
-- `mlx-apple-silicon`
-- `modding-ghostty`
-- `mruler`
-- `mutual-awareness-backlink`
-- `narya-proofs`
-- `ngrok-tunnel`
-- `open-games-plurigrid`
-- `padic-ultrametric`
-- `padic-ultrametric-embedding`
-- `paperproof-validator`
-- `para-mensch-commons`
-- `parallel-fanout`
-- `parallel-subagent-split`
-- `pga-motor-interpolation`
-- `planar-isotopy-screen`
-- `pre-agent-ontology`
-- `protocol-evolution-markets`
-- `pulse-mcp-stream`
-- `quic-channel-grading`
-- `random-walk-fusion`
-- `ruler-maximal`
-- `self-evolving-agent`
-- `self-under-siege`
-- `semi-reliable-nashator`
-- `semilattice-discovery`
-- `skill-connectivity-hub`
-- `skill-dispatch`
-- `skill-embedding-vss`
-- `skill-evolution`
-- `skill-stats`
-- `skill-tour`
-- `spectral-methods`
-- `sprachgefuehl-string-rewriting`
-- `stellogen`
-- `string-diagram-rewriting-protocol`
-- `structured-decompositions`
-- `superelastic-quotient`
-- `tailscale-mesh`
-- `teglon-bison`
-- `topos-unified`
-- `transitive-weep`
-- `triadic-skill-loader`
-- `triadic-skill-orchestrator`
-- `trialectical-coin`
-- `tripartite-decompositions`
-- `unworld`
-- `unworld-ombudsman`
-- `vertex-protein-bisimulation`
-- `vibe-snipe`
-- `voice-channel-uwd`
-- `wev-tesseract`
-- `workspace-unified`
-- `world-memory-worlding`
-- `world-sufficiency-prompt`
-- `worlding`
-- `x-twitter-mcp`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

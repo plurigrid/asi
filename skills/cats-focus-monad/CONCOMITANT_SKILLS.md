@@ -1,23 +1,11 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `org` — builds on — Org mode manual (25K lines info).
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `worlding` — builds on — Gay.jl world_ pattern: persistent composable state builders with GF(3) conservation, Möbi…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `org`
-- `para-mensch-commons`
-- `worlding`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `para-mensch-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

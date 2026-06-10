@@ -1,34 +1,21 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `anndata` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with annotated data matrices in Python, particular…
+- `biopython` — sibling in the scientific Python — bio cheminformatics cluster — Primary Python toolkit for molecular biology.
+- `consensus` — builds on — Agreement protocol in multi agent systems
+- `esm` — builds on — Comprehensive toolkit for protein language models including ESM3 (generative multimodal p…
+- `k-dense-ai` — invoked by — - alphafold database - Protein structure prediction
+- `linear` — builds on — Manage issues, projects & team workflows in Linear.
+- `matplotlib` — sibling in the scientific Python — bio cheminformatics cluster — Foundational plotting library.
+- `plotly` — sibling in the scientific Python — bio cheminformatics cluster — Interactive scientific and statistical data visualization library for Python.
+- `polars` — sibling in the scientific Python — bio cheminformatics cluster — Fast DataFrame library (Apache Arrow).
+- `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
+- `scikit-learn` — sibling in the scientific Python — bio cheminformatics cluster — Machine learning in Python with scikit learn.
+- `seaborn` — sibling in the scientific Python — bio cheminformatics cluster — Statistical visualization.
+- `transcribe` — builds on — Transcribe audio files to text with optional diarization and known speaker hints.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `anndata`
-- `biopython`
-- `consensus`
-- `esm`
-- `k-dense-ai`
-- `linear`
-- `matplotlib`
-- `plotly`
-- `polars`
-- `python-scientific-commons`
-- `scikit-learn`
-- `seaborn`
-- `transcribe`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `k-dense-ai`
-- `python-scientific-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

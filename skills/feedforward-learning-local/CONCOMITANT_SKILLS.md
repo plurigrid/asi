@@ -1,25 +1,12 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `benchmark` — builds on — Run and interpret engine stack benchmarks (Steel, ember, shale)
+- `categorical-composition` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Compositional Architecture
+- `emergent-role-assignment` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Self Organization
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `benchmark`
-- `categorical-composition`
-- `emergent-role-assignment`
-- `para-mensch-commons`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `emergent-role-assignment`
-- `para-mensch-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

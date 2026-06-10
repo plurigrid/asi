@@ -1,31 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alife` — sibling in the artificial life, autopoiesis & chemical organization cluster — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `alife-commons` — sibling in the artificial life, autopoiesis & chemical organization cluster — Artificial Life atlas covering open ended evolution, chemical reaction networks, morphoge…
+- `autopoiesis` — sibling in the artificial life, autopoiesis & chemical organization cluster — Self modifying AI agent configuration via ruler + MCP + DuckDB.
+- `catalyst-chemical` — sibling in the artificial life, autopoiesis & chemical organization cluster — Chemical reaction network modeling with Catalyst.jl.
+- `categorical-composition` — builds on — **Category:** Phase 3 Core - Compositional Architecture
+- `emergent-role-assignment` — mutually referenced — **Category:** Phase 3 Core - Self Organization
+- `formal-verification-ai` — builds on — **Category:** Phase 3 Core - Correctness Guarantees
+- `trajectory` — builds on — Path traced by solution through phase space
+- `zig-syrup-propagator-interleave` — invoked by — > Bridge connecting zig syrup advanced computational modules (propagator networks, homoto…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alife`
-- `alife-commons`
-- `autopoiesis`
-- `catalyst-chemical`
-- `categorical-composition`
-- `emergent-role-assignment`
-- `formal-verification-ai`
-- `trajectory`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `alife-commons`
-- `emergent-role-assignment`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

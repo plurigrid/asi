@@ -1,31 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `assets` — sibling in the skill routing & dispatch cluster — Assets skill
+- `biopython` — builds on — Primary Python toolkit for molecular biology.
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `external` — sibling in the skill routing & dispatch cluster — External skill interface for integration with external systems
+- `literature-review` — builds on — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
+- `market-research-reports` — invoked by — Generate comprehensive market research reports (50+ pages) in the style of top consulting…
+- `org` — builds on — Org mode manual (25K lines info).
+- `scientific-schematics` — builds on — Create publication quality scientific diagrams using Nano Banana Pro AI with smart iterat…
+- `transformers` — builds on — This skill should be used when working with pre trained transformer models for natural la…
+- `treatment-plans` — invoked by — Generate concise (3 4 page), focused medical treatment plans in LaTeX PDF format for all …
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `assets`
-- `biopython`
-- `cat`
-- `external`
-- `literature-review`
-- `market-research-reports`
-- `org`
-- `scientific-schematics`
-- `transformers`
-- `treatment-plans`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `market-research-reports`
-- `treatment-plans`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,40 +1,21 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `condensed-mathematics` — invoked by — Scholze Clausen condensed math - condensed sets, liquid vector spaces, solid modules, 6 f…
+- `derham-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Differential forms on signal manifolds with exterior algebra, Hodge star, and de Rham com…
+- `derived-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Homological algebra via chain complexes, derived functors (Tor Ext), triangulated categor…
+- `infinity-topoi` — invoked by — Higher topos theory via ∞-sheaves, descent, Giraud axioms, modalities, Postnikov towers, …
+- `information-geometry` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Fisher Rao metric on statistical manifolds with natural gradient and divergence analysis
+- `lyapunov-stability` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Stability via Lyapunov's direct method
+- `model-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Homotopical algebra via weak equivalences, fibrations, cofibrations, Quillen adjunctions,…
+- `persistent-homology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Topological data analysis for stable feature verification across filtrations
+- `sheaf-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Čech cohomology for local to global consistency verification in code
+- `sheaf-cohomology-bci` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Local to global signal consistency via cellular sheaves, Cech cohomology, and sheaf Lapla…
+- `spectral-methods` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Fourier Laplacian eigenmodes for frequency domain analysis of graph and signal structures
+- `stability` — builds on — Qualitative behavior of solutions near equilibria
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `clojure`
-- `condensed-mathematics`
-- `derham-cohomology`
-- `derived-categories`
-- `infinity-topoi`
-- `information-geometry`
-- `lyapunov-stability`
-- `model-categories`
-- `persistent-homology`
-- `sheaf-cohomology`
-- `sheaf-cohomology-bci`
-- `spectral-methods`
-- `stability`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `condensed-mathematics`
-- `derham-cohomology`
-- `derived-categories`
-- `infinity-topoi`
-- `information-geometry`
-- `model-categories`
-- `sheaf-cohomology-bci`
-- `spectral-methods`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

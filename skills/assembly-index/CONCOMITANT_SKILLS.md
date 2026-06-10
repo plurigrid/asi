@@ -1,38 +1,21 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alife` — sibling in the artificial life, autopoiesis & chemical organization cluster — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `alife-commons` — sibling in the artificial life, autopoiesis & chemical organization cluster — Artificial Life atlas covering open ended evolution, chemical reaction networks, morphoge…
+- `catcolab-petri-nets` — invoked by — CatColab Petri Nets - concurrent system modeling via places (states), transitions (events…
+- `catcolab-regulatory-networks` — invoked by — CatColab Regulatory Networks - signed graphs for molecular biology modeling gene regulato…
+- `catcolab-stock-flow` — invoked by — CatColab Stock and Flow Diagrams - epidemiological and ecological modeling with stocks (a…
+- `crn-topology` — sibling in the artificial life, autopoiesis & chemical organization cluster — Chemical Reaction Network topology for generating and analyzing reaction
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `kolmogorov-compression` — sibling in the artificial life, autopoiesis & chemical organization cluster — Kolmogorov complexity as the ultimate intelligence measure.
+- `l-space` — invoked by — L Space Skill: The Library of All Libraries
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `turing-chemputer` — sibling in the artificial life, autopoiesis & chemical organization cluster — Cronin's Turing complete chemputer for programmable chemical synthesis
+- `yb-translator` — invoked by — Translate programming concepts to biological parallels using real ontology terms from EBI…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alife`
-- `alife-commons`
-- `catcolab-petri-nets`
-- `catcolab-regulatory-networks`
-- `catcolab-stock-flow`
-- `crn-topology`
-- `init`
-- `kolmogorov-compression`
-- `l-space`
-- `modelica`
-- `sdf`
-- `turing-chemputer`
-- `yb-translator`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `alife-commons`
-- `crn-topology`
-- `l-space`
-- `modelica`
-- `turing-chemputer`
-- `yb-translator`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

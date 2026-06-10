@@ -1,35 +1,21 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bisimulation-game` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Bisimulation game for resilient skill dispersal across AI agents with
+- `catcolab-schemas` — invoked by — CatColab Schemas - database schema modeling distinguishing entities (tables) from attribu…
+- `codex-self-rewriting` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Lisp machine self modification patterns via MCP Tasks and Narya bridge
+- `covariant-fibrations` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Riehl Shulman covariant fibrations for dependent types over directed
+- `gay-fokker-planck-staging` — invoked by — Two Fokker Plancks per staging gate, conditioned on (rama OR goblins)
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `org` — builds on — Org mode manual (25K lines info).
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `self-evolving-agent` — builds on — Darwin Gödel Machine patterns for self improving AI agents with open ended
+- `sheaf-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Čech cohomology for local to global consistency verification in code
+- `skill-embedding-vss` — invoked by — P adic ultrametric skill embeddings with MLX Snowflake Arctic, DuckDB
+- `temporal-coalgebra` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Coalgebraic observation of derivation streams with final coalgebra bisimulation
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bisimulation-game`
-- `catcolab-schemas`
-- `codex-self-rewriting`
-- `covariant-fibrations`
-- `gay-fokker-planck-staging`
-- `gay-mcp`
-- `init`
-- `org`
-- `para-mensch-commons`
-- `self-evolving-agent`
-- `sheaf-cohomology`
-- `skill-embedding-vss`
-- `temporal-coalgebra`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `gay-fokker-planck-staging`
-- `para-mensch-commons`
-- `skill-embedding-vss`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

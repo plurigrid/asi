@@ -1,30 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `audit-context-building` — sibling in the security auditing, fuzzing & pentest cluster — Enables ultra granular, line by line code analysis to build deep architectural context be…
+- `ostium-arbitrum-perps` — invoked by — Interact with Ostium Protocol -- a decentralized perpetual exchange on Arbitrum for RWA (…
+- `r2frida` — invoked by — Dynamic instrumentation bridge — radare2 static analysis meets Frida runtime hooking via …
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `trailofbits-security` — invoked by — - codeql - GitHub''s semantic code analysis
+- `variant-analysis` — builds on — Find similar vulnerabilities and bugs across codebases using pattern based analysis.
+- `zig-syrup-propagator-interleave` — invoked by — > Bridge connecting zig syrup advanced computational modules (propagator networks, homoto…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `audit-context-building`
-- `ostium-arbitrum-perps`
-- `r2frida`
-- `sdf`
-- `trailofbits-security`
-- `variant-analysis`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `ostium-arbitrum-perps`
-- `r2frida`
-- `trailofbits-security`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

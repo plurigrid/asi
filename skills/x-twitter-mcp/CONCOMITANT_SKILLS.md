@@ -1,33 +1,21 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `agent-o-rama` — builds on — Layer 4: Learning and Pattern Extraction for Cognitive Surrogate Systems
+- `babashka` — builds on — Clojure scripting without JVM startup.
+- `bisimulation-game` — builds on — Bisimulation game for resilient skill dispersal across AI agents with
+- `bluesky-jetstream` — builds on — Bluesky Jetstream Firehose Skill
+- `bob` — sibling in the skill routing & dispatch cluster — World BOB Skill
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `cognitive-surrogate` — sibling in the skill routing & dispatch cluster — yaml
+- `consensus` — builds on — Agreement protocol in multi agent systems
+- `gay-mcp` — sibling in the skill routing & dispatch cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `ies` — sibling in the skill routing & dispatch cluster — ies
+- `low-discrepancy-sequences` — sibling in the skill routing & dispatch cluster — low discrepancy sequences skill
+- `media` — sibling in the skill routing & dispatch cluster — Media processing = ffmpeg + imagemagick + sox.
+- `trajectory` — builds on — Path traced by solution through phase space
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `agent-o-rama`
-- `babashka`
-- `bisimulation-game`
-- `bluesky-jetstream`
-- `bob`
-- `clojure`
-- `cognitive-surrogate`
-- `consensus`
-- `gay-mcp`
-- `ies`
-- `low-discrepancy-sequences`
-- `media`
-- `trajectory`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

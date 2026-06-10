@@ -1,27 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `cats-for-ai` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — cats.for" (Categories for AI)
+- `dynamic-sufficiency` — builds on — Causal state gating via ε machine.
+- `ies` — builds on — ies
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `proof-of-frog` — builds on — Proof of Frog Skill 🐸
+- `py-acsets-rewriting` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Python bridge to AlgebraicRewriting.jl for DPO SPO SqPO graph rewriting over ACSets.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `cats-for-ai`
-- `dynamic-sufficiency`
-- `ies`
-- `init`
-- `proof-of-frog`
-- `py-acsets-rewriting`
-- `sdf`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `py-acsets-rewriting`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

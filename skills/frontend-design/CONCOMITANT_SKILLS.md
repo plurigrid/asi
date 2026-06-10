@@ -1,27 +1,12 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets-relational-thinking` — invoked by — ACSets (Attributed C Sets) for categorical database design and DPO rewriting
+- `codex-self-rewriting` — invoked by — Lisp machine self modification patterns via MCP Tasks and Narya bridge
+- `ducklake-semantic-analyzer` — invoked by — Semantic analysis for DuckLake ACSet models with GF(3) conservation
+- `skill-tour` — sibling in the skill routing & dispatch cluster — L shaped hops through skill space, maintaining triadic balance:
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets-relational-thinking`
-- `codex-self-rewriting`
-- `ducklake-semantic-analyzer`
-- `skill-tour`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `acsets-relational-thinking`
-- `codex-self-rewriting`
-- `ducklake-semantic-analyzer`
-- `skill-tour`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

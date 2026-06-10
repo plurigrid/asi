@@ -1,28 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `autopoiesis` — builds on — Self modifying AI agent configuration via ruler + MCP + DuckDB.
+- `equilibrium` — builds on — Fixed points where vector field vanishes
+- `levin-levity` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Leonid Levin''''s algorithmic complexity meets playful mutual ingression.
+- `linear` — builds on — Manage issues, projects & team workflows in Linear.
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `open-games` — builds on — Open Games Skill (ERGODIC 0)
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `autopoiesis`
-- `equilibrium`
-- `levin-levity`
-- `linear`
-- `modelica`
-- `open-games`
-- `sdf`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `levin-levity`
-- `modelica`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

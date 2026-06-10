@@ -1,23 +1,11 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `agentic-coordination-protocols` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Comprehensive research corpus covering 40+ agentic coordination protocols and ecosystems …
+- `free-monad-gen` — builds on — Free Monad Generation Skill (PLUS +1)
+- `narya-proofs` — builds on — Mechanically verified proofs from Narya event logs.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `agentic-coordination-protocols`
-- `free-monad-gen`
-- `narya-proofs`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `agentic-coordination-protocols`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

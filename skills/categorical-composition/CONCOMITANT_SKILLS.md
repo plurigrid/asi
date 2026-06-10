@@ -1,35 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `chemical-organization-theory` — invoked by — **Category:** Phase 3 Core - Autopoietic Systems
+- `feedforward-learning-local` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Alternative Learning Paradigms
+- `formal-verification-ai` — mutually referenced — **Category:** Phase 3 Core - Correctness Guarantees
+- `lean4-music-topos` — invoked by — Formal verification of music topos theorems - spectral gaps, CRDT correctness, color harm…
+- `oriented-simplicial-networks` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Geometric Deep Learning
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `sheaf-theoretic-coordination` — invoked by — **Category:** Phase 3 Core - Distributed Reasoning
+- `theorem-prover-orchestration` — invoked by — Unified theorem prover ecosystem dispatcher - routes proofs across Dafny, Lean4, Coq, Agd…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `chemical-organization-theory`
-- `feedforward-learning-local`
-- `formal-verification-ai`
-- `lean4-music-topos`
-- `oriented-simplicial-networks`
-- `para-mensch-commons`
-- `sheaf-theoretic-coordination`
-- `theorem-prover-orchestration`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `chemical-organization-theory`
-- `feedforward-learning-local`
-- `formal-verification-ai`
-- `lean4-music-topos`
-- `oriented-simplicial-networks`
-- `para-mensch-commons`
-- `sheaf-theoretic-coordination`
-- `theorem-prover-orchestration`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

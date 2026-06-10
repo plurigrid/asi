@@ -1,40 +1,21 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `active-inference-robotics` — invoked by — Bridge active inference theory with robot control using K Scale's JAX MuJoCo stack.
+- `entropy-regularized-inference` — invoked by — - User asks about connecting active inference to practical RL
+- `gym` — builds on — Each gym domain resolves specific skill tensions:
+- `kinfer-runtime` — sibling in the reproducible environments & deployment cluster — K Scale kinfer model inference engine for deploying trained RL policies to real robots vi…
+- `kscale` — sibling in the reproducible environments & deployment cluster — K Scale Labs robotics skill collection - unified index for humanoid robot development, RL…
+- `kscale-biomimetic-supply` — sibling in the reproducible environments & deployment cluster — - User asks about supply chain resilience for humanoid robotics
+- `kscale-ecosystem` — sibling in the reproducible environments & deployment cluster — - User asks about K Scale Labs, their robots, or open source robotics stack
+- `kscale-kinfer` — sibling in the reproducible environments & deployment cluster — - User asks about deploying RL policies to real robots
+- `kscale-kos` — sibling in the reproducible environments & deployment cluster — - User asks about robot operating systems, firmware, or low level control
+- `org` — builds on — Org mode manual (25K lines info).
+- `sim2real-predictive-coding` — invoked by — - User asks about sim2real transfer mechanisms
+- `trajectory` — builds on — Path traced by solution through phase space
+- `tree-sitter` — sibling in the reproducible environments & deployment cluster — AST based code analysis using tree sitter.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `active-inference-robotics`
-- `entropy-regularized-inference`
-- `gym`
-- `kinfer-runtime`
-- `kscale`
-- `kscale-biomimetic-supply`
-- `kscale-ecosystem`
-- `kscale-kinfer`
-- `kscale-kos`
-- `org`
-- `sim2real-predictive-coding`
-- `trajectory`
-- `tree-sitter`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `active-inference-robotics`
-- `entropy-regularized-inference`
-- `kinfer-runtime`
-- `kscale-biomimetic-supply`
-- `kscale-ecosystem`
-- `kscale-kinfer`
-- `kscale-kos`
-- `sim2real-predictive-coding`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

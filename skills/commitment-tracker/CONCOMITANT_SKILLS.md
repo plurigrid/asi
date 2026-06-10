@@ -1,26 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **2 monad** is a monad internal to a 2 category K.
+- `babashka` — builds on — Clojure scripting without JVM startup.
+- `bob` — builds on — World BOB Skill
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `consensus` — builds on — Agreement protocol in multi agent systems
+- `ies` — builds on — ies
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2-monad`
-- `babashka`
-- `bob`
-- `clojure`
-- `consensus`
-- `ies`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

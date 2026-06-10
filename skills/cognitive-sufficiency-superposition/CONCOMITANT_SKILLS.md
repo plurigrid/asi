@@ -1,30 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `cognitive-superposition` — builds on — Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
+- `curiosity-driven` — builds on — Schmidhuber's curiosity driven learning: Intrinsic motivation via compression progress.
+- `dynamic-sufficiency` — builds on — Causal state gating via ε machine.
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gflownet` — builds on — Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward.
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `kolmogorov-compression` — builds on — Kolmogorov complexity as the ultimate intelligence measure.
+- `segal-types` — builds on — Segal types for synthetic ∞-categories.
+- `trajectory` — builds on — Path traced by solution through phase space
+- `unworld-moments` — invoked by — Make all 69 cognitive moments happen simultaneously via parallel triadic fanout.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `cognitive-superposition`
-- `curiosity-driven`
-- `dynamic-sufficiency`
-- `gay-mcp`
-- `gflownet`
-- `init`
-- `kolmogorov-compression`
-- `segal-types`
-- `trajectory`
-- `unworld-moments`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `unworld-moments`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

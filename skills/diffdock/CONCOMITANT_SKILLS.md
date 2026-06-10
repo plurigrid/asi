@@ -1,29 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `assets` — builds on — Assets skill
+- `consensus` — builds on — Agreement protocol in multi agent systems
+- `docker` — builds on — Run Docker commands within a container environment, including starting the Docker daemon …
+- `esm` — builds on — Comprehensive toolkit for protein language models including ESM3 (generative multimodal p…
+- `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
+- `rdkit` — sibling in the scientific Python — bio cheminformatics cluster — Cheminformatics toolkit for fine grained molecular control.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `vertex-ai-protein-interleave` — invoked by — Bridge layer connecting Vertex AI Google Cloud to plurigrid asi protein scale biology s…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `assets`
-- `consensus`
-- `docker`
-- `esm`
-- `python-scientific-commons`
-- `rdkit`
-- `sdf`
-- `vertex-ai-protein-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `python-scientific-commons`
-- `vertex-ai-protein-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

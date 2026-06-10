@@ -1,25 +1,11 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `quarto-julia` — invoked by — Quarto + Julia Skill
+- `relational-filter` — invoked by — Evaluates messages and actions against 23 empirically grounded relational norms from Mill…
+- `world-sufficiency-prompt` — sibling in the skill routing & dispatch cluster — First interaction system prompt generator for Gemini, Codex, and Claude.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `quarto-julia`
-- `relational-filter`
-- `world-sufficiency-prompt`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `quarto-julia`
-- `relational-filter`
-- `world-sufficiency-prompt`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,297 +1,148 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `12-factor-app-modernization` — invoked by — |
+- `2600-magazine` — invoked by — Query and explore the 2600: The Hacker Quarterly magazine archive (1984 present) via Duck…
+- `agent-development` — invoked by — This skill should be used when the user asks to "create an agent", "add an agent", "write…
+- `agent-protocol-interleave` — invoked by — Bridge layer connecting the emerging agentic coordination protocol ecosystem (MCP, A2A, A…
+- `agentdb-learning` — invoked by — Create and train AI learning plugins with AgentDB's 9 reinforcement learning algorithms.
+- `agentic-actions-auditor` — sibling in the security auditing, fuzzing & pentest cluster — Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations inc…
+- `agentic-jujutsu` — invoked by — Quantum resistant, self learning version control for AI agents with ReasoningBank intelli…
+- `amp-continue` — invoked by — Combines AMP thread export with GF(3)-classified continuation for skill orchestration.
+- `amp-gf3-continuation` — invoked by — Combines AMP thread export with GF(3)-classified continuation for skill orchestration.
+- `aptos-agent` — invoked by — Interact with Aptos blockchain - check balances, transfer APT, swap tokens, stake, and ex…
+- `aptos-trading` — invoked by — Execute trades on Aptos mainnet with price triggered profit taking and dip buying strateg…
+- `aqua-voice-malleability` — invoked by — Adversarial malleability analysis of Aqua Voice Electron app with IPC injection, WebSocke…
+- `axiom-solana-trading` — invoked by — Interact with Axiom.trade -- a Y Combinator backed (W25) DEX aggregator and trading platf…
+- `bci-colored-operad` — invoked by — Brain Computer Interface with colored operad security boundaries.
+- `benchling-integration` — invoked by — Benchling R&D platform integration.
+- `bigquery` — invoked by — |
+- `bigquery-asi-interleave` — invoked by — Interleave layer bridging the BigQuery cluster to plurigrid asi.
+- `biomni` — invoked by — Autonomous biomedical AI agent framework for executing complex research tasks across geno…
+- `blackhat-go` — invoked by — Go based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT,…
+- `bmorphism-ies-env` — invoked by — Documentation and orchestration for the bmorphism ies flox environment toolkit
+- `bmorphism__cc-trace` — invoked by — Interactive assistant for intercepting, debugging, analyzing and reviewing Claude Code AP…
+- `botnet-disruption` — sibling in the security auditing, fuzzing & pentest cluster — Coordinated botnet takedown methodologies — sinkholing, infrastructure mapping, legal fra…
+- `botnet-studies` — sibling in the security auditing, fuzzing & pentest cluster — Botnet architecture taxonomy, detection techniques, and defensive analysis.
+- `cantordust-viz` — invoked by — Binary visualization for human pattern recognition - Ghidra plugin by Chris Domas (xoreax…
+- `captp` — invoked by — CapTP: Capability Transfer Protocol
+- `cc-trace` — invoked by — Intercept and debug Claude Code API requests using mitmproxy.
+- `clinical-reports` — invoked by — Write comprehensive clinical reports including case reports (CARE guidelines), diagnostic…
+- `cloudflare` — invoked by — Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI…
+- `cloudflare-deploy` — invoked by — Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related pl…
+- `cloudflare-tunnel-ec2-deployment` — invoked by — |
+- `code-review` — invoked by — Automated code review for pull requests using specialized review patterns.
+- `code-reviewer` — invoked by — Use this skill to review code.
+- `cogsec-world-mediation` — invoked by — Prerequisite mediation layer for cogsec world interactions via IMable + glass bead game
+- `command-development` — invoked by — This skill should be used when the user asks to "create a slash command", "add a command"…
+- `commit-security-scan` — sibling in the security auditing, fuzzing & pentest cluster — Analyze code changes for security vulnerabilities using LLM reasoning and threat model pa…
+- `competitive-ads-extractor` — invoked by — Extracts and analyzes competitors' ads from ad libraries (Facebook, LinkedIn,
+- `confighub-usage-guide` — invoked by — |
+- `coolify-deployment` — invoked by — |
+- `counter-surveillance` — sibling in the security auditing, fuzzing & pentest cluster — Assess and harden operational security (OPSEC) posture for applications, communications, …
+- `cq-ai` — sibling in the security auditing, fuzzing & pentest cluster — Code Query with AI enhanced deterministic analysis via SplitMix ternary classification
+- `cq-ai-deterministic-security-scanning-with-ternary-polarity` — sibling in the security auditing, fuzzing & pentest cluster — Deterministic code security scanner using SplitMix64 seeding.
+- `crypto-fiat-bridge` — invoked by — Automated APT to fiat payment pipeline via PYUSD stablecoin bridge.
+- `cryptographic-audit` — sibling in the security auditing, fuzzing & pentest cluster — Audit cryptographic implementations for misuse, weak algorithms, improper key management,…
+- `cybernetic-open-game` — invoked by — Cybernetic Open Game Skill
+- `cynara-policy-checker` — sibling in the security auditing, fuzzing & pentest cluster — Queries Cynara database and validates runtime privilege policies.
+- `cynara-policy-validator` — sibling in the security auditing, fuzzing & pentest cluster — Validates Cynara privilege access control policies.
+- `derangement-crdt` — invoked by — Derangement CRDT Skill
+- `developer-growth-analysis` — invoked by — Analyzes your recent Claude Code chat history to identify coding patterns,
+- `did-passport-interleave` — invoked by — Formal bridge between W3C Decentralized Identifiers (did:wba, ANP) and passport.gay (Spli…
+- `ergodic-coordinator` — invoked by — Completes the GF(3) triad: +1 + (-1) + 0 = 0
+- `excellence-gradient` — invoked by — Measure quality.
+- `flow-nexus-platform` — invoked by — Comprehensive Flow Nexus platform management - authentication, sandboxes, app deployment,…
+- `flow-nexus-swarm` — invoked by — Cloud based AI swarm deployment and event driven workflow automation with Flow Nexus plat…
+- `flox-builds` — invoked by — Building and packaging applications with Flox.
+- `fnox-secrets` — invoked by — fnox Secrets Management Skill - DIRECT PIPE ONLY
+- `gh-emacs` — invoked by — GitHub Actions as a **decentralized Emacs compute fabric**:
+- `gh-interactome` — invoked by — GitHub author interaction network discovery.
+- `gh-skill-explorer` — invoked by — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `github-api` — invoked by — Orchestrates comprehensive GitHub API access across all services.
+- `github-code-review` — invoked by — Comprehensive GitHub code review with AI powered swarm coordination
+- `github-multi-repo` — invoked by — Multi repository coordination, synchronization, and architecture management with AI swarm…
+- `github-project-management` — invoked by — Comprehensive GitHub project management with swarm coordinated issue tracking, project bo…
+- `github-release-management` — invoked by — Comprehensive GitHub release orchestration with AI swarm coordination for automated versi…
+- `github-workflow-automation` — invoked by — Advanced GitHub Actions workflow automation with AI swarm coordination, intelligent CI CD…
+- `glamorous-moldable-multiplatform` — invoked by — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
+- `hermes-fs-as-cap` — invoked by — Replace Hermes' ambient filesystem authority (validate then open) with a Goblins single d…
+- `hermes-goblins-bridge` — invoked by — Interface compatible bridges from Hermes Agent harness (~ i hermes agent) to Spritely Gob…
+- `hive-mind-advanced` — invoked by — Advanced Hive Mind collective intelligence system for queen led multi agent coordination …
+- `hook-development` — invoked by — This skill should be used when the user asks to "create a hook", "add a PreToolUse PostTo…
+- `hydra-graphql-interactome` — invoked by — Every Hydra query expansion must conserve:
+- `infrastructure-cost-estimation` — invoked by — |
+- `insecure-defaults` — sibling in the security auditing, fuzzing & pentest cluster — Detects fail open insecure defaults (hardcoded secrets, weak auth, permissive security) t…
+- `iroh-p2p` — invoked by — Build modern peer to peer applications with Iroh.
+- `jira-issues` — invoked by — Create, update, and manage Jira issues from natural language.
+- `k-dense-ai` — invoked by — - alphafold database - Protein structure prediction
+- `keychain-secure` — invoked by — macOS Keychain credential management with GF(3) balanced operations
+- `labarchive-integration` — invoked by — Electronic lab notebook API integration.
+- `latent-latency` — invoked by — Latent Latency Skill
+- `let-fate-decide` — invoked by — Draws 4 Tarot cards using os.urandom() to inject entropy into planning when prompts are v…
+- `macos-use` — invoked by — macOS automation with **activation energy** for machine skill rediscovery:
+- `manifest-privilege-validator` — invoked by — Validates tizen manifest.xml privilege declarations.
+- `mcp-integration` — invoked by — This skill should be used when the user asks to "add MCP server", "integrate MCP", "confi…
+- `mdm-cobordism` — invoked by — macOS MDM with auth manifolds as cobordisms for credential derivation
+- `migrating-bitnami-to-bitnami-legacy` — invoked by — |
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `modern-python` — invoked by — Modern Python best practices.
+- `move-fuzzing` — invoked by — Comprehensive fuzzing toolkit for Move smart contracts on Aptos, Sui, and Movement chains.
+- `move-rps-game` — invoked by — Rock Paper Scissors PvP game on Aptos with commit reveal pattern and ACSet informed design
+- `nashator` — invoked by — Open games DSL Nash equilibrium solver via PyTorch autodiff.
+- `network-forensics` — sibling in the security auditing, fuzzing & pentest cluster — Analyze network traffic captures for security incidents, protocol anomalies, and data exf…
+- `ostium-arbitrum-perps` — invoked by — Interact with Ostium Protocol -- a decentralized perpetual exchange on Arbitrum for RWA (…
+- `owasp-security-check` — sibling in the security auditing, fuzzing & pentest cluster — Security audit guidelines for web applications and REST APIs based on OWASP Top 10 and we…
+- `pair-programming` — invoked by — AI assisted pair programming with multiple modes (driver navigator switch), real time ver…
+- `perplexity-search` — invoked by — Perform AI powered web searches with real time information using Perplexity models via Li…
+- `plugin-settings` — invoked by — This skill should be used when the user asks about "plugin settings", "store plugin confi…
+- `protocol-acset` — invoked by — Model decentralized protocols as attributed C sets for compositional analysis, interopera…
+- `r2frida` — invoked by — Dynamic instrumentation bridge — radare2 static analysis meets Frida runtime hooking via …
+- `radare2-hatchery` — invoked by — Radare2 Hatchery
+- `research-grants` — sibling in the security auditing, fuzzing & pentest cluster — Write competitive research proposals for NSF, NIH, DOE, and DARPA.
+- `reverse-engineering` — sibling in the security auditing, fuzzing & pentest cluster — Reverse Engineering Skill
+- `ruler` — invoked by — Unified AI agent configuration propagation across 18+ coding assistants.
+- `sandbox-escape-detector` — invoked by — Tests Tizen application sandboxes for privilege escalation and escape vulnerabilities.
+- `seatbelt-sandboxer` — sibling in the security auditing, fuzzing & pentest cluster — Generates minimal macOS Seatbelt sandbox configurations.
+- `second-opinion` — invoked by — Runs external LLM code reviews (OpenAI Codex or Google Gemini CLI) on uncommitted changes…
+- `security-best-practices` — sibling in the security auditing, fuzzing & pentest cluster — Perform language and framework specific security best practice reviews and suggest improv…
+- `security-ownership-map` — sibling in the security auditing, fuzzing & pentest cluster — Analyze git repositories to build a security ownership topology (people to file), compute…
+- `security-requirement-extraction` — sibling in the security auditing, fuzzing & pentest cluster — Derive security requirements from threat models and business context.
+- `security-review` — sibling in the security auditing, fuzzing & pentest cluster — Scan code changes for security vulnerabilities using STRIDE threat modeling, validate fin…
+- `signal-isolated-auth` — invoked by — Maximally isolated Signal authentication via colored operad security boundaries.
+- `smack-label-orchestrator` — sibling in the security auditing, fuzzing & pentest cluster — Manages SMACK label assignments across apps and kernel.
+- `smack-policy-auditor` — sibling in the security auditing, fuzzing & pentest cluster — Analyzes SMACK policy files for correctness, label conflicts, and access control issues.
+- `snix` — invoked by — Rust Nix reimplementation for content addressed rootfs builds.
+- `social-engineering-audit` — sibling in the security auditing, fuzzing & pentest cluster — Assess social engineering attack surface in applications and organizations.
+- `sparc-methodology` — invoked by — SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) comprehensive dev…
+- `static-security-analyzer` — invoked by — Wrapper around Tizen Studio static analyzer.
+- `story-and-tasks` — invoked by — This skill provides guidance on using the mcp tasks MCP server for task and story managem…
+- `stream-chain` — invoked by — Stream JSON chaining for multi agent pipelines, data transformation, and sequential workf…
+- `supply-chain-risk-auditor` — sibling in the security auditing, fuzzing & pentest cluster — Identifies dependencies at heightened risk of exploitation or takeover.
+- `swarm-advanced` — invoked by — Advanced swarm orchestration patterns for research, development, testing, and complex dis…
+- `telecom-security` — sibling in the security auditing, fuzzing & pentest cluster — Assess telecommunications infrastructure security including VoIP SIP, SS7 Diameter, cellu…
+- `terrateam-usage-guide` — invoked by — |
+- `threat-model-generation` — sibling in the security auditing, fuzzing & pentest cluster — Generate a STRIDE based security threat model for a repository.
+- `tizen-certification-coordinator` — sibling in the security auditing, fuzzing & pentest cluster — Orchestrates Tizen certification workflow.
+- `tizen-compliance-checker` — sibling in the security auditing, fuzzing & pentest cluster — Validates Tizen app compliance with TCT (Tizen Compliance Tests).
+- `tizen-cve-scanner` — sibling in the security auditing, fuzzing & pentest cluster — Scans for known Tizen CVEs in app dependencies and kernel.
+- `tizen-security-compliance` — sibling in the security auditing, fuzzing & pentest cluster — Maps security requirements to implementation.
+- `trailofbits-security` — invoked by — - codeql - GitHub''s semantic code analysis
+- `uspto-database` — invoked by — Access USPTO APIs for patent trademark searches, examination history (PEDS), assignments,…
+- `verification-quality` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `verification-quality-assurance` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `vertex-asi-interleave` — invoked by — Interleave layer between Google Vertex AI skills and plurigrid asi capabilities.
+- `vllm-deployment` — invoked by — |
+- `vulnerability-validation` — invoked by — Validate security findings from commit security scan by assessing exploitability, filteri…
+- `wasm-goblins` — invoked by — Goblins ↔ WASM runtime interactions across verified runtimes.
+- `websocket-engineer` — invoked by — Use when building real time communication systems with WebSockets or Socket.IO.
+- `wireless-network-audit` — sibling in the security auditing, fuzzing & pentest cluster — Audit wireless networks (WiFi, BLE, Zigbee) for security vulnerabilities using aircrack n…
+- `writing-hookify-rules` — invoked by — This skill should be used when the user asks to "create a hookify rule", "write a hook ru…
+- `writing-rules` — invoked by — This skill should be used when the user asks to "create a hookify rule", "write a hook ru…
+- `yara-rule-authoring` — sibling in the security auditing, fuzzing & pentest cluster — >
+- `zeroize-audit` — sibling in the security auditing, fuzzing & pentest cluster — Detects missing zeroization of sensitive data in source code and identifies zeroization r…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `12-factor-app-modernization`
-- `2600-magazine`
-- `agent-development`
-- `agent-protocol-interleave`
-- `agentdb-learning`
-- `agentic-actions-auditor`
-- `agentic-jujutsu`
-- `amp-continue`
-- `amp-gf3-continuation`
-- `aptos-agent`
-- `aptos-trading`
-- `aqua-voice-malleability`
-- `axiom-solana-trading`
-- `bci-colored-operad`
-- `benchling-integration`
-- `bigquery`
-- `bigquery-asi-interleave`
-- `biomni`
-- `blackhat-go`
-- `bmorphism-ies-env`
-- `bmorphism__cc-trace`
-- `botnet-disruption`
-- `cantordust-viz`
-- `captp`
-- `cc-trace`
-- `clinical-reports`
-- `cloudflare`
-- `cloudflare-deploy`
-- `cloudflare-tunnel-ec2-deployment`
-- `code-review`
-- `code-reviewer`
-- `cogsec-world-mediation`
-- `command-development`
-- `commit-security-scan`
-- `competitive-ads-extractor`
-- `confighub-usage-guide`
-- `coolify-deployment`
-- `counter-surveillance`
-- `cq-ai`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `crypto-fiat-bridge`
-- `cryptographic-audit`
-- `cybernetic-open-game`
-- `cynara-policy-checker`
-- `cynara-policy-validator`
-- `derangement-crdt`
-- `developer-growth-analysis`
-- `did-passport-interleave`
-- `ergodic-coordinator`
-- `excellence-gradient`
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `flox-builds`
-- `fnox-secrets`
-- `gh-emacs`
-- `gh-interactome`
-- `gh-skill-explorer`
-- `github-api`
-- `github-code-review`
-- `github-multi-repo`
-- `github-project-management`
-- `github-release-management`
-- `github-workflow-automation`
-- `glamorous-moldable-multiplatform`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hive-mind-advanced`
-- `hook-development`
-- `hydra-graphql-interactome`
-- `infrastructure-cost-estimation`
-- `insecure-defaults`
-- `iroh-p2p`
-- `jira-issues`
-- `k-dense-ai`
-- `keychain-secure`
-- `labarchive-integration`
-- `latent-latency`
-- `let-fate-decide`
-- `macos-use`
-- `manifest-privilege-validator`
-- `mcp-integration`
-- `mdm-cobordism`
-- `migrating-bitnami-to-bitnami-legacy`
-- `modding-ghostty`
-- `modern-python`
-- `move-fuzzing`
-- `move-rps-game`
-- `nashator`
-- `network-forensics`
-- `ostium-arbitrum-perps`
-- `owasp-security-check`
-- `pair-programming`
-- `perplexity-search`
-- `plugin-settings`
-- `protocol-acset`
-- `r2frida`
-- `radare2-hatchery`
-- `research-grants`
-- `reverse-engineering`
-- `ruler`
-- `sandbox-escape-detector`
-- `seatbelt-sandboxer`
-- `second-opinion`
-- `security-best-practices`
-- `security-ownership-map`
-- `security-requirement-extraction`
-- `security-review`
-- `signal-isolated-auth`
-- `smack-label-orchestrator`
-- `smack-policy-auditor`
-- `snix`
-- `social-engineering-audit`
-- `sparc-methodology`
-- `static-security-analyzer`
-- `story-and-tasks`
-- `stream-chain`
-- `supply-chain-risk-auditor`
-- `swarm-advanced`
-- `telecom-security`
-- `terrateam-usage-guide`
-- `threat-model-generation`
-- `tizen-certification-coordinator`
-- `tizen-compliance-checker`
-- `tizen-cve-scanner`
-- `tizen-security-compliance`
-- `trailofbits-security`
-- `uspto-database`
-- `verification-quality`
-- `verification-quality-assurance`
-- `vertex-asi-interleave`
-- `vllm-deployment`
-- `vulnerability-validation`
-- `wasm-goblins`
-- `websocket-engineer`
-- `wireless-network-audit`
-- `writing-hookify-rules`
-- `writing-rules`
-- `yara-rule-authoring`
-- `zeroize-audit`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `12-factor-app-modernization`
-- `2600-magazine`
-- `agent-development`
-- `agent-protocol-interleave`
-- `agentdb-learning`
-- `agentic-actions-auditor`
-- `agentic-jujutsu`
-- `amp-continue`
-- `amp-gf3-continuation`
-- `aptos-agent`
-- `aptos-trading`
-- `aqua-voice-malleability`
-- `axiom-solana-trading`
-- `bci-colored-operad`
-- `benchling-integration`
-- `bigquery`
-- `bigquery-asi-interleave`
-- `biomni`
-- `blackhat-go`
-- `bmorphism-ies-env`
-- `bmorphism__cc-trace`
-- `botnet-disruption`
-- `cantordust-viz`
-- `captp`
-- `cc-trace`
-- `clinical-reports`
-- `cloudflare`
-- `cloudflare-deploy`
-- `cloudflare-tunnel-ec2-deployment`
-- `code-review`
-- `code-reviewer`
-- `cogsec-world-mediation`
-- `command-development`
-- `commit-security-scan`
-- `competitive-ads-extractor`
-- `confighub-usage-guide`
-- `coolify-deployment`
-- `counter-surveillance`
-- `cq-ai`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `crypto-fiat-bridge`
-- `cryptographic-audit`
-- `cybernetic-open-game`
-- `cynara-policy-checker`
-- `cynara-policy-validator`
-- `derangement-crdt`
-- `developer-growth-analysis`
-- `did-passport-interleave`
-- `ergodic-coordinator`
-- `excellence-gradient`
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `flox-builds`
-- `fnox-secrets`
-- `gh-emacs`
-- `gh-interactome`
-- `gh-skill-explorer`
-- `github-api`
-- `github-code-review`
-- `github-multi-repo`
-- `github-project-management`
-- `github-release-management`
-- `github-workflow-automation`
-- `glamorous-moldable-multiplatform`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hive-mind-advanced`
-- `hook-development`
-- `hydra-graphql-interactome`
-- `infrastructure-cost-estimation`
-- `insecure-defaults`
-- `iroh-p2p`
-- `jira-issues`
-- `k-dense-ai`
-- `keychain-secure`
-- `labarchive-integration`
-- `latent-latency`
-- `let-fate-decide`
-- `macos-use`
-- `manifest-privilege-validator`
-- `mcp-integration`
-- `mdm-cobordism`
-- `migrating-bitnami-to-bitnami-legacy`
-- `modding-ghostty`
-- `modern-python`
-- `move-fuzzing`
-- `move-rps-game`
-- `nashator`
-- `network-forensics`
-- `ostium-arbitrum-perps`
-- `owasp-security-check`
-- `pair-programming`
-- `perplexity-search`
-- `plugin-settings`
-- `protocol-acset`
-- `r2frida`
-- `radare2-hatchery`
-- `research-grants`
-- `reverse-engineering`
-- `ruler`
-- `sandbox-escape-detector`
-- `seatbelt-sandboxer`
-- `second-opinion`
-- `security-best-practices`
-- `security-ownership-map`
-- `security-requirement-extraction`
-- `security-review`
-- `signal-isolated-auth`
-- `smack-label-orchestrator`
-- `smack-policy-auditor`
-- `snix`
-- `social-engineering-audit`
-- `sparc-methodology`
-- `static-security-analyzer`
-- `story-and-tasks`
-- `stream-chain`
-- `supply-chain-risk-auditor`
-- `swarm-advanced`
-- `telecom-security`
-- `terrateam-usage-guide`
-- `threat-model-generation`
-- `tizen-certification-coordinator`
-- `tizen-compliance-checker`
-- `tizen-cve-scanner`
-- `tizen-security-compliance`
-- `trailofbits-security`
-- `uspto-database`
-- `verification-quality`
-- `verification-quality-assurance`
-- `vertex-asi-interleave`
-- `vllm-deployment`
-- `vulnerability-validation`
-- `wasm-goblins`
-- `websocket-engineer`
-- `wireless-network-audit`
-- `writing-hookify-rules`
-- `writing-rules`
-- `yara-rule-authoring`
-- `zeroize-audit`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

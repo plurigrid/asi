@@ -1,32 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `attractor` — builds on — Invariant set attracting nearby trajectories
+- `bifurcation-generator` — builds on — Generate bifurcation diagrams for dynamical systems.
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `critical-opalescence` — invoked by — Critical opalescence at phase transitions: diverging correlation length, light scattering…
+- `fokker-planck-analyzer` — builds on — Layer 5: Convergence to Equilibrium Analysis
+- `langevin-dynamics` — builds on — Layer 5: SDE Based Learning Analysis via Langevin Dynamics
+- `linear` — sibling in the skill routing & dispatch cluster — Manage issues, projects & team workflows in Linear.
+- `lyapunov-function` — builds on — Scalar function decreasing along trajectories
+- `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `structural-stability` — builds on — Robustness of qualitative dynamics under perturbation
+- `waddington-landscape` — invoked by — Waddington's epigenetic landscape: cell fate as gradient flow on potential surfaces, conn…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `attractor`
-- `bifurcation-generator`
-- `cat`
-- `critical-opalescence`
-- `fokker-planck-analyzer`
-- `langevin-dynamics`
-- `linear`
-- `lyapunov-function`
-- `sdf`
-- `structural-stability`
-- `waddington-landscape`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `critical-opalescence`
-- `waddington-landscape`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

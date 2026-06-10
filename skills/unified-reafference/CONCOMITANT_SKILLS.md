@@ -1,34 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets-hatchery` — builds on — Attributed C Sets as algebraic databases.
+- `amp-api-awareness` — invoked by — Extract hidden Amp API patterns from local thread data via DuckDB analysis
+- `amp-skill` — sibling in the skill routing & dispatch cluster — Interruption pattern detection and retrieval from Amp thread history.
+- `bumpus-narratives` — sibling in the skill routing & dispatch cluster — Sheaves on time categories for compositional temporal reasoning.
+- `duckdb-timetravel` — builds on — Layer 3: Temporal Versioning and ACSet Schema Generation for DuckDB
+- `flowglad-integration` — sibling in the skill routing & dispatch cluster — Zero webhook billing for AI agents
+- `fswatch-duckdb` — sibling in the skill routing & dispatch cluster — FileSystemWatcher over tmp with DuckDB DuckLake persistence.
+- `goose-introspection` — sibling in the skill routing & dispatch cluster — Goose session introspection and self discovery via DuckDB reafference database.
+- `reafference-corollary-discharge` — sibling in the skill routing & dispatch cluster — Von Holst reafference and corollary discharge for behavioral verification and signal proc…
+- `zig-syrup-propagator-interleave` — sibling in the skill routing & dispatch cluster — > Bridge connecting zig syrup advanced computational modules (propagator networks, homoto…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets-hatchery`
-- `amp-api-awareness`
-- `amp-skill`
-- `bumpus-narratives`
-- `duckdb-timetravel`
-- `flowglad-integration`
-- `fswatch-duckdb`
-- `goose-introspection`
-- `reafference-corollary-discharge`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `amp-api-awareness`
-- `flowglad-integration`
-- `fswatch-duckdb`
-- `goose-introspection`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

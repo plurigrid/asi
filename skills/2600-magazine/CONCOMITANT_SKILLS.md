@@ -1,30 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets` — builds on — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `alice` — sibling in the skill routing & dispatch cluster — Primary Aptos testnet wallet for transaction origination.
+- `duckdb-ies` — builds on — Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking
+- `entry-point-analyzer` — builds on — Analyzes smart contract codebases to identify state changing entry points for security au…
+- `org` — builds on — Org mode manual (25K lines info).
+- `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `reverse-engineering` — builds on — Reverse Engineering Skill
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `speech` — sibling in the skill routing & dispatch cluster — Use when the user asks for text to speech narration or voiceover, accessibility reads, au…
+- `webapp-testing` — builds on — Toolkit for interacting with and testing local web applications using
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets`
-- `alice`
-- `duckdb-ies`
-- `entry-point-analyzer`
-- `org`
-- `pdf`
-- `reverse-engineering`
-- `security`
-- `speech`
-- `webapp-testing`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

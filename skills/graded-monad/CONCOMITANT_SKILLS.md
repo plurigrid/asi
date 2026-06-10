@@ -1,47 +1,30 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **2 monad** is a monad internal to a 2 category K.
+- `bkp-interleaving` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — This skill is the **deep interleaving** of the five BKP 2 monad theory skills:
+- `cat` — builds on — cat Skill: Derivational Pipe Chaining
+- `codescent` — mutually referenced — A **codescent object** is the 2 categorical analogue of a coequalizer.
+- `covariant-fibrations` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Riehl Shulman covariant fibrations for dependent types over directed
+- `discopy-operads` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — DiscoPy Operads Skill
+- `doctrinal-adjunction` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **doctrinal adjunction** is Kelly''s 1974 theorem establishing a canonical bijection be…
+- `flexible-algebra` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **flexible T algebra** is a strict T algebra that admits enough "room to move" — it is …
+- `free-monad-gen` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Free Monad Generation Skill (PLUS +1)
+- `gf3-tripartite` — builds on — GF(3) Tripartite Orchestration
+- `ies` — builds on — ies
+- `kan-extensions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Kan Extensions Skill (ERGODIC 0)
+- `lhott-cohesive-linear` — builds on — Cohesive Linear HoTT patterns for interaction entropy with diagram generation.
+- `linear` — builds on — Manage issues, projects & team workflows in Linear.
+- `linear-logic` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Linear Logic Skill
+- `open-games` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Open Games Skill (ERGODIC 0)
+- `operad-compose` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Operad Composition Skill (PLUS +1)
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `segal-types` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Segal types for synthetic ∞-categories.
+- `sheaf-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Čech cohomology for local to global consistency verification in code
+- `synthetic-adjunctions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Synthetic adjunctions in directed type theory for ∞-categorical universal
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2-monad`
-- `bkp-interleaving`
-- `cat`
-- `codescent`
-- `covariant-fibrations`
-- `discopy-operads`
-- `doctrinal-adjunction`
-- `flexible-algebra`
-- `free-monad-gen`
-- `gf3-tripartite`
-- `ies`
-- `kan-extensions`
-- `lhott-cohesive-linear`
-- `linear`
-- `linear-logic`
-- `open-games`
-- `operad-compose`
-- `para-mensch-commons`
-- `sdf`
-- `segal-types`
-- `sheaf-cohomology`
-- `synthetic-adjunctions`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `2-monad`
-- `bkp-interleaving`
-- `codescent`
-- `doctrinal-adjunction`
-- `flexible-algebra`
-- `para-mensch-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

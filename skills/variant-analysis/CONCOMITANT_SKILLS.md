@@ -1,112 +1,55 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `address-sanitizer` — invoked by — Use AddressSanitizer to detect memory safety bugs in C C++ programs.
+- `aflpp` — invoked by — Fuzzing with AFL++ for comprehensive binary and source code fuzzing.
+- `algorand-vulnerability-scanner` — invoked by — Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, …
+- `ask-questions-if-underspecified` — invoked by — Clarify requirements before implementing.
+- `atheris` — invoked by — Python fuzzing with Atheris for discovering vulnerabilities in Python code.
+- `audit-context-building` — mutually referenced — Enables ultra granular, line by line code analysis to build deep architectural context be…
+- `audit-prep-assistant` — invoked by — Prepare your codebase for security review using Trail of Bits' checklist.
+- `burp-suite` — invoked by — Web application security testing with Burp Suite.
+- `burpsuite-project-parser` — invoked by — Searches and explores Burp Suite project files (.burp) from the command line.
+- `cairo-vulnerability-scanner` — invoked by — Scans Cairo StarkNet smart contracts for 6 critical vulnerabilities including felt252 ari…
+- `cargo-fuzz` — invoked by — Rust fuzzing with cargo fuzz (libFuzzer).
+- `citizen-lab-forensics` — invoked by — Digital forensics techniques for detecting device compromise, analyzing malware indicator…
+- `code-maturity-assessor` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Systematic code maturity assessment using Trail of Bits' 9 category framework.
+- `codeql` — invoked by — Run CodeQL static analysis for security vulnerability detection, taint tracking, and data…
+- `constant-time-analysis` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Detects timing side channel vulnerabilities in cryptographic code.
+- `constant-time-testing` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Testing for timing side channels and constant time implementation verification.
+- `cosmos-vulnerability-scanner` — invoked by — Scans Cosmos SDK blockchains for 9 consensus critical vulnerabilities including non deter…
+- `coverage-analysis` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Code coverage analysis for testing quality assessment.
+- `differential-review` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Security focused code review of diffs and pull requests using Trail of Bits expertise.
+- `dwarf-expert` — invoked by — Provides expertise for analyzing DWARF debug files and understanding the DWARF debug form…
+- `entry-point-analyzer` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Analyzes smart contract codebases to identify state changing entry points for security au…
+- `fix-review` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Review security fixes and patches for completeness and correctness.
+- `fuzzing-dictionary` — invoked by — Building effective fuzzing dictionaries for improved fuzzer performance.
+- `fuzzing-obstacles` — invoked by — Overcoming fuzzing obstacles and improving fuzzer effectiveness.
+- `guidelines-advisor` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Comprehensive smart contract development advisor based on Trail of Bits' best practices.
+- `harness-writing` — invoked by — Writing effective fuzzing harnesses for security testing.
+- `interpreting-culture-index` — invoked by — Use when interpreting Culture Index surveys, CI profiles, behavioral assessments, or pers…
+- `libafl` — invoked by — Fuzzing framework LibAFL for custom fuzzing campaigns.
+- `libfuzzer` — invoked by — Fuzzing with libFuzzer for finding vulnerabilities in code.
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `ossfuzz` — invoked by — Integration with OSS Fuzz for continuous fuzzing.
+- `ostium-arbitrum-perps` — invoked by — Interact with Ostium Protocol -- a decentralized perpetual exchange on Arbitrum for RWA (…
+- `property-based-testing` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Provides guidance for property based testing across multiple languages and smart contract…
+- `ruzzy` — invoked by — Rust fuzzing with Ruzzy for automated vulnerability discovery.
+- `sarif-parsing` — invoked by — Parse, analyze, and process SARIF (Static Analysis Results Interchange Format) files.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `secure-workflow-guide` — invoked by — Guide you through Trail of Bits' 5 step secure development workflow.
+- `semgrep` — mutually referenced — Run Semgrep static analysis for fast security scanning and pattern matching.
+- `semgrep-rule-creator` — invoked by — Create custom Semgrep rules for detecting bug patterns and security vulnerabilities.
+- `sharp-edges` — invoked by — Identifies error prone APIs, dangerous configurations, and footgun designs that enable se…
+- `solana-vulnerability-scanner` — invoked by — Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PD…
+- `spec-to-code-compliance` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Verifies code implements exactly what documentation specifies for blockchain audits.
+- `substrate-vulnerability-scanner` — invoked by — Scans Substrate Polkadot pallets for 7 critical vulnerabilities including arithmetic over…
+- `testing-handbook-generator` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Generates comprehensive testing handbooks and guides for security testing strategies.
+- `token-integration-analyzer` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Comprehensive token integration and implementation analyzer based on Trail of Bits' token…
+- `ton-vulnerability-scanner` — invoked by — Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including int…
+- `wycheproof` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Google's Wycheproof test vectors for cryptographic implementation testing.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `address-sanitizer`
-- `aflpp`
-- `algorand-vulnerability-scanner`
-- `ask-questions-if-underspecified`
-- `atheris`
-- `audit-context-building`
-- `audit-prep-assistant`
-- `burp-suite`
-- `burpsuite-project-parser`
-- `cairo-vulnerability-scanner`
-- `cargo-fuzz`
-- `citizen-lab-forensics`
-- `code-maturity-assessor`
-- `codeql`
-- `constant-time-analysis`
-- `constant-time-testing`
-- `cosmos-vulnerability-scanner`
-- `coverage-analysis`
-- `differential-review`
-- `dwarf-expert`
-- `entry-point-analyzer`
-- `fix-review`
-- `fuzzing-dictionary`
-- `fuzzing-obstacles`
-- `guidelines-advisor`
-- `harness-writing`
-- `interpreting-culture-index`
-- `libafl`
-- `libfuzzer`
-- `modding-ghostty`
-- `ossfuzz`
-- `ostium-arbitrum-perps`
-- `property-based-testing`
-- `ruzzy`
-- `sarif-parsing`
-- `sdf`
-- `secure-workflow-guide`
-- `semgrep`
-- `semgrep-rule-creator`
-- `sharp-edges`
-- `solana-vulnerability-scanner`
-- `spec-to-code-compliance`
-- `substrate-vulnerability-scanner`
-- `testing-handbook-generator`
-- `token-integration-analyzer`
-- `ton-vulnerability-scanner`
-- `wycheproof`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `address-sanitizer`
-- `aflpp`
-- `algorand-vulnerability-scanner`
-- `ask-questions-if-underspecified`
-- `atheris`
-- `audit-context-building`
-- `audit-prep-assistant`
-- `burp-suite`
-- `burpsuite-project-parser`
-- `cairo-vulnerability-scanner`
-- `cargo-fuzz`
-- `citizen-lab-forensics`
-- `code-maturity-assessor`
-- `codeql`
-- `constant-time-analysis`
-- `constant-time-testing`
-- `cosmos-vulnerability-scanner`
-- `coverage-analysis`
-- `differential-review`
-- `dwarf-expert`
-- `entry-point-analyzer`
-- `fix-review`
-- `fuzzing-dictionary`
-- `fuzzing-obstacles`
-- `guidelines-advisor`
-- `harness-writing`
-- `interpreting-culture-index`
-- `libafl`
-- `libfuzzer`
-- `modding-ghostty`
-- `ossfuzz`
-- `ostium-arbitrum-perps`
-- `property-based-testing`
-- `ruzzy`
-- `sarif-parsing`
-- `secure-workflow-guide`
-- `semgrep`
-- `semgrep-rule-creator`
-- `sharp-edges`
-- `solana-vulnerability-scanner`
-- `spec-to-code-compliance`
-- `substrate-vulnerability-scanner`
-- `testing-handbook-generator`
-- `token-integration-analyzer`
-- `ton-vulnerability-scanner`
-- `wycheproof`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

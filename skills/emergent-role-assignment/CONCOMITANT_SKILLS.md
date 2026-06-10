@@ -1,29 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `chemical-organization-theory` — mutually referenced — **Category:** Phase 3 Core - Autopoietic Systems
+- `exponential-topology-communication` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Scalable Communication
+- `feedforward-learning-local` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Alternative Learning Paradigms
+- `sheaf-theoretic-coordination` — mutually referenced — **Category:** Phase 3 Core - Distributed Reasoning
+- `stability` — builds on — Qualitative behavior of solutions near equilibria
+- `trajectory` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Path traced by solution through phase space
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `chemical-organization-theory`
-- `exponential-topology-communication`
-- `feedforward-learning-local`
-- `sheaf-theoretic-coordination`
-- `stability`
-- `trajectory`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `chemical-organization-theory`
-- `exponential-topology-communication`
-- `feedforward-learning-local`
-- `sheaf-theoretic-coordination`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

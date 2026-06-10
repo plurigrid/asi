@@ -1,108 +1,53 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `agentdb-optimization` — invoked by — Optimize AgentDB performance with quantization (4 32x memory reduction), HNSW indexing (1…
+- `agentdb-performance-optimization` — invoked by — Optimize AgentDB with quantization, HNSW tuning, caching, batch ops, and pruning.
+- `agentdb-vector-search` — invoked by — Implement semantic vector search with AgentDB for intelligent document retrieval, similar…
+- `agentic-coordination-protocols` — invoked by — Comprehensive research corpus covering 40+ agentic coordination protocols and ecosystems …
+- `anndata` — invoked by — This skill should be used when working with annotated data matrices in Python, particular…
+- `blackhat-go` — invoked by — Go based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT,…
+- `citizen-lab-forensics` — invoked by — Digital forensics techniques for detecting device compromise, analyzing malware indicator…
+- `clj-kondo-3color` — sibling in the skill routing & dispatch cluster — clj kondo linter with Gay.jl 3 color integration for GF(3) conservation
+- `competitive-ads-extractor` — sibling in the skill routing & dispatch cluster — Extracts and analyzes competitors' ads from ad libraries (Facebook, LinkedIn,
+- `condensed-analytic-stacks` — invoked by — Scholze Clausen condensed mathematics bridge to sheaf neural networks
+- `coolify-deployment` — invoked by — |
+- `crdt-color` — invoked by — Color aware CRDT operations with GF(3) conservation, Narya proofs, ACSet schemas, and Bum…
+- `ctp-yoneda` — invoked by — CTP Yoneda Skill
+- `did-passport-interleave` — sibling in the skill routing & dispatch cluster — Formal bridge between W3C Decentralized Identifiers (did:wba, ANP) and passport.gay (Spli…
+- `docs-acset` — sibling in the skill routing & dispatch cluster — Google Docs Sheets management via ACSet condensation.
+- `documentation-indexing` — sibling in the skill routing & dispatch cluster — Provide **full text search, semantic indexing, and relevance ranking** across all documen…
+- `docx` — sibling in the skill routing & dispatch cluster — Comprehensive document creation, editing, and analysis with support for
+- `ducklake-meta-cognitive` — invoked by — Meta cognitive analysis patterns for DuckLake temporal introspection
+- `effective-topos` — invoked by — FloxHub publication bmorphism effective topos - a comprehensive development
+- `emacspeak-binaural` — invoked by — Replace emacspeak auditory icons with binaural beats using the sound theme system.
+- `ena-database` — invoked by — Access European Nucleotide Archive via API FTP.
+- `excellence-gradient` — invoked by — Measure quality.
+- `gh-emacs` — sibling in the skill routing & dispatch cluster — GitHub Actions as a **decentralized Emacs compute fabric**:
+- `github-release-management` — sibling in the skill routing & dispatch cluster — Comprehensive GitHub release orchestration with AI swarm coordination for automated versi…
+- `google-workspace` — sibling in the skill routing & dispatch cluster — Google Workspace MCP integration for Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms,…
+- `graft-prefer` — invoked by — > <<<<<<< HEAD Enforces graft as the preferred build system for fully covariant computati…
+- `icij-document-analysis` — invoked by — Document processing pipeline for large scale leak analysis.
+- `iroh-p2p` — invoked by — Build modern peer to peer applications with Iroh.
+- `jira-issues` — sibling in the skill routing & dispatch cluster — Create, update, and manage Jira issues from natural language.
+- `l-space` — sibling in the skill routing & dispatch cluster — L Space Skill: The Library of All Libraries
+- `lean4-music-topos` — invoked by — Formal verification of music topos theorems - spectral gaps, CRDT correctness, color harm…
+- `llm-application-dev` — sibling in the skill routing & dispatch cluster — Building applications with Large Language Models - prompt engineering,
+- `norvidize` — sibling in the skill routing & dispatch cluster — Extract and audit claims for norvid tracking system
+- `openai-docs` — sibling in the skill routing & dispatch cluster — Use when the user asks how to build with OpenAI products or APIs and needs up to date off…
+- `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `quic-channel-grading` — invoked by — |
+- `scientific-schematics` — invoked by — Create publication quality scientific diagrams using Nano Banana Pro AI with smart iterat…
+- `security-review` — invoked by — Scan code changes for security vulnerabilities using STRIDE threat modeling, validate fin…
+- `skill-maker` — sibling in the skill routing & dispatch cluster — Meta skill that generates domain specific AI skills from tool documentation
+- `skill-maker-ai-skill-factory-for-tools` — sibling in the skill routing & dispatch cluster — Meta skill that generates domain specific AI skills from tool documentation
+- `time-travel-crdt` — invoked by — Time Travel CRDT Skill
+- `topos-catcolab` — invoked by — Topos Institute's CatColab for collaborative category theory - community model building, …
+- `vertex-protein-bisimulation` — invoked by — Protein folding as compositional game on Vertex AI.
+- `workspace-unified` — sibling in the skill routing & dispatch cluster — Unified Google Workspace management via WorkspaceACSet.
+- `zig-programming` — invoked by — >
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `agentdb-optimization`
-- `agentdb-performance-optimization`
-- `agentdb-vector-search`
-- `agentic-coordination-protocols`
-- `anndata`
-- `blackhat-go`
-- `citizen-lab-forensics`
-- `clj-kondo-3color`
-- `competitive-ads-extractor`
-- `condensed-analytic-stacks`
-- `coolify-deployment`
-- `crdt-color`
-- `ctp-yoneda`
-- `did-passport-interleave`
-- `docs-acset`
-- `documentation-indexing`
-- `docx`
-- `ducklake-meta-cognitive`
-- `effective-topos`
-- `emacspeak-binaural`
-- `ena-database`
-- `excellence-gradient`
-- `gh-emacs`
-- `github-release-management`
-- `google-workspace`
-- `graft-prefer`
-- `icij-document-analysis`
-- `iroh-p2p`
-- `jira-issues`
-- `l-space`
-- `lean4-music-topos`
-- `llm-application-dev`
-- `norvidize`
-- `openai-docs`
-- `pdf`
-- `quic-channel-grading`
-- `scientific-schematics`
-- `security-review`
-- `skill-maker`
-- `skill-maker-ai-skill-factory-for-tools`
-- `time-travel-crdt`
-- `topos-catcolab`
-- `vertex-protein-bisimulation`
-- `workspace-unified`
-- `zig-programming`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `agentdb-optimization`
-- `agentdb-performance-optimization`
-- `agentdb-vector-search`
-- `agentic-coordination-protocols`
-- `anndata`
-- `blackhat-go`
-- `citizen-lab-forensics`
-- `clj-kondo-3color`
-- `competitive-ads-extractor`
-- `condensed-analytic-stacks`
-- `coolify-deployment`
-- `crdt-color`
-- `ctp-yoneda`
-- `did-passport-interleave`
-- `docs-acset`
-- `documentation-indexing`
-- `docx`
-- `ducklake-meta-cognitive`
-- `effective-topos`
-- `emacspeak-binaural`
-- `ena-database`
-- `excellence-gradient`
-- `gh-emacs`
-- `github-release-management`
-- `google-workspace`
-- `graft-prefer`
-- `icij-document-analysis`
-- `iroh-p2p`
-- `jira-issues`
-- `l-space`
-- `lean4-music-topos`
-- `llm-application-dev`
-- `norvidize`
-- `openai-docs`
-- `quic-channel-grading`
-- `scientific-schematics`
-- `security-review`
-- `skill-maker`
-- `skill-maker-ai-skill-factory-for-tools`
-- `time-travel-crdt`
-- `topos-catcolab`
-- `vertex-protein-bisimulation`
-- `workspace-unified`
-- `zig-programming`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

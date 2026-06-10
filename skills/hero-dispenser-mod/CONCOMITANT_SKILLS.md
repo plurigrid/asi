@@ -1,25 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
+- `gmail` — builds on — Fetch Gmail using existing Google Workspace credentials at ~ .google_workspace_mcp creden…
+- `ies` — builds on — ies
+- `nhero` — invoked by — Aftermarket cybernetic network device framework.
+- `reverse-engineering` — builds on — Reverse Engineering Skill
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `gmail`
-- `ies`
-- `nhero`
-- `reverse-engineering`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `nhero`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

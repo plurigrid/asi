@@ -1,31 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `agentic-jujutsu` — invoked by — Quantum resistant, self learning version control for AI agents with ReasoningBank intelli…
+- `cargo` — builds on — Rust package manager (36 subcommands).
+- `external` — builds on — External skill interface for integration with external systems
+- `flox` — builds on — Reproducible development environments powered by Nix.
+- `gh` — builds on — GitHub CLI (212 man pages).
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `lazyjj` — invoked by — lazyjj — Ratatui TUI for Jujutsu (jj) with interactive log, files, bookmarks, and diff pa…
+- `magic-todo-watch-deploy` — invoked by — Build, deploy, and manage the MagicTodoWatch iOS watchOS voice to task pipeline app.
+- `pijul` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Pijul patch based VCS with categorical patch theory for skill versioning
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `agentic-jujutsu`
-- `cargo`
-- `external`
-- `flox`
-- `gh`
-- `init`
-- `lazyjj`
-- `magic-todo-watch-deploy`
-- `pijul`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `agentic-jujutsu`
-- `lazyjj`
-- `magic-todo-watch-deploy`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

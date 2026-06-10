@@ -1,24 +1,11 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `axiom-solana-trading` — invoked by — Interact with Axiom.trade -- a Y Combinator backed (W25) DEX aggregator and trading platf…
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `security` — sibling in the security auditing, fuzzing & pentest cluster — Security best practices for secure coding, authentication, authorization, and data protec…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `axiom-solana-trading`
-- `modding-ghostty`
-- `security`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `axiom-solana-trading`
-- `modding-ghostty`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

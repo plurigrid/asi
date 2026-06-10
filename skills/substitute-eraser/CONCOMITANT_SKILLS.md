@@ -1,24 +1,12 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `accept-no-substitutes` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — This skill should be used when agents generate placeholder tokens like "pseudo-", "mock-"…
+- `code-review` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Automated code review for pull requests using specialized review patterns.
+- `linear` — builds on — Manage issues, projects & team workflows in Linear.
+- `skill-creator` — builds on — Guide for creating effective skills.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `accept-no-substitutes`
-- `code-review`
-- `linear`
-- `skill-creator`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

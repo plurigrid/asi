@@ -1,31 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `coq-of-rust` — invoked by — Formal verification of Rust programs via translation to Coq Rocq.
+- `coqgym` — invoked by — Machine learning environment for automated theorem proving with Coq.
+- `effective-topos` — invoked by — FloxHub publication bmorphism effective topos - a comprehensive development
+- `ocaml` — sibling in the reproducible environments & deployment cluster — OCaml ecosystem = opam + dune + merlin + ocamlformat.
+- `opam-ocaml` — sibling in the reproducible environments & deployment cluster — OPAM package manager for OCaml.
+- `stellogen` — invoked by — Stellogen Skill
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `coq-of-rust`
-- `coqgym`
-- `effective-topos`
-- `ocaml`
-- `opam-ocaml`
-- `stellogen`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `coq-of-rust`
-- `coqgym`
-- `effective-topos`
-- `ocaml`
-- `opam-ocaml`
-- `stellogen`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

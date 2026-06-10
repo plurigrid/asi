@@ -1,27 +1,12 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `pump-bonding-curve` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Bonding curve math for Pump.fun SDK — quote, slippage, market cap, graduation progress
+- `pump-fee-sharing` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Creator fee configuration and distribution for Pump.fun — shareholder setup, BPS validati…
+- `pump-graduation` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Bonding curve graduation detection and AMM migration — threshold monitoring, PumpAMM pool…
+- `pump-trading` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Buy and sell instruction building for Pump.fun — client side and server side trading patt…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `pump-bonding-curve`
-- `pump-fee-sharing`
-- `pump-graduation`
-- `pump-trading`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `pump-bonding-curve`
-- `pump-fee-sharing`
-- `pump-graduation`
-- `pump-trading`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

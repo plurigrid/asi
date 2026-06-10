@@ -1,28 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `babashka` — builds on — Clojure scripting without JVM startup.
+- `bisimulation-game` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Bisimulation game for resilient skill dispersal across AI agents with
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `duckdb-temporal-versioning` — builds on — Temporal versioning and interaction history with time travel queries,
+- `ducklake` — builds on — Create, query, migrate, and maintain DuckLake lakehouse databases using the DuckDB duckla…
+- `gay-mcp` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `ies` — builds on — ies
+- `reafference-corollary-discharge` — builds on — Von Holst reafference and corollary discharge for behavioral verification and signal proc…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `babashka`
-- `bisimulation-game`
-- `clojure`
-- `duckdb-temporal-versioning`
-- `ducklake`
-- `gay-mcp`
-- `ies`
-- `reafference-corollary-discharge`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

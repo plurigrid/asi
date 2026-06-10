@@ -1,56 +1,32 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `active-inference-robotics` — invoked by — Bridge active inference theory with robot control using K Scale's JAX MuJoCo stack.
+- `affective-taxis` — invoked by — Implement affective valence as directional derivative of interoceptive energy landscapes …
+- `agent-o-rama` — builds on — Layer 4: Learning and Pattern Extraction for Cognitive Surrogate Systems
+- `catcolab-decapodes` — invoked by — CatColab Decapodes - Discrete Exterior Calculus for PDE modeling on meshes via Decapodes.…
+- `colored-vertex-model` — sibling in the GF(3) deterministic color generation cluster — Colored stochastic six vertex model with rainbow initial data, projection properties, and…
+- `entropy-sequencer` — builds on — Layer 5: Interaction Interleaving for Maximum Information Gain
+- `entropy-sim2real` — invoked by — Entropy driven sim2real transfer.
+- `equilibrium` — builds on — Fixed points where vector field vanishes
+- `fokker-planck-analyzer` — builds on — Layer 5: Convergence to Equilibrium Analysis
+- `gay-mcp` — sibling in the GF(3) deterministic color generation cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `hythermal` — invoked by — HyThermal Skill
+- `indefinite-causal-order` — invoked by — Indefinite causal order (ICO) is the framework where the causal relationship
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `kolmogorov-onsager-hurst` — invoked by — Turbulence scaling theory: K41 energy cascade, Onsager's anomalous dissipation, and Hurst…
+- `kpz-universality` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — KPZ universality class: KPZ fixed point, directed landscape, random interface growth scal…
+- `kscale` — invoked by — K Scale Labs robotics skill collection - unified index for humanoid robot development, RL…
+- `latent-latency` — invoked by — Latent Latency Skill
+- `louisville-quantum-gravity` — invoked by — Louisville Liouville quantum gravity measure for KPZ stationary measures.
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
+- `python-scientific-commons` — invoked by — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
+- `trajectory` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Path traced by solution through phase space
+- `waddington-landscape` — invoked by — Waddington's epigenetic landscape: cell fate as gradient flow on potential surfaces, conn…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `active-inference-robotics`
-- `affective-taxis`
-- `agent-o-rama`
-- `catcolab-decapodes`
-- `colored-vertex-model`
-- `entropy-sequencer`
-- `entropy-sim2real`
-- `equilibrium`
-- `fokker-planck-analyzer`
-- `gay-mcp`
-- `hythermal`
-- `indefinite-causal-order`
-- `init`
-- `kolmogorov-onsager-hurst`
-- `kpz-universality`
-- `kscale`
-- `latent-latency`
-- `louisville-quantum-gravity`
-- `modelica`
-- `para-mensch-commons`
-- `phyllotaxis`
-- `python-scientific-commons`
-- `trajectory`
-- `waddington-landscape`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `affective-taxis`
-- `catcolab-decapodes`
-- `colored-vertex-model`
-- `hythermal`
-- `indefinite-causal-order`
-- `kolmogorov-onsager-hurst`
-- `kpz-universality`
-- `latent-latency`
-- `louisville-quantum-gravity`
-- `modelica`
-- `para-mensch-commons`
-- `python-scientific-commons`
-- `waddington-landscape`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,32 +1,20 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `babashka` — sibling in the interactive REPLs & Lisp tooling cluster — Clojure scripting without JVM startup.
+- `benchmark` — builds on — Run and interpret engine stack benchmarks (Steel, ember, shale)
+- `bob` — builds on — World BOB Skill
+- `cargo` — builds on — Rust package manager (36 subcommands).
+- `ghostty` — sibling in the interactive REPLs & Lisp tooling cluster — Control Ghostty terminal emulator via CLI.
+- `init` — sibling in the interactive REPLs & Lisp tooling cluster — Initialize a new repository with AGENTS.md
+- `org` — builds on — Org mode manual (25K lines info).
+- `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
+- `terminal` — sibling in the interactive REPLs & Lisp tooling cluster — Terminal tools = tmux + zsh + fzf + ripgrep.
+- `trajectory` — builds on — Path traced by solution through phase space
+- `zig` — builds on — Zig ecosystem skill with emerging patterns from zig syrup
+- `zig-programming` — builds on — >
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `babashka`
-- `benchmark`
-- `bob`
-- `cargo`
-- `ghostty`
-- `init`
-- `org`
-- `rust`
-- `terminal`
-- `trajectory`
-- `zig`
-- `zig-programming`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

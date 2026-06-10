@@ -1,25 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `benchmark` — builds on — Run and interpret engine stack benchmarks (Steel, ember, shale)
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `matplotlib` — sibling in the scientific Python — bio cheminformatics cluster — Foundational plotting library.
+- `org` — builds on — Org mode manual (25K lines info).
+- `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `benchmark`
-- `init`
-- `matplotlib`
-- `org`
-- `python-scientific-commons`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `python-scientific-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

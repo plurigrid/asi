@@ -1,33 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `condensed-mathematics` — invoked by — Scholze Clausen condensed math - condensed sets, liquid vector spaces, solid modules, 6 f…
+- `derived-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Homological algebra via chain complexes, derived functors (Tor Ext), triangulated categor…
+- `gh-skill-explorer` — invoked by — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `infinity-topoi` — invoked by — Higher topos theory via ∞-sheaves, descent, Giraud axioms, modalities, Postnikov towers, …
+- `information-geometry` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Fisher Rao metric on statistical manifolds with natural gradient and divergence analysis
+- `model-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Homotopical algebra via weak equivalences, fibrations, cofibrations, Quillen adjunctions,…
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `sheaf-cohomology-bci` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Local to global signal consistency via cellular sheaves, Cech cohomology, and sheaf Lapla…
+- `world-a` — builds on — AlgebraicJulia ecosystem world (ACSets.jl, Catlab.jl).
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `clojure`
-- `condensed-mathematics`
-- `derived-categories`
-- `gh-skill-explorer`
-- `infinity-topoi`
-- `information-geometry`
-- `model-categories`
-- `para-mensch-commons`
-- `sheaf-cohomology-bci`
-- `world-a`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `condensed-mathematics`
-- `gh-skill-explorer`
-- `infinity-topoi`
-- `para-mensch-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

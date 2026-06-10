@@ -1,48 +1,30 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bisimulation-game` — builds on — Bisimulation game for resilient skill dispersal across AI agents with
+- `cat` — builds on — cat Skill: Derivational Pipe Chaining
+- `continuous-inverter` — invoked by — Real time monitoring and automated remediation for proof system health.
+- `discopy` — builds on — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gesture-hypergestures` — invoked by — Gesture Hypergestures Skill
+- `glamorous-moldable-multiplatform` — invoked by — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
+- `interaction-nets` — builds on — Interaction Nets Skill
+- `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
+- `linear` — builds on — Manage issues, projects & team workflows in Linear.
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `opam` — builds on — OCaml package manager (45 subcommands).
+- `operad-compose` — builds on — Operad Composition Skill (PLUS +1)
+- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `proofgeneral-narya` — builds on — Proof General + Narya: Higher dimensional type theory proof assistant with observational …
+- `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `stellogen-proof-search` — invoked by — Automated resolution based proof search via stellar resolution and bidirectional unificat…
+- `theorem-prover-orchestration` — invoked by — Unified theorem prover ecosystem dispatcher - routes proofs across Dafny, Lean4, Coq, Agd…
+- `transcendental-keyboard` — invoked by — Unified keyboard control surface for transcendental syntax proof environments (Stellogen,…
+- `video-analysis-gf3` — invoked by — Analyze video files from chaotic_media_lake.duckdb with deterministic color assignment an…
+- `zx-calculus` — builds on — Coecke's ZX calculus for quantum circuit reasoning via string diagrams with Z spiders (gr…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bisimulation-game`
-- `cat`
-- `continuous-inverter`
-- `discopy`
-- `gay-mcp`
-- `gesture-hypergestures`
-- `glamorous-moldable-multiplatform`
-- `interaction-nets`
-- `k-dense-ai`
-- `linear`
-- `networkx`
-- `opam`
-- `operad-compose`
-- `pdf`
-- `proofgeneral-narya`
-- `scheme`
-- `sdf`
-- `stellogen-proof-search`
-- `theorem-prover-orchestration`
-- `transcendental-keyboard`
-- `video-analysis-gf3`
-- `zx-calculus`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `continuous-inverter`
-- `gesture-hypergestures`
-- `glamorous-moldable-multiplatform`
-- `stellogen-proof-search`
-- `theorem-prover-orchestration`
-- `transcendental-keyboard`
-- `video-analysis-gf3`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,27 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `derivational-coalgebra` — invoked by — The highest tension in skill space (d=2.131):
+- `equilibrium` — builds on — Fixed points where vector field vanishes
+- `mlx-bitnet-gf3` — invoked by — BitNet 1.58 bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:
+- `unworld` — sibling in the world: navigation cluster — Layer 4: Derivational Pattern Generation via Seed Chaining
+- `world-memory-worlding` — sibling in the world: navigation cluster — World memory is world remembering is world worlding - the autopoietic loop where memory e…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `derivational-coalgebra`
-- `equilibrium`
-- `mlx-bitnet-gf3`
-- `unworld`
-- `world-memory-worlding`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `derivational-coalgebra`
-- `mlx-bitnet-gf3`
-- `world-memory-worlding`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

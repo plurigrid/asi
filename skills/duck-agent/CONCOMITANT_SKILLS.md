@@ -1,32 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets` — builds on — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `bob` — sibling in the skill routing & dispatch cluster — World BOB Skill
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `data-science-cli` — sibling in the skill routing & dispatch cluster — Unix command line tools for data science workflows.
+- `ducklake` — builds on — Create, query, migrate, and maintain DuckLake lakehouse databases using the DuckDB duckla…
+- `gh` — sibling in the skill routing & dispatch cluster — GitHub CLI (212 man pages).
+- `ies` — sibling in the skill routing & dispatch cluster — ies
+- `k-dense-ai` — sibling in the skill routing & dispatch cluster — - alphafold database - Protein structure prediction
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `skill-bonds` — sibling in the skill routing & dispatch cluster — Skill Bonds Registry
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets`
-- `bob`
-- `cat`
-- `data-science-cli`
-- `ducklake`
-- `gh`
-- `ies`
-- `k-dense-ai`
-- `networkx`
-- `sdf`
-- `skill-bonds`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `data-science-cli`
-- `skill-bonds`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,174 +1,103 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `_integrated` — sibling in the skill routing & dispatch cluster — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `academic-research` — sibling in the skill routing & dispatch cluster — Search academic papers across arXiv, PubMed, Semantic Scholar, bioRxiv, medRxiv, Google S…
+- `active-interleave` — sibling in the skill routing & dispatch cluster — Interleaves context from recently active Claude Amp threads into current activity via ran…
+- `adaptyv` — builds on — Cloud laboratory platform for automated protein testing and validation.
+- `aeon` — sibling in the skill routing & dispatch cluster — This skill should be used for time series machine learning tasks including classification…
+- `alice` — sibling in the skill routing & dispatch cluster — Primary Aptos testnet wallet for transaction origination.
+- `alphafold-database` — builds on — Access AlphaFold's 200M+ AI predicted protein structures.
+- `amp-team-usage` — invoked by — Amp Team Usage
+- `anndata` — builds on — This skill should be used when working with annotated data matrices in Python, particular…
+- `aptos-wallet-mcp` — sibling in the skill routing & dispatch cluster — Aptos Wallet MCP Skill
+- `arboreto` — builds on — Infer gene regulatory networks (GRNs) from gene expression data using scalable algorithms…
+- `asi-integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `astropy` — builds on — Comprehensive Python library for astronomy and astrophysics.
+- `benchling-integration` — sibling in the skill routing & dispatch cluster — Benchling R&D platform integration.
+- `biomni` — builds on — Autonomous biomedical AI agent framework for executing complex research tasks across geno…
+- `biopython` — builds on — Primary Python toolkit for molecular biology.
+- `biorxiv-database` — builds on — Efficient database search tool for bioRxiv preprint server.
+- `bioservices` — builds on — Primary Python tool for 40+ bioinformatics services.
+- `bluesky-jetstream` — invoked by — Bluesky Jetstream Firehose Skill
+- `bmorphism-diagrams` — sibling in the skill routing & dispatch cluster — bmorphism Diagrams
+- `bob` — sibling in the skill routing & dispatch cluster — World BOB Skill
+- `brenda-database` — builds on — Access BRENDA enzyme database via SOAP API.
+- `browser-history-acset` — invoked by — Browser History ACSet
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `catalyst-chemical` — builds on — Chemical reaction network modeling with Catalyst.jl.
+- `categorical-rewriting-triad4` — invoked by — Categorical Rewriting: Triad 4 (World Transformation)
+- `cellxgene-census` — builds on — Query CZ CELLxGENE Census (61M+ cells).
+- `cheapskate` — invoked by — This skill should be used to enforce token efficiency.
+- `chembl-database` — builds on — Query ChEMBL's bioactive molecules and drug discovery data.
+- `cirq` — builds on — Quantum computing framework for building, simulating, optimizing, and executing quantum c…
+- `clinicaltrials-database` — builds on — Query ClinicalTrials.gov via API v2.
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `crdt` — invoked by — crdt skill
+- `cybernetic-open-game` — invoked by — Cybernetic Open Game Skill
+- `deepchem` — builds on — Molecular machine learning toolkit.
+- `delta-derivation` — sibling in the skill routing & dispatch cluster — Extract information delta between Claude.ai conversation exports using ACSets morphisms a…
+- `drugbank-database` — builds on — Access and analyze comprehensive drug information from the DrugBank database including dr…
+- `duck-agent` — sibling in the skill routing & dispatch cluster — DuckDB file discovery agent with verified absolute paths
+- `enzyme-autodiff` — sibling in the skill routing & dispatch cluster — Enzyme.jl Automatic Differentiation Skill
+- `ergodic-coordinator` — invoked by — Completes the GF(3) triad: +1 + (-1) + 0 = 0
+- `esm` — sibling in the skill routing & dispatch cluster — Comprehensive toolkit for protein language models including ESM3 (generative multimodal p…
+- `frustration-eradication` — sibling in the skill routing & dispatch cluster — Frustration Eradication Skill
+- `fswatch-duckdb` — sibling in the skill routing & dispatch cluster — FileSystemWatcher over tmp with DuckDB DuckLake persistence.
+- `gene-database` — builds on — Query NCBI Gene via E utilities Datasets API.
+- `gestalt-hacking` — sibling in the skill routing & dispatch cluster — Gestalt Hacking Skill (ERGODIC 0)
+- `gf3-tripartite` — invoked by — GF(3) Tripartite Orchestration
+- `google-workspace` — sibling in the skill routing & dispatch cluster — Google Workspace MCP integration for Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms,…
+- `graph-grafting` — sibling in the skill routing & dispatch cluster — Graph Grafting Skill
+- `hyperbolic-bulk` — invoked by — On chain GF(3) entropy storage via Aptos Move - bulk boundary correspondence where entrop…
+- `hythermal` — sibling in the skill routing & dispatch cluster — HyThermal Skill
+- `iroh-p2p` — invoked by — Build modern peer to peer applications with Iroh.
+- `jira-issues` — sibling in the skill routing & dispatch cluster — Create, update, and manage Jira issues from natural language.
+- `joker` — invoked by — DBPF package parser and validator for The Sims save files
+- `julia-scientific` — invoked by — Julia package equivalents for 137 K Dense AI scientific skills.
+- `kegg-database` — builds on — Direct REST API access to KEGG (academic use only).
+- `kolmogorov-codex-quest` — sibling in the skill routing & dispatch cluster — Kolmogorov Codex Quest
+- `latent-latency` — invoked by — Latent Latency Skill
+- `load-skills` — sibling in the skill routing & dispatch cluster — Bootstrap skill loader for instance startup.
+- `localsend-analysis` — invoked by — Analyze LocalSend repos with tree sitter tags, gh GraphQL contributor snapshots, and prot…
+- `modelica` — sibling in the skill routing & dispatch cluster — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `olmoearth-mlx` — sibling in the skill routing & dispatch cluster — OlmoEarth MLX: Spatio Temporal Earth Intelligence
+- `ordered-locale-fanout` — invoked by — UPDATED: Now uses proper ordered locale (Heunen van der Schaaf 2024).
+- `ordered-locale-proper` — invoked by — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `pdb-database` — builds on — Access RCSB PDB for 3D protein nucleic acid structures.
+- `phylogenetic-operad-acset` — builds on — Baez Otter phylogenetic operad Phyl = Com + [0,∞) as ACSet schema, with mathpix gem extra…
+- `proof-of-frog` — invoked by — Proof of Frog Skill 🐸
+- `protocol-acset` — invoked by — Model decentralized protocols as attributed C sets for compositional analysis, interopera…
+- `pubchem-database` — builds on — Query PubChem via PUG REST API PubChemPy (110M+ compounds).
+- `pun-decomposition` — invoked by — Pun Decomposition Skill (MINUS -1)
+- `qri-valence` — sibling in the skill routing & dispatch cluster — qri valence skill Qualia Research Institute''s Symmetry Theory of Valence (STV) for consc…
+- `quic-channel-grading` — invoked by — |
+- `rdkit` — builds on — Cheminformatics toolkit for fine grained molecular control.
+- `reactome-database` — builds on — Query Reactome REST API for pathway analysis, enrichment, gene pathway mapping, disease p…
+- `reflow` — sibling in the skill routing & dispatch cluster — Information Reflow Skill (ERGODIC 0)
+- `scanpy` — builds on — Single cell RNA seq analysis.
+- `scikit-bio` — builds on — Biological data toolkit.
+- `scikit-learn` — builds on — Machine learning in Python with scikit learn.
+- `scikit-survival` — builds on — Comprehensive toolkit for survival analysis and time to event modeling in Python using sc…
+- `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `shadow-goblin` — invoked by — shadow goblin
+- `snix` — invoked by — Rust Nix reimplementation for content addressed rootfs builds.
+- `stellogen` — invoked by — Stellogen Skill
+- `structural-rewilding` — invoked by — Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs).
+- `tenderloin` — invoked by — Tenderloin: Manifest Destiny Fund for Protocol Labs
+- `trailofbits-security` — sibling in the skill routing & dispatch cluster — - codeql - GitHub''s semantic code analysis
+- `triangle-metrics` — invoked by — Triangle Metrics Skill
+- `trifurcated-transfer` — sibling in the skill routing & dispatch cluster — Trifurcated Transfer Skill
+- `uniprot-database` — builds on — Direct REST API access to UniProt.
+- `unison` — invoked by — Unison language - content addressed functional programming with abilities for effects, di…
+- `voice-channel-uwd` — invoked by — Voice Channel UWD Skill
+- `wev-tesseract` — invoked by — WEV Tesseract Skill
+- `wev-verification` — invoked by — WEV Verification Skill
+- `world-memory-worlding` — invoked by — World memory is world remembering is world worlding - the autopoietic loop where memory e…
+- `zls-integration` — sibling in the skill routing & dispatch cluster — zls integration skill Zig Language Server (ZLS) integration for IDE features - autocomple…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `_integrated`
-- `academic-research`
-- `active-interleave`
-- `adaptyv`
-- `aeon`
-- `alice`
-- `alphafold-database`
-- `amp-team-usage`
-- `anndata`
-- `aptos-wallet-mcp`
-- `arboreto`
-- `asi-integrated`
-- `astropy`
-- `benchling-integration`
-- `biomni`
-- `biopython`
-- `biorxiv-database`
-- `bioservices`
-- `bluesky-jetstream`
-- `bmorphism-diagrams`
-- `bob`
-- `brenda-database`
-- `browser-history-acset`
-- `cat`
-- `catalyst-chemical`
-- `categorical-rewriting-triad4`
-- `cellxgene-census`
-- `cheapskate`
-- `chembl-database`
-- `cirq`
-- `clinicaltrials-database`
-- `clojure`
-- `crdt`
-- `cybernetic-open-game`
-- `deepchem`
-- `delta-derivation`
-- `drugbank-database`
-- `duck-agent`
-- `enzyme-autodiff`
-- `ergodic-coordinator`
-- `esm`
-- `frustration-eradication`
-- `fswatch-duckdb`
-- `gene-database`
-- `gestalt-hacking`
-- `gf3-tripartite`
-- `google-workspace`
-- `graph-grafting`
-- `hyperbolic-bulk`
-- `hythermal`
-- `iroh-p2p`
-- `jira-issues`
-- `joker`
-- `julia-scientific`
-- `kegg-database`
-- `kolmogorov-codex-quest`
-- `latent-latency`
-- `load-skills`
-- `localsend-analysis`
-- `modelica`
-- `olmoearth-mlx`
-- `ordered-locale-fanout`
-- `ordered-locale-proper`
-- `pdb-database`
-- `phylogenetic-operad-acset`
-- `proof-of-frog`
-- `protocol-acset`
-- `pubchem-database`
-- `pun-decomposition`
-- `qri-valence`
-- `quic-channel-grading`
-- `rdkit`
-- `reactome-database`
-- `reflow`
-- `scanpy`
-- `scikit-bio`
-- `scikit-learn`
-- `scikit-survival`
-- `sdf`
-- `security`
-- `shadow-goblin`
-- `snix`
-- `stellogen`
-- `structural-rewilding`
-- `tenderloin`
-- `trailofbits-security`
-- `triangle-metrics`
-- `trifurcated-transfer`
-- `uniprot-database`
-- `unison`
-- `voice-channel-uwd`
-- `wev-tesseract`
-- `wev-verification`
-- `world-memory-worlding`
-- `zls-integration`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `_integrated`
-- `academic-research`
-- `active-interleave`
-- `alice`
-- `amp-team-usage`
-- `aptos-wallet-mcp`
-- `asi-integrated`
-- `bluesky-jetstream`
-- `bmorphism-diagrams`
-- `bob`
-- `browser-history-acset`
-- `cat`
-- `categorical-rewriting-triad4`
-- `cheapskate`
-- `crdt`
-- `cybernetic-open-game`
-- `delta-derivation`
-- `duck-agent`
-- `ergodic-coordinator`
-- `frustration-eradication`
-- `fswatch-duckdb`
-- `gestalt-hacking`
-- `gf3-tripartite`
-- `google-workspace`
-- `graph-grafting`
-- `hyperbolic-bulk`
-- `hythermal`
-- `iroh-p2p`
-- `jira-issues`
-- `joker`
-- `julia-scientific`
-- `kolmogorov-codex-quest`
-- `latent-latency`
-- `load-skills`
-- `localsend-analysis`
-- `modelica`
-- `olmoearth-mlx`
-- `ordered-locale-fanout`
-- `ordered-locale-proper`
-- `proof-of-frog`
-- `protocol-acset`
-- `pun-decomposition`
-- `qri-valence`
-- `quic-channel-grading`
-- `reflow`
-- `sdf`
-- `shadow-goblin`
-- `snix`
-- `stellogen`
-- `structural-rewilding`
-- `tenderloin`
-- `trailofbits-security`
-- `triangle-metrics`
-- `trifurcated-transfer`
-- `unison`
-- `voice-channel-uwd`
-- `wev-tesseract`
-- `wev-verification`
-- `world-memory-worlding`
-- `zls-integration`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

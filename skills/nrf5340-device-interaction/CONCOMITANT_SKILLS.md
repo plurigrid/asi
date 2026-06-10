@@ -1,24 +1,12 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `cyton-dongle` — builds on — Connect and stream from OpenBCI Cyton Daisy via USB dongle, including first time radio ch…
+- `nrf5340-hardware` — sibling in the security auditing, fuzzing & pentest cluster — Nordic nRF5340 dual core SoC hardware reference: application core (Cortex M33 128MHz), ne…
+- `opennirscap-build` — builds on — Build an OpenNIRScap 24 channel fNIRS brain cap from open source hardware — Altium conver…
+- `zig-syrup-bci` — builds on — Multimodal BCI pipeline in Zig: DSI 24 EEG, fNIRS mBLL, eye tracking IVT, LSL sync, EDF r…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `cyton-dongle`
-- `nrf5340-hardware`
-- `opennirscap-build`
-- `zig-syrup-bci`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `nrf5340-hardware`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

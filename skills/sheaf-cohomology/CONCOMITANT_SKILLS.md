@@ -1,220 +1,112 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **2 monad** is a monad internal to a 2 category K.
+- `acset-taxonomy` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Taxonomy of ACSet skills with morphisms to semantically similar categorical relational sk…
+- `acsets` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `acsets-algebraic-databases` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional navigati…
+- `acsets-dynamic-loader` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Dynamically discover and load ACSet reference skills in dependency optimal order using Gi…
+- `active-inference-robotics` — invoked by — Bridge active inference theory with robot control using K Scale's JAX MuJoCo stack.
+- `anima-theory` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ANIMA as limit construction over condensed skill applications.
+- `anna-archive` — sibling in the skill routing & dispatch cluster — Anna's Archive integration for academic paper and book retrieval.
+- `bivector-forum` — sibling in the skill routing & dispatch cluster — Community knowledge from bivector.net - GA tutorials, discussions, and best practices
+- `bkp-interleaving` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — This skill is the **deep interleaving** of the five BKP 2 monad theory skills:
+- `bmorphism-video-interleave` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — bmorphism Video Archive Interleave
+- `buberian-relations` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Buberian Relations Skill
+- `bumpus-narratives` — sibling in the skill routing & dispatch cluster — Sheaves on time categories for compositional temporal reasoning.
+- `captp` — invoked by — CapTP: Capability Transfer Protocol
+- `catsharp` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Cat# Skill (ERGODIC 0)
+- `causal-inference` — invoked by — Bengio's causal inference for AI: Interventional reasoning, counterfactuals, and System 2…
+- `chromatic-peptide-samovar` — invoked by — A **samovar** (самовар) keeps water hot indefinitely through self contained combustion.
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `codescent` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — A **codescent object** is the 2 categorical analogue of a coequalizer.
+- `cognitive-superposition` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
+- `covariant-modification` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and …
+- `cybernetic-immune` — sibling in the skill routing & dispatch cluster — Cybernetic immune system with Varela+Friston+Powers for Self Non Self discrimination via …
+- `cybernetic-open-game` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Cybernetic Open Game Skill
+- `deepwiki-mcp` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — DeepWiki MCP server for AI powered GitHub repository documentation and
+- `discopy` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `docs-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Google Docs Sheets management via ACSet condensation.
+- `doctrinal-adjunction` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **doctrinal adjunction** is Kelly''s 1974 theorem establishing a canonical bijection be…
+- `drive-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Google Drive management via DriveACSet schema with GF(3) triadic routing.
+- `exa-11-directions` — sibling in the skill routing & dispatch cluster — 1.
+- `exo-distributed` — sibling in the skill routing & dispatch cluster — Distributed LLM inference across Apple Silicon clusters with exo.
+- `fasttime-mcp` — sibling in the skill routing & dispatch cluster — Maximum velocity MCP execution via geodesic untangling.
+- `flexible-algebra` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **flexible T algebra** is a strict T algebra that admits enough "room to move" — it is …
+- `forward-forward-learning` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Hinton's Forward Forward algorithm for local learning without backpropagation.
+- `free-monad-gen` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Free Monad Generation Skill (PLUS +1)
+- `ga-abelian-extensions` — sibling in the topos theory, sheaves & categorical logic cluster — Abelian extensions for Clifford algebra grade filtrations via Ext functors.
+- `ga-codegen` — sibling in the topos theory, sheaves & categorical logic cluster — Geometric Algebra code generation for C++, C#, Rust, Python from ganja.js templates
+- `ga-derived-category` — sibling in the topos theory, sheaves & categorical logic cluster — Derived categories and derived functors for graded Clifford modules.
+- `ga-visualization` — sibling in the topos theory, sheaves & categorical logic cluster — Geometric Algebra visualization via ganja.js graph() - SVG WebGL rendering of multivectors
+- `gay-mcp` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gesture-hypergestures` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Gesture Hypergestures Skill
+- `gflownet` — invoked by — Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward.
+- `glass-bead-game` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Hesse inspired interdisciplinary synthesis game with Badiou triangle
+- `gmail-anima` — sibling in the skill routing & dispatch cluster — Gmail inbox management via ANIMA condensation.
+- `godel-machine` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Schmidhuber's Gödel Machine: Self improving systems that prove their own improvements.
+- `graded-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **graded monad** (also called an **indexed monad** or **parametrized monad**) is a mona…
+- `gworkspace-mcp` — sibling in the skill routing & dispatch cluster — gworkspace mcp - Google Workspace MCP Integration with Temporal Consistency
+- `haskell-diagrams` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — haskell diagrams - Declarative Vector Graphics with Diagrams DSL
+- `infinity-operads` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ∞-Operads for pairwise tritwise Cat# interactions with lazy ACSet materialization unifyin…
+- `infinity-topos` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ∞-Topos theory unifying hatchery repos, worlds, and GA abelian extensions.
+- `interactome-rl-env` — sibling in the skill routing & dispatch cluster — ACSet native reinforcement learning environment for contributor network dynamics.
+- `jaxlife-open-ended` — invoked by — JaxLife open ended agentic simulator for emergent behavior, tool use,
+- `julia-gay` — invoked by — Gay.jl integration for deterministic color generation.
+- `juvix-intents` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Juvix intent centric language for Anoma with Geb compilation and GF(3) typed resources
+- `kan-extensions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Kan Extensions Skill (ERGODIC 0)
+- `l-space` — sibling in the skill routing & dispatch cluster — L Space Skill: The Library of All Libraries
+- `lhott-cohesive-linear` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Cohesive Linear HoTT patterns for interaction entropy with diagram generation.
+- `libghostty-aci` — invoked by — Integrates libghostty terminal emulation with Agent Computer Interface (ACI) patterns:
+- `markov-game-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — markov game acset skill
+- `mcp-spec-checker` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Predicate level semantic diff for MCP protocol specs.
+- `mdm-cobordism` — sibling in the world: navigation cluster — macOS MDM with auth manifolds as cobordisms for credential derivation
+- `modelica` — sibling in the skill routing & dispatch cluster — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `move-narya-bridge` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Observational bridge between Move smart contracts and Narya proof verification.
+- `mutual-awareness-backlink` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Formalize mutual awareness via structured decompositions on awareness graphs.
+- `narya-proofs` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Mechanically verified proofs from Narya event logs.
+- `naturality-factor` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Naturality Factor Skill
+- `obstruction-learning` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Obstruction Learning Skill
+- `omg-tension-resolver` — sibling in the skill routing & dispatch cluster — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
+- `open-games` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Open Games Skill (ERGODIC 0)
+- `open-games-plurigrid` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — This skill unifies:
+- `ordered-locale` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `ordered-locale-proper` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `phylogenetic-operad-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Baez Otter phylogenetic operad Phyl = Com + [0,∞) as ACSet schema, with mathpix gem extra…
+- `polysimy-effect-chains` — sibling in the skill routing & dispatch cluster — Verify multiple effect interpretations through propagator networks with temporal coalgebr…
+- `pre-agent-ontology` — sibling in the skill routing & dispatch cluster — Pre Agent Ontology Skill
+- `propagators` — invoked by — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
+- `quantum-balalaika` — sibling in the skill routing & dispatch cluster — - **Contraction**: Remove belief WRONG, beliefs persist
+- `rama-gay-clojure` — sibling in the skill routing & dispatch cluster — Red Planet Labs Rama with Gay.jl deterministic coloring for 100x backend
+- `reflow` — sibling in the skill routing & dispatch cluster — Information Reflow Skill (ERGODIC 0)
+- `rubato-composer` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Rubato Composer integration for Mazzola's mathematical music theory
+- `ruler-maximal` — sibling in the skill routing & dispatch cluster — Ruler Maximal Skill
+- `self-evolving-agent` — sibling in the skill routing & dispatch cluster — Darwin Gödel Machine patterns for self improving AI agents with open ended
+- `semi-reliable-nashator` — sibling in the skill routing & dispatch cluster — This skill implements the **morphisms of open games** paper''s insight: lenses connect co…
+- `semilattice-discovery` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Compositional skill discovery via join semilattice fiber (color × trit × hash)
+- `sense` — sibling in the skill routing & dispatch cluster — sense - Diagrammatic Video Extraction with Subtitle Alignment
+- `sheaf-laplacian-coordination` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Sheaf neural network coordination via graph Laplacians for distributed
+- `sheaf-uncertainty` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Bayesian sheaf neural networks for uncertainty quantification.
+- `skill-connectivity-hub` — sibling in the skill routing & dispatch cluster — Skill Connectivity Hub
+- `skill-dispatch` — sibling in the skill routing & dispatch cluster — GF(3) Triadic Task Routing for Subagent Orchestration
+- `skill-tour` — sibling in the skill routing & dispatch cluster — L shaped hops through skill space, maintaining triadic balance:
+- `spectral-methods` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Fourier Laplacian eigenmodes for frequency domain analysis of graph and signal structures
+- `stochastic-resonance` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Noise enhanced signal detection via Kramers rates and optimal noise analysis
+- `structured-decomp` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — StructuredDecompositions.jl sheaves on tree decompositions for FPT algorithms with bidire…
+- `superelastic-quotient` — sibling in the skill routing & dispatch cluster — Superelastic skills with maximum quotienting resolution for spatial decomposition.
+- `topos-generate` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Topos Generation Skill (PLUS +1)
+- `topos-unified` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Topos Unified Skill
+- `tree-sitter` — builds on — AST based code analysis using tree sitter.
+- `triadic-skill-loader` — sibling in the skill routing & dispatch cluster — Triadic Skill Loader
+- `triadic-skill-orchestrator` — sibling in the skill routing & dispatch cluster — Orchestrates multiple skills in GF(3)-balanced triplets.
+- `triangle-sparsifier` — sibling in the skill routing & dispatch cluster — Triangle inequality for maximally correct world choice sparsification
+- `unworld` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Layer 4: Derivational Pattern Generation via Seed Chaining
+- `voice-channel-uwd` — invoked by — Voice Channel UWD Skill
+- `wev-tesseract` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — WEV Tesseract Skill
+- `workspace-unified` — sibling in the skill routing & dispatch cluster — Unified Google Workspace management via WorkspaceACSet.
+- `world-extractable-value` — sibling in the world: navigation cluster — Extract value from world transitions via Markov blanket arbitrage.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2-monad`
-- `acset-taxonomy`
-- `acsets`
-- `acsets-algebraic-databases`
-- `acsets-dynamic-loader`
-- `active-inference-robotics`
-- `anima-theory`
-- `anna-archive`
-- `bivector-forum`
-- `bkp-interleaving`
-- `bmorphism-video-interleave`
-- `buberian-relations`
-- `bumpus-narratives`
-- `captp`
-- `catsharp`
-- `causal-inference`
-- `chromatic-peptide-samovar`
-- `clojure`
-- `codescent`
-- `cognitive-superposition`
-- `covariant-modification`
-- `cybernetic-immune`
-- `cybernetic-open-game`
-- `deepwiki-mcp`
-- `discopy`
-- `docs-acset`
-- `doctrinal-adjunction`
-- `drive-acset`
-- `exa-11-directions`
-- `exo-distributed`
-- `fasttime-mcp`
-- `flexible-algebra`
-- `forward-forward-learning`
-- `free-monad-gen`
-- `ga-abelian-extensions`
-- `ga-codegen`
-- `ga-derived-category`
-- `ga-visualization`
-- `gay-mcp`
-- `gesture-hypergestures`
-- `gflownet`
-- `glass-bead-game`
-- `gmail-anima`
-- `godel-machine`
-- `graded-monad`
-- `gworkspace-mcp`
-- `haskell-diagrams`
-- `infinity-operads`
-- `infinity-topos`
-- `interactome-rl-env`
-- `jaxlife-open-ended`
-- `julia-gay`
-- `juvix-intents`
-- `kan-extensions`
-- `l-space`
-- `lhott-cohesive-linear`
-- `libghostty-aci`
-- `markov-game-acset`
-- `mcp-spec-checker`
-- `mdm-cobordism`
-- `modelica`
-- `move-narya-bridge`
-- `mutual-awareness-backlink`
-- `narya-proofs`
-- `naturality-factor`
-- `obstruction-learning`
-- `omg-tension-resolver`
-- `open-games`
-- `open-games-plurigrid`
-- `ordered-locale`
-- `ordered-locale-proper`
-- `phylogenetic-operad-acset`
-- `polysimy-effect-chains`
-- `pre-agent-ontology`
-- `propagators`
-- `quantum-balalaika`
-- `rama-gay-clojure`
-- `reflow`
-- `rubato-composer`
-- `ruler-maximal`
-- `self-evolving-agent`
-- `semi-reliable-nashator`
-- `semilattice-discovery`
-- `sense`
-- `sheaf-laplacian-coordination`
-- `sheaf-uncertainty`
-- `skill-connectivity-hub`
-- `skill-dispatch`
-- `skill-tour`
-- `spectral-methods`
-- `stochastic-resonance`
-- `structured-decomp`
-- `superelastic-quotient`
-- `topos-generate`
-- `topos-unified`
-- `tree-sitter`
-- `triadic-skill-loader`
-- `triadic-skill-orchestrator`
-- `triangle-sparsifier`
-- `unworld`
-- `voice-channel-uwd`
-- `wev-tesseract`
-- `workspace-unified`
-- `world-extractable-value`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `2-monad`
-- `acset-taxonomy`
-- `acsets`
-- `acsets-algebraic-databases`
-- `acsets-dynamic-loader`
-- `active-inference-robotics`
-- `anima-theory`
-- `anna-archive`
-- `bivector-forum`
-- `bkp-interleaving`
-- `bmorphism-video-interleave`
-- `buberian-relations`
-- `bumpus-narratives`
-- `captp`
-- `catsharp`
-- `causal-inference`
-- `chromatic-peptide-samovar`
-- `codescent`
-- `cognitive-superposition`
-- `covariant-modification`
-- `cybernetic-immune`
-- `cybernetic-open-game`
-- `deepwiki-mcp`
-- `discopy`
-- `docs-acset`
-- `doctrinal-adjunction`
-- `drive-acset`
-- `exa-11-directions`
-- `exo-distributed`
-- `fasttime-mcp`
-- `flexible-algebra`
-- `forward-forward-learning`
-- `free-monad-gen`
-- `ga-abelian-extensions`
-- `ga-codegen`
-- `ga-derived-category`
-- `ga-visualization`
-- `gesture-hypergestures`
-- `gflownet`
-- `gmail-anima`
-- `godel-machine`
-- `graded-monad`
-- `gworkspace-mcp`
-- `haskell-diagrams`
-- `infinity-operads`
-- `infinity-topos`
-- `interactome-rl-env`
-- `jaxlife-open-ended`
-- `julia-gay`
-- `juvix-intents`
-- `kan-extensions`
-- `l-space`
-- `lhott-cohesive-linear`
-- `libghostty-aci`
-- `markov-game-acset`
-- `mcp-spec-checker`
-- `mdm-cobordism`
-- `modelica`
-- `move-narya-bridge`
-- `mutual-awareness-backlink`
-- `narya-proofs`
-- `naturality-factor`
-- `obstruction-learning`
-- `omg-tension-resolver`
-- `open-games`
-- `open-games-plurigrid`
-- `ordered-locale`
-- `ordered-locale-proper`
-- `phylogenetic-operad-acset`
-- `polysimy-effect-chains`
-- `pre-agent-ontology`
-- `propagators`
-- `quantum-balalaika`
-- `reflow`
-- `ruler-maximal`
-- `self-evolving-agent`
-- `semi-reliable-nashator`
-- `semilattice-discovery`
-- `sense`
-- `sheaf-laplacian-coordination`
-- `sheaf-uncertainty`
-- `skill-connectivity-hub`
-- `skill-dispatch`
-- `skill-tour`
-- `spectral-methods`
-- `stochastic-resonance`
-- `structured-decomp`
-- `superelastic-quotient`
-- `topos-generate`
-- `topos-unified`
-- `triadic-skill-loader`
-- `triadic-skill-orchestrator`
-- `triangle-sparsifier`
-- `voice-channel-uwd`
-- `wev-tesseract`
-- `workspace-unified`
-- `world-extractable-value`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

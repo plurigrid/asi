@@ -1,30 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `blackhat-go` — builds on — Go based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT,…
+- `bob` — sibling in the skill routing & dispatch cluster — World BOB Skill
+- `cantordust-viz` — sibling in the skill routing & dispatch cluster — Binary visualization for human pattern recognition - Ghidra plugin by Chris Domas (xoreax…
+- `cgx-acquisition-re` — invoked by — Reverse engineer CGX Cognionics Quick 20 EEG acquisition protocol using MCP RE tooling (B…
+- `ies` — sibling in the skill routing & dispatch cluster — ies
+- `ios-wifi-provenance-diff` — invoked by — Diagnose why an iPhone's Wi Fi password row shows but cannot be copied.
+- `port-resurrection` — mutually referenced — Derive service ports from Gay.jl color sequence.
+- `reverse-engineering` — builds on — Reverse Engineering Skill
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `blackhat-go`
-- `bob`
-- `cantordust-viz`
-- `cgx-acquisition-re`
-- `ies`
-- `ios-wifi-provenance-diff`
-- `port-resurrection`
-- `reverse-engineering`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `cgx-acquisition-re`
-- `ios-wifi-provenance-diff`
-- `port-resurrection`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

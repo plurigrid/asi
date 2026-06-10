@@ -1,27 +1,12 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `file-organizer` — sibling in the skill routing & dispatch cluster — Intelligently organizes your files and folders across your computer by
+- `markitdown` — sibling in the skill routing & dispatch cluster — Convert files and office documents to Markdown.
+- `scientific-slides` — invoked by — Build slide decks and presentations for research talks.
+- `visual-design` — sibling in the skill routing & dispatch cluster — |
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `file-organizer`
-- `markitdown`
-- `scientific-slides`
-- `visual-design`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `file-organizer`
-- `markitdown`
-- `scientific-slides`
-- `visual-design`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,51 +1,25 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `browser-history-acset` — invoked by — Browser History ACSet
+- `cellxgene-census` — sibling in the scientific Python — bio cheminformatics cluster — Query CZ CELLxGENE Census (61M+ cells).
+- `doc` — builds on — Use when the task involves reading, creating, or editing .docx documents, especially wh…
+- `external` — builds on — External skill interface for integration with external systems
+- `geniml` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with genomic interval data (BED files) for machine…
+- `gget` — sibling in the scientific Python — bio cheminformatics cluster — CLI Python toolkit for rapid bioinformatics queries.
+- `julia-scientific` — invoked by — Julia package equivalents for 137 K Dense AI scientific skills.
+- `k-dense-ai` — invoked by — - alphafold database - Protein structure prediction
+- `lamindb` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with LaminDB, an open source data framework for bi…
+- `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
+- `pathml` — sibling in the scientific Python — bio cheminformatics cluster — Computational pathology toolkit for analyzing whole slide images (WSI) and multiparametri…
+- `protocol-acset` — invoked by — Model decentralized protocols as attributed C sets for compositional analysis, interopera…
+- `pydeseq2` — sibling in the scientific Python — bio cheminformatics cluster — Differential gene expression analysis (Python DESeq2).
+- `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
+- `scanpy` — sibling in the scientific Python — bio cheminformatics cluster — Single cell RNA seq analysis.
+- `scikit-bio` — sibling in the scientific Python — bio cheminformatics cluster — Biological data toolkit.
+- `scvi-tools` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with single cell omics data analysis using scvi to…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `browser-history-acset`
-- `cellxgene-census`
-- `doc`
-- `external`
-- `geniml`
-- `gget`
-- `julia-scientific`
-- `k-dense-ai`
-- `lamindb`
-- `literature-review`
-- `pathml`
-- `protocol-acset`
-- `pydeseq2`
-- `python-scientific-commons`
-- `scanpy`
-- `scikit-bio`
-- `scvi-tools`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `browser-history-acset`
-- `cellxgene-census`
-- `geniml`
-- `gget`
-- `julia-scientific`
-- `k-dense-ai`
-- `lamindb`
-- `literature-review`
-- `pathml`
-- `protocol-acset`
-- `pydeseq2`
-- `python-scientific-commons`
-- `scanpy`
-- `scikit-bio`
-- `scvi-tools`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

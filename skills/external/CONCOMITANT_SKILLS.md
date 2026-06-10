@@ -1,210 +1,103 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `abd` — invoked by — Attiya Bar Noy Dolev atomic register emulation over message passing.
+- `agent-protocol-interleave` — sibling in the skill routing & dispatch cluster — Bridge layer connecting the emerging agentic coordination protocol ecosystem (MCP, A2A, A…
+- `agentic-actions-auditor` — invoked by — Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations inc…
+- `alife` — invoked by — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `anndata` — invoked by — This skill should be used when working with annotated data matrices in Python, particular…
+- `aptos-trading` — invoked by — Execute trades on Aptos mainnet with price triggered profit taking and dip buying strateg…
+- `autopoiesis` — invoked by — Self modifying AI agent configuration via ruler + MCP + DuckDB.
+- `bci-colored-operad` — invoked by — Brain Computer Interface with colored operad security boundaries.
+- `benchling-integration` — sibling in the skill routing & dispatch cluster — Benchling R&D platform integration.
+- `bigquery` — invoked by — |
+- `biomni` — invoked by — Autonomous biomedical AI agent framework for executing complex research tasks across geno…
+- `bisimulation-oracle` — invoked by — > Formal oracle for behavioral equivalence via bisimulation games.
+- `bkp-interleaving` — invoked by — This skill is the **deep interleaving** of the five BKP 2 monad theory skills:
+- `bmorphism__cc-trace` — invoked by — Interactive assistant for intercepting, debugging, analyzing and reviewing Claude Code AP…
+- `boxxy-reverse-engineering` — invoked by — This skill integrates **Boxxy sandbox boundary testing** with the complete Trail of Bits …
+- `citation-management` — sibling in the skill routing & dispatch cluster — Comprehensive citation management for academic research.
+- `cogsec-world-mediation` — invoked by — Prerequisite mediation layer for cogsec world interactions via IMable + glass bead game
+- `coqgym` — invoked by — Machine learning environment for automated theorem proving with Coq.
+- `cq-ai` — invoked by — Code Query with AI enhanced deterministic analysis via SplitMix ternary classification
+- `ctf-pwn` — invoked by — Solve CTF binary exploitation challenges by discovering and exploiting memory corruption …
+- `ctf-rev` — invoked by — Solve CTF reverse engineering challenges using systematic analysis to find flags, keys, o…
+- `cue-lang` — sibling in the skill routing & dispatch cluster — CUE: Lattice based configuration language with unification, constraint
+- `datacommons-client` — invoked by — Work with Data Commons, a platform providing programmatic access to public statistical da…
+- `datamol` — invoked by — Pythonic wrapper around RDKit with simplified interface and sensible defaults.
+- `deep-analysis` — invoked by — Performs focused, depth first investigation of specific reverse engineering questions thr…
+- `deterministic-color-generation` — invoked by — Instead, they are **deterministically computed from cryptographic hash functions** applie…
+- `developer-growth-analysis` — invoked by — Analyzes your recent Claude Code chat history to identify coding patterns,
+- `did-passport-interleave` — sibling in the skill routing & dispatch cluster — Formal bridge between W3C Decentralized Identifiers (did:wba, ANP) and passport.gay (Spli…
+- `discopy` — invoked by — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `duckdb-ies` — invoked by — Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking
+- `egpu` — sibling in the skill routing & dispatch cluster — External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, work…
+- `embedded-medical-device` — invoked by — Firmware development for STM32, nRF52840, and RP2040 medical devices with BLE USB communi…
+- `energy-dynamics-acset` — invoked by — The Energy Dynamics ACSet integrates three complementary frameworks for measuring and com…
+- `epistemic-arbitrage` — invoked by — Propagator based parallel structure for exploiting knowledge differentials
+- `etetoolkit` — invoked by — Phylogenetic tree toolkit (ETE).
+- `excellence-gradient` — invoked by — Measure quality.
+- `ganja-wedge-game` — invoked by — Geometric Algebra game mechanics via ganja.js with implicit player skills for wedge vee d…
+- `github-api` — sibling in the skill routing & dispatch cluster — Orchestrates comprehensive GitHub API access across all services.
+- `gwas-database` — invoked by — Query NHGRI EBI GWAS Catalog for SNP trait associations.
+- `harmonic-centrality-transport` — invoked by — Harmonic centrality gadgets with GF(3) conservation for topological transport of ablative…
+- `hermes-mem-as-dataspace` — invoked by — Collapse Hermes' 8 memory backends (honcho mem0 supermemory hindsight retaindb openviking…
+- `hook-development` — sibling in the skill routing & dispatch cluster — This skill should be used when the user asks to "create a hook", "add a PreToolUse PostTo…
+- `how-to-publish-paks` — sibling in the skill routing & dispatch cluster — |
+- `hy-regime` — invoked by — Hylang regime detection and anticipation for message streams.
+- `hyperbolic-bulk` — invoked by — On chain GF(3) entropy storage via Aptos Move - bulk boundary correspondence where entrop…
+- `hypogenic` — invoked by — Automated hypothesis generation and testing using large language models.
+- `jj` — invoked by — Jujutsu (jj) — Git compatible VCS with automatic change tracking, conflict aware rebasing…
+- `kegg-database` — invoked by — Direct REST API access to KEGG (academic use only).
+- `kinetic-block` — sibling in the skill routing & dispatch cluster — Kinetic Block Skill
+- `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
+- `market-research-reports` — invoked by — Generate comprehensive market research reports (50+ pages) in the style of top consulting…
+- `mcp-from-prompt` — sibling in the skill routing & dispatch cluster — Generate a complete MCP server + skill from an API description, following the ExoPriors S…
+- `mcp-integration` — sibling in the skill routing & dispatch cluster — This skill should be used when the user asks to "add MCP server", "integrate MCP", "confi…
+- `modelica` — sibling in the skill routing & dispatch cluster — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `norvidize` — sibling in the skill routing & dispatch cluster — Extract and audit claims for norvid tracking system
+- `nuclear-smr` — sibling in the skill routing & dispatch cluster — Small Modular Reactor integration for Plurigrid energy dominance.
+- `openalex-database` — invoked by — Query and analyze scholarly literature using the OpenAlex database.
+- `ostium-arbitrum-perps` — invoked by — Interact with Ostium Protocol -- a decentralized perpetual exchange on Arbitrum for RWA (…
+- `performance-analysis` — invoked by — Comprehensive performance analysis, bottleneck detection, and optimization recommendation…
+- `perplexity-search` — sibling in the skill routing & dispatch cluster — Perform AI powered web searches with real time information using Perplexity models via Li…
+- `phylogenetic-operad-acset` — invoked by — Baez Otter phylogenetic operad Phyl = Com + [0,∞) as ACSet schema, with mathpix gem extra…
+- `playwright-unworld` — sibling in the skill routing & dispatch cluster — Playwright Unworld Skill: Deterministic Web Automation
+- `plugin-structure` — sibling in the skill routing & dispatch cluster — This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "…
+- `pyhealth` — invoked by — Comprehensive healthcare AI toolkit for developing, testing, and deploying machine learni…
+- `refactoring-playbook` — sibling in the skill routing & dispatch cluster — |
+- `research-grants` — invoked by — Write competitive research proposals for NSF, NIH, DOE, and DARPA.
+- `scientific-critical-thinking` — invoked by — Evaluate research rigor.
+- `scientific-schematics` — invoked by — Create publication quality scientific diagrams using Nano Banana Pro AI with smart iterat…
+- `scientific-slides` — invoked by — Build slide decks and presentations for research talks.
+- `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `seatbelt-sandboxer` — invoked by — Generates minimal macOS Seatbelt sandbox configurations.
+- `second-opinion` — sibling in the skill routing & dispatch cluster — Runs external LLM code reviews (OpenAI Codex or Google Gemini CLI) on uncommitted changes…
+- `security-review` — invoked by — Scan code changes for security vulnerabilities using STRIDE threat modeling, validate fin…
+- `self-under-siege` — invoked by — Agent identity preservation under adversarial conditions via RepEng control vectors, Mark…
+- `semi-reliable-nashator` — sibling in the skill routing & dispatch cluster — This skill implements the **morphisms of open games** paper''s insight: lenses connect co…
+- `signal-isolated-auth` — sibling in the skill routing & dispatch cluster — Maximally isolated Signal authentication via colored operad security boundaries.
+- `skill-builder` — sibling in the skill routing & dispatch cluster — Create new Claude Code Skills with proper YAML frontmatter, progressive disclosure struct…
+- `skill-taxonomy` — sibling in the skill routing & dispatch cluster — Provide a centralized registry and discovery system for all 69 ASI skills.
+- `story-and-tasks` — sibling in the skill routing & dispatch cluster — This skill provides guidance on using the mcp tasks MCP server for task and story managem…
+- `stream-chain` — invoked by — Stream JSON chaining for multi agent pipelines, data transformation, and sequential workf…
+- `true-alife` — invoked by — TrueALIFE: Self Indexing Automata at the Edge of Chaos
+- `unwiring-arena` — sibling in the skill routing & dispatch cluster — Play Coplay arena theory for autopoietic closure with GF(3) conservation
+- `unworld` — sibling in the skill routing & dispatch cluster — Layer 4: Derivational Pattern Generation via Seed Chaining
+- `venue-templates` — sibling in the skill routing & dispatch cluster — Access comprehensive LaTeX templates, formatting requirements, and submission guidelines …
+- `verification-quality` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `verification-quality-assurance` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `vllm-deployment` — invoked by — |
+- `voice-channel-uwd` — invoked by — Voice Channel UWD Skill
+- `vr-steam-ssh` — sibling in the skill routing & dispatch cluster — Diagnose and fix SteamVR + eGPU issues on remote Windows machines via SSH.
+- `vulnerability-validation` — invoked by — Validate security findings from commit security scan by assessing exploitability, filteri…
+- `ward-identity-checker` — invoked by — Ward Identity Checker
+- `wasm-goblins` — invoked by — Goblins ↔ WASM runtime interactions across verified runtimes.
+- `world-runtime` — sibling in the skill routing & dispatch cluster — Firecracker microVM + Morph Infinibranch WorldRuntime for parallel verse execution.
+- `worlding-calendar` — invoked by — Calendar events tied to 26 letter worlds via org mode.
+- `wrangler` — invoked by — Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vecto…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `abd`
-- `agent-protocol-interleave`
-- `agentic-actions-auditor`
-- `alife`
-- `anndata`
-- `aptos-trading`
-- `autopoiesis`
-- `bci-colored-operad`
-- `benchling-integration`
-- `bigquery`
-- `biomni`
-- `bisimulation-oracle`
-- `bkp-interleaving`
-- `bmorphism__cc-trace`
-- `boxxy-reverse-engineering`
-- `cc-trace`
-- `citation-management`
-- `cogsec-world-mediation`
-- `coqgym`
-- `cq-ai`
-- `ctf-pwn`
-- `ctf-rev`
-- `cue-lang`
-- `datacommons-client`
-- `datamol`
-- `deep-analysis`
-- `deterministic-color-generation`
-- `developer-growth-analysis`
-- `did-passport-interleave`
-- `discopy`
-- `duckdb-ies`
-- `egpu`
-- `embedded-medical-device`
-- `energy-dynamics-acset`
-- `epistemic-arbitrage`
-- `etetoolkit`
-- `excellence-gradient`
-- `ganja-wedge-game`
-- `github-api`
-- `gwas-database`
-- `harmonic-centrality-transport`
-- `hermes-mem-as-dataspace`
-- `hook-development`
-- `how-to-publish-paks`
-- `hy-regime`
-- `hyperbolic-bulk`
-- `hypogenic`
-- `jj`
-- `kegg-database`
-- `kinetic-block`
-- `literature-review`
-- `market-research-reports`
-- `mcp-from-prompt`
-- `mcp-integration`
-- `modelica`
-- `norvidize`
-- `nuclear-smr`
-- `openalex-database`
-- `ostium-arbitrum-perps`
-- `performance-analysis`
-- `perplexity-search`
-- `phylogenetic-operad-acset`
-- `playwright-unworld`
-- `plugin-structure`
-- `pyhealth`
-- `refactoring-playbook`
-- `research-grants`
-- `scientific-critical-thinking`
-- `scientific-schematics`
-- `scientific-slides`
-- `sdf`
-- `seatbelt-sandboxer`
-- `second-opinion`
-- `security-review`
-- `self-under-siege`
-- `semi-reliable-nashator`
-- `signal-isolated-auth`
-- `skill-builder`
-- `skill-taxonomy`
-- `story-and-tasks`
-- `stream-chain`
-- `true-alife`
-- `unwiring-arena`
-- `unworld`
-- `venue-templates`
-- `verification-quality`
-- `verification-quality-assurance`
-- `vllm-deployment`
-- `voice-channel-uwd`
-- `vr-steam-ssh`
-- `vulnerability-validation`
-- `ward-identity-checker`
-- `wasm-goblins`
-- `world-runtime`
-- `worlding-calendar`
-- `wrangler`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `abd`
-- `agent-protocol-interleave`
-- `agentic-actions-auditor`
-- `alife`
-- `anndata`
-- `aptos-trading`
-- `autopoiesis`
-- `bci-colored-operad`
-- `benchling-integration`
-- `bigquery`
-- `biomni`
-- `bisimulation-oracle`
-- `bkp-interleaving`
-- `bmorphism__cc-trace`
-- `boxxy-reverse-engineering`
-- `citation-management`
-- `cogsec-world-mediation`
-- `coqgym`
-- `cq-ai`
-- `ctf-pwn`
-- `ctf-rev`
-- `cue-lang`
-- `datacommons-client`
-- `datamol`
-- `deep-analysis`
-- `deterministic-color-generation`
-- `developer-growth-analysis`
-- `did-passport-interleave`
-- `discopy`
-- `duckdb-ies`
-- `egpu`
-- `embedded-medical-device`
-- `energy-dynamics-acset`
-- `epistemic-arbitrage`
-- `etetoolkit`
-- `excellence-gradient`
-- `ganja-wedge-game`
-- `github-api`
-- `gwas-database`
-- `harmonic-centrality-transport`
-- `hermes-mem-as-dataspace`
-- `hook-development`
-- `how-to-publish-paks`
-- `hy-regime`
-- `hyperbolic-bulk`
-- `hypogenic`
-- `jj`
-- `kegg-database`
-- `kinetic-block`
-- `literature-review`
-- `market-research-reports`
-- `mcp-from-prompt`
-- `mcp-integration`
-- `modelica`
-- `norvidize`
-- `nuclear-smr`
-- `openalex-database`
-- `ostium-arbitrum-perps`
-- `performance-analysis`
-- `perplexity-search`
-- `phylogenetic-operad-acset`
-- `playwright-unworld`
-- `plugin-structure`
-- `pyhealth`
-- `refactoring-playbook`
-- `research-grants`
-- `scientific-critical-thinking`
-- `scientific-schematics`
-- `scientific-slides`
-- `sdf`
-- `seatbelt-sandboxer`
-- `second-opinion`
-- `security-review`
-- `self-under-siege`
-- `semi-reliable-nashator`
-- `signal-isolated-auth`
-- `skill-builder`
-- `skill-taxonomy`
-- `story-and-tasks`
-- `stream-chain`
-- `true-alife`
-- `unwiring-arena`
-- `unworld`
-- `venue-templates`
-- `verification-quality`
-- `verification-quality-assurance`
-- `vllm-deployment`
-- `voice-channel-uwd`
-- `vr-steam-ssh`
-- `vulnerability-validation`
-- `ward-identity-checker`
-- `wasm-goblins`
-- `world-runtime`
-- `worlding-calendar`
-- `wrangler`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

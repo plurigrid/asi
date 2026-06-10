@@ -1,28 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `babashka` — builds on — Clojure scripting without JVM startup.
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `duckdb-quadruple-interleave` — sibling in the skill routing & dispatch cluster — Chaotic interleaving across local DuckDB databases modeled as coupled quadruple pendula.
+- `k-dense-ai` — sibling in the skill routing & dispatch cluster — - alphafold database - Protein structure prediction
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `string-diagram-rewriting-protocol` — invoked by — Kernel protocol for compositional string diagram rewriting across all skills
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `babashka`
-- `cat`
-- `clojure`
-- `duckdb-quadruple-interleave`
-- `k-dense-ai`
-- `networkx`
-- `string-diagram-rewriting-protocol`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `duckdb-quadruple-interleave`
-- `string-diagram-rewriting-protocol`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,27 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `benchmark` — builds on — Run and interpret engine stack benchmarks (Steel, ember, shale)
+- `docker` — builds on — Run Docker commands within a container environment, including starting the Docker daemon …
+- `external` — builds on — External skill interface for integration with external systems
+- `k-dense-ai` — invoked by — - alphafold database - Protein structure prediction
+- `org` — builds on — Org mode manual (25K lines info).
+- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `benchmark`
-- `docker`
-- `external`
-- `k-dense-ai`
-- `org`
-- `pdf`
-- `security`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `k-dense-ai`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,26 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `discopy` — builds on — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `para-mensch-commons` — mutually referenced — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `qiskit` — builds on — Comprehensive quantum computing toolkit for building, optimizing, and executing quantum c…
+- `yang-baxter-integrability` — invoked by — Yang Baxter equation for quantum integrable systems.
+- `zx-calculus` — builds on — Coecke's ZX calculus for quantum circuit reasoning via string diagrams with Z spiders (gr…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `discopy`
-- `para-mensch-commons`
-- `qiskit`
-- `yang-baxter-integrability`
-- `zx-calculus`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `para-mensch-commons`
-- `yang-baxter-integrability`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

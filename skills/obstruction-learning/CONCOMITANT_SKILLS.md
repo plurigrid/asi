@@ -1,26 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `kubernetes` — builds on — Set up and manage local Kubernetes clusters using KIND (Kubernetes IN Docker).
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `persistent-homology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Topological data analysis for stable feature verification across filtrations
+- `ramanujan-expander` — builds on — Ramanujan graphs and Alon Boppana spectral optimality for edge growth
+- `sheaf-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Čech cohomology for local to global consistency verification in code
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `gay-mcp`
-- `kubernetes`
-- `modding-ghostty`
-- `persistent-homology`
-- `ramanujan-expander`
-- `sheaf-cohomology`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `modding-ghostty`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,28 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `cynara-policy-checker` — sibling in the security auditing, fuzzing & pentest cluster — Queries Cynara database and validates runtime privilege policies.
+- `iot-device-provisioning` — sibling in the skill routing & dispatch cluster — Secure provisioning for TizenRT ARTIK IoT devices.
+- `manifest-privilege-validator` — builds on — Validates tizen manifest.xml privilege declarations.
+- `sandbox-escape-detector` — builds on — Tests Tizen application sandboxes for privilege escalation and escape vulnerabilities.
+- `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `security` — sibling in the security auditing, fuzzing & pentest cluster — Security best practices for secure coding, authentication, authorization, and data protec…
+- `smack-policy-auditor` — sibling in the security auditing, fuzzing & pentest cluster — Analyzes SMACK policy files for correctness, label conflicts, and access control issues.
+- `tizen-cve-scanner` — sibling in the security auditing, fuzzing & pentest cluster — Scans for known Tizen CVEs in app dependencies and kernel.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `cynara-policy-checker`
-- `iot-device-provisioning`
-- `manifest-privilege-validator`
-- `sandbox-escape-detector`
-- `sdf`
-- `security`
-- `smack-policy-auditor`
-- `tizen-cve-scanner`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

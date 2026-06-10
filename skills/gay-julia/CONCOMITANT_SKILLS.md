@@ -1,45 +1,24 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bisimulation-game` — builds on — Bisimulation game for resilient skill dispersal across AI agents with
+- `bmorphism-interactome` — invoked by — GitHub interactome explorer for bmorphism plurigrid ecosystem.
+- `comrade-vlbi` — invoked by — Event Horizon Telescope black hole imaging with deterministic coloring via Gay.jl integra…
+- `crdt` — builds on — crdt skill
+- `crossmodal-gf3` — invoked by — GF(3) {Tactile, Auditory, Haptic} universal bridge for accessible color perception
+- `gay-mcp` — sibling in the GF(3) deterministic color generation cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gay-monte-carlo` — sibling in the GF(3) deterministic color generation cluster — Gay Monte Carlo Measurements
+- `gmra-matlab` — invoked by — Gay.jl''s SplitMix64 provides the **homogeneous property** required for sharding:
+- `julia-scientific` — invoked by — Julia package equivalents for 137 K Dense AI scientific skills.
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
+- `skill-taxonomy` — invoked by — Provide a centralized registry and discovery system for all 69 ASI skills.
+- `spi-parallel-verify` — builds on — Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for
+- `splitmix-ternary` — invoked by — SplitMixTernary: Extension of SplittableRandoms.jl for GF(3) balanced streams.
+- `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
+- `triad-interleave` — builds on — Interleave three deterministic color streams into balanced schedules
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bisimulation-game`
-- `bmorphism-interactome`
-- `comrade-vlbi`
-- `crdt`
-- `crossmodal-gf3`
-- `gay-mcp`
-- `gay-monte-carlo`
-- `gmra-matlab`
-- `julia-scientific`
-- `modelica`
-- `phyllotaxis`
-- `skill-taxonomy`
-- `spi-parallel-verify`
-- `splitmix-ternary`
-- `terminal`
-- `triad-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `bmorphism-interactome`
-- `comrade-vlbi`
-- `crossmodal-gf3`
-- `gay-monte-carlo`
-- `gmra-matlab`
-- `julia-scientific`
-- `modelica`
-- `phyllotaxis`
-- `skill-taxonomy`
-- `splitmix-ternary`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

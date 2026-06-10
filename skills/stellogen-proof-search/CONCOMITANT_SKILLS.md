@@ -1,30 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `benchmark` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Run and interpret engine stack benchmarks (Steel, ember, shale)
+- `dafny-formal-verification` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Formally verified SPI colors, Galois connections, and p adic number theory in Dafny
+- `lean4-music-topos` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Formal verification of music topos theorems - spectral gaps, CRDT correctness, color harm…
+- `linear` — builds on — Manage issues, projects & team workflows in Linear.
+- `spi-parallel-verify` — builds on — Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for
+- `stellogen` — builds on — Stellogen Skill
+- `theorem-prover-orchestration` — mutually referenced — Unified theorem prover ecosystem dispatcher - routes proofs across Dafny, Lean4, Coq, Agd…
+- `three-match` — builds on — 3 MATCH colored subgraph isomorphism gadget for 3 SAT reduction
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `benchmark`
-- `dafny-formal-verification`
-- `lean4-music-topos`
-- `linear`
-- `spi-parallel-verify`
-- `stellogen`
-- `theorem-prover-orchestration`
-- `three-match`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `dafny-formal-verification`
-- `lean4-music-topos`
-- `theorem-prover-orchestration`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

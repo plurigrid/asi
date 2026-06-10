@@ -1,30 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `amp-api-awareness` — sibling in the multi agent orchestration cluster — Extract hidden Amp API patterns from local thread data via DuckDB analysis
+- `cat` — builds on — cat Skill: Derivational Pipe Chaining
+- `gh` — builds on — GitHub CLI (212 man pages).
+- `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
+- `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `org` — builds on — Org mode manual (25K lines info).
+- `playwright` — builds on — Browser automation via Playwright MCP.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `skill-bonds` — invoked by — Skill Bonds Registry
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `amp-api-awareness`
-- `cat`
-- `gh`
-- `k-dense-ai`
-- `networkx`
-- `org`
-- `playwright`
-- `sdf`
-- `skill-bonds`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `amp-api-awareness`
-- `skill-bonds`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

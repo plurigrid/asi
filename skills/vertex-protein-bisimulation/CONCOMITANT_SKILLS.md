@@ -1,28 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
+- `bisimulation-game` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Bisimulation game for resilient skill dispersal across AI agents with
+- `doc` — builds on — Use when the task involves reading, creating, or editing .docx documents, especially wh…
+- `docker` — builds on — Run Docker commands within a container environment, including starting the Docker daemon …
+- `equilibrium` — builds on — Fixed points where vector field vanishes
+- `python-scientific-commons` — invoked by — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
+- `transformers` — builds on — This skill should be used when working with pre trained transformer models for natural la…
+- `vertex-ai-protein-interleave` — builds on — Bridge layer connecting Vertex AI Google Cloud to plurigrid asi protein scale biology s…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `bisimulation-game`
-- `doc`
-- `docker`
-- `equilibrium`
-- `python-scientific-commons`
-- `transformers`
-- `vertex-ai-protein-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `python-scientific-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,25 +1,12 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bivector-forum` — invoked by — Community knowledge from bivector.net - GA tutorials, discussions, and best practices
+- `ga-codegen` — invoked by — Geometric Algebra code generation for C++, C#, Rust, Python from ganja.js templates
+- `ga-visualization` — builds on — Geometric Algebra visualization via ganja.js graph() - SVG WebGL rendering of multivectors
+- `pga-motor-interpolation` — builds on — Motor interpolation (slerp nlerp) for smooth rigid body transformations in PGA
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bivector-forum`
-- `ga-codegen`
-- `ga-visualization`
-- `pga-motor-interpolation`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `bivector-forum`
-- `ga-codegen`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

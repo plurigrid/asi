@@ -1,26 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
+- `bob` — builds on — World BOB Skill
+- `braindance-validator` — invoked by — Validates GF(3) conservation across triadic braindance replays.
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `dynamic-sufficiency-goblin` — invoked by — Self regulating Goblins actor implementing Ivan Illich's dynamic sufficiency
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `bob`
-- `braindance-validator`
-- `clojure`
-- `dynamic-sufficiency-goblin`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `braindance-validator`
-- `dynamic-sufficiency-goblin`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

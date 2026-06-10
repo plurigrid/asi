@@ -1,31 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acp-commons` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Atlas of Agent Client Protocol (ACP) clients, agents, and OCapN CapTP grounded actors.
+- `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
+- `flox` — builds on — Reproducible development environments powered by Nix.
+- `gitlab` — builds on — Interact with GitLab repositories, merge requests, and APIs using the GITLAB_TOKEN enviro…
+- `goblins` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Distributed object capability system (6.5K lines info).
+- `goblins-adapter` — sibling in the agent & capability protocols (CapTP OCapN) cluster — ElizaOS OpenClaw Goblins OCapN adapter (study + bridge)
+- `guile` — builds on — GNU Scheme interpreter (67K lines info).
+- `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
+- `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+- `world-a` — builds on — AlgebraicJulia ecosystem world (ACSets.jl, Catlab.jl).
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acp-commons`
-- `alice`
-- `flox`
-- `gitlab`
-- `goblins`
-- `goblins-adapter`
-- `guile`
-- `npm`
-- `scheme`
-- `world-a`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `acp-commons`
-- `goblins-adapter`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

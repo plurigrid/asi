@@ -1,25 +1,11 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `ctf-crypto` — sibling in the security auditing, fuzzing & pentest cluster — Solve CTF cryptography challenges by identifying, analyzing, and exploiting weak crypto i…
+- `deep-analysis` — invoked by — Performs focused, depth first investigation of specific reverse engineering questions thr…
+- `opennirscap-build` — invoked by — Build an OpenNIRScap 24 channel fNIRS brain cap from open source hardware — Altium conver…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `ctf-crypto`
-- `deep-analysis`
-- `opennirscap-build`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `ctf-crypto`
-- `deep-analysis`
-- `opennirscap-build`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

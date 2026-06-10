@@ -1,26 +1,13 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `aptos-agent` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Interact with Aptos blockchain - check balances, transfer APT, swap tokens, stake, and ex…
+- `aptos-ecosystem` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Skill aptos ecosystem
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `exa-search` — builds on — Use Exa for semantic neural web search.
+- `glass-line` — invoked by — Physical substrate layer for Plurigrid ASI — co deployed fiber optic + geothermal infrast…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `aptos-agent`
-- `aptos-ecosystem`
-- `clojure`
-- `exa-search`
-- `glass-line`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `aptos-ecosystem`
-- `glass-line`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

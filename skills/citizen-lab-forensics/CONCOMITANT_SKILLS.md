@@ -1,32 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `boxxy-reverse-engineering` — builds on — This skill integrates **Boxxy sandbox boundary testing** with the complete Trail of Bits …
+- `doc` — builds on — Use when the task involves reading, creating, or editing .docx documents, especially wh…
+- `docx` — builds on — Comprehensive document creation, editing, and analysis with support for
+- `graph-investigation` — mutually referenced — Large scale graph analytics for entity resolution, network analysis, and relationship map…
+- `icij-document-analysis` — mutually referenced — Document processing pipeline for large scale leak analysis.
+- `ios-wifi-provenance-diff` — sibling in the security auditing, fuzzing & pentest cluster — Diagnose why an iPhone's Wi Fi password row shows but cannot be copied.
+- `org` — builds on — Org mode manual (25K lines info).
+- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `radare2-hatchery` — builds on — Radare2 Hatchery
+- `variant-analysis` — builds on — Find similar vulnerabilities and bugs across codebases using pattern based analysis.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `boxxy-reverse-engineering`
-- `doc`
-- `docx`
-- `graph-investigation`
-- `icij-document-analysis`
-- `ios-wifi-provenance-diff`
-- `org`
-- `pdf`
-- `radare2-hatchery`
-- `variant-analysis`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `graph-investigation`
-- `icij-document-analysis`
-- `ios-wifi-provenance-diff`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,407 +1,202 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `12-factor-app-modernization` — invoked by — |
+- `abd` — invoked by — Attiya Bar Noy Dolev atomic register emulation over message passing.
+- `able-markets` — invoked by — Skill able markets
+- `acsets` — invoked by — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `acsets-algebraic-databases` — invoked by — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional navigati…
+- `active-inference-robotics` — invoked by — Bridge active inference theory with robot control using K Scale's JAX MuJoCo stack.
+- `agentdb-memory-patterns` — invoked by — Implement persistent memory patterns for AI agents using AgentDB.
+- `agentdb-vector-search` — invoked by — Implement semantic vector search with AgentDB for intelligent document retrieval, similar…
+- `alice-emacs-mods` — sibling in the interactive REPLs & Lisp tooling cluster — Tour of Alice's heavily customized terminal Emacs — Causal transients, Worlding org, proo…
+- `alife` — invoked by — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `anima-theory` — invoked by — ANIMA as limit construction over condensed skill applications.
+- `aptos-agent` — invoked by — Interact with Aptos blockchain - check balances, transfer APT, swap tokens, stake, and ex…
+- `aqua-voice-malleability` — invoked by — Adversarial malleability analysis of Aqua Voice Electron app with IPC injection, WebSocke…
+- `assembly-index` — invoked by — Lee Cronin's Assembly Theory for molecular complexity measurement and
+- `bci-colored-operad` — invoked by — Brain Computer Interface with colored operad security boundaries.
+- `beads-issue-tracker` — invoked by — |
+- `bifurcation` — invoked by — Hopf bifurcation detection for dynamical system state transitions with GF(3) phase portra…
+- `bisimulation-game` — invoked by — Bisimulation game for resilient skill dispersal across AI agents with
+- `bob-emacs-mods` — sibling in the interactive REPLs & Lisp tooling cluster — Complement to alice emacs mods.
+- `borkdude` — sibling in the interactive REPLs & Lisp tooling cluster — Babashka and ClojureScript runtime selection guidance by @borkdude
+- `cargo` — invoked by — Rust package manager (36 subcommands).
+- `cats-for-ai` — invoked by — cats.for" (Categories for AI)
+- `causal-inference` — invoked by — Bengio's causal inference for AI: Interventional reasoning, counterfactuals, and System 2…
+- `chemical-abstract-machine` — invoked by — Berry & Boudol''s CHAM: computation as chemical reactions on multisets.
+- `cognitive-sufficiency-superposition` — invoked by — name: cognitive sufficiency superposition
+- `cognitive-superposition` — invoked by — Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
+- `collaborative-emacs` — sibling in the interactive REPLs & Lisp tooling cluster — Claude Code runs an Emacs daemon, starts a CRDT server, shares buffers.
+- `compression-progress` — invoked by — Schmidhuber's compression progress as intrinsic curiosity reward for
+- `concatenative` — invoked by — Forth Factor Joy: stack based concatenative programming where composition replaces applic…
+- `covariant-modification` — invoked by — Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and …
+- `cq-ai` — invoked by — Code Query with AI enhanced deterministic analysis via SplitMix ternary classification
+- `cq-ai-deterministic-security-scanning-with-ternary-polarity` — invoked by — Deterministic code security scanner using SplitMix64 seeding.
+- `critical-opalescence` — invoked by — Critical opalescence at phase transitions: diverging correlation length, light scattering…
+- `crn-topology` — invoked by — Chemical Reaction Network topology for generating and analyzing reaction
+- `curiosity-driven` — invoked by — Schmidhuber's curiosity driven learning: Intrinsic motivation via compression progress.
+- `cybernetic-open-game` — invoked by — Cybernetic Open Game Skill
+- `denario` — invoked by — Multiagent AI system for scientific research assistance that automates research workflows…
+- `discopy-operads` — invoked by — DiscoPy Operads Skill
+- `discrete-backprop` — invoked by — Gradient free optimization via discrete perturbations and trit based learning
+- `dynamic-sufficiency` — invoked by — Causal state gating via ε machine.
+- `effective-topos` — invoked by — FloxHub publication bmorphism effective topos - a comprehensive development
+- `emacs` — sibling in the interactive REPLs & Lisp tooling cluster — Emacs ecosystem = elisp + org + gnus + tramp + eglot.
+- `emacspeak-binaural` — sibling in the interactive REPLs & Lisp tooling cluster — Replace emacspeak auditory icons with binaural beats using the sound theme system.
+- `entropy-sim2real` — invoked by — Entropy driven sim2real transfer.
+- `exo-distributed` — invoked by — Distributed LLM inference across Apple Silicon clusters with exo.
+- `find-skills` — invoked by — Helps users discover and install agent skills when they ask questions like "how do I do X…
+- `flow-nexus-neural` — invoked by — Train and deploy neural networks in distributed E2B sandboxes with Flow Nexus
+- `flow-nexus-platform` — invoked by — Comprehensive Flow Nexus platform management - authentication, sandboxes, app deployment,…
+- `flow-nexus-swarm` — invoked by — Cloud based AI swarm deployment and event driven workflow automation with Flow Nexus plat…
+- `flox` — invoked by — Reproducible development environments powered by Nix.
+- `flox-builds` — invoked by — Building and packaging applications with Flox.
+- `flox-containers` — invoked by — Containerizing Flox environments with Docker Podman.
+- `flox-environments` — invoked by — Manage reproducible development environments with Flox.
+- `flox-publish` — invoked by — Use for publishing user packages to flox for use in Flox environments.
+- `flox-sharing` — invoked by — Sharing and composing Flox environments.
+- `fluidsim` — invoked by — Framework for computational fluid dynamics simulations using Python.
+- `forward-forward-learning` — invoked by — Hinton's Forward Forward algorithm for local learning without backpropagation.
+- `ga-codegen` — invoked by — Geometric Algebra code generation for C++, C#, Rust, Python from ganja.js templates
+- `gay-mcp` — invoked by — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `geb` — invoked by — Anoma''s Geb: Categorical semantics via S expressions, polynomial functors
+- `gflownet` — invoked by — Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward.
+- `github-code-review` — invoked by — Comprehensive GitHub code review with AI powered swarm coordination
+- `github-multi-repo` — invoked by — Multi repository coordination, synchronization, and architecture management with AI swarm…
+- `github-project-management` — invoked by — Comprehensive GitHub project management with swarm coordinated issue tracking, project bo…
+- `github-release-management` — invoked by — Comprehensive GitHub release orchestration with AI swarm coordination for automated versi…
+- `github-workflow-automation` — invoked by — Advanced GitHub Actions workflow automation with AI swarm coordination, intelligent CI CD…
+- `glass-line` — invoked by — Physical substrate layer for Plurigrid ASI — co deployed fiber optic + geothermal infrast…
+- `gmra-matlab` — invoked by — Gay.jl''s SplitMix64 provides the **homogeneous property** required for sharding:
+- `gnu-radio` — invoked by — GNU Radio SDR toolkit for signal processing flowgraphs with Python blocks
+- `godel-machine` — invoked by — Schmidhuber's Gödel Machine: Self improving systems that prove their own improvements.
+- `gym` — invoked by — Each gym domain resolves specific skill tensions:
+- `hermes-cron-as-dataspace` — invoked by — Replace Hermes' cron scheduler (jobs.py + scheduler.py) with scheduled facts in a Syndica…
+- `hive-mind-advanced` — invoked by — Advanced Hive Mind collective intelligence system for queen led multi agent coordination …
+- `hof` — invoked by — Hofstadter io hof: CUE powered code generation with flow engine and
+- `hooks-automation` — invoked by — Automated coordination, formatting, and learning from Claude Code operations using intell…
+- `hy-emacs` — sibling in the interactive REPLs & Lisp tooling cluster — Hylang Emacs integration with hy mode, Hyuga LSP, and DisCoPy sexp coloring
+- `ies` — invoked by — ies
+- `infinity-operads` — invoked by — ∞-Operads for pairwise tritwise Cat# interactions with lazy ACSet materialization unifyin…
+- `intent-sink` — invoked by — Intent Sink Skill
+- `jaxlife-open-ended` — invoked by — JaxLife open ended agentic simulator for emergent behavior, tool use,
+- `jj` — invoked by — Jujutsu (jj) — Git compatible VCS with automatic change tracking, conflict aware rebasing…
+- `juvix-intents` — invoked by — Juvix intent centric language for Anoma with Geb compilation and GF(3) typed resources
+- `kolmogorov-compression` — invoked by — Kolmogorov complexity as the ultimate intelligence measure.
+- `kscale-biomimetic-supply` — invoked by — - User asks about supply chain resilience for humanoid robotics
+- `l-space` — invoked by — L Space Skill: The Library of All Libraries
+- `lamindb` — invoked by — This skill should be used when working with LaminDB, an open source data framework for bi…
+- `langevin-dynamics` — invoked by — Layer 5: SDE Based Learning Analysis via Langevin Dynamics
+- `latchbio-integration` — invoked by — Latch platform for bioinformatics workflows.
+- `latent-latency` — invoked by — Latent Latency Skill
+- `libghostty-aci` — sibling in the interactive REPLs & Lisp tooling cluster — Integrates libghostty terminal emulation with Agent Computer Interface (ACI) patterns:
+- `libghostty-recording` — sibling in the interactive REPLs & Lisp tooling cluster — Record, stream, and replay libghostty vt terminal sessions for documentation, debugging, …
+- `libghostty-streaming` — sibling in the interactive REPLs & Lisp tooling cluster — The **white hole** dual to libghostty recording.
+- `libghostty-vt` — sibling in the interactive REPLs & Lisp tooling cluster — libghostty vt
+- `map-projection` — invoked by — Map Projection Skill
+- `mcp-orchestrator` — invoked by — MCP agent orchestration patterns: planner worker, swarm, evaluator optimizer.
+- `miasm-symbolic` — invoked by — Miasm reverse engineering framework for symbolic execution, IR lifting, and binary analys…
+- `migrating-bitnami-to-bitnami-legacy` — sibling in the interactive REPLs & Lisp tooling cluster — |
+- `mlx-apple-silicon` — invoked by — Run LLMs on Apple Silicon with MLX mlx_lm - unified memory, 4 bit quantization, streaming…
+- `mlx-bitnet-gf3` — invoked by — BitNet 1.58 bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:
+- `mlx-jax-splitmix` — invoked by — MLX on Apple Silicon with JAX style SplitMix64 PRNG.
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `modern-python` — invoked by — Modern Python best practices.
+- `move-rps-game` — invoked by — Rock Paper Scissors PvP game on Aptos with commit reveal pattern and ACSet informed design
+- `move-smith-fuzzer` — invoked by — Move Smith Fuzzer Skill
+- `multidispatch-rl` — invoked by — Multiple dispatch as explicit RL objective - learning optimal method selection across typ…
+- `mutual-information-oracle` — invoked by — > Formal oracle quantifying coordination between agents in multi agent reinforcement lear…
+- `netlify-deploy` — invoked by — Deploy web projects to Netlify using the Netlify CLI (npx netlify).
+- `neuro-symbolic-bridge` — invoked by — High tension pairs (d ≈ 1.85):
+- `nrf5340-hardware` — invoked by — Nordic nRF5340 dual core SoC hardware reference: application core (Cortex M33 128MHz), ne…
+- `ocaml` — invoked by — OCaml ecosystem = opam + dune + merlin + ocamlformat.
+- `olmo-earth-skill` — invoked by — Sentinel 2 satellite imagery to OlmoEarth embeddings on geodesic tiles, serialized via zi…
+- `olmoearth-mlx` — invoked by — OlmoEarth MLX: Spatio Temporal Earth Intelligence
+- `omg-tension-resolver` — invoked by — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
+- `onepassword-cli` — sibling in the interactive REPLs & Lisp tooling cluster — 1Password CLI (op) for secure secret management, credential injection, and shell plugin a…
+- `otel-tracing` — invoked by — OpenTelemetry tracing for agent observations and SPI verification
+- `padic-ultrametric` — invoked by — P adic ultrametric distance as foundation for UMAP itUMAP HNSW Snowflake MLX SPI
+- `padic-ultrametric-embedding` — invoked by — P adic ultrametric distance for UMAP itUMAP HNSW with Snowflake Arctic
+- `parallel-subagent-split` — invoked by — In a traced monoidal category, the trace operation models feedback:
+- `pijul` — invoked by — Pijul patch based VCS with categorical patch theory for skill versioning
+- `pijul-sparse-skills` — invoked by — Sparsity preserving skill versioning via Pijul patches with GF(3) projection gates
+- `polysimy-effect-chains` — invoked by — Verify multiple effect interpretations through propagator networks with temporal coalgebr…
+- `propagators` — invoked by — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
+- `protocol-evolution-markets` — invoked by — Prediction markets for protocol standard evolution.
+- `pufferlib` — invoked by — This skill should be used when working with reinforcement learning tasks including high p…
+- `pump-sdk-dark` — invoked by — Adversarial map of pump.fun's SDK surface.
+- `py-acset` — invoked by — Python native Attributed C Sets with:
+- `pymc` — sibling in the interactive REPLs & Lisp tooling cluster — Bayesian modeling with PyMC.
+- `pymc-bayesian-modeling` — invoked by — Bayesian modeling with PyMC.
+- `pymoo` — invoked by — Multi objective optimization framework.
+- `python-development` — sibling in the interactive REPLs & Lisp tooling cluster — Modern Python development with Python 3.12+, Django, FastAPI, async patterns,
+- `pytorch-lightning` — invoked by — Deep learning framework (PyTorch Lightning).
+- `qa-regression` — invoked by — Automate QA regression testing with reusable test skills.
+- `qiskit` — invoked by — Comprehensive quantum computing toolkit for building, optimizing, and executing quantum c…
+- `quackbot-duckoid` — invoked by — Mechanic wobbling duckoid robot that quacks and generates nonstandard musical scale compo…
+- `quantum-guitar` — invoked by — Coecke's Quantum Guitar: quantising guitar strings via qubit association, ZX calculus not…
+- `reasoningbank-agentdb` — invoked by — Implement ReasoningBank adaptive learning with AgentDB's 150x faster vector database.
+- `reasoningbank-with-agentdb` — invoked by — ReasoningBank adaptive learning with AgentDB vector backend.
+- `reversible-computing` — invoked by — Janus and reversible languages: run programs backwards, time symmetric computation.
+- `ruler` — invoked by — Unified AI agent configuration propagation across 18+ coding assistants.
+- `sdr-borges-reafference` — invoked by — SDR (GNU Radio) as self learning REPL with Borges infinite library exploration, reafferen…
+- `self-evolving-agent` — invoked by — Darwin Gödel Machine patterns for self improving AI agents with open ended
+- `self-learnable-worlds` — invoked by — Worlds that learn their own structure via curiosity driven exploration, compression progr…
+- `sense` — invoked by — sense - Diagrammatic Video Extraction with Subtitle Alignment
+- `servo-ghostty` — sibling in the interactive REPLs & Lisp tooling cluster — Servo browser engine integration with ghostty web for full color terminal tiles
+- `shap` — invoked by — Model interpretability and explainability using SHAP (SHapley Additive exPlanations).
+- `sheaf-laplacian-coordination` — invoked by — Sheaf neural network coordination via graph Laplacians for distributed
+- `sheaf-uncertainty` — invoked by — Bayesian sheaf neural networks for uncertainty quantification.
+- `sicmutils` — sibling in the interactive REPLs & Lisp tooling cluster — SICMUtils Emmy - Clojure library for symbolic mathematics, automatic differentiation, and…
+- `siggraph` — invoked by — SIGGRAPH is the premier venue for computer graphics research.
+- `simpy` — invoked by — Process based discrete event simulation framework in Python.
+- `skill-embedding-vss` — invoked by — P adic ultrametric skill embeddings with MLX Snowflake Arctic, DuckDB
+- `skill-maker` — invoked by — Meta skill that generates domain specific AI skills from tool documentation
+- `skill-maker-ai-skill-factory-for-tools` — invoked by — Meta skill that generates domain specific AI skills from tool documentation
+- `solver-fee` — invoked by — Solver Fee Skill
+- `sparc-methodology` — invoked by — SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) comprehensive dev…
+- `spectral-embedding-learner` — invoked by — Self learning topological embedding with configurable gamut for optimal spectral gap and …
+- `spi-parallel-verify` — invoked by — Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for
+- `sprachgefuehl-string-rewriting` — invoked by — Counterfactual conceptual string rewriting with trapezoid termination for recursive rende…
+- `stream-chain` — invoked by — Stream JSON chaining for multi agent pipelines, data transformation, and sequential workf…
+- `structural-rewilding` — invoked by — Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs).
+- `swarm-advanced` — invoked by — Advanced swarm orchestration patterns for research, development, testing, and complex dis…
+- `swarm-orchestration` — invoked by — Orchestrate multi agent swarms with agentic flow for parallel task execution, dynamic top…
+- `sympy` — invoked by — Use this skill when working with symbolic mathematics in Python.
+- `system2-attention` — invoked by — System 2 attention mechanisms for deliberate, slow reasoning in transformer
+- `terrateam-usage-guide` — invoked by — |
+- `tidar` — invoked by — Triadic Interleaving Dispatch with Agents for Reading writing.
+- `time-travel-crdt` — invoked by — Time Travel CRDT Skill
+- `toad-telemetry` — invoked by — OpenTelemetry instrumentation for Batrachian Toad AI agent terminal.
+- `topological-dataloader` — invoked by — Batched heterogeneous topological complex dataloaders for TopoModelX.
+- `topomodelx-hodge` — invoked by — Hodge Laplacian neural networks for simplicial cell hypergraph complexes.
+- `topos-catcolab` — invoked by — Topos Institute's CatColab for collaborative category theory - community model building, …
+- `torch-geometric` — invoked by — Graph Neural Networks (PyG).
+- `torch_geometric` — invoked by — Graph Neural Networks (PyG).
+- `torchdrug` — invoked by — Graph based drug discovery toolkit.
+- `transcendental-keyboard` — invoked by — Unified keyboard control surface for transcendental syntax proof environments (Stellogen,…
+- `triad-interleave` — invoked by — Interleave three deterministic color streams into balanced schedules
+- `triadic-skill-loader` — invoked by — Triadic Skill Loader
+- `tripartite-decompositions` — invoked by — GF(3)-balanced structured decompositions for parallel computation.
+- `truealife` — invoked by — Comprehensive index of Artificial Life repositories across history, with special focus on…
+- `turing-chemputer` — invoked by — Cronin's Turing complete chemputer for programmable chemical synthesis
+- `unworld` — invoked by — Layer 4: Derivational Pattern Generation via Seed Chaining
+- `unworld-moments` — invoked by — Make all 69 cognitive moments happen simultaneously via parallel triadic fanout.
+- `uv-oneliners` — invoked by — UV UVX awesome one liners for ephemeral Python environments with multi package
+- `vertex-ai-protein-interleave` — invoked by — Bridge layer connecting Vertex AI Google Cloud to plurigrid asi protein scale biology s…
+- `visual-design` — invoked by — |
+- `waddington-landscape` — invoked by — Waddington's epigenetic landscape: cell fate as gradient flow on potential surfaces, conn…
+- `webapp-testing` — invoked by — Toolkit for interacting with and testing local web applications using
+- `world-runtime-capability` — invoked by — wasmCloud style capability providers for verse execution.
+- `wrangler` — invoked by — Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vecto…
+- `xypic-latex` — invoked by — XY pic commutative diagrams in LaTeX with Emacs AUCTeX preview
+- `zig` — invoked by — Zig ecosystem skill with emerging patterns from zig syrup
+- `zig-syrup-bci` — invoked by — Multimodal BCI pipeline in Zig: DSI 24 EEG, fNIRS mBLL, eye tracking IVT, LSL sync, EDF r…
+- `zig-systems` — invoked by — Systems programming and performance optimization using Zig.
+- `zulip-cogen` — invoked by — Zulip Cogen Skill 🐸⚡
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `12-factor-app-modernization`
-- `abd`
-- `able-markets`
-- `acsets`
-- `acsets-algebraic-databases`
-- `active-inference-robotics`
-- `agentdb-memory-patterns`
-- `agentdb-vector-search`
-- `alice-emacs-mods`
-- `alife`
-- `anima-theory`
-- `aptos-agent`
-- `aqua-voice-malleability`
-- `assembly-index`
-- `bci-colored-operad`
-- `beads-issue-tracker`
-- `bifurcation`
-- `bisimulation-game`
-- `bob-emacs-mods`
-- `borkdude`
-- `cargo`
-- `cats-for-ai`
-- `causal-inference`
-- `chemical-abstract-machine`
-- `cognitive-sufficiency-superposition`
-- `cognitive-superposition`
-- `collaborative-emacs`
-- `compression-progress`
-- `concatenative`
-- `covariant-modification`
-- `cq-ai`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `critical-opalescence`
-- `crn-topology`
-- `curiosity-driven`
-- `cybernetic-open-game`
-- `denario`
-- `discopy-operads`
-- `discrete-backprop`
-- `dynamic-sufficiency`
-- `effective-topos`
-- `emacs`
-- `emacspeak-binaural`
-- `entropy-sim2real`
-- `exo-distributed`
-- `find-skills`
-- `flow-nexus-neural`
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `flox`
-- `flox-builds`
-- `flox-containers`
-- `flox-environments`
-- `flox-publish`
-- `flox-sharing`
-- `fluidsim`
-- `forward-forward-learning`
-- `ga-codegen`
-- `gay-mcp`
-- `geb`
-- `gflownet`
-- `github-code-review`
-- `github-multi-repo`
-- `github-project-management`
-- `github-release-management`
-- `github-workflow-automation`
-- `glass-line`
-- `gmra-matlab`
-- `gnu-radio`
-- `godel-machine`
-- `gym`
-- `hermes-cron-as-dataspace`
-- `hive-mind-advanced`
-- `hof`
-- `hooks-automation`
-- `hy-emacs`
-- `ies`
-- `infinity-operads`
-- `intent-sink`
-- `jaxlife-open-ended`
-- `jj`
-- `juvix-intents`
-- `kolmogorov-compression`
-- `kscale-biomimetic-supply`
-- `l-space`
-- `lamindb`
-- `langevin-dynamics`
-- `latchbio-integration`
-- `latent-latency`
-- `libghostty-aci`
-- `libghostty-recording`
-- `libghostty-streaming`
-- `libghostty-vt`
-- `map-projection`
-- `mcp-orchestrator`
-- `miasm-symbolic`
-- `migrating-bitnami-to-bitnami-legacy`
-- `mlx-apple-silicon`
-- `mlx-bitnet-gf3`
-- `mlx-jax-splitmix`
-- `modelica`
-- `modern-python`
-- `move-rps-game`
-- `move-smith-fuzzer`
-- `multidispatch-rl`
-- `mutual-information-oracle`
-- `netlify-deploy`
-- `neuro-symbolic-bridge`
-- `nrf5340-hardware`
-- `ocaml`
-- `olmo-earth-skill`
-- `olmoearth-mlx`
-- `omg-tension-resolver`
-- `onepassword-cli`
-- `otel-tracing`
-- `padic-ultrametric`
-- `padic-ultrametric-embedding`
-- `parallel-subagent-split`
-- `pijul`
-- `pijul-sparse-skills`
-- `polysimy-effect-chains`
-- `propagators`
-- `protocol-evolution-markets`
-- `pufferlib`
-- `pump-sdk-dark`
-- `py-acset`
-- `pymc`
-- `pymc-bayesian-modeling`
-- `pymoo`
-- `python-development`
-- `pytorch-lightning`
-- `qa-regression`
-- `qiskit`
-- `quackbot-duckoid`
-- `quantum-guitar`
-- `reasoningbank-agentdb`
-- `reasoningbank-with-agentdb`
-- `reversible-computing`
-- `ruler`
-- `sdr-borges-reafference`
-- `self-evolving-agent`
-- `self-learnable-worlds`
-- `sense`
-- `servo-ghostty`
-- `shap`
-- `sheaf-laplacian-coordination`
-- `sheaf-uncertainty`
-- `sicmutils`
-- `siggraph`
-- `simpy`
-- `skill-embedding-vss`
-- `skill-maker`
-- `skill-maker-ai-skill-factory-for-tools`
-- `solver-fee`
-- `sparc-methodology`
-- `spectral-embedding-learner`
-- `spi-parallel-verify`
-- `sprachgefuehl-string-rewriting`
-- `stream-chain`
-- `structural-rewilding`
-- `swarm-advanced`
-- `swarm-orchestration`
-- `sympy`
-- `system2-attention`
-- `terrateam-usage-guide`
-- `tidar`
-- `time-travel-crdt`
-- `toad-telemetry`
-- `topological-dataloader`
-- `topomodelx-hodge`
-- `topos-catcolab`
-- `torch-geometric`
-- `torch_geometric`
-- `torchdrug`
-- `transcendental-keyboard`
-- `triad-interleave`
-- `triadic-skill-loader`
-- `tripartite-decompositions`
-- `truealife`
-- `turing-chemputer`
-- `unworld`
-- `unworld-moments`
-- `uv-oneliners`
-- `vertex-ai-protein-interleave`
-- `visual-design`
-- `waddington-landscape`
-- `webapp-testing`
-- `world-runtime-capability`
-- `wrangler`
-- `xypic-latex`
-- `zig`
-- `zig-syrup-bci`
-- `zig-systems`
-- `zulip-cogen`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `12-factor-app-modernization`
-- `abd`
-- `able-markets`
-- `acsets`
-- `acsets-algebraic-databases`
-- `active-inference-robotics`
-- `agentdb-memory-patterns`
-- `agentdb-vector-search`
-- `alice-emacs-mods`
-- `alife`
-- `anima-theory`
-- `aptos-agent`
-- `aqua-voice-malleability`
-- `assembly-index`
-- `bci-colored-operad`
-- `beads-issue-tracker`
-- `bifurcation`
-- `bisimulation-game`
-- `bob-emacs-mods`
-- `borkdude`
-- `cargo`
-- `cats-for-ai`
-- `causal-inference`
-- `chemical-abstract-machine`
-- `cognitive-sufficiency-superposition`
-- `cognitive-superposition`
-- `collaborative-emacs`
-- `compression-progress`
-- `concatenative`
-- `covariant-modification`
-- `cq-ai`
-- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
-- `critical-opalescence`
-- `crn-topology`
-- `curiosity-driven`
-- `cybernetic-open-game`
-- `denario`
-- `discopy-operads`
-- `discrete-backprop`
-- `dynamic-sufficiency`
-- `effective-topos`
-- `emacs`
-- `emacspeak-binaural`
-- `entropy-sim2real`
-- `exo-distributed`
-- `find-skills`
-- `flow-nexus-neural`
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `flox`
-- `flox-builds`
-- `flox-containers`
-- `flox-environments`
-- `flox-publish`
-- `flox-sharing`
-- `fluidsim`
-- `forward-forward-learning`
-- `ga-codegen`
-- `gay-mcp`
-- `geb`
-- `gflownet`
-- `github-code-review`
-- `github-multi-repo`
-- `github-project-management`
-- `github-release-management`
-- `github-workflow-automation`
-- `glass-line`
-- `gmra-matlab`
-- `gnu-radio`
-- `godel-machine`
-- `gym`
-- `hermes-cron-as-dataspace`
-- `hive-mind-advanced`
-- `hof`
-- `hooks-automation`
-- `hy-emacs`
-- `ies`
-- `infinity-operads`
-- `intent-sink`
-- `jaxlife-open-ended`
-- `jj`
-- `juvix-intents`
-- `kolmogorov-compression`
-- `kscale-biomimetic-supply`
-- `l-space`
-- `lamindb`
-- `langevin-dynamics`
-- `latchbio-integration`
-- `latent-latency`
-- `libghostty-aci`
-- `libghostty-recording`
-- `libghostty-streaming`
-- `libghostty-vt`
-- `map-projection`
-- `mcp-orchestrator`
-- `miasm-symbolic`
-- `migrating-bitnami-to-bitnami-legacy`
-- `mlx-apple-silicon`
-- `mlx-bitnet-gf3`
-- `mlx-jax-splitmix`
-- `modelica`
-- `modern-python`
-- `move-rps-game`
-- `move-smith-fuzzer`
-- `multidispatch-rl`
-- `mutual-information-oracle`
-- `netlify-deploy`
-- `neuro-symbolic-bridge`
-- `nrf5340-hardware`
-- `ocaml`
-- `olmo-earth-skill`
-- `olmoearth-mlx`
-- `omg-tension-resolver`
-- `onepassword-cli`
-- `otel-tracing`
-- `padic-ultrametric`
-- `padic-ultrametric-embedding`
-- `parallel-subagent-split`
-- `pijul`
-- `pijul-sparse-skills`
-- `polysimy-effect-chains`
-- `propagators`
-- `protocol-evolution-markets`
-- `pufferlib`
-- `pump-sdk-dark`
-- `py-acset`
-- `pymc`
-- `pymc-bayesian-modeling`
-- `pymoo`
-- `python-development`
-- `pytorch-lightning`
-- `qa-regression`
-- `qiskit`
-- `quackbot-duckoid`
-- `quantum-guitar`
-- `reasoningbank-agentdb`
-- `reasoningbank-with-agentdb`
-- `reversible-computing`
-- `ruler`
-- `sdr-borges-reafference`
-- `self-evolving-agent`
-- `self-learnable-worlds`
-- `sense`
-- `servo-ghostty`
-- `shap`
-- `sheaf-laplacian-coordination`
-- `sheaf-uncertainty`
-- `sicmutils`
-- `siggraph`
-- `simpy`
-- `skill-embedding-vss`
-- `skill-maker`
-- `skill-maker-ai-skill-factory-for-tools`
-- `solver-fee`
-- `sparc-methodology`
-- `spectral-embedding-learner`
-- `spi-parallel-verify`
-- `sprachgefuehl-string-rewriting`
-- `stream-chain`
-- `structural-rewilding`
-- `swarm-advanced`
-- `swarm-orchestration`
-- `sympy`
-- `system2-attention`
-- `terrateam-usage-guide`
-- `tidar`
-- `time-travel-crdt`
-- `toad-telemetry`
-- `topological-dataloader`
-- `topomodelx-hodge`
-- `topos-catcolab`
-- `torch-geometric`
-- `torch_geometric`
-- `torchdrug`
-- `transcendental-keyboard`
-- `triad-interleave`
-- `triadic-skill-loader`
-- `tripartite-decompositions`
-- `truealife`
-- `turing-chemputer`
-- `unworld`
-- `unworld-moments`
-- `uv-oneliners`
-- `vertex-ai-protein-interleave`
-- `visual-design`
-- `waddington-landscape`
-- `webapp-testing`
-- `world-runtime-capability`
-- `wrangler`
-- `xypic-latex`
-- `zig`
-- `zig-syrup-bci`
-- `zig-systems`
-- `zulip-cogen`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

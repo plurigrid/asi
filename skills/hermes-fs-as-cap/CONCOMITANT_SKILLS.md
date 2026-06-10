@@ -1,33 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acp-commons` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Atlas of Agent Client Protocol (ACP) clients, agents, and OCapN CapTP grounded actors.
+- `bob` — builds on — World BOB Skill
+- `codex-ocapn-correspondence` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — >-
+- `goblins` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Distributed object capability system (6.5K lines info).
+- `goblins-adapter` — sibling in the agent & capability protocols (CapTP OCapN) cluster — ElizaOS OpenClaw Goblins OCapN adapter (study + bridge)
+- `hermes-goblins-bridge` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Interface compatible bridges from Hermes Agent harness (~ i hermes agent) to Spritely Gob…
+- `hermes-net-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' SSRF blocklist (resolve then connect with documented DNS rebinding TOCTOU…
+- `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `syrup` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Syrup binary serialization for OCapN CapTP wire format.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acp-commons`
-- `bob`
-- `codex-ocapn-correspondence`
-- `goblins`
-- `goblins-adapter`
-- `hermes-goblins-bridge`
-- `hermes-net-as-cap`
-- `scheme`
-- `security`
-- `syrup`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `acp-commons`
-- `codex-ocapn-correspondence`
-- `hermes-goblins-bridge`
-- `hermes-net-as-cap`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

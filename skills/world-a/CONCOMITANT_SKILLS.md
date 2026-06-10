@@ -1,47 +1,24 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets` — builds on — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `acsets-hatchery` — invoked by — Attributed C Sets as algebraic databases.
+- `algebraic-rewriting` — invoked by — Category theoretic graph rewriting with DPO, SPO, and SqPO pushouts for C Sets.
+- `aptos-agent` — builds on — Interact with Aptos blockchain - check balances, transfer APT, swap tokens, stake, and ex…
+- `coherence-composer` — invoked by — The **Coherence Composer** is an epistemological skill that validates structural consiste…
+- `derham-cohomology` — invoked by — Differential forms on signal manifolds with exterior algebra, Hodge star, and de Rham com…
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `infinity-categories` — invoked by — Higher category theory via simplicial sets, Kan complexes, (∞,1)-categories, Segal spaces…
+- `infinity-topoi` — invoked by — Higher topos theory via ∞-sheaves, descent, Giraud axioms, modalities, Postnikov towers, …
+- `model-categories` — invoked by — Homotopical algebra via weak equivalences, fibrations, cofibrations, Quillen adjunctions,…
+- `openclaw-goblins-adapter` — invoked by — Bridge ElizaOS OpenClaw plugins to Goblins OCapN actors.
+- `operadic-composition` — invoked by — Colored operads for multi input composition, associahedra, A infinity structure, and homo…
+- `plurigrid-asi-integrated` — builds on — Unified Plurigrid ASI skill combining ACSets, Gay MCP colors, bisimulation games, world h…
+- `scum-resource` — invoked by — SCUM Resource Skill
+- `sheaf-cohomology-bci` — invoked by — Local to global signal consistency via cellular sheaves, Cech cohomology, and sheaf Lapla…
+- `world-replay-buffer` — sibling in the world: navigation cluster — Maximally snapshotted replay buffer with DuckLake embedding VSS and moments of interactio…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets`
-- `acsets-hatchery`
-- `algebraic-rewriting`
-- `aptos-agent`
-- `coherence-composer`
-- `derham-cohomology`
-- `gay-mcp`
-- `infinity-categories`
-- `infinity-topoi`
-- `model-categories`
-- `openclaw-goblins-adapter`
-- `operadic-composition`
-- `plurigrid-asi-integrated`
-- `scum-resource`
-- `sheaf-cohomology-bci`
-- `world-replay-buffer`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `acsets-hatchery`
-- `algebraic-rewriting`
-- `coherence-composer`
-- `derham-cohomology`
-- `infinity-categories`
-- `infinity-topoi`
-- `model-categories`
-- `openclaw-goblins-adapter`
-- `operadic-composition`
-- `scum-resource`
-- `sheaf-cohomology-bci`
-- `world-replay-buffer`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

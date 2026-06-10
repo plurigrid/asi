@@ -1,30 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bmorphism-stars` — invoked by — bmorphism's GitHub stars (2155 repos) and created repos - a curated index
+- `enzyme-autodiff` — mutually referenced — Enzyme.jl Automatic Differentiation Skill
+- `julia-gpu-kernels` — sibling in the interactive REPLs & Lisp tooling cluster — KernelAbstractions.jl: Backend agnostic GPU kernel programming for Julia.
+- `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
+- `sicm` — sibling in the interactive REPLs & Lisp tooling cluster — - **Generic arithmetic** extensible across numeric types
+- `worlding` — builds on — Gay.jl world_ pattern: persistent composable state builders with GF(3) conservation, Möbi…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bmorphism-stars`
-- `enzyme-autodiff`
-- `julia-gpu-kernels`
-- `repl-commons`
-- `sicm`
-- `worlding`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `bmorphism-stars`
-- `enzyme-autodiff`
-- `julia-gpu-kernels`
-- `repl-commons`
-- `sicm`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

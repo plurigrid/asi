@@ -1,31 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `code-reviewer` — builds on — Use this skill to review code.
+- `gh` — sibling in the skill routing & dispatch cluster — GitHub CLI (212 man pages).
+- `github-code-review` — sibling in the skill routing & dispatch cluster — Comprehensive GitHub code review with AI powered swarm coordination
+- `github-release-management` — sibling in the skill routing & dispatch cluster — Comprehensive GitHub release orchestration with AI swarm coordination for automated versi…
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
+- `orchestrate` — sibling in the skill routing & dispatch cluster — Orchestrate multiple AI agents across Vers VMs for parallel task execution
+- `org` — builds on — Org mode manual (25K lines info).
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `synchronization` — builds on — Convergence to common trajectory in coupled systems
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `code-reviewer`
-- `gh`
-- `github-code-review`
-- `github-release-management`
-- `init`
-- `npm`
-- `orchestrate`
-- `org`
-- `security`
-- `synchronization`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `github-code-review`
-- `github-release-management`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

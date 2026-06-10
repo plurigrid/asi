@@ -1,33 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `counter-surveillance` — invoked by — Assess and harden operational security (OPSEC) posture for applications, communications, …
+- `cynara-policy-checker` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Queries Cynara database and validates runtime privilege policies.
+- `iot-device-provisioning` — builds on — Secure provisioning for TizenRT ARTIK IoT devices.
+- `manifest-privilege-validator` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Validates tizen manifest.xml privilege declarations.
+- `osint-exposure-audit` — invoked by — >
+- `sandbox-escape-detector` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Tests Tizen application sandboxes for privilege escalation and escape vulnerabilities.
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `smack-policy-auditor` — builds on — Analyzes SMACK policy files for correctness, label conflicts, and access control issues.
+- `telecom-security` — invoked by — Assess telecommunications infrastructure security including VoIP SIP, SS7 Diameter, cellu…
+- `tizen-cve-scanner` — builds on — Scans for known Tizen CVEs in app dependencies and kernel.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `counter-surveillance`
-- `cynara-policy-checker`
-- `iot-device-provisioning`
-- `manifest-privilege-validator`
-- `osint-exposure-audit`
-- `sandbox-escape-detector`
-- `sdf`
-- `security`
-- `smack-policy-auditor`
-- `telecom-security`
-- `tizen-cve-scanner`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `counter-surveillance`
-- `osint-exposure-audit`
-- `telecom-security`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,26 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bob` — sibling in the skill routing & dispatch cluster — World BOB Skill
+- `gwern-simonw-emacs` — builds on — - [simonw llm](https: github.com simonw llm) - LLM CLI with tool support
+- `hyjax-relational` — sibling in the skill routing & dispatch cluster — HyJAX Relational Thinking Skill
+- `ies` — sibling in the skill routing & dispatch cluster — ies
+- `leapity-frog` — builds on — When conservation is locally violated:
+- `linear` — sibling in the skill routing & dispatch cluster — Manage issues, projects & team workflows in Linear.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bob`
-- `gwern-simonw-emacs`
-- `hyjax-relational`
-- `ies`
-- `leapity-frog`
-- `linear`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

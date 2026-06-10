@@ -1,30 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `discopy` — builds on — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `elisp` — builds on — Emacs Lisp reference (106K lines info).
+- `emacs` — builds on — Emacs ecosystem = elisp + org + gnus + tramp + eglot.
+- `gay-mcp` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `lean-proof-walk` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — GF(3)-balanced random walk through Lean proof states.
+- `narya-hatchery` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Narya Hatchery
+- `proofgeneral-narya` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Proof General + Narya: Higher dimensional type theory proof assistant with observational …
+- `stellogen` — builds on — Stellogen Skill
+- `trajectory` — builds on — Path traced by solution through phase space
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `discopy`
-- `elisp`
-- `emacs`
-- `gay-mcp`
-- `init`
-- `lean-proof-walk`
-- `narya-hatchery`
-- `proofgeneral-narya`
-- `stellogen`
-- `trajectory`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

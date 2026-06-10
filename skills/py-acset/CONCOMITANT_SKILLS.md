@@ -1,31 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `acsets-algebraic-databases` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional navigati…
+- `acsets-hatchery` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Attributed C Sets as algebraic databases.
+- `browser-history-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Browser History ACSet
+- `chatgpt-export-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Transform ChatGPT ZIP exports into ACSets (Attributed C Sets) for:
+- `flox` — builds on — Reproducible development environments powered by Nix.
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `openai-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — OpenAI's ChatGPT export has a **tree structured mapping** where messages form a DAG via …
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets`
-- `acsets-algebraic-databases`
-- `acsets-hatchery`
-- `browser-history-acset`
-- `chatgpt-export-acset`
-- `flox`
-- `gay-mcp`
-- `init`
-- `openai-acset`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `browser-history-acset`
-- `chatgpt-export-acset`
-- `openai-acset`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,26 +1,14 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `free-monad-gen` — builds on — Free Monad Generation Skill (PLUS +1)
+- `geb` — builds on — Anoma''s Geb: Categorical semantics via S expressions, polynomial functors
+- `lispsyntax-acset` — builds on — LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv style
+- `nickel` — builds on — Nickel configuration language with gradual typing, contracts, and dynamic sufficiency ver…
+- `ocaml` — sibling in the reproducible environments & deployment cluster — OCaml ecosystem = opam + dune + merlin + ocamlformat.
+- `opam` — sibling in the reproducible environments & deployment cluster — OCaml package manager (45 subcommands).
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `free-monad-gen`
-- `geb`
-- `lispsyntax-acset`
-- `nickel`
-- `ocaml`
-- `opam`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

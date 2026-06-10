@@ -1,29 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bmorphism-stars` — builds on — bmorphism's GitHub stars (2155 repos) and created repos - a curated index
+- `bob` — builds on — World BOB Skill
+- `catsharp` — builds on — Cat# Skill (ERGODIC 0)
+- `catsharp-sonification` — builds on — Sonify GF(3) color streams via CatSharp scale.
+- `discopy` — builds on — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `discopy-operads` — builds on — DiscoPy Operads Skill
+- `ies` — builds on — ies
+- `modelica` — builds on — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `modelica-lispsyntax-interleave` — builds on — This skill unifies three systems through **alphabet color assignment**:
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bmorphism-stars`
-- `bob`
-- `catsharp`
-- `catsharp-sonification`
-- `discopy`
-- `discopy-operads`
-- `ies`
-- `modelica`
-- `modelica-lispsyntax-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

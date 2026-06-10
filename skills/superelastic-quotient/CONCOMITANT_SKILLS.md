@@ -1,31 +1,19 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acsets` — builds on — ACSets (Attributed C Sets): Algebraic databases with Specter style bidirectional
+- `babashka` — builds on — Clojure scripting without JVM startup.
+- `bisimulation-game` — builds on — Bisimulation game for resilient skill dispersal across AI agents with
+- `cat` — sibling in the skill routing & dispatch cluster — cat Skill: Derivational Pipe Chaining
+- `gay-mcp` — sibling in the skill routing & dispatch cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `ordered-locale` — builds on — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
+- `sheaf-cohomology` — sibling in the skill routing & dispatch cluster — Čech cohomology for local to global consistency verification in code
+- `skill-embedding-vss` — sibling in the skill routing & dispatch cluster — P adic ultrametric skill embeddings with MLX Snowflake Arctic, DuckDB
+- `structured-decomp` — builds on — StructuredDecompositions.jl sheaves on tree decompositions for FPT algorithms with bidire…
+- `topos-generate` — builds on — Topos Generation Skill (PLUS +1)
+- `tripartite-decompositions` — builds on — GF(3)-balanced structured decompositions for parallel computation.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acsets`
-- `babashka`
-- `bisimulation-game`
-- `cat`
-- `gay-mcp`
-- `ordered-locale`
-- `sheaf-cohomology`
-- `skill-embedding-vss`
-- `structured-decomp`
-- `topos-generate`
-- `tripartite-decompositions`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,23 +1,11 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `glass-line` — invoked by — Physical substrate layer for Plurigrid ASI — co deployed fiber optic + geothermal infrast…
+- `ssh` — builds on — Establish and manage SSH connections to remote machines, including key generation, config…
+- `tailscale` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Mesh VPN.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `glass-line`
-- `ssh`
-- `tailscale`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `glass-line`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,52 +1,26 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `flow-nexus-platform` — invoked by — Comprehensive Flow Nexus platform management - authentication, sandboxes, app deployment,…
+- `flow-nexus-swarm` — invoked by — Cloud based AI swarm deployment and event driven workflow automation with Flow Nexus plat…
+- `github-multi-repo` — sibling in the skill routing & dispatch cluster — Multi repository coordination, synchronization, and architecture management with AI swarm…
+- `github-project-management` — sibling in the skill routing & dispatch cluster — Comprehensive GitHub project management with swarm coordinated issue tracking, project bo…
+- `github-release-management` — sibling in the skill routing & dispatch cluster — Comprehensive GitHub release orchestration with AI swarm coordination for automated versi…
+- `github-workflow-automation` — sibling in the skill routing & dispatch cluster — Advanced GitHub Actions workflow automation with AI swarm coordination, intelligent CI CD…
+- `ha-load-balancing` — invoked by — |
+- `hive-mind-advanced` — sibling in the skill routing & dispatch cluster — Advanced Hive Mind collective intelligence system for queen led multi agent coordination …
+- `magic-todo-watch-deploy` — sibling in the skill routing & dispatch cluster — Build, deploy, and manage the MagicTodoWatch iOS watchOS voice to task pipeline app.
+- `snix` — invoked by — Rust Nix reimplementation for content addressed rootfs builds.
+- `sparc-methodology` — sibling in the skill routing & dispatch cluster — SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) comprehensive dev…
+- `ssh` — sibling in the skill routing & dispatch cluster — Establish and manage SSH connections to remote machines, including key generation, config…
+- `swarm-advanced` — sibling in the multi agent orchestration cluster — Advanced swarm orchestration patterns for research, development, testing, and complex dis…
+- `swarm-orchestration` — sibling in the multi agent orchestration cluster — Orchestrate multi agent swarms with agentic flow for parallel task execution, dynamic top…
+- `triadic-skill-orchestrator` — sibling in the skill routing & dispatch cluster — Orchestrates multiple skills in GF(3)-balanced triplets.
+- `vers` — sibling in the skill routing & dispatch cluster — Manage VERS VMs - list, create, branch, pause, resume, delete VMs and clusters.
+- `vers-agent` — sibling in the skill routing & dispatch cluster — ACP compliant AI agent harness with CLI HTTP interface.
+- `vertex-ai-protein-interleave` — sibling in the skill routing & dispatch cluster — Bridge layer connecting Vertex AI Google Cloud to plurigrid asi protein scale biology s…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `github-multi-repo`
-- `github-project-management`
-- `github-release-management`
-- `github-workflow-automation`
-- `ha-load-balancing`
-- `hive-mind-advanced`
-- `magic-todo-watch-deploy`
-- `snix`
-- `sparc-methodology`
-- `ssh`
-- `swarm-advanced`
-- `swarm-orchestration`
-- `triadic-skill-orchestrator`
-- `vers`
-- `vers-agent`
-- `vertex-ai-protein-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `github-multi-repo`
-- `github-project-management`
-- `github-release-management`
-- `github-workflow-automation`
-- `ha-load-balancing`
-- `hive-mind-advanced`
-- `magic-todo-watch-deploy`
-- `snix`
-- `sparc-methodology`
-- `swarm-advanced`
-- `swarm-orchestration`
-- `triadic-skill-orchestrator`
-- `vertex-ai-protein-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,379 +1,193 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `agent-protocol-interleave` — invoked by — Bridge layer connecting the emerging agentic coordination protocol ecosystem (MCP, A2A, A…
+- `agentic-actions-auditor` — invoked by — Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations inc…
+- `algorithmic-art` — invoked by — Creating algorithmic art using p5.js with seeded randomness and interactive
+- `anoma-intents` — invoked by — Anoma intent centric architecture for cross chain obstruction passing with Geb semantics …
+- `aptos-orderless-wev` — invoked by — World Extractable Value via Aptos orderless transactions with Strong Parallelism Invarian…
+- `attractor` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Invariant set attracting nearby trajectories
+- `aws-sso-auth-guide` — invoked by — AWS SSO discovery, configuration, and terminal usage
+- `bci-colored-operad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Brain Computer Interface with colored operad security boundaries.
+- `beacon-repeater` — invoked by — MLX↔JAX bidirectional beacon repeater with spectral gap random walk,
+- `beeper-mcp` — invoked by — Unified messaging via Beeper Desktop MCP.
+- `bidirectional-lens-logic` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Hedges' 4 kind lattice for bidirectional programming - covariant contravariant invariant …
+- `bifurcation` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Hopf bifurcation detection for dynamical system state transitions with GF(3) phase portra…
+- `bmorphism-ies-env` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Documentation and orchestration for the bmorphism ies flox environment toolkit
+- `bmorphism__cc-trace` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Interactive assistant for intercepting, debugging, analyzing and reviewing Claude Code AP…
+- `boxxy-reverse-engineering` — invoked by — This skill integrates **Boxxy sandbox boundary testing** with the complete Trail of Bits …
+- `browser-navigation` — invoked by — |
+- `buberian-relations` — invoked by — Buberian Relations Skill
+- `calendar-acset` — invoked by — Google Calendar management via CalendarACSet.
+- `cat-tripartite` — invoked by — Category Theory Tripartite: SICP generic dispatch, CTP Racket categories,
+- `catcolab-causal-loop` — invoked by — CatColab Causal Loop Diagrams - systems dynamics modeling with reinforcing (R) and balanc…
+- `catcolab-decapodes` — invoked by — CatColab Decapodes - Discrete Exterior Calculus for PDE modeling on meshes via Decapodes.…
+- `catcolab-petri-nets` — invoked by — CatColab Petri Nets - concurrent system modeling via places (states), transitions (events…
+- `catcolab-stock-flow` — invoked by — CatColab Stock and Flow Diagrams - epidemiological and ecological modeling with stocks (a…
+- `catlab-asi-interleave` — invoked by — Bridge layer connecting AlgebraicJulia Catlab.jl to plurigrid asi.
+- `cats-for-ai` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — cats.for" (Categories for AI)
+- `cc-trace` — invoked by — Intercept and debug Claude Code API requests using mitmproxy.
+- `cheerpx-self-hosting` — invoked by — Run x86 Linux binaries in the browser via WebAssembly.
+- `clinical-decision-support` — invoked by — Generate professional clinical decision support (CDS) documents for pharmaceutical and cl…
+- `clinical-reports` — invoked by — Write comprehensive clinical reports including case reports (CARE guidelines), diagnostic…
+- `code-documentation` — invoked by — Writing effective code documentation - API docs, README files, inline
+- `cognitive-superposition` — invoked by — Cognitive superposition synthesizing Riehl (∞-categories), Sutskever
+- `compositional-acset-comparison` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Compositional algorithm and data analysis via algebraic databases
+- `condensed-anima-qc` — invoked by — Condensed ANIMA on quantum classical and classical quantum networks.
+- `content-research-writer` — invoked by — Assists in writing high quality content by conducting research, adding
+- `ctf-pwn` — invoked by — Solve CTF binary exploitation challenges by discovering and exploiting memory corruption …
+- `ctf-rev` — invoked by — Solve CTF reverse engineering challenges using systematic analysis to find flags, keys, o…
+- `ctp-yoneda` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — CTP Yoneda Skill
+- `deep-analysis` — invoked by — Performs focused, depth first investigation of specific reverse engineering questions thr…
+- `deep-inference-interleave` — invoked by — Compositional passive inference vs emergent active inference (Hedges Feb 2024) — chain ru…
+- `derangement-reflow` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — >
+- `develop-web-game` — invoked by — Use when Codex is building or iterating on a web game (HTML JS) and needs a reliable deve…
+- `docs-acset` — invoked by — Google Docs Sheets management via ACSet condensation.
+- `drive-acset` — invoked by — Google Drive management via DriveACSet schema with GF(3) triadic routing.
+- `duckdb-ies` — invoked by — Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking
+- `duckdb-quadruple-interleave` — invoked by — Chaotic interleaving across local DuckDB databases modeled as coupled quadruple pendula.
+- `ecosystem-guide` — invoked by — Guide to spences10's Claude Code ecosystem.
+- `egpu` — invoked by — External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, work…
+- `energy-dynamics-acset` — invoked by — The Energy Dynamics ACSet integrates three complementary frameworks for measuring and com…
+- `entropy-regularized-inference` — invoked by — - User asks about connecting active inference to practical RL
+- `enzyme-autodiff` — invoked by — Enzyme.jl Automatic Differentiation Skill
+- `epistemic-arbitrage` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Propagator based parallel structure for exploiting knowledge differentials
+- `equilibrium` — builds on — Fixed points where vector field vanishes
+- `exa-11-directions` — invoked by — 1.
+- `excellence-gradient` — invoked by — Measure quality.
+- `flow-nexus-neural` — invoked by — Train and deploy neural networks in distributed E2B sandboxes with Flow Nexus
+- `flow-nexus-platform` — invoked by — Comprehensive Flow Nexus platform management - authentication, sandboxes, app deployment,…
+- `flow-nexus-swarm` — invoked by — Cloud based AI swarm deployment and event driven workflow automation with Flow Nexus plat…
+- `flowio` — invoked by — Parse FCS (Flow Cytometry Standard) files v2.0 3.1.
+- `fluidsim` — invoked by — Framework for computational fluid dynamics simulations using Python.
+- `full-stack-playbook` — invoked by — |
+- `gflownet` — invoked by — Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward.
+- `gh-interactome` — invoked by — GitHub author interaction network discovery.
+- `gh-skill-explorer` — invoked by — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `github-project-management` — invoked by — Comprehensive GitHub project management with swarm coordinated issue tracking, project bo…
+- `glamorous-moldable-multiplatform` — invoked by — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
+- `gmail-anima` — invoked by — Gmail inbox management via ANIMA condensation.
+- `gworkspace-mcp` — invoked by — gworkspace mcp - Google Workspace MCP Integration with Temporal Consistency
+- `gym` — invoked by — Each gym domain resolves specific skill tensions:
+- `hermes-mcp-as-sealed` — invoked by — Replace Hermes' MCP OAuth token storage + per tool authorization with Goblins sealer unse…
+- `hive-mind-advanced` — invoked by — Advanced Hive Mind collective intelligence system for queen led multi agent coordination …
+- `hof` — invoked by — Hofstadter io hof: CUE powered code generation with flow engine and
+- `hooks-automation` — invoked by — Automated coordination, formatting, and learning from Claude Code operations using intell…
+- `hythermal` — invoked by — HyThermal Skill
+- `infinity-operads` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ∞-Operads for pairwise tritwise Cat# interactions with lazy ACSet materialization unifyin…
+- `influence-propagation` — invoked by — Layer 7: Interperspectival Network Analysis and Influence Flow
+- `intent-sink` — invoked by — Intent Sink Skill
+- `iso-13485-certification` — invoked by — Comprehensive toolkit for preparing ISO 13485 certification documentation for medical dev…
+- `jank-llvm` — invoked by — Jank - Clojure dialect targeting LLVM with seamless C++ interoperability
+- `jupyter-notebook` — invoked by — Use when the user asks to create, scaffold, or edit Jupyter notebooks (.ipynb) for expe…
+- `kinetic-block` — invoked by — Kinetic Block Skill
+- `kpz-universality` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — KPZ universality class: KPZ fixed point, directed landscape, random interface growth scal…
+- `kscale-ecosystem` — invoked by — - User asks about K Scale Labs, their robots, or open source robotics stack
+- `kscale-kos` — invoked by — - User asks about robot operating systems, firmware, or low level control
+- `l-space` — invoked by — L Space Skill: The Library of All Libraries
+- `latex-posters` — invoked by — Create professional research posters in LaTeX using beamerposter, tikzposter, or baposter.
+- `lazyjj` — invoked by — lazyjj — Ratatui TUI for Jujutsu (jj) with interactive log, files, bookmarks, and diff pa…
+- `leapity-frog` — invoked by — When conservation is locally violated:
+- `levin-levity` — invoked by — Leonid Levin''''s algorithmic complexity meets playful mutual ingression.
+- `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
+- `livestream` — invoked by — Warehouse audio pipeline for live capture, transcription, and narration from meeting room…
+- `localsend-mcp` — invoked by — LocalSend based P2P transfer with MCP server design for NATS Tailscale
+- `lyapunov-function` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Scalar function decreasing along trajectories
+- `market-research-reports` — invoked by — Generate comprehensive market research reports (50+ pages) in the style of top consulting…
+- `markitdown` — invoked by — Convert files and office documents to Markdown.
+- `mcp-integration` — invoked by — This skill should be used when the user asks to "add MCP server", "integrate MCP", "confi…
+- `mdm-cobordism` — invoked by — macOS MDM with auth manifolds as cobordisms for credential derivation
+- `mlx-apple-silicon` — invoked by — Run LLMs on Apple Silicon with MLX mlx_lm - unified memory, 4 bit quantization, streaming…
+- `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
+- `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
+- `modelica-lispsyntax-interleave` — invoked by — This skill unifies three systems through **alphabet color assignment**:
+- `momentum-field` — invoked by — Based on Csikszentmihalyi''s flow theory, detect via interaction patterns:
+- `move-rps-game` — invoked by — Rock Paper Scissors PvP game on Aptos with commit reveal pattern and ACSet informed design
+- `multiversal-finance` — invoked by — Multiversal Finance: Prediction Markets for Interesting Observations
+- `narya-proofs` — invoked by — Mechanically verified proofs from Narya event logs.
+- `neuro-symbolic-bridge` — invoked by — High tension pairs (d ≈ 1.85):
+- `oapply-colimit` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — oapply operad algebra evaluation via colimits with Specter style composition patterns
+- `oauth-integrations` — invoked by — |
+- `omg-tension-resolver` — invoked by — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
+- `opacity-detector` — invoked by — The **Opacity Detector** maps what can and cannot be known in a system, given an observer…
+- `opentrons-integration` — invoked by — Lab automation platform for Flex OT 2 robots.
+- `ordered-locale-fanout` — invoked by — UPDATED: Now uses proper ordered locale (Heunen van der Schaaf 2024).
+- `pair-programming` — invoked by — AI assisted pair programming with multiple modes (driver navigator switch), real time ver…
+- `paperproof-validator` — invoked by — Formal Proof Visualization and Verification for Lean 4
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `parameter-dependent` — builds on — Systems varying with external parameters
+- `parametrised-optics-cybernetics` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Parametrised optics model cybernetic systems - dynamical systems steered by agents.
+- `paypal-mcp` — invoked by — PayPal MCP server integration for invoices, payments, subscriptions, disputes, and transa…
+- `peer-review` — invoked by — Systematic peer review toolkit.
+- `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
+- `playwright-unworld` — invoked by — Playwright Unworld Skill: Deterministic Web Automation
+- `propagators` — invoked by — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
+- `qa-regression` — invoked by — Automate QA regression testing with reusable test skills.
+- `quarto-julia` — invoked by — Quarto + Julia Skill
+- `random-walk-fusion` — invoked by — Navigate skill graphs via deterministic random walks.
+- `referral-program` — invoked by — When the user wants to create, optimize, or analyze a referral program, affiliate program…
+- `reflow` — invoked by — Information Reflow Skill (ERGODIC 0)
+- `research-grants` — invoked by — Write competitive research proposals for NSF, NIH, DOE, and DARPA.
+- `research-lookup` — invoked by — Look up current research information using Perplexity's Sonar Pro Search or Sonar Reasoni…
+- `resource-sharing` — builds on — Resource Sharing Skill
+- `reverse-engineering` — invoked by — Reverse Engineering Skill
+- `rg-flow-acset` — invoked by — RG Flow ACSet Skill
+- `ruler` — invoked by — Unified AI agent configuration propagation across 18+ coding assistants.
+- `say-narration` — invoked by — Use macOS text to speech for agent narration and announcements.
+- `scholar-evaluation` — invoked by — Apply the ScholarEval framework to systematically evaluate scholarly and research work.
+- `scientific-critical-thinking` — invoked by — Evaluate research rigor.
+- `scientific-schematics` — invoked by — Create publication quality scientific diagrams using Nano Banana Pro AI with smart iterat…
+- `scientific-slides` — invoked by — Build slide decks and presentations for research talks.
+- `scientific-writing` — invoked by — Core skill for the deep research and writing tool.
+- `sdf` — invoked by — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `security-review` — invoked by — Scan code changes for security vulnerabilities using STRIDE threat modeling, validate fin…
+- `semgrep-rule-variant-creator` — invoked by — Creates language variants of existing Semgrep rules.
+- `semi-reliable-nashator` — invoked by — This skill implements the **morphisms of open games** paper''s insight: lenses connect co…
+- `sheaf-laplacian-coordination` — invoked by — Sheaf neural network coordination via graph Laplacians for distributed
+- `siegel-asi-interleave` — invoked by — The Siegel stack — physical fabrication BCI ingest GF(3) skill chain Aptos mainnet …
+- `signal-isolated-auth` — invoked by — Maximally isolated Signal authentication via colored operad security boundaries.
+- `skill-creation` — invoked by — |
+- `skill-tour` — invoked by — L shaped hops through skill space, maintaining triadic balance:
+- `social-engineering-audit` — invoked by — Assess social engineering attack surface in applications and organizations.
+- `solver-fee` — invoked by — Solver Fee Skill
+- `srfi` — invoked by — SRFI Skill
+- `stability` — builds on — Qualitative behavior of solutions near equilibria
+- `stream-chain` — invoked by — Stream JSON chaining for multi agent pipelines, data transformation, and sequential workf…
+- `string-diagram-rewriting-protocol` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Kernel protocol for compositional string diagram rewriting across all skills
+- `structural-rewilding` — invoked by — Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs).
+- `swarm-advanced` — invoked by — Advanced swarm orchestration patterns for research, development, testing, and complex dis…
+- `tailscale-localsend` — invoked by — Tailscale + LocalSend Peer Discovery
+- `tasks-acset` — invoked by — Google Tasks management via TasksACSet.
+- `tenderloin` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Tenderloin: Manifest Destiny Fund for Protocol Labs
+- `three-match` — invoked by — 3 MATCH colored subgraph isomorphism gadget for 3 SAT reduction
+- `topomodelx-hodge` — invoked by — Hodge Laplacian neural networks for simplicial cell hypergraph complexes.
+- `topos-catcolab` — invoked by — Topos Institute's CatColab for collaborative category theory - community model building, …
+- `transitive-weep` — invoked by — Each world is an **open game** with:
+- `true-alife` — invoked by — TrueALIFE: Self Indexing Automata at the Edge of Chaos
+- `tui-application-playbook` — invoked by — |
+- `universal-captp-derivation` — invoked by — Universal CapTP Derivation Skill
+- `unwiring-arena` — invoked by — Play Coplay arena theory for autopoietic closure with GF(3) conservation
+- `unworld-moments` — invoked by — Make all 69 cognitive moments happen simultaneously via parallel triadic fanout.
+- `utoronto-outlook` — invoked by — Headless University of Toronto Outlook email access via IMAP SMTP with OAuth2.
+- `uv-oneliners` — invoked by — UV UVX awesome one liners for ephemeral Python environments with multi package
+- `venue-templates` — invoked by — Access comprehensive LaTeX templates, formatting requirements, and submission guidelines …
+- `verification-quality` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `verification-quality-assurance` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `video-analysis-gf3` — invoked by — Analyze video files from chaotic_media_lake.duckdb with deterministic color assignment an…
+- `visual-design` — invoked by — |
+- `vulnerability-validation` — invoked by — Validate security findings from commit security scan by assessing exploitability, filteri…
+- `waddington-landscape` — invoked by — Waddington's epigenetic landscape: cell fate as gradient flow on potential surfaces, conn…
+- `ward-identity-checker` — invoked by — Ward Identity Checker
+- `wasm-goblins` — invoked by — Goblins ↔ WASM runtime interactions across verified runtimes.
+- `wev-orderless` — invoked by — WEV Orderless — World Extractable Value
+- `workspace-unified` — invoked by — Unified Google Workspace management via WorkspaceACSet.
+- `yang-baxter-integrability` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Yang Baxter equation for quantum integrable systems.
+- `yara-rule-authoring` — invoked by — >
+- `yb-translator` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Translate programming concepts to biological parallels using real ontology terms from EBI…
+- `zig` — invoked by — Zig ecosystem skill with emerging patterns from zig syrup
+- `zig-programming` — invoked by — >
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `agent-protocol-interleave`
-- `agentic-actions-auditor`
-- `algorithmic-art`
-- `anoma-intents`
-- `aptos-orderless-wev`
-- `attractor`
-- `aws-sso-auth-guide`
-- `bci-colored-operad`
-- `beacon-repeater`
-- `beeper-mcp`
-- `bidirectional-lens-logic`
-- `bifurcation`
-- `bmorphism-ies-env`
-- `bmorphism__cc-trace`
-- `boxxy-reverse-engineering`
-- `browser-navigation`
-- `buberian-relations`
-- `calendar-acset`
-- `cat-tripartite`
-- `catcolab-causal-loop`
-- `catcolab-decapodes`
-- `catcolab-petri-nets`
-- `catcolab-stock-flow`
-- `catlab-asi-interleave`
-- `cats-for-ai`
-- `cc-trace`
-- `cheerpx-self-hosting`
-- `clinical-decision-support`
-- `clinical-reports`
-- `code-documentation`
-- `cognitive-superposition`
-- `compositional-acset-comparison`
-- `condensed-anima-qc`
-- `content-research-writer`
-- `ctf-pwn`
-- `ctf-rev`
-- `ctp-yoneda`
-- `deep-analysis`
-- `deep-inference-interleave`
-- `derangement-reflow`
-- `develop-web-game`
-- `docs-acset`
-- `drive-acset`
-- `duckdb-ies`
-- `duckdb-quadruple-interleave`
-- `ecosystem-guide`
-- `egpu`
-- `energy-dynamics-acset`
-- `entropy-regularized-inference`
-- `enzyme-autodiff`
-- `epistemic-arbitrage`
-- `equilibrium`
-- `exa-11-directions`
-- `excellence-gradient`
-- `flow-nexus-neural`
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `flowio`
-- `fluidsim`
-- `full-stack-playbook`
-- `gflownet`
-- `gh-interactome`
-- `gh-skill-explorer`
-- `github-project-management`
-- `glamorous-moldable-multiplatform`
-- `gmail-anima`
-- `gworkspace-mcp`
-- `gym`
-- `hermes-mcp-as-sealed`
-- `hive-mind-advanced`
-- `hof`
-- `hooks-automation`
-- `hythermal`
-- `infinity-operads`
-- `influence-propagation`
-- `intent-sink`
-- `iso-13485-certification`
-- `jank-llvm`
-- `jupyter-notebook`
-- `kinetic-block`
-- `kpz-universality`
-- `kscale-ecosystem`
-- `kscale-kos`
-- `l-space`
-- `latex-posters`
-- `lazyjj`
-- `leapity-frog`
-- `levin-levity`
-- `literature-review`
-- `livestream`
-- `localsend-mcp`
-- `lyapunov-function`
-- `market-research-reports`
-- `markitdown`
-- `mcp-integration`
-- `mdm-cobordism`
-- `mlx-apple-silicon`
-- `modding-ghostty`
-- `modelica`
-- `modelica-lispsyntax-interleave`
-- `momentum-field`
-- `move-rps-game`
-- `multiversal-finance`
-- `narya-proofs`
-- `neuro-symbolic-bridge`
-- `oapply-colimit`
-- `oauth-integrations`
-- `omg-tension-resolver`
-- `opacity-detector`
-- `opentrons-integration`
-- `ordered-locale-fanout`
-- `pair-programming`
-- `paperproof-validator`
-- `para-mensch-commons`
-- `parameter-dependent`
-- `parametrised-optics-cybernetics`
-- `paypal-mcp`
-- `peer-review`
-- `phyllotaxis`
-- `playwright-unworld`
-- `propagators`
-- `qa-regression`
-- `quarto-julia`
-- `random-walk-fusion`
-- `referral-program`
-- `reflow`
-- `research-grants`
-- `research-lookup`
-- `resource-sharing`
-- `reverse-engineering`
-- `rg-flow-acset`
-- `ruler`
-- `say-narration`
-- `scholar-evaluation`
-- `scientific-critical-thinking`
-- `scientific-schematics`
-- `scientific-slides`
-- `scientific-writing`
-- `sdf`
-- `security-review`
-- `semgrep-rule-variant-creator`
-- `semi-reliable-nashator`
-- `sheaf-laplacian-coordination`
-- `siegel-asi-interleave`
-- `signal-isolated-auth`
-- `skill-creation`
-- `skill-tour`
-- `social-engineering-audit`
-- `solver-fee`
-- `srfi`
-- `stability`
-- `stream-chain`
-- `string-diagram-rewriting-protocol`
-- `structural-rewilding`
-- `swarm-advanced`
-- `tailscale-localsend`
-- `tasks-acset`
-- `tenderloin`
-- `three-match`
-- `topomodelx-hodge`
-- `topos-catcolab`
-- `transitive-weep`
-- `true-alife`
-- `tui-application-playbook`
-- `universal-captp-derivation`
-- `unwiring-arena`
-- `unworld-moments`
-- `utoronto-outlook`
-- `uv-oneliners`
-- `venue-templates`
-- `verification-quality`
-- `verification-quality-assurance`
-- `video-analysis-gf3`
-- `visual-design`
-- `vulnerability-validation`
-- `waddington-landscape`
-- `ward-identity-checker`
-- `wasm-goblins`
-- `wev-orderless`
-- `workspace-unified`
-- `yang-baxter-integrability`
-- `yara-rule-authoring`
-- `yb-translator`
-- `zig`
-- `zig-programming`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `agent-protocol-interleave`
-- `agentic-actions-auditor`
-- `algorithmic-art`
-- `anoma-intents`
-- `aptos-orderless-wev`
-- `aws-sso-auth-guide`
-- `bci-colored-operad`
-- `beacon-repeater`
-- `beeper-mcp`
-- `bidirectional-lens-logic`
-- `bmorphism-ies-env`
-- `bmorphism__cc-trace`
-- `boxxy-reverse-engineering`
-- `browser-navigation`
-- `buberian-relations`
-- `calendar-acset`
-- `cat-tripartite`
-- `catcolab-decapodes`
-- `catcolab-petri-nets`
-- `catcolab-stock-flow`
-- `catlab-asi-interleave`
-- `cats-for-ai`
-- `cc-trace`
-- `cheerpx-self-hosting`
-- `clinical-decision-support`
-- `clinical-reports`
-- `code-documentation`
-- `cognitive-superposition`
-- `compositional-acset-comparison`
-- `condensed-anima-qc`
-- `content-research-writer`
-- `ctf-pwn`
-- `ctf-rev`
-- `ctp-yoneda`
-- `deep-analysis`
-- `deep-inference-interleave`
-- `derangement-reflow`
-- `develop-web-game`
-- `docs-acset`
-- `drive-acset`
-- `duckdb-ies`
-- `duckdb-quadruple-interleave`
-- `ecosystem-guide`
-- `egpu`
-- `energy-dynamics-acset`
-- `entropy-regularized-inference`
-- `enzyme-autodiff`
-- `epistemic-arbitrage`
-- `exa-11-directions`
-- `excellence-gradient`
-- `flow-nexus-neural`
-- `flow-nexus-platform`
-- `flow-nexus-swarm`
-- `flowio`
-- `fluidsim`
-- `full-stack-playbook`
-- `gflownet`
-- `gh-interactome`
-- `gh-skill-explorer`
-- `github-project-management`
-- `glamorous-moldable-multiplatform`
-- `gmail-anima`
-- `gworkspace-mcp`
-- `gym`
-- `hermes-mcp-as-sealed`
-- `hive-mind-advanced`
-- `hof`
-- `hooks-automation`
-- `hythermal`
-- `infinity-operads`
-- `influence-propagation`
-- `intent-sink`
-- `iso-13485-certification`
-- `jank-llvm`
-- `jupyter-notebook`
-- `kinetic-block`
-- `kpz-universality`
-- `kscale-ecosystem`
-- `kscale-kos`
-- `l-space`
-- `latex-posters`
-- `lazyjj`
-- `leapity-frog`
-- `levin-levity`
-- `literature-review`
-- `livestream`
-- `localsend-mcp`
-- `market-research-reports`
-- `markitdown`
-- `mcp-integration`
-- `mdm-cobordism`
-- `mlx-apple-silicon`
-- `modding-ghostty`
-- `modelica`
-- `modelica-lispsyntax-interleave`
-- `momentum-field`
-- `move-rps-game`
-- `multiversal-finance`
-- `narya-proofs`
-- `neuro-symbolic-bridge`
-- `oapply-colimit`
-- `oauth-integrations`
-- `omg-tension-resolver`
-- `opacity-detector`
-- `opentrons-integration`
-- `ordered-locale-fanout`
-- `pair-programming`
-- `paperproof-validator`
-- `parametrised-optics-cybernetics`
-- `paypal-mcp`
-- `peer-review`
-- `playwright-unworld`
-- `propagators`
-- `qa-regression`
-- `quarto-julia`
-- `random-walk-fusion`
-- `referral-program`
-- `reflow`
-- `research-grants`
-- `research-lookup`
-- `reverse-engineering`
-- `rg-flow-acset`
-- `ruler`
-- `say-narration`
-- `scholar-evaluation`
-- `scientific-critical-thinking`
-- `scientific-schematics`
-- `scientific-slides`
-- `scientific-writing`
-- `sdf`
-- `security-review`
-- `semgrep-rule-variant-creator`
-- `semi-reliable-nashator`
-- `sheaf-laplacian-coordination`
-- `siegel-asi-interleave`
-- `signal-isolated-auth`
-- `skill-creation`
-- `skill-tour`
-- `social-engineering-audit`
-- `solver-fee`
-- `srfi`
-- `stream-chain`
-- `string-diagram-rewriting-protocol`
-- `structural-rewilding`
-- `swarm-advanced`
-- `tailscale-localsend`
-- `tasks-acset`
-- `tenderloin`
-- `three-match`
-- `topomodelx-hodge`
-- `topos-catcolab`
-- `transitive-weep`
-- `true-alife`
-- `tui-application-playbook`
-- `universal-captp-derivation`
-- `unwiring-arena`
-- `unworld-moments`
-- `utoronto-outlook`
-- `uv-oneliners`
-- `venue-templates`
-- `verification-quality`
-- `verification-quality-assurance`
-- `video-analysis-gf3`
-- `visual-design`
-- `vulnerability-validation`
-- `waddington-landscape`
-- `ward-identity-checker`
-- `wasm-goblins`
-- `wev-orderless`
-- `workspace-unified`
-- `yang-baxter-integrability`
-- `yara-rule-authoring`
-- `yb-translator`
-- `zig`
-- `zig-programming`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

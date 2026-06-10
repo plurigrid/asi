@@ -1,275 +1,136 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `2-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **2 monad** is a monad internal to a 2 category K.
+- `able-markets` — mutually referenced — Skill able markets
+- `acp-commons` — mutually referenced — Atlas of Agent Client Protocol (ACP) clients, agents, and OCapN CapTP grounded actors.
+- `adjunction-algebra` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Adjunctions as universal arrows.
+- `algebraic-rewriting` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Category theoretic graph rewriting with DPO, SPO, and SqPO pushouts for C Sets.
+- `alife-commons` — invoked by — Artificial Life atlas covering open ended evolution, chemical reaction networks, morphoge…
+- `aptos-trading` — mutually referenced — Execute trades on Aptos mainnet with price triggered profit taking and dip buying strateg…
+- `audit-context-building` — mutually referenced — Enables ultra granular, line by line code analysis to build deep architectural context be…
+- `audit-orchestrator` — mutually referenced — Audit Orchestrator
+- `audit-prep-assistant` — mutually referenced — Prepare your codebase for security review using Trail of Bits' checklist.
+- `bci-colored-operad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Brain Computer Interface with colored operad security boundaries.
+- `bidirectional-lens-logic` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Hedges' 4 kind lattice for bidirectional programming - covariant contravariant invariant …
+- `bifunctor-bridge` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Bifunctors: two argument functors for product categories.
+- `birkhoff-average` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Time average of observable along trajectory
+- `bisimulation-game` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Bisimulation game for resilient skill dispersal across AI agents with
+- `bisimulation-oracle` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — > Formal oracle for behavioral equivalence via bisimulation games.
+- `categorical-composition` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Compositional Architecture
+- `categorical-rewriting-triad4` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Categorical Rewriting: Triad 4 (World Transformation)
+- `cats-focus-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Cats Focus + Monad: Lawful composition for effect management
+- `cats-for-ai` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — cats.for" (Categories for AI)
+- `catsharp-galois` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — CatSharp Scale Galois Connections between agent o rama and Plurigrid ACT via Mazzola's ca…
+- `claude-questions-leaderboard` — mutually referenced — Track Claude''s best and worst questions in DuckDB.
+- `clinical-decision-support` — mutually referenced — Generate professional clinical decision support (CDS) documents for pharmaceutical and cl…
+- `clinical-reports` — mutually referenced — Write comprehensive clinical reports including case reports (CARE guidelines), diagnostic…
+- `clj-kondo-3color` — mutually referenced — clj kondo linter with Gay.jl 3 color integration for GF(3) conservation
+- `coequalizers` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Quotient redundant skill paths via coequalizers, preserving GF(3) conservation
+- `comonad-context` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Comonads: dual to Monad.
+- `coupled-system` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Interacting dynamical systems
+- `covariant-fibrations` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Riehl Shulman covariant fibrations for dependent types over directed
+- `covariant-modification` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and …
+- `ctp-yoneda` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — CTP Yoneda Skill
+- `cybernetic-open-game` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Cybernetic Open Game Skill
+- `derham-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Differential forms on signal manifolds with exterior algebra, Hodge star, and de Rham com…
+- `derived-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Homological algebra via chain complexes, derived functors (Tor Ext), triangulated categor…
+- `dialectica` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Dialectica Skill (ERGODIC 0)
+- `discopy` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — DisCoPy: Python library for computing with string diagrams - monoidal categories, quantum…
+- `discopy-functor` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Monoidal functor evaluation for string diagrams.
+- `discopy-operads` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — DiscoPy Operads Skill
+- `discrete-backprop` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Gradient free optimization via discrete perturbations and trit based learning
+- `distributive-law` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Distributive laws: monad comonad composition.
+- `doctrinal-adjunction` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **doctrinal adjunction** is Kelly''s 1974 theorem establishing a canonical bijection be…
+- `ducklake-temporal-introspection` — mutually referenced — Time travel queries and temporal versioning for DuckLake
+- `dynamical-system-functor` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Categorical structure of dynamical systems
+- `effective-parallelism` — mutually referenced — GF(3)-balanced parallel agent orchestration with operad composition and prediction market…
+- `elements-infinity-cats` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Elements of ∞-Category Theory (Riehl Verity) for foundational ∞-categorical
+- `elicit-prediction-market` — mutually referenced — Interface with the live Basin prediction market at elicit.attic.codes.
+- `end-coend` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Ends and Coends: universal (co)wedges.
+- `entropy-sequencer` — mutually referenced — Layer 5: Interaction Interleaving for Maximum Information Gain
+- `feedforward-learning-local` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Alternative Learning Paradigms
+- `flow` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — One parameter group of diffeomorphisms generated by vector field
+- `formal-verification-ai` — mutually referenced — **Category:** Phase 3 Core - Correctness Guarantees
+- `forward-forward-learning` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Hinton's Forward Forward algorithm for local learning without backpropagation.
+- `free-forgetful` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Free Forgetful adjunctions.
+- `galois-connections` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Galois connections for lawful conversions and bi Heyting topos logic.
+- `gf3-conservation-oracle` — mutually referenced — > Formal oracle verifying GF(3) trit conservation across skill triads.
+- `gf3-constrained-animation` — mutually referenced — A skill for creating minimal, GF(3)-constrained animations optimized for Slack emoji GIFs
+- `gf3-neighborhood` — mutually referenced — GF(3) neighborhood awareness with harmonic centrality - every skill knows its neighbors a…
+- `gf3-pr-verify` — mutually referenced — Verify GF(3) skill conservation on pull requests.
+- `gf3-tripartite` — mutually referenced — GF(3) Tripartite Orchestration
+- `gf3-trit-oracle` — mutually referenced — > The fundamental GF(3) trit oracle.
+- `gh-skill-explorer` — mutually referenced — GitHub exploration skill for discovering SKILL.md patterns across repositories.
+- `glass-bead-game` — mutually referenced — Hesse inspired interdisciplinary synthesis game with Badiou triangle
+- `graded-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — A **graded monad** (also called an **indexed monad** or **parametrized monad**) is a mona…
+- `grothendieck-fibration` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Fibrations and indexed categories.
+- `hom-functor` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Hom(A,-) and Hom(-,B) representables.
+- `infinity-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Higher category theory via simplicial sets, Kan complexes, (∞,1)-categories, Segal spaces…
+- `infinity-operads` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — ∞-Operads for pairwise tritwise Cat# interactions with lazy ACSet materialization unifyin…
+- `interactome-rl-env` — mutually referenced — ACSet native reinforcement learning environment for contributor network dynamics.
+- `invariant-measure` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Measure preserved by the flow
+- `invariant-set` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Sets preserved by the flow
+- `join-semilattice` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Join semilattices and sup preservation.
+- `joker-lint` — mutually referenced — Joker Lint Skill
+- `just-monad` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — The **Just Monad** treats just recipes as monadic actions:
+- `kan-extension` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Left Right Kan extensions.
+- `kan-extensions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Kan Extensions Skill (ERGODIC 0)
+- `karpathy-guidelines` — mutually referenced — Behavioral guidelines to reduce common LLM coding mistakes.
+- `koopman-generator` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Koopman operator theory for infinite dimensional linear lifting of nonlinear dynamics.
+- `kuramoto-model` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Coupled oscillators with sinusoidal coupling
+- `langevin-dynamics` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Layer 5: SDE Based Learning Analysis via Langevin Dynamics
+- `lasalle-invariance` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Invariance principle for asymptotic stability
+- `lawvere-theory` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Lawvere theories: categorical universal algebra.
+- `lyapunov-function` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Scalar function decreasing along trajectories
+- `lyapunov-stability` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Stability via Lyapunov's direct method
+- `model-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Homotopical algebra via weak equivalences, fibrations, cofibrations, Quillen adjunctions,…
+- `monad-bayes-asi-interleave` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Bridge layer connecting tweag monad bayes to plurigrid asi.
+- `monoidal-category` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Monoidal categories: ⊗, I, α, λ, ρ.
+- `mutual-information-oracle` — mutually referenced — > Formal oracle quantifying coordination between agents in multi agent reinforcement lear…
+- `natural-transformation` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Natural transformations: morphisms of functors.
+- `oapply-colimit` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — oapply operad algebra evaluation via colimits with Specter style composition patterns
+- `open-games` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Open Games Skill (ERGODIC 0)
+- `open-games-plurigrid` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — This skill unifies:
+- `operad-composition` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Operads: multi input operations.
+- `operadic-composition` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Colored operads for multi input composition, associahedra, A infinity structure, and homo…
+- `operadic-delegation` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — From Interverse transcript (Aug 2025):
+- `oriented-simplicial-networks` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — **Category:** Phase 3 Core - Geometric Deep Learning
+- `parallel-fanout` — mutually referenced — Metaskill that fans out on every interaction, using interaction entropy
+- `parallel-subagent-split` — mutually referenced — In a traced monoidal category, the trace operation models feedback:
+- `parameter-dependent` — mutually referenced — Systems varying with external parameters
+- `parametrised-optics-cybernetics` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Parametrised optics model cybernetic systems - dynamical systems steered by agents.
+- `peer-review` — mutually referenced — Systematic peer review toolkit.
+- `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
+- `python-scientific-commons` — invoked by — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
+- `quantum-balalaika` — mutually referenced — - **Contraction**: Remove belief WRONG, beliefs persist
+- `quantum-music` — mutually referenced — Quantum computer music composition and performance using quantum circuits, ZX calculus no…
+- `quillen-model` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Quillen model categories: (C,W,F) structures.
+- `repl-commons` — mutually referenced — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
+- `rezk-types` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Rezk types (complete Segal spaces).
+- `right-adjoint` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Right adjoints preserve limits.
+- `rubato-composer` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Rubato Composer integration for Mazzola's mathematical music theory
+- `segal-space` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Segal spaces: ∞-categories via simplicial spaces.
+- `segal-types` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Segal types for synthetic ∞-categories.
+- `spi-parallel-verify` — mutually referenced — Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for
+- `structural-stability` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Robustness of qualitative dynamics under perturbation
+- `synthetic-adjunctions` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Synthetic adjunctions in directed type theory for ∞-categorical universal
+- `three-match` — mutually referenced — 3 MATCH colored subgraph isomorphism gadget for 3 SAT reduction
+- `time-parameterization` — mutually referenced — Reparameterization of time in flows
+- `time-travel-crdt` — mutually referenced — Time Travel CRDT Skill
+- `triad-interleave` — mutually referenced — Interleave three deterministic color streams into balanced schedules
+- `triadic-skill-loader` — mutually referenced — Triadic Skill Loader
+- `triadic-skill-orchestrator` — mutually referenced — Orchestrates multiple skills in GF(3)-balanced triplets.
+- `virtual-double` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Virtual double categories: loose morphisms.
+- `weighted-limit` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Weighted (co)limits: J indexed diagrams.
+- `wev-orderless` — mutually referenced — WEV Orderless — World Extractable Value
+- `x-module-bimodule` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Bimodules and profunctors.
+- `yang-baxter-integrability` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Yang Baxter equation for quantum integrable systems.
+- `yb-translator` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Translate programming concepts to biological parallels using real ontology terms from EBI…
+- `yoneda-directed` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Directed Yoneda lemma as directed path induction.
+- `yoneda-embedding` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Yoneda: C [Cᵒᵖ, Set] fully faithful.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `2-monad`
-- `able-markets`
-- `acp-commons`
-- `adjunction-algebra`
-- `algebraic-rewriting`
-- `alife-commons`
-- `aptos-trading`
-- `audit-context-building`
-- `audit-orchestrator`
-- `audit-prep-assistant`
-- `bci-colored-operad`
-- `bidirectional-lens-logic`
-- `bifunctor-bridge`
-- `birkhoff-average`
-- `bisimulation-game`
-- `bisimulation-oracle`
-- `categorical-composition`
-- `categorical-rewriting-triad4`
-- `cats-focus-monad`
-- `cats-for-ai`
-- `catsharp-galois`
-- `claude-questions-leaderboard`
-- `clinical-decision-support`
-- `clinical-reports`
-- `clj-kondo-3color`
-- `coequalizers`
-- `comonad-context`
-- `coupled-system`
-- `covariant-fibrations`
-- `covariant-modification`
-- `ctp-yoneda`
-- `cybernetic-open-game`
-- `derham-cohomology`
-- `derived-categories`
-- `dialectica`
-- `discopy`
-- `discopy-functor`
-- `discopy-operads`
-- `discrete-backprop`
-- `distributive-law`
-- `doctrinal-adjunction`
-- `ducklake-temporal-introspection`
-- `dynamical-system-functor`
-- `effective-parallelism`
-- `elements-infinity-cats`
-- `elicit-prediction-market`
-- `end-coend`
-- `entropy-sequencer`
-- `feedforward-learning-local`
-- `flow`
-- `formal-verification-ai`
-- `forward-forward-learning`
-- `free-forgetful`
-- `galois-connections`
-- `gf3-conservation-oracle`
-- `gf3-constrained-animation`
-- `gf3-neighborhood`
-- `gf3-pr-verify`
-- `gf3-tripartite`
-- `gf3-trit-oracle`
-- `gh-skill-explorer`
-- `glass-bead-game`
-- `graded-monad`
-- `grothendieck-fibration`
-- `hom-functor`
-- `infinity-categories`
-- `infinity-operads`
-- `interactome-rl-env`
-- `invariant-measure`
-- `invariant-set`
-- `join-semilattice`
-- `joker-lint`
-- `just-monad`
-- `kan-extension`
-- `kan-extensions`
-- `karpathy-guidelines`
-- `koopman-generator`
-- `kuramoto-model`
-- `langevin-dynamics`
-- `lasalle-invariance`
-- `lawvere-theory`
-- `lyapunov-function`
-- `lyapunov-stability`
-- `model-categories`
-- `monad-bayes-asi-interleave`
-- `monoidal-category`
-- `mutual-information-oracle`
-- `natural-transformation`
-- `oapply-colimit`
-- `open-games`
-- `open-games-plurigrid`
-- `operad-composition`
-- `operadic-composition`
-- `operadic-delegation`
-- `oriented-simplicial-networks`
-- `parallel-fanout`
-- `parallel-subagent-split`
-- `parameter-dependent`
-- `parametrised-optics-cybernetics`
-- `peer-review`
-- `phyllotaxis`
-- `python-scientific-commons`
-- `quantum-balalaika`
-- `quantum-music`
-- `quillen-model`
-- `repl-commons`
-- `rezk-types`
-- `right-adjoint`
-- `rubato-composer`
-- `segal-space`
-- `segal-types`
-- `spi-parallel-verify`
-- `structural-stability`
-- `synthetic-adjunctions`
-- `three-match`
-- `time-parameterization`
-- `time-travel-crdt`
-- `triad-interleave`
-- `triadic-skill-loader`
-- `triadic-skill-orchestrator`
-- `virtual-double`
-- `weighted-limit`
-- `wev-orderless`
-- `x-module-bimodule`
-- `yang-baxter-integrability`
-- `yb-translator`
-- `yoneda-directed`
-- `yoneda-embedding`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `2-monad`
-- `able-markets`
-- `acp-commons`
-- `adjunction-algebra`
-- `algebraic-rewriting`
-- `alife-commons`
-- `aptos-trading`
-- `audit-context-building`
-- `audit-orchestrator`
-- `audit-prep-assistant`
-- `bci-colored-operad`
-- `bidirectional-lens-logic`
-- `bifunctor-bridge`
-- `birkhoff-average`
-- `bisimulation-game`
-- `bisimulation-oracle`
-- `categorical-composition`
-- `categorical-rewriting-triad4`
-- `cats-focus-monad`
-- `cats-for-ai`
-- `catsharp-galois`
-- `claude-questions-leaderboard`
-- `clinical-decision-support`
-- `clinical-reports`
-- `clj-kondo-3color`
-- `coequalizers`
-- `comonad-context`
-- `coupled-system`
-- `covariant-fibrations`
-- `covariant-modification`
-- `ctp-yoneda`
-- `cybernetic-open-game`
-- `derham-cohomology`
-- `derived-categories`
-- `dialectica`
-- `discopy`
-- `discopy-functor`
-- `discopy-operads`
-- `discrete-backprop`
-- `distributive-law`
-- `doctrinal-adjunction`
-- `ducklake-temporal-introspection`
-- `dynamical-system-functor`
-- `effective-parallelism`
-- `elements-infinity-cats`
-- `elicit-prediction-market`
-- `end-coend`
-- `entropy-sequencer`
-- `feedforward-learning-local`
-- `flow`
-- `formal-verification-ai`
-- `forward-forward-learning`
-- `free-forgetful`
-- `galois-connections`
-- `gf3-conservation-oracle`
-- `gf3-constrained-animation`
-- `gf3-neighborhood`
-- `gf3-pr-verify`
-- `gf3-tripartite`
-- `gf3-trit-oracle`
-- `gh-skill-explorer`
-- `glass-bead-game`
-- `graded-monad`
-- `grothendieck-fibration`
-- `hom-functor`
-- `infinity-categories`
-- `infinity-operads`
-- `interactome-rl-env`
-- `invariant-measure`
-- `invariant-set`
-- `join-semilattice`
-- `joker-lint`
-- `just-monad`
-- `kan-extension`
-- `kan-extensions`
-- `karpathy-guidelines`
-- `koopman-generator`
-- `kuramoto-model`
-- `langevin-dynamics`
-- `lasalle-invariance`
-- `lawvere-theory`
-- `lyapunov-function`
-- `lyapunov-stability`
-- `model-categories`
-- `monad-bayes-asi-interleave`
-- `monoidal-category`
-- `mutual-information-oracle`
-- `natural-transformation`
-- `oapply-colimit`
-- `open-games`
-- `open-games-plurigrid`
-- `operad-composition`
-- `operadic-composition`
-- `operadic-delegation`
-- `oriented-simplicial-networks`
-- `parallel-fanout`
-- `parallel-subagent-split`
-- `parameter-dependent`
-- `parametrised-optics-cybernetics`
-- `peer-review`
-- `phyllotaxis`
-- `python-scientific-commons`
-- `quantum-balalaika`
-- `quantum-music`
-- `quillen-model`
-- `repl-commons`
-- `rezk-types`
-- `right-adjoint`
-- `rubato-composer`
-- `segal-space`
-- `segal-types`
-- `spi-parallel-verify`
-- `structural-stability`
-- `synthetic-adjunctions`
-- `three-match`
-- `time-parameterization`
-- `time-travel-crdt`
-- `triad-interleave`
-- `triadic-skill-loader`
-- `triadic-skill-orchestrator`
-- `virtual-double`
-- `weighted-limit`
-- `wev-orderless`
-- `x-module-bimodule`
-- `yang-baxter-integrability`
-- `yb-translator`
-- `yoneda-directed`
-- `yoneda-embedding`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

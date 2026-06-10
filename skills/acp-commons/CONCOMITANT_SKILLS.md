@@ -1,71 +1,43 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bob` — builds on — World BOB Skill
+- `captp` — sibling in the agent & capability protocols (CapTP OCapN) cluster — CapTP: Capability Transfer Protocol
+- `dynamic-sufficiency-goblin` — mutually referenced — Self regulating Goblins actor implementing Ivan Illich's dynamic sufficiency
+- `emacs` — builds on — Emacs ecosystem = elisp + org + gnus + tramp + eglot.
+- `goblins` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Distributed object capability system (6.5K lines info).
+- `goblins-adapter` — sibling in the agent & capability protocols (CapTP OCapN) cluster — ElizaOS OpenClaw Goblins OCapN adapter (study + bridge)
+- `google-cloud-ocapn-vats` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Google Cloud Platform project and API management for plurigrid.com org.
+- `guile-goblins-hoot` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Spritely Goblins distributed actor system with Hoot WebAssembly compiler.
+- `hermes-acp-over-captp` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Bridge Hermes' ACP (Agent Client Protocol) transport onto OCapN CapTP for RPC and Syndica…
+- `hermes-approval-as-revocable` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' regex based dangerous command detector + per session approval state with …
+- `hermes-cred-as-sturdy` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' multi credential pool (raw API keys in process memory + file store) with …
+- `hermes-cron-as-dataspace` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' cron scheduler (jobs.py + scheduler.py) with scheduled facts in a Syndica…
+- `hermes-ctx-engine-shim` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Re ground Hermes' ContextEngine plugin lifecycle (on_session_start update_from_response…
+- `hermes-fs-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' ambient filesystem authority (validate then open) with a Goblins single d…
+- `hermes-goblins-bridge` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Interface compatible bridges from Hermes Agent harness (~ i hermes agent) to Spritely Gob…
+- `hermes-mcp-as-sealed` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' MCP OAuth token storage + per tool authorization with Goblins sealer unse…
+- `hermes-mem-as-dataspace` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Collapse Hermes' 8 memory backends (honcho mem0 supermemory hindsight retaindb openviking…
+- `hermes-net-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' SSRF blocklist (resolve then connect with documented DNS rebinding TOCTOU…
+- `hermes-session-as-snapshot` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' session trajectory persistence (JSON files + in memory dict + flush point…
+- `hermes-tool-as-cap` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Replace Hermes' singleton ToolRegistry (name handler dispatch with ambient authority) w…
+- `modal` — builds on — Run Python code in the cloud with serverless containers, GPUs, and autoscaling.
+- `openclaw-goblins-adapter` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Bridge ElizaOS OpenClaw plugins to Goblins OCapN actors.
+- `para-mensch-commons` — mutually referenced — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `python-scientific-commons` — invoked by — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
+- `repl-commons` — mutually referenced — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
+- `shadow-goblin` — mutually referenced — shadow goblin
+- `syrup` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Syrup binary serialization for OCapN CapTP wire format.
+- `teglon-acp` — sibling in the agent & capability protocols (CapTP OCapN) cluster — - α: Message dispatch | β: Protocol switch | γ: Identity preservation
+- `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
+- `toad-telemetry` — sibling in the agent & capability protocols (CapTP OCapN) cluster — OpenTelemetry instrumentation for Batrachian Toad AI agent terminal.
+- `universal-captp-derivation` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Universal CapTP Derivation Skill
+- `wasm-goblins` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Goblins ↔ WASM runtime interactions across verified runtimes.
+- `yb-translator` — builds on — Translate programming concepts to biological parallels using real ontology terms from EBI…
+- `zig` — builds on — Zig ecosystem skill with emerging patterns from zig syrup
+- `zig-syrup-propagator-interleave` — sibling in the agent & capability protocols (CapTP OCapN) cluster — > Bridge connecting zig syrup advanced computational modules (propagator networks, homoto…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bob`
-- `captp`
-- `dynamic-sufficiency-goblin`
-- `emacs`
-- `goblins`
-- `goblins-adapter`
-- `google-cloud-ocapn-vats`
-- `guile-goblins-hoot`
-- `hermes-acp-over-captp`
-- `hermes-approval-as-revocable`
-- `hermes-cred-as-sturdy`
-- `hermes-cron-as-dataspace`
-- `hermes-ctx-engine-shim`
-- `hermes-fs-as-cap`
-- `hermes-goblins-bridge`
-- `hermes-mcp-as-sealed`
-- `hermes-mem-as-dataspace`
-- `hermes-net-as-cap`
-- `hermes-session-as-snapshot`
-- `hermes-tool-as-cap`
-- `modal`
-- `openclaw-goblins-adapter`
-- `para-mensch-commons`
-- `python-scientific-commons`
-- `repl-commons`
-- `shadow-goblin`
-- `syrup`
-- `teglon-acp`
-- `terminal`
-- `toad-telemetry`
-- `universal-captp-derivation`
-- `wasm-goblins`
-- `yb-translator`
-- `zig`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `captp`
-- `dynamic-sufficiency-goblin`
-- `goblins`
-- `goblins-adapter`
-- `google-cloud-ocapn-vats`
-- `guile-goblins-hoot`
-- `openclaw-goblins-adapter`
-- `para-mensch-commons`
-- `python-scientific-commons`
-- `repl-commons`
-- `shadow-goblin`
-- `syrup`
-- `teglon-acp`
-- `toad-telemetry`
-- `universal-captp-derivation`
-- `wasm-goblins`
-- `zig-syrup-propagator-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

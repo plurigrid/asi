@@ -1,25 +1,11 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `farben-generator` — mutually referenced — Deterministische Farbenerzeugung mit deutschen Farbnamen (Fröhlich.jl)
+- `stahl-übersetzer` — invoked by — Steel Stahl Übersetzungsvalidierung mit semantischer Erhaltung und Typ Äquivalenz
+- `wortspiel-generator` — invoked by — Bilingual German English pun generator with Fröhlich.jl color mapping
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `farben-generator`
-- `stahl-übersetzer`
-- `wortspiel-generator`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `farben-generator`
-- `stahl-übersetzer`
-- `wortspiel-generator`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,171 +1,84 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `#E847C0` — invoked by — #E847C0
+- `2600-magazine` — sibling in the skill routing & dispatch cluster — Query and explore the 2600: The Hacker Quarterly magazine archive (1984 present) via Duck…
+- `_integrated` — sibling in the skill routing & dispatch cluster — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `academic-research` — sibling in the skill routing & dispatch cluster — Search academic papers across arXiv, PubMed, Semantic Scholar, bioRxiv, medRxiv, Google S…
+- `alice-emacs-mods` — invoked by — Tour of Alice's heavily customized terminal Emacs — Causal transients, Worlding org, proo…
+- `alife` — invoked by — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
+- `alife2025` — invoked by — ALIFE 2025 Proceedings - 337 pages, 80+ papers on artificial life, evolution, emergence, …
+- `anna-archive` — sibling in the skill routing & dispatch cluster — Anna's Archive integration for academic paper and book retrieval.
+- `asi-integrated` — invoked by — Unified ASI skill combining ACSets, Gay MCP colors, bisimulation games, world hopping, gl…
+- `bdd-mathematical-verification` — invoked by — BDD Driven Mathematical Content Verification Skill
+- `biomni` — invoked by — Autonomous biomedical AI agent framework for executing complex research tasks across geno…
+- `biorxiv-database` — invoked by — Efficient database search tool for bioRxiv preprint server.
+- `browser-navigation` — sibling in the skill routing & dispatch cluster — |
+- `citizen-lab-forensics` — invoked by — Digital forensics techniques for detecting device compromise, analyzing malware indicator…
+- `clinical-decision-support` — invoked by — Generate professional clinical decision support (CDS) documents for pharmaceutical and cl…
+- `content-research-writer` — sibling in the skill routing & dispatch cluster — Assists in writing high quality content by conducting research, adding
+- `derivational-coalgebra` — invoked by — The highest tension in skill space (d=2.131):
+- `doc` — sibling in the skill routing & dispatch cluster — Use when the task involves reading, creating, or editing .docx documents, especially wh…
+- `docs-acset` — sibling in the skill routing & dispatch cluster — Google Docs Sheets management via ACSet condensation.
+- `docx` — sibling in the skill routing & dispatch cluster — Comprehensive document creation, editing, and analysis with support for
+- `etetoolkit` — invoked by — Phylogenetic tree toolkit (ETE).
+- `file-organizer` — sibling in the skill routing & dispatch cluster — Intelligently organizes your files and folders across your computer by
+- `firecrawl-patterns` — sibling in the skill routing & dispatch cluster — Firecrawl MCP for web scraping and search.
+- `flow-nexus-platform` — invoked by — Comprehensive Flow Nexus platform management - authentication, sandboxes, app deployment,…
+- `google-workspace` — sibling in the skill routing & dispatch cluster — Google Workspace MCP integration for Gmail, Drive, Calendar, Docs, Sheets, Slides, Forms,…
+- `haskell-diagrams` — invoked by — haskell diagrams - Declarative Vector Graphics with Diagrams DSL
+- `histolab` — invoked by — Digital pathology image processing toolkit for whole slide images (WSI).
+- `hypogenic` — invoked by — Automated hypothesis generation and testing using large language models.
+- `icij-document-analysis` — invoked by — Document processing pipeline for large scale leak analysis.
+- `ies-triadic` — sibling in the skill routing & dispatch cluster — IES Triadic Skill
+- `invoice-organizer` — sibling in the skill routing & dispatch cluster — Automatically organizes invoices and receipts for tax preparation by
+- `julia-scientific` — invoked by — Julia package equivalents for 137 K Dense AI scientific skills.
+- `labarchive-integration` — sibling in the skill routing & dispatch cluster — Electronic lab notebook API integration.
+- `latex-posters` — invoked by — Create professional research posters in LaTeX using beamerposter, tikzposter, or baposter.
+- `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
+- `market-research-reports` — invoked by — Generate comprehensive market research reports (50+ pages) in the style of top consulting…
+- `markitdown` — sibling in the skill routing & dispatch cluster — Convert files and office documents to Markdown.
+- `mathpix-ocr` — invoked by — Mathpix OCR for LaTeX extraction with balanced ternary checkpoints
+- `matplotlib` — invoked by — Foundational plotting library.
+- `mlx-bitnet-gf3` — invoked by — BitNet 1.58 bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:
+- `monoidal-category` — invoked by — Monoidal categories: ⊗, I, α, λ, ρ.
+- `move-fuzzing` — invoked by — Comprehensive fuzzing toolkit for Move smart contracts on Aptos, Sui, and Movement chains.
+- `move-narya-bridge` — sibling in the skill routing & dispatch cluster — Observational bridge between Move smart contracts and Narya proof verification.
+- `networkx` — invoked by — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
+- `omniglot` — sibling in the skill routing & dispatch cluster — The Lake Salakhutdinov Tenenbaum challenge for human level concept learning through proba…
+- `paper-2-web` — sibling in the skill routing & dispatch cluster — This skill should be used when converting academic papers into promotional and presentati…
+- `pdflatex` — invoked by — Install and use pdflatex to compile LaTeX documents into PDFs on Linux.
+- `peer-review` — invoked by — Systematic peer review toolkit.
+- `phylogenetic-operad-acset` — invoked by — Baez Otter phylogenetic operad Phyl = Com + [0,∞) as ACSet schema, with mathpix gem extra…
+- `playwright-unworld` — sibling in the skill routing & dispatch cluster — Playwright Unworld Skill: Deterministic Web Automation
+- `plotly` — invoked by — Interactive scientific and statistical data visualization library for Python.
+- `protocolsio-integration` — sibling in the skill routing & dispatch cluster — Integration with protocols.io API for managing scientific protocols.
+- `qri-valence` — sibling in the skill routing & dispatch cluster — qri valence skill Qualia Research Institute''s Symmetry Theory of Valence (STV) for consc…
+- `quarto-julia` — invoked by — Quarto + Julia Skill
+- `quic-channel-grading` — invoked by — |
+- `r2frida` — sibling in the skill routing & dispatch cluster — Dynamic instrumentation bridge — radare2 static analysis meets Frida runtime hooking via …
+- `reverse-engineering` — invoked by — Reverse Engineering Skill
+- `riehl-post-rigorous` — invoked by — Emily Riehl''s post rigorous mathematics framework: formalizing arguments that are "local…
+- `scanpy` — invoked by — Single cell RNA seq analysis.
+- `scientific-schematics` — invoked by — Create publication quality scientific diagrams using Nano Banana Pro AI with smart iterat…
+- `scientific-slides` — invoked by — Build slide decks and presentations for research talks.
+- `scientific-visualization` — invoked by — Create publication figures with matplotlib seaborn plotly.
+- `seaborn` — invoked by — Statistical visualization.
+- `skill-creator` — sibling in the skill routing & dispatch cluster — Guide for creating effective skills.
+- `skill-development` — sibling in the skill routing & dispatch cluster — This skill should be used when the user wants to "create a skill", "add a skill to plugin…
+- `skill-evolution` — sibling in the skill routing & dispatch cluster — Patterns for evolutionarily robust skills that adapt across agent generations.
+- `spreadsheet` — sibling in the skill routing & dispatch cluster — Use when tasks involve creating, editing, analyzing, or formatting spreadsheets (.xlsx,…
+- `stellogen` — invoked by — Stellogen Skill
+- `tailscale-file-transfer` — invoked by — Tailscale mesh VPN file transfer with open games semantics (play coplay)
+- `theme-factory` — invoked by — Toolkit for styling artifacts with a theme.
+- `treatment-plans` — invoked by — Generate concise (3 4 page), focused medical treatment plans in LaTeX PDF format for all …
+- `venue-templates` — sibling in the skill routing & dispatch cluster — Access comprehensive LaTeX templates, formatting requirements, and submission guidelines …
+- `verification-quality` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `verification-quality-assurance` — invoked by — Comprehensive truth scoring, code quality verification, and automatic rollback system wit…
+- `workspace-unified` — sibling in the skill routing & dispatch cluster — Unified Google Workspace management via WorkspaceACSet.
+- `xypic-latex` — invoked by — XY pic commutative diagrams in LaTeX with Emacs AUCTeX preview
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `#E847C0`
-- `2600-magazine`
-- `_integrated`
-- `academic-research`
-- `alice-emacs-mods`
-- `alife`
-- `alife2025`
-- `anna-archive`
-- `asi-integrated`
-- `bdd-mathematical-verification`
-- `biomni`
-- `biorxiv-database`
-- `browser-navigation`
-- `citizen-lab-forensics`
-- `clinical-decision-support`
-- `content-research-writer`
-- `derivational-coalgebra`
-- `doc`
-- `docs-acset`
-- `docx`
-- `etetoolkit`
-- `file-organizer`
-- `firecrawl-patterns`
-- `flow-nexus-platform`
-- `google-workspace`
-- `haskell-diagrams`
-- `histolab`
-- `hypogenic`
-- `icij-document-analysis`
-- `ies-triadic`
-- `invoice-organizer`
-- `julia-scientific`
-- `labarchive-integration`
-- `latex-posters`
-- `literature-review`
-- `market-research-reports`
-- `markitdown`
-- `mathpix-ocr`
-- `matplotlib`
-- `mlx-bitnet-gf3`
-- `monoidal-category`
-- `move-fuzzing`
-- `move-narya-bridge`
-- `networkx`
-- `omniglot`
-- `paper-2-web`
-- `pdflatex`
-- `peer-review`
-- `phylogenetic-operad-acset`
-- `playwright-unworld`
-- `plotly`
-- `protocolsio-integration`
-- `qri-valence`
-- `quarto-julia`
-- `quic-channel-grading`
-- `r2frida`
-- `reverse-engineering`
-- `riehl-post-rigorous`
-- `scanpy`
-- `scientific-schematics`
-- `scientific-slides`
-- `scientific-visualization`
-- `seaborn`
-- `skill-creator`
-- `skill-development`
-- `skill-evolution`
-- `spreadsheet`
-- `stellogen`
-- `tailscale-file-transfer`
-- `theme-factory`
-- `treatment-plans`
-- `venue-templates`
-- `verification-quality`
-- `verification-quality-assurance`
-- `workspace-unified`
-- `xypic-latex`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `#E847C0`
-- `2600-magazine`
-- `_integrated`
-- `academic-research`
-- `alice-emacs-mods`
-- `alife`
-- `alife2025`
-- `anna-archive`
-- `asi-integrated`
-- `bdd-mathematical-verification`
-- `biomni`
-- `biorxiv-database`
-- `browser-navigation`
-- `citizen-lab-forensics`
-- `clinical-decision-support`
-- `content-research-writer`
-- `derivational-coalgebra`
-- `doc`
-- `docs-acset`
-- `docx`
-- `etetoolkit`
-- `file-organizer`
-- `firecrawl-patterns`
-- `flow-nexus-platform`
-- `google-workspace`
-- `haskell-diagrams`
-- `histolab`
-- `hypogenic`
-- `icij-document-analysis`
-- `ies-triadic`
-- `invoice-organizer`
-- `julia-scientific`
-- `labarchive-integration`
-- `latex-posters`
-- `literature-review`
-- `market-research-reports`
-- `markitdown`
-- `mathpix-ocr`
-- `matplotlib`
-- `mlx-bitnet-gf3`
-- `monoidal-category`
-- `move-fuzzing`
-- `move-narya-bridge`
-- `networkx`
-- `omniglot`
-- `paper-2-web`
-- `pdflatex`
-- `peer-review`
-- `phylogenetic-operad-acset`
-- `playwright-unworld`
-- `plotly`
-- `protocolsio-integration`
-- `qri-valence`
-- `quarto-julia`
-- `quic-channel-grading`
-- `r2frida`
-- `reverse-engineering`
-- `riehl-post-rigorous`
-- `scanpy`
-- `scientific-schematics`
-- `scientific-slides`
-- `scientific-visualization`
-- `seaborn`
-- `skill-creator`
-- `skill-development`
-- `skill-evolution`
-- `spreadsheet`
-- `stellogen`
-- `tailscale-file-transfer`
-- `theme-factory`
-- `treatment-plans`
-- `venue-templates`
-- `verification-quality`
-- `verification-quality-assurance`
-- `workspace-unified`
-- `xypic-latex`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

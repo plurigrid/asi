@@ -1,30 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `anoma-intents` — builds on — Anoma intent centric architecture for cross chain obstruction passing with Geb semantics …
+- `geb` — builds on — Anoma''s Geb: Categorical semantics via S expressions, polynomial functors
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `intent-sink` — builds on — Intent Sink Skill
+- `open-games` — builds on — Open Games Skill (ERGODIC 0)
+- `ramanujan-expander` — builds on — Ramanujan graphs and Alon Boppana spectral optimality for edge growth
+- `sheaf-cohomology` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Čech cohomology for local to global consistency verification in code
+- `solver-fee` — builds on — Solver Fee Skill
+- `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
+- `wasm-goblins` — invoked by — Goblins ↔ WASM runtime interactions across verified runtimes.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `anoma-intents`
-- `geb`
-- `init`
-- `intent-sink`
-- `open-games`
-- `ramanujan-expander`
-- `sheaf-cohomology`
-- `solver-fee`
-- `terminal`
-- `wasm-goblins`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `wasm-goblins`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

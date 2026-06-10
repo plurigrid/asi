@@ -1,31 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `derived-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Homological algebra via chain complexes, derived functors (Tor Ext), triangulated categor…
+- `infinity-categories` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Higher category theory via simplicial sets, Kan complexes, (∞,1)-categories, Segal spaces…
+- `infinity-topoi` — invoked by — Higher topos theory via ∞-sheaves, descent, Giraud axioms, modalities, Postnikov towers, …
+- `operadic-composition` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Colored operads for multi input composition, associahedra, A infinity structure, and homo…
+- `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `sheaf-cohomology-bci` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Local to global signal consistency via cellular sheaves, Cech cohomology, and sheaf Lapla…
+- `stochastic-resonance` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Noise enhanced signal detection via Kramers rates and optimal noise analysis
+- `world-a` — builds on — AlgebraicJulia ecosystem world (ACSets.jl, Catlab.jl).
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `clojure`
-- `derived-categories`
-- `infinity-categories`
-- `infinity-topoi`
-- `operadic-composition`
-- `para-mensch-commons`
-- `sheaf-cohomology-bci`
-- `stochastic-resonance`
-- `world-a`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `infinity-categories`
-- `infinity-topoi`
-- `para-mensch-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

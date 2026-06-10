@@ -1,36 +1,21 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
+- `bob` — builds on — World BOB Skill
+- `captp` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — CapTP: Capability Transfer Protocol
+- `crdt` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — crdt skill
+- `gay-fokker-planck-staging` — invoked by — Two Fokker Plancks per staging gate, conditioned on (rama OR goblins)
+- `ies` — builds on — ies
+- `linear` — builds on — Manage issues, projects & team workflows in Linear.
+- `ngrok-tunnel` — invoked by — Secure tunnel for exposing local MCP servers to Claude, remote agents, and external clien…
+- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `ssh` — builds on — Establish and manage SSH connections to remote machines, including key generation, config…
+- `stability` — builds on — Qualitative behavior of solutions near equilibria
+- `tailscale` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Mesh VPN.
+- `tailscale-mesh` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Tailscale mesh VPN for secure peer to peer networking.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `alice`
-- `bob`
-- `captp`
-- `crdt`
-- `gay-fokker-planck-staging`
-- `ies`
-- `linear`
-- `ngrok-tunnel`
-- `pdf`
-- `ssh`
-- `stability`
-- `tailscale`
-- `tailscale-mesh`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `captp`
-- `gay-fokker-planck-staging`
-- `ngrok-tunnel`
-- `tailscale-mesh`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

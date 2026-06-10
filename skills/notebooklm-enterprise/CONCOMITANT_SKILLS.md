@@ -1,27 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `babashka` — sibling in the interactive REPLs & Lisp tooling cluster — Clojure scripting without JVM startup.
+- `deepwiki-mcp` — builds on — DeepWiki MCP server for AI powered GitHub repository documentation and
+- `emacs` — sibling in the interactive REPLs & Lisp tooling cluster — Emacs ecosystem = elisp + org + gnus + tramp + eglot.
+- `gh-cli` — sibling in the interactive REPLs & Lisp tooling cluster — GitHub CLI for repository management.
+- `nblm-flashcards` — sibling in the interactive REPLs & Lisp tooling cluster — Generate and drill flashcards from NotebookLM Enterprise notebooks via Gemini (Vertex AI)…
+- `org` — builds on — Org mode manual (25K lines info).
+- `vertex-ai` — builds on — Google Vertex AI via gcloud OAuth2.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `babashka`
-- `deepwiki-mcp`
-- `emacs`
-- `gh-cli`
-- `nblm-flashcards`
-- `org`
-- `vertex-ai`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `nblm-flashcards`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,39 +1,22 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `blackhat-go` — builds on — Go based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT,…
+- `cantordust-viz` — invoked by — Binary visualization for human pattern recognition - Ghidra plugin by Chris Domas (xoreax…
+- `citizen-lab-forensics` — invoked by — Digital forensics techniques for detecting device compromise, analyzing malware indicator…
+- `docker` — builds on — Run Docker commands within a container environment, including starting the Docker daemon …
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `gf3-neighborhood` — invoked by — GF(3) neighborhood awareness with harmonic centrality - every skill knows its neighbors a…
+- `ios-wifi-provenance-diff` — invoked by — Diagnose why an iPhone's Wi Fi password row shows but cannot be copied.
+- `mcp-builder` — builds on — Guide for creating high quality MCP (Model Context Protocol) servers
+- `opennirscap-build` — invoked by — Build an OpenNIRScap 24 channel fNIRS brain cap from open source hardware — Altium conver…
+- `propagators` — builds on — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
+- `r2frida` — invoked by — Dynamic instrumentation bridge — radare2 static analysis meets Frida runtime hooking via …
+- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
+- `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
+- `tree-sitter` — builds on — AST based code analysis using tree sitter.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `blackhat-go`
-- `cantordust-viz`
-- `citizen-lab-forensics`
-- `docker`
-- `gay-mcp`
-- `gf3-neighborhood`
-- `ios-wifi-provenance-diff`
-- `mcp-builder`
-- `opennirscap-build`
-- `propagators`
-- `r2frida`
-- `sdf`
-- `security`
-- `tree-sitter`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `cantordust-viz`
-- `citizen-lab-forensics`
-- `gf3-neighborhood`
-- `ios-wifi-provenance-diff`
-- `opennirscap-build`
-- `r2frida`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,23 +1,11 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `launch-strategy` — sibling in the skill routing & dispatch cluster — When the user wants to plan a product launch, feature announcement, or release strategy.
+- `programmatic-seo` — sibling in the skill routing & dispatch cluster — When the user wants to create SEO driven pages at scale using templates and data.
+- `referral-program` — sibling in the skill routing & dispatch cluster — When the user wants to create, optimize, or analyze a referral program, affiliate program…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `launch-strategy`
-- `programmatic-seo`
-- `referral-program`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `launch-strategy`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

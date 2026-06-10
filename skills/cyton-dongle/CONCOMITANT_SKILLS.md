@@ -1,27 +1,12 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `cgx-acquisition-re` — invoked by — Reverse engineer CGX Cognionics Quick 20 EEG acquisition protocol using MCP RE tooling (B…
+- `nrf5340-device-interaction` — invoked by — Interact with nRF5340 devices over BLE, USB serial, and J Link.
+- `nrf5340-hardware` — invoked by — Nordic nRF5340 dual core SoC hardware reference: application core (Cortex M33 128MHz), ne…
+- `siegel-asi-interleave` — invoked by — The Siegel stack — physical fabrication BCI ingest GF(3) skill chain Aptos mainnet …
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `cgx-acquisition-re`
-- `nrf5340-device-interaction`
-- `nrf5340-hardware`
-- `siegel-asi-interleave`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `cgx-acquisition-re`
-- `nrf5340-device-interaction`
-- `nrf5340-hardware`
-- `siegel-asi-interleave`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

@@ -1,34 +1,18 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `ar-vr-xr` — invoked by — Reality tech (AR VR XR).
+- `assets` — builds on — Assets skill
+- `cargo` — builds on — Rust package manager (36 subcommands).
+- `cat` — builds on — cat Skill: Derivational Pipe Chaining
+- `commit-security-scan` — sibling in the security auditing, fuzzing & pentest cluster — Analyze code changes for security vulnerabilities using LLM reasoning and threat model pa…
+- `org` — builds on — Org mode manual (25K lines info).
+- `reality-tech` — invoked by — Reality tech umbrella for AR VR XR.
+- `security` — sibling in the security auditing, fuzzing & pentest cluster — Security best practices for secure coding, authentication, authorization, and data protec…
+- `security-review` — sibling in the security auditing, fuzzing & pentest cluster — Scan code changes for security vulnerabilities using STRIDE threat modeling, validate fin…
+- `vulnerability-validation` — invoked by — Validate security findings from commit security scan by assessing exploitability, filteri…
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `ar-vr-xr`
-- `assets`
-- `cargo`
-- `cat`
-- `commit-security-scan`
-- `org`
-- `reality-tech`
-- `security`
-- `security-review`
-- `vulnerability-validation`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `ar-vr-xr`
-- `commit-security-scan`
-- `reality-tech`
-- `security-review`
-- `vulnerability-validation`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

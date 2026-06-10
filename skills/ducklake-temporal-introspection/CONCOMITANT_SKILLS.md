@@ -1,27 +1,15 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `bob` — builds on — World BOB Skill
+- `ducklake` — builds on — Create, query, migrate, and maintain DuckLake lakehouse databases using the DuckDB duckla…
+- `ies` — builds on — ies
+- `mcp-builder` — builds on — Guide for creating high quality MCP (Model Context Protocol) servers
+- `para-mensch-commons` — mutually referenced — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `skill-creator` — builds on — Guide for creating effective skills.
+- `vers` — builds on — Manage VERS VMs - list, create, branch, pause, resume, delete VMs and clusters.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `bob`
-- `ducklake`
-- `ies`
-- `mcp-builder`
-- `para-mensch-commons`
-- `skill-creator`
-- `vers`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `para-mensch-commons`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

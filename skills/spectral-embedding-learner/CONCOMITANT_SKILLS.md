@@ -1,28 +1,16 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `babashka` — builds on — Clojure scripting without JVM startup.
+- `chromatic-walk` — builds on — 3 parallel agents explore codebase improvements via GF(3) balanced prime geodesics
+- `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
+- `ducklake-walk` — builds on — Ergodic random walks over DuckLake lakehouses with GF(3) triadic concurrent walkers.
+- `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
+- `init` — builds on — Initialize a new repository with AGENTS.md
+- `padic-ultrametric-embedding` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — P adic ultrametric distance for UMAP itUMAP HNSW with Snowflake Arctic
+- `ramanujan-expander` — builds on — Ramanujan graphs and Alon Boppana spectral optimality for edge growth
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `babashka`
-- `chromatic-walk`
-- `clojure`
-- `ducklake-walk`
-- `gay-mcp`
-- `init`
-- `padic-ultrametric-embedding`
-- `ramanujan-expander`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

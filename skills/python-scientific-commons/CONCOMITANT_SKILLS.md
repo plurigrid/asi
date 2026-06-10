@@ -1,121 +1,109 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `acp-commons` — builds on — Atlas of Agent Client Protocol (ACP) clients, agents, and OCapN CapTP grounded actors.
+- `adaptyv` — sibling in the scientific Python — bio cheminformatics cluster — Cloud laboratory platform for automated protein testing and validation.
+- `alphafold-database` — sibling in the scientific Python — bio cheminformatics cluster — Access AlphaFold's 200M+ AI predicted protein structures.
+- `anndata` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with annotated data matrices in Python, particular…
+- `astropy` — sibling in the scientific Python — bio cheminformatics cluster — Comprehensive Python library for astronomy and astrophysics.
+- `benchling-integration` — sibling in the scientific Python — bio cheminformatics cluster — Benchling R&D platform integration.
+- `biopython` — sibling in the scientific Python — bio cheminformatics cluster — Primary Python toolkit for molecular biology.
+- `bioservices` — sibling in the scientific Python — bio cheminformatics cluster — Primary Python tool for 40+ bioinformatics services.
+- `brenda-database` — sibling in the scientific Python — bio cheminformatics cluster — Access BRENDA enzyme database via SOAP API.
+- `cellxgene-census` — sibling in the scientific Python — bio cheminformatics cluster — Query CZ CELLxGENE Census (61M+ cells).
+- `chembl-database` — sibling in the scientific Python — bio cheminformatics cluster — Query ChEMBL's bioactive molecules and drug discovery data.
+- `cirq` — sibling in the scientific Python — bio cheminformatics cluster — Quantum computing framework for building, simulating, optimizing, and executing quantum c…
+- `clinical-decision-support` — builds on — Generate professional clinical decision support (CDS) documents for pharmaceutical and cl…
+- `clinical-reports` — builds on — Write comprehensive clinical reports including case reports (CARE guidelines), diagnostic…
+- `clinicaltrials-database` — sibling in the scientific Python — bio cheminformatics cluster — Query ClinicalTrials.gov via API v2.
+- `clinpgx-database` — sibling in the scientific Python — bio cheminformatics cluster — Access ClinPGx pharmacogenomics data (successor to PharmGKB).
+- `clinvar-database` — sibling in the scientific Python — bio cheminformatics cluster — Query NCBI ClinVar for variant clinical significance.
+- `comrade-vlbi` — builds on — Event Horizon Telescope black hole imaging with deterministic coloring via Gay.jl integra…
+- `dask` — sibling in the scientific Python — bio cheminformatics cluster — Parallel distributed computing.
+- `datamol` — sibling in the scientific Python — bio cheminformatics cluster — Pythonic wrapper around RDKit with simplified interface and sensible defaults.
+- `deepchem` — sibling in the scientific Python — bio cheminformatics cluster — Molecular machine learning toolkit.
+- `diffdock` — sibling in the scientific Python — bio cheminformatics cluster — Diffusion based molecular docking.
+- `dnanexus-integration` — sibling in the scientific Python — bio cheminformatics cluster — DNAnexus cloud genomics platform.
+- `drugbank-database` — sibling in the scientific Python — bio cheminformatics cluster — Access and analyze comprehensive drug information from the DrugBank database including dr…
+- `duckdb-guard` — builds on — Pre query schema validation for DuckDB to prevent column not found errors, constraint vio…
+- `ensembl-database` — sibling in the scientific Python — bio cheminformatics cluster — Query Ensembl genome database REST API for 250+ species.
+- `etetoolkit` — sibling in the scientific Python — bio cheminformatics cluster — Phylogenetic tree toolkit (ETE).
+- `fda-database` — sibling in the scientific Python — bio cheminformatics cluster — Query openFDA API for drugs, devices, adverse events, recalls, regulatory submissions (51…
+- `flowio` — sibling in the scientific Python — bio cheminformatics cluster — Parse FCS (Flow Cytometry Standard) files v2.0 3.1.
+- `fluidsim` — sibling in the scientific Python — bio cheminformatics cluster — Framework for computational fluid dynamics simulations using Python.
+- `gene-database` — sibling in the scientific Python — bio cheminformatics cluster — Query NCBI Gene via E utilities Datasets API.
+- `geniml` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with genomic interval data (BED files) for machine…
+- `geo-database` — sibling in the scientific Python — bio cheminformatics cluster — Access NCBI GEO for gene expression genomics data.
+- `geomstats-fisher-rao` — sibling in the scientific Python — bio cheminformatics cluster — Information geometry for Bayesian inference.
+- `gflownet` — sibling in the scientific Python — bio cheminformatics cluster — Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward.
+- `gget` — sibling in the scientific Python — bio cheminformatics cluster — CLI Python toolkit for rapid bioinformatics queries.
+- `gtars` — sibling in the scientific Python — bio cheminformatics cluster — High performance toolkit for genomic interval analysis in Rust with Python bindings.
+- `gwas-database` — sibling in the scientific Python — bio cheminformatics cluster — Query NHGRI EBI GWAS Catalog for SNP trait associations.
+- `gym` — sibling in the scientific Python — bio cheminformatics cluster — Each gym domain resolves specific skill tensions:
+- `histolab` — sibling in the scientific Python — bio cheminformatics cluster — Digital pathology image processing toolkit for whole slide images (WSI).
+- `hmdb-database` — sibling in the scientific Python — bio cheminformatics cluster — Access Human Metabolome Database (220K+ metabolites).
+- `jaxlife-open-ended` — sibling in the scientific Python — bio cheminformatics cluster — JaxLife open ended agentic simulator for emergent behavior, tool use,
+- `kegg-database` — sibling in the scientific Python — bio cheminformatics cluster — Direct REST API access to KEGG (academic use only).
+- `koopman-generator` — builds on — Koopman operator theory for infinite dimensional linear lifting of nonlinear dynamics.
+- `labarchive-integration` — sibling in the scientific Python — bio cheminformatics cluster — Electronic lab notebook API integration.
+- `lamindb` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with LaminDB, an open source data framework for bi…
+- `langevin-dynamics` — builds on — Layer 5: SDE Based Learning Analysis via Langevin Dynamics
+- `latchbio-integration` — sibling in the scientific Python — bio cheminformatics cluster — Latch platform for bioinformatics workflows.
+- `matchms` — sibling in the scientific Python — bio cheminformatics cluster — Mass spectrometry analysis.
+- `matplotlib` — sibling in the scientific Python — bio cheminformatics cluster — Foundational plotting library.
+- `medchem` — sibling in the scientific Python — bio cheminformatics cluster — Medicinal chemistry filters.
+- `metabolomics-workbench-database` — sibling in the scientific Python — bio cheminformatics cluster — Access NIH Metabolomics Workbench via REST API (4,200+ studies).
+- `molfeat` — sibling in the scientific Python — bio cheminformatics cluster — Molecular featurization for ML (100+ featurizers).
+- `multidispatch-rl` — sibling in the scientific Python — bio cheminformatics cluster — Multiple dispatch as explicit RL objective - learning optimal method selection across typ…
+- `neurokit2` — sibling in the scientific Python — bio cheminformatics cluster — Comprehensive biosignal processing toolkit for analyzing physiological data including ECG…
+- `neuropixels-analysis` — sibling in the scientific Python — bio cheminformatics cluster — Neuropixels neural recording analysis.
+- `omero-integration` — sibling in the scientific Python — bio cheminformatics cluster — Microscopy data management platform.
+- `opentargets-database` — sibling in the scientific Python — bio cheminformatics cluster — Query Open Targets Platform for target disease associations, drug target discovery, tract…
+- `opentrons-integration` — sibling in the scientific Python — bio cheminformatics cluster — Lab automation platform for Flex OT 2 robots.
+- `para-mensch-commons` — builds on — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
+- `pathml` — sibling in the scientific Python — bio cheminformatics cluster — Computational pathology toolkit for analyzing whole slide images (WSI) and multiparametri…
+- `pdb-database` — sibling in the scientific Python — bio cheminformatics cluster — Access RCSB PDB for 3D protein nucleic acid structures.
+- `pennylane` — sibling in the scientific Python — bio cheminformatics cluster — Cross platform Python library for quantum computing, quantum machine learning, and quantu…
+- `plotly` — sibling in the scientific Python — bio cheminformatics cluster — Interactive scientific and statistical data visualization library for Python.
+- `polars` — sibling in the scientific Python — bio cheminformatics cluster — Fast DataFrame library (Apache Arrow).
+- `protocolsio-integration` — sibling in the scientific Python — bio cheminformatics cluster — Integration with protocols.io API for managing scientific protocols.
+- `pubchem-database` — sibling in the scientific Python — bio cheminformatics cluster — Query PubChem via PUG REST API PubChemPy (110M+ compounds).
+- `pufferlib` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with reinforcement learning tasks including high p…
+- `pydeseq2` — sibling in the scientific Python — bio cheminformatics cluster — Differential gene expression analysis (Python DESeq2).
+- `pydicom` — sibling in the scientific Python — bio cheminformatics cluster — Python library for working with DICOM (Digital Imaging and Communications in Medicine) fi…
+- `pyhealth` — sibling in the scientific Python — bio cheminformatics cluster — Comprehensive healthcare AI toolkit for developing, testing, and deploying machine learni…
+- `pylabrobot` — sibling in the scientific Python — bio cheminformatics cluster — Laboratory automation toolkit for controlling liquid handlers, plate readers, pumps, heat…
+- `pymc` — sibling in the scientific Python — bio cheminformatics cluster — Bayesian modeling with PyMC.
+- `pymoo` — sibling in the scientific Python — bio cheminformatics cluster — Multi objective optimization framework.
+- `pyopenms` — sibling in the scientific Python — bio cheminformatics cluster — Python interface to OpenMS for mass spectrometry data analysis.
+- `pytdc` — sibling in the scientific Python — bio cheminformatics cluster — Therapeutics Data Commons.
+- `pytorch-lightning` — sibling in the scientific Python — bio cheminformatics cluster — Deep learning framework (PyTorch Lightning).
+- `qiskit` — sibling in the scientific Python — bio cheminformatics cluster — Comprehensive quantum computing toolkit for building, optimizing, and executing quantum c…
+- `qutip` — sibling in the scientific Python — bio cheminformatics cluster — Quantum mechanics simulations and analysis using QuTiP (Quantum Toolbox in Python).
+- `rdkit` — sibling in the scientific Python — bio cheminformatics cluster — Cheminformatics toolkit for fine grained molecular control.
+- `reactome-database` — sibling in the scientific Python — bio cheminformatics cluster — Query Reactome REST API for pathway analysis, enrichment, gene pathway mapping, disease p…
+- `repl-commons` — builds on — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
+- `scanpy` — sibling in the scientific Python — bio cheminformatics cluster — Single cell RNA seq analysis.
+- `scikit-bio` — sibling in the scientific Python — bio cheminformatics cluster — Biological data toolkit.
+- `scikit-learn` — sibling in the scientific Python — bio cheminformatics cluster — Machine learning in Python with scikit learn.
+- `scikit-survival` — sibling in the scientific Python — bio cheminformatics cluster — Comprehensive toolkit for survival analysis and time to event modeling in Python using sc…
+- `scvi-tools` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with single cell omics data analysis using scvi to…
+- `seaborn` — sibling in the scientific Python — bio cheminformatics cluster — Statistical visualization.
+- `simpy` — sibling in the scientific Python — bio cheminformatics cluster — Process based discrete event simulation framework in Python.
+- `stable-baselines3` — sibling in the scientific Python — bio cheminformatics cluster — Use this skill for reinforcement learning tasks including training RL agents (PPO, SAC, D…
+- `statsmodels` — sibling in the scientific Python — bio cheminformatics cluster — Statistical modeling toolkit.
+- `string-database` — sibling in the scientific Python — bio cheminformatics cluster — Query STRING API for protein protein interactions (59M proteins, 20B interactions).
+- `transformers` — sibling in the scientific Python — bio cheminformatics cluster — This skill should be used when working with pre trained transformer models for natural la…
+- `umap-learn` — sibling in the scientific Python — bio cheminformatics cluster — UMAP dimensionality reduction.
+- `uniprot-database` — sibling in the scientific Python — bio cheminformatics cluster — Direct REST API access to UniProt.
+- `vaex` — sibling in the scientific Python — bio cheminformatics cluster — Use this skill for processing and analyzing large tabular datasets (billions of rows) tha…
+- `vertex-ai-protein-interleave` — builds on — Bridge layer connecting Vertex AI Google Cloud to plurigrid asi protein scale biology s…
+- `vertex-protein-bisimulation` — builds on — Protein folding as compositional game on Vertex AI.
+- `vllm-deployment` — sibling in the scientific Python — bio cheminformatics cluster — |
+- `yb-translator` — builds on — Translate programming concepts to biological parallels using real ontology terms from EBI…
+- `zinc-database` — sibling in the scientific Python — bio cheminformatics cluster — Access ZINC (230M+ purchasable compounds).
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `acp-commons`
-- `adaptyv`
-- `alphafold-database`
-- `anndata`
-- `astropy`
-- `benchling-integration`
-- `biopython`
-- `bioservices`
-- `brenda-database`
-- `cellxgene-census`
-- `chembl-database`
-- `cirq`
-- `clinical-decision-support`
-- `clinical-reports`
-- `clinicaltrials-database`
-- `clinpgx-database`
-- `clinvar-database`
-- `comrade-vlbi`
-- `dask`
-- `datamol`
-- `deepchem`
-- `diffdock`
-- `dnanexus-integration`
-- `drugbank-database`
-- `duckdb-guard`
-- `ensembl-database`
-- `etetoolkit`
-- `fda-database`
-- `flowio`
-- `fluidsim`
-- `gene-database`
-- `geniml`
-- `geo-database`
-- `geomstats-fisher-rao`
-- `gflownet`
-- `gget`
-- `gtars`
-- `gwas-database`
-- `gym`
-- `histolab`
-- `hmdb-database`
-- `jaxlife-open-ended`
-- `kegg-database`
-- `koopman-generator`
-- `labarchive-integration`
-- `lamindb`
-- `langevin-dynamics`
-- `latchbio-integration`
-- `matchms`
-- `matplotlib`
-- `medchem`
-- `metabolomics-workbench-database`
-- `molfeat`
-- `multidispatch-rl`
-- `neurokit2`
-- `neuropixels-analysis`
-- `omero-integration`
-- `opentargets-database`
-- `opentrons-integration`
-- `para-mensch-commons`
-- `pathml`
-- `pdb-database`
-- `pennylane`
-- `plotly`
-- `polars`
-- `protocolsio-integration`
-- `pubchem-database`
-- `pufferlib`
-- `pydeseq2`
-- `pydicom`
-- `pyhealth`
-- `pylabrobot`
-- `pymc`
-- `pymoo`
-- `pyopenms`
-- `pytdc`
-- `pytorch-lightning`
-- `qiskit`
-- `qutip`
-- `rdkit`
-- `reactome-database`
-- `repl-commons`
-- `scanpy`
-- `scikit-bio`
-- `scikit-learn`
-- `scikit-survival`
-- `scvi-tools`
-- `seaborn`
-- `simpy`
-- `stable-baselines3`
-- `statsmodels`
-- `string-database`
-- `transformers`
-- `umap-learn`
-- `uniprot-database`
-- `vaex`
-- `vertex-ai-protein-interleave`
-- `vertex-protein-bisimulation`
-- `vllm-deployment`
-- `yb-translator`
-- `zinc-database`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-_No inbound prose citations yet._
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->

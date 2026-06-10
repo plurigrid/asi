@@ -1,29 +1,17 @@
+<!-- BEGIN GENERATED related (scripts/relate_skills.py) -->
 
+## Related
 
-<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-## Bidirectional Neighbors
+- `ar` — builds on — Augmented reality (AR) reality tech.
+- `cat-structure-rank` — invoked by — Ranked taxonomy of categorical structures from sets to ∞-topoi with gap analysis and Duck…
+- `dynamic-sufficiency` — builds on — Causal state gating via ε machine.
+- `elements-infinity-cats` — builds on — Elements of ∞-Category Theory (Riehl Verity) for foundational ∞-categorical
+- `infinity-topos` — builds on — ∞-Topos theory unifying hatchery repos, worlds, and GA abelian extensions.
+- `org` — builds on — Org mode manual (25K lines info).
+- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
+- `skill-dispatch` — builds on — GF(3) Triadic Task Routing for Subagent Orchestration
+- `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
 
-Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
-
-- `ar`
-- `cat-structure-rank`
-- `dynamic-sufficiency`
-- `elements-infinity-cats`
-- `infinity-topos`
-- `org`
-- `pdf`
-- `skill-dispatch`
-- `terminal`
-
-<!-- END GENERATED bidirectional-neighbors -->
-
-<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
-
-## Backlinks
-
-Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
-
-- `cat-structure-rank`
-
-<!-- END GENERATED backlinks -->
+<!-- END GENERATED related -->
