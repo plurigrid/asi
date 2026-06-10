@@ -1,3 +1,7 @@
+---
+name: hyperbolic-gamut-recovery
+description: 'name: hyperbolic-gamut-recovery'
+---
 # Hyperbolic Gamut Recovery Skill
 
 ---

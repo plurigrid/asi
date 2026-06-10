@@ -1,4 +1,6 @@
 ---
+name: energy-awareness
+description: Battery cycle clock with interaction entropy and ontology reconfiguration for computational resource awareness.
 metadata:
   interface_ports:
   - Integration with

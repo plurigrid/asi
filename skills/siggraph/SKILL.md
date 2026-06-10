@@ -1,3 +1,7 @@
+---
+name: siggraph
+description: SIGGRAPH is the premier venue for computer graphics research. This skill indexes papers, repos, and techniques from SIGGRAPH 2023-2025.
+---
 # SIGGRAPH Skill
 
 **Trit**: 0 (ERGODIC/Coordinator)  

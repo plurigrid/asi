@@ -1,3 +1,7 @@
+---
+name: infinity-topos
+description: ∞-Topos theory unifying hatchery repos, worlds, and GA abelian extensions.
+---
 # Infinity Topos Skill
 
 ∞-Topos theory unifying hatchery repos, worlds, and GA abelian extensions.

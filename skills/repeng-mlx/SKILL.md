@@ -1,3 +1,7 @@
+---
+name: repeng-mlx
+description: Behavior engineering for LLMs via **representation engineering** (repeng) on Apple Silicon MLX. Steer model behavior by extracting and applying control vectors - activation directions that encode concepts like "honest", "helpful", "creative".
+---
 # Representation Engineering with MLX
 
 **Status**: 🧠 Production Ready

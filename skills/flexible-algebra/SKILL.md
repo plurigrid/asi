@@ -1,3 +1,7 @@
+---
+name: flexible-algebra
+description: A **flexible T-algebra** is a strict T-algebra that admits enough "room to move" — it is a retract (in the pseudo-morphism category T-Alg) of a free algebra. Flexible algebras are the key to constructing bicolimits in categories of algebras and establishing the BKP biadjunction theorem.
+---
 # Flexible Algebra Skill
 
 > *"A strict T-algebra A is flexible if and only if it is a retract in T-Alg of a free T-algebra TX."*

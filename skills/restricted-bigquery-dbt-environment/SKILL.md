@@ -1,6 +1,6 @@
 ---
 name: restricted-bigquery-dbt-environment
-description: Safe dbt development against BigQuery using test schema isolation. Prevents accidental production writes. Triggers: dbt, bigquery, test schema, production safety.
+description: 'Safe dbt development against BigQuery using test schema isolation. Prevents accidental production writes. Triggers: dbt, bigquery, test schema, production safety.'
 ---
 
 # Restricted BigQuery dbt Environment

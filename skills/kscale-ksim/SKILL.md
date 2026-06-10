@@ -1,3 +1,7 @@
+---
+name: kscale-ksim
+description: '- User asks about robot simulation, humanoid locomotion, or RL policy training'
+---
 # K-Scale ksim Skill
 
 > *"RL training library for humanoid locomotion and manipulation. Built on MuJoCo and JAX."*

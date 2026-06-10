@@ -1,3 +1,7 @@
+---
+name: riehl-post-rigorous
+description: 'Emily Riehl''s post-rigorous mathematics framework: formalizing arguments that are "locally may contain errors but globally sound."'
+---
 # Riehl Post-Rigorous Skill
 
 Emily Riehl's post-rigorous mathematics framework: formalizing arguments that are "locally may contain errors but globally sound."

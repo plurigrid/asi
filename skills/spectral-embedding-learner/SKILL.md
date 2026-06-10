@@ -1,3 +1,7 @@
+---
+name: spectral-embedding-learner
+description: Self-learning topological embedding with configurable gamut for optimal spectral gap and fast mixing random walks.
+---
 # Spectral Embedding Learner
 
 Self-learning topological embedding with configurable gamut for optimal spectral gap and fast mixing random walks.

@@ -1,6 +1,6 @@
 ---
 name: 2600-magazine
-description: Query and explore the 2600: The Hacker Quarterly magazine archive (1984-present) via DuckDB. Provides structured access to 168+ issues covering hacker culture, security, privacy, telephony, and digital rights without loading full content into context.
+description: 'Query and explore the 2600: The Hacker Quarterly magazine archive (1984-present) via DuckDB. Provides structured access to 168+ issues covering hacker culture, security, privacy, telephony, and digital rights without loading full content into context.'
 ---
 
 # 2600: The Hacker Quarterly - Archive Skill

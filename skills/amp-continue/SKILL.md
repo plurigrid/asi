@@ -1,9 +1,9 @@
 ---
-name: "amp-continue: Thread-based conversation continuation with GF(3) branching"
-description: "Combines AMP thread export with GF(3)-classified continuation for skill orchestration. Export threads as markdown, classify continuation choices as {-1:reductive, 0:neutral, +1:generative}, and fork parallel execution paths."
-status: "Production Ready"
-trit: "+1"
-principle: "Same thread ID + same seed → same continuation path (SPI guarantee via SplitMix64)"
+name: 'amp-continue: Thread-based conversation continuation with GF(3)'
+description: Combines AMP thread export with GF(3)-classified continuation for skill orchestration. Export threads as markdown, classify continuation choices as {-1:reductive, 0:neutral, +1:generative}, and fork parallel execution paths.
+principle: Same thread ID + same seed → same continuation path (SPI guarantee via SplitMix64)
+status: Production Ready
+trit: '+1'
 ---
 
 ## Overview

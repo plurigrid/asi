@@ -1,3 +1,7 @@
+---
+name: interverse-bundle
+description: 'This skill bundles the Interverse Engineering & Acrobatics research program:'
+---
 # interverse-bundle Skill
 
 > *Interverse Engineering & Acrobatics: Bundle of skills from Aqua Voice transcripts*

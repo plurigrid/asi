@@ -1,3 +1,7 @@
+---
+name: codescent
+description: 'A **codescent object** is the 2-categorical analogue of a coequalizer. While coequalizers identify elements under an equivalence relation, codescent objects identify 1-cells under a coherent system of 2-cells. They are the fundamental tool for:'
+---
 # Codescent Skill
 
 > *"The codescent object of the simplicial bar resolution of a pseudoalgebra is a strict algebra equivalent to it."*

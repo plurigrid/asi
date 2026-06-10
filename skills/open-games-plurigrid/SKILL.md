@@ -1,3 +1,7 @@
+---
+name: open-games-plurigrid
+description: 'This skill unifies:'
+---
 # Open Games Plurigrid Skill
 
 > World-to-world interactions via compositional game theory with GF(3) energy consistency

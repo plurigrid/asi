@@ -1,12 +1,8 @@
 ---
-name: emacspeak-binaural
-<<<<<<< HEAD
-description: Replace emacspeak auditory icons with binaural beats using the sound theme system
+name: emacspeak-binaural <<<<<<< HEAD
+description: Replace emacspeak auditory icons with binaural beats using the sound theme system. Load when customizing emacspeak sounds, creating new sound themes, or working with binaural audio on macOS with SwiftMac TTS. >>>>>>> origin/main
 metadata:
-  trit: 1
-=======
-description: Replace emacspeak auditory icons with binaural beats using the sound theme system. Load when customizing emacspeak sounds, creating new sound themes, or working with binaural audio on macOS with SwiftMac TTS.
->>>>>>> origin/main
+  trit: '1'
 ---
 
 # Emacspeak Binaural Beat Theme

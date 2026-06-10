@@ -1,4 +1,6 @@
 ---
+name: topos-polynomial-functors
+description: Polynomial functors and dialectica categories following Topos Institute's formalization by David Spivak, Nelson Niu, and Valeria de Paiva.
 metadata:
   interface_ports:
   - References

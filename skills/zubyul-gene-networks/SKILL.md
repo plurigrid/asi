@@ -1,6 +1,5 @@
 ---
-name: zubyul-gene-networks
-<<<<<<< HEAD
+name: zubyul-gene-networks <<<<<<< HEAD
 description: Gene correlation network analysis bridging WGCNA, pgmpy Bayesian networks, and monad-bayes posterior inference. Connects zubyul's genomics background to the plurigrid interactome via HyperNetX hypergraph topology.
 ---
 

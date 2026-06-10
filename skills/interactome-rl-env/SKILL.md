@@ -1,4 +1,6 @@
 ---
+name: interactome-rl-env
+description: ACSet-native reinforcement learning environment for contributor network dynamics.
 metadata:
   skill_type: Reinforcement Learning / ACSet MDP
   interface_ports:

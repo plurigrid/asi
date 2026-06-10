@@ -1,3 +1,7 @@
+---
+name: mutual-awareness-backlink
+description: Formalize mutual awareness via structured decompositions on awareness graphs.
+---
 # 🔄 Mutual Awareness Backlink Skill
 
 **Trit**: 0 (ERGODIC) - Mediates between observer (-1) and observed (+1)

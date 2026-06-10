@@ -1,3 +1,7 @@
+---
+name: teglon-acp
+description: '- α: Message dispatch | β: Protocol switch | γ: Identity preservation'
+---
 # Teglon ACP Skill
 
 > Agent Client Protocol in Emacs Lisp

@@ -1,11 +1,8 @@
 ---
 name: zls-integration
-description: "zls-integration skill"
-  Zig Language Server (ZLS) integration for IDE features - autocomplete, goto definition,
-  diagnostics, hover docs, and build-on-save. Use when setting up ZLS, debugging LSP issues,
-  or optimizing Zig development workflows. Pairs with zig-programming skill.
+description: zls-integration skill Zig Language Server (ZLS) integration for IDE features - autocomplete, goto definition, diagnostics, hover docs, and build-on-save. Use when setting up ZLS, debugging LSP issues, or optimizing Zig development workflows. Pairs with zig-programming skill.
+trit: '0'
 version: 1.0.0
-trit: 0
 ---
 
 # ZLS Integration Skill

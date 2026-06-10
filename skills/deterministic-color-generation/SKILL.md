@@ -1,3 +1,7 @@
+---
+name: deterministic-color-generation
+description: 'Instead, they are **deterministically computed from cryptographic hash functions** applied to skill metadata:'
+---
 # Deterministic Color Generation via Metadata Hashing
 
 **Status**: ✅ Production Ready

@@ -1,3 +1,7 @@
+---
+name: boneh-roughgarden-wev
+description: Stanford FDCI research bridge connecting Dan Boneh's cryptographic primitives (ZK proofs, BLS signatures, threshold cryptography) with Tim Roughgarden's mechanism design (TFM, MEV mitigation, welfare maximization).
+---
 # Boneh-Roughgarden WEV Skill
 
 > **Trit**: 0 (ERGODIC) - Mechanism design at equilibrium

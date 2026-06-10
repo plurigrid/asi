@@ -1,3 +1,7 @@
+---
+name: libghostty-streaming
+description: The **white hole** dual to libghostty-recording. Streams, plays back, and broadcasts terminal sessions. Where recording absorbs (black hole), streaming emits (white hole).
+---
 # libghostty-vt Streaming Skill ⬜
 
 **Trit**: 0 (ERGODIC - Coordinator)

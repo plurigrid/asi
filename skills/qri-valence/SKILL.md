@@ -1,12 +1,8 @@
 ---
 name: qri-valence
-description: "qri-valence skill"
-  Qualia Research Institute's Symmetry Theory of Valence (STV) for consciousness research.
-  Maps phenomenal states to bankable assets via XY model topology, BKT transitions, and
-  defect annihilation. Source: smoothbrains.net + QRI wiki. Use for qualia computing,
-  valence gradient optimization, and consciousness-aware system design.
+description: 'qri-valence skill Qualia Research Institute''s Symmetry Theory of Valence (STV) for consciousness research. Maps phenomenal states to bankable assets via XY model topology, BKT transitions, and defect annihilation. Source: smoothbrains.net + QRI wiki. Use for qualia computing, valence gradient optimization, and consciousness-aware system design.'
+trit: '0'
 version: 1.0.0
-trit: 0
 ---
 
 # QRI Valence Skill

@@ -1,3 +1,7 @@
+---
+name: story-and-tasks
+description: This skill provides guidance on using the mcp-tasks MCP server for task and story management.
+---
 # MCP-Tasks Story and Task Management
 
 This skill provides guidance on using the mcp-tasks MCP server for task and story management.

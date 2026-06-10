@@ -1,3 +1,7 @@
+---
+name: splitmix-ternary
+description: 'SplitMixTernary: Extension of SplittableRandoms.jl for GF(3) balanced streams.'
+---
 # splitmix-ternary
 
 SplitMixTernary: Extension of SplittableRandoms.jl for GF(3) balanced streams.

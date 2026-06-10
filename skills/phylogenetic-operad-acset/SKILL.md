@@ -1,3 +1,7 @@
+---
+name: phylogenetic-operad-acset
+description: Baez-Otter phylogenetic operad Phyl = Com + [0,∞) as ACSet schema, with mathpix-gem extraction and ∞-operad dendroidal integration.
+---
 # Phylogenetic Operad ACSet Skill
 
 > **Trit**: 0 (ERGODIC) - Mediates between Com (commutative) and [0,∞) (metric)

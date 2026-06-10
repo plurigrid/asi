@@ -1,3 +1,7 @@
+---
+name: aptos-orderless-wev
+description: World Extractable Value via Aptos orderless transactions with Strong Parallelism Invariance (SPI) guarantees and GF(3) conservation.
+---
 # Aptos Orderless WEV Skill
 
 > **Trit**: +1 (PLUS) - Generative parallel execution

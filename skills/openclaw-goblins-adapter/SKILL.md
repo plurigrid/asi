@@ -1,6 +1,6 @@
 ---
 name: openclaw-goblins-adapter
-description: Bridge ElizaOS/OpenClaw plugins to Goblins OCapN actors. Maps ambient authority (token/role/ACL) to structural authority (capability references). Triggers: openclaw, elizaos, goblins, ocapn, capability security.
+description: 'Bridge ElizaOS/OpenClaw plugins to Goblins OCapN actors. Maps ambient authority (token/role/ACL) to structural authority (capability references). Triggers: openclaw, elizaos, goblins, ocapn, capability security.'
 ---
 
 # OpenClaw → Goblins Adapter

@@ -1,21 +1,11 @@
 ---
-name: nonlinear-dynamics-observatory
-<<<<<<< HEAD
-description: Unified observatory for learning in, on, and from nonlinear dynamical systems. Integrates dysts (attractor corpus), lolita (latent diffusion physics emulation), bayesian-breathing (Bayesian state estimation), geomstats (Riemannian manifold geometry), neuraloperator (FNO/DeepONet), panda (Patched Attention), hoi (higher-order interactions), and ontology's autopoietic ergodicity as the meta-theory.
-version: 1.0.0
-trit: 0
+name: nonlinear-dynamics-observatory <<<<<<< HEAD
+description: '> Unified observatory for learning in, on, and from nonlinear dynamical systems. Integrates dysts (attractor corpus), lolita (latent diffusion physics emulation), bayesian-breathing (Bayesian state estimation), geomstats (Riemannian manifold geometry), neuraloperator (FNO/DeepONet), panda (Patched Attention), and hoi (higher-order interactions). Use when working with strange attractors, physics emulation, attractor identification, or Riemannian geometry of dynamical systems. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: BRIDGE
-tags: [dynamical-systems, attractors, lolita, physics-emulation, riemannian, neural-operator, bayesian, hoi, autopoiesis, gf3, interleave]
-deployed: 2026-02-19
-=======
-description: >
-  Unified observatory for learning in, on, and from nonlinear dynamical systems.
-  Integrates dysts (attractor corpus), lolita (latent diffusion physics emulation),
-  bayesian-breathing (Bayesian state estimation), geomstats (Riemannian manifold
-  geometry), neuraloperator (FNO/DeepONet), panda (Patched Attention), and hoi
-  (higher-order interactions). Use when working with strange attractors, physics
-  emulation, attractor identification, or Riemannian geometry of dynamical systems.
->>>>>>> origin/main
+tags: '[dynamical-systems, attractors, lolita, physics-emulation, riemannian, neural-operator, bayesian, hoi, autopoiesis, gf3, interleave]'
+trit: '0'
+version: 1.0.0
 ---
 
 # Nonlinear Dynamics Observatory

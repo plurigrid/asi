@@ -1,3 +1,7 @@
+---
+name: commitment-tracker
+description: The **Commitment Tracker** skill extracts and makes explicit the **ontological commitments** that agents make implicitly through their code and behavior. It enables detection and resolution of silent incompatibilities between systems that use different underlying assumptions about what exists and ho
+---
 # Skill: Commitment Tracker
 
 **Status**: Active (🟢 Working)

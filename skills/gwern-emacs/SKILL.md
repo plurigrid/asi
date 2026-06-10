@@ -1,3 +1,7 @@
+---
+name: gwern-emacs
+description: 'The Bitter Lesson: *General methods leveraging compute beat specialized methods.*'
+---
 # gwern-emacs Skill
 
 > *Gwern's empirical rationality meets xenodium's Emacs philosophy*

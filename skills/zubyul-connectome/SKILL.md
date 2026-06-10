@@ -1,6 +1,5 @@
 ---
-name: zubyul-connectome
-<<<<<<< HEAD
+name: zubyul-connectome <<<<<<< HEAD
 description: Human Connectome Project analysis bridging cortical thickness, transcription factors, and depression biomarkers. Connects zubyul's Nikolova lab neuroscience to geomstats manifold geometry, Vertex AI protein expression, and the propagator lattice.
 ---
 

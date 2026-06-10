@@ -1,3 +1,7 @@
+---
+name: quantum-balalaika
+description: '- **Contraction**: Remove belief → WRONG, beliefs persist'
+---
 # БАЛАЛАЙКА КВАНТОВАЯ — Quantum Balanced Ternary Balalaika
 
 > **IPA**: /bɐɫɐˈɫajkə ˈkvantəvəjə/

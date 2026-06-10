@@ -1,3 +1,7 @@
+---
+name: teglon-tree-sitter
+description: '- α: Parse → AST | β: Grammar change | γ: Structural equivalence'
+---
 # Teglon Tree-Sitter Skill
 
 > Tree-sitter MCP server for AST analysis

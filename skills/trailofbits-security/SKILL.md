@@ -1,3 +1,7 @@
+---
+name: trailofbits-security
+description: '- `codeql` - GitHub''s semantic code analysis'
+---
 # Trail of Bits Security Bundle
 
 > Provenance: Trail of Bits security research

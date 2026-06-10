@@ -1,3 +1,7 @@
+---
+name: ergodic-coordinator
+description: 'Completes the GF(3) triad: `+1 + (-1) + 0 = 0`'
+---
 # Ergodic Coordinator Bundle
 
 > Provenance: GF(3) balance requirement

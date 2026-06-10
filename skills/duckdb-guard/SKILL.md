@@ -1,3 +1,7 @@
+---
+name: duckdb-guard
+description: Pre-query schema validation for DuckDB to prevent column-not-found errors, constraint violations, and unsafe INSERT patterns.
+---
 # duckdb-guard
 
 **Trit**: 0 (ERGODIC - coordination role)

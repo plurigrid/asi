@@ -1,3 +1,7 @@
+---
+name: chromatic-peptide-samovar
+description: A **samovar** (самовар) keeps water hot indefinitely through self-contained combustion.
+---
 # Chromatic Peptide Samovar
 
 > **IPA**: /xrəʊˈmætɪk ˈpɛptaɪd ˈsaməvar/

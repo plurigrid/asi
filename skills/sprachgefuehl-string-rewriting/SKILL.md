@@ -1,3 +1,7 @@
+---
+name: sprachgefuehl-string-rewriting
+description: Counterfactual conceptual string rewriting with trapezoid termination for recursive rendering of phenomenologically-rich diagrams.
+---
 # Sprachgefühl String Rewriting
 
 > **Plastic Constant ψ**: For GF(3) systems, prefer ψ≈1.3247 (x³=x+1) over φ. See [PLASTIC_CONSTANT.md](../PLASTIC_CONSTANT.md)

@@ -1,3 +1,7 @@
+---
+name: opacity-detector
+description: The **Opacity Detector** maps what can and cannot be known in a system, given an observer's structural position and epistemic capabilities.
+---
 # Opacity Detector Skill: Epistemological Coordination
 
 **Skill 2 of 3 in the Counterfactual Worlds Project**

@@ -1,20 +1,11 @@
 ---
-name: neurofeedback-oracle
-<<<<<<< HEAD
-description: Formal oracle mapping EEG-derived focus scores to GF(3) trits via fixed thresholds. Implements the neurofeedback_trit function from propagator.zig as a deterministic, threshold-based oracle with specific requirements on EEG input, Fisher-Rao manifold geometry, and Cell propagation. Never returns partial information — if focus is undefined, returns CellValue.nothing.
-version: 1.0.0
-trit: -1
+name: neurofeedback-oracle <<<<<<< HEAD
+description: '> Formal oracle mapping EEG-derived focus scores to trits via fixed thresholds. Implements neurofeedback_trit from propagator.zig as a deterministic, threshold-based oracle. Use when mapping EEG input to trit classification, building BCI propagator networks, or computing Fisher-Rao focus metrics on SPD manifolds. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: VALIDATOR
-tags: [neurofeedback, oracle, bci, eeg, propagator, gf3, fisher-rao, cellvalue, formal]
-deployed: 2026-02-19
-=======
-description: >
-  Formal oracle mapping EEG-derived focus scores to trits via fixed thresholds.
-  Implements neurofeedback_trit from propagator.zig as a deterministic,
-  threshold-based oracle. Use when mapping EEG input to trit classification,
-  building BCI propagator networks, or computing Fisher-Rao focus metrics
-  on SPD manifolds.
->>>>>>> origin/main
+tags: '[neurofeedback, oracle, bci, eeg, propagator, gf3, fisher-rao, cellvalue, formal]'
+trit: '-1'
+version: 1.0.0
 ---
 
 # Neurofeedback Oracle

@@ -1,3 +1,7 @@
+---
+name: ga-derived-category
+description: Derived categories and derived functors for graded Clifford modules.
+---
 # GA Derived Category Skill
 
 Derived categories and derived functors for graded Clifford modules.

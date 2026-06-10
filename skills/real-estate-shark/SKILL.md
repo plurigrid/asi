@@ -1,3 +1,7 @@
+---
+name: real-estate-shark
+description: Transform single property/neighborhood images into photorealistic 3D Gaussian Splats using Apple's ml-sharp, enabling virtual walkthroughs from a single photograph. Bridge to PropertyPriceOracle for valuation analytics.
+---
 # Real Estate Shark
 
 **Trit**: MINUS (-1) — Validation/Analysis  

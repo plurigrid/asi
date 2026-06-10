@@ -1,3 +1,7 @@
+---
+name: citizen-lab-forensics
+description: Digital forensics techniques for detecting device compromise, analyzing malware indicators, and investigating targeted surveillance. Based on methodologies from Citizen Lab's Pegasus Project and Predator investigations.
+---
 # Citizen Lab Forensics Skill
 
 **Trit**: -1 (MINUS - Validator)

@@ -1,3 +1,7 @@
+---
+name: nuclear-smr
+description: Small Modular Reactor integration for Plurigrid energy dominance. Bridges neutronics simulation (OpenMC/MOOSE), categorical databases (ACSets), and on-chain coordination (Aptos).
+---
 # Nuclear SMR Skill
 
 > **Trit: +1 (GENERATOR)**

@@ -1,3 +1,7 @@
+---
+name: parallel-subagent-split
+description: 'In a traced monoidal category, the trace operation models feedback:'
+---
 # Parallel Subagent Split Skill
 
 > Categorical formalism for parallel agent decomposition with GF(3) conservation

@@ -1,11 +1,11 @@
 ---
 name: sufficiency-probe
-description: Probes context-setting tooling sufficiency at every interaction. Validates world letter, flox activation, Emacs server, open-games-hs reachability, DeepWiki cache, color:// resolution, and loaded skills. Triggers: sufficiency, probe, context check, tooling status, environment validation.
+description: 'Probes context-setting tooling sufficiency at every interaction. Validates world letter, flox activation, Emacs server, open-games-hs reachability, DeepWiki cache, color:// resolution, and loaded skills. Triggers: sufficiency, probe, context check, tooling status, environment validation.'
 category: meta
-trit: -1
+featured: 'false'
+trit: '-1'
 trit_label: MINUS
-verified: true
-featured: false
+verified: 'true'
 ---
 
 # Sufficiency Probe

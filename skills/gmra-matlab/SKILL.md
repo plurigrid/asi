@@ -1,4 +1,6 @@
 ---
+name: gmra-matlab
+description: 'Gay.jl''s SplitMix64 provides the **homogeneous property** required for sharding:'
 metadata:
   skill_type: Multi-Resolution Analysis with Dynamic Sufficiency
   interface_ports:

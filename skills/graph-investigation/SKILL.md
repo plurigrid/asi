@@ -1,3 +1,7 @@
+---
+name: graph-investigation
+description: Large-scale graph analytics for entity resolution, network analysis, and relationship mapping. Based on methodologies from Project Domino (1B+ node COVID misinformation graphs) and ICIJ's Panama/Paradise Papers investigations.
+---
 # Graph Investigation Skill
 
 **Trit**: +1 (PLUS - Generator)

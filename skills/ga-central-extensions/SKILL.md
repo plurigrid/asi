@@ -1,3 +1,7 @@
+---
+name: ga-central-extensions
+description: Central extensions of rotation groups via Clifford algebras and spinor covering spaces.
+---
 # GA Central Extensions Skill
 
 Central extensions of rotation groups via Clifford algebras and spinor covering spaces.

@@ -1,3 +1,7 @@
+---
+name: cognitive-sufficiency-superposition
+description: 'name: cognitive-sufficiency-superposition'
+---
 # Cognitive Sufficiency Superposition
 
 ---

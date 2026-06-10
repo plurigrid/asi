@@ -1,3 +1,7 @@
+---
+name: operadic-delegation
+description: 'From Interverse transcript (Aug 2025):'
+---
 # operadic-delegation Skill
 
 > *Operads → Properads → Props for many-to-many agent delegation without losing associativity*

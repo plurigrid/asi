@@ -1,3 +1,7 @@
+---
+name: coqgym
+description: Machine learning environment for automated theorem proving with Coq.
+---
 # CoqGym
 
 Machine learning environment for automated theorem proving with Coq.

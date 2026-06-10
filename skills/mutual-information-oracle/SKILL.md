@@ -1,21 +1,11 @@
 ---
-name: mutual-information-oracle
-<<<<<<< HEAD
-description: Formal oracle quantifying coordination between agents in multi-agent reinforcement learning (MARL) via mutual information. Implements the generative/recognition channel pair as a Markov category morphism pair, with specific thresholds for coordination quality. Connects cityLearn OpenGame demand response to Nashator Nash equilibrium solving via the I(X;Y) coordination metric. Never returns "coordination is good" without a specific bit value.
-version: 1.0.0
-trit: 0
+name: mutual-information-oracle <<<<<<< HEAD
+description: '> Formal oracle quantifying coordination between agents in multi-agent reinforcement learning (MARL) via mutual information I(X;Y). Implements generative/recognition channel pair as Markov category morphisms with fixed coordination thresholds. Use when measuring MARL agent coordination, designing MI-weighted rewards for demand response, or connecting cityLearn OpenGame to Nash equilibrium solving. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: ERGODIC
-tags: [mutual-information, marl, open-games, markov-category, coordination, der, nashator, monad-bayes, plurigrid, gf3]
-deployed: 2026-02-19
-=======
-description: >
-  Formal oracle quantifying coordination between agents in multi-agent
-  reinforcement learning (MARL) via mutual information I(X;Y). Implements
-  generative/recognition channel pair as Markov category morphisms with
-  fixed coordination thresholds. Use when measuring MARL agent coordination,
-  designing MI-weighted rewards for demand response, or connecting cityLearn
-  OpenGame to Nash equilibrium solving.
->>>>>>> origin/main
+tags: '[mutual-information, marl, open-games, markov-category, coordination, der, nashator, monad-bayes, plurigrid, gf3]'
+trit: '0'
+version: 1.0.0
 ---
 
 # Mutual Information Oracle

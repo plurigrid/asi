@@ -1,3 +1,7 @@
+---
+name: gwern-simonw-emacs
+description: '- [simonw/llm](https://github.com/simonw/llm) - LLM CLI with tool support'
+---
 # gwern-simonw-emacs
 
 > Self-operating Gwern via Simon Willison's LLM CLI toolkit, generating s-expressions through NuShell structured data reflow with CQ analysis.

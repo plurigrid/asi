@@ -1,3 +1,7 @@
+---
+name: toad-telemetry
+description: OpenTelemetry instrumentation for Batrachian Toad AI agent terminal.
+---
 # Toad Telemetry Skill
 
 OpenTelemetry instrumentation for Batrachian Toad AI agent terminal.

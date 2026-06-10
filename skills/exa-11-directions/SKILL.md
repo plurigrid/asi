@@ -1,3 +1,7 @@
+---
+name: exa-11-directions
+description: 1. **Category Theory & ACSet Implementations** - Categorical data structures, functorial programming
+---
 # exa-11-directions Skill
 
 **Status**: ✅ Production Ready

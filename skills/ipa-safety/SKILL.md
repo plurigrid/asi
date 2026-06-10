@@ -1,3 +1,7 @@
+---
+name: ipa-safety
+description: 'Multiplexed streams carry:'
+---
 # IPA Encoding Safety
 
 > **Protocol**: `ipa://`

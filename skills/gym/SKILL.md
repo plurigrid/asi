@@ -1,4 +1,6 @@
 ---
+name: gym
+description: 'Each gym domain resolves specific skill tensions:'
 metadata:
   skill_type: Environment/substrate for agent learning
   interface_ports:

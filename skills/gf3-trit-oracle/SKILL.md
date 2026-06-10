@@ -1,19 +1,11 @@
 ---
-name: gf3-trit-oracle
-<<<<<<< HEAD
-description: The fundamental GF(3) trit oracle. Maps any skill, operation, agent, or value to exactly one of {-1, 0, +1} with formal pre/post-conditions and a canonical CellValue{Nothing, Value, Contradiction} lattice for partial information accumulation. This is the atomic oracle that all other GF(3) machinery depends on.
-version: 1.0.0
-trit: 0
+name: gf3-trit-oracle <<<<<<< HEAD
+description: '> The fundamental GF(3) trit oracle. Maps any skill, operation, agent, or value to exactly one of {-1, 0, +1} with CellValue{Nothing, Value, Contradiction} lattice. Triggers: classify trit, assign trit value, GF(3) classification, trit oracle, propagator cell value, partial information lattice. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: ERGODIC
-tags: [gf3, oracle, trit, formal, specification, propagator, cell-value]
-deployed: 2026-02-19
-=======
-description: >
-  The fundamental GF(3) trit oracle. Maps any skill, operation, agent, or value
-  to exactly one of {-1, 0, +1} with CellValue{Nothing, Value, Contradiction} lattice.
-  Triggers: classify trit, assign trit value, GF(3) classification, trit oracle,
-  propagator cell value, partial information lattice.
->>>>>>> origin/main
+tags: '[gf3, oracle, trit, formal, specification, propagator, cell-value]'
+trit: '0'
+version: 1.0.0
 ---
 
 # GF(3) Trit Oracle

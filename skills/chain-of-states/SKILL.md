@@ -1,3 +1,7 @@
+---
+name: chain-of-states
+description: CoSProver framework for translating informal proofs to Lean4 via intermediate formal proof states.
+---
 # Chain of States (CoS) Skill 🐸
 
 **Trit**: -1 (MINUS - Validator)

@@ -1,3 +1,7 @@
+---
+name: lojban
+description: 'Lojban: the logical language designed for unambiguous machine-parseable human expression with perfect IPA correspondence.'
+---
 # Lojban Skill
 
 > *".i la lojban. bangu lo ka ce'u logji"*

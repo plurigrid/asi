@@ -1,12 +1,11 @@
 ---
-name: vertex-ai-protein-interleave
-<<<<<<< HEAD
+name: vertex-ai-protein-interleave <<<<<<< HEAD
 description: Bridge layer connecting Vertex AI / Google Cloud to plurigrid/asi protein-scale biology skills. Wires AlphaFold, ESM, DiffDock, DeepChem, and TorchDrug into Vertex AI Pipelines, Endpoints, and BigQuery genomics for protein design-predict-validate loops.
-version: 1.0.0
-trit: 0
+deployed: '2026-02-19'
 role: BRIDGE
-tags: [vertex-ai, protein, alphafold, esm, diffdock, deepchem, biology, genomics, gf3, interleave]
-deployed: 2026-02-19
+tags: '[vertex-ai, protein, alphafold, esm, diffdock, deepchem, biology, genomics, gf3, interleave]'
+trit: '0'
+version: 1.0.0
 ---
 
 # Vertex AI × Protein-Scale Biology Interleave

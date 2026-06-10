@@ -1,3 +1,7 @@
+---
+name: ghidra-mcp
+description: Ghidra reverse engineering via GhidraMCP + radare2 MCP with port resurrection.
+---
 # Ghidra MCP Skill
 
 Ghidra reverse engineering via GhidraMCP + radare2 MCP with port resurrection.

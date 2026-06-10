@@ -1,3 +1,7 @@
+---
+name: libghostty-recording
+description: Record, stream, and replay libghostty-vt terminal sessions for documentation, debugging, and LLM training.
+---
 # libghostty-vt Recording Skill 📹
 
 **Trit**: 0 (ERGODIC - Coordinator)

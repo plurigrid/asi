@@ -1,21 +1,11 @@
 ---
-name: ontology-asi-interleave
-<<<<<<< HEAD
-description: Bridge layer connecting plurigrid/ontology to plurigrid/asi. Wires autopoietic ergodicity, Open Games, Gromov-Wasserstein theory, Arena CRDT, Nexus Nodes, and transactive energy into the ASI skill graph for decentralized energy coordination, digital twin multi-agent systems, and grid intelligence.
-version: 1.0.0
-trit: 0
+name: ontology-asi-interleave <<<<<<< HEAD
+description: '> Bridge connecting plurigrid/ontology to ASI skill graph. Wires autopoietic ergodicity, Open Games, Gromov-Wasserstein theory, Arena CRDT, Nexus Nodes, and transactive energy into decentralized energy coordination, digital twin multi-agent systems, and grid intelligence. Use when connecting ontology concepts to ASI skills, designing transactive energy markets, or bridging Arena CRDT to DuckDB. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: BRIDGE
-tags: [ontology, autopoiesis, ergodicity, open-games, gromov-wasserstein, crdt, arena, digital-twin, nexus-nodes, transactive-energy, gf3, interleave]
-deployed: 2026-02-19
-=======
-description: >
-  Bridge connecting plurigrid/ontology to ASI skill graph. Wires autopoietic
-  ergodicity, Open Games, Gromov-Wasserstein theory, Arena CRDT, Nexus Nodes,
-  and transactive energy into decentralized energy coordination, digital twin
-  multi-agent systems, and grid intelligence. Use when connecting ontology
-  concepts to ASI skills, designing transactive energy markets, or bridging
-  Arena CRDT to DuckDB.
->>>>>>> origin/main
+tags: '[ontology, autopoiesis, ergodicity, open-games, gromov-wasserstein, crdt, arena, digital-twin, nexus-nodes, transactive-energy, gf3, interleave]'
+trit: '0'
+version: 1.0.0
 ---
 
 # Ontology x ASI Interleave

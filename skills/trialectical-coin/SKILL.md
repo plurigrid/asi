@@ -1,4 +1,6 @@
 ---
+name: trialectical-coin
+description: Extends TeglonLabs/coin-flip-mcp with GF(3) ternary decision logic.
 metadata:
   interface_ports:
   - References

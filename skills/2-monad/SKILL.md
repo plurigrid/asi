@@ -1,3 +1,7 @@
+---
+name: 2-monad
+description: 'A **2-monad** is a monad internal to a 2-category K. Concretely, it consists of:'
+---
 # 2-Monad Skill
 
 > *"A 2-monad is a monad in the 2-category of 2-categories — the natural habitat of algebraic structure on categories."*

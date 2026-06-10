@@ -1,3 +1,7 @@
+---
+name: modelica-lispsyntax-interleave
+description: 'This skill unifies three systems through **alphabet-color assignment**:'
+---
 # Modelica-LispSyntax-Interleave Skill
 
 > Alphabet-Color MCP Interleaving with OpenModelica Microgrid Gym

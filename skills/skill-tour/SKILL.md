@@ -1,3 +1,7 @@
+---
+name: skill-tour
+description: 'L-shaped hops through skill space, maintaining triadic balance:'
+---
 # Skill Tour Skill
 
 **Trit**: 0 (ERGODIC/Coordinator)  

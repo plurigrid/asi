@@ -1,14 +1,14 @@
 ---
 name: sharp-edges
-description: Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API designs, configuration schemas, cryptographic library ergonomics, or evaluating whether code follows 'secure by default' and 'pit of success' principles. Triggers: footgun, misuse-resistant, secure defaults, API usability, dangerous configuration.
-category: sharp-edges
+description: 'Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API designs, configuration schemas, cryptographic library ergonomics, or evaluating whether code follows ''secure by default'' and ''pit of success'' principles. Triggers: footgun, misuse-resistant, secure defaults, API usability, dangerous configuration.'
 author: Trail of Bits
-source: trailofbits/skills
+category: sharp-edges
+featured: 'false'
 license: AGPL-3.0
-trit: -1
+source: trailofbits/skills
+trit: '-1'
 trit_label: MINUS
-verified: true
-featured: false
+verified: 'true'
 ---
 
 # Sharp Edges Skill

@@ -1,3 +1,7 @@
+---
+name: kscale-ecosystem
+description: '- User asks about K-Scale Labs, their robots, or open-source robotics stack'
+---
 # K-Scale Ecosystem Skill
 
 > *"Moving humanity up the Kardashev scale"* — Ben Bolte, K-Scale Labs

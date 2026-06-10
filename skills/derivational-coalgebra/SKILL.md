@@ -1,4 +1,6 @@
 ---
+name: derivational-coalgebra
+description: 'The highest tension in skill space (d=2.131):'
 metadata:
   interface_ports:
   - Commands

@@ -1,3 +1,7 @@
+---
+name: tidar-correct-by-construction
+description: '1. **Triads are atomic**: Cannot create partial triads'
+---
 # TIDAR: Correct by Construction
 
 > Triadic Interleaving Dispatch with Agents for Reading/writing — where invalid states are unrepresentable

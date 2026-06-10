@@ -1,3 +1,7 @@
+---
+name: sonification-collaborative
+description: 1. **Erie Grammar** - Declarative specifications for auditory encodings
+---
 # Sonification: Collaborative Frameworkfor Data as Music
 
 **Status**: 🎵 Production Ready

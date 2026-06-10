@@ -1,3 +1,7 @@
+---
+name: kscale-kinfer
+description: '- User asks about deploying RL policies to real robots'
+---
 # K-Scale kinfer Skill
 
 > *"The K-Scale model export and inference tool"*

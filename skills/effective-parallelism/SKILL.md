@@ -1,4 +1,6 @@
 ---
+name: effective-parallelism
+description: GF(3)-balanced parallel agent orchestration with operad composition and prediction market allocation.
 metadata:
   interface_ports:
   - Related Skills

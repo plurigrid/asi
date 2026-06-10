@@ -1,3 +1,7 @@
+---
+name: video-analysis-gf3
+description: Analyze video files from chaotic_media_lake.duckdb with deterministic color assignment and GF(3)-balanced trit allocation.
+---
 # Video Analysis with GF(3) Conservation
 
 **Trit**: 0 (ERGODIC - coordination across triadic streams)

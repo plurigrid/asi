@@ -1,3 +1,7 @@
+---
+name: glamorous-moldable-multiplatform
+description: '- **v1.1.0 (2026-02-09)**: Live GraphQL update of all 10 repos with commit-level detail. Portal is hottest (grading system, WebGPU fix, security hardening). zig-syrup expanded (13 new modules, 326 worlds, 610 skills). asi at 636 droids. graded-optic born this week. leprechauns got Gay.jl green-root '
+---
 # SKILL: Glamorous Moldable Multiplatform
 
 **Version**: 1.1.0

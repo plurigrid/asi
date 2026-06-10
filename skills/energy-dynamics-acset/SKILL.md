@@ -1,3 +1,7 @@
+---
+name: energy-dynamics-acset
+description: 'The Energy Dynamics ACSet integrates three complementary frameworks for measuring and composing computational skills through physics-motivated information theory:'
+---
 # Energy Dynamics ACSet: Physics of Computational Skills
 
 **Trit**: 0 (ERGODIC - bridges latent schema structure with active skill deployment)

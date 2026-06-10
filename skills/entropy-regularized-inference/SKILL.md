@@ -1,3 +1,7 @@
+---
+name: entropy-regularized-inference
+description: '- User asks about connecting active inference to practical RL'
+---
 # Entropy-Regularized Inference (Third-Order Meta-Skill)
 
 > *"The entropy regularizer is not ad-hoc—it's the principled mechanism by which agents acknowledge uncertainty about their own predictions."* — Synthesis of Kenny, Friston, Kidger, Bolte

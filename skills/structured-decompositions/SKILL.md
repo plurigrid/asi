@@ -1,4 +1,6 @@
 ---
+name: structured-decompositions
+description: Functorial structured decompositions for compositional problem solving via sheaf-theoretic methods. Based on [AlgebraicJulia/StructuredDecompositions.jl](https://github.com/AlgebraicJulia/StructuredDecompositions.jl).
 metadata:
   interface_ports:
   - References

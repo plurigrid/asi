@@ -1,3 +1,7 @@
+---
+name: cheerpx-self-hosting
+description: Run x86 Linux binaries in the browser via WebAssembly. Self-host development environments, interpreters, and even this skill itself.
+---
 # CheerpX Self-Hosting Skill
 
 Run x86 Linux binaries in the browser via WebAssembly. Self-host development environments, interpreters, and even this skill itself.

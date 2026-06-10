@@ -1,6 +1,6 @@
 ---
 name: claude-questions-leaderboard
-description: Track Claude's best and worst questions in DuckDB. Use when Claude asks a notably good or bad question, or to review question quality. Triggers: leaderboard, bad question, good question, question quality.
+description: 'Track Claude''s best and worst questions in DuckDB. Use when Claude asks a notably good or bad question, or to review question quality. Triggers: leaderboard, bad question, good question, question quality.'
 ---
 
 # Claude Questions Leaderboard

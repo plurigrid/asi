@@ -1,3 +1,7 @@
+---
+name: macos-use
+description: 'macOS automation with **activation energy** for machine skill rediscovery:'
+---
 # macos-use Skill
 
 > *"Resilient macOS automation through curiosity-driven skill rediscovery."*

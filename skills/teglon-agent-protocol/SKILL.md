@@ -1,3 +1,7 @@
+---
+name: teglon-agent-protocol
+description: '- α: Request/response | β: Schema evolution | γ: Backwards compatibility'
+---
 # Teglon Agent Protocol Skill
 
 > Editor-agent protocol in Rust

@@ -1,3 +1,7 @@
+---
+name: py-acset
+description: 'Python-native Attributed C-Sets with:'
+---
 # py-acset Skill
 
 > **Trit**: 0 (ERGODIC - Coordinator)

@@ -1,3 +1,7 @@
+---
+name: teglon-asi-tools
+description: '- α: REPL eval | β: Namespace mutation | γ: Hot-reload coherence'
+---
 # Teglon ASI-Tools Skill
 
 > Clojure AI dev tools

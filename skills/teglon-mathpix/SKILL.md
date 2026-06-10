@@ -1,4 +1,6 @@
 ---
+name: teglon-mathpix
+description: 'Ruby gem for Mathpix OCR:'
 metadata:
   interface_ports:
   - GF(3) Triads

@@ -93,13 +93,56 @@ def _tracked_skill_names(skills_dir: Path) -> set[str] | None:
     return tracked
 
 
-def discover_skills(skills_dir: Path, include_untracked: bool = False) -> dict[str, dict[str, Any]]:
+def _load_loadable_manifest(path: Path | None) -> set[str] | None:
+    """
+    Load the set of loadable skill directory names emitted by
+    scripts/skillmd_lint.bb --manifest=PATH. This makes loadability (the codex-rs
+    SKILL.md acceptance rules) the single source of truth for "what is a skill":
+    a directory whose SKILL.md cannot load in codex/claude/agy is not counted as
+    a skill, so the reachability graph and monotone invariants are computed over
+    exactly the skills the agent runtimes can actually see. Returns None if no
+    manifest is provided (fail-open: fall back to existence-based discovery).
+    """
+    if path is None:
+        return None
+    try:
+        payload = _load_json(path)
+    except (OSError, json.JSONDecodeError):
+        print(
+            f"WARN: could not read loadable manifest {path}; "
+            "falling back to existence-based discovery.",
+            file=sys.stderr,
+        )
+        return None
+    loadable = payload.get("loadable")
+    if not isinstance(loadable, list):
+        print(
+            f"WARN: loadable manifest {path} has no `loadable` list; "
+            "falling back to existence-based discovery.",
+            file=sys.stderr,
+        )
+        return None
+    return {str(name) for name in loadable}
+
+
+def discover_skills(
+    skills_dir: Path,
+    include_untracked: bool = False,
+    loadable_names: set[str] | None = None,
+) -> dict[str, dict[str, Any]]:
     skills: dict[str, dict[str, Any]] = {}
     tracked_names = None if include_untracked else _tracked_skill_names(skills_dir)
     for entry in sorted(skills_dir.iterdir()):
         if not entry.is_dir() or entry.name.startswith("."):
             continue
         if tracked_names is not None and entry.name not in tracked_names:
+            continue
+        # Loadability is the single oracle for membership: a skill the runtimes
+        # cannot load is not a skill. The hard SKILL.md lint job fails CI before
+        # this runs, so in steady state loadable_names covers every skill and
+        # this filter is a no-op; it only excludes anything when frontmatter is
+        # already broken (and that case has already failed the gate).
+        if loadable_names is not None and entry.name not in loadable_names:
             continue
         files: list[Path] = []
         skill_md = entry / "SKILL.md"
@@ -489,6 +532,17 @@ def parse_args() -> argparse.Namespace:
         help="Include untracked local skill directories (default is tracked-only when git is available).",
     )
     parser.add_argument(
+        "--loadable-manifest",
+        type=Path,
+        default=None,
+        help=(
+            "Path to the JSON manifest of loadable skills emitted by "
+            "scripts/skillmd_lint.bb --manifest=PATH. When provided, only "
+            "directories that load under the codex-rs SKILL.md rules are counted "
+            "as skills (single oracle for membership). Fail-open if missing."
+        ),
+    )
+    parser.add_argument(
         "--json",
         action="store_true",
         help="Emit machine-readable JSON summary.",
@@ -520,7 +574,12 @@ def main() -> int:
     if max_seconds_between_snapshots is not None:
         max_seconds_between_snapshots = int(max_seconds_between_snapshots)
 
-    skills = discover_skills(args.skills_dir, include_untracked=args.include_untracked)
+    loadable_names = _load_loadable_manifest(args.loadable_manifest)
+    skills = discover_skills(
+        args.skills_dir,
+        include_untracked=args.include_untracked,
+        loadable_names=loadable_names,
+    )
     graph = build_graph(skills, config)
     metrics = compute_metrics(skills, graph, hubs)
 

@@ -1,3 +1,7 @@
+---
+name: momentum-field
+description: 'Based on Csikszentmihalyi''s flow theory, detect via interaction patterns:'
+---
 # momentum-field Skill
 
 **Trit**: 0 (ERGODIC - transports excellence between validator and generator)

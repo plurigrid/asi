@@ -1,6 +1,5 @@
 ---
-name: vertex-protein-bisimulation
-<<<<<<< HEAD
+name: vertex-protein-bisimulation <<<<<<< HEAD
 description: Protein folding as compositional game on Vertex AI. GameOpt combinatorial Bayesian optimization over residue positions, bisimulation on conformational trajectories, monad-bayes posterior over folding pathways.
 ---
 

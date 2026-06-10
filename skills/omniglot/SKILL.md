@@ -1,3 +1,7 @@
+---
+name: omniglot
+description: The Lake-Salakhutdinov-Tenenbaum challenge for human-level concept learning through probabilistic program induction. Learn new concepts from a single example.
+---
 # Omniglot Challenge Skill
 
 The Lake-Salakhutdinov-Tenenbaum challenge for human-level concept learning through probabilistic program induction. Learn new concepts from a single example.

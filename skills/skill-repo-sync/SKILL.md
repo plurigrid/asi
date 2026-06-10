@@ -1,6 +1,6 @@
 ---
 name: skill-repo-sync
-description: Push local skills to plurigrid/asi repo, remove skills by agreement (with full history purge), and manage .gitignore for local-only skills. Triggers: push skills, sync asi, remove skill from repo, skill repo sync, purge skill.
+description: 'Push local skills to plurigrid/asi repo, remove skills by agreement (with full history purge), and manage .gitignore for local-only skills. Triggers: push skills, sync asi, remove skill from repo, skill repo sync, purge skill.'
 ---
 
 # Skill Repo Sync

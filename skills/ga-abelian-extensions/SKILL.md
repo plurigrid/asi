@@ -1,3 +1,7 @@
+---
+name: ga-abelian-extensions
+description: Abelian extensions for Clifford algebra grade filtrations via Ext functors.
+---
 # GA Abelian Extensions Skill
 
 Abelian extensions for Clifford algebra grade filtrations via Ext functors.

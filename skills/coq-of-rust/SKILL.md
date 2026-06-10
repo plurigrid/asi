@@ -1,3 +1,7 @@
+---
+name: coq-of-rust
+description: Formal verification of Rust programs via translation to Coq/Rocq.
+---
 # coq-of-rust
 
 Formal verification of Rust programs via translation to Coq/Rocq.

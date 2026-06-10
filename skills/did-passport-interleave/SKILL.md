@@ -1,12 +1,11 @@
 ---
-name: did-passport-interleave
-<<<<<<< HEAD
+name: did-passport-interleave <<<<<<< HEAD
 description: Formal bridge between W3C Decentralized Identifiers (did:wba, ANP) and passport.gay (SplitMix64 MAC→trit trajectory→GF(3) fingerprint→QRTP air-gap). Establishes a bisimulation relation between the online DID resolution model and the offline fountain-coded QR identity model. Closes Gap G-P2 (MCP-I DID extension) and Gap G5 (passport revocation) from the zig-syrup propagator interleave gap registry.
-version: 1.0.0
-trit: 0
+deployed: '2026-02-19'
 role: BRIDGE
-tags: [did, w3c, anp, passport, qrtp, gf3, homotopy, identity, bridge, bisimulation, air-gap]
-deployed: 2026-02-19
+tags: '[did, w3c, anp, passport, qrtp, gf3, homotopy, identity, bridge, bisimulation, air-gap]'
+trit: '0'
+version: 1.0.0
 ---
 
 # W3C DID ↔ passport.gay Interleave

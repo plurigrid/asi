@@ -1,3 +1,7 @@
+---
+name: libghostty-aci
+description: 'Integrates libghostty terminal emulation with Agent-Computer Interface (ACI) patterns:'
+---
 # libghostty-aci: Terminal ACI Integration
 
 **Trit**: 0 (ERGODIC - transport layer)

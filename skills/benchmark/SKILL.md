@@ -1,6 +1,5 @@
 ---
-name: benchmark
-<<<<<<< HEAD
+name: benchmark <<<<<<< HEAD
 description: Run and interpret engine-stack benchmarks (Steel, ember, shale)
 model: haiku
 ---

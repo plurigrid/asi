@@ -1,3 +1,7 @@
+---
+name: data-science-cli
+description: Unix command-line tools for data science workflows. Filesystem changes tracked by color for retrieval.
+---
 # Data Science on the Command Line
 
 **Color**: #2518AA (deep indigo)  

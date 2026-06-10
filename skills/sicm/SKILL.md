@@ -1,4 +1,6 @@
 ---
+name: sicm
+description: '- **Generic arithmetic** extensible across numeric types'
 metadata:
   interface_ports:
   - References

@@ -1,4 +1,6 @@
 ---
+name: teglon-bison
+description: 'Bison extends Unison''s content-addressed code with **bisimulation** semantics:'
 metadata:
   interface_ports:
   - GF(3) Triads

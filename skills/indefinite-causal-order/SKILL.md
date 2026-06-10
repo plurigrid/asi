@@ -1,3 +1,7 @@
+---
+name: indefinite-causal-order
+description: Indefinite causal order (ICO) is the framework where the causal relationship
+---
 # Indefinite Causal Order
 
 > **Trit**: 0 (ERGODIC — coordination between causal orders)

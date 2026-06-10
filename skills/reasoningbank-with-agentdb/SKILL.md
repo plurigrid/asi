@@ -1,6 +1,6 @@
 ---
 name: reasoningbank-with-agentdb
-description: ReasoningBank adaptive learning with AgentDB vector backend. Trajectory tracking, verdict judgment, memory distillation. Triggers: reasoningbank, agentdb, adaptive learning, experience replay, trajectory tracking.
+description: 'ReasoningBank adaptive learning with AgentDB vector backend. Trajectory tracking, verdict judgment, memory distillation. Triggers: reasoningbank, agentdb, adaptive learning, experience replay, trajectory tracking.'
 ---
 
 # ReasoningBank with AgentDB

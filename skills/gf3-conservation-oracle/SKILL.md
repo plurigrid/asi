@@ -1,18 +1,11 @@
 ---
-name: gf3-conservation-oracle
-<<<<<<< HEAD
-description: Formal oracle verifying GF(3) trit conservation across skill triads, belief states, and propagator networks. Given a set of skills/values with assigned trits, decides if the sum ≡ 0 mod 3 for every valid triad. Returns CONSERVED | VIOLATED | UNKNOWN with an explicit witness (the violating triad or the certificate). This is the pre-commit invariant enforced by gf3-pr-verify.
-version: 1.0.0
-trit: -1
+name: gf3-conservation-oracle <<<<<<< HEAD
+description: '> Formal oracle verifying GF(3) trit conservation across skill triads. Triggers: verify trit conservation, check GF(3) invariant, pre-commit trit check, triad validation, conservation law enforcement, sum mod 3 check. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: VALIDATOR
-tags: [gf3, oracle, conservation, triads, formal, invariant, pre-commit, validator]
-deployed: 2026-02-19
-=======
-description: >
-  Formal oracle verifying GF(3) trit conservation across skill triads.
-  Triggers: verify trit conservation, check GF(3) invariant, pre-commit trit check,
-  triad validation, conservation law enforcement, sum mod 3 check.
->>>>>>> origin/main
+tags: '[gf3, oracle, conservation, triads, formal, invariant, pre-commit, validator]'
+trit: '-1'
+version: 1.0.0
 ---
 
 # GF(3) Conservation Oracle

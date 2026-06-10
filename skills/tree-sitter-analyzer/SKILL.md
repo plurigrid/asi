@@ -1,3 +1,7 @@
+---
+name: tree-sitter-analyzer
+description: Automated code structure analysis for module verification and cross-prover theorem mapping using tree-sitter incremental parsing. Enables 100x+ speedup on integration verification tasks compared to manual analysis.
+---
 # Tree-Sitter Analyzer Skill
 
 **Version**: 1.0.0

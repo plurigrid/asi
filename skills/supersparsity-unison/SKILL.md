@@ -1,4 +1,7 @@
 ---
+name: supersparsity-unison
+description: 'Pandey''s key finding: `L(N,D) = f(gzip(data))` — gzip compressibility predicts optimal compute allocation.'
+color: '#9B59B6'
 metadata:
   skill_type: Bridge (Synthesis)
   interface_ports:
@@ -6,7 +9,6 @@ metadata:
   - Commands
   - Related Skills
 trit: 0
-color: '#9B59B6'
 ---
 # supersparsity-unison Skill
 

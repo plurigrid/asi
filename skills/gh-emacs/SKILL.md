@@ -1,4 +1,6 @@
 ---
+name: gh-emacs
+description: 'GitHub Actions as a **decentralized Emacs compute fabric**:'
 metadata:
   interface_ports:
   - Commands

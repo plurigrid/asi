@@ -1,6 +1,6 @@
 ---
 name: cq-ai-deterministic-security-scanning-with-ternary-polarity
-description: Deterministic code security scanner using SplitMix64 seeding. Same seed + same codebase = identical findings. Ternary severity classification. Triggers: cq-ai, security scan, deterministic analysis, code query, vulnerability scanner.
+description: 'Deterministic code security scanner using SplitMix64 seeding. Same seed + same codebase = identical findings. Ternary severity classification. Triggers: cq-ai, security scan, deterministic analysis, code query, vulnerability scanner.'
 ---
 
 # CQ-AI: Deterministic Code Security Scanning

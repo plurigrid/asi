@@ -1,6 +1,6 @@
 ---
 name: skill-finder-verifier
-description: Find locally-created skills and verify provenance. Distinguishes locally-created from batch-installed by diffing against asi/skills/ baseline. Evaluates modified downloads for functional improvement. Triggers: new skills, local skills, skill audit, skill provenance, skill verification.
+description: 'Find locally-created skills and verify provenance. Distinguishes locally-created from batch-installed by diffing against asi/skills/ baseline. Evaluates modified downloads for functional improvement. Triggers: new skills, local skills, skill audit, skill provenance, skill verification.'
 ---
 
 # Skill Finder & Verifier

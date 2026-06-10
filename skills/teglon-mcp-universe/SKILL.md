@@ -1,3 +1,7 @@
+---
+name: teglon-mcp-universe
+description: '- α: Test execution | β: Benchmark suite change | γ: Score validation'
+---
 # Teglon MCP-Universe Skill
 
 > AI agent benchmarking framework

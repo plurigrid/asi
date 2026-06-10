@@ -1,3 +1,7 @@
+---
+name: repeng-gay
+description: Representation engineering with Gay.jl deterministic coloring for control vectors.
+---
 # repeng Gay Skill
 
 Representation engineering with Gay.jl deterministic coloring for control vectors.

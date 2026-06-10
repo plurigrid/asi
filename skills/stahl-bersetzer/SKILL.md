@@ -1,6 +1,6 @@
 ---
 name: stahl-bersetzer
-description: Steel-to-Stahl (mattwparas/steel Scheme) German translation validator with semantic preservation and type equivalence. Triggers: stahl, steel, scheme, german translation, semantic preservation.
+description: 'Steel-to-Stahl (mattwparas/steel Scheme) German translation validator with semantic preservation and type equivalence. Triggers: stahl, steel, scheme, german translation, semantic preservation.'
 ---
 
 # Stahl-Übersetzer

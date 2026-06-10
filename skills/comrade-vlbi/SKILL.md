@@ -1,4 +1,6 @@
 ---
+name: comrade-vlbi
+description: Event Horizon Telescope black hole imaging with deterministic coloring via Gay.jl integration.
 metadata:
   interface_ports:
   - Commands

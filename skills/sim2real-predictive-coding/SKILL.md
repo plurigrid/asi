@@ -1,3 +1,7 @@
+---
+name: sim2real-predictive-coding
+description: '- User asks about sim2real transfer mechanisms'
+---
 # Sim2Real as Predictive Coding (Second-Order Skill)
 
 > *"Zero-shot transfer is successful prediction of future observations in a new domain."*

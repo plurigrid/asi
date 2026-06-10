@@ -1,3 +1,7 @@
+---
+name: bandwidth-benchmark
+description: Measure encoding/decoding throughput across Syrup implementations. This skill provides bandwidth benchmarks for comparing serialization performance.
+---
 # Syrup Bandwidth Benchmark Skill
 
 ## Overview

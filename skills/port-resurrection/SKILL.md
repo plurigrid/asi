@@ -1,3 +1,7 @@
+---
+name: port-resurrection
+description: Derive service ports from Gay.jl color sequence. Key space reduction via deterministic but externally-unpredictable port assignment.
+---
 # Port Resurrection Markets
 
 Derive service ports from Gay.jl color sequence. Key space reduction via deterministic but externally-unpredictable port assignment.

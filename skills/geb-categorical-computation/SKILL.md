@@ -1,3 +1,7 @@
+---
+name: geb-categorical-computation
+description: '- **Source**: https://github.com/bmorphism/geb'
+---
 # Geb: Categorical Computation Skill
 
 ## Repository

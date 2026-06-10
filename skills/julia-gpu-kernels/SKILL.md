@@ -1,3 +1,7 @@
+---
+name: julia-gpu-kernels
+description: 'KernelAbstractions.jl: Backend-agnostic GPU kernel programming for Julia.'
+---
 # Julia GPU Kernels Skill
 
 KernelAbstractions.jl: Backend-agnostic GPU kernel programming for Julia.

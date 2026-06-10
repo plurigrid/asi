@@ -1,3 +1,7 @@
+---
+name: go-1fps
+description: 'Every agent interaction is:'
+---
 # go-1fps
 
 > Every interaction is one frame of an open game. 1 FPS = 1 Frame Per Semantic.

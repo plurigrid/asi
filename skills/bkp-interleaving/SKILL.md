@@ -1,3 +1,7 @@
+---
+name: bkp-interleaving
+description: 'This skill is the **deep interleaving** of the five BKP 2-monad theory skills:'
+---
 # BKP Interleaving Hub
 
 > *"The BKP theorem is not five separate results — it is one theorem with five faces."*

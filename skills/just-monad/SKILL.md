@@ -1,4 +1,7 @@
 ---
+name: just-monad
+description: 'The **Just Monad** treats `just` recipes as monadic actions:'
+color: '#49EE54'
 metadata:
   interface_ports:
   - References
@@ -6,7 +9,6 @@ metadata:
   - GF(3) Triads
   - Integration with
 trit: 0
-color: '#49EE54'
 ---
 # Just Monad Skill
 

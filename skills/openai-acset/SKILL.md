@@ -1,10 +1,12 @@
 ---
+name: openai-acset
+description: OpenAI's ChatGPT export has a **tree-structured mapping** where messages form a DAG via `parent`/`children` relationships. The compositional ACSet anticipates this structure.
+color: '#10B981'
 metadata:
   interface_ports:
   - Related Skills
   - GF(3) Triads
 trit: 0
-color: '#10B981'
 ---
 # openai-acset
 

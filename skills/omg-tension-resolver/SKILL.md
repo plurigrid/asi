@@ -1,4 +1,6 @@
 ---
+name: omg-tension-resolver
+description: '[OpenModelica Microgrid Gym](https://github.com/upb-lea/openmodelica-microgrid-gym) (OMG) provides a physical substrate where all skill tensions find resolution through **energy flow dynamics**:'
 metadata:
   skill_type: Dynamical system substrate for balancing opposing forces
   interface_ports:

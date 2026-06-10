@@ -1,3 +1,7 @@
+---
+name: coherence-composer
+description: The **Coherence Composer** is an epistemological skill that validates structural consistency and explores counterfactual worlds while respecting constraints from both **Commitment Tracker** (ontology) and **Opacity Detector** (epistemology).
+---
 # Coherence Composer Skill: Complete Technical Documentation
 
 **Skill 3 of 3** | Possibility Coordination | Status: ✅ Production-Ready

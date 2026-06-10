@@ -1,6 +1,5 @@
 ---
-name: geomstats-fisher-rao
-<<<<<<< HEAD
+name: geomstats-fisher-rao <<<<<<< HEAD
 description: Information geometry for Bayesian inference. Fisher-Rao metric on statistical manifolds, Riemannian optimization for model selection, Wasserstein geodesics connecting geomstats to Gromov-Wasserstein optimal transport.
 ---
 

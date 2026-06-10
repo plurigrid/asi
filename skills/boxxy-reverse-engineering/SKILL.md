@@ -1,3 +1,7 @@
+---
+name: boxxy-reverse-engineering
+description: This skill integrates **Boxxy sandbox boundary testing** with the complete Trail of Bits firmware extraction methodology. Use this for extracting and analyzing firmware in heavily obfuscated, containerized, or restricted environments.
+---
 # Boxxy Reverse Engineering Skill
 
 **Status**: ✅ Production Ready

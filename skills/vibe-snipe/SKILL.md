@@ -1,3 +1,7 @@
+---
+name: vibe-snipe
+description: 'From Interverse transcript (Dec 12, 2025 - Alice Through the Looking Glass):'
+---
 # vibe-snipe Skill
 
 > *Play/Coplay bidirectional evaluation with compiled artifact verification*

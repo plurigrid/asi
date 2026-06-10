@@ -1,7 +1,6 @@
 ---
-name: svelte-template-directives
-# prettier-ignore
-description: Svelte template directives ({@attach}, {@html}, {@render}, {@const}, {@debug}). Use for DOM manipulation, third-party libs, tooltips, canvas, dynamic HTML. @attach replaces use: actions.
+name: 'svelte-template-directives # prettier-ignore'
+description: 'Svelte template directives ({@attach}, {@html}, {@render}, {@const}, {@debug}). Use for DOM manipulation, third-party libs, tooltips, canvas, dynamic HTML. @attach replaces use: actions.'
 ---
 
 # Svelte Template Directives

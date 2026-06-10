@@ -1,21 +1,11 @@
 ---
-name: zig-syrup-propagator-interleave
-<<<<<<< HEAD
-description: Bridge layer connecting zig-syrup advanced computational modules (propagator networks, homotopy continuation, AGM belief revision, QRTP air-gapped transport, passport.gay identity, geo.zig spatial, xev_io async) to the ASI skill graph. Wires Radul-Sussman propagators, GF(3) trit trajectories, and scoped erasure decoding into BCI, abductive reasoning, and identity verification skills.
-version: 1.0.0
-trit: -1
+name: zig-syrup-propagator-interleave <<<<<<< HEAD
+description: '> Bridge connecting zig-syrup advanced computational modules (propagator networks, homotopy continuation, AGM belief revision, QRTP air-gapped transport, passport.gay identity, geo.zig spatial, xev_io async) to the ASI skill graph. Use when wiring Radul-Sussman propagators, implementing CellValue lattice merge, running homotopy continuation for polynomial solving, performing AGM belief revision, or building air-gapped identity verification via QRTP. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: BRIDGE
-tags: [zig-syrup, propagator, homotopy, continuation, agm, qrtp, bci, passport, geo, xev, gf3, interleave, air-gap, validator]
-deployed: 2026-02-19
-=======
-description: >
-  Bridge connecting zig-syrup advanced computational modules (propagator networks,
-  homotopy continuation, AGM belief revision, QRTP air-gapped transport,
-  passport.gay identity, geo.zig spatial, xev_io async) to the ASI skill graph.
-  Use when wiring Radul-Sussman propagators, implementing CellValue lattice
-  merge, running homotopy continuation for polynomial solving, performing AGM
-  belief revision, or building air-gapped identity verification via QRTP.
->>>>>>> origin/main
+tags: '[zig-syrup, propagator, homotopy, continuation, agm, qrtp, bci, passport, geo, xev, gf3, interleave, air-gap, validator]'
+trit: '-1'
+version: 1.0.0
 ---
 
 # zig-syrup Advanced Modules x ASI Interleave

@@ -1,12 +1,11 @@
 ---
-name: catlab-asi-interleave
-<<<<<<< HEAD
+name: catlab-asi-interleave <<<<<<< HEAD
 description: Bridge layer connecting AlgebraicJulia/Catlab.jl to plurigrid/asi. Wires ACSets (attributed C-sets), wiring diagrams, decorated cospans, and the AlgebraicJulia ecosystem (AlgebraicDynamics, AlgebraicPetri, AlgebraicRewriting, Decapodes) into the ASI skill graph. ACSets generalize relational databases with categorical semantics; every diagram, network, and model in the ecosystem is an ACSet.
-version: 1.0.0
-trit: 0
+deployed: '2026-02-19'
 role: BRIDGE
-tags: [catlab, algebraicjulia, acsets, wiring-diagrams, decorated-cospans, dpo-rewriting, julia, gf3, interleave]
-deployed: 2026-02-19
+tags: '[catlab, algebraicjulia, acsets, wiring-diagrams, decorated-cospans, dpo-rewriting, julia, gf3, interleave]'
+trit: '0'
+version: 1.0.0
 ---
 
 # Catlab.jl x ASI Interleave

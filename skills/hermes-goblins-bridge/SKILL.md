@@ -1,8 +1,8 @@
 ---
 name: hermes-goblins-bridge
-description: Interface-compatible bridges from Hermes Agent harness (~/i/hermes-agent) to Spritely Goblins/OCapN via ~/i/goblins-adapter. Each Hermes capability mapped to a Goblins primitive with a tracked bridge skill, status, and GF(3) polarity. Goal: full feature equivalence under capability discipline.
-type: bridge-index
+description: 'Interface-compatible bridges from Hermes Agent harness (~/i/hermes-agent) to Spritely Goblins/OCapN via ~/i/goblins-adapter. Each Hermes capability mapped to a Goblins primitive with a tracked bridge skill, status, and GF(3) polarity. Goal: full feature equivalence under capability discipline.'
 gf3_invariant: sum_polarities ≡ 0 (mod 3)
+type: bridge-index
 ---
 
 # Hermes ↔ Goblins Bridge Rubric

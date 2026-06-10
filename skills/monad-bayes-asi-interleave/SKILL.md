@@ -1,12 +1,11 @@
 ---
-name: monad-bayes-asi-interleave
-<<<<<<< HEAD
+name: monad-bayes-asi-interleave <<<<<<< HEAD
 description: Bridge layer connecting tweag/monad-bayes to plurigrid/asi. Routes SMC/MCMC/PMMH/RMSMC monad transformer stacks into asi's abductive reasoning, lolita physics emulation, and GF(3)-colored sampling capabilities.
-version: 1.0.0
-trit: 0
+deployed: '2026-02-19'
 role: BRIDGE
-tags: [monad-bayes, probabilistic, mcmc, smc, haskell, asi, abductive, gf3, interleave]
-deployed: 2026-02-19
+tags: '[monad-bayes, probabilistic, mcmc, smc, haskell, asi, abductive, gf3, interleave]'
+trit: '0'
+version: 1.0.0
 ---
 
 # monad-bayes × ASI Interleave

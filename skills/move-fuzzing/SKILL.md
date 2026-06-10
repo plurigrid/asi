@@ -1,4 +1,6 @@
 ---
+name: move-fuzzing
+description: Comprehensive fuzzing toolkit for Move smart contracts on Aptos, Sui, and Movement chains.
 metadata:
   interface_ports:
   - Integration with

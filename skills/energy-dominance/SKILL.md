@@ -1,3 +1,7 @@
+---
+name: energy-dominance
+description: US National Energy Dominance Council framework integrated with Plurigrid decentralized infrastructure, SMRs, and GF(3)-conserved coordination protocols.
+---
 # Energy Dominance Skill
 
 > **Trit: +1 (GENERATOR)**

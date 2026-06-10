@@ -1,3 +1,7 @@
+---
+name: alice-chirality
+description: 'From Interverse transcript (Dec 12, 2025):'
+---
 # alice-chirality Skill
 
 > *Helicity vs Chirality koan + Jabberwocky syntax-physics + bilingual symmetry breaking*

@@ -1,3 +1,7 @@
+---
+name: mlx-bitnet-gf3
+description: 'BitNet 1.58-bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:'
+---
 # mlx-bitnet-gf3 Skill
 
 > 1.58-bit LLMs on Apple Silicon with GF(3) color integration

@@ -1,4 +1,6 @@
 ---
+name: pigeons-spi
+description: 'Pigeons.jl implements **Strong Parallelism Invariance (SPI)**: identical results regardless of number of parallel workers. This is the pattern Gay.jl adopts for deterministic color generation.'
 metadata:
   interface_ports:
   - References

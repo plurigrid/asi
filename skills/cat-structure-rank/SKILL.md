@@ -1,3 +1,7 @@
+---
+name: cat-structure-rank
+description: Ranked taxonomy of categorical structures from sets to ∞-topoi with gap analysis and DuckDB integration.
+---
 # Category Theory Structure Rank Skill
 
 Ranked taxonomy of categorical structures from sets to ∞-topoi with gap analysis and DuckDB integration.

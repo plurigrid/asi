@@ -1,3 +1,7 @@
+---
+name: py-acsets-rewriting
+description: Python bridge to AlgebraicRewriting.jl for DPO/SPO/SqPO graph rewriting over ACSets.
+---
 # py-acsets-rewriting
 
 Python bridge to AlgebraicRewriting.jl for DPO/SPO/SqPO graph rewriting over ACSets.

@@ -1,3 +1,7 @@
+---
+name: graded-monad
+description: 'A **graded monad** (also called an **indexed monad** or **parametrized monad**) is a monad whose operations carry an index from a monoidal category. The 2-categorical perspective reveals graded monads as:'
+---
 # Graded Monad Skill
 
 > *"A graded monad is a lax 2-functor from a monoidal category (viewed as a one-object 2-category) to Cat."*

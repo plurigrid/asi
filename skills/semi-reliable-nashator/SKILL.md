@@ -1,3 +1,7 @@
+---
+name: semi-reliable-nashator
+description: 'This skill implements the **morphisms of open games** paper''s insight: lenses connect compositional game theory to cybernetic control, and states out of the monoidal unit give flexible solution concepts.'
+---
 # Semi-Reliable Nashator
 
 > *"Lift yer fists like antennas to heaven"* — GY!BE

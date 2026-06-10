@@ -1,4 +1,6 @@
 ---
+name: neuro-symbolic-bridge
+description: 'High tension pairs (d ≈ 1.85):'
 metadata:
   interface_ports:
   - Commands

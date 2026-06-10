@@ -1,3 +1,7 @@
+---
+name: hijaling
+description: 'This skill extends [mlegls/hyjax](https://github.com/mlegls/hyjax) with:'
+---
 # hijaling
 
 > Hy + JAX + Outlines = Structured s-expression generation via constrained LLM decoding. The final use of HyJAX.

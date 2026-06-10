@@ -1,3 +1,7 @@
+---
+name: leapity-frog
+description: 'When conservation is locally violated:'
+---
 # Leapity Frog 🐸
 
 > Many-to-none spindown bandit exploiting broken GF(3) conservation assumptions

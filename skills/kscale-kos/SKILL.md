@@ -1,3 +1,7 @@
+---
+name: kscale-kos
+description: '- User asks about robot operating systems, firmware, or low-level control'
+---
 # K-Scale KOS Skill
 
 > *"A general-purpose, configurable framework for robot firmware"*

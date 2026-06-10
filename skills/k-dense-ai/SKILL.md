@@ -1,3 +1,7 @@
+---
+name: k-dense-ai
+description: '- `alphafold-database` - Protein structure prediction'
+---
 # K-Dense-AI Scientific Computing Bundle
 
 > Provenance: K-Dense-AI / Codex scientific skills

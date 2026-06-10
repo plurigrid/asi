@@ -1,4 +1,6 @@
 ---
+name: teglon-duck-ui
+description: 'Duck-UI provides browser-based DuckDB via WebAssembly:'
 metadata:
   interface_ports:
   - GF(3) Triads

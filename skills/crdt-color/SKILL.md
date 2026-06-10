@@ -1,3 +1,7 @@
+---
+name: crdt-color
+description: Color-aware CRDT operations with GF(3) conservation, Narya proofs, ACSet schemas, and Bumpus narrative sheaves.
+---
 # CRDT Color Skill
 
 > **Trit**: 0 (ERGODIC) - Coordinates between verification (-1) and generation (+1)

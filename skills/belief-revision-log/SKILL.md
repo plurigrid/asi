@@ -1,18 +1,11 @@
 ---
-name: belief-revision-log
-<<<<<<< HEAD
-description: Persistent belief revision log wiring continuation.zig's in-memory AGM BeliefSet to DuckDB time-travel storage. Closes Gap G3 from zig-syrup-propagator-interleave. Formal oracle for querying the revision history — given a proposition P and time T, returns the exact belief state at T via AS-OF queries. Never reconstructs history by re-running revisions.
-version: 1.0.0
-trit: -1
+name: belief-revision-log <<<<<<< HEAD
+description: '> Persistent belief revision log wiring in-memory AGM BeliefSet to DuckDB time-travel storage. Triggers: belief revision, AGM postulates, time-travel query, belief history, AS-OF queries on propositions, persistent belief state, append-only belief log. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: VALIDATOR
-tags: [belief-revision, agm, duckdb, time-travel, continuation, gf3, oracle, persistence, formal]
-deployed: 2026-02-19
-=======
-description: >
-  Persistent belief revision log wiring in-memory AGM BeliefSet to DuckDB time-travel storage.
-  Triggers: belief revision, AGM postulates, time-travel query, belief history,
-  AS-OF queries on propositions, persistent belief state, append-only belief log.
->>>>>>> origin/main
+tags: '[belief-revision, agm, duckdb, time-travel, continuation, gf3, oracle, persistence, formal]'
+trit: '-1'
+version: 1.0.0
 ---
 
 # Belief Revision Log

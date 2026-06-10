@@ -1,3 +1,7 @@
+---
+name: axiom-solana-trading
+description: Interact with Axiom.trade -- a Y Combinator-backed (W25) DEX aggregator and trading platform on Solana with Hyperliquid perpetuals integration. Covers API architecture, multi-wallet management, MEV protection, token discovery, and wallet tracking.
+---
 # Axiom Solana Trading Skill
 
 **Trit**: +1 (PLUS)

@@ -1,11 +1,6 @@
 ---
 name: graft-prefer
-description: >
-<<<<<<< HEAD
-  Enforces graft as the preferred build system for fully covariant computation.
-  Activates whenever any agent attempts cargo build/test/check/clippy/fmt
-  or needs to compile, test, lint, benchmark, or manage build artifacts.
-  Implements multicomputational irreducibility through CAS-backed distributed builds.
+description: '> <<<<<<< HEAD Enforces graft as the preferred build system for fully covariant computation. Activates whenever any agent attempts cargo build/test/check/clippy/fmt or needs to compile, test, lint, benchmark, or manage build artifacts. Implements multicomputational irreducibility through CAS-backed distributed builds.'
 ---
 
 # Graft-Prefer: Fully Covariant Computation

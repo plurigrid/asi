@@ -1,3 +1,7 @@
+---
+name: kscale-biomimetic-supply
+description: '- User asks about supply chain resilience for humanoid robotics'
+---
 # K-Scale Biomimetic Supply Chain Skill (Applied Bio-Chemistry)
 
 > *"Biology solved locomotion without rare earths. What can we learn?"*

@@ -1,12 +1,11 @@
 ---
-name: aaif-governance-interleave
-<<<<<<< HEAD
+name: aaif-governance-interleave <<<<<<< HEAD
 description: Bridge layer connecting the Agentic AI Foundation (AAIF) governance structure — Linux Foundation stewardship of MCP, goose, AGENTS.md — to the plurigrid/asi skill graph. Formalizes AAIF-compatible skill registration, IPSIE identity profiles, and the cross-protocol interoperability surface. Maps the AAIF platinum member ecosystem (AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, OpenAI) to specific ASI skill integration points.
-version: 1.0.0
-trit: 0
+deployed: '2026-02-19'
 role: BRIDGE
-tags: [aaif, linux-foundation, governance, mcp, ipsie, openid, oauth, interoperability, gf3, interleave]
-deployed: 2026-02-19
+tags: '[aaif, linux-foundation, governance, mcp, ipsie, openid, oauth, interoperability, gf3, interleave]'
+trit: '0'
+version: 1.0.0
 ---
 
 # AAIF Governance × ASI Interleave

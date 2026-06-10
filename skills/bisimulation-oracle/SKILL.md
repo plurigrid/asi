@@ -1,19 +1,11 @@
 ---
-name: bisimulation-oracle
-<<<<<<< HEAD
-description: Formal oracle for behavioral equivalence. Given two systems (skills, agents, processes), decides if they are bisimilar — i.e., indistinguishable by any external observer. Implements strong bisimulation, weak bisimulation, and GF(3)-colored bisimulation games. The oracle answers YES/NO, never "probably".
-version: 1.0.0
-trit: -1
+name: bisimulation-oracle <<<<<<< HEAD
+description: '> Formal oracle for behavioral equivalence via bisimulation games. Triggers: behavioral equivalence check, bisimulation game, are two systems equivalent, did a skill update preserve behavior, attacker-defender game, partition refinement, distinguishing trace. >>>>>>> origin/main'
+deployed: 2026-02-19 =======
 role: VALIDATOR
-tags: [bisimulation, oracle, formal, behavioral-equivalence, game, gf3, lts]
-deployed: 2026-02-19
-=======
-description: >
-  Formal oracle for behavioral equivalence via bisimulation games.
-  Triggers: behavioral equivalence check, bisimulation game, are two systems equivalent,
-  did a skill update preserve behavior, attacker-defender game, partition refinement,
-  distinguishing trace.
->>>>>>> origin/main
+tags: '[bisimulation, oracle, formal, behavioral-equivalence, game, gf3, lts]'
+trit: '-1'
+version: 1.0.0
 ---
 
 # Bisimulation Oracle

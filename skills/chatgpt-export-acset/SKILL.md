@@ -1,10 +1,12 @@
 ---
+name: chatgpt-export-acset
+description: 'Transform ChatGPT ZIP exports into ACSets (Attributed C-Sets) for:'
+color: '#10B981'
 metadata:
   interface_ports:
   - Related Skills
   - GF(3) Triads
 trit: 0
-color: '#10B981'
 ---
 # chatgpt-export-acset
 

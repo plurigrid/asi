@@ -1,3 +1,7 @@
+---
+name: xogot
+description: 'Debug Godot games on iPhone/iPad via USB:'
+---
 # Xogot Skill
 
 **Trit**: +1 (PLUS/Generator)  

@@ -1,6 +1,6 @@
 ---
 name: cc-trace
-description: Intercept and debug Claude Code API requests using mitmproxy. Inspect system prompts, tool definitions, token usage, and streaming responses. Triggers: cc-trace, mitmproxy, API interception, Claude Code debugging, traffic inspection.
+description: 'Intercept and debug Claude Code API requests using mitmproxy. Inspect system prompts, tool definitions, token usage, and streaming responses. Triggers: cc-trace, mitmproxy, API interception, Claude Code debugging, traffic inspection.'
 ---
 
 # CC-Trace: Claude Code API Interception

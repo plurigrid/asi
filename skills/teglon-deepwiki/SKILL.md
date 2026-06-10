@@ -1,3 +1,7 @@
+---
+name: teglon-deepwiki
+description: '- α: Wiki query | β: Index update | γ: Freshness verification'
+---
 # Teglon DeepWiki Skill
 
 > DeepWiki MCP server for repo documentation

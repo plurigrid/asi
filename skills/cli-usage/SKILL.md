@@ -1,3 +1,7 @@
+---
+name: cli-usage
+description: This skill provides comprehensive CLI reference for the mcp-tasks command-line tool.
+---
 # MCP-Tasks CLI Reference
 
 This skill provides comprehensive CLI reference for the mcp-tasks command-line tool.

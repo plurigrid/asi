@@ -1,4 +1,6 @@
 ---
+name: julia-tempering
+description: Splittable RNG infrastructure for parallel tempering and distributed sampling with deterministic reproducibility.
 metadata:
   interface_ports:
   - References

@@ -1,3 +1,7 @@
+---
+name: llms-txt-discovery
+description: 'Create the **largest indexed directory of AI documentation** by:'
+---
 # llms-txt-discovery: Largest AI Documentation Directory
 
 **Status**: Stepping Stone 🌉

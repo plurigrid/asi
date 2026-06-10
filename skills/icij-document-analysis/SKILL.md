@@ -1,3 +1,7 @@
+---
+name: icij-document-analysis
+description: Document processing pipeline for large-scale leak analysis. Based on ICIJ's methodologies from Panama Papers, Paradise Papers, and Pandora Papers investigations. Coordinates between forensic validation (-1) and graph generation (+1).
+---
 # ICIJ Document Analysis Skill
 
 **Trit**: 0 (ERGODIC - Coordinator)

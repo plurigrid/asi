@@ -1,4 +1,6 @@
 ---
+name: hydra-graphql-interactome
+description: 'Every Hydra query expansion must conserve:'
 metadata:
   interface_ports:
   - Commands

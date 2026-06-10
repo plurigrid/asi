@@ -1,3 +1,7 @@
+---
+name: collaborative-emacs
+description: Claude Code runs an Emacs daemon, starts a CRDT server, shares buffers.
+---
 # Collaborative Emacs — Claude Code + CRDT Live Editing
 
 **Trit**: 0 (ERGODIC - bidirectional coordination)

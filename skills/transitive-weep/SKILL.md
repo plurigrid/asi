@@ -1,3 +1,7 @@
+---
+name: transitive-weep
+description: 'Each world is an **open game** with:'
+---
 # Transitive Weep Skill
 
 **Trit**: 0 (ERGODIC/Coordinator)  

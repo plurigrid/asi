@@ -1,3 +1,7 @@
+---
+name: doctrinal-adjunction
+description: 'A **doctrinal adjunction** is Kelly''s 1974 theorem establishing a canonical bijection between:'
+---
 # Doctrinal Adjunction Skill
 
 > *"An adjunction between T-algebras is precisely a lax T-morphism structure on the right adjoint, equivalently a colax T-morphism structure on the left adjoint."*

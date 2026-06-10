@@ -1,3 +1,7 @@
+---
+name: mlx-color-traceroute
+description: Deploy Clojure MCP ecosystem integrations with MLX/JAX inference and Gay.jl deterministic coloring via ACSets.
+---
 # MLX Color Traceroute Skill
 
 Deploy Clojure MCP ecosystem integrations with MLX/JAX inference and Gay.jl deterministic coloring via ACSets.

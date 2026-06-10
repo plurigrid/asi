@@ -1,3 +1,7 @@
+---
+name: polyglot-orchestration
+description: Enable seamless execution and coordination of code across **5 language ecosystems** (Babashka, Julia, Python, OCaml, Scheme) with unified dispatch, data marshalling, and result aggregation. Like Docker Compose for polyglot systems.
+---
 # polyglot-orchestration: Multi-Language Runtime Coordination
 
 **Status**: SAD STATE → IMPLEMENTATION 🌟

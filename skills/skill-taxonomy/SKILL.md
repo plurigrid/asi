@@ -1,3 +1,7 @@
+---
+name: skill-taxonomy
+description: 'Provide a centralized registry and discovery system for all 69 ASI skills. Like npm, pip, and Hackage, this skill enables:'
+---
 # skill-taxonomy: 69-Skill Organization + Discovery System
 
 **Status**: Stepping Stone 🌉

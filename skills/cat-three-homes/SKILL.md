@@ -1,3 +1,7 @@
+---
+name: cat-three-homes
+description: 'The double category of polynomial comonads where:'
+---
 # Cat# Three Homes Skill
 
 > "All Concepts are Cat#" — Spivak (ACT 2023)

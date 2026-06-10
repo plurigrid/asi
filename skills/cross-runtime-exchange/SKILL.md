@@ -1,3 +1,7 @@
+---
+name: cross-runtime-exchange
+description: 'This skill enables content-addressed interoperability between three Syrup implementations:'
+---
 # Cross-Runtime Syrup Exchange Skill
 
 ## Overview

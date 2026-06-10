@@ -1,10 +1,6 @@
 ---
-name: egpu
-<<<<<<< HEAD
-description: "External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, workload migration, and Project's eGPU infrastructure (gpu-display, gpu-runtime). Use when working with eGPU detection, GPU failover, Thunderbolt networking, or multi-GPU workload routing."
-=======
-description: "External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, workload migration, and Basin's eGPU infrastructure (basin-display, basin-gpu). Use when working with eGPU detection, GPU failover, Thunderbolt networking, or multi-GPU workload routing."
->>>>>>> origin/main
+name: egpu <<<<<<< HEAD
+description: External GPU technology fundamentals, Thunderbolt bandwidth math, hotplug detection, workload migration, and Basin's eGPU infrastructure (basin-display, basin-gpu). Use when working with eGPU detection, GPU failover, Thunderbolt networking, or multi-GPU workload routing. >>>>>>> origin/main
 ---
 
 # eGPU Skill

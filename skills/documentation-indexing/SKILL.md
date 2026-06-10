@@ -1,3 +1,7 @@
+---
+name: documentation-indexing
+description: 'Provide **full-text search, semantic indexing, and relevance ranking** across all documentation:'
+---
 # documentation-indexing: Unified Full-Text Search + Ranking
 
 **Status**: SAD STATE → IMPLEMENTATION 🌟

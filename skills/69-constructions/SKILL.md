@@ -1,3 +1,7 @@
+---
+name: 69-constructions
+description: 'From Interverse transcript (Sep-Oct 2025):'
+---
 # 69-constructions Skill
 
 > *Self-play curricula via DuckLake time-travel with path-invariant verification*

@@ -1,3 +1,7 @@
+---
+name: ostium-arbitrum-perps
+description: Interact with Ostium Protocol -- a decentralized perpetual exchange on Arbitrum for RWA (Forex, Commodities, Indices, Stocks) and Crypto. Covers contract architecture, testnet deployment, SDK integration, oracle system, vault mechanics, and security auditing via Trail of Bits skills.
+---
 # Ostium Arbitrum Perps Skill
 
 **Trit**: 0 (ERGODIC)
