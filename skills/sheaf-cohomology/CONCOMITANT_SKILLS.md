@@ -1,0 +1,114 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `2-monad`
+- `acset-taxonomy`
+- `acsets`
+- `acsets-algebraic-databases`
+- `acsets-dynamic-loader`
+- `active-inference-robotics`
+- `anima-theory`
+- `anna-archive`
+- `bivector-forum`
+- `bkp-interleaving`
+- `bmorphism-video-interleave`
+- `buberian-relations`
+- `bumpus-narratives`
+- `captp`
+- `catsharp`
+- `causal-inference`
+- `chromatic-peptide-samovar`
+- `clojure`
+- `codescent`
+- `cognitive-superposition`
+- `covariant-modification`
+- `cybernetic-immune`
+- `cybernetic-open-game`
+- `deepwiki-mcp`
+- `discopy`
+- `docs-acset`
+- `doctrinal-adjunction`
+- `drive-acset`
+- `exa-11-directions`
+- `exo-distributed`
+- `fasttime-mcp`
+- `flexible-algebra`
+- `forward-forward-learning`
+- `free-monad-gen`
+- `ga-abelian-extensions`
+- `ga-codegen`
+- `ga-derived-category`
+- `ga-visualization`
+- `gay-mcp`
+- `gesture-hypergestures`
+- `gflownet`
+- `glass-bead-game`
+- `gmail-anima`
+- `godel-machine`
+- `graded-monad`
+- `gworkspace-mcp`
+- `haskell-diagrams`
+- `infinity-operads`
+- `infinity-topos`
+- `interactome-rl-env`
+- `jaxlife-open-ended`
+- `julia-gay`
+- `juvix-intents`
+- `kan-extensions`
+- `l-space`
+- `lhott-cohesive-linear`
+- `libghostty-aci`
+- `markov-game-acset`
+- `mcp-spec-checker`
+- `mdm-cobordism`
+- `modelica`
+- `move-narya-bridge`
+- `mutual-awareness-backlink`
+- `narya-proofs`
+- `naturality-factor`
+- `obstruction-learning`
+- `omg-tension-resolver`
+- `open-games`
+- `open-games-plurigrid`
+- `ordered-locale`
+- `ordered-locale-proper`
+- `phylogenetic-operad-acset`
+- `polysimy-effect-chains`
+- `pre-agent-ontology`
+- `propagators`
+- `quantum-balalaika`
+- `rama-gay-clojure`
+- `reflow`
+- `rubato-composer`
+- `ruler-maximal`
+- `self-evolving-agent`
+- `semi-reliable-nashator`
+- `semilattice-discovery`
+- `sense`
+- `sheaf-laplacian-coordination`
+- `sheaf-uncertainty`
+- `skill-connectivity-hub`
+- `skill-dispatch`
+- `skill-tour`
+- `spectral-methods`
+- `stochastic-resonance`
+- `structured-decomp`
+- `superelastic-quotient`
+- `topos-generate`
+- `topos-unified`
+- `tree-sitter`
+- `triadic-skill-loader`
+- `triadic-skill-orchestrator`
+- `triangle-sparsifier`
+- `unworld`
+- `voice-channel-uwd`
+- `wev-tesseract`
+- `workspace-unified`
+- `world-extractable-value`
+
+<!-- END GENERATED bidirectional-neighbors -->

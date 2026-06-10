@@ -1,0 +1,111 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `acp-commons`
+- `adaptyv`
+- `alphafold-database`
+- `anndata`
+- `astropy`
+- `benchling-integration`
+- `biopython`
+- `bioservices`
+- `brenda-database`
+- `cellxgene-census`
+- `chembl-database`
+- `cirq`
+- `clinical-decision-support`
+- `clinical-reports`
+- `clinicaltrials-database`
+- `clinpgx-database`
+- `clinvar-database`
+- `comrade-vlbi`
+- `dask`
+- `datamol`
+- `deepchem`
+- `diffdock`
+- `dnanexus-integration`
+- `drugbank-database`
+- `duckdb-guard`
+- `ensembl-database`
+- `etetoolkit`
+- `fda-database`
+- `flowio`
+- `fluidsim`
+- `gene-database`
+- `geniml`
+- `geo-database`
+- `geomstats-fisher-rao`
+- `gflownet`
+- `gget`
+- `gtars`
+- `gwas-database`
+- `gym`
+- `histolab`
+- `hmdb-database`
+- `jaxlife-open-ended`
+- `kegg-database`
+- `koopman-generator`
+- `labarchive-integration`
+- `lamindb`
+- `langevin-dynamics`
+- `latchbio-integration`
+- `matchms`
+- `matplotlib`
+- `medchem`
+- `metabolomics-workbench-database`
+- `molfeat`
+- `multidispatch-rl`
+- `neurokit2`
+- `neuropixels-analysis`
+- `omero-integration`
+- `opentargets-database`
+- `opentrons-integration`
+- `para-mensch-commons`
+- `pathml`
+- `pdb-database`
+- `pennylane`
+- `plotly`
+- `polars`
+- `protocolsio-integration`
+- `pubchem-database`
+- `pufferlib`
+- `pydeseq2`
+- `pydicom`
+- `pyhealth`
+- `pylabrobot`
+- `pymc`
+- `pymoo`
+- `pyopenms`
+- `pytdc`
+- `pytorch-lightning`
+- `qiskit`
+- `qutip`
+- `rdkit`
+- `reactome-database`
+- `repl-commons`
+- `scanpy`
+- `scikit-bio`
+- `scikit-learn`
+- `scikit-survival`
+- `scvi-tools`
+- `seaborn`
+- `simpy`
+- `stable-baselines3`
+- `statsmodels`
+- `string-database`
+- `transformers`
+- `umap-learn`
+- `uniprot-database`
+- `vaex`
+- `vertex-ai-protein-interleave`
+- `vertex-protein-bisimulation`
+- `vllm-deployment`
+- `yb-translator`
+- `zinc-database`
+
+<!-- END GENERATED bidirectional-neighbors -->

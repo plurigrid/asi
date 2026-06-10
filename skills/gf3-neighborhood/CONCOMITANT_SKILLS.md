@@ -1,0 +1,27 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `autopoiesis`
+- `braindance-validator`
+- `catp`
+- `crossmodal-gf3`
+- `gay-mcp`
+- `gnu-radio`
+- `harmonic-centrality-transport`
+- `modelica`
+- `padic-ultrametric`
+- `para-mensch-commons`
+- `pigeons-spi`
+- `radare2-hatchery`
+- `rubato-composer`
+- `skill-stats`
+- `triadic-skill-orchestrator`
+- `world-hopping`
+- `worlding`
+
+<!-- END GENERATED bidirectional-neighbors -->

@@ -1,0 +1,20 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `benchmark`
+- `bisimulation-game`
+- `clojure`
+- `ducklake`
+- `gay-mcp`
+- `init`
+- `mlx-apple-silicon`
+- `parallel-fanout`
+- `sheaf-cohomology`
+- `temporal-coalgebra`
+
+<!-- END GENERATED bidirectional-neighbors -->

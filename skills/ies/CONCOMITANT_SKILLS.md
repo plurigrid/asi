@@ -1,0 +1,116 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `aaif-governance-interleave`
+- `acset-superior-measurement`
+- `agent-o-rama`
+- `alife`
+- `alife2025`
+- `amp-api-awareness`
+- `asi-skill-selector`
+- `babashka`
+- `bkp-interleaving`
+- `blackhat-go`
+- `bmorphism-ies-env`
+- `bob`
+- `bob-emacs-mods`
+- `browser-history-acset`
+- `cargo`
+- `cat`
+- `cat-structure-rank`
+- `cat-tripartite`
+- `clojure`
+- `commitment-tracker`
+- `cq-ai`
+- `dd3c3c`
+- `duck-agent`
+- `duck-time-travel`
+- `duckdb-ies`
+- `duckdb-quadruple-interleave`
+- `duckdb-temporal-versioning`
+- `ducklake-categorical-model`
+- `ducklake-meta-cognitive`
+- `ducklake-pattern-expansion`
+- `ducklake-semantic-analyzer`
+- `ducklake-temporal-introspection`
+- `effective-topos`
+- `energy-awareness`
+- `energy-dominance`
+- `energy-dynamics-acset`
+- `ffmpeg`
+- `flox`
+- `gay-mcp`
+- `ghidra-mcp`
+- `gmra-matlab`
+- `go-1fps`
+- `graded-monad`
+- `guile`
+- `gwern-simonw-emacs`
+- `gworkspace-mcp`
+- `haskell-diagrams`
+- `hatchery-index`
+- `hero-dispenser-mod`
+- `hijaling`
+- `hof`
+- `hy-regime`
+- `hyjax-relational`
+- `hyperbolic-bulk`
+- `ies-flox`
+- `ies-triadic`
+- `infinity-topos`
+- `influence-propagation`
+- `init`
+- `interverse-bundle`
+- `jank`
+- `latent-latency`
+- `libghostty-recording`
+- `lojban`
+- `media`
+- `messaging-world`
+- `naturality-factor`
+- `nhero-nurse`
+- `nuclear-smr`
+- `ocaml`
+- `omniglot`
+- `opacity-detector`
+- `org`
+- `polyglot-spi`
+- `port-resurrection`
+- `pulse-mcp-stream`
+- `pun-decomposition`
+- `py-acsets-rewriting`
+- `real-estate-shark`
+- `reflow`
+- `relational-thinking`
+- `repeng-gay`
+- `repeng-mlx`
+- `say-ducklake-xor`
+- `sense`
+- `shell-guard`
+- `skill-repo-sync`
+- `skill-stats`
+- `soliton-detection`
+- `specter-navigator-gadget`
+- `spectre-worldmat`
+- `structured-decompositions`
+- `tailscale`
+- `tailscale-file-transfer`
+- `three-match`
+- `topos-unified`
+- `triangle-sparsifier`
+- `tritwies-trace`
+- `truealife`
+- `universal-learning-signature`
+- `unwiring-arena`
+- `uv-oneliners`
+- `video-analysis-gf3`
+- `worlding`
+- `x-twitter-mcp`
+- `zulip-cogen`
+
+<!-- END GENERATED bidirectional-neighbors -->

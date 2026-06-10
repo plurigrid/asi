@@ -1,0 +1,105 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `_integrated`
+- `academic-research`
+- `active-interleave`
+- `adaptyv`
+- `aeon`
+- `alice`
+- `alphafold-database`
+- `amp-team-usage`
+- `anndata`
+- `aptos-wallet-mcp`
+- `arboreto`
+- `asi-integrated`
+- `astropy`
+- `benchling-integration`
+- `biomni`
+- `biopython`
+- `biorxiv-database`
+- `bioservices`
+- `bluesky-jetstream`
+- `bmorphism-diagrams`
+- `bob`
+- `brenda-database`
+- `browser-history-acset`
+- `cat`
+- `catalyst-chemical`
+- `categorical-rewriting-triad4`
+- `cellxgene-census`
+- `cheapskate`
+- `chembl-database`
+- `cirq`
+- `clinicaltrials-database`
+- `clojure`
+- `crdt`
+- `cybernetic-open-game`
+- `deepchem`
+- `delta-derivation`
+- `drugbank-database`
+- `duck-agent`
+- `enzyme-autodiff`
+- `ergodic-coordinator`
+- `esm`
+- `frustration-eradication`
+- `fswatch-duckdb`
+- `gene-database`
+- `gestalt-hacking`
+- `gf3-tripartite`
+- `google-workspace`
+- `graph-grafting`
+- `hyperbolic-bulk`
+- `hythermal`
+- `iroh-p2p`
+- `jira-issues`
+- `joker`
+- `julia-scientific`
+- `kegg-database`
+- `kolmogorov-codex-quest`
+- `latent-latency`
+- `load-skills`
+- `localsend-analysis`
+- `modelica`
+- `olmoearth-mlx`
+- `ordered-locale-fanout`
+- `ordered-locale-proper`
+- `pdb-database`
+- `phylogenetic-operad-acset`
+- `proof-of-frog`
+- `protocol-acset`
+- `pubchem-database`
+- `pun-decomposition`
+- `qri-valence`
+- `quic-channel-grading`
+- `rdkit`
+- `reactome-database`
+- `reflow`
+- `scanpy`
+- `scikit-bio`
+- `scikit-learn`
+- `scikit-survival`
+- `sdf`
+- `security`
+- `shadow-goblin`
+- `snix`
+- `stellogen`
+- `structural-rewilding`
+- `tenderloin`
+- `trailofbits-security`
+- `triangle-metrics`
+- `trifurcated-transfer`
+- `uniprot-database`
+- `unison`
+- `voice-channel-uwd`
+- `wev-tesseract`
+- `wev-verification`
+- `world-memory-worlding`
+- `zls-integration`
+
+<!-- END GENERATED bidirectional-neighbors -->

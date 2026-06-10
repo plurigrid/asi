@@ -41,6 +41,18 @@ ARROW_RE = re.compile(r"(?:->|→)\s*([a-z0-9][a-z0-9-]{0,80})")
 HYPHENATED_RE = re.compile(r"(?<![a-z0-9-])([a-z0-9]+(?:-[a-z0-9]+)+)(?![a-z0-9-])")
 WORD_RE = re.compile(r"[a-z0-9][a-z0-9-]{0,80}")
 
+# Reference-extraction guard: single-character skill names (the world-hopping
+# nodes a..z) and a few skill names that are also ultra-common English/code
+# tokens generate spurious edges whenever the bare word appears in prose. These
+# are filtered so the reference graph reflects intentional links, not incidental
+# word matches. (Single-letter skills still receive their edges from the
+# configured seed_edges, not from prose extraction.)
+REF_STOPWORDS = {"skill", "skills", "github", "network"}
+
+
+def _is_noise_ref(name: str) -> bool:
+    return len(name) <= 1 or name in REF_STOPWORDS
+
 
 @dataclass
 class InvariantEvaluation:
@@ -164,22 +176,22 @@ def extract_references(text: str, known_skills: set[str]) -> set[str]:
     refs: set[str] = set()
     lowered = text.lower()
 
+    def add(token: str) -> None:
+        if token in known_skills and not _is_noise_ref(token):
+            refs.add(token)
+
     for snippet in BACKTICK_RE.findall(lowered):
         for token in WORD_RE.findall(snippet):
-            if token in known_skills:
-                refs.add(token)
+            add(token)
 
     for token in SLASH_RE.findall(lowered):
-        if token in known_skills:
-            refs.add(token)
+        add(token)
 
     for token in ARROW_RE.findall(lowered):
-        if token in known_skills:
-            refs.add(token)
+        add(token)
 
     for token in HYPHENATED_RE.findall(lowered):
-        if token in known_skills:
-            refs.add(token)
+        add(token)
 
     return refs
 
@@ -206,6 +218,13 @@ def build_graph(skills: dict[str, dict[str, Any]], config: dict[str, Any]) -> di
     graph: dict[str, set[str]] = {name: set() for name in known_skills}
 
     for source, meta in skills.items():
+        # Symmetric guard: a name too noisy to be a reference target (single-char
+        # world-hopping nodes, common-word stopwords) is also too noisy to be a
+        # reference source. Their connectivity comes from configured seed_edges,
+        # not prose. This keeps the reference graph reciprocable: we never create
+        # an edge whose reverse the guard would filter.
+        if _is_noise_ref(source):
+            continue
         for file_path in meta["files"]:
             try:
                 content = file_path.read_text(encoding="utf-8", errors="ignore")

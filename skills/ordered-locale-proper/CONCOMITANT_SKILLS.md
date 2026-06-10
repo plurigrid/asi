@@ -1,0 +1,26 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `acsets`
+- `anima-theory`
+- `cat`
+- `directed-interval`
+- `gmail-anima`
+- `k-dense-ai`
+- `kan-extensions`
+- `mcp-spec-checker`
+- `mlx-apple-silicon`
+- `modal`
+- `networkx`
+- `ordered-locale`
+- `sdf`
+- `sheaf-cohomology`
+- `topos-generate`
+- `workspace-unified`
+
+<!-- END GENERATED bidirectional-neighbors -->

@@ -1,0 +1,110 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `_integrated`
+- `accept-no-substitutes`
+- `active-interleave`
+- `anna-archive`
+- `aptos-orderless-wev`
+- `asi-integrated`
+- `asi-skill-selector`
+- `autopoiesis`
+- `babashka-clj`
+- `bafishka`
+- `bci-colored-operad`
+- `bifurcation`
+- `bluesky-jetstream`
+- `bmorphism-ies-env`
+- `bmorphism-interactome`
+- `bmorphism-video-interleave`
+- `bob-emacs-mods`
+- `borkdude`
+- `cat`
+- `cats-for-ai`
+- `catsharp-sonification`
+- `clojure`
+- `coherence-composer`
+- `commitment-tracker`
+- `condensed-anima-qc`
+- `cross-runtime-exchange`
+- `deep-inference-interleave`
+- `derangement-crdt`
+- `documentation-indexing`
+- `duck-time-travel`
+- `duckdb-guard`
+- `duckdb-quadruple-interleave`
+- `ducklake-walk`
+- `energy-awareness`
+- `exa-11-directions`
+- `flox`
+- `flox-mcp`
+- `fswatch-duckdb`
+- `geb`
+- `gh-skill-explorer`
+- `go-1fps`
+- `hof`
+- `ies`
+- `ies-flox`
+- `implicit-coordination`
+- `ios-wifi-provenance-diff`
+- `jank`
+- `jank-llvm`
+- `jo-clojure`
+- `joker-lint`
+- `leapity-frog`
+- `llms-txt-discovery`
+- `load-skills`
+- `macos-use`
+- `mathpix-ocr`
+- `mcp-tripartite`
+- `mlx-color-traceroute`
+- `modelica-lispsyntax-interleave`
+- `monad-bayes-asi-interleave`
+- `nerv`
+- `notebooklm-enterprise`
+- `opacity-detector`
+- `ordered-locale-fanout`
+- `polyglot-orchestration`
+- `polyglot-spi`
+- `port-resurrection`
+- `quic-channel-grading`
+- `relational-thinking`
+- `repl-commons`
+- `resource-sharing`
+- `ruler`
+- `ruler-maximal`
+- `scum-resource`
+- `scum-score`
+- `semilattice-discovery`
+- `servo-ghostty`
+- `sexp-neighborhood`
+- `shell-guard`
+- `sicm`
+- `skill-bonds`
+- `skill-connectivity-hub`
+- `skill-embedding-vss`
+- `specter-acset`
+- `spectral-embedding-learner`
+- `splitmixternary-opine`
+- `superelastic-quotient`
+- `tmp-filesystem-watcher`
+- `topoi-hatchery`
+- `topos-unified`
+- `triadic-skill-loader`
+- `triangle-sparsifier`
+- `trifurcated-transfer`
+- `unison-acset`
+- `video-processor`
+- `wolframite-compass`
+- `world-extractable-value`
+- `world-runtime`
+- `x-twitter-mcp`
+- `yt-playlist-acset`
+- `zig`
+
+<!-- END GENERATED bidirectional-neighbors -->

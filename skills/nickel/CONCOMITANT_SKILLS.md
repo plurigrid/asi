@@ -1,0 +1,26 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `aptos-gf3-society`
+- `bmorphism-ies-env`
+- `cargo-rust`
+- `cheerpx-self-hosting`
+- `cue-lang`
+- `dune-analytics`
+- `flox`
+- `geb`
+- `hof`
+- `libghostty-embed`
+- `move-narya-bridge`
+- `opam-ocaml`
+- `port-resurrection`
+- `sexp-neighborhood`
+- `slowtime-mcp`
+- `wasm-goblins`
+
+<!-- END GENERATED bidirectional-neighbors -->

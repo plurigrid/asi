@@ -1,0 +1,24 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `alife`
+- `bmorphism-interactome`
+- `clojure`
+- `deepwiki-mcp`
+- `geb-categorical-computation`
+- `gh-skill-explorer`
+- `hatchery-index`
+- `infinity-topos`
+- `julia-tempering`
+- `scheme`
+- `srfi`
+- `tree-sitter`
+- `tritwies-trace`
+- `truealife`
+
+<!-- END GENERATED bidirectional-neighbors -->

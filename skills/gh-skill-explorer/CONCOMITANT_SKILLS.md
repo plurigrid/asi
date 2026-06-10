@@ -1,0 +1,39 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `acsets`
+- `alife`
+- `babashka`
+- `bmorphism-stars`
+- `cat`
+- `clojure`
+- `deepwiki-mcp`
+- `discopy`
+- `duckdb-temporal-versioning`
+- `ducklake`
+- `file-organizer`
+- `flow`
+- `galois-connections`
+- `gay-mcp`
+- `gflownet`
+- `gh`
+- `gh-emacs`
+- `gh-interactome`
+- `infinity-categories`
+- `open-location-code-zig`
+- `para-mensch-commons`
+- `parallel-fanout`
+- `rust`
+- `scheme`
+- `security`
+- `skill-creator`
+- `spi-parallel-verify`
+- `worlding`
+- `zx-calculus`
+
+<!-- END GENERATED bidirectional-neighbors -->

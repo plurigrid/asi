@@ -1,0 +1,27 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `2-monad`
+- `acsets-algebraic-databases`
+- `bkp-interleaving`
+- `cat`
+- `codescent`
+- `coequalizers`
+- `covariant-fibrations`
+- `doctrinal-adjunction`
+- `free-monad-gen`
+- `graded-monad`
+- `kan-extensions`
+- `linear-logic`
+- `sdf`
+- `segal-types`
+- `sheaf-cohomology`
+- `synthetic-adjunctions`
+- `topos-adhesive-rewriting`
+
+<!-- END GENERATED bidirectional-neighbors -->

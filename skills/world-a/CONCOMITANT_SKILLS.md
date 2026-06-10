@@ -1,0 +1,26 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `acsets`
+- `acsets-hatchery`
+- `algebraic-rewriting`
+- `aptos-agent`
+- `coherence-composer`
+- `derham-cohomology`
+- `gay-mcp`
+- `infinity-categories`
+- `infinity-topoi`
+- `model-categories`
+- `openclaw-goblins-adapter`
+- `operadic-composition`
+- `plurigrid-asi-integrated`
+- `scum-resource`
+- `sheaf-cohomology-bci`
+- `world-replay-buffer`
+
+<!-- END GENERATED bidirectional-neighbors -->

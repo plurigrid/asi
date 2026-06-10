@@ -1,0 +1,98 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `_integrated`
+- `acsets`
+- `acsets-algebraic-databases`
+- `agentdb-optimization`
+- `alife2025`
+- `amp-continue`
+- `amp-gf3-continuation`
+- `asi-integrated`
+- `asi-polynomial-operads`
+- `bidirectional-lens-logic`
+- `bidirectional-navigator`
+- `bigquery`
+- `bkp-interleaving`
+- `cat-three-homes`
+- `compositional-acset-comparison`
+- `crdt`
+- `critical-opalescence`
+- `dask`
+- `derivational-coalgebra`
+- `designing-workflow-skills`
+- `dialectica`
+- `doctrinal-adjunction`
+- `entropy-regularized-inference`
+- `flow-nexus-neural`
+- `flox-cuda`
+- `forward-forward-learning`
+- `gay-mcp`
+- `gestalt-hacking`
+- `gget`
+- `glass-bead-game`
+- `graded-monad`
+- `hijaling`
+- `homoiconic-rewriting`
+- `indefinite-causal-order`
+- `julia-gpu-kernels`
+- `julia-scientific`
+- `kolmogorov-onsager-hurst`
+- `koopman-generator`
+- `levity-levin`
+- `lhott-cohesive-linear`
+- `linear-logic`
+- `louisville-quantum-gravity`
+- `mlx-apple-silicon`
+- `mlx-bitnet-gf3`
+- `mlx-jax-splitmix`
+- `mobius-path-filter`
+- `move-narya-bridge`
+- `mutual-information-oracle`
+- `neuro-symbolic-bridge`
+- `oapply-colimit`
+- `olmoearth-mlx`
+- `omg-tension-resolver`
+- `ontology-asi-interleave`
+- `openai-acset`
+- `pga-motor-interpolation`
+- `pufferlib`
+- `pymc`
+- `pymc-bayesian-modeling`
+- `scientific-schematics`
+- `scikit-bio`
+- `scikit-learn`
+- `scikit-survival`
+- `seaborn`
+- `sense`
+- `shap`
+- `sheaf-laplacian-coordination`
+- `sheaf-uncertainty`
+- `sicm`
+- `slack-gif-creator`
+- `slowtime-mcp`
+- `soliton-detection`
+- `sonification-collaborative`
+- `specter-navigator-gadget`
+- `stable-baselines3`
+- `statistical-analysis`
+- `statsmodels`
+- `stellogen`
+- `stellogen-proof-search`
+- `string-diagram-rewriting-protocol`
+- `substitute-eraser`
+- `sympy`
+- `tailscale-file-transfer`
+- `topomodelx-hodge`
+- `torch-geometric`
+- `torch_geometric`
+- `tulipa-energy`
+- `wasm-goblins`
+- `zubyul-gene-networks`
+
+<!-- END GENERATED bidirectional-neighbors -->

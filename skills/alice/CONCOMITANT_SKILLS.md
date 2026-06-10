@@ -1,0 +1,107 @@
+
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `2600-magazine`
+- `aaif-governance-interleave`
+- `abd`
+- `academic-research`
+- `alice-chirality`
+- `alice-emacs-mods`
+- `amazon-shopping-mcp`
+- `anima-theory`
+- `aptos-agent`
+- `aptos-trading`
+- `aptos-wallet-mcp`
+- `beads-issue-tracker`
+- `beeper-mcp`
+- `bluesky-jetstream`
+- `bob-emacs-mods`
+- `braindance-worlds`
+- `calendar-acset`
+- `captp`
+- `cat`
+- `catcolab-schemas`
+- `claude-questions-leaderboard`
+- `collaborative-emacs`
+- `command-development`
+- `counter-surveillance`
+- `cq-ai-deterministic-security-scanning-with-ternary-polarity`
+- `crdt`
+- `crdt-color`
+- `crypto-fiat-bridge`
+- `cue-lang`
+- `discopy`
+- `docs-acset`
+- `drive-acset`
+- `duckdb-temporal-versioning`
+- `ducklake`
+- `emacspeak-binaural`
+- `finder-color-walk`
+- `flox-publish`
+- `fnox-secrets`
+- `frustration-eradication`
+- `gay-mcp`
+- `geomstats-fisher-rao`
+- `gmail-anima`
+- `google-workspace`
+- `graph-grafting`
+- `hero-dispenser-mod`
+- `influence-propagation`
+- `k-dense-ai`
+- `l-space`
+- `livestream`
+- `magic-todo`
+- `magic-todo-watch-deploy`
+- `mcp-from-prompt`
+- `mcp-spec-checker`
+- `mirror`
+- `modding-ghostty`
+- `narya-proofs`
+- `networkx`
+- `neuro-symbolic-bridge`
+- `nhero-pyhole`
+- `olmo-earth-skill`
+- `ontology-asi-interleave`
+- `openclaw-goblins-adapter`
+- `plurigrid-asi-integrated`
+- `polars`
+- `pre-agent-ontology`
+- `protocol-acset`
+- `raffle-winner-picker`
+- `relational-filter`
+- `ruler-maximal`
+- `say-narration`
+- `security-ownership-map`
+- `signal-messaging`
+- `skill-bonds`
+- `skill-connectivity-hub`
+- `skill-finder-verifier`
+- `skill-repo-sync`
+- `specter-navigator-gadget`
+- `spotify`
+- `syrup`
+- `tailscale-file-transfer`
+- `tasks-acset`
+- `transcribe`
+- `tree-sitter`
+- `triadic-skill-orchestrator`
+- `tuple-nav-composition`
+- `unironic-sun-emoji`
+- `uv-oneliners`
+- `venue-templates`
+- `vertex-protein-bisimulation`
+- `vibe-snipe`
+- `voice-channel-uwd`
+- `wev-orderless`
+- `wev-verification`
+- `workspace-unified`
+- `world-replay-buffer`
+- `zubyul-connectome`
+- `zubyul-gene-networks`
+
+<!-- END GENERATED bidirectional-neighbors -->

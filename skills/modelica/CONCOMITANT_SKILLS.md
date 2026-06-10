@@ -551,3 +551,65 @@ Total GF(3) invariant: 10×(1+0-1) = 0 ✓
 - **Fokker, A. & Planck, M.** (1914) FP equation for probability evolution
 - **Wolfram SystemModeler** Documentation
 - **Modelica Association** Standards v4.0.0
+
+<!-- BEGIN GENERATED bidirectional-neighbors (scripts/symmetrize_neighbors.py) -->
+
+## Bidirectional Neighbors
+
+Auto-generated symmetric closure of the reference graph: every skill that links to this one is listed here so the link is reciprocated. Do not edit inside the markers; regenerate with `python3 scripts/symmetrize_neighbors.py`.
+
+- `acsets`
+- `affective-taxis`
+- `assembly-index`
+- `attractor`
+- `bifurcation`
+- `braindance-validator`
+- `cat`
+- `catcolab-decapodes`
+- `catsharp-sonification`
+- `cobrapy`
+- `crn-topology`
+- `discopy`
+- `equilibrium`
+- `external`
+- `flow`
+- `fokker-planck-analyzer`
+- `gay-julia`
+- `gf3-neighborhood`
+- `grothendieck-fibration`
+- `homoiconic-rewriting`
+- `hopf`
+- `ihara-zeta`
+- `init`
+- `k-dense-ai`
+- `kan-extension`
+- `koopman-generator`
+- `kpz-universality`
+- `lambda-calculus`
+- `langevin-dynamics`
+- `levin-levity`
+- `levity-levin`
+- `linearization`
+- `lispsyntax-acset`
+- `lyapunov-stability`
+- `modelica-lispsyntax-interleave`
+- `move-narya-bridge`
+- `narya-proofs`
+- `omg-tension-resolver`
+- `open-games`
+- `org`
+- `phase-portrait-generator`
+- `propagators`
+- `rdkit`
+- `scikit-learn`
+- `sdf`
+- `sheaf-cohomology`
+- `stability`
+- `trajectory`
+- `tritwies-trace`
+- `turing-chemputer`
+- `waddington-landscape`
+- `world-extractable-value`
+- `yang-baxter-integrability`
+
+<!-- END GENERATED bidirectional-neighbors -->
