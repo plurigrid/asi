@@ -6,7 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `alice` — sibling in the skill routing & dispatch cluster — Primary Aptos testnet wallet for transaction origination.
 - `captp` — builds on — CapTP: Capability Transfer Protocol
-- `init` — builds on — Initialize a new repository with AGENTS.md
 - `syrup` — builds on — Syrup binary serialization for OCapN CapTP wire format.
 - `zig` — builds on — Zig ecosystem skill with emerging patterns from zig syrup
 

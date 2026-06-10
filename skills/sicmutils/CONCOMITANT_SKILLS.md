@@ -7,7 +7,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `cat` — builds on — cat Skill: Derivational Pipe Chaining
 - `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
 - `init` — sibling in the interactive REPLs & Lisp tooling cluster — Initialize a new repository with AGENTS.md
-- `org` — builds on — Org mode manual (25K lines info).
 - `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
 - `scheme` — sibling in the interactive REPLs & Lisp tooling cluster — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
 - `sicm` — sibling in the interactive REPLs & Lisp tooling cluster — - **Generic arithmetic** extensible across numeric types

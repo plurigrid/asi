@@ -13,7 +13,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `ies` — builds on — ies
 - `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
 - `olmoearth-mlx` — builds on — OlmoEarth MLX: Spatio Temporal Earth Intelligence
-- `org` — builds on — Org mode manual (25K lines info).
 - `py-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Python native Attributed C Sets with:
 - `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 - `skill-bonds` — invoked by — Skill Bonds Registry

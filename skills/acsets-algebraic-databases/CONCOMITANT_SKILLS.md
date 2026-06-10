@@ -36,7 +36,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `moebius-inversion` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Möbius inversion on posets and lattices: alternating sums, chromatic polynomials, inciden…
 - `multiversal-finance` — invoked by — Multiversal Finance: Prediction Markets for Interesting Observations
 - `openai-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — OpenAI's ChatGPT export has a **tree structured mapping** where messages form a DAG via …
-- `org` — builds on — Org mode manual (25K lines info).
 - `planar-isotopy-screen` — invoked by — Planar Isotopy Screen Mapping
 - `propagators` — builds on — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
 - `py-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Python native Attributed C Sets with:

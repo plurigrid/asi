@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `biopython` — sibling in the scientific Python — bio cheminformatics cluster — Primary Python toolkit for molecular biology.
 - `k-dense-ai` — invoked by — - alphafold database - Protein structure prediction
 - `matplotlib` — sibling in the scientific Python — bio cheminformatics cluster — Foundational plotting library.
-- `org` — builds on — Org mode manual (25K lines info).
 - `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
 - `vertex-ai-protein-interleave` — invoked by — Bridge layer connecting Vertex AI Google Cloud to plurigrid asi protein scale biology s…
 

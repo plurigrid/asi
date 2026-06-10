@@ -11,7 +11,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gym` — invoked by — Each gym domain resolves specific skill tensions:
 - `init` — builds on — Initialize a new repository with AGENTS.md
 - `jaxlife-open-ended` — sibling in the artificial life, autopoiesis & chemical organization cluster — JaxLife open ended agentic simulator for emergent behavior, tool use,
-- `linear` — builds on — Manage issues, projects & team workflows in Linear.
 - `mlx-bitnet-gf3` — invoked by — BitNet 1.58 bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:
 - `neuro-symbolic-bridge` — invoked by — High tension pairs (d ≈ 1.85):
 - `omg-tension-resolver` — invoked by — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…

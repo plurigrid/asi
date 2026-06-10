@@ -6,6 +6,5 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `external` — builds on — External skill interface for integration with external systems
 - `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
-- `org` — builds on — Org mode manual (25K lines info).
 
 <!-- END GENERATED related -->

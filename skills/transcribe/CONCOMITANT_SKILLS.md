@@ -9,7 +9,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `bob` — sibling in the skill routing & dispatch cluster — World BOB Skill
 - `ipa-safety` — invoked by — Multiplexed streams carry:
 - `livekit-omnimodal` — sibling in the skill routing & dispatch cluster — LiveKit omni modal continuous coaching with stick breaking color selection,
-- `scikit-bio` — invoked by — Biological data toolkit.
 - `yt-playlist-acset` — invoked by — Extract transcripts from YouTube playlists into DuckDB ACSet schema.
 
 <!-- END GENERATED related -->

@@ -38,8 +38,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `initial-terminal` — sibling in the interactive REPLs & Lisp tooling cluster — Initial Terminal objects.
 - `interactome-rl-env` — invoked by — ACSet native reinforcement learning environment for contributor network dynamics.
 - `iroh-p2p` — invoked by — Build modern peer to peer applications with Iroh.
-- `juvix-intents` — invoked by — Juvix intent centric language for Anoma with Geb compilation and GF(3) typed resources
-- `l-space` — invoked by — L Space Skill: The Library of All Libraries
 - `libghostty-aci` — sibling in the interactive REPLs & Lisp tooling cluster — Integrates libghostty terminal emulation with Agent Computer Interface (ACI) patterns:
 - `libghostty-embed` — sibling in the interactive REPLs & Lisp tooling cluster — libghostty terminal embedding for per vat REPLs with Goblins integration
 - `libghostty-recording` — sibling in the interactive REPLs & Lisp tooling cluster — Record, stream, and replay libghostty vt terminal sessions for documentation, debugging, …
@@ -51,7 +49,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `mcp-inspector` — invoked by — Test Model Context Protocol (MCP) servers using the MCP Inspector CLI with correct syntax
 - `mcp-orchestrator` — invoked by — MCP agent orchestration patterns: planner worker, swarm, evaluator optimizer.
 - `modding-ghostty` — sibling in the interactive REPLs & Lisp tooling cluster — Defensive security map of Ghostty terminal escape sequences.
-- `modern-python` — invoked by — Modern Python best practices.
 - `pair-programming` — invoked by — AI assisted pair programming with multiple modes (driver navigator switch), real time ver…
 - `plurigrid-asi-integrated` — invoked by — Unified Plurigrid ASI skill combining ACSets, Gay MCP colors, bisimulation games, world h…
 - `polynomial-social-cognition` — invoked by — Social cognition via polynomial functors - "Agent" IS a polynomial p(y) = Σᵢy^{Aᵢ} with p…

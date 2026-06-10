@@ -19,7 +19,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `julia-scientific` — sibling in the interactive REPLs & Lisp tooling cluster — Julia package equivalents for 137 K Dense AI scientific skills.
 - `lispsyntax-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv style
 - `openai-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — OpenAI's ChatGPT export has a **tree structured mapping** where messages form a DAG via …
-- `org` — builds on — Org mode manual (25K lines info).
 - `parallel-subagent-split` — invoked by — In a traced monoidal category, the trace operation models feedback:
 - `phylogenetic-operad-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Baez Otter phylogenetic operad Phyl = Com + [0,∞) as ACSet schema, with mathpix gem extra…
 - `propagators` — invoked by — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.

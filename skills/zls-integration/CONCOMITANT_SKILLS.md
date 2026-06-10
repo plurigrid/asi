@@ -10,7 +10,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `flox` — builds on — Reproducible development environments powered by Nix.
 - `k-dense-ai` — sibling in the skill routing & dispatch cluster — - alphafold database - Protein structure prediction
 - `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
-- `org` — builds on — Org mode manual (25K lines info).
 - `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 - `tree-sitter` — builds on — AST based code analysis using tree sitter.
 - `zig` — mutually referenced — Zig ecosystem skill with emerging patterns from zig syrup

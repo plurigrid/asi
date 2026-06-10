@@ -21,7 +21,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `kinfer-runtime` — sibling in the skill routing & dispatch cluster — K Scale kinfer model inference engine for deploying trained RL policies to real robots vi…
 - `kos-firmware` — builds on — K Scale Operating System - Rust based robot firmware with gRPC services for actuator cont…
 - `livekit-omnimodal` — sibling in the skill routing & dispatch cluster — LiveKit omni modal continuous coaching with stick breaking color selection,
-- `org` — builds on — Org mode manual (25K lines info).
 - `rama-gay-clojure` — sibling in the skill routing & dispatch cluster — Red Planet Labs Rama with Gay.jl deterministic coloring for 100x backend
 - `rust` — sibling in the skill routing & dispatch cluster — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.

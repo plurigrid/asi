@@ -15,7 +15,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gay-monte-carlo` — builds on — Gay Monte Carlo Measurements
 - `gf3-trit-oracle` — builds on — > The fundamental GF(3) trit oracle.
 - `merkle-proof-validation` — builds on — Merkle Proof Validation Skill
-- `org` — builds on — Org mode manual (25K lines info).
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
 - `splitmix-ternary` — sibling in the skill routing & dispatch cluster — SplitMixTernary: Extension of SplittableRandoms.jl for GF(3) balanced streams.
 - `trajectory` — builds on — Path traced by solution through phase space

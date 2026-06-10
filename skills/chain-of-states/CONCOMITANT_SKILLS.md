@@ -6,7 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `alife` — builds on — Comprehensive Artificial Life skill combining ALIFE2025 proceedings, classic texts (Axelr…
 - `benchmark` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Run and interpret engine stack benchmarks (Steel, ember, shale)
-- `org` — builds on — Org mode manual (25K lines info).
 - `proof-of-frog` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Proof of Frog Skill 🐸
 - `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
 

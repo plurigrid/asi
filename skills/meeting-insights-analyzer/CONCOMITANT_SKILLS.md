@@ -4,7 +4,6 @@
 
 Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-- `docx` — builds on — Comprehensive document creation, editing, and analysis with support for
 - `sense` — builds on — sense - Diagrammatic Video Extraction with Subtitle Alignment
 
 <!-- END GENERATED related -->

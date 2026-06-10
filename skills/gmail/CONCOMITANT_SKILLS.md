@@ -4,7 +4,6 @@
 
 Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
-- `alice-emacs-mods` — invoked by — Tour of Alice's heavily customized terminal Emacs — Causal transients, Worlding org, proo…
 - `calendar-acset` — invoked by — Google Calendar management via CalendarACSet.
 - `docs-acset` — sibling in the skill routing & dispatch cluster — Google Docs Sheets management via ACSet condensation.
 - `drive-acset` — invoked by — Google Drive management via DriveACSet schema with GF(3) triadic routing.

@@ -16,7 +16,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `cross-runtime-exchange` — invoked by — This skill enables content addressed interoperability between three Syrup implementations:
 - `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
 - `gh` — builds on — GitHub CLI (212 man pages).
-- `gitlab` — builds on — Interact with GitLab repositories, merge requests, and APIs using the GITLAB_TOKEN enviro…
 - `glamorous-moldable-multiplatform` — invoked by — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
 - `guile` — builds on — GNU Scheme interpreter (67K lines info).
 - `hermes-acp-over-captp` — sibling in the agent & capability protocols (CapTP OCapN) cluster — Bridge Hermes' ACP (Agent Client Protocol) transport onto OCapN CapTP for RPC and Syndica…

@@ -18,7 +18,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `linear` — builds on — Manage issues, projects & team workflows in Linear.
 - `mruler` — invoked by — mruler - Meta Ruler Skill Governance
 - `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `rubato-composer` — builds on — Rubato Composer integration for Mazzola's mathematical music theory
 - `ruler-maximal` — invoked by — Ruler Maximal Skill

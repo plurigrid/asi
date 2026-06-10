@@ -84,7 +84,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `exo-distributed` — sibling in the skill routing & dispatch cluster — Distributed LLM inference across Apple Silicon clusters with exo.
 - `fasttime-mcp` — sibling in the skill routing & dispatch cluster — Maximum velocity MCP execution via geodesic untangling.
 - `finder-color-walk` — sibling in the GF(3) deterministic color generation cluster — Deterministic triadic fanout over file sets with macOS Finder label coloring, GF(3) conse…
-- `flox` — sibling in the reproducible environments & deployment cluster — Reproducible development environments powered by Nix.
 - `fnox-secrets` — sibling in the skill routing & dispatch cluster — fnox Secrets Management Skill - DIRECT PIPE ONLY
 - `fokker-planck-analyzer` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Layer 5: Convergence to Equilibrium Analysis
 - `forward-forward-learning` — invoked by — Hinton's Forward Forward algorithm for local learning without backpropagation.

@@ -6,8 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `benchmark` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Run and interpret engine stack benchmarks (Steel, ember, shale)
 - `init` — builds on — Initialize a new repository with AGENTS.md
-- `linear` — builds on — Manage issues, projects & team workflows in Linear.
-- `org` — builds on — Org mode manual (25K lines info).
 - `sheaf-cohomology` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Čech cohomology for local to global consistency verification in code
 
 <!-- END GENERATED related -->

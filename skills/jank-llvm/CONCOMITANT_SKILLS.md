@@ -14,7 +14,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `jank` — sibling in the interactive REPLs & Lisp tooling cluster — jank lang: native Clojure on LLVM with seamless C++ interop.
 - `joker` — builds on — DBPF package parser and validator for The Sims save files
 - `joker-lint` — sibling in the interactive REPLs & Lisp tooling cluster — Joker Lint Skill
-- `org` — builds on — Org mode manual (25K lines info).
 - `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
 - `worlding` — builds on — Gay.jl world_ pattern: persistent composable state builders with GF(3) conservation, Möbi…
 

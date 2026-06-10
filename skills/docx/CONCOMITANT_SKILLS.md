@@ -12,7 +12,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `markitdown` — sibling in the skill routing & dispatch cluster — Convert files and office documents to Markdown.
 - `mathpix-ocr` — invoked by — Mathpix OCR for LaTeX extraction with balanced ternary checkpoints
 - `media` — sibling in the skill routing & dispatch cluster — Media processing = ffmpeg + imagemagick + sox.
-- `meeting-insights-analyzer` — invoked by — Analyzes meeting transcripts and recordings to uncover behavioral patterns,
 - `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `quarto-julia` — invoked by — Quarto + Julia Skill
 

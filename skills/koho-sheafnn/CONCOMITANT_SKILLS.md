@@ -6,7 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `benchmark` — builds on — Run and interpret engine stack benchmarks (Steel, ember, shale)
 - `cargo` — builds on — Rust package manager (36 subcommands).
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `tree-sitter` — builds on — AST based code analysis using tree sitter.
 

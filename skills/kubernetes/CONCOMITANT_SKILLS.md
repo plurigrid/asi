@@ -9,7 +9,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `bmorphism-ies-env` — invoked by — Documentation and orchestration for the bmorphism ies flox environment toolkit
 - `confighub-usage-guide` — sibling in the reproducible environments & deployment cluster — |
 - `cue-lang` — invoked by — CUE: Lattice based configuration language with unification, constraint
-- `debug-buttercup` — invoked by — >
 - `find-skills` — invoked by — Helps users discover and install agent skills when they ask questions like "how do I do X…
 - `flox-containers` — sibling in the reproducible environments & deployment cluster — Containerizing Flox environments with Docker Podman.
 - `how-to-publish-paks` — invoked by — |

@@ -10,7 +10,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `chemical-organization-theory` — sibling in the artificial life, autopoiesis & chemical organization cluster — **Category:** Phase 3 Core - Autopoietic Systems
 - `crn-topology` — sibling in the artificial life, autopoiesis & chemical organization cluster — Chemical Reaction Network topology for generating and analyzing reaction
 - `k-dense-ai` — invoked by — - alphafold database - Protein structure prediction
-- `org` — builds on — Org mode manual (25K lines info).
 - `turing-chemputer` — sibling in the artificial life, autopoiesis & chemical organization cluster — Cronin's Turing complete chemputer for programmable chemical synthesis
 
 <!-- END GENERATED related -->

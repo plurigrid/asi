@@ -23,7 +23,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `para-mensch-commons` — mutually referenced — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
 - `persistent-homology` — builds on — Topological data analysis for stable feature verification across filtrations
 - `rama-gay-clojure` — sibling in the skill routing & dispatch cluster — Red Planet Labs Rama with Gay.jl deterministic coloring for 100x backend
-- `ruler` — builds on — Unified AI agent configuration propagation across 18+ coding assistants.
 - `segal-types` — builds on — Segal types for synthetic ∞-categories.
 - `sheaf-cohomology` — sibling in the skill routing & dispatch cluster — Čech cohomology for local to global consistency verification in code
 - `specter-acset` — builds on — Specter style bidirectional navigation for Julia Collections, S expressions, and ACSets w…

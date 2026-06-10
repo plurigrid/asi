@@ -19,7 +19,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `markitdown` — invoked by — Convert files and office documents to Markdown.
 - `matplotlib` — builds on — Foundational plotting library.
 - `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
-- `org` — builds on — Org mode manual (25K lines info).
 - `paper-2-web` — invoked by — This skill should be used when converting academic papers into promotional and presentati…
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `peer-review` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Systematic peer review toolkit.

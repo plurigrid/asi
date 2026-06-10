@@ -6,6 +6,5 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `bigquery-asi-interleave` — invoked by — Interleave layer bridging the BigQuery cluster to plurigrid asi.
 - `external` — builds on — External skill interface for integration with external systems
-- `org` — builds on — Org mode manual (25K lines info).
 
 <!-- END GENERATED related -->

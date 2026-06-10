@@ -15,7 +15,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `monad-bayes-asi-interleave` — invoked by — Bridge layer connecting tweag monad bayes to plurigrid asi.
 - `ontology-asi-interleave` — invoked by — > Bridge connecting plurigrid ontology to ASI skill graph.
 - `open-games` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Open Games Skill (ERGODIC 0)
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `topos-catcolab` — builds on — Topos Institute's CatColab for collaborative category theory - community model building, …
 - `waddington-landscape` — builds on — Waddington's epigenetic landscape: cell fate as gradient flow on potential surfaces, conn…

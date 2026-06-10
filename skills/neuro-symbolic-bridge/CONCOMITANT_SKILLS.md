@@ -14,9 +14,7 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `forward-forward-learning` — builds on — Hinton's Forward Forward algorithm for local learning without backpropagation.
 - `gflownet` — builds on — Bengio's GFlowNets: Generative Flow Networks that sample proportionally to reward.
 - `init` — builds on — Initialize a new repository with AGENTS.md
-- `linear` — sibling in the skill routing & dispatch cluster — Manage issues, projects & team workflows in Linear.
 - `lispsyntax-acset` — builds on — LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv style
-- `org` — builds on — Org mode manual (25K lines info).
 - `proofgeneral-narya` — builds on — Proof General + Narya: Higher dimensional type theory proof assistant with observational …
 - `sheaf-laplacian-coordination` — builds on — Sheaf neural network coordination via graph Laplacians for distributed
 - `sicp` — sibling in the skill routing & dispatch cluster — SICP: Structure and Interpretation of Computer Programs - computational processes, abstra…

@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gh-skill-explorer` — sibling in the skill routing & dispatch cluster — GitHub exploration skill for discovering SKILL.md patterns across repositories.
 - `gym` — invoked by — Each gym domain resolves specific skill tensions:
 - `media` — sibling in the skill routing & dispatch cluster — Media processing = ffmpeg + imagemagick + sox.
-- `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `pptx` — sibling in the skill routing & dispatch cluster — Presentation creation, editing, and analysis.
 - `skill-bonds` — sibling in the skill routing & dispatch cluster — Skill Bonds Registry
 - `xlsx` — sibling in the skill routing & dispatch cluster — Comprehensive spreadsheet creation, editing, and analysis with support

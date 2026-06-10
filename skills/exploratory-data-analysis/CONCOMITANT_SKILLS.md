@@ -7,8 +7,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `assets` — builds on — Assets skill
 - `biopython` — builds on — Primary Python toolkit for molecular biology.
 - `localsend-analysis` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Analyze LocalSend repos with tree sitter tags, gh GraphQL contributor snapshots, and prot…
-- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 - `world-sufficiency-prompt` — invoked by — First interaction system prompt generator for Gemini, Codex, and Claude.
-- `xlsx` — builds on — Comprehensive spreadsheet creation, editing, and analysis with support
 
 <!-- END GENERATED related -->

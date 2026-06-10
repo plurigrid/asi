@@ -18,7 +18,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `modding-ghostty` — invoked by — Defensive security map of Ghostty terminal escape sequences.
 - `nashator` — invoked by — Open games DSL Nash equilibrium solver via PyTorch autodiff.
 - `opennirscap-build` — invoked by — Build an OpenNIRScap 24 channel fNIRS brain cap from open source hardware — Altium conver…
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `r2frida` — mutually referenced — Dynamic instrumentation bridge — radare2 static analysis meets Frida runtime hooking via …
 - `rf-signal-analysis` — invoked by — Analyze wireless and radio frequency security in applications, protocols, and hardware.

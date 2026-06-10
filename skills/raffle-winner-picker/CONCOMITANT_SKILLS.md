@@ -7,6 +7,5 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `alice` — sibling in the skill routing & dispatch cluster — Primary Aptos testnet wallet for transaction origination.
 - `bob` — sibling in the skill routing & dispatch cluster — World BOB Skill
 - `sora` — sibling in the skill routing & dispatch cluster — Use when the user asks to generate, remix, poll, list, download, or delete Sora videos vi…
-- `xlsx` — sibling in the skill routing & dispatch cluster — Comprehensive spreadsheet creation, editing, and analysis with support
 
 <!-- END GENERATED related -->

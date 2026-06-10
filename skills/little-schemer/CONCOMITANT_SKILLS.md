@@ -6,7 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `guile` — sibling in the interactive REPLs & Lisp tooling cluster — GNU Scheme interpreter (67K lines info).
 - `mirror` — builds on — Social self persistence via mutual cognitive surrogates.
-- `org` — builds on — Org mode manual (25K lines info).
 - `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `scheme` — sibling in the interactive REPLs & Lisp tooling cluster — GNU Scheme ecosystem = guile + goblins + hoot + fibers.

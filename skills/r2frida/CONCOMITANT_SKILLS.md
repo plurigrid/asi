@@ -11,7 +11,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `harness-writing` — builds on — Writing effective fuzzing harnesses for security testing.
 - `ios-wifi-provenance-diff` — invoked by — Diagnose why an iPhone's Wi Fi password row shows but cannot be copied.
 - `narya-proofs` — builds on — Mechanically verified proofs from Narya event logs.
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `propagators` — builds on — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
 - `radare2-hatchery` — builds on — Radare2 Hatchery

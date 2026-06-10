@@ -16,7 +16,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `k-dense-ai` — sibling in the skill routing & dispatch cluster — - alphafold database - Protein structure prediction
 - `linear` — sibling in the skill routing & dispatch cluster — Manage issues, projects & team workflows in Linear.
 - `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `rubato-composer` — builds on — Rubato Composer integration for Mazzola's mathematical music theory
 - `sdf` — sibling in the skill routing & dispatch cluster — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…

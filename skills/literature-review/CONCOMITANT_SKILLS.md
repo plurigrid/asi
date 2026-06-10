@@ -18,7 +18,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gget` — builds on — CLI Python toolkit for rapid bioinformatics queries.
 - `internal-comms` — builds on — Write internal communications using company formats.
 - `matplotlib` — builds on — Foundational plotting library.
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `perplexity-search` — invoked by — Perform AI powered web searches with real time information using Perplexity models via Li…
 - `pydeseq2` — builds on — Differential gene expression analysis (Python DESeq2).

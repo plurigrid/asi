@@ -12,7 +12,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `ies` — builds on — ies
 - `linear` — builds on — Manage issues, projects & team workflows in Linear.
 - `ngrok-tunnel` — invoked by — Secure tunnel for exposing local MCP servers to Claude, remote agents, and external clien…
-- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `ssh` — builds on — Establish and manage SSH connections to remote machines, including key generation, config…
 - `stability` — builds on — Qualitative behavior of solutions near equilibria
 - `tailscale` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Mesh VPN.

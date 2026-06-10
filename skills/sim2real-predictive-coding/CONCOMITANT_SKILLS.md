@@ -10,7 +10,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `kscale-kinfer` — builds on — - User asks about deploying RL policies to real robots
 - `kscale-kos` — builds on — - User asks about robot operating systems, firmware, or low level control
 - `kscale-ksim` — builds on — - User asks about robot simulation, humanoid locomotion, or RL policy training
-- `org` — builds on — Org mode manual (25K lines info).
 - `trajectory` — builds on — Path traced by solution through phase space
 
 <!-- END GENERATED related -->

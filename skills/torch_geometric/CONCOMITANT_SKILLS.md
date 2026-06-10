@@ -6,10 +6,8 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `benchmark` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Run and interpret engine stack benchmarks (Steel, ember, shale)
 - `init` — builds on — Initialize a new repository with AGENTS.md
-- `linear` — builds on — Manage issues, projects & team workflows in Linear.
 - `matplotlib` — sibling in the scientific Python — bio cheminformatics cluster — Foundational plotting library.
 - `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
-- `org` — builds on — Org mode manual (25K lines info).
 - `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
 - `torch-geometric` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Graph Neural Networks (PyG).
 

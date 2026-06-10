@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `cat` — builds on — cat Skill: Derivational Pipe Chaining
 - `consensus` — builds on — Agreement protocol in multi agent systems
 - `gtars` — sibling in the scientific Python — bio cheminformatics cluster — High performance toolkit for genomic interval analysis in Rust with Python bindings.
-- `org` — builds on — Org mode manual (25K lines info).
 - `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
 - `scanpy` — sibling in the scientific Python — bio cheminformatics cluster — Single cell RNA seq analysis.
 

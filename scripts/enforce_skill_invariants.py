@@ -180,9 +180,18 @@ def extract_references(text: str, known_skills: set[str]) -> set[str]:
         if token in known_skills and not _is_noise_ref(token):
             refs.add(token)
 
-    for snippet in BACKTICK_RE.findall(lowered):
-        for token in WORD_RE.findall(snippet):
-            add(token)
+    # Dot-predecessor guard: a token split out of a backticked snippet
+    # immediately after a '.' is a TLD / file-extension fragment, not an
+    # intentional reference (e.g. `arxiv.org` -> org, `data.xlsx` -> xlsx,
+    # `build.zig` -> zig, `paper.pdf` -> pdf). Skipping these removes ~1140
+    # phantom edges concentrated in a handful of extension/TLD-colliding skill
+    # names, while leaving every genuine prose reference intact.
+    for m in BACKTICK_RE.finditer(lowered):
+        snippet = m.group(1)
+        for wm in WORD_RE.finditer(snippet):
+            if wm.start() > 0 and snippet[wm.start() - 1] == ".":
+                continue
+            add(wm.group(0))
 
     for token in SLASH_RE.findall(lowered):
         add(token)
@@ -190,8 +199,10 @@ def extract_references(text: str, known_skills: set[str]) -> set[str]:
     for token in ARROW_RE.findall(lowered):
         add(token)
 
-    for token in HYPHENATED_RE.findall(lowered):
-        add(token)
+    for m in HYPHENATED_RE.finditer(lowered):
+        if m.start() > 0 and lowered[m.start() - 1] == ".":
+            continue
+        add(m.group(1))
 
     return refs
 

@@ -14,7 +14,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `julia-scientific` — invoked by — Julia package equivalents for 137 K Dense AI scientific skills.
 - `k-dense-ai` — invoked by — - alphafold database - Protein structure prediction
 - `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdb-database` — sibling in the scientific Python — bio cheminformatics cluster — Access RCSB PDB for 3D protein nucleic acid structures.
 - `pubmed-database` — sibling in the scientific Python — bio cheminformatics cluster — Direct REST API access to PubMed.
 - `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…

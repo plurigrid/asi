@@ -22,7 +22,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `kscale-ecosystem` — builds on — - User asks about K Scale Labs, their robots, or open source robotics stack
 - `kscale-ksim` — builds on — - User asks about robot simulation, humanoid locomotion, or RL policy training
 - `langevin-dynamics` — builds on — Layer 5: SDE Based Learning Analysis via Langevin Dynamics
-- `org` — builds on — Org mode manual (25K lines info).
 - `parametrised-optics-cybernetics` — builds on — Parametrised optics model cybernetic systems - dynamical systems steered by agents.
 - `reafference-corollary-discharge` — builds on — Von Holst reafference and corollary discharge for behavioral verification and signal proc…
 - `sheaf-cohomology` — builds on — Čech cohomology for local to global consistency verification in code

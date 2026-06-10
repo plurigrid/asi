@@ -43,7 +43,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `ordered-locale-fanout` — invoked by — UPDATED: Now uses proper ordered locale (Heunen van der Schaaf 2024).
 - `ordered-locale-proper` — invoked by — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
 - `osm-topology` — invoked by — OSM Topology Skill
-- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `plotly` — builds on — Interactive scientific and statistical data visualization library for Python.
 - `proof-of-frog` — invoked by — Proof of Frog Skill 🐸
 - `pun-decomposition` — invoked by — Pun Decomposition Skill (MINUS -1)

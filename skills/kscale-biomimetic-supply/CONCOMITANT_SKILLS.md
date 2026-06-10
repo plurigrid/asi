@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `init` — builds on — Initialize a new repository with AGENTS.md
 - `kscale-kos` — sibling in the reproducible environments & deployment cluster — - User asks about robot operating systems, firmware, or low level control
 - `kscale-ksim` — sibling in the reproducible environments & deployment cluster — - User asks about robot simulation, humanoid locomotion, or RL policy training
-- `org` — builds on — Org mode manual (25K lines info).
 - `yb-translator` — builds on — Translate programming concepts to biological parallels using real ontology terms from EBI…
 
 <!-- END GENERATED related -->

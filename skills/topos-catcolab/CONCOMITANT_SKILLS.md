@@ -31,7 +31,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `init` — builds on — Initialize a new repository with AGENTS.md
 - `momentum-field` — invoked by — Based on Csikszentmihalyi''s flow theory, detect via interaction patterns:
 - `open-games` — builds on — Open Games Skill (ERGODIC 0)
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `sheaf-laplacian-coordination` — builds on — Sheaf neural network coordination via graph Laplacians for distributed
 - `skill-tour` — invoked by — L shaped hops through skill space, maintaining triadic balance:

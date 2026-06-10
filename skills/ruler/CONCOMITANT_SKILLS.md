@@ -6,7 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `autopoiesis` — invoked by — Self modifying AI agent configuration via ruler + MCP + DuckDB.
 - `babashka` — builds on — Clojure scripting without JVM startup.
-- `bisimulation-game` — invoked by — Bisimulation game for resilient skill dispersal across AI agents with
 - `borkdude` — invoked by — Babashka and ClojureScript runtime selection guidance by @borkdude
 - `cat` — builds on — cat Skill: Derivational Pipe Chaining
 - `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
@@ -17,15 +16,12 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `hy-emacs` — invoked by — Hylang Emacs integration with hy mode, Hyuga LSP, and DisCoPy sexp coloring
 - `hyperbolic-bulk` — invoked by — On chain GF(3) entropy storage via Aptos Move - bulk boundary correspondence where entrop…
 - `init` — builds on — Initialize a new repository with AGENTS.md
-- `ipa-safety` — invoked by — Multiplexed streams carry:
 - `latex-posters` — invoked by — Create professional research posters in LaTeX using beamerposter, tikzposter, or baposter.
-- `macos-use` — invoked by — macOS automation with **activation energy** for machine skill rediscovery:
 - `mathpix-ocr` — invoked by — Mathpix OCR for LaTeX extraction with balanced ternary checkpoints
 - `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
 - `ruler-maximal` — invoked by — Ruler Maximal Skill
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
 - `shell-guard` — invoked by — Shell ENOENT prevention with fallback chain and environment validation
 - `tree-sitter` — builds on — AST based code analysis using tree sitter.
-- `triadic-skill-loader` — invoked by — Triadic Skill Loader
 
 <!-- END GENERATED related -->

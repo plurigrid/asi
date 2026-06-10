@@ -11,7 +11,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `linear` — builds on — Manage issues, projects & team workflows in Linear.
 - `literature-review` — invoked by — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
 - `matplotlib` — sibling in the scientific Python — bio cheminformatics cluster — Foundational plotting library.
-- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `plotly` — sibling in the scientific Python — bio cheminformatics cluster — Interactive scientific and statistical data visualization library for Python.
 - `pyopenms` — sibling in the scientific Python — bio cheminformatics cluster — Python interface to OpenMS for mass spectrometry data analysis.
 - `pytdc` — sibling in the scientific Python — bio cheminformatics cluster — Therapeutics Data Commons.

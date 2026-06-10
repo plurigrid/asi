@@ -5,10 +5,8 @@
 Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
 - `bci-colored-operad` — builds on — Brain Computer Interface with colored operad security boundaries.
-- `init` — builds on — Initialize a new repository with AGENTS.md
 - `nrf5340-device-interaction` — invoked by — Interact with nRF5340 devices over BLE, USB serial, and J Link.
 - `nrf5340-hardware` — invoked by — Nordic nRF5340 dual core SoC hardware reference: application core (Cortex M33 128MHz), ne…
-- `org` — builds on — Org mode manual (25K lines info).
 - `propagators` — builds on — Sussman Radul propagator networks for constraint propagation and bidirectional dataflow.
 - `reafference-corollary-discharge` — builds on — Von Holst reafference and corollary discharge for behavioral verification and signal proc…
 - `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…

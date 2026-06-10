@@ -11,7 +11,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
 - `livekit-omnimodal` — invoked by — LiveKit omni modal continuous coaching with stick breaking color selection,
 - `networkx` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
-- `org` — builds on — Org mode manual (25K lines info).
 - `quic-channel-grading` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — |
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…

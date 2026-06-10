@@ -15,7 +15,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `joker-sims-parser` — sibling in the interactive REPLs & Lisp tooling cluster — Parse and analyze Sims DBPF (Database Packed File) format for Sims 2, 3, and 4 save files.
 - `jupyter` — sibling in the interactive REPLs & Lisp tooling cluster — Read, modify, execute, and convert Jupyter notebooks programmatically.
 - `media` — builds on — Media processing = ffmpeg + imagemagick + sox.
-- `org` — builds on — Org mode manual (25K lines info).
 - `plurigrid-polyglot` — invoked by — Polyglot skill orchestration system integrating Go, Clojure, Hy, and Zig.
 - `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
 - `sqlite-scanner` — invoked by — Scan filesystems for SQLite databases by magic byte detection.

@@ -11,7 +11,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gay-monte-carlo` — builds on — Gay Monte Carlo Measurements
 - `kscale` — invoked by — K Scale Labs robotics skill collection - unified index for humanoid robot development, RL…
 - `max-kajiwara-oloog` — invoked by — Skill max kajiwara oloog
-- `org` — builds on — Org mode manual (25K lines info).
 - `py-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Python native Attributed C Sets with:
 - `py-acsets-rewriting` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Python bridge to AlgebraicRewriting.jl for DPO SPO SqPO graph rewriting over ACSets.
 - `specter-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Specter style bidirectional navigation for Julia Collections, S expressions, and ACSets w…

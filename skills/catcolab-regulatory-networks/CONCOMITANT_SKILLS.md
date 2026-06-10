@@ -14,7 +14,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `dynamical-system-functor` — builds on — Categorical structure of dynamical systems
 - `jacobian` — builds on — Matrix of partial derivatives for linearization
 - `nashator-plurigrid-interleave` — invoked by — NASHator omnichain × Plurigrid compositional energy framing.
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `stability` — builds on — Qualitative behavior of solutions near equilibria
 - `topos-catcolab` — builds on — Topos Institute's CatColab for collaborative category theory - community model building, …

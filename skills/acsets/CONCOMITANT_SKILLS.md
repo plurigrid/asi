@@ -97,7 +97,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `operad-compose` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Operad Composition Skill (PLUS +1)
 - `ordered-locale` — invoked by — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
 - `ordered-locale-proper` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
-- `org` — builds on — Org mode manual (25K lines info).
 - `osm-topology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — OSM Topology Skill
 - `parallel-fanout` — invoked by — Metaskill that fans out on every interaction, using interaction entropy
 - `parallel-subagent-split` — invoked by — In a traced monoidal category, the trace operation models feedback:

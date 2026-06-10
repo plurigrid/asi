@@ -9,7 +9,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `dynamic-sufficiency` — builds on — Causal state gating via ε machine.
 - `elements-infinity-cats` — builds on — Elements of ∞-Category Theory (Riehl Verity) for foundational ∞-categorical
 - `infinity-topos` — builds on — ∞-Topos theory unifying hatchery repos, worlds, and GA abelian extensions.
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `skill-dispatch` — builds on — GF(3) Triadic Task Routing for Subagent Orchestration
 - `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.

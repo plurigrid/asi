@@ -11,7 +11,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gay-fokker-planck-staging` — invoked by — Two Fokker Plancks per staging gate, conditioned on (rama OR goblins)
 - `gay-mcp` — builds on — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
 - `init` — builds on — Initialize a new repository with AGENTS.md
-- `org` — builds on — Org mode manual (25K lines info).
 - `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
 - `self-evolving-agent` — builds on — Darwin Gödel Machine patterns for self improving AI agents with open ended
 - `sheaf-cohomology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Čech cohomology for local to global consistency verification in code

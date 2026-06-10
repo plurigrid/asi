@@ -9,7 +9,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `dialectica` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Dialectica Skill (ERGODIC 0)
 - `duckdb-temporal-versioning` — builds on — Temporal versioning and interaction history with time travel queries,
 - `linear` — builds on — Manage issues, projects & team workflows in Linear.
-- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `proofgeneral-narya` — builds on — Proof General + Narya: Higher dimensional type theory proof assistant with observational …
 - `temporal-coalgebra` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Coalgebraic observation of derivation streams with final coalgebra bisimulation
 - `unworld` — builds on — Layer 4: Derivational Pattern Generation via Seed Chaining

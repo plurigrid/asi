@@ -74,7 +74,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `pulse-mcp-stream` — invoked by — Layer 1: Real Time Social Stream Monitoring via MCP
 - `quic-channel-grading` — invoked by — |
 - `random-walk-fusion` — invoked by — Navigate skill graphs via deterministic random walks.
-- `ruler` — builds on — Unified AI agent configuration propagation across 18+ coding assistants.
 - `ruler-maximal` — invoked by — Ruler Maximal Skill
 - `self-evolving-agent` — sibling in the multi agent orchestration cluster — Darwin Gödel Machine patterns for self improving AI agents with open ended
 - `self-under-siege` — sibling in the multi agent orchestration cluster — Agent identity preservation under adversarial conditions via RepEng control vectors, Mark…

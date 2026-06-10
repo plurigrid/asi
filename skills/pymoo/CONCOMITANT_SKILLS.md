@@ -7,7 +7,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `benchmark` — builds on — Run and interpret engine stack benchmarks (Steel, ember, shale)
 - `init` — builds on — Initialize a new repository with AGENTS.md
 - `matplotlib` — sibling in the scientific Python — bio cheminformatics cluster — Foundational plotting library.
-- `org` — builds on — Org mode manual (25K lines info).
 - `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
 
 <!-- END GENERATED related -->

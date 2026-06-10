@@ -6,7 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `blackhat-go` — builds on — Go based security techniques from "Black Hat Go" extended with macOS, Cloud, Mobile, IoT,…
 - `external` — builds on — External skill interface for integration with external systems
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
 

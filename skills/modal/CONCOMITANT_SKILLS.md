@@ -20,7 +20,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `scikit-learn` — builds on — Machine learning in Python with scikit learn.
 - `transformers` — builds on — This skill should be used when working with pre trained transformer models for natural la…
 - `unworld-moments` — invoked by — Make all 69 cognitive moments happen simultaneously via parallel triadic fanout.
-- `webapp-testing` — invoked by — Toolkit for interacting with and testing local web applications using
 - `world-hopping` — invoked by — Badiou inspired possible world navigation using triangle inequality constraints,
 - `world-runtime-capability` — invoked by — wasmCloud style capability providers for verse execution.
 

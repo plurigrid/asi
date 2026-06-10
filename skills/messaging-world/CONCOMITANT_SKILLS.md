@@ -12,7 +12,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gmail` — builds on — Fetch Gmail using existing Google Workspace credentials at ~ .google_workspace_mcp creden…
 - `gym` — builds on — Each gym domain resolves specific skill tensions:
 - `ies` — builds on — ies
-- `org` — builds on — Org mode manual (25K lines info).
 - `utoronto-outlook` — builds on — Headless University of Toronto Outlook email access via IMAP SMTP with OAuth2.
 
 <!-- END GENERATED related -->

@@ -19,7 +19,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `libghostty-vt` — sibling in the interactive REPLs & Lisp tooling cluster — libghostty vt
 - `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
 - `obstruction-learning` — builds on — Obstruction Learning Skill
-- `org` — builds on — Org mode manual (25K lines info).
 - `phase-space-transformation` — builds on — Coordinate changes preserving dynamics
 - `property-based-testing` — builds on — Provides guidance for property based testing across multiple languages and smart contract…
 - `reverse-engineering` — builds on — Reverse Engineering Skill
@@ -29,6 +28,5 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `ssh` — builds on — Establish and manage SSH connections to remote machines, including key generation, config…
 - `terminal` — sibling in the interactive REPLs & Lisp tooling cluster — Terminal tools = tmux + zsh + fzf + ripgrep.
 - `variant-analysis` — builds on — Find similar vulnerabilities and bugs across codebases using pattern based analysis.
-- `zig` — builds on — Zig ecosystem skill with emerging patterns from zig syrup
 
 <!-- END GENERATED related -->

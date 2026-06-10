@@ -13,7 +13,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `emacs` — sibling in the Emacs elisp tooling cluster — Emacs ecosystem = elisp + org + gnus + tramp + eglot.
 - `emacspeak-binaural` — sibling in the interactive REPLs & Lisp tooling cluster — Replace emacspeak auditory icons with binaural beats using the sound theme system.
 - `ghostty` — sibling in the interactive REPLs & Lisp tooling cluster — Control Ghostty terminal emulator via CLI.
-- `gmail` — builds on — Fetch Gmail using existing Google Workspace credentials at ~ .google_workspace_mcp creden…
 - `init` — sibling in the interactive REPLs & Lisp tooling cluster — Initialize a new repository with AGENTS.md
 - `libghostty-vt` — sibling in the Emacs elisp tooling cluster — libghostty vt
 - `org` — sibling in the Emacs elisp tooling cluster — Org mode manual (25K lines info).

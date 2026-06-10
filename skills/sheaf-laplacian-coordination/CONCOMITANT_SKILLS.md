@@ -16,7 +16,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gay-mcp` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
 - `harmonic-centrality-transport` — invoked by — Harmonic centrality gadgets with GF(3) conservation for topological transport of ablative…
 - `init` — builds on — Initialize a new repository with AGENTS.md
-- `linear` — builds on — Manage issues, projects & team workflows in Linear.
 - `neuro-symbolic-bridge` — invoked by — High tension pairs (d ≈ 1.85):
 - `omg-tension-resolver` — invoked by — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
 - `open-games` — builds on — Open Games Skill (ERGODIC 0)

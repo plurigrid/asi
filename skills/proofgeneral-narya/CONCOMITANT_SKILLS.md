@@ -20,7 +20,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `narya-hatchery` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Narya Hatchery
 - `neuro-symbolic-bridge` — invoked by — High tension pairs (d ≈ 1.85):
 - `operad-compose` — invoked by — Operad Composition Skill (PLUS +1)
-- `org` — sibling in the Emacs elisp tooling cluster — Org mode manual (25K lines info).
 - `parallel-fanout` — invoked by — Metaskill that fans out on every interaction, using interaction entropy
 - `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
 - `skill-tour` — invoked by — L shaped hops through skill space, maintaining triadic balance:

@@ -46,7 +46,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
 - `sdf` — invoked by — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 - `sheaf-cohomology` — builds on — Čech cohomology for local to global consistency verification in code
-- `snix` — invoked by — Rust Nix reimplementation for content addressed rootfs builds.
 - `specter-acset` — builds on — Specter style bidirectional navigation for Julia Collections, S expressions, and ACSets w…
 - `string-diagram-rewriting-protocol` — invoked by — Kernel protocol for compositional string diagram rewriting across all skills
 - `structural-rewilding` — invoked by — Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs).

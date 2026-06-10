@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `assets` — sibling in the skill routing & dispatch cluster — Assets skill
 - `jj` — builds on — Jujutsu (jj) — Git compatible VCS with automatic change tracking, conflict aware rebasing…
 - `orchestrate` — sibling in the skill routing & dispatch cluster — Orchestrate multiple AI agents across Vers VMs for parallel task execution
-- `org` — builds on — Org mode manual (25K lines info).
 - `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
 
 <!-- END GENERATED related -->

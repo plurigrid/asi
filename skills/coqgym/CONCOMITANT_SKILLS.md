@@ -9,7 +9,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `forward-forward-learning` — builds on — Hinton's Forward Forward algorithm for local learning without backpropagation.
 - `narya-proofs` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Mechanically verified proofs from Narya event logs.
 - `opam` — builds on — OCaml package manager (45 subcommands).
-- `org` — builds on — Org mode manual (25K lines info).
 - `proofgeneral-narya` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Proof General + Narya: Higher dimensional type theory proof assistant with observational …
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 

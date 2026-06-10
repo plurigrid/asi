@@ -15,7 +15,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gay-mcp` — sibling in the skill routing & dispatch cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
 - `llms-txt-discovery` — sibling in the skill routing & dispatch cluster — Create the **largest indexed directory of AI documentation** by:
 - `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
-- `org` — builds on — Org mode manual (25K lines info).
 - `polyglot-orchestration` — sibling in the skill routing & dispatch cluster — Enable seamless execution and coordination of code across **5 language ecosystems** (Baba…
 - `skill-dispatch` — sibling in the skill routing & dispatch cluster — GF(3) Triadic Task Routing for Subagent Orchestration
 - `world-hopping` — builds on — Badiou inspired possible world navigation using triangle inequality constraints,

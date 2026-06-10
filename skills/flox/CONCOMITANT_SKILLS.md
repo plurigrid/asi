@@ -22,7 +22,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `flox-publish` — sibling in the reproducible environments & deployment cluster — Use for publishing user packages to flox for use in Flox environments.
 - `flox-services` — sibling in the reproducible environments & deployment cluster — Running services and background processes in Flox environments.
 - `flox-sharing` — sibling in the reproducible environments & deployment cluster — Sharing and composing Flox environments.
-- `gay-mcp` — sibling in the reproducible environments & deployment cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
 - `gnu-radio` — invoked by — GNU Radio SDR toolkit for signal processing flowgraphs with Python blocks
 - `google-cloud-ocapn-vats` — invoked by — Google Cloud Platform project and API management for plurigrid.com org.
 - `guile` — builds on — GNU Scheme interpreter (67K lines info).
@@ -31,7 +30,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `init` — builds on — Initialize a new repository with AGENTS.md
 - `ios-wifi-provenance-diff` — invoked by — Diagnose why an iPhone's Wi Fi password row shows but cannot be copied.
 - `jj` — invoked by — Jujutsu (jj) — Git compatible VCS with automatic change tracking, conflict aware rebasing…
-- `livestream` — invoked by — Warehouse audio pipeline for live capture, transcription, and narration from meeting room…
 - `nickel` — invoked by — Nickel configuration language with gradual typing, contracts, and dynamic sufficiency ver…
 - `nix-acset-worlding` — sibling in the reproducible environments & deployment cluster — Model Nix store as Attributed C Set for dependency verification, GC analysis,
 - `npm` — sibling in the reproducible environments & deployment cluster — Handle npm package installation in non interactive environments by piping confirmations.

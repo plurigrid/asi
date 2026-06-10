@@ -5,7 +5,6 @@
 Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
 - `bandwidth-benchmark` — invoked by — Measure encoding decoding throughput across Syrup implementations.
-- `beeper-mcp` — invoked by — Unified messaging via Beeper Desktop MCP.
 - `cargo-rust` — invoked by — Rust package manager and build system.
 - `coq-of-rust` — invoked by — Formal verification of Rust programs via translation to Coq Rocq.
 - `devcontainer-setup` — sibling in the reproducible environments & deployment cluster — Creates devcontainers with Claude Code, language specific tooling (Python Node Rust Go), …
@@ -24,7 +23,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `jj` — invoked by — Jujutsu (jj) — Git compatible VCS with automatic change tracking, conflict aware rebasing…
 - `koho-sheafnn` — invoked by — Rust sheaf neural networks on k cells.
 - `lazyjj` — invoked by — lazyjj — Ratatui TUI for Jujutsu (jj) with interactive log, files, bookmarks, and diff pa…
-- `mcp-from-prompt` — invoked by — Generate a complete MCP server + skill from an API description, following the ExoPriors S…
 - `move-fuzzing` — invoked by — Comprehensive fuzzing toolkit for Move smart contracts on Aptos, Sui, and Movement chains.
 - `move-smart-contract-audit` — invoked by — Comprehensive Move Aptos smart contract security audit pipeline
 - `polyglot-spi` — invoked by — Cross Language Strong Parallelism Invariance Verification

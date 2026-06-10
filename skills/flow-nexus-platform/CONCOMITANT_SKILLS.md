@@ -10,7 +10,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `matplotlib` — builds on — Foundational plotting library.
 - `npm` — sibling in the reproducible environments & deployment cluster — Handle npm package installation in non interactive environments by piping confirmations.
 - `orchestrate` — builds on — Orchestrate multiple AI agents across Vers VMs for parallel task execution
-- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `scikit-learn` — builds on — Machine learning in Python with scikit learn.
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
 

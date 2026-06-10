@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `dune-analytics` — invoked by — Query Dune Analytics API for blockchain data, pyUSD flows, stablecoin metrics, and on cha…
 - `gf3-pr-verify` — invoked by — Verify GF(3) skill conservation on pull requests.
 - `hatchery-index` — invoked by — Index of 1057 hatchery repos with GAY.md color assignments.
-- `org` — builds on — Org mode manual (25K lines info).
 - `ruler-maximal` — sibling in the skill routing & dispatch cluster — Ruler Maximal Skill
 
 <!-- END GENERATED related -->

@@ -10,7 +10,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `graph-investigation` — mutually referenced — Large scale graph analytics for entity resolution, network analysis, and relationship map…
 - `icij-document-analysis` — mutually referenced — Document processing pipeline for large scale leak analysis.
 - `ios-wifi-provenance-diff` — sibling in the security auditing, fuzzing & pentest cluster — Diagnose why an iPhone's Wi Fi password row shows but cannot be copied.
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `radare2-hatchery` — builds on — Radare2 Hatchery
 - `variant-analysis` — builds on — Find similar vulnerabilities and bugs across codebases using pattern based analysis.

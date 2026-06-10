@@ -13,7 +13,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
 - `networkx` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
 - `oapply-colimit` — builds on — oapply operad algebra evaluation via colimits with Specter style composition patterns
-- `org` — builds on — Org mode manual (25K lines info).
 - `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 - `sheaf-cohomology` — builds on — Čech cohomology for local to global consistency verification in code
 - `temporal-coalgebra` — builds on — Coalgebraic observation of derivation streams with final coalgebra bisimulation

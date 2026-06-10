@@ -16,6 +16,5 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `python-scientific-commons` — sibling in the scientific Python — bio cheminformatics cluster — Atlas of scientific Python tooling — molecular informatics, omics, bio databases, PDE ODE…
 - `scikit-learn` — sibling in the scientific Python — bio cheminformatics cluster — Machine learning in Python with scikit learn.
 - `seaborn` — sibling in the scientific Python — bio cheminformatics cluster — Statistical visualization.
-- `transcribe` — builds on — Transcribe audio files to text with optional diarization and known speaker hints.
 
 <!-- END GENERATED related -->

@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `external` — builds on — External skill interface for integration with external systems
 - `scheme` — builds on — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
 - `security` — sibling in the security auditing, fuzzing & pentest cluster — Security best practices for secure coding, authentication, authorization, and data protec…
-- `ssh` — builds on — Establish and manage SSH connections to remote machines, including key generation, config…
 - `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
 
 <!-- END GENERATED related -->

@@ -14,7 +14,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `elisp` — sibling in the interactive REPLs & Lisp tooling cluster — Emacs Lisp reference (106K lines info).
 - `hopf` — builds on — Bifurcation creating limit cycle from equilibrium
 - `mcp-tripartite` — invoked by — MCP tripartite integration for orchestrating distributed tool protocols
-- `org` — builds on — Org mode manual (25K lines info).
 - `scheme` — sibling in the interactive REPLs & Lisp tooling cluster — GNU Scheme ecosystem = guile + goblins + hoot + fibers.
 - `skill-tour` — invoked by — L shaped hops through skill space, maintaining triadic balance:
 - `splitmix-ternary` — builds on — SplitMixTernary: Extension of SplittableRandoms.jl for GF(3) balanced streams.

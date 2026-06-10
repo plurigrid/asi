@@ -6,8 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `gh` — sibling in the skill routing & dispatch cluster — GitHub CLI (212 man pages).
 - `init` — builds on — Initialize a new repository with AGENTS.md
-- `org` — builds on — Org mode manual (25K lines info).
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
-- `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
 
 <!-- END GENERATED related -->

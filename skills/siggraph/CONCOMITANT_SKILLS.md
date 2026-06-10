@@ -13,7 +13,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `iroh-p2p` — builds on — Build modern peer to peer applications with Iroh.
 - `literature-review` — builds on — Conduct comprehensive, systematic literature reviews using multiple academic databases (P…
 - `mlx-apple-silicon` — builds on — Run LLMs on Apple Silicon with MLX mlx_lm - unified memory, 4 bit quantization, streaming…
-- `org` — builds on — Org mode manual (25K lines info).
 - `skill-tour` — sibling in the skill routing & dispatch cluster — L shaped hops through skill space, maintaining triadic balance:
 - `transitive-weep` — sibling in the skill routing & dispatch cluster — Each world is an **open game** with:
 

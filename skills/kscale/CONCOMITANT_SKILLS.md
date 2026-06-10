@@ -19,7 +19,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `kos-firmware` — sibling in the reproducible environments & deployment cluster — K Scale Operating System - Rust based robot firmware with gRPC services for actuator cont…
 - `kscale-actuator` — sibling in the reproducible environments & deployment cluster — Rust library for controlling actuators (Robstride servo motors) on K Scale robots.
 - `kscale-ecosystem` — sibling in the reproducible environments & deployment cluster — - User asks about K Scale Labs, their robots, or open source robotics stack
-- `kscale-ksim` — sibling in the reproducible environments & deployment cluster — - User asks about robot simulation, humanoid locomotion, or RL policy training
 - `ksim-rl` — sibling in the reproducible environments & deployment cluster — RL training library for humanoid locomotion and manipulation built on MuJoCo and JAX.
 - `langevin-dynamics` — builds on — Layer 5: SDE Based Learning Analysis via Langevin Dynamics
 - `lyapunov-stability` — builds on — Stability via Lyapunov's direct method

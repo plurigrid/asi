@@ -14,7 +14,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `covariant-modification` — builds on — Unified skill modification with covariant transport, Darwin Gödel Machine evolution, and …
 - `database-design` — builds on — Database schema design, optimization, and migration patterns for PostgreSQL,
 - `gmail-anima` — builds on — Gmail inbox management via ANIMA condensation.
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `specter-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Specter style bidirectional navigation for Julia Collections, S expressions, and ACSets w…
 - `tasks-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Google Tasks management via TasksACSet.

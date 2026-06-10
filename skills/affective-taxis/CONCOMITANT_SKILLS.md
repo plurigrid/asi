@@ -20,7 +20,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
 - `sense` — builds on — sense - Diagrammatic Video Extraction with Subtitle Alignment
 - `time-travel-crdt` — builds on — Time Travel CRDT Skill
-- `zig` — builds on — Zig ecosystem skill with emerging patterns from zig syrup
 - `zx-calculus` — builds on — Coecke's ZX calculus for quantum circuit reasoning via string diagrams with Z spiders (gr…
 
 <!-- END GENERATED related -->

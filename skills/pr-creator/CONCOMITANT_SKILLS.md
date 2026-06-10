@@ -6,6 +6,5 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `gh` — sibling in the skill routing & dispatch cluster — GitHub CLI (212 man pages).
 - `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
-- `org` — builds on — Org mode manual (25K lines info).
 
 <!-- END GENERATED related -->

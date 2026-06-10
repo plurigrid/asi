@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `docker` — builds on — Run Docker commands within a container environment, including starting the Docker daemon …
 - `external` — builds on — External skill interface for integration with external systems
 - `k-dense-ai` — invoked by — - alphafold database - Protein structure prediction
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
 

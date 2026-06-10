@@ -6,7 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `benchmark` — builds on — Run and interpret engine stack benchmarks (Steel, ember, shale)
 - `flowglad-integration` — sibling in the skill routing & dispatch cluster — Zero webhook billing for AI agents
-- `org` — builds on — Org mode manual (25K lines info).
 - `unified-reafference` — sibling in the skill routing & dispatch cluster — Cross agent session database with B3 Poset and Bumpus sheaves
 
 <!-- END GENERATED related -->

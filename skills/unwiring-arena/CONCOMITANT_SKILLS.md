@@ -15,7 +15,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gay-mcp` — sibling in the skill routing & dispatch cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
 - `ies` — sibling in the skill routing & dispatch cluster — ies
 - `open-games` — builds on — Open Games Skill (ERGODIC 0)
-- `org` — builds on — Org mode manual (25K lines info).
 - `skill-connectivity-hub` — sibling in the skill routing & dispatch cluster — Skill Connectivity Hub
 - `triad-interleave` — sibling in the skill routing & dispatch cluster — Interleave three deterministic color streams into balanced schedules
 - `tripartite-decompositions` — invoked by — GF(3)-balanced structured decompositions for parallel computation.

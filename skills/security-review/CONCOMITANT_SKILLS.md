@@ -12,7 +12,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `github-code-review` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Comprehensive GitHub code review with AI powered swarm coordination
 - `hive-mind-advanced` — invoked by — Advanced Hive Mind collective intelligence system for queen led multi agent coordination …
 - `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
-- `org` — builds on — Org mode manual (25K lines info).
 - `reality-tech` — invoked by — Reality tech umbrella for AR VR XR.
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `security` — sibling in the security auditing, fuzzing & pentest cluster — Security best practices for secure coding, authentication, authorization, and data protec…

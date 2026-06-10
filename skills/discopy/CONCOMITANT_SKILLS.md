@@ -9,7 +9,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `ar` — builds on — Augmented reality (AR) reality tech.
 - `bisimulation-game` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Bisimulation game for resilient skill dispersal across AI agents with
 - `bob` — builds on — World BOB Skill
-- `cat` — builds on — cat Skill: Derivational Pipe Chaining
 - `categorical-rewriting-triad4` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Categorical Rewriting: Triad 4 (World Transformation)
 - `catlab-asi-interleave` — invoked by — Bridge layer connecting AlgebraicJulia Catlab.jl to plurigrid asi.
 - `colored-vertex-model` — invoked by — Colored stochastic six vertex model with rainbow initial data, projection properties, and…

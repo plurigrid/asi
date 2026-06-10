@@ -12,7 +12,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `julia-scientific` — sibling in the interactive REPLs & Lisp tooling cluster — Julia package equivalents for 137 K Dense AI scientific skills.
 - `julia-tempering` — sibling in the interactive REPLs & Lisp tooling cluster — Splittable RNG infrastructure for parallel tempering and distributed sampling with determ…
 - `linear` — builds on — Manage issues, projects & team workflows in Linear.
-- `org` — builds on — Org mode manual (25K lines info).
 - `quarto-julia` — sibling in the interactive REPLs & Lisp tooling cluster — Quarto + Julia Skill
 - `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
 - `scheme` — sibling in the interactive REPLs & Lisp tooling cluster — GNU Scheme ecosystem = guile + goblins + hoot + fibers.

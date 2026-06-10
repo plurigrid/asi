@@ -16,7 +16,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `narya-hatchery` — invoked by — Narya Hatchery
 - `narya-proofs` — builds on — Mechanically verified proofs from Narya event logs.
 - `nickel` — builds on — Nickel configuration language with gradual typing, contracts, and dynamic sufficiency ver…
-- `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `sheaf-cohomology` — sibling in the compositional game theory via parametrised optics (play coplay) cluster — Čech cohomology for local to global consistency verification in code
 - `structured-decomp` — builds on — StructuredDecompositions.jl sheaves on tree decompositions for FPT algorithms with bidire…
 - `triadic-skill-orchestrator` — sibling in the skill routing & dispatch cluster — Orchestrates multiple skills in GF(3)-balanced triplets.

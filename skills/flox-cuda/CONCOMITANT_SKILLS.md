@@ -11,6 +11,5 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `flox-services` — sibling in the reproducible environments & deployment cluster — Running services and background processes in Flox environments.
 - `flox-sharing` — sibling in the reproducible environments & deployment cluster — Sharing and composing Flox environments.
 - `linear` — builds on — Manage issues, projects & team workflows in Linear.
-- `org` — builds on — Org mode manual (25K lines info).
 
 <!-- END GENERATED related -->

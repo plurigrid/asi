@@ -10,7 +10,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `quantum-balalaika` — builds on — - **Contraction**: Remove belief WRONG, beliefs persist
 - `reflow` — builds on — Information Reflow Skill (ERGODIC 0)
 - `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…
-- `ruler` — builds on — Unified AI agent configuration propagation across 18+ coding assistants.
 - `topos-generate` — builds on — Topos Generation Skill (PLUS +1)
 - `transcribe` — builds on — Transcribe audio files to text with optional diarization and known speaker hints.
 

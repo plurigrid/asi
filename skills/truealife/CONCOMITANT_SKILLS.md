@@ -15,9 +15,7 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `glass-bead-game` — builds on — Hesse inspired interdisciplinary synthesis game with Badiou triangle
 - `hyperbolic-gamut-recovery` — builds on — name: hyperbolic gamut recovery
 - `ies` — builds on — ies
-- `init` — builds on — Initialize a new repository with AGENTS.md
 - `multidispatch-rl` — invoked by — Multiple dispatch as explicit RL objective - learning optimal method selection across typ…
-- `org` — builds on — Org mode manual (25K lines info).
 - `ramanujan-expander` — builds on — Ramanujan graphs and Alon Boppana spectral optimality for edge growth
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `trajectory` — builds on — Path traced by solution through phase space

@@ -12,7 +12,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `keychain-secure` — builds on — macOS Keychain credential management with GF(3) balanced operations
 - `mirror` — builds on — Social self persistence via mutual cognitive surrogates.
 - `planar-isotopy-screen` — sibling in the skill routing & dispatch cluster — Planar Isotopy Screen Mapping
-- `ruler` — builds on — Unified AI agent configuration propagation across 18+ coding assistants.
 - `say-ducklake-xor` — sibling in the skill routing & dispatch cluster — Parallel thread DuckLake discovery with XOR uniqueness from gay_seed.
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…
 - `speech` — sibling in the skill routing & dispatch cluster — Use when the user asks for text to speech narration or voiceover, accessibility reads, au…

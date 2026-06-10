@@ -5,7 +5,5 @@
 Skills related to this one, with the nature of each relation (direction from prose citations; cluster domains characterized from exa and our own use). Symmetric — each related skill lists this one too. Do not edit inside the markers; regenerate with `python3 scripts/relate_skills.py`.
 
 - `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
-- `org` — builds on — Org mode manual (25K lines info).
-- `zig` — builds on — Zig ecosystem skill with emerging patterns from zig syrup
 
 <!-- END GENERATED related -->

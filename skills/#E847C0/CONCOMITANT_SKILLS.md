@@ -6,8 +6,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `elisp` — sibling in the interactive REPLs & Lisp tooling cluster — Emacs Lisp reference (106K lines info).
 - `emacs` — sibling in the interactive REPLs & Lisp tooling cluster — Emacs ecosystem = elisp + org + gnus + tramp + eglot.
-- `org` — builds on — Org mode manual (25K lines info).
-- `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `ssh` — builds on — Establish and manage SSH connections to remote machines, including key generation, config…
 
 <!-- END GENERATED related -->

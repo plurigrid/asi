@@ -15,7 +15,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `jupyter` — builds on — Read, modify, execute, and convert Jupyter notebooks programmatically.
 - `matplotlib` — builds on — Foundational plotting library.
 - `networkx` — builds on — Comprehensive toolkit for creating, analyzing, and visualizing complex networks and graph…
-- `org` — builds on — Org mode manual (25K lines info).
 - `playwright` — sibling in the skill routing & dispatch cluster — Browser automation via Playwright MCP.
 - `plotly` — builds on — Interactive scientific and statistical data visualization library for Python.
 - `polars` — builds on — Fast DataFrame library (Apache Arrow).

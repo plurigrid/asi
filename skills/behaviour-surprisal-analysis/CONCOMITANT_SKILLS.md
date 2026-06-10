@@ -11,7 +11,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `equilibrium` — builds on — Fixed points where vector field vanishes
 - `gay-mcp` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
 - `operad-compose` — builds on — Operad Composition Skill (PLUS +1)
-- `org` — builds on — Org mode manual (25K lines info).
 - `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 
 <!-- END GENERATED related -->

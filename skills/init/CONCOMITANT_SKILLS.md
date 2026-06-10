@@ -59,7 +59,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `flox-environments` — invoked by — Manage reproducible development environments with Flox.
 - `flox-publish` — invoked by — Use for publishing user packages to flox for use in Flox environments.
 - `flox-sharing` — invoked by — Sharing and composing Flox environments.
-- `fluidsim` — invoked by — Framework for computational fluid dynamics simulations using Python.
 - `forward-forward-learning` — invoked by — Hinton's Forward Forward algorithm for local learning without backpropagation.
 - `ga-codegen` — invoked by — Geometric Algebra code generation for C++, C#, Rust, Python from ganja.js templates
 - `gay-mcp` — invoked by — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
@@ -85,18 +84,14 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `intent-sink` — invoked by — Intent Sink Skill
 - `jaxlife-open-ended` — invoked by — JaxLife open ended agentic simulator for emergent behavior, tool use,
 - `jj` — invoked by — Jujutsu (jj) — Git compatible VCS with automatic change tracking, conflict aware rebasing…
-- `juvix-intents` — invoked by — Juvix intent centric language for Anoma with Geb compilation and GF(3) typed resources
 - `kolmogorov-compression` — invoked by — Kolmogorov complexity as the ultimate intelligence measure.
 - `kscale-biomimetic-supply` — invoked by — - User asks about supply chain resilience for humanoid robotics
 - `l-space` — invoked by — L Space Skill: The Library of All Libraries
-- `lamindb` — invoked by — This skill should be used when working with LaminDB, an open source data framework for bi…
 - `langevin-dynamics` — invoked by — Layer 5: SDE Based Learning Analysis via Langevin Dynamics
 - `latchbio-integration` — invoked by — Latch platform for bioinformatics workflows.
 - `latent-latency` — invoked by — Latent Latency Skill
 - `libghostty-aci` — sibling in the interactive REPLs & Lisp tooling cluster — Integrates libghostty terminal emulation with Agent Computer Interface (ACI) patterns:
 - `libghostty-recording` — sibling in the interactive REPLs & Lisp tooling cluster — Record, stream, and replay libghostty vt terminal sessions for documentation, debugging, …
-- `libghostty-streaming` — sibling in the interactive REPLs & Lisp tooling cluster — The **white hole** dual to libghostty recording.
-- `libghostty-vt` — sibling in the interactive REPLs & Lisp tooling cluster — libghostty vt
 - `map-projection` — invoked by — Map Projection Skill
 - `mcp-orchestrator` — invoked by — MCP agent orchestration patterns: planner worker, swarm, evaluator optimizer.
 - `miasm-symbolic` — invoked by — Miasm reverse engineering framework for symbolic execution, IR lifting, and binary analys…
@@ -114,7 +109,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `neuro-symbolic-bridge` — invoked by — High tension pairs (d ≈ 1.85):
 - `nrf5340-hardware` — invoked by — Nordic nRF5340 dual core SoC hardware reference: application core (Cortex M33 128MHz), ne…
 - `ocaml` — invoked by — OCaml ecosystem = opam + dune + merlin + ocamlformat.
-- `olmo-earth-skill` — invoked by — Sentinel 2 satellite imagery to OlmoEarth embeddings on geodesic tiles, serialized via zi…
 - `olmoearth-mlx` — invoked by — OlmoEarth MLX: Spatio Temporal Earth Intelligence
 - `omg-tension-resolver` — invoked by — [OpenModelica Microgrid Gym](https: github.com upb lea openmodelica microgrid gym) (OMG)…
 - `onepassword-cli` — sibling in the interactive REPLs & Lisp tooling cluster — 1Password CLI (op) for secure secret management, credential injection, and shell plugin a…
@@ -165,12 +159,10 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `stream-chain` — invoked by — Stream JSON chaining for multi agent pipelines, data transformation, and sequential workf…
 - `structural-rewilding` — invoked by — Homotopical approach to Artificial Life where 'life' is the topology of changes (diffs).
 - `swarm-advanced` — invoked by — Advanced swarm orchestration patterns for research, development, testing, and complex dis…
-- `swarm-orchestration` — invoked by — Orchestrate multi agent swarms with agentic flow for parallel task execution, dynamic top…
 - `sympy` — invoked by — Use this skill when working with symbolic mathematics in Python.
 - `system2-attention` — invoked by — System 2 attention mechanisms for deliberate, slow reasoning in transformer
 - `terrateam-usage-guide` — invoked by — |
 - `tidar` — invoked by — Triadic Interleaving Dispatch with Agents for Reading writing.
-- `time-travel-crdt` — invoked by — Time Travel CRDT Skill
 - `toad-telemetry` — invoked by — OpenTelemetry instrumentation for Batrachian Toad AI agent terminal.
 - `topological-dataloader` — invoked by — Batched heterogeneous topological complex dataloaders for TopoModelX.
 - `topomodelx-hodge` — invoked by — Hodge Laplacian neural networks for simplicial cell hypergraph complexes.
@@ -182,12 +174,10 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `triad-interleave` — invoked by — Interleave three deterministic color streams into balanced schedules
 - `triadic-skill-loader` — invoked by — Triadic Skill Loader
 - `tripartite-decompositions` — invoked by — GF(3)-balanced structured decompositions for parallel computation.
-- `truealife` — invoked by — Comprehensive index of Artificial Life repositories across history, with special focus on…
 - `turing-chemputer` — invoked by — Cronin's Turing complete chemputer for programmable chemical synthesis
 - `unworld` — invoked by — Layer 4: Derivational Pattern Generation via Seed Chaining
 - `unworld-moments` — invoked by — Make all 69 cognitive moments happen simultaneously via parallel triadic fanout.
 - `uv-oneliners` — invoked by — UV UVX awesome one liners for ephemeral Python environments with multi package
-- `vertex-ai-protein-interleave` — invoked by — Bridge layer connecting Vertex AI Google Cloud to plurigrid asi protein scale biology s…
 - `visual-design` — invoked by — |
 - `waddington-landscape` — invoked by — Waddington's epigenetic landscape: cell fate as gradient flow on potential surfaces, conn…
 - `webapp-testing` — invoked by — Toolkit for interacting with and testing local web applications using
@@ -195,8 +185,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `wrangler` — invoked by — Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vecto…
 - `xypic-latex` — invoked by — XY pic commutative diagrams in LaTeX with Emacs AUCTeX preview
 - `zig` — invoked by — Zig ecosystem skill with emerging patterns from zig syrup
-- `zig-syrup-bci` — invoked by — Multimodal BCI pipeline in Zig: DSI 24 EEG, fNIRS mBLL, eye tracking IVT, LSL sync, EDF r…
-- `zig-systems` — invoked by — Systems programming and performance optimization using Zig.
 - `zulip-cogen` — invoked by — Zulip Cogen Skill 🐸⚡
 
 <!-- END GENERATED related -->

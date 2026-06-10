@@ -8,7 +8,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `alice` — sibling in the skill routing & dispatch cluster — Primary Aptos testnet wallet for transaction origination.
 - `duckdb-ies` — builds on — Layer 4: IES Interactome Analytics with GF(3) Momentum Tracking
 - `entry-point-analyzer` — builds on — Analyzes smart contract codebases to identify state changing entry points for security au…
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `reverse-engineering` — builds on — Reverse Engineering Skill
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…

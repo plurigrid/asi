@@ -18,7 +18,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `sheaf-cohomology` — sibling in the skill routing & dispatch cluster — Čech cohomology for local to global consistency verification in code
 - `speech` — sibling in the skill routing & dispatch cluster — Use when the user asks for text to speech narration or voiceover, accessibility reads, au…
 - `structured-decomp` — builds on — StructuredDecompositions.jl sheaves on tree decompositions for FPT algorithms with bidire…
-- `terminal` — builds on — Terminal tools = tmux + zsh + fzf + ripgrep.
 - `topos-generate` — builds on — Topos Generation Skill (PLUS +1)
 - `trajectory` — builds on — Path traced by solution through phase space
 - `triangle-metrics` — invoked by — Triangle Metrics Skill

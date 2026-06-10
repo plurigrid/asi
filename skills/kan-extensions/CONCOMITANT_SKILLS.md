@@ -22,7 +22,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `operadic-delegation` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — From Interverse transcript (Aug 2025):
 - `ordered-locale` — invoked by — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
 - `ordered-locale-proper` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Ordered Locales (Heunen van der Schaaf 2024): Point free topology with direction.
-- `org` — builds on — Org mode manual (25K lines info).
 - `para-mensch-commons` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
 - `persistent-homology` — sibling in the categorical cybernetics — parametrised optics & bidirectional learners cluster — Topological data analysis for stable feature verification across filtrations
 - `ruler-maximal` — invoked by — Ruler Maximal Skill

@@ -7,7 +7,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `2600-magazine` — invoked by — Query and explore the 2600: The Hacker Quarterly magazine archive (1984 present) via Duck…
 - `counter-surveillance` — invoked by — Assess and harden operational security (OPSEC) posture for applications, communications, …
 - `init` — builds on — Initialize a new repository with AGENTS.md
-- `modal` — builds on — Run Python code in the cloud with serverless containers, GPUs, and autoscaling.
 - `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
 - `osint-exposure-audit` — invoked by — >
 - `playwright` — builds on — Browser automation via Playwright MCP.

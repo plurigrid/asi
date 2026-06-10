@@ -12,7 +12,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `fokker-planck-analyzer` — builds on — Layer 5: Convergence to Equilibrium Analysis
 - `langevin-dynamics` — builds on — Layer 5: SDE Based Learning Analysis via Langevin Dynamics
 - `modelica` — builds on — Modelica acausal equation based multi domain modeling via Wolfram Language.
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `topos-catcolab` — builds on — Topos Institute's CatColab for collaborative category theory - community model building, …
 

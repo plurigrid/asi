@@ -24,7 +24,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `modal` — builds on — Run Python code in the cloud with serverless containers, GPUs, and autoscaling.
 - `nickel` — builds on — Nickel configuration language with gradual typing, contracts, and dynamic sufficiency ver…
 - `npm` — builds on — Handle npm package installation in non interactive environments by piping confirmations.
-- `org` — builds on — Org mode manual (25K lines info).
 - `org-babel-execution` — builds on — Literate programming execution engine via org babel for polyglot skill execution
 - `rust` — sibling in the skill routing & dispatch cluster — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…

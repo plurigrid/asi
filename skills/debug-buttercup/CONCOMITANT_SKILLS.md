@@ -6,6 +6,5 @@ Skills related to this one, with the nature of each relation (direction from pro
 
 - `cat` — builds on — cat Skill: Derivational Pipe Chaining
 - `docker` — builds on — Run Docker commands within a container environment, including starting the Docker daemon …
-- `kubernetes` — builds on — Set up and manage local Kubernetes clusters using KIND (Kubernetes IN Docker).
 
 <!-- END GENERATED related -->

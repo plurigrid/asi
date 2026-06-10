@@ -21,7 +21,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `orchestrate` — sibling in the skill routing & dispatch cluster — Orchestrate multiple AI agents across Vers VMs for parallel task execution
 - `render-deploy` — invoked by — Deploy applications to Render by analyzing codebases, generating render.yaml Blueprints, …
 - `resource-sharing` — sibling in the skill routing & dispatch cluster — Resource Sharing Skill
-- `seatbelt-sandboxer` — invoked by — Generates minimal macOS Seatbelt sandbox configurations.
 - `tailscale` — invoked by — Mesh VPN.
 - `tailscale-file-transfer` — invoked by — Tailscale mesh VPN file transfer with open games semantics (play coplay)
 - `tailscale-mesh` — invoked by — Tailscale mesh VPN for secure peer to peer networking.

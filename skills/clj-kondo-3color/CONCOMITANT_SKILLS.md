@@ -21,7 +21,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `mcp-tripartite` — sibling in the skill routing & dispatch cluster — MCP tripartite integration for orchestrating distributed tool protocols
 - `move-rps-game` — invoked by — Rock Paper Scissors PvP game on Aptos with commit reveal pattern and ACSet informed design
 - `operad-compose` — invoked by — Operad Composition Skill (PLUS +1)
-- `org` — builds on — Org mode manual (25K lines info).
 - `para-mensch-commons` — mutually referenced — Atlas of Para(Optic) learners — the universal categorical cybernetics atom (Play Witness …
 - `parallel-fanout` — invoked by — Metaskill that fans out on every interaction, using interaction entropy
 - `repl-commons` — sibling in the interactive REPLs & Lisp tooling cluster — Atlas of REPL using skills across Clojure, Scheme, Julia, Python, Hy, Unison, Emacs bridg…

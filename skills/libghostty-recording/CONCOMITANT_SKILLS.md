@@ -13,7 +13,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `libghostty-vt` — sibling in the Emacs elisp tooling cluster — libghostty vt
 - `modal` — builds on — Run Python code in the cloud with serverless containers, GPUs, and autoscaling.
 - `omniglot` — builds on — The Lake Salakhutdinov Tenenbaum challenge for human level concept learning through proba…
-- `org` — sibling in the Emacs elisp tooling cluster — Org mode manual (25K lines info).
 - `terminal` — sibling in the interactive REPLs & Lisp tooling cluster — Terminal tools = tmux + zsh + fzf + ripgrep.
 - `zig` — builds on — Zig ecosystem skill with emerging patterns from zig syrup
 

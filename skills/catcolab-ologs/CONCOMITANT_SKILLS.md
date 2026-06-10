@@ -15,7 +15,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `database-design` — builds on — Database schema design, optimization, and migration patterns for PostgreSQL,
 - `effective-topos` — builds on — FloxHub publication bmorphism effective topos - a comprehensive development
 - `glamorous-moldable-multiplatform` — invoked by — - **v1.1.0 (2026 02 09)**: Live GraphQL update of all 10 repos with commit level detail.
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `specter-acset` — sibling in the attributed C sets — category theoretic relational data (AlgebraicJulia) cluster — Specter style bidirectional navigation for Julia Collections, S expressions, and ACSets w…
 - `topos-catcolab` — builds on — Topos Institute's CatColab for collaborative category theory - community model building, …

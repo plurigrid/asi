@@ -11,7 +11,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `gay-mcp` — sibling in the reproducible environments & deployment cluster — Deterministic color generation with SplitMix64, GF(3) trits, and MCP
 - `init` — builds on — Initialize a new repository with AGENTS.md
 - `koopman-generator` — builds on — Koopman operator theory for infinite dimensional linear lifting of nonlinear dynamics.
-- `linear` — builds on — Manage issues, projects & team workflows in Linear.
 - `mlx-bitnet-gf3` — sibling in the reproducible environments & deployment cluster — BitNet 1.58 bit uses **ternary weights** {-1, 0, +1} — identical to GF(3) trits:
 - `polyglot-spi` — builds on — Cross Language Strong Parallelism Invariance Verification
 - `spi-parallel-verify` — builds on — Verify Strong Parallelism Invariance (SPI) and GF(3) conservation for

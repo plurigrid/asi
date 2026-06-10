@@ -14,7 +14,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `mlx-apple-silicon` — sibling in the reproducible environments & deployment cluster — Run LLMs on Apple Silicon with MLX mlx_lm - unified memory, 4 bit quantization, streaming…
 - `mlx-jax-splitmix` — sibling in the reproducible environments & deployment cluster — MLX on Apple Silicon with JAX style SplitMix64 PRNG.
 - `modal` — sibling in the reproducible environments & deployment cluster — Run Python code in the cloud with serverless containers, GPUs, and autoscaling.
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `transformers` — builds on — This skill should be used when working with pre trained transformer models for natural la…
 - `unworlding-involution` — builds on — Self inverse derivation patterns where ι∘ι = id for frame invariant self

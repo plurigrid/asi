@@ -7,7 +7,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `alice` — builds on — Primary Aptos testnet wallet for transaction origination.
 - `botnet-disruption` — sibling in the security auditing, fuzzing & pentest cluster — Coordinated botnet takedown methodologies — sinkholing, infrastructure mapping, legal fra…
 - `botnet-studies` — sibling in the security auditing, fuzzing & pentest cluster — Botnet architecture taxonomy, detection techniques, and defensive analysis.
-- `org` — builds on — Org mode manual (25K lines info).
 - `rust` — builds on — Rust ecosystem = cargo + rustc + clippy + rustfmt.
 - `secure-workflow-guide` — builds on — Guide you through Trail of Bits' 5 step secure development workflow.
 - `security` — sibling in the security auditing, fuzzing & pentest cluster — Security best practices for secure coding, authentication, authorization, and data protec…

@@ -14,7 +14,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `kolmogorov-compression` — sibling in the artificial life, autopoiesis & chemical organization cluster — Kolmogorov complexity as the ultimate intelligence measure.
 - `l-space` — invoked by — L Space Skill: The Library of All Libraries
 - `modelica` — invoked by — Modelica acausal equation based multi domain modeling via Wolfram Language.
-- `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 - `turing-chemputer` — sibling in the artificial life, autopoiesis & chemical organization cluster — Cronin's Turing complete chemputer for programmable chemical synthesis
 - `yb-translator` — invoked by — Translate programming concepts to biological parallels using real ontology terms from EBI…
 

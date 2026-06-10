@@ -7,7 +7,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `external` — builds on — External skill interface for integration with external systems
 - `hypothesis-generation` — sibling in the proof assistants & formal verification (Narya Lean Juvix) cluster — Generate testable hypotheses.
 - `media` — builds on — Media processing = ffmpeg + imagemagick + sox.
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — builds on — Comprehensive PDF manipulation toolkit for extracting text and tables,
 
 <!-- END GENERATED related -->

@@ -15,7 +15,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `babashka` — builds on — Clojure scripting without JVM startup.
 - `bisimulation-game` — sibling in the multi agent orchestration cluster — Bisimulation game for resilient skill dispersal across AI agents with
 - `chemical-organization-theory` — sibling in the artificial life, autopoiesis & chemical organization cluster — **Category:** Phase 3 Core - Autopoietic Systems
-- `chromatic-peptide-samovar` — invoked by — A **samovar** (самовар) keeps water hot indefinitely through self contained combustion.
 - `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
 - `codex-self-rewriting` — builds on — Lisp machine self modification patterns via MCP Tasks and Narya bridge
 - `curiosity-driven` — builds on — Schmidhuber's curiosity driven learning: Intrinsic motivation via compression progress.

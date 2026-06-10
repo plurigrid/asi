@@ -14,7 +14,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `crdt` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — crdt skill
 - `ergodic-coordinator` — invoked by — Completes the GF(3) triad: +1 + (-1) + 0 = 0
 - `k-dense-ai` — builds on — - alphafold database - Protein structure prediction
-- `org` — builds on — Org mode manual (25K lines info).
 - `quic-channel-grading` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — |
 - `sdf` — builds on — Software Design for Flexibility: Sussman & Hanson's additive programming, combinators, pr…
 - `security` — builds on — Security best practices for secure coding, authentication, authorization, and data protec…

@@ -12,7 +12,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `kubernetes` — builds on — Set up and manage local Kubernetes clusters using KIND (Kubernetes IN Docker).
 - `lispsyntax-acset` — builds on — LispSyntax.jl ↔ ACSets.jl bidirectional bridge with OCaml ppx_sexp_conv style
 - `nickel` — builds on — Nickel configuration language with gradual typing, contracts, and dynamic sufficiency ver…
-- `org` — builds on — Org mode manual (25K lines info).
 - `sexp-neighborhood` — invoked by — Exhaustive index of S expression using skills with GF(3) triadic classification and bridg…
 
 <!-- END GENERATED related -->

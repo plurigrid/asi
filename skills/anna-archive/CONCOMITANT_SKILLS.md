@@ -9,7 +9,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `clojure` — builds on — Clojure ecosystem = babashka + clj + lein + shadow cljs.
 - `depth-search` — sibling in the skill routing & dispatch cluster — Deep multi source research combining academic MCPs (arxiv, semantic scholar, paper search…
 - `mathpix-ocr` — builds on — Mathpix OCR for LaTeX extraction with balanced ternary checkpoints
-- `org` — builds on — Org mode manual (25K lines info).
 - `pdf` — sibling in the skill routing & dispatch cluster — Comprehensive PDF manipulation toolkit for extracting text and tables,
 - `sheaf-cohomology` — sibling in the skill routing & dispatch cluster — Čech cohomology for local to global consistency verification in code
 - `topos-generate` — builds on — Topos Generation Skill (PLUS +1)

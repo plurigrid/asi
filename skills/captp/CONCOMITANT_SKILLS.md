@@ -32,7 +32,6 @@ Skills related to this one, with the nature of each relation (direction from pro
 - `nashator` — invoked by — Open games DSL Nash equilibrium solver via PyTorch autodiff.
 - `olmo-earth-skill` — invoked by — Sentinel 2 satellite imagery to OlmoEarth embeddings on geodesic tiles, serialized via zi…
 - `operad-compose` — builds on — Operad Composition Skill (PLUS +1)
-- `org` — builds on — Org mode manual (25K lines info).
 - `phyllotaxis` — invoked by — Succulent rosette growth as propagator network — golden angle = Nash equilibrium, auxin c…
 - `polyglot-spi` — builds on — Cross Language Strong Parallelism Invariance Verification
 - `pulse-mcp-stream` — sibling in the Spritely distributed object capability programming (CapTP OCapN) cluster — Layer 1: Real Time Social Stream Monitoring via MCP
