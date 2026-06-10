@@ -52,3 +52,48 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `unworld`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `acset-taxonomy`
+- `affective-taxis`
+- `buberian-relations`
+- `bumpus-narratives`
+- `causal-inference`
+- `cognitive-superposition`
+- `crn-topology`
+- `curiosity-driven`
+- `deepwiki-mcp`
+- `discopy`
+- `forward-forward-learning`
+- `gesture-hypergestures`
+- `gflownet`
+- `gym`
+- `haskell-diagrams`
+- `infinity-operads`
+- `information-geometry`
+- `jaxlife-open-ended`
+- `kan-extensions`
+- `l-space`
+- `lhott-cohesive-linear`
+- `naturality-factor`
+- `obstruction-learning`
+- `omg-tension-resolver`
+- `operad-compose`
+- `oriented-simplicial-networks`
+- `reflow`
+- `self-evolving-agent`
+- `sense`
+- `sheaf-laplacian-coordination`
+- `skill-tour`
+- `spectral-methods`
+- `stochastic-resonance`
+- `topos-unified`
+- `triadic-skill-loader`
+- `turing-chemputer`
+
+<!-- END GENERATED backlinks -->

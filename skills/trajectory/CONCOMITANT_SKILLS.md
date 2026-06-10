@@ -73,3 +73,70 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zig-syrup-propagator-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `acsets`
+- `active-inference-robotics`
+- `agent-protocol-interleave`
+- `agentic-jujutsu`
+- `alice-emacs-mods`
+- `anima-theory`
+- `bifurcation`
+- `bisimulation-oracle`
+- `chemical-organization-theory`
+- `cognitive-sufficiency-superposition`
+- `cognitive-superposition`
+- `cognitive-surrogate`
+- `compression-progress`
+- `did-passport-interleave`
+- `emergent-role-assignment`
+- `energy-dynamics-acset`
+- `entropy-regularized-inference`
+- `entropy-sim2real`
+- `flix-datalog`
+- `fokker-planck-analyzer`
+- `gay-fokker-planck-staging`
+- `gay-mcp`
+- `gesture-hypergestures`
+- `gflownet`
+- `hermes-goblins-bridge`
+- `hermes-session-as-snapshot`
+- `hythermal`
+- `interactome-rl-env`
+- `kscale-ksim`
+- `l-space`
+- `langevin-dynamics`
+- `last-passage-percolation`
+- `latent-latency`
+- `lhott-cohesive-linear`
+- `market-research-reports`
+- `modelica`
+- `monad-bayes-asi-interleave`
+- `mutual-awareness-backlink`
+- `nonlinear-dynamics-observatory`
+- `proofgeneral-narya`
+- `qutip`
+- `reasoningbank-agentdb`
+- `reasoningbank-with-agentdb`
+- `research-grants`
+- `scanpy`
+- `servo-ghostty`
+- `sim2real-predictive-coding`
+- `skill-validation-gf3`
+- `slack-gif-creator`
+- `soliton-detection`
+- `spi-parallel-verify`
+- `transcendental-keyboard`
+- `truealife`
+- `unison-acset`
+- `waddington-landscape`
+- `world-replay-buffer`
+- `x-twitter-mcp`
+- `zig-syrup-propagator-interleave`
+
+<!-- END GENERATED backlinks -->

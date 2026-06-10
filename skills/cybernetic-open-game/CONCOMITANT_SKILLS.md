@@ -42,3 +42,20 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `temporal-coalgebra`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `agent-protocol-interleave`
+- `cats-for-ai`
+- `mutual-information-oracle`
+- `nashator`
+- `ontology-asi-interleave`
+- `para-mensch-commons`
+- `phyllotaxis`
+- `string-diagram-rewriting-protocol`
+
+<!-- END GENERATED backlinks -->

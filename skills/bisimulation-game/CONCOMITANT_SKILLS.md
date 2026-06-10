@@ -118,3 +118,113 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zig-syrup-propagator-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `able-markets`
+- `agentic-coordination-protocols`
+- `alife`
+- `anima-theory`
+- `asi-agent-orama`
+- `autopoiesis`
+- `bdd-mathematical-verification`
+- `bisimulation-oracle`
+- `bmorphism-video-interleave`
+- `boneh-roughgarden-wev`
+- `cat-three-homes`
+- `coequalizers`
+- `cognitive-surrogate`
+- `covariant-modification`
+- `crdt-vterm`
+- `cybernetic-open-game`
+- `delta-derivation`
+- `derangement-reflow`
+- `duckdb-ies`
+- `dynamic-sufficiency`
+- `energy-awareness`
+- `ewig-editor`
+- `exo-distributed`
+- `finder-color-walk`
+- `frustration-eradication`
+- `ganja-wedge-game`
+- `gay-integration`
+- `gay-julia`
+- `gf3-trit-oracle`
+- `gh-cli`
+- `gmail-anima`
+- `google-workspace`
+- `graph-grafting`
+- `hyperbolic-bulk`
+- `influence-propagation`
+- `interverse-bundle`
+- `julia-gay`
+- `kinetic-block`
+- `kolmogorov-codex-quest`
+- `load-skills`
+- `macos-use`
+- `markov-game-acset`
+- `mcp-spec-checker`
+- `mirror`
+- `mlx-apple-silicon`
+- `modding-ghostty`
+- `mruler`
+- `mutual-awareness-backlink`
+- `narya-proofs`
+- `ngrok-tunnel`
+- `open-games-plurigrid`
+- `padic-ultrametric`
+- `padic-ultrametric-embedding`
+- `paperproof-validator`
+- `para-mensch-commons`
+- `parallel-fanout`
+- `parallel-subagent-split`
+- `pga-motor-interpolation`
+- `planar-isotopy-screen`
+- `pre-agent-ontology`
+- `protocol-evolution-markets`
+- `pulse-mcp-stream`
+- `quic-channel-grading`
+- `random-walk-fusion`
+- `ruler-maximal`
+- `self-evolving-agent`
+- `self-under-siege`
+- `semi-reliable-nashator`
+- `semilattice-discovery`
+- `skill-connectivity-hub`
+- `skill-dispatch`
+- `skill-embedding-vss`
+- `skill-evolution`
+- `skill-stats`
+- `skill-tour`
+- `spectral-methods`
+- `sprachgefuehl-string-rewriting`
+- `stellogen`
+- `string-diagram-rewriting-protocol`
+- `structured-decompositions`
+- `superelastic-quotient`
+- `tailscale-mesh`
+- `teglon-bison`
+- `topos-unified`
+- `transitive-weep`
+- `triadic-skill-loader`
+- `triadic-skill-orchestrator`
+- `trialectical-coin`
+- `tripartite-decompositions`
+- `unworld`
+- `unworld-ombudsman`
+- `vertex-protein-bisimulation`
+- `vibe-snipe`
+- `voice-channel-uwd`
+- `wev-tesseract`
+- `workspace-unified`
+- `world-memory-worlding`
+- `world-sufficiency-prompt`
+- `worlding`
+- `x-twitter-mcp`
+- `zig-syrup-propagator-interleave`
+
+<!-- END GENERATED backlinks -->

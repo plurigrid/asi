@@ -67,3 +67,55 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zig-syrup-propagator-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `acsets`
+- `acsets-algebraic-databases`
+- `bidirectional-lens-logic`
+- `bmorphism-diagrams`
+- `cat-tripartite`
+- `categorical-rewriting-triad4`
+- `cats-for-ai`
+- `crdt`
+- `cybernetic-open-game`
+- `dimensional-analysis`
+- `epistemic-arbitrage`
+- `frustration-eradication`
+- `gestalt-hacking`
+- `gf3-constrained-animation`
+- `glass-bead-game`
+- `google-workspace`
+- `hyperbolic-bulk`
+- `julia-scientific`
+- `latent-latency`
+- `livestream`
+- `load-skills`
+- `low-discrepancy-sequences`
+- `modelica`
+- `modelica-lispsyntax-interleave`
+- `nashator`
+- `phyllotaxis`
+- `polysimy-effect-chains`
+- `quarto-julia`
+- `r2frida`
+- `radare2-hatchery`
+- `sdf`
+- `snix`
+- `string-diagram-rewriting-protocol`
+- `structural-rewilding`
+- `supersparsity-unison`
+- `triangle-metrics`
+- `true-alife`
+- `urdf2mjcf`
+- `world-memory-worlding`
+- `yb-translator`
+- `zig`
+- `zig-syrup-bci`
+- `zig-syrup-propagator-interleave`
+
+<!-- END GENERATED backlinks -->

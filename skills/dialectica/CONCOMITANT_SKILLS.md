@@ -26,3 +26,23 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `topos-polynomial-functors`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `categorical-rewriting-triad4`
+- `derivational-coalgebra`
+- `free-monad-gen`
+- `neuro-symbolic-bridge`
+- `open-games-plurigrid`
+- `para-mensch-commons`
+- `ruler-maximal`
+- `skill-connectivity-hub`
+- `skill-embedding-vss`
+- `topos-generate`
+- `topos-polynomial-functors`
+
+<!-- END GENERATED backlinks -->

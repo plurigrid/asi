@@ -32,3 +32,25 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `waddington-landscape`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `affective-taxis`
+- `catcolab-decapodes`
+- `colored-vertex-model`
+- `hythermal`
+- `indefinite-causal-order`
+- `kolmogorov-onsager-hurst`
+- `kpz-universality`
+- `latent-latency`
+- `louisville-quantum-gravity`
+- `modelica`
+- `para-mensch-commons`
+- `python-scientific-commons`
+- `waddington-landscape`
+
+<!-- END GENERATED backlinks -->

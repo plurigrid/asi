@@ -30,3 +30,33 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `warehouse-network`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `bisimulation-game`
+- `bmorphism-ies-env`
+- `captp`
+- `cheerpx-self-hosting`
+- `collaborative-emacs`
+- `flox`
+- `gotosocial-apple-container`
+- `ies`
+- `ies-flox`
+- `livestream`
+- `localsend-mcp`
+- `mcp-from-prompt`
+- `nerv`
+- `port-resurrection`
+- `resource-sharing`
+- `scum-score`
+- `tailscale-file-transfer`
+- `tailscale-localsend`
+- `tailscale-mesh`
+- `trifurcated-transfer`
+- `warehouse-network`
+
+<!-- END GENERATED backlinks -->

@@ -24,3 +24,22 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `triad-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `bmorphism-interactome`
+- `comrade-vlbi`
+- `crossmodal-gf3`
+- `gay-monte-carlo`
+- `gmra-matlab`
+- `julia-scientific`
+- `modelica`
+- `phyllotaxis`
+- `skill-taxonomy`
+- `splitmix-ternary`
+
+<!-- END GENERATED backlinks -->

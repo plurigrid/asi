@@ -18,3 +18,15 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `system2-attention`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `cognitive-superposition`
+- `glamorous-moldable-multiplatform`
+- `system2-attention`
+
+<!-- END GENERATED backlinks -->

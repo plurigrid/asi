@@ -36,3 +36,23 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `synthetic-adjunctions`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `bkp-interleaving`
+- `codescent`
+- `coherence-composer`
+- `collaborative-emacs`
+- `commitment-tracker`
+- `doctrinal-adjunction`
+- `flexible-algebra`
+- `graded-monad`
+- `opacity-detector`
+- `para-mensch-commons`
+- `slowtime-mcp`
+
+<!-- END GENERATED backlinks -->

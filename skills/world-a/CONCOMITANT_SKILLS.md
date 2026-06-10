@@ -24,3 +24,24 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `world-replay-buffer`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `acsets-hatchery`
+- `algebraic-rewriting`
+- `coherence-composer`
+- `derham-cohomology`
+- `infinity-categories`
+- `infinity-topoi`
+- `model-categories`
+- `openclaw-goblins-adapter`
+- `operadic-composition`
+- `scum-resource`
+- `sheaf-cohomology-bci`
+- `world-replay-buffer`
+
+<!-- END GENERATED backlinks -->

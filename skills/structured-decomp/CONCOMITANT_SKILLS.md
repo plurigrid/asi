@@ -36,3 +36,35 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zig`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `acset-taxonomy`
+- `acsets-dynamic-loader`
+- `bumpus-narratives`
+- `catlab-asi-interleave`
+- `catsharp`
+- `crdt-color`
+- `julia-scientific`
+- `koopman-generator`
+- `l-space`
+- `move-narya-bridge`
+- `mutual-awareness-backlink`
+- `nix-acset-worlding`
+- `parallel-subagent-split`
+- `pijul`
+- `pijul-sparse-skills`
+- `sense`
+- `skill-evolution`
+- `skill-tour`
+- `superelastic-quotient`
+- `triadic-skill-loader`
+- `tripartite-decompositions`
+- `world-sufficiency-prompt`
+- `zig`
+
+<!-- END GENERATED backlinks -->

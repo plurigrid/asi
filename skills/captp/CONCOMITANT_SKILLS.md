@@ -51,3 +51,34 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `wasm-goblins`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `aaif-governance-interleave`
+- `acp-commons`
+- `agent-protocol-interleave`
+- `botnet-disruption`
+- `botnet-studies`
+- `cheerpx-self-hosting`
+- `codex-ocapn-correspondence`
+- `effective-topos`
+- `ergodic-coordinator`
+- `goblins`
+- `goblins-adapter`
+- `hermes-acp-over-captp`
+- `hermes-goblins-bridge`
+- `libghostty-aci`
+- `multiversal-finance`
+- `nashator`
+- `olmo-earth-skill`
+- `phyllotaxis`
+- `repl-commons`
+- `syrup`
+- `universal-captp-derivation`
+- `wasm-goblins`
+
+<!-- END GENERATED backlinks -->

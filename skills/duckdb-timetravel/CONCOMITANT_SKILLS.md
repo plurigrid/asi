@@ -30,3 +30,29 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zig-syrup-propagator-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `69-constructions`
+- `belief-revision-log`
+- `bigquery-asi-interleave`
+- `chatgpt-export-acset`
+- `duckdb-ies`
+- `duckdb-quadruple-interleave`
+- `ducklake-walk`
+- `ergodic-coordinator`
+- `goose-introspection`
+- `hyperbolic-bulk`
+- `openai-acset`
+- `pulse-mcp-stream`
+- `unified-reafference`
+- `world-memory-worlding`
+- `worlding`
+- `yt-playlist-acset`
+- `zig-syrup-propagator-interleave`
+
+<!-- END GENERATED backlinks -->

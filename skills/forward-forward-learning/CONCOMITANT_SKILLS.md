@@ -29,3 +29,24 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `unworld`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `causal-inference`
+- `coqgym`
+- `gym`
+- `jaxlife-open-ended`
+- `mlx-bitnet-gf3`
+- `neuro-symbolic-bridge`
+- `omg-tension-resolver`
+- `para-mensch-commons`
+- `self-evolving-agent`
+- `sheaf-laplacian-coordination`
+- `supersparsity-unison`
+- `system2-attention`
+
+<!-- END GENERATED backlinks -->

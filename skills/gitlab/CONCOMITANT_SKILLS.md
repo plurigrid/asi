@@ -19,3 +19,22 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `verification-quality-assurance`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `flox-containers`
+- `flox-publish`
+- `gh-emacs`
+- `hermes-mcp-as-sealed`
+- `openclaw-goblins-adapter`
+- `osint-exposure-audit`
+- `render-deploy`
+- `syrup`
+- `verification-quality`
+- `verification-quality-assurance`
+
+<!-- END GENERATED backlinks -->

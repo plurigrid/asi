@@ -36,3 +36,17 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zeroth-bot`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `evla-vla`
+- `kscale-actuator`
+- `kscale-ecosystem`
+- `kscale-ksim`
+- `zeroth-bot`
+
+<!-- END GENERATED backlinks -->

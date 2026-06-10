@@ -36,3 +36,31 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `venue-templates`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `citation-management`
+- `clinical-decision-support`
+- `clinical-reports`
+- `generate-image`
+- `hypothesis-generation`
+- `latex-posters`
+- `literature-review`
+- `market-research-reports`
+- `markitdown`
+- `paper-2-web`
+- `peer-review`
+- `research-grants`
+- `research-lookup`
+- `scholar-evaluation`
+- `scientific-critical-thinking`
+- `scientific-slides`
+- `scientific-writing`
+- `treatment-plans`
+- `venue-templates`
+
+<!-- END GENERATED backlinks -->

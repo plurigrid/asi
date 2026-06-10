@@ -43,3 +43,29 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zig-syrup-propagator-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `captp`
+- `dynamic-sufficiency-goblin`
+- `goblins`
+- `goblins-adapter`
+- `google-cloud-ocapn-vats`
+- `guile-goblins-hoot`
+- `openclaw-goblins-adapter`
+- `para-mensch-commons`
+- `python-scientific-commons`
+- `repl-commons`
+- `shadow-goblin`
+- `syrup`
+- `teglon-acp`
+- `toad-telemetry`
+- `universal-captp-derivation`
+- `wasm-goblins`
+- `zig-syrup-propagator-interleave`
+
+<!-- END GENERATED backlinks -->

@@ -59,3 +59,52 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `topos-catcolab`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `abd-quorum-registers`
+- `acset-taxonomy`
+- `alice-emacs-mods`
+- `belief-revision-log`
+- `bidirectional-lens-logic`
+- `blackhat-go`
+- `bmorphism-video-interleave`
+- `bob-emacs-mods`
+- `cat-tripartite`
+- `catlab-asi-interleave`
+- `cats-for-ai`
+- `collaborative-emacs`
+- `crdt-color`
+- `crdt-vterm`
+- `derangement-crdt`
+- `duck-time-travel`
+- `duckdb-ies`
+- `ducklake-pattern-expansion`
+- `ewig-editor`
+- `fasttime-mcp`
+- `gay-julia`
+- `geb`
+- `geiser-chicken`
+- `iroh-p2p`
+- `jank`
+- `lean4-music-topos`
+- `livekit-omnimodal`
+- `local-compositionality-gadget`
+- `norvidize`
+- `ontology-asi-interleave`
+- `pijul-sparse-skills`
+- `protocol-acset`
+- `sexp-neighborhood`
+- `sonification-collaborative`
+- `string-diagram-rewriting-protocol`
+- `tailscale-file-transfer`
+- `terminal-css`
+- `theorem-prover-orchestration`
+- `time-travel-crdt`
+- `topos-catcolab`
+
+<!-- END GENERATED backlinks -->

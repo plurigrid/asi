@@ -35,3 +35,34 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `world-memory-worlding`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `2-monad`
+- `behaviour-surprisal-analysis`
+- `bkp-interleaving`
+- `buberian-relations`
+- `captp`
+- `cat-structure-rank`
+- `catsharp`
+- `codescent`
+- `discopy`
+- `doctrinal-adjunction`
+- `graded-monad`
+- `hyperbolic-bulk`
+- `infinity-operads`
+- `kan-extensions`
+- `kinetic-block`
+- `open-games`
+- `operadic-delegation`
+- `reflow`
+- `sense`
+- `skill-tour`
+- `stellogen`
+- `world-memory-worlding`
+
+<!-- END GENERATED backlinks -->

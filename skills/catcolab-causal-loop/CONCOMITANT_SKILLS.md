@@ -22,3 +22,17 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `waddington-landscape`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `bigquery-asi-interleave`
+- `catcolab-stock-flow`
+- `catlab-asi-interleave`
+- `monad-bayes-asi-interleave`
+- `ontology-asi-interleave`
+
+<!-- END GENERATED backlinks -->

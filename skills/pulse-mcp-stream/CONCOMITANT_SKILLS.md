@@ -20,3 +20,19 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `pkg-memory-bridge`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `aqua-voice-malleability`
+- `captp`
+- `duckdb-quadruple-interleave`
+- `goblins-adapter`
+- `gworkspace-mcp`
+- `ies`
+- `pkg-memory-bridge`
+
+<!-- END GENERATED backlinks -->

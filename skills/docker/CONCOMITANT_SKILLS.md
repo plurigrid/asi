@@ -47,3 +47,51 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `world-sufficiency-prompt`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `12-factor-app-modernization`
+- `biomni`
+- `boxxy-reverse-engineering`
+- `cheerpx-self-hosting`
+- `cloudflare-tunnel-ec2-deployment`
+- `coolify-deployment`
+- `debug-buttercup`
+- `denario`
+- `diffdock`
+- `dockerization`
+- `duck-time-travel`
+- `find-skills`
+- `flow-nexus-platform`
+- `flox`
+- `flox-containers`
+- `github-release-management`
+- `gotosocial-apple-container`
+- `graft-prefer`
+- `ha-load-balancing`
+- `hof`
+- `hooks-automation`
+- `icij-document-analysis`
+- `latchbio-integration`
+- `libghostty-streaming`
+- `markitdown`
+- `migrating-bitnami-to-bitnami-legacy`
+- `modal`
+- `move-fuzzing`
+- `onepassword-cli`
+- `polyglot-orchestration`
+- `radare2-hatchery`
+- `render-deploy`
+- `signal-isolated-auth`
+- `storage-reclaim`
+- `toad-telemetry`
+- `vertex-ai-protein-interleave`
+- `vertex-protein-bisimulation`
+- `vllm-deployment`
+- `world-sufficiency-prompt`
+
+<!-- END GENERATED backlinks -->

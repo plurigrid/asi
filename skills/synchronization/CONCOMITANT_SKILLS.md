@@ -37,3 +37,34 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zarr-python`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `agentdb-advanced`
+- `bisimulation-game`
+- `blackhat-go`
+- `cogsec-world-mediation`
+- `crdt`
+- `ducklake-pattern-expansion`
+- `flow-nexus-neural`
+- `github-multi-repo`
+- `github-project-management`
+- `github-release-management`
+- `github-workflow-automation`
+- `julia-gpu-kernels`
+- `livekit-omnimodal`
+- `ontology-asi-interleave`
+- `paper-2-web`
+- `parallel-subagent-split`
+- `performance-analysis`
+- `simpy`
+- `string-diagram-rewriting-protocol`
+- `swarm-orchestration`
+- `wasm-goblins`
+- `zarr-python`
+
+<!-- END GENERATED backlinks -->

@@ -14,3 +14,17 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `phyllotaxis`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `catlab-asi-interleave`
+- `julia-gpu-kernels`
+- `julia-tempering`
+- `k-dense-ai`
+- `phyllotaxis`
+
+<!-- END GENERATED backlinks -->

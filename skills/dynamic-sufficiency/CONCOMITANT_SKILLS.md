@@ -43,3 +43,30 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zulip-cogen`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `aaif-governance-interleave`
+- `agent-protocol-interleave`
+- `alife-commons`
+- `belief-revision-log`
+- `cognitive-sufficiency-superposition`
+- `dynamic-sufficiency-goblin`
+- `intent-sink`
+- `livekit-omnimodal`
+- `mutual-information-oracle`
+- `neurofeedback-oracle`
+- `ontology-asi-interleave`
+- `riehl-post-rigorous`
+- `signal-isolated-auth`
+- `skill-connectivity-hub`
+- `solver-fee`
+- `world-sufficiency-prompt`
+- `zig-syrup-propagator-interleave`
+- `zulip-cogen`
+
+<!-- END GENERATED backlinks -->

@@ -28,3 +28,20 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `topos-catcolab`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `cats-for-ai`
+- `condensed-analytic-stacks`
+- `forward-forward-learning`
+- `harmonic-centrality-transport`
+- `neuro-symbolic-bridge`
+- `omg-tension-resolver`
+- `sprachgefuehl-string-rewriting`
+- `topos-catcolab`
+
+<!-- END GENERATED backlinks -->

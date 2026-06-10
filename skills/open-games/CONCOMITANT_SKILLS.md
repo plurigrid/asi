@@ -76,3 +76,70 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `world-extractable-value`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `2-monad`
+- `able-markets`
+- `acset-taxonomy`
+- `affective-taxis`
+- `agent-protocol-interleave`
+- `alife-commons`
+- `anoma-intents`
+- `aptos-orderless-wev`
+- `asi-polynomial-operads`
+- `bidirectional-lens-logic`
+- `bkp-interleaving`
+- `bob-emacs-mods`
+- `catcolab-causal-loop`
+- `cats-for-ai`
+- `clifford-acset-bridge`
+- `cybernetic-open-game`
+- `doctrinal-adjunction`
+- `excellence-gradient`
+- `forward-forward-learning`
+- `ganja-wedge-game`
+- `geb`
+- `go-1fps`
+- `graded-monad`
+- `hogwash-removal`
+- `indefinite-causal-order`
+- `interverse-bundle`
+- `jaxlife-open-ended`
+- `juvix-intents`
+- `kinetic-block`
+- `levity-levin`
+- `markov-game-acset`
+- `modelica`
+- `momentum-field`
+- `multidispatch-rl`
+- `mutual-information-oracle`
+- `nashator`
+- `ontology-asi-interleave`
+- `open-games-plurigrid`
+- `operad-compose`
+- `para-mensch-commons`
+- `parametrised-optics-cybernetics`
+- `ruler-maximal`
+- `semi-reliable-nashator`
+- `sexp-neighborhood`
+- `sheaf-laplacian-coordination`
+- `skill-connectivity-hub`
+- `skill-embedding-vss`
+- `skill-tour`
+- `string-diagram-rewriting-protocol`
+- `sufficiency-probe`
+- `topos-catcolab`
+- `topos-generate`
+- `topos-polynomial-functors`
+- `transitive-weep`
+- `triangle-metrics`
+- `unwiring-arena`
+- `vibe-snipe`
+- `world-extractable-value`
+
+<!-- END GENERATED backlinks -->

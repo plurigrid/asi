@@ -55,3 +55,55 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `worldmat-tidar`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `_integrated`
+- `alife`
+- `asi-integrated`
+- `asi-polynomial-operads`
+- `bumpus-narratives`
+- `cheapskate`
+- `crdt-vterm`
+- `ducklake-meta-cognitive`
+- `dynamic-sufficiency`
+- `effective-parallelism`
+- `entropy-sequencer`
+- `ergodic-coordinator`
+- `finder-color-walk`
+- `gay-julia`
+- `gf3-tripartite`
+- `gf3-trit-oracle`
+- `glass-hopping`
+- `glass-line`
+- `google-workspace`
+- `julia-gay`
+- `kinetic-block`
+- `mruler`
+- `ordered-locale-fanout`
+- `para-mensch-commons`
+- `parallel-fanout`
+- `parallel-subagent-split`
+- `plurigrid-asi-integrated`
+- `polyglot-spi`
+- `pre-agent-ontology`
+- `quarto-julia`
+- `random-walk-fusion`
+- `ruler-maximal`
+- `skill-connectivity-hub`
+- `skill-dispatch`
+- `spi-parallel-verify`
+- `splitmix-ternary`
+- `tidar`
+- `triadic-skill-loader`
+- `triadic-skill-orchestrator`
+- `tripartite-decompositions`
+- `unwiring-arena`
+- `wev-tesseract`
+- `worldmat-tidar`
+
+<!-- END GENERATED backlinks -->

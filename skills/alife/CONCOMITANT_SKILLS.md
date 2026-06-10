@@ -64,3 +64,48 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `yb-translator`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `alife-commons`
+- `alife2025`
+- `asi-skill-selector`
+- `assembly-index`
+- `autopoiesis`
+- `beacon-repeater`
+- `catalyst-chemical`
+- `catcolab-regulatory-networks`
+- `chain-of-states`
+- `chemical-abstract-machine`
+- `chemical-organization-theory`
+- `crn-topology`
+- `cybernetic-open-game`
+- `gf3-tripartite`
+- `gh-skill-explorer`
+- `gym`
+- `hyjax-relational`
+- `jaxlife-open-ended`
+- `just-monad`
+- `lindenmayer-systems`
+- `multidispatch-rl`
+- `omg-tension-resolver`
+- `parametrised-optics-cybernetics`
+- `phyllotaxis`
+- `proof-of-frog`
+- `protocol-evolution-markets`
+- `skill-evolution`
+- `social-emergence-protocol`
+- `structural-rewilding`
+- `true-alife`
+- `truealife`
+- `turing-chemputer`
+- `wev-verification`
+- `wolframite-compass`
+- `worlding`
+- `yb-translator`
+
+<!-- END GENERATED backlinks -->

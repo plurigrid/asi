@@ -103,3 +103,72 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zls-integration`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `_integrated`
+- `academic-research`
+- `active-interleave`
+- `alice`
+- `amp-team-usage`
+- `aptos-wallet-mcp`
+- `asi-integrated`
+- `bluesky-jetstream`
+- `bmorphism-diagrams`
+- `bob`
+- `browser-history-acset`
+- `cat`
+- `categorical-rewriting-triad4`
+- `cheapskate`
+- `crdt`
+- `cybernetic-open-game`
+- `delta-derivation`
+- `duck-agent`
+- `ergodic-coordinator`
+- `frustration-eradication`
+- `fswatch-duckdb`
+- `gestalt-hacking`
+- `gf3-tripartite`
+- `google-workspace`
+- `graph-grafting`
+- `hyperbolic-bulk`
+- `hythermal`
+- `iroh-p2p`
+- `jira-issues`
+- `joker`
+- `julia-scientific`
+- `kolmogorov-codex-quest`
+- `latent-latency`
+- `load-skills`
+- `localsend-analysis`
+- `modelica`
+- `olmoearth-mlx`
+- `ordered-locale-fanout`
+- `ordered-locale-proper`
+- `proof-of-frog`
+- `protocol-acset`
+- `pun-decomposition`
+- `qri-valence`
+- `quic-channel-grading`
+- `reflow`
+- `sdf`
+- `shadow-goblin`
+- `snix`
+- `stellogen`
+- `structural-rewilding`
+- `tenderloin`
+- `trailofbits-security`
+- `triangle-metrics`
+- `trifurcated-transfer`
+- `unison`
+- `voice-channel-uwd`
+- `wev-tesseract`
+- `wev-verification`
+- `world-memory-worlding`
+- `zls-integration`
+
+<!-- END GENERATED backlinks -->

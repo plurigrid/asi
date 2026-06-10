@@ -54,3 +54,51 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `x-twitter-mcp`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `abd`
+- `abd-quorum-registers`
+- `able-markets`
+- `arboreto`
+- `biopython`
+- `blackhat-go`
+- `commitment-tracker`
+- `condensed-analytic-stacks`
+- `cybernetic-open-game`
+- `deep-inference-interleave`
+- `diffdock`
+- `elicit-prediction-market`
+- `etetoolkit`
+- `flix-datalog`
+- `flow-nexus-neural`
+- `geniml`
+- `github-multi-repo`
+- `hive-mind-advanced`
+- `influence-propagation`
+- `jo-clojure`
+- `joker-sims-parser`
+- `literature-review`
+- `mcp-spec-checker`
+- `omg-tension-resolver`
+- `parallel-subagent-split`
+- `plurigrid-polyglot`
+- `protocol-acset`
+- `pyopenms`
+- `scikit-bio`
+- `sheaf-laplacian-coordination`
+- `tenderloin`
+- `tidar`
+- `topos-catcolab`
+- `trialectical-coin`
+- `trifurcated-transfer`
+- `wolframite-compass`
+- `world-hopping`
+- `worlding`
+- `x-twitter-mcp`
+
+<!-- END GENERATED backlinks -->

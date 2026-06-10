@@ -33,3 +33,30 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `world-runtime`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `accept-no-substitutes`
+- `amp-continue`
+- `amp-continue-thread-based-conversation-continuation-with-gf-3-branching`
+- `amp-gf3-continuation`
+- `bmorphism-video-interleave`
+- `derangement-reflow`
+- `excellence-gradient`
+- `fasttime-mcp`
+- `gestalt-hacking`
+- `implicit-coordination`
+- `lean-proof-walk`
+- `messaging-world`
+- `padic-ultrametric`
+- `refuse-mediocrity`
+- `sense`
+- `skill-tour`
+- `spectral-embedding-learner`
+- `world-runtime`
+
+<!-- END GENERATED backlinks -->

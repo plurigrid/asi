@@ -24,3 +24,23 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `x-twitter-mcp`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `agent-o-rama`
+- `excellence-gradient`
+- `influence-propagation`
+- `mirror`
+- `momentum-field`
+- `ontology-asi-interleave`
+- `pulse-mcp-stream`
+- `skill-dispatch`
+- `unworld`
+- `world-memory-worlding`
+- `x-twitter-mcp`
+
+<!-- END GENERATED backlinks -->

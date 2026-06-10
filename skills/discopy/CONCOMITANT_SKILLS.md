@@ -63,3 +63,52 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zx-calculus`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `alice-chirality`
+- `bisimulation-game`
+- `categorical-rewriting-triad4`
+- `catlab-asi-interleave`
+- `colored-vertex-model`
+- `deepwiki-mcp`
+- `discopy-functor`
+- `discopy-operads`
+- `duck-time-travel`
+- `duckdb-quadruple-interleave`
+- `galois-connections`
+- `geb`
+- `gh-interactome`
+- `gh-skill-explorer`
+- `hatchery-papers`
+- `hy-emacs`
+- `lhott-cohesive-linear`
+- `linear-logic`
+- `modelica`
+- `move-smith-fuzzer`
+- `neuro-symbolic-bridge`
+- `parallel-subagent-split`
+- `polynomial-social-cognition`
+- `quantum-balalaika`
+- `quantum-guitar`
+- `quantum-music`
+- `recursive-string-diagrams`
+- `sexp-neighborhood`
+- `sprachgefuehl-string-rewriting`
+- `stellogen`
+- `string-diagram-rewriting-protocol`
+- `topos-catcolab`
+- `transcendental-keyboard`
+- `tritwies-trace`
+- `type-checker`
+- `unwiring-arena`
+- `uv-discohy`
+- `uv-oneliners`
+- `yang-baxter-integrability`
+- `zx-calculus`
+
+<!-- END GENERATED backlinks -->

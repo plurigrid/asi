@@ -24,3 +24,24 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `unison-acset`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `11labs-acset`
+- `condensed-anima-qc`
+- `crossmodal-gf3`
+- `mcp-spec-checker`
+- `mcp-tripartite`
+- `polyglot-spi`
+- `quackbot-duckoid`
+- `repl-commons`
+- `supersparsity-unison`
+- `teglon-bison`
+- `transitive-weep`
+- `unison-acset`
+
+<!-- END GENERATED backlinks -->

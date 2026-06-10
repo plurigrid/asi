@@ -36,3 +36,34 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `topos-polynomial-functors`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `2-monad`
+- `acset-taxonomy`
+- `bkp-interleaving`
+- `cat-structure-rank`
+- `cat-three-homes`
+- `catsharp`
+- `codescent`
+- `doctrinal-adjunction`
+- `flexible-algebra`
+- `free-monad-gen`
+- `graded-monad`
+- `infinity-operads`
+- `omg-tension-resolver`
+- `operadic-delegation`
+- `ordered-locale`
+- `ordered-locale-proper`
+- `para-mensch-commons`
+- `ruler-maximal`
+- `sense`
+- `skill-connectivity-hub`
+- `topos-generate`
+- `topos-polynomial-functors`
+
+<!-- END GENERATED backlinks -->

@@ -68,3 +68,67 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `waddington-landscape`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `bifurcation`
+- `bifurcation-generator`
+- `bigquery-asi-interleave`
+- `birkhoff-average`
+- `cat-structure-rank`
+- `catlab-asi-interleave`
+- `center-manifold`
+- `chaotic-attractor`
+- `consensus`
+- `coupled-system`
+- `criticality-detector`
+- `dynamical-system-functor`
+- `eigenvalue-stability`
+- `equilibrium`
+- `ergodicity`
+- `flow`
+- `hopf`
+- `hy-regime`
+- `hyperbolicity`
+- `ies-triadic`
+- `initial-value-problem`
+- `invariant-measure`
+- `invariant-set`
+- `jacobian`
+- `kolmogorov-onsager-hurst`
+- `kuramoto-model`
+- `l-space`
+- `lasalle-invariance`
+- `limit-set`
+- `linearization`
+- `lyapunov-function`
+- `lyapunov-stability`
+- `monad-bayes-asi-interleave`
+- `networked-system`
+- `nonlinear-dynamics-observatory`
+- `parameter-dependent`
+- `periodic-orbit`
+- `phase-locking`
+- `phase-space-transformation`
+- `pitchfork`
+- `repeller`
+- `repeng-mlx`
+- `saddle-node`
+- `semi-conjugacy`
+- `sonification-collaborative`
+- `stability`
+- `stable-manifold`
+- `structural-stability`
+- `synchronization`
+- `time-parameterization`
+- `trajectory`
+- `transcritical`
+- `unstable-manifold`
+- `vector-field`
+- `waddington-landscape`
+
+<!-- END GENERATED backlinks -->

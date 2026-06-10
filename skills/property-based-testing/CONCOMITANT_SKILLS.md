@@ -18,3 +18,19 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zig-syrup-propagator-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `axiom-solana-trading`
+- `jank`
+- `modding-ghostty`
+- `ostium-arbitrum-perps`
+- `trailofbits-security`
+- `world-sufficiency-prompt`
+- `zig-syrup-propagator-interleave`
+
+<!-- END GENERATED backlinks -->

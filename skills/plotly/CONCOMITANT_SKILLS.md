@@ -17,3 +17,19 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `uv-oneliners`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `gmra-matlab`
+- `julia-scientific`
+- `networkx`
+- `python-scientific-commons`
+- `scientific-visualization`
+- `scikit-bio`
+- `uv-oneliners`
+
+<!-- END GENERATED backlinks -->

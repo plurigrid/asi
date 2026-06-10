@@ -38,3 +38,42 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zls-integration`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `#E847C0`
+- `abductive-monte-carlo`
+- `alice-emacs-mods`
+- `asi-transient-agenda`
+- `bob-emacs-mods`
+- `clj-kondo-3color`
+- `codex-self-rewriting`
+- `collaborative-emacs`
+- `crdt-vterm`
+- `effective-topos`
+- `emacs`
+- `emacs-info`
+- `emacspeak-binaural`
+- `geiser-chicken`
+- `gh-emacs`
+- `gwern-emacs`
+- `gwern-simonw-emacs`
+- `hatchery-papers`
+- `hy-emacs`
+- `libghostty-aci`
+- `mcp-tripartite`
+- `modelica-lispsyntax-interleave`
+- `org`
+- `proofgeneral-narya`
+- `repl-commons`
+- `skill-connectivity-hub`
+- `transcendental-keyboard`
+- `xenodium-elisp`
+- `xypic-latex`
+- `zls-integration`
+
+<!-- END GENERATED backlinks -->

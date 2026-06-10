@@ -26,3 +26,19 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `triad-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `acset-taxonomy`
+- `collaborative-emacs`
+- `derangement-crdt`
+- `fasttime-mcp`
+- `geb`
+- `sexp-neighborhood`
+- `terminal-css`
+
+<!-- END GENERATED backlinks -->

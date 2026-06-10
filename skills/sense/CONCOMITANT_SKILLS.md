@@ -44,3 +44,25 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `type-inference-validation`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `accept-no-substitutes`
+- `crossmodal-gf3`
+- `deep-analysis`
+- `glass-line`
+- `indefinite-causal-order`
+- `iso-13485-certification`
+- `meeting-insights-analyzer`
+- `momentum-field`
+- `nonlinear-dynamics-observatory`
+- `ordered-locale-fanout`
+- `shap`
+- `skill-development`
+- `type-inference-validation`
+
+<!-- END GENERATED backlinks -->

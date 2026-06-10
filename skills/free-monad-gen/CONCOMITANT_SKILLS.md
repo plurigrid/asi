@@ -39,3 +39,38 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `unworld`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `2-monad`
+- `anoma-intents`
+- `bidirectional-lens-logic`
+- `bkp-interleaving`
+- `cat-structure-rank`
+- `catsharp`
+- `codescent`
+- `cybernetic-open-game`
+- `doctrinal-adjunction`
+- `flexible-algebra`
+- `graded-monad`
+- `infinity-operads`
+- `just-monad`
+- `kan-extensions`
+- `markov-game-acset`
+- `opam-ocaml`
+- `open-games`
+- `open-games-plurigrid`
+- `ruler-maximal`
+- `skill-tour`
+- `slowtime-mcp`
+- `synthetic-adjunctions`
+- `teglon-agent-protocol`
+- `teglon-duck-ui`
+- `teglon-mathpix`
+- `trialectical-coin`
+
+<!-- END GENERATED backlinks -->

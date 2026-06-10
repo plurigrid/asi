@@ -58,3 +58,51 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zubyul-connectome`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `abductive-oracle`
+- `acp-commons`
+- `asi-transient-agenda`
+- `bandwidth-benchmark`
+- `belief-revision-log`
+- `bisimulation-oracle`
+- `bob-emacs-mods`
+- `botnet-disruption`
+- `botnet-studies`
+- `cross-runtime-exchange`
+- `dafny-zig`
+- `deep-inference-interleave`
+- `gf3-trit-oracle`
+- `glamorous-moldable-multiplatform`
+- `indefinite-causal-order`
+- `jo-clojure`
+- `libghostty-aci`
+- `libghostty-embed`
+- `libghostty-recording`
+- `libghostty-streaming`
+- `libghostty-vt`
+- `modding-ghostty`
+- `nashator`
+- `neurofeedback-oracle`
+- `olmo-earth-skill`
+- `open-location-code-zig`
+- `plurigrid-polyglot`
+- `polyglot-spi`
+- `sdf`
+- `semilattice-discovery`
+- `servo-ghostty`
+- `string-diagram-rewriting-protocol`
+- `transitive-weep`
+- `zig-programming`
+- `zig-syrup-bci`
+- `zig-syrup-propagator-interleave`
+- `zig-systems`
+- `zls-integration`
+- `zubyul-connectome`
+
+<!-- END GENERATED backlinks -->

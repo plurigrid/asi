@@ -21,3 +21,25 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `wasm-goblins`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `12-factor-app-modernization`
+- `blackhat-go`
+- `bmorphism-ies-env`
+- `confighub-usage-guide`
+- `cue-lang`
+- `debug-buttercup`
+- `find-skills`
+- `flox-containers`
+- `how-to-publish-paks`
+- `k3s-backup`
+- `obstruction-learning`
+- `transitive-weep`
+- `wasm-goblins`
+
+<!-- END GENERATED backlinks -->

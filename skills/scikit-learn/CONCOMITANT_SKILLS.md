@@ -37,3 +37,36 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `vertex-ai-protein-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `aeon`
+- `arboreto`
+- `cosmic-database`
+- `dask`
+- `deepchem`
+- `drugbank-database`
+- `flow-nexus-platform`
+- `geo-database`
+- `gmra-matlab`
+- `k-dense-ai`
+- `modal`
+- `modelica`
+- `molfeat`
+- `pydeseq2`
+- `pyhealth`
+- `pyopenms`
+- `python-scientific-commons`
+- `scikit-bio`
+- `scikit-survival`
+- `shap`
+- `umap-learn`
+- `universal-learning-signature`
+- `vaex`
+- `vertex-ai-protein-interleave`
+
+<!-- END GENERATED backlinks -->

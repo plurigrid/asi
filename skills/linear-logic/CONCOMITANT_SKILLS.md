@@ -23,3 +23,21 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `string-diagram-rewriting-protocol`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `2-monad`
+- `bkp-interleaving`
+- `doctrinal-adjunction`
+- `flexible-algebra`
+- `graded-monad`
+- `hvm-runtime`
+- `interaction-nets`
+- `lambda-calculus`
+- `string-diagram-rewriting-protocol`
+
+<!-- END GENERATED backlinks -->

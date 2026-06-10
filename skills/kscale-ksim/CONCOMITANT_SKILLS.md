@@ -21,3 +21,20 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `tree-sitter`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `active-inference-robotics`
+- `entropy-regularized-inference`
+- `kinfer-runtime`
+- `kscale-biomimetic-supply`
+- `kscale-ecosystem`
+- `kscale-kinfer`
+- `kscale-kos`
+- `sim2real-predictive-coding`
+
+<!-- END GENERATED backlinks -->

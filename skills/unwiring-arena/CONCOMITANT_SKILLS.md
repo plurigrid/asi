@@ -24,3 +24,17 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `voice-channel-uwd`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `cat-structure-rank`
+- `ganja-wedge-game`
+- `skill-connectivity-hub`
+- `tripartite-decompositions`
+- `voice-channel-uwd`
+
+<!-- END GENERATED backlinks -->

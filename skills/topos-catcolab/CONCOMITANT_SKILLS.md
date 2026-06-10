@@ -40,3 +40,28 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `slowtime-mcp`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `acset-taxonomy`
+- `bmorphism-interactome`
+- `cat-structure-rank`
+- `cat-three-homes`
+- `catcolab-decapodes`
+- `catcolab-ologs`
+- `catcolab-petri-nets`
+- `catcolab-regulatory-networks`
+- `catcolab-schemas`
+- `catcolab-stock-flow`
+- `catlab-asi-interleave`
+- `cats-for-ai`
+- `excellence-gradient`
+- `momentum-field`
+- `skill-tour`
+- `slowtime-mcp`
+
+<!-- END GENERATED backlinks -->

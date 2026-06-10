@@ -30,3 +30,26 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `topos-adhesive-rewriting`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `bigquery-asi-interleave`
+- `bluesky-jetstream`
+- `derivational-coalgebra`
+- `duckdb-guard`
+- `energy-awareness`
+- `fswatch-duckdb`
+- `gh-skill-explorer`
+- `gwern-emacs`
+- `omg-tension-resolver`
+- `propagators`
+- `self-learnable-worlds`
+- `sense`
+- `time-travel-crdt`
+- `topos-adhesive-rewriting`
+
+<!-- END GENERATED backlinks -->

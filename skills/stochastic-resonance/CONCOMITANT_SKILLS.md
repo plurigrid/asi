@@ -21,3 +21,20 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `stability`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `condensed-mathematics`
+- `derham-cohomology`
+- `derived-categories`
+- `infinity-topoi`
+- `information-geometry`
+- `model-categories`
+- `sheaf-cohomology-bci`
+- `spectral-methods`
+
+<!-- END GENERATED backlinks -->

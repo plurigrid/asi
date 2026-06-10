@@ -30,3 +30,25 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `triadic-skill-loader`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `causal-inference`
+- `cognitive-sufficiency-superposition`
+- `cognitive-superposition`
+- `gh-interactome`
+- `gh-skill-explorer`
+- `gym`
+- `neuro-symbolic-bridge`
+- `omg-tension-resolver`
+- `ontology-asi-interleave`
+- `pre-agent-ontology`
+- `python-scientific-commons`
+- `system2-attention`
+- `triadic-skill-loader`
+
+<!-- END GENERATED backlinks -->

@@ -34,3 +34,25 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `triad-interleave`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `amp-continue`
+- `amp-gf3-continuation`
+- `braindance-validator`
+- `ergodic-coordinator`
+- `gf3-neighborhood`
+- `hvm-runtime`
+- `move-narya-bridge`
+- `operadic-delegation`
+- `para-mensch-commons`
+- `relational-thinking`
+- `semi-reliable-nashator`
+- `skill-bonds`
+- `skill-stats`
+
+<!-- END GENERATED backlinks -->

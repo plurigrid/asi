@@ -104,3 +104,107 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `wrangler`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `abd`
+- `agent-protocol-interleave`
+- `agentic-actions-auditor`
+- `alife`
+- `anndata`
+- `aptos-trading`
+- `autopoiesis`
+- `bci-colored-operad`
+- `benchling-integration`
+- `bigquery`
+- `biomni`
+- `bisimulation-oracle`
+- `bkp-interleaving`
+- `bmorphism__cc-trace`
+- `boxxy-reverse-engineering`
+- `citation-management`
+- `cogsec-world-mediation`
+- `coqgym`
+- `cq-ai`
+- `ctf-pwn`
+- `ctf-rev`
+- `cue-lang`
+- `datacommons-client`
+- `datamol`
+- `deep-analysis`
+- `deterministic-color-generation`
+- `developer-growth-analysis`
+- `did-passport-interleave`
+- `discopy`
+- `duckdb-ies`
+- `egpu`
+- `embedded-medical-device`
+- `energy-dynamics-acset`
+- `epistemic-arbitrage`
+- `etetoolkit`
+- `excellence-gradient`
+- `ganja-wedge-game`
+- `github-api`
+- `gwas-database`
+- `harmonic-centrality-transport`
+- `hermes-mem-as-dataspace`
+- `hook-development`
+- `how-to-publish-paks`
+- `hy-regime`
+- `hyperbolic-bulk`
+- `hypogenic`
+- `jj`
+- `kegg-database`
+- `kinetic-block`
+- `literature-review`
+- `market-research-reports`
+- `mcp-from-prompt`
+- `mcp-integration`
+- `modelica`
+- `norvidize`
+- `nuclear-smr`
+- `openalex-database`
+- `ostium-arbitrum-perps`
+- `performance-analysis`
+- `perplexity-search`
+- `phylogenetic-operad-acset`
+- `playwright-unworld`
+- `plugin-structure`
+- `pyhealth`
+- `refactoring-playbook`
+- `research-grants`
+- `scientific-critical-thinking`
+- `scientific-schematics`
+- `scientific-slides`
+- `sdf`
+- `seatbelt-sandboxer`
+- `second-opinion`
+- `security-review`
+- `self-under-siege`
+- `semi-reliable-nashator`
+- `signal-isolated-auth`
+- `skill-builder`
+- `skill-taxonomy`
+- `story-and-tasks`
+- `stream-chain`
+- `true-alife`
+- `unwiring-arena`
+- `unworld`
+- `venue-templates`
+- `verification-quality`
+- `verification-quality-assurance`
+- `vllm-deployment`
+- `voice-channel-uwd`
+- `vr-steam-ssh`
+- `vulnerability-validation`
+- `ward-identity-checker`
+- `wasm-goblins`
+- `world-runtime`
+- `worlding-calendar`
+- `wrangler`
+
+<!-- END GENERATED backlinks -->

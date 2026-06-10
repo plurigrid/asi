@@ -30,3 +30,24 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `triadic-skill-loader`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `acset-taxonomy`
+- `acsets-hatchery`
+- `chatgpt-export-acset`
+- `clifford-acset-bridge`
+- `dynamic-sufficiency`
+- `julia-scientific`
+- `openai-acset`
+- `parallel-subagent-split`
+- `phylogenetic-operad-acset`
+- `propagators`
+- `repl-commons`
+- `triadic-skill-loader`
+
+<!-- END GENERATED backlinks -->

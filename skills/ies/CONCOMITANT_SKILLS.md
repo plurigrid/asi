@@ -114,3 +114,99 @@ Auto-generated symmetric closure of the reference graph: every skill that links 
 - `zulip-cogen`
 
 <!-- END GENERATED bidirectional-neighbors -->
+
+<!-- BEGIN GENERATED backlinks (scripts/populate_backlinks.py) -->
+
+## Backlinks
+
+Skills whose SKILL.md prose references this one (inbound citations, auto-generated). Do not edit inside the markers; regenerate with `python3 scripts/populate_backlinks.py`.
+
+- `aaif-governance-interleave`
+- `acset-superior-measurement`
+- `alife`
+- `alife2025`
+- `amp-api-awareness`
+- `asi-skill-selector`
+- `bkp-interleaving`
+- `blackhat-go`
+- `bmorphism-ies-env`
+- `bob-emacs-mods`
+- `browser-history-acset`
+- `cat-structure-rank`
+- `cat-tripartite`
+- `commitment-tracker`
+- `cq-ai`
+- `dd3c3c`
+- `duck-agent`
+- `duck-time-travel`
+- `duckdb-ies`
+- `duckdb-quadruple-interleave`
+- `duckdb-temporal-versioning`
+- `ducklake-categorical-model`
+- `ducklake-meta-cognitive`
+- `ducklake-pattern-expansion`
+- `ducklake-semantic-analyzer`
+- `ducklake-temporal-introspection`
+- `energy-awareness`
+- `energy-dominance`
+- `energy-dynamics-acset`
+- `flox`
+- `ghidra-mcp`
+- `gmra-matlab`
+- `go-1fps`
+- `graded-monad`
+- `gwern-simonw-emacs`
+- `gworkspace-mcp`
+- `haskell-diagrams`
+- `hatchery-index`
+- `hero-dispenser-mod`
+- `hijaling`
+- `hof`
+- `hy-regime`
+- `hyjax-relational`
+- `hyperbolic-bulk`
+- `ies-flox`
+- `ies-triadic`
+- `infinity-topos`
+- `interverse-bundle`
+- `jank`
+- `latent-latency`
+- `libghostty-recording`
+- `lojban`
+- `messaging-world`
+- `naturality-factor`
+- `nhero-nurse`
+- `nuclear-smr`
+- `omniglot`
+- `opacity-detector`
+- `port-resurrection`
+- `pun-decomposition`
+- `py-acsets-rewriting`
+- `real-estate-shark`
+- `reflow`
+- `relational-thinking`
+- `repeng-gay`
+- `repeng-mlx`
+- `say-ducklake-xor`
+- `sense`
+- `shell-guard`
+- `skill-repo-sync`
+- `skill-stats`
+- `soliton-detection`
+- `specter-navigator-gadget`
+- `spectre-worldmat`
+- `structured-decompositions`
+- `tailscale-file-transfer`
+- `topos-unified`
+- `triangle-sparsifier`
+- `tritwies-trace`
+- `truealife`
+- `universal-learning-signature`
+- `unwiring-arena`
+- `uv-oneliners`
+- `video-analysis-gf3`
+- `worlding`
+- `x-twitter-mcp`
+- `zulip-cogen`
+
+<!-- END GENERATED backlinks -->
