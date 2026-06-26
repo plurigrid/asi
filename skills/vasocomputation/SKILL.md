@@ -83,6 +83,30 @@ triad B (substrate):  vasocomputation(+1) ⊗ neuroimmune-pruning(0) ⊗ neural-
 | `sheaf-cohomology` | 0 | H¹ of held obligations / latches |
 | `qri-valence` | 0 | symmetry theory of valence, annealing |
 
+## REPL — `vasocompute.bb`
+
+Interactive exploration of the grid (forj / `gorj_bb`, zero install):
+
+```clojure
+(require '[vasocompute :as v] :reload)
+(v/verify-balanced)                  ;=> true   (both triads Σtrit ≡ 0)
+(v/skill :latched-hyperprior)        ;=> hypothesis card
+(v/latch {:hold 250})                ;=> residual latched tension after a held contraction
+(v/kyle-lambda (v/latch {:hold 250})); price-impact analogue 1/λ_min(H)
+(v/latch-tau :neural-potentiation)   ;=> τ band (CVH 5 → VCH 25 → LHH 100 → synaptic 1000)
+```
+
+Self-test: `bb skills/vasocomputation/vasocompute.bb`. The core is the **Hai–Murphy (1988) four-state latch-bridge**. A latch is *not* sustained high Ca²⁺ — it is the attached + **dephosphorylated** state that holds force at low Ca²⁺/low ATP, formed via a *protocol* (contract → release → dephosphorylate-while-attached). Residual tension therefore rises monotonically with hold duration: "held long enough → latches." A held latch shrinks `λ_min(H)` (belief-updating goes illiquid): `spread ∝ 1/λ_min(H)`, Kyle's `λ ≈ 1/λ_min(H)`.
+
+## Current literature (2024–2026)
+
+- **Moore & Cao (2008)**, *hemo-neural hypothesis* — blood flow actively modulates neural gain (the empirical parent of vasocomputation).
+- **Johnson (2024)**, *A Paradigm for AI Consciousness* — "vasomuscular clamps reduce local neural dynamism."
+- **Chowdhury et al. (2024)**, jhana / cessation EEG — alpha-power drop 21–40 s pre-cessation, rising Lempel–Ziv complexity = the closest empirical proxy for **latch release**.
+- **Parr & Friston (2018)**, *The Anatomy of Inference* — the unsolved "where are generative models physically stored" problem this targets.
+- **Empirical hook**: cessation ⇒ transient absence of vasomotion (testable via fNIRS/laser-Doppler + EEG); a local CBF clamp should lower nearby neural entropy.
+- **Honesty**: hemo-neural gain modulation + latch-bridge biochemistry are **grounded**; *vascular tension storing Bayesian priors* remains **conjecture** (no VSMC-as-memory measurement yet exists).
+
 ## References
 
 - Johnson, M.E. (2023). *Principles of Vasocomputation: A Unification of Buddhist Phenomenology, Active Inference, and Physical Reflex (Part I)*. opentheory.net.

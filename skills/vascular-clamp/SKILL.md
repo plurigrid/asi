@@ -44,6 +44,16 @@ compressive-vasomotion (+1) ⊗ vascular-clamp (0) ⊗ latched-hyperprior (−1)
 | `reafference-corollary-discharge` | 0 | held prediction discharged by action |
 | `able-markets` | 0 | obligation held until resolved (clearing) |
 
+## Current literature (2024–2026)
+
+- **Hai & Murphy (1988); Hudson et al. (2022, PNAS)** — smooth-muscle latch state: dephosphorylated, non-cycling cross-bridges hold tension at near-zero ATP, longer in tonic (vascular) muscle. The skill's strongest physical anchor.
+- **Hartmann et al. (2021, Nat Neurosci; 2022, Annu Rev Physiol)** — capillary **pericytes** set basal tone and modulate flow *slowly* (s–min): kinetics matching "medium-term" storage. Relocate the clamp to pericytes / precapillary sphincters, not fast arterioles.
+- **Sirotin & Das (2009, Nature)** — *anticipatory* arterial dilation entrained to expectation, in darkness, **not** predicted by local activity: haemodynamics already carry prediction, not just metabolic demand.
+- **Kim et al. (2016, J Neurosci)** — vasculo-neuronal coupling: increased tone *decreases* pyramidal firing — the missing **return arc** by which held tension biases computation.
+- **Stokes (2015); Masse et al. (2019)** — "activity-silent" working memory: information held in non-spiking states (precedent for a non-firing substrate).
+- **Hook**: two-photon pericyte-Ca²⁺/diameter imaging during a delay task should show content-specific sustained micro-constriction; optogenetic pericyte relaxation should degrade medium-term retention.
+- **Grounded**: latch economy, pericyte tone, vasculo-neuronal coupling, anticipatory flow. **Speculative**: a single constriction *freezing* a decodable prediction.
+
 ## References
 
 - Johnson, M.E. (2023). *Principles of Vasocomputation, Part I*. opentheory.net (§V, VCH).

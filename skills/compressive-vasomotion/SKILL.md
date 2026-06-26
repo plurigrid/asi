@@ -44,6 +44,17 @@ compressive-vasomotion (+1) ⊗ vascular-clamp (0) ⊗ latched-hyperprior (−1)
 | `fokker-planck-analyzer` | +1 | stationary collapse of a resonance landscape |
 | `information-geometry` | 0 | precision-weighting / KL of clarity vs. grab |
 
+## Current literature (2024–2026)
+
+- **van Veluw et al. (2020), Neuron** — spontaneous ~0.1 Hz vasomotion drives paravascular clearance; amplitude is tunable.
+- **Hauglund / Nedergaard et al. (2025), Cell** — locus-coeruleus NE infraslow oscillations drive slow vasomotion → glymphatic clearance in NREM; zolpidem suppresses it.
+- **Kedarasetti & Drew (2024), Neuron** — vasomotion travels as **long-wavelength waves**; resting modulation exceeds evoked. Recasts the "compression sweep" as a literal traveling wave, not a global clock.
+- **Atasoy et al. (2016), Nat Commun** — connectome harmonics; with Safron's SOHMs gives the "out-of-tune harmonic → contraction" claim a formal substrate.
+- **Pinotsis & Miller (2023), Prog Neurobiol** — cytoelectric coupling: endogenous fields sculpt activity (grounds the ephaptic loop; VSMC→field causation still unestablished).
+- **Sharpening**: specify *which* ~0.1 Hz band (myogenic vs LC/NE vs Mayer) drives compression — the 2025 literature warns these are conflated.
+- **Hook**: vasomotion phase should predict bistable-percept switching; optogenetic VSMC constriction should narrow local neural dynamic range / lower LFP entropy.
+- **Grounded**: vasomotion exists + glymphatic role + ephaptic fields. **Speculative**: vasomotion as a Bayesian-collapse mechanism.
+
 ## References
 
 - Johnson, M.E. (2023). *Principles of Vasocomputation, Part I*. opentheory.net (§V, CVH).
