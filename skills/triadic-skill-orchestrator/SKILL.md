@@ -161,6 +161,8 @@ Dispatching...
 | sheaf-cohomology | ordered-locale | gay-mcp |
 | bisimulation-game | google-workspace | triad-interleave |
 | say-narration | parallel-fanout | finder-color-walk |
+| `latched-hyperprior` | `vascular-clamp` | `compressive-vasomotion` |
+| `neural-potentiation` | `neuroimmune-pruning` | `vasocomputation` |
 
 ## Reference Script
 
