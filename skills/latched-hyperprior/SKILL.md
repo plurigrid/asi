@@ -58,6 +58,17 @@ Grounded: latch-bridge ATP-free hold; Vmem bistability/hysteresis; gap-junction 
 | `structural-stability` | −1 | hysteresis / bistable attractor analysis |
 | `waddington-landscape` | 0 | canalization of a cemented hyperprior |
 
+## Current literature (2024–2026)
+
+- **Hai & Murphy (1988); Dillon et al. (1981); Rembold (2004)** — the four-state latch; **detachment is rate-limiting** (slow `k7`), high force at low phosphorylation; an "ultraslow" PKC latch holds even longer.
+- **Pezzulo, LaPalme, Durant & Levin (2019)** — planarian two-headed form is a **stable bioelectric attractor**, rewritten by gap-junction blockade (octanol), reset by the ion-pump blocker SCH28080 — permanence with a wild-type genome.
+- **Levin (2014, Mol Biol Cell)** — Vmem as epigenetic switch; cancer = loss of gap-junction coupling (bioelectric disconnection).
+- **van der Kolk (2014); Schleip (fascial plasticity)** — sustained load "freezes" a defensive posture; collagen cross-linking gives the weeks–years tail.
+- **Capdeville-Atkinson (1994); FHM2 Ca²⁺-sensitization (2018)** — cluster-headache temporal arteries show spontaneous rhythmic VSMC contraction; MYPT1 = a genetic latch-bias.
+- **Key sharpening**: a latch is **kinetic, not thermodynamic** — a fixed point defended by a *rate-limited exit barrier* (hard to *leave*, not hard to *hold*). `MLCK↑ / MLCP↓` is the commit knob; gap-junction uncoupling = isolation from global updating, *literally*.
+- **Hook / falsifier**: heat (sauna) and Ca²⁺/Mg²⁺ shifts favour release; octanol flips the attractor and **SCH28080 reset** falsifies "permanent."
+- **Grounded**: latch kinetics, Vmem/GJ bistability, fascial cross-linking, VSMC hypercontractility. **Speculative (structural analogy)**: the sheaf-`H¹` / Löb-fixed-point layer — no cohomology is computed; keep as content-H¹ hypothesis, not asserted biology.
+
 ## References
 
 - Johnson, M.E. (2023). *Principles of Vasocomputation, Part I*. opentheory.net (§V, LHH; latch-bridge).

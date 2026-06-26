@@ -49,6 +49,17 @@ Grounded: microglial complement-mediated synaptic pruning; perivascular mast cel
 | `sheaf-cohomology` | 0 | pruning = trivializing a nogood cocycle |
 | `affective-taxis` | −1 | self/non-self boundary = valence boundary |
 
+## Current literature (2024–2026)
+
+- **Stevens et al. (2007, Cell); Schafer et al. (2012, Neuron)** — classical complement (C1q→C3) opsonizes weak synapses; microglial **CR3/C3** engulfment is *activity-dependent* (weaker inputs preferentially pruned) — a measured valence gradient, not a stamp.
+- **Sekar et al. (2016, Nature)** — schizophrenia MHC signal traced to **C4** alleles; risk scales with C4A; C4 sits *between C1q and C3* = the convertase **gain knob** (excess −1 retraction).
+- **Hong et al. (2016, Science)** — complement drives *early* synapse loss in Alzheimer models before plaques; inhibition rescues LTP.
+- **Stellwagen & Malenka (2006, Nature); Yirmiya & Goshen (2011)** — glial **TNF-α** is sufficient for synaptic scaling; cytokines gate LTP/consolidation in an **inverted-U** (low pg/mL enhances, inflammatory ng/mL impairs).
+- **Bhat, Parr, Ramstead & Friston (2021)**, *immunoceptive inference*; **Dunn, Old & Schreiber (2004)**, immunoediting (Elimination / Equilibrium / Escape = surveillance / latent-nogood / false-negative).
+- **Exact cascade**: C1q → C4/C2 → C3 convertase → C3b/iC3b opsonin → microglial CR3 → engulfment.
+- **Hook**: synaptic C1q/C3b density predicts microglial engulfment volume; C4A expression ∝ elimination rate; cytokine dose sets consolidation gain.
+- **Grounded**: complement pruning, C4-schizophrenia, TNF-α scaling, mast-cell vasoactivity, immunoediting. **Speculative weld**: "microglia = TMS justifier," "autoimmunity = false nogood" — framing licensed by Friston/Tauber, computes no cohomology.
+
 ## References
 
 - Stevens, B. et al. (2007). *The classical complement cascade mediates CNS synapse elimination*. Cell 131(6).
