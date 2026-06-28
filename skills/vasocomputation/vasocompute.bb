@@ -86,6 +86,35 @@
 (def band-tau {:fast 5 :medium 25 :slow 100 :slowest 1000})           ; CVH→VCH→LHH→synaptic
 (defn latch-tau [k] (get band-tau (:band (skill k))))
 
+;; ── counterfactuals (Pearl rung 2/3) ────────────────────────────────────────
+;; The latch is a HELD COUNTERFACTUAL. `latch-above-baseline` is already a
+;; factual-vs-counterfactual contrast = the causal effect of the contraction (a
+;; treatment effect). do(ischemia): ATP depletion blocks cross-bridge detachment
+;; (rigor) so k7→0 and the latch CANNOT release — the latch spiral, as a do()-op.
+(defn run* [kover ca dt steps s0]
+  (let [ks (merge (assoc k0 :k1 ca :k6 ca) kover)]
+    (loop [n steps s s0]
+      (if (zero? n) s (recur (dec n) (mapv (fn [x dx] (+ x (* dt dx))) s (deriv ks s)))))))
+(defn effect
+  "Counterfactual contrast: E[residual | do(hold)] − E[residual | never] = the
+   causal effect of holding the contraction (= latch-above-baseline)."
+  [{:keys [hold] :or {hold 250}}]
+  (:latch-above-baseline (latch {:hold hold})))
+(defn do-ischemia
+  "Intervention do(ischemia): block ATP-dependent detachment (k7→~0). Residual
+   tension when a latched state is given a release phase under ischemia."
+  [{:keys [hold release] :or {hold 250 release 400}}]
+  (let [latched (run* {} 0.9 0.1 hold [1.0 0.0 0.0 0.0])]
+    (tension (run* {:k7 2e-4} 0.02 0.1 release latched))))
+(defn counterfactual-harm
+  "ischemic − factual: tension persisting ONLY because flow was not restored —
+   the latch spiral attributable to the intervention (the gerbil CA1 contrast)."
+  [{:keys [hold release] :or {hold 250 release 400}}]
+  (let [latched (run* {} 0.9 0.1 hold [1.0 0.0 0.0 0.0])
+        factual (tension (run* {}         0.02 0.1 release latched))
+        ischem  (tension (run* {:k7 2e-4} 0.02 0.1 release latched))]
+    {:factual factual :ischemic ischem :harm (- ischem factual)}))
+
 ;; ── self-test ───────────────────────────────────────────────────────────────
 (defn -main [& _]
   (println "GF(3) triads:" triads)
@@ -98,7 +127,12 @@
                        h (:peak r) (:residual r) (:latch-above-baseline r)
                        (spectral-gap r) (kyle-lambda r)))))
   (println "τ ladder (CVH/VCH/LHH/synaptic):"
-           (mapv latch-tau [:compressive-vasomotion :vascular-clamp :latched-hyperprior :neural-potentiation])))
+           (mapv latch-tau [:compressive-vasomotion :vascular-clamp :latched-hyperprior :neural-potentiation]))
+  (println "counterfactual effect of do(hold) = residual − baseline (treatment effect):")
+  (doseq [h [40 100 250]] (println (format "  do(hold=%-3d) effect=%+.3f" h (effect {:hold h}))))
+  (let [c (counterfactual-harm {:hold 250})]
+    (println (format "do(ischemia) latch-spiral: factual=%.3f ischemic=%.3f harm=%+.3f"
+                     (:factual c) (:ischemic c) (:harm c)))))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

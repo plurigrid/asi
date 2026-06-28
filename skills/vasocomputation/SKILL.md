@@ -94,9 +94,27 @@ Interactive exploration of the grid (forj / `gorj_bb`, zero install):
 (v/latch {:hold 250})                ;=> residual latched tension after a held contraction
 (v/kyle-lambda (v/latch {:hold 250})); price-impact analogue 1/λ_min(H)
 (v/latch-tau :neural-potentiation)   ;=> τ band (CVH 5 → VCH 25 → LHH 100 → synaptic 1000)
+(v/effect {:hold 250})               ;=> counterfactual contrast = E[do(hold)] − E[never] (treatment effect)
+(v/do-ischemia {:hold 250})          ;=> latch spiral: k7→0, latch cannot release
+(v/counterfactual-harm {:hold 250})  ;=> {:factual … :ischemic … :harm …} (the gerbil CA1 contrast)
 ```
 
 Self-test: `bb skills/vasocomputation/vasocompute.bb`. The core is the **Hai–Murphy (1988) four-state latch-bridge**. A latch is *not* sustained high Ca²⁺ — it is the attached + **dephosphorylated** state that holds force at low Ca²⁺/low ATP, formed via a *protocol* (contract → release → dephosphorylate-while-attached). Residual tension therefore rises monotonically with hold duration: "held long enough → latches." A held latch shrinks `λ_min(H)` (belief-updating goes illiquid): `spread ∝ 1/λ_min(H)`, Kyle's `λ ≈ 1/λ_min(H)`.
+
+## Counterfactuals & Marr's three levels (Tenenbaum ⊗ active inference ⊗ gerbil)
+
+A held prediction is a **held counterfactual** — Johnson: taṇhā "conflates *what is*, *what could be*, *what should be*, *what will be*," and the cost is "maintaining the **counterfactual** aspects of this collapse." Counterfactuals run through all three Marr levels, which themselves form a GF(3) triad:
+
+| Marr level | counterfactual object | trit |
+|---|---|------|
+| **computational** — Tenenbaum | Counterfactual Simulation Model = Pearl rung 3; hierarchical **overhypotheses** = the hyperprior; program induction = prediction-as-program | +1 |
+| **algorithmic** — active inference | **Expected Free Energy `G(π)`** scores a *counterfactual* policy rollout | 0 |
+| **implementation** — vasocomputation + the **Mongolian gerbil** | `do(occlude)` / `do(ischemia)` = rung-2 intervention; the gerbil's incomplete circle of Willis makes it *the* global-ischemia model (CA1 delayed neuronal death = the latch spiral, measured) | −1 |
+
+- `vasocompute.bb` already computes a counterfactual: `latch-above-baseline = E[tension | do(hold)] − E[tension | never]` = the **causal effect of the contraction** (a treatment effect). `(v/do-ischemia …)` runs the latch spiral as `do(k7→0)`; `(v/counterfactual-harm …)` returns the ischemic−factual contrast.
+- **Worm**: the −1/coplay leg *is* counterfactual (refutation = "what would falsify this"). A latch whose counterfactual **can** be made true = a **nogood to repair**; one in an **uncontrollable** domain (counterfactual never satisfiable) = irreducible **content-`H¹`** — Johnson's source of suffering. **Counterfactual resolvability is the repair/preserve criterion.**
+- Rigorous tooling: `chirho-counterfactual` (SCM `do`/counterfactual queries), `counterfactuals`, and `world-extractable-value` (`WEV = Σ[V(e,W₁)−V(e,W₀)]·P` is a counterfactual world-contrast — the same shape as `latch-above-baseline`).
+- **Honesty**: the gerbil ischemia model + Tenenbaum hierarchical Bayes are **grounded**; the Marr-triad GF(3) assignment is a **framing**, and "latch = overhypothesis" is the same untested **content-`H¹`** weld.
 
 ## Current literature (2024–2026)
 

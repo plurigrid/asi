@@ -69,6 +69,17 @@ Grounded: latch-bridge ATP-free hold; Vmem bistability/hysteresis; gap-junction 
 - **Hook / falsifier**: heat (sauna) and Ca²⁺/Mg²⁺ shifts favour release; octanol flips the attractor and **SCH28080 reset** falsifies "permanent."
 - **Grounded**: latch kinetics, Vmem/GJ bistability, fascial cross-linking, VSMC hypercontractility. **Speculative (structural analogy)**: the sheaf-`H¹` / Löb-fixed-point layer — no cohomology is computed; keep as content-H¹ hypothesis, not asserted biology.
 
+## Counterfactual structure
+
+A latch is a **held counterfactual** — a prediction kept against reality until action makes it true (or it is abandoned). This gives LHH a causal-inference reading:
+
+- **Treatment effect**: `latch-above-baseline = E[tension | do(hold)] − E[tension | never]` — the causal effect of the contraction (factual vs counterfactual), already computed in `vasocompute.bb`.
+- **Latch spiral = `do(ischemia)` (Pearl rung 3)**: ATP depletion blocks cross-bridge detachment (rigor → `k7→0`), so the latch **cannot** release. Counterfactual harm = `tension(ischemic) − tension(factual)` = "had flow been restored, this tissue *would have* released." The **Mongolian gerbil** (incomplete circle of Willis) is the `do(occlude)` preparation that measures it (CA1 delayed neuronal death).
+- **Overhypothesis** (Kemp & Tenenbaum): a latch stores not a datum but a *learned prior over priors* — the computational content of a hyperprior.
+- **Resolvability = the repair criterion**: a latch whose counterfactual can be made true is a **nogood-`H¹`** to repair (release on resolution); one in an uncontrollable domain (counterfactual unsatisfiable) is **content-`H¹`** — the irreducible suffering term (TUAI failure mode 2).
+
+See `chirho-counterfactual` for the rigorous SCM version of the `do(k7→0)` query.
+
 ## References
 
 - Johnson, M.E. (2023). *Principles of Vasocomputation, Part I*. opentheory.net (§V, LHH; latch-bridge).
