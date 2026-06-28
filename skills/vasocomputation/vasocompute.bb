@@ -115,6 +115,23 @@
         ischem  (tension (run* {:k7 2e-4} 0.02 0.1 release latched))]
     {:factual factual :ischemic ischem :harm (- ischem factual)}))
 
+;; ── two energies: thermodynamic (Joules/ATP) vs information (nats/bits) ──────
+;; FEP "free energy" is INFORMATION, not thermodynamic. The latch transduces:
+;; it holds an information commitment (tension) at near-zero ATP. Landauer — it is
+;; RELEASING/erasing the bit that costs energy. Still et al. (2012): retaining
+;; non-predictive info dissipates Joules → a nogood-latch literally wastes ATP.
+(defn info-held   [[_ _ AMp AM]] (+ AMp AM))             ; prediction held (proxy: tension)
+(defn thermo-cost [[_ Mp AMp _]] (+ AMp (* 0.5 Mp)))     ; ATP flux: cycling + phosphorylation
+(defn efficiency  [s] (/ (info-held s) (max 1e-6 (thermo-cost s))))  ; info held per Joule
+(defn energy-ledger
+  "Thermo vs info accounting for a contract→release protocol. Under :ischemia?
+   the held info is STRANDED — release needs ATP (Landauer) that is gone."
+  [{:keys [hold release ischemia?] :or {hold 250 release 400 ischemia? false}}]
+  (let [latched (run* {} 0.9 0.1 hold [1.0 0.0 0.0 0.0])
+        end (run* (if ischemia? {:k7 2e-4} {}) 0.02 0.1 release latched)]
+    {:info (info-held end) :thermo (thermo-cost end)
+     :efficiency (efficiency end) :stranded? (boolean (and ischemia? (> (info-held end) 0.5)))}))
+
 ;; ── self-test ───────────────────────────────────────────────────────────────
 (defn -main [& _]
   (println "GF(3) triads:" triads)
@@ -132,7 +149,15 @@
   (doseq [h [40 100 250]] (println (format "  do(hold=%-3d) effect=%+.3f" h (effect {:hold h}))))
   (let [c (counterfactual-harm {:hold 250})]
     (println (format "do(ischemia) latch-spiral: factual=%.3f ischemic=%.3f harm=%+.3f"
-                     (:factual c) (:ischemic c) (:harm c)))))
+                     (:factual c) (:ischemic c) (:harm c))))
+  (println "two energies — thermo (Joules/ATP) vs info (nats); latch = info held per Joule:")
+  (doseq [h [40 250]]
+    (let [l (energy-ledger {:hold h})]
+      (println (format "  hold=%-3d info=%.3f thermo=%.3f efficiency=%.2f"
+                       h (:info l) (:thermo l) (:efficiency l)))))
+  (let [isch (energy-ledger {:hold 250 :ischemia? true})]
+    (println (format "  do(ischemia): info=%.3f thermo=%.3f stranded?=%s (Landauer: release needs ATP)"
+                     (:info isch) (:thermo isch) (:stranded? isch)))))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (apply -main *command-line-args*))

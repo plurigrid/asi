@@ -116,6 +116,24 @@ A held prediction is a **held counterfactual** — Johnson: taṇhā "conflates 
 - Rigorous tooling: `chirho-counterfactual` (SCM `do`/counterfactual queries), `counterfactuals`, and `world-extractable-value` (`WEV = Σ[V(e,W₁)−V(e,W₀)]·P` is a counterfactual world-contrast — the same shape as `latch-above-baseline`).
 - **Honesty**: the gerbil ischemia model + Tenenbaum hierarchical Bayes are **grounded**; the Marr-triad GF(3) assignment is a **framing**, and "latch = overhypothesis" is the same untested **content-`H¹`** weld.
 
+## Two energies — thermodynamic vs information (never conflate)
+
+| | thermodynamic free energy | information free energy |
+|---|---|---|
+| units | Joules (ATP, O₂, kWh) | nats/bits (variational surprise) |
+| the "H" | Hamiltonian / enthalpy | **Fisher** Hessian / Shannon entropy |
+| in this grid | blood → ATP | predictions held as tension |
+| worm "free energy = accuracy − complexity" | — | **this one** |
+
+The FEP's "free energy" is **information** (an ELBO on surprise), *not* the chemist's Joules — the field's commonest category error. Vasocomputation is interesting precisely as the **transducer** between them: a prediction (information, a held counterfactual) stored as vascular tension (thermodynamic, ATP-economized). The **latch holds an information commitment at near-zero thermodynamic cost** (`(v/efficiency …)` rises with hold depth) — resource-rationality (Tenenbaum/Griffiths) made physical: *info held per Joule*.
+
+Lawful bridge, not identity:
+- **Landauer (1961)**: erasing one bit costs `kT ln 2` J → *releasing* a latch costs energy (unlatching is active, not passive). Holding is cheap; **forgetting** is what costs.
+- **Still, Sivak, Bialek & Crooks (2012), *Thermodynamics of Prediction***: retaining **non-predictive** info dissipates Joules ⇒ **a nogood-`H¹` is literally thermodynamic dissipation**; content-`H¹` is thermodynamically justified. This upgrades the worm's "add no complexity you don't need" from an information maxim to a **thermodynamic law**.
+- `do(ischemia)` is a **transduction failure**: information held but **stranded** because release needs ATP that's gone — a market that won't clear stranding real Joules (Plurigrid: a congested node / blackout).
+
+Refs: Landauer 1961; Bennett 1982; Still et al. 2012 (PRL); Attwell & Laughlin 2001 (cortical energy budget); Sengupta, Stemmler & Friston 2013 (bits↔Joules in neurons). **Honesty**: the two-energy distinction + Landauer/Still are grounded physics; the latch-as-transducer is a weld; `info=tension, thermo=AMp` is a toy proxy.
+
 ## Current literature (2024–2026)
 
 - **Moore & Cao (2008)**, *hemo-neural hypothesis* — blood flow actively modulates neural gain (the empirical parent of vasocomputation).
