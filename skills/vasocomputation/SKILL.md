@@ -83,6 +83,66 @@ triad B (substrate):  vasocomputation(+1) ⊗ neuroimmune-pruning(0) ⊗ neural-
 | `sheaf-cohomology` | 0 | H¹ of held obligations / latches |
 | `qri-valence` | 0 | symmetry theory of valence, annealing |
 
+## REPL — `vasocompute.bb`
+
+Interactive exploration of the grid (forj / `gorj_bb`, zero install):
+
+```clojure
+(require '[vasocompute :as v] :reload)
+(v/verify-balanced)                  ;=> true   (both triads Σtrit ≡ 0)
+(v/skill :latched-hyperprior)        ;=> hypothesis card
+(v/latch {:hold 250})                ;=> residual latched tension after a held contraction
+(v/kyle-lambda (v/latch {:hold 250})); price-impact analogue 1/λ_min(H)
+(v/latch-tau :neural-potentiation)   ;=> τ band (CVH 5 → VCH 25 → LHH 100 → synaptic 1000)
+(v/effect {:hold 250})               ;=> counterfactual contrast = E[do(hold)] − E[never] (treatment effect)
+(v/do-ischemia {:hold 250})          ;=> latch spiral: k7→0, latch cannot release
+(v/counterfactual-harm {:hold 250})  ;=> {:factual … :ischemic … :harm …} (the gerbil CA1 contrast)
+```
+
+Self-test: `bb skills/vasocomputation/vasocompute.bb`. The core is the **Hai–Murphy (1988) four-state latch-bridge**. A latch is *not* sustained high Ca²⁺ — it is the attached + **dephosphorylated** state that holds force at low Ca²⁺/low ATP, formed via a *protocol* (contract → release → dephosphorylate-while-attached). Residual tension therefore rises monotonically with hold duration: "held long enough → latches." A held latch shrinks `λ_min(H)` (belief-updating goes illiquid): `spread ∝ 1/λ_min(H)`, Kyle's `λ ≈ 1/λ_min(H)`.
+
+## Counterfactuals & Marr's three levels (Tenenbaum ⊗ active inference ⊗ gerbil)
+
+A held prediction is a **held counterfactual** — Johnson: taṇhā "conflates *what is*, *what could be*, *what should be*, *what will be*," and the cost is "maintaining the **counterfactual** aspects of this collapse." Counterfactuals run through all three Marr levels, which themselves form a GF(3) triad:
+
+| Marr level | counterfactual object | trit |
+|---|---|------|
+| **computational** — Tenenbaum | Counterfactual Simulation Model = Pearl rung 3; hierarchical **overhypotheses** = the hyperprior; program induction = prediction-as-program | +1 |
+| **algorithmic** — active inference | **Expected Free Energy `G(π)`** scores a *counterfactual* policy rollout | 0 |
+| **implementation** — vasocomputation + the **Mongolian gerbil** | `do(occlude)` / `do(ischemia)` = rung-2 intervention; the gerbil's incomplete circle of Willis makes it *the* global-ischemia model (CA1 delayed neuronal death = the latch spiral, measured) | −1 |
+
+- `vasocompute.bb` already computes a counterfactual: `latch-above-baseline = E[tension | do(hold)] − E[tension | never]` = the **causal effect of the contraction** (a treatment effect). `(v/do-ischemia …)` runs the latch spiral as `do(k7→0)`; `(v/counterfactual-harm …)` returns the ischemic−factual contrast.
+- **Worm**: the −1/coplay leg *is* counterfactual (refutation = "what would falsify this"). A latch whose counterfactual **can** be made true = a **nogood to repair**; one in an **uncontrollable** domain (counterfactual never satisfiable) = irreducible **content-`H¹`** — Johnson's source of suffering. **Counterfactual resolvability is the repair/preserve criterion.**
+- Rigorous tooling: `chirho-counterfactual` (SCM `do`/counterfactual queries), `counterfactuals`, and `world-extractable-value` (`WEV = Σ[V(e,W₁)−V(e,W₀)]·P` is a counterfactual world-contrast — the same shape as `latch-above-baseline`).
+- **Honesty**: the gerbil ischemia model + Tenenbaum hierarchical Bayes are **grounded**; the Marr-triad GF(3) assignment is a **framing**, and "latch = overhypothesis" is the same untested **content-`H¹`** weld.
+
+## Two energies — thermodynamic vs information (never conflate)
+
+| | thermodynamic free energy | information free energy |
+|---|---|---|
+| units | Joules (ATP, O₂, kWh) | nats/bits (variational surprise) |
+| the "H" | Hamiltonian / enthalpy | **Fisher** Hessian / Shannon entropy |
+| in this grid | blood → ATP | predictions held as tension |
+| worm "free energy = accuracy − complexity" | — | **this one** |
+
+The FEP's "free energy" is **information** (an ELBO on surprise), *not* the chemist's Joules — the field's commonest category error. Vasocomputation is interesting precisely as the **transducer** between them: a prediction (information, a held counterfactual) stored as vascular tension (thermodynamic, ATP-economized). The **latch holds an information commitment at near-zero thermodynamic cost** (`(v/efficiency …)` rises with hold depth) — resource-rationality (Tenenbaum/Griffiths) made physical: *info held per Joule*.
+
+Lawful bridge, not identity:
+- **Landauer (1961)**: erasing one bit costs `kT ln 2` J → *releasing* a latch costs energy (unlatching is active, not passive). Holding is cheap; **forgetting** is what costs.
+- **Still, Sivak, Bialek & Crooks (2012), *Thermodynamics of Prediction***: retaining **non-predictive** info dissipates Joules ⇒ **a nogood-`H¹` is literally thermodynamic dissipation**; content-`H¹` is thermodynamically justified. This upgrades the worm's "add no complexity you don't need" from an information maxim to a **thermodynamic law**.
+- `do(ischemia)` is a **transduction failure**: information held but **stranded** because release needs ATP that's gone — a market that won't clear stranding real Joules (Plurigrid: a congested node / blackout).
+
+Refs: Landauer 1961; Bennett 1982; Still et al. 2012 (PRL); Attwell & Laughlin 2001 (cortical energy budget); Sengupta, Stemmler & Friston 2013 (bits↔Joules in neurons). **Honesty**: the two-energy distinction + Landauer/Still are grounded physics; the latch-as-transducer is a weld; `info=tension, thermo=AMp` is a toy proxy.
+
+## Current literature (2024–2026)
+
+- **Moore & Cao (2008)**, *hemo-neural hypothesis* — blood flow actively modulates neural gain (the empirical parent of vasocomputation).
+- **Johnson (2024)**, *A Paradigm for AI Consciousness* — "vasomuscular clamps reduce local neural dynamism."
+- **Chowdhury et al. (2024)**, jhana / cessation EEG — alpha-power drop 21–40 s pre-cessation, rising Lempel–Ziv complexity = the closest empirical proxy for **latch release**.
+- **Parr & Friston (2018)**, *The Anatomy of Inference* — the unsolved "where are generative models physically stored" problem this targets.
+- **Empirical hook**: cessation ⇒ transient absence of vasomotion (testable via fNIRS/laser-Doppler + EEG); a local CBF clamp should lower nearby neural entropy.
+- **Honesty**: hemo-neural gain modulation + latch-bridge biochemistry are **grounded**; *vascular tension storing Bayesian priors* remains **conjecture** (no VSMC-as-memory measurement yet exists).
+
 ## References
 
 - Johnson, M.E. (2023). *Principles of Vasocomputation: A Unification of Buddhist Phenomenology, Active Inference, and Physical Reflex (Part I)*. opentheory.net.
