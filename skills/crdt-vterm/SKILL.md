@@ -135,3 +135,47 @@ Terminal sessions can be indexed in DuckDB for time-travel queries.
 - `spi-parallel-verify` - GF(3) conservation
 - `triad-interleave` - Three-stream scheduling
 - `bisimulation-game` - Session equivalence
+
+## Catalog upgrades (proposed, 2026-04-30)
+
+Catalog-pattern lifts derived from `PATTERNS.md` at repo root.
+Aspirational; current implementation is the bb + .el bridge.
+
+### 1. Boundary-as-tagged-union, not byte-as-CRDT-element [P1]
+
+Stop CRDT-merging the byte stream of the terminal; CRDT-merge the **boundaries** of each command (OSC 133 ;A/;B/;C/;D points). Inside an interval the byte stream is owned by the originator; across intervals the sheaf gluing F([a,b]) = F([a,p]) ×_{F([p,p])} F([p,b]) gives principled three-way merge with no merge conflicts inside running command output. Closes the "two users typed and the output got interleaved" failure mode at the source.
+
+### 2. Capability-sign every op [P6]
+
+Each CRDT operation is a Syrup record sealed by the originator's OCapN sturdyref. No-cloning at op-level: a malicious peer cannot replay another peer's op as their own. Closes trust-on-first-use; combined with OCapN revocation, removing a peer cleanly invalidates pending ops.
+
+### 3. Schema-drive the op set [P2]
+
+Define operations as a `union(enum)` once; comptime-generate (a) the wire codec, (b) the merge function, (c) the elisp bridge, (d) the JSON schema. Removes hand-maintained .el ↔ .bb sync. Adding a new op (e.g., `mark_artifact{id, payload}` for inline images) becomes one enum line.
+
+### 4. Sort-middle compaction for divergent histories [P5]
+
+When peer histories diverge by thousands of ops (long disconnect + re-attach), sort by causal frontier → bin by terminal region → coarse-merge per region → fine-rasterise. Vello-shaped pipeline gives O(n log n) merge with bounded memory.
+
+### 5. Three-way GF(3) merge native
+
+Currently pairwise. Lift to native three-stream merge with sum-to-zero invariant as the consistency check. Any three histories where trit_sum mod 3 ≠ 0 = divergence flag, surfaced in the header line. **A CRDT that lights up red when consensus has actually broken**, instead of silently merging anyway.
+
+### 6. Linear types for one-shot ops
+
+Some ops are measurement-once: confirmations, paste-of-secret, password-prompt acknowledgement. Mark with a Zig-comptime no-clone discipline (or Dafny annotation) so the CRDT layer enforces single-unsealing across all peers. Bridges to entangled-terminal protocols (categorical-quantum-mechanics base-change of D in Cell A).
+
+### 7. Carve `libcrdt-vterm` C ABI [P3]
+
+Today emacs-coupled. Expose `crdt_vterm_new`, `crdt_vterm_apply_op`, `crdt_vterm_export`, `crdt_vterm_subscribe` as C symbols so ghostty, rio, xterm.js, wave can each be a host of the same CRDT engine. Same pattern as ghostty's `libghostty-vt`.
+
+### Pattern cross-references
+
+- P1 boundary-as-tagged-union (Cell A sheaf condition)
+- P2 schema-drives-code (Ghostty `parse_table.zig` precedent)
+- P3 carve-the-core (`libghostty-vt` precedent)
+- P5 sort-middle compute (Vello precedent)
+- P6 typed-wire-as-capability (OCapN/Syrup precedent)
+- P11 typed-pipeline-composition (Nushell precedent)
+
+See `PATTERNS.md` at repo root.

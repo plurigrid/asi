@@ -449,3 +449,11 @@ for i, schedule in enumerate(chain):
 ## Para(Optic) atlas
 
 Part of: `para-mensch-commons`.
+
+## Pattern catalog (added 2026-04-30)
+
+See `PATTERNS.md` at repo root for the 11-pattern catalog distilled from
+shipped precedents: Ghostty, Mach, TigerBeetle, Vello, Bevy, River, Roc,
+Wave Terminal, Nushell, Zellij, Slint.
+
+CRDT-terminal upgrade exemplars: `skills/crdt-vterm`, `skills/crdt-zigger-oneshot`.

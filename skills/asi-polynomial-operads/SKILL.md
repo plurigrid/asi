@@ -310,3 +310,11 @@ scripts/
 - `triad-interleave` — Balanced ternary scheduling
 - `world-hopping` — Badiou triangle navigation
 - `open-games` — Bidirectional transformations
+
+## Pattern catalog (added 2026-04-30)
+
+See `PATTERNS.md` at repo root for the 11-pattern catalog distilled from
+shipped precedents: Ghostty, Mach, TigerBeetle, Vello, Bevy, River, Roc,
+Wave Terminal, Nushell, Zellij, Slint.
+
+CRDT-terminal upgrade exemplars: `skills/crdt-vterm`, `skills/crdt-zigger-oneshot`.
