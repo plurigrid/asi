@@ -7,6 +7,22 @@ on:
     branches: [main]
 
 jobs:
+  skill-integrity:
+    # No auto-repair: scan canonical SKILL.md files, including nested/hidden trees.
+    # Unchanged known debt is explicit and content-hashed; new/edited damage fails.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install YAML parser
+        run: python3 -m pip install PyYAML==6.0.3
+      - name: Test skill integrity guard
+        run: python3 -m unittest discover -s tests -p test_skill_integrity.py -v
+      - name: Check live skills against reviewed debt
+        run: python3 scripts/check_skill_integrity.py --baseline scripts/skill_integrity_baseline.json
+
   validate:
     runs-on: ubuntu-latest
     steps:
