@@ -1,445 +1,171 @@
 ---
-name: did-passport-interleave <<<<<<< HEAD
-description: Formal bridge between W3C Decentralized Identifiers (did:wba, ANP) and passport.gay (SplitMix64 MAC→trit trajectory→GF(3) fingerprint→QRTP air-gap). Establishes a bisimulation relation between the online DID resolution model and the offline fountain-coded QR identity model. Closes Gap G-P2 (MCP-I DID extension) and Gap G5 (passport revocation) from the zig-syrup propagator interleave gap registry.
+name: did-passport-interleave
+description: >
+  Bridge DID verification and passport.gay offline QRTP transport while keeping
+  behavioral equivalence, cryptographic identity, issuer claims, and delegated
+  capability authority separate. Use for online/offline identity verification,
+  trit trajectory binding, air-gapped presentations, and revocation design.
 deployed: '2026-02-19'
 role: BRIDGE
-tags: '[did, w3c, anp, passport, qrtp, gf3, homotopy, identity, bridge, bisimulation, air-gap]'
+tags: '[did, w3c, anp, passport, qrtp, gf3, identity, bridge, air-gap]'
 trit: '0'
 version: 1.0.0
 ---
 
-# W3C DID ↔ passport.gay Interleave
-=======
-description: >
-  Bridge between W3C Decentralized Identifiers (did:wba, ANP) and passport.gay
-  (SplitMix64 MAC -> trit trajectory -> fingerprint -> QRTP air-gap).
-  Triggers: DID resolution, offline identity verification, air-gapped identity,
-  QRTP fountain-coded QR transport, passport revocation, online/offline identity bridge.
----
-
 # W3C DID / passport.gay Interleave
->>>>>>> origin/main
-
-## Formal Equivalence
-
-The two identity systems are behaviorally equivalent (bisimilar) for offline scenarios:
-
-```
-W3C DID (ANP):
-<<<<<<< HEAD
-  Identity creation:  keygen → DID document → publish to HTTPS endpoint
-  Verification:       resolve DID → fetch document → verify signature
-  Trust anchor:       Web PKI (DNS + TLS)
-  Air-gap capable:    NO — requires network for DID resolution
-
-passport.gay (zig-syrup):
-  Identity creation:  MAC → SplitMix64 seed → color trajectory → GF(3) trit fingerprint
-  Verification:       homotopy continuity check on deformation path
-  Trust anchor:       GF(3) conservation law (mathematical, no network)
-  Air-gap capable:    YES — QRTP fountain-coded QR transport
-```
-
-**Bisimulation witness:** Both systems implement `prove(claim) → verify(proof) → accept/reject`. They differ only in the trust anchor and transport layer. Within the same trit class, they are weakly bisimilar (same external observations, different internal τ-transitions).
-
----
-=======
-  Identity creation:  keygen -> DID document -> publish to HTTPS endpoint
-  Verification:       resolve DID -> fetch document -> verify signature
-  Trust anchor:       Web PKI (DNS + TLS)
-  Air-gap capable:    NO -- requires network for DID resolution
-
-passport.gay (zig-syrup):
-  Identity creation:  MAC -> SplitMix64 seed -> color trajectory -> trit fingerprint
-  Verification:       homotopy continuity check on deformation path
-  Trust anchor:       GF(3) conservation law (mathematical, no network)
-  Air-gap capable:    YES -- QRTP fountain-coded QR transport
-```
-
-Both implement `prove(claim) -> verify(proof) -> accept/reject`. They differ only in trust anchor and transport layer.
->>>>>>> origin/main
-
-## did:wba Method (ANP)
-
-```
-did:wba:<domain>:<path>
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
-Example: did:wba:plurigrid.com:agents:skill-graph-agent
-
-DID Document (JSON-LD):
-{
-<<<<<<< HEAD
-  "@context": ["https://www.w3.org/ns/did/v1", "https://w3id.org/security/suites/ed25519-2020/v1"],
-  "id": "did:wba:plurigrid.com:agents:skill-graph-agent",
-  "verificationMethod": [{
-    "id": "did:wba:plurigrid.com:agents:skill-graph-agent#key-1",
-    "type": "Ed25519VerificationKey2020",
-    "controller": "did:wba:plurigrid.com:agents:skill-graph-agent",
-=======
-  "@context": ["https://www.w3.org/ns/did/v1"],
-  "id": "did:wba:plurigrid.com:agents:skill-graph-agent",
-  "verificationMethod": [{
-    "id": "...#key-1",
-    "type": "Ed25519VerificationKey2020",
->>>>>>> origin/main
-    "publicKeyMultibase": "z6MkrJVnaZkeFzdQyMZu1cgjg7k1pZZ6pvBQ7XJPt4swbTQ2"
-  }],
-  "authentication": ["#key-1"],
-  "service": [{
-    "id": "#agent-description",
-    "type": "AgentDescriptionProtocol",
-    "serviceEndpoint": "https://plurigrid.com/agents/skill-graph/.well-known/agent-description.json"
-  }]
-}
-```
-
-<<<<<<< HEAD
----
-
-## passport.gay Identity Model (from zig-syrup)
-
-```
-SplitMix64(seed from MAC) → deterministic PRNG
-  → color sequence → GF(3) trit trajectory
-  → conservation check: sum(trajectory) ≡ 0 (mod 3)
-  → fingerprint: SHA256(trajectory)
-  → liveness check: homotopy H(x,t) = (1-t)·baseline + t·current is continuous
-
-Identity proof = (trajectory, continuity_certificate, GF(3)_conservation_proof)
-Transport    = QRTP (fountain-coded QR codes, air-gapped)
-```
-
----
-
-## Bridge: GF(3) Fingerprint → DID Document Fragment
-
-```python
-import hashlib
-from typing import Optional
-import base64
-=======
-## Bridge: Trit Trajectory -> DID Document Fragment
-
-```python
-import hashlib, base64
->>>>>>> origin/main
-
-def passport_to_did_fragment(
-    trajectory: list[int],
-    domain: str = "plurigrid.com",
-    path_segments: list[str] = None,
-) -> dict:
-    """
-<<<<<<< HEAD
-    Requirement:  trajectory is GF(3)-conserved (sum ≡ 0 mod 3)
-    Requirement:  len(trajectory) >= 3 (at least one triad)
-    Postcondition: valid DID document fragment with GF(3) verification method
-
-    This bridges passport.gay offline identity into the ANP/W3C DID ecosystem.
-    The DID is deterministically derived from the trajectory (same input → same DID).
-    """
-    # Validate GF(3) conservation
-    if sum(trajectory) % 3 != 0:
-        raise ValueError(f"GF(3) conservation violated: sum={sum(trajectory)} ≢ 0 mod 3")
-
-    # Derive stable fingerprint from trajectory
-    traj_bytes = bytes([t % 256 for t in trajectory])  # handle -1 → 255
-    fingerprint = hashlib.sha256(traj_bytes).digest()
-    fingerprint_hex = fingerprint.hex()
-    fingerprint_multibase = "z" + base64.b58encode(fingerprint).decode()  # base58btc
-
-    # Construct DID
-    path = ":".join(path_segments or ["agents", fingerprint_hex[:16]])
-    did = f"did:wba:{domain}:{path}"
-
-    return {
-        "@context": [
-            "https://www.w3.org/ns/did/v1",
-            "https://w3id.org/security/suites/ed25519-2020/v1",
-            "https://plurigrid.com/ns/gf3-identity/v1"  # GF(3) context extension
-        ],
-        "id": did,
-        "verificationMethod": [{
-            "id": f"{did}#gf3-key-1",
-            "type": "GF3TritTrajectoryVerificationKey2020",  # new key type
-            "controller": did,
-            "publicKeyMultibase": fingerprint_multibase,
-            "gf3_trajectory": trajectory,
-            "gf3_conservation": sum(trajectory) % 3,  # must be 0
-=======
-    Requirement:  trajectory is GF(3)-conserved (sum = 0 mod 3)
-    Requirement:  len(trajectory) >= 3
-    Postcondition: valid DID document fragment with trajectory verification method
-    """
-    if sum(trajectory) % 3 != 0:
-        raise ValueError(f"GF(3) conservation violated: sum={sum(trajectory)}")
-
-    traj_bytes = bytes([t % 256 for t in trajectory])
-    fingerprint = hashlib.sha256(traj_bytes).digest()
-    fingerprint_multibase = "z" + base64.b58encode(fingerprint).decode()
-
-    path = ":".join(path_segments or ["agents", fingerprint.hex()[:16]])
-    did = f"did:wba:{domain}:{path}"
-
-    return {
-        "@context": ["https://www.w3.org/ns/did/v1"],
-        "id": did,
-        "verificationMethod": [{
-            "id": f"{did}#gf3-key-1",
-            "type": "GF3TritTrajectoryVerificationKey2020",
-            "controller": did,
-            "publicKeyMultibase": fingerprint_multibase,
-            "gf3_trajectory": trajectory,
->>>>>>> origin/main
-            "trajectory_length": len(trajectory),
-        }],
-        "authentication": [f"{did}#gf3-key-1"],
-        "service": [{
-            "id": f"{did}#qrtp-transport",
-            "type": "QRTransportProtocol",
-<<<<<<< HEAD
-            "serviceEndpoint": "qrtp://air-gap",  # offline transport indicator
-            "fountainCode": "LT",  # Luby Transform
-            "errorCorrectionCapacity": 0.95,
-        }]
-    }
-
-
-def did_to_passport_fragment(did_document: dict) -> Optional[dict]:
-    """
-    Reverse bridge: extract GF(3) trit trajectory from a DID document.
-
-    Requirement:  DID document has a GF3TritTrajectoryVerificationKey2020 method
-    Postcondition: returns trajectory if found, None if standard Ed25519 DID
-    """
-=======
-            "serviceEndpoint": "qrtp://air-gap",
-            "fountainCode": "LT",
-        }]
-    }
-
-def did_to_passport_fragment(did_document: dict) -> dict | None:
-    """Extract trit trajectory from a DID document, if present."""
->>>>>>> origin/main
-    for method in did_document.get("verificationMethod", []):
-        if method.get("type") == "GF3TritTrajectoryVerificationKey2020":
-            trajectory = method.get("gf3_trajectory")
-            if trajectory and sum(trajectory) % 3 == 0:
-                return {
-                    "trajectory": trajectory,
-                    "fingerprint": method.get("publicKeyMultibase"),
-                    "conservation_verified": True,
-<<<<<<< HEAD
-                    "liveness_required": True,  # must verify via homotopy continuity
-                }
-    return None  # Standard DID, no GF(3) fingerprint
-```
-
----
-
-=======
-                }
-    return None
-```
-
->>>>>>> origin/main
-## Verification Protocol
-
-### Online Verification (W3C DID / ANP mode)
-
-```python
-def verify_online(did: str, challenge: bytes) -> tuple[bool, dict]:
-    """
-<<<<<<< HEAD
-    Requirement:  DID resolver accessible (HTTPS connectivity)
-    Postcondition: (True, did_document) | (False, error_dict)
-
-    Standard W3C DID verification:
-    1. Resolve DID → fetch DID document from HTTPS endpoint
-    2. Extract public key from verificationMethod
-    3. Verify challenge signature against public key
-    """
-    resolver = DIDResolver()
-    doc = resolver.resolve(did)  # requires network
-    key_material = doc["verificationMethod"][0]
-    # Signature verification (Ed25519 or GF3TritTrajectory)
-=======
-    Requirement:  DID resolver accessible (HTTPS)
-    Postcondition: (True, did_document) | (False, error_dict)
-    """
-    resolver = DIDResolver()
-    doc = resolver.resolve(did)
-    key_material = doc["verificationMethod"][0]
->>>>>>> origin/main
-    is_valid = verify_signature(challenge, key_material)
-    return (is_valid, doc)
-```
-
-### Offline Verification (passport.gay / QRTP mode)
-
-```python
-def verify_offline(qrtp_frames: list[bytes], challenge: bytes) -> tuple[bool, dict]:
-    """
-    Requirement:  qrtp_frames are fountain-coded QR code frames
-<<<<<<< HEAD
-    Requirement:  at least 5% overhead in received frames for error correction
-    Postcondition: (True, passport_doc) | (False, error_dict)
-    --- NO NETWORK REQUIRED ---
-
-    Air-gapped verification:
-    1. Decode QRTP frames → reconstruct identity proof
-    2. Extract trit trajectory + homotopy certificate
-    3. Verify GF(3) conservation (mathematical, no network)
-    4. Verify homotopy continuity (liveness check, no network)
-    5. Verify challenge response against GF(3) fingerprint
-    """
-    # Fountain decoding (LT code)
-    passport_doc = decode_qrtp(qrtp_frames)
-
-    trajectory = passport_doc["trajectory"]
-    certificate = passport_doc["homotopy_certificate"]
-
-    # Step 1: GF(3) conservation (mathematical invariant)
-    if sum(trajectory) % 3 != 0:
-        return (False, {"error": "GF(3) conservation violated"})
-
-    # Step 2: Homotopy continuity (liveness)
-    if not verify_homotopy_continuity(certificate):
-        return (False, {"error": "Liveness check failed: deformation not continuous"})
-
-    # Step 3: Challenge response
-    fingerprint = hashlib.sha256(bytes(t % 256 for t in trajectory)).digest()
-    expected_response = hashlib.sha256(fingerprint + challenge).digest()
-    if passport_doc.get("challenge_response") != expected_response:
-=======
-    Postcondition: (True, passport_doc) | (False, error_dict)
-    NO NETWORK REQUIRED.
-    """
-    passport_doc = decode_qrtp(qrtp_frames)
-    trajectory = passport_doc["trajectory"]
-    certificate = passport_doc["homotopy_certificate"]
-
-    if sum(trajectory) % 3 != 0:
-        return (False, {"error": "GF(3) conservation violated"})
-
-    if not verify_homotopy_continuity(certificate):
-        return (False, {"error": "Liveness check failed"})
-
-    fingerprint = hashlib.sha256(bytes(t % 256 for t in trajectory)).digest()
-    expected = hashlib.sha256(fingerprint + challenge).digest()
-    if passport_doc.get("challenge_response") != expected:
->>>>>>> origin/main
-        return (False, {"error": "Challenge response mismatch"})
-
-    return (True, passport_doc)
-```
-
-<<<<<<< HEAD
----
-
-## Bisimulation Proof: Online ≅ Offline
-
-```
-LTS_online  = (States_online,  Actions, →_online,  s₀_online)
-LTS_offline = (States_offline, Actions, →_offline, s₀_offline)
-
-Actions shared: {prove, verify, accept, reject}
-
-Bisimulation R:
-  (request_online, request_offline) ∈ R
-  (verified_online, verified_offline) ∈ R
-  (rejected_online, rejected_offline) ∈ R
-
-Transitions:
-  online:  request →_online{verify_did} → verified  | rejected
-  offline: request →_offline{decode_qrtp; check_gf3; check_homotopy} → verified | rejected
-
-Weak bisimulation (τ-transitions hidden):
-  The internal steps (DID resolution vs. QRTP decoding) are τ-transitions.
-  External observations: both produce (verified, identity_proof) or (rejected, reason).
-  ∴ online ~_weak offline within the same GF(3) trit class.
-
-GF(3)-colored bisimulation:
-  ONLY within same trit class (both must have trit = -1, 0, or +1).
-  Cross-trit: not-bisimilar by definition.
-```
-
----
-
-## Revocation (Closing Gap G5)
-
-```python
-# Gap G5 from zig-syrup-propagator-interleave:
-# "No revocation mechanism for compromised identities"
-# Candidate: anoma-intents, aptos-gf3-society
-
-=======
-## Revocation
-
-```python
->>>>>>> origin/main
-def revoke_passport_identity(
-    trajectory: list[int],
-    reason: str,
-    revocation_registry: str = "did:wba:plurigrid.com:revocation",
-) -> dict:
-    """
-<<<<<<< HEAD
-    Requirement:  revocation_registry is an Anoma intent (or Aptos GF3 society record)
-    Postcondition: trajectory fingerprint added to revocation list; propagated via QRTP
-
-    Revocation without network (for air-gapped scenarios):
-    - Post signed revocation notice to Anoma intent pool
-    - QRTP broadcast of revocation QR code (fountain-coded)
-    - Verifiers check revocation list during offline verification
-
-    Revocation with network (for DID scenarios):
-    - Update DID document: add "revoked" status assertion
-    - Propagate via DID resolution (verifiers fetch updated doc)
-    """
-=======
-    Closes Gap G5: "No revocation mechanism for compromised identities".
-    Supports both online (Anoma intent) and offline (QRTP broadcast) revocation.
-    """
-    import time
->>>>>>> origin/main
-    fingerprint = hashlib.sha256(bytes(t % 256 for t in trajectory)).hexdigest()
-    revocation_entry = {
-        "fingerprint": fingerprint,
-        "reason": reason,
-        "timestamp_ms": int(time.time() * 1000),
-<<<<<<< HEAD
-        "gf3_conservation": sum(trajectory) % 3,
-    }
-    # Broadcast via Anoma intent (online) + QRTP (offline)
-    return {
-        "anoma_intent": post_revocation_intent(revocation_entry),
-        "qrtp_frames": encode_qrtp(revocation_entry),  # can be presented as QR code
-        "did_update": f"{revocation_registry}#{fingerprint}",
-    }
-```
-
----
+
+## Status and boundaries
+
+Treat this as a bridge design and verification contract. This directory contains
+no DID resolver, signature verifier, QRTP codec, or revocation implementation.
+Do not report Gap G-P2 (MCP-I DID extension) or Gap G5 (passport revocation) as
+closed by this document. Validate concrete implementations separately.
+
+Retain the deterministic SplitMix64 → color → trit trajectory model as public
+application metadata and QRTP as transport. Neither is a cryptographic trust
+anchor. A MAC-derived seed (including a device MAC address), deterministic PRNG,
+GF(3) sum, trajectory hash, or continuous deformation supplies no secret signing
+key and authenticates no issuer. Continuity alone is not evidence of liveness.
+
+Keep these judgments separate in every verification result:
+
+| Judgment | Required evidence | What it does not establish |
+|----------|-------------------|----------------------------|
+| Structural consistency | Canonical trits and the declared GF(3) invariant | Identity, issuer authenticity, authority, or liveness |
+| Behavioral equivalence | Explicit transition systems, observations, relation, and transition obligations | Same subject, key controller, or permissions |
+| Cryptographic authentication | Trusted DID/key binding and valid proof of key control for this fresh challenge and audience | Truth of issuer claims or permission to act |
+| Authenticated issuer claim | Valid issuer proof, permitted assertion key, subject binding, and verifier trust policy | Truth beyond that policy or delegated capability authority |
+| Delegated capability authority | Valid grant/delegation chain from an accepted authority, scope, audience, constraints, expiry, and status checks | Unrelated rights or unrestricted access |
+
+Follow the distinction among `authentication`, `assertionMethod`,
+`capabilityInvocation`, and `capabilityDelegation` in
+[W3C DID Core §5.3](https://www.w3.org/TR/did-core/#verification-relationships).
+Listing a key under a relationship does not itself issue a capability grant.
+A valid signature attributes a statement to a key; trust policy determines
+whether that issuer is accepted for the particular claim.
+
+## Bind public trajectory metadata to cryptographic identity
+
+1. Validate each trit as an integer in {-1, 0, +1}; reject booleans, other values,
+   and trajectories shorter than three. Check sum modulo 3 if required by the
+   declared trajectory profile. Do not coerce arbitrary integers modulo 256.
+2. Define a versioned canonical encoding and fingerprint. Preserve trajectory
+   order. A fingerprint identifies those bytes, not a person or a key controller.
+3. Bind the profile, fingerprint, subject DID, issuer, intended use, and validity
+   interval in an issuer-signed claim using a supported proof suite. Verify that
+   the key is authorized for assertion and the issuer is accepted for this use.
+4. For authentication, separately verify the subject's challenge response using
+   a method authorized for `authentication`. Bind the presentation, nonce,
+   audience, and protocol domain to the signed bytes to prevent substitution.
+5. For an action, separately verify the applicable capability grant and chain.
+   Require attenuation at each delegation and enforce resource/action constraints.
+
+Keep the trajectory in application claim data. Do not put its digest into
+`publicKeyMultibase`, invent `GF3TritTrajectoryVerificationKey2020`, or add a
+trajectory to `authentication`. The former example's `base64.b58encode` is not a
+Python standard-library function; changing encodings would still not make a
+fingerprint a verification key. Do not derive a private key from public metadata.
+
+A candidate URI such as `did:wba:plurigrid.com:agents:skill-graph-agent` must be
+created and resolved under the selected method's actual rules. Hashing a
+trajectory into a path does not register a DID or prove control of that domain.
+Do not generalize did:wba HTTPS resolution assumptions to every DID method.
+
+## Online and offline verification contract
+
+Use the same proof and authorization policy across both transports. Return
+separate structural, authentication, issuer-claim, and authorization outcomes,
+with evidence provenance and status freshness. If required evidence is missing,
+return unknown/reject for that decision; never promote a structural pass to an
+authenticated or authorized result.
+
+### Online
+
+- Resolve the subject and issuer DIDs using trusted method-specific resolution.
+  Check identifier/document binding, key purpose, rotation, expiry, and status.
+  Do not blindly use the first `verificationMethod` in the document.
+- Verify the actual signatures over canonical, domain-separated messages with
+  the selected supported suite. Require a verifier-generated nonce, intended
+  audience, expiry, and replay prevention. HTTPS delivery alone does not verify
+  a presentation signature or authorize an action.
+- Check issuer trust for each claim and capability authority for each action.
+  Bind claimed trajectory metadata to the signed subject and presentation.
+
+### Offline / QRTP
+
+- Decode with bounded sizes and resource limits. Fountain coding/error correction
+  reconstructs bytes; it does not authenticate their origin. Verify signatures
+  after reconstruction and reject malformed or substituted payloads.
+- Obtain trusted key/DID bindings independently: provisioned trust material or
+  authenticated, versioned cached documents/status snapshots. A public key supplied
+  in the same untrusted QR payload is not an independent trust anchor.
+- Apply the same key-purpose, issuer, signature, subject, audience, and capability
+  checks as online. Use an interactive fresh challenge where authentication needs
+  proof of current key control. Static signed credentials alone are replayable.
+- Maintain nonce/replay state and a trusted time or equivalent freshness policy.
+  A locally computed `SHA256(public_fingerprint || challenge)` is forgeable by
+  anyone who sees the fingerprint and is not a signature or proof of possession.
+- Report the age/version of cached revocation and key state. An offline verifier
+  cannot establish revocations newer than its last authenticated update without
+  additional information. Reject/defer when the configured freshness bound is
+  exceeded; do not silently claim current online-equivalent assurance.
+
+## Behavioral equivalence: proof target, not a result
+
+A shared `prove → verify → accept/reject` interface and matching trit classes do
+not establish bisimulation. Define the states, labeled transitions, initial
+relation, observable decisions, and threat/freshness assumptions first.
+
+A possible restricted relation pairs online and offline states using the same
+trusted key bindings, policy, signed claims, delegation chain, nonce state, and
+status snapshot. Prove that each observable transition on either side can be
+matched by the other, with related successor states. Hide transport steps only
+when they do not change security-relevant observations. Include rejection,
+unknown, replay, expired credentials, key rotation, and stale-status paths.
+
+Counterexample to unconditional equivalence: revoke a key after the offline
+snapshot. A current online verifier rejects while an offline verifier may accept
+under a still-valid cached-status policy. A GF(3) equality does not repair this
+observational difference. Trit coloring can index a relation; it cannot prove it.
+
+## Revocation and key rotation (Gap G5 remains open)
+
+Specify a signed, versioned status format with issuer/key binding, subject or
+credential/grant identifier, sequence/epoch, issuance time, and validity limit.
+Authenticate the revoker's authority and prevent rollback to an older snapshot.
+A trajectory fingerprint alone is not enough to identify the affected grant.
+
+Anoma intents, Aptos records, DID updates, and QRTP broadcasts are candidate
+publication/transport mechanisms. Returning a dictionary or broadcasting a QR
+code does not implement authenticated revocation. Verifiers must validate and
+apply the update, persist monotonic status, and enforce a freshness policy.
+Define emergency key compromise and offline recovery behavior before deployment.
+
+## Validation targets for an implementation
+
+| Case | Required outcome |
+|------|------------------|
+| Conserved trajectory with no signature | Structural pass only; no authentication or authority |
+| Attacker recomputes hash response to a fresh challenge | Authentication rejected |
+| Valid subject signature, untrusted issuer | Subject authentication may pass; issuer claim rejected/unknown |
+| Trusted issuer claim, no capability grant | Claim may pass; requested action denied |
+| Valid grant, wrong resource/audience or widened delegation | Requested action denied |
+| Replay or modified trajectory/presentation | Authentication rejected |
+| Valid offline proofs and fresh authenticated snapshot | Evaluate the same policy within the stated freshness bound |
+| Missing/stale/revoked key or status evidence | Reject/defer the affected decision; preserve reason and provenance |
+
+These are proof/test obligations, not claims that cryptographic integration tests
+already exist. Run them against the actual resolver, proof suite, QRTP codec,
+status store, and capability evaluator before claiming the bridge is implemented.
 
 ## Related Skills
 
-- `zig-syrup-propagator-interleave` — QRTP, passport.gay, homotopy liveness
-- `agent-protocol-interleave` — full agent protocol ecosystem bridge
-- `bisimulation-oracle` — formal proof of online ≅ offline bisimulation
-- `merkle-proof-validation` — alternative offline proof transport (Merkle vs. fountain)
-- `anoma-intents` — revocation via Anoma intent pool
-- `aptos-gf3-society` — revocation via Aptos GF(3) society contract
-- `gf3-trit-oracle` — trit classification prerequisite for GF(3)-colored bisimulation
-- `splitmix-ternary` — SplitMix64 → trit trajectory generation
-- `gay-monte-carlo` — GF(3)-colored sampling for trajectory generation
-=======
-    }
-    return {
-        "anoma_intent": post_revocation_intent(revocation_entry),
-        "qrtp_frames": encode_qrtp(revocation_entry),
-        "did_update": f"{revocation_registry}#{fingerprint}",
-    }
-```
->>>>>>> origin/main
+- `zig-syrup-propagator-interleave` — passport and QRTP design context
+- `agent-protocol-interleave` — agent protocol bridge context
+- `bisimulation-oracle` — candidate behavioral proof workflow
+- `merkle-proof-validation` — authenticated inclusion evidence
+- `anoma-intents`, `aptos-gf3-society` — candidate status publication mechanisms
+- `gf3-trit-oracle`, `splitmix-ternary` — structural trit classification/generation
+
+Related documents may contain unresolved conflicts. They do not override this
+contract's separation of consistency, identity, claims, and authority.

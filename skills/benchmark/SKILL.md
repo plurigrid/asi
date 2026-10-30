@@ -1,27 +1,33 @@
 ---
-name: benchmark <<<<<<< HEAD
+name: benchmark
 description: Run and interpret engine-stack benchmarks (Steel, ember, shale)
 model: haiku
 ---
 
 # Project Engines Benchmark Skill
-=======
-description: Run and interpret basin-engines benchmarks (Steel, ember, shale)
-model: haiku
----
-
-# Basin Engines Benchmark Skill
->>>>>>> origin/main
 
 Run benchmarks for Steel, ember, and shale engines.
 
 ## CRITICAL: Read Before Benchmarking
 
-<<<<<<< HEAD
-**ALWAYS read first**: `~/p/benchmark-suite/docs/BENCHMARK_FAIRNESS.md`
-=======
-**ALWAYS read first**: `~/p/basin-bench/docs/BENCHMARK_FAIRNESS.md`
->>>>>>> origin/main
+Select the actual local checkouts explicitly. The source variants use
+`~/p/benchmark-suite` / `~/p/engine-stack` and
+`~/p/basin-bench` / `~/p/basin-engines`; this repository does not establish
+which external checkout is present. Set absolute paths for both variables:
+
+```bash
+export BENCHMARK_SUITE_ROOT=/absolute/path/to/benchmark-checkout
+export ENGINE_STACK_ROOT=/absolute/path/to/engine-checkout
+: "${BENCHMARK_SUITE_ROOT:?Set the benchmark checkout path}"
+: "${ENGINE_STACK_ROOT:?Set the engine checkout path}"
+test -f "$BENCHMARK_SUITE_ROOT/docs/BENCHMARK_FAIRNESS.md" || exit 1
+test -d "$ENGINE_STACK_ROOT/engines/steel" || exit 1
+cat "$BENCHMARK_SUITE_ROOT/docs/BENCHMARK_FAIRNESS.md"
+```
+
+**ALWAYS read the selected checkout's fairness document before benchmarking.**
+Record checkout paths and commit IDs with results. Do not infer project identity
+or select a different checkout from these historical directory names.
 
 This document contains hard-won lessons about benchmark fairness. Ignoring it leads to misleading claims.
 
@@ -29,11 +35,7 @@ This document contains hard-won lessons about benchmark fairness. Ignoring it le
 
 | Check | Why | How |
 |-------|-----|-----|
-<<<<<<< HEAD
-| Read BENCHMARK_FAIRNESS.md | Contains all fairness lessons | `cat ~/p/benchmark-suite/docs/BENCHMARK_FAIRNESS.md` |
-=======
-| Read BENCHMARK_FAIRNESS.md | Contains all fairness lessons | `cat ~/p/basin-bench/docs/BENCHMARK_FAIRNESS.md` |
->>>>>>> origin/main
+| Read BENCHMARK_FAIRNESS.md | Contains all fairness lessons | `cat "$BENCHMARK_SUITE_ROOT/docs/BENCHMARK_FAIRNESS.md"` |
 | Use `--batched` for LMDB/redb | 7-24x improvement with proper config | Add `--batched --batch-size 1000` |
 | Scale sled cache | Undersized cache = 17x slower | Add `--cache-mb 2048` for 1M+ records |
 | Check dataset vs RAM | If data fits in RAM, you're measuring memory | Use larger datasets for I/O testing |
@@ -46,11 +48,7 @@ This document contains hard-won lessons about benchmark fairness. Ignoring it le
 
 ```bash
 # Build
-<<<<<<< HEAD
-cd ~/p/benchmark-suite && graft build --release -p ycsb-steel
-=======
-cd ~/p/basin-bench && graft build --release -p ycsb-steel
->>>>>>> origin/main
+cd "$BENCHMARK_SUITE_ROOT" && graft build --release -p ycsb-steel
 
 # Single-threaded
 ycsb-steel --fast --data-dir /tmp/bench --workload a --records 50000 --ops 200000
@@ -59,11 +57,7 @@ ycsb-steel --fast --data-dir /tmp/bench --workload a --records 50000 --ops 20000
 ycsb-steel --fast --shards 64 --threads 4 --data-dir /tmp/bench --workload a --records 50000 --ops 200000
 
 # Ultimate adversarial benchmark (vs sled)
-<<<<<<< HEAD
-cd ~/p/engine-stack/engines/steel
-=======
-cd ~/p/basin-engines/engines/steel
->>>>>>> origin/main
+cd "$ENGINE_STACK_ROOT/engines/steel"
 graft run --release --example ultimate_adversarial
 ```
 
@@ -71,11 +65,7 @@ graft run --release --example ultimate_adversarial
 
 ```bash
 # Use the fair comparison script (includes proper batching for all engines)
-<<<<<<< HEAD
-RECORDS=50000 OPS=200000 ~/p/benchmark-suite/scripts/steel-fair-compare.sh
-=======
-RECORDS=50000 OPS=200000 ~/p/basin-bench/scripts/steel-fair-compare.sh
->>>>>>> origin/main
+RECORDS=50000 OPS=200000 "$BENCHMARK_SUITE_ROOT/scripts/steel-fair-compare.sh"
 ```
 
 ### Individual Engine Commands (Fair Config)
@@ -94,7 +84,11 @@ ycsb-lmdb --batched --nosync --batch-size 1000 --workload a --records 50000 --op
 ycsb-redb --batched --batch-size 1000 --workload a --records 50000 --ops 200000 --data-dir /tmp/bench
 ```
 
-## Steel Results (2025-12-23) - Steel Wins All
+## Recorded Steel Results (2025-12-23)
+
+Historical figures retained from the source document; no raw benchmark evidence
+is bundled here. Reproduce them with the selected revisions and configuration
+before treating them as current comparative claims.
 
 **Steel now beats LMDB on ALL workloads!**
 
@@ -154,21 +148,12 @@ With 64 shards, Steel **beats sled by 2.3x**:
 
 | Purpose | Location |
 |---------|----------|
-<<<<<<< HEAD
-| Steel YCSB | `~/p/benchmark-suite/engines/ycsb-steel/` |
-| Fair script | `~/p/benchmark-suite/scripts/steel-fair-compare.sh` |
-| Fairness docs | `~/p/benchmark-suite/docs/BENCHMARK_FAIRNESS.md` |
-| Steel benchmarks | `~/p/engine-stack/engines/steel/BENCHMARKS.md` |
-| **Roadmap to #1** | `~/p/engine-stack/engines/steel/ROADMAP_BEST_KV.md` |
-| Ultimate adversarial | `~/p/engine-stack/engines/steel/examples/ultimate_adversarial.rs` |
-=======
-| Steel YCSB | `~/p/basin-bench/engines/ycsb-steel/` |
-| Fair script | `~/p/basin-bench/scripts/steel-fair-compare.sh` |
-| Fairness docs | `~/p/basin-bench/docs/BENCHMARK_FAIRNESS.md` |
-| Steel benchmarks | `~/p/basin-engines/engines/steel/BENCHMARKS.md` |
-| **Roadmap to #1** | `~/p/basin-engines/engines/steel/ROADMAP_BEST_KV.md` |
-| Ultimate adversarial | `~/p/basin-engines/engines/steel/examples/ultimate_adversarial.rs` |
->>>>>>> origin/main
+| Steel YCSB | `${BENCHMARK_SUITE_ROOT}/engines/ycsb-steel/` |
+| Fair script | `${BENCHMARK_SUITE_ROOT}/scripts/steel-fair-compare.sh` |
+| Fairness docs | `${BENCHMARK_SUITE_ROOT}/docs/BENCHMARK_FAIRNESS.md` |
+| Steel benchmarks | `${ENGINE_STACK_ROOT}/engines/steel/BENCHMARKS.md` |
+| **Roadmap to #1** | `${ENGINE_STACK_ROOT}/engines/steel/ROADMAP_BEST_KV.md` |
+| Ultimate adversarial | `${ENGINE_STACK_ROOT}/engines/steel/examples/ultimate_adversarial.rs` |
 
 ## Dialectical Improvement
 
